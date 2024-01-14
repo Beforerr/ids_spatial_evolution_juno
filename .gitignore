@@ -1,0 +1,13 @@
+overleaf/
+
+*_files/
+*.html
+
+_docs/
+_proc/
+_site/
+_manuscript/
+
+/.quarto/
+
+.DS_Store
