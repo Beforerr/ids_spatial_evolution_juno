@@ -23,7 +23,10 @@ affiliations:
 bibliography: files/references.bib
 execute: 
   eval: false
-
+code-links:
+  - repo
+  - href: https://app.tana.inc?nodeid=Kmdzbyj-36NM
+    text: Tana
 ---
 
 ## Background
@@ -134,7 +137,7 @@ For model validation part, please see [JUNO Model Report](notebooks/analysis/20_
 
 ## Results
 
-For all results, see [results page](notebooks/analysis/index.qmd).
+For all results, see [results page](notebooks/results.qmd).
 
 ### Occurrence rates
 

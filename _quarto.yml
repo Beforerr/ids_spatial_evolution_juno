@@ -13,18 +13,11 @@ format:
 
   # (other formats)
   # pdf: default
-  typst: default
+  # typst: default
   # agu-pdf: default
 
 execute:
   freeze: true
 
-code-links: 
-  - repo
-  - href: https://app.tana.inc?nodeid=Kmdzbyj-36NM
-    text: Tana
-
 citation:
   container-title: "JGR: Space Physics"
-
-keep-tex: true
