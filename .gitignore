@@ -11,3 +11,4 @@ _manuscript/
 /.quarto/
 
 .DS_Store
+/_*.local
