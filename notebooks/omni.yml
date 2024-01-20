@@ -1,0 +1,24 @@
+timerange: ["2011-08-01", "2016-07-01"]
+
+panels:
+  - satellite: "OMNI"
+    instrument: "data"
+    datatype: hourly
+    id: V
+    name: Plasma Speed
+    units: km/s
+
+  - satellite: "OMNI"
+    instrument: "data"
+    datatype: hourly
+    id: N
+    name: Ion number density
+    units: cm^-3
+
+output:
+  path: "../figures/omni_overview"
+  formats:
+    - "png"
+    - "svg"
+    # - "csv"
+  display: True

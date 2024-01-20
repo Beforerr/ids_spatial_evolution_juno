@@ -180,3 +180,7 @@ Thickness and current density distribution
 -   The normalized occurrence rate of IDs drops with the radial distance from the Sun, following $1/r$ law.
 -   The thickness of IDs increases with the radial distance from the Sun, but after normalization to ion inertial length, the thickness of IDs decreases.
 -   The current intensity of IDs decrease with the radial distance from the Sun, but after normalization to the Alfven current , the current intensity of IDs increases.
+
+## Figures
+
+![](figures/omni_overview)
