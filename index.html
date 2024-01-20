@@ -76,6 +76,7 @@ div.csl-indent {
 <meta name="citation_author" content="Vassilis Angelopoulos">
 <meta name="citation_author" content="Shi Chen">
 <meta name="citation_language" content="en">
+<meta name="citation_journal_title" content="JGR: Space Physics">
 <meta name="citation_reference" content="citation_title=Contribution of strong discontinuities to the power spectrum of the solar wind;,citation_author=Joseph E. Borovsky;,citation_publication_date=2010-09-08;,citation_cover_date=2010-09-08;,citation_year=2010;,citation_fulltext_html_url=https://link.aps.org/doi/10.1103/PhysRevLett.105.111102;,citation_issue=11;,citation_doi=10.1103/PhysRevLett.105.111102;,citation_volume=105;,citation_journal_title=Physical Review Letters;">
 <meta name="citation_reference" content="citation_title=MSWIM2D: Two-dimensional Outer Heliosphere Solar Wind Modeling;,citation_author=Timothy B. Keebler;,citation_author=Gábor Tóth;,citation_author=Bertalan Zieger;,citation_author=Merav Opher;,citation_publication_date=2022-06;,citation_cover_date=2022-06;,citation_year=2022;,citation_fulltext_html_url=https://dx.doi.org/10.3847/1538-4365/ac67eb;,citation_issue=2;,citation_doi=10.3847/1538-4365/ac67eb;,citation_volume=260;,citation_language=en;,citation_journal_title=The Astrophysical Journal Supplement Series;">
 <meta name="citation_reference" content="citation_title=Discontinuities in the solar wind;,citation_author=D. S. Colburn;,citation_author=C. P. Sonett;,citation_publication_date=1966-06-01;,citation_cover_date=1966-06-01;,citation_year=1966;,citation_fulltext_html_url=https://doi.org/10.1007/BF00240575;,citation_issue=4;,citation_doi=10.1007/BF00240575;,citation_volume=5;,citation_language=en;,citation_journal_title=Space Science Reviews;">
@@ -149,7 +150,7 @@ div.csl-indent {
 
 
     <div class="quarto-other-links-text-target">
-    </div>  </div>
+    <div class="quarto-code-links"><div class="quarto-title-meta-heading">Code Links</div><div class="quarto-title-meta-contents"><span style="padding-right: 0.5em;"><a href="https://github.com/Beforerr/ids_spatial_evolution_juno/" target="_blank"><i class="bi bi-github"></i>GitHub Repo</a>,</span><span><a href="https://app.tana.inc?nodeid=Kmdzbyj-36NM"><i class="bi bi-link-45deg"></i>Tana</a></span></div></div></div>  </div>
 </header><div id="quarto-content" class="page-columns page-rows-contents page-layout-article toc-left">
 <div id="quarto-sidebar-toc-left" class="sidebar toc-left">
   <nav id="TOC" role="doc-toc" class="toc-active">
@@ -172,8 +173,9 @@ div.csl-indent {
   <li><a href="#properties" id="toc-properties" class="nav-link" data-scroll-target="#properties">Properties</a></li>
   </ul></li>
   <li><a href="#conclusion" id="toc-conclusion" class="nav-link" data-scroll-target="#conclusion">Conclusion</a></li>
+  <li><a href="#figures" id="toc-figures" class="nav-link" data-scroll-target="#figures">Figures</a></li>
   </ul>
-</nav>
+<div class="quarto-alternate-notebooks"><h2>Notebooks</h2><ul><li><a href="notebooks/analysis/02_orientation-preview.html"><i class="bi bi-journal-code"></i>Orientation</a></li><li><a href="notebooks/analysis/00_base-preview.html"><i class="bi bi-journal-code"></i>Loading all datasets from different sources</a></li><li><a href="notebooks/analysis/01_occurence_rate-preview.html"><i class="bi bi-journal-code"></i>Occurence Rate</a></li><li><a href="notebooks/analysis/10_classification-preview.html"><i class="bi bi-journal-code"></i>ID classification</a></li><li><a href="notebooks/analysis/03_map-preview.html"><i class="bi bi-journal-code"></i>Map of thickness and current intensity</a></li><li><a href="notebooks/11_ts-preview.html"><i class="bi bi-journal-code"></i>Time resolution effect</a></li><li><a href="notebooks/results-preview.html"><i class="bi bi-journal-code"></i>Results</a></li><li><a href="notebooks/20_omni_overview-preview.html"><i class="bi bi-journal-code"></i>OMNI Data Overview</a></li><li><a href="notebooks/01_ids_example-preview.html"><i class="bi bi-journal-code"></i>Examples of discontinuities</a></li><li><a href="notebooks/20_model-preview.html"><i class="bi bi-journal-code"></i>Models</a></li></ul></div></nav>
 </div>
 <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
 </div>
@@ -194,13 +196,13 @@ div.csl-indent {
 <div class="quarto-layout-row quarto-layout-valign-top">
 <div class="quarto-figure quarto-figure-center quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
 <figure class="figure">
-<p><a href="images/jgra21162-fig-0009.png" class="lightbox" data-description="" data-gallery="quarto-lightbox-gallery-1" title="Current sheets in the heliosheath: Voyager 1, 2009"><img src="images/jgra21162-fig-0009.png" class="img-fluid figure-img" alt="Hodograms produced by means of a minimum variance analysis for the current sheets associated with the sector boundaries in Figures 8 and 10. (b, d, and f) The value of the component of B along the minimum variance direction (Bm) as a function of time, N. (a, c, and e) The components of B along the intermediate variance direction (Bi) and maximum variance direction (BM)."></a></p>
+<p><a href="images/jgra21162-fig-0009.png" class="lightbox" data-gallery="quarto-lightbox-gallery-1" data-description="" title="Current sheets in the heliosheath: Voyager 1, 2009"><img src="images/jgra21162-fig-0009.png" class="img-fluid figure-img" alt="Hodograms produced by means of a minimum variance analysis for the current sheets associated with the sector boundaries in Figures 8 and 10. (b, d, and f) The value of the component of B along the minimum variance direction (Bm) as a function of time, N. (a, c, and e) The components of B along the intermediate variance direction (Bi) and maximum variance direction (BM)."></a></p>
 <figcaption>Current sheets in the heliosheath: Voyager 1, 2009</figcaption>
 </figure>
 </div>
 <div class="quarto-figure quarto-figure-center quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
 <figure class="figure">
-<p><a href="https://agupubs.onlinelibrary.wiley.com/cms/asset/8e244339-32cf-4703-9101-c1d9b4a3fa7c/jgra57047-fig-0002-m.jpg" class="lightbox" data-description="" data-gallery="quarto-lightbox-gallery-2" title="A rotational discontinuity (RD) detected at 0.126&nbsp;AU"><img src="https://agupubs.onlinelibrary.wiley.com/cms/asset/8e244339-32cf-4703-9101-c1d9b4a3fa7c/jgra57047-fig-0002-m.jpg" class="img-fluid figure-img" alt="The properties of a rotational discontinuity (RD) detected at 0.126&nbsp;AU on 28 January 2020. (a) The magnetic field magnitude and three components in Radial‐Tangential‐Normal (RTN) coordinate system, (b) the magnetic field in local magnetic normal (LMN) coordinate system, (c and d) the proton velocity in RTN and LMN coordinate systems, (e) the proton density, (f) the proton thermal pressure, the magnetic pressure and the sum, (g) the tangential components of the electric field in LMN coordinate system in the RD rest frame, (h) the position, orientation, and motion of the RD, (i–k) the distributions of BL, JM, and J&nbsp;·&nbsp;E across the RD, (l and m) the jump conditions across the RD. In (h), the cyan plane and arrow represent the RD and its motion vector, and the yellow curve shows the PSP orbit. In (j), both the colors and the curve correspond to the values of JM, and two vertical dashed lines indicate the area of |JM|>13max|JM| $\vert {J}_{M}\vert > \frac{1}{3}\text{max}\left(\vert {J}_{M}\vert \right)$ whose width is defined as the half thickness of the discontinuity. In (m), the solid lines present the actual upstream and downstream velocities, while the dashed lines show the theoretical downstream velocity to satisfy the Walén relation."></a></p>
+<p><a href="images/jgra57047-fig-0002-m.jpg" class="lightbox" data-gallery="quarto-lightbox-gallery-2" data-description="" title="A rotational discontinuity (RD) detected at 0.126&nbsp;AU"><img src="images/jgra57047-fig-0002-m.jpg" class="img-fluid figure-img" alt="The properties of a rotational discontinuity (RD) detected at 0.126&nbsp;AU on 28 January 2020. (a) The magnetic field magnitude and three components in Radial‐Tangential‐Normal (RTN) coordinate system, (b) the magnetic field in local magnetic normal (LMN) coordinate system, (c and d) the proton velocity in RTN and LMN coordinate systems, (e) the proton density, (f) the proton thermal pressure, the magnetic pressure and the sum, (g) the tangential components of the electric field in LMN coordinate system in the RD rest frame, (h) the position, orientation, and motion of the RD, (i–k) the distributions of BL, JM, and J&nbsp;·&nbsp;E across the RD, (l and m) the jump conditions across the RD. In (h), the cyan plane and arrow represent the RD and its motion vector, and the yellow curve shows the PSP orbit. In (j), both the colors and the curve correspond to the values of JM, and two vertical dashed lines indicate the area of |JM|>13max|JM| $\vert {J}_{M}\vert > \frac{1}{3}\text{max}\left(\vert {J}_{M}\vert \right)$ whose width is defined as the half thickness of the discontinuity. In (m), the solid lines present the actual upstream and downstream velocities, while the dashed lines show the theoretical downstream velocity to satisfy the Walén relation."></a></p>
 <figcaption>A rotational discontinuity (RD) detected at 0.126&nbsp;AU</figcaption>
 </figure>
 </div>
@@ -224,7 +226,7 @@ Figure&nbsp;1: Discontinuities examples across the heliosphere
 </div>
 <div class="quarto-figure quarto-figure-center quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
 <figure class="figure">
-<p><a href="images/liu2021_fig2.png" class="lightbox" data-description="" data-gallery="quarto-lightbox-gallery-4" title="Discontinuities between 0.13–0.9 AU"><img src="images/liu2021_fig2.png" class="img-fluid figure-img" alt="Histograms as a function of heliocentric distance of (a) the number of events, (b) the PSP detection time, and (c)–(e) the occurrence rates of the total IDs, RDs and TDs. Panel (f) shows the ratio of RD occurrence rate to TD occurrence rate. The orange curves in panels (c) and (d) are the power-function fittings of ID and RD occurrence rates, with the coefficient of determination R2 being 0.983 and 0.985, respectively. The uncertainties of the power-law indices correspond to 95% confidence bounds."></a></p>
+<p><a href="images/liu2021_fig2.png" class="lightbox" data-gallery="quarto-lightbox-gallery-4" data-description="" title="Discontinuities between 0.13–0.9 AU"><img src="images/liu2021_fig2.png" class="img-fluid figure-img" alt="Histograms as a function of heliocentric distance of (a) the number of events, (b) the PSP detection time, and (c)–(e) the occurrence rates of the total IDs, RDs and TDs. Panel (f) shows the ratio of RD occurrence rate to TD occurrence rate. The orange curves in panels (c) and (d) are the power-function fittings of ID and RD occurrence rates, with the coefficient of determination R2 being 0.983 and 0.985, respectively. The uncertainties of the power-law indices correspond to 95% confidence bounds."></a></p>
 <figcaption>Discontinuities between 0.13–0.9 AU</figcaption>
 </figure>
 </div>
@@ -261,7 +263,7 @@ Figure&nbsp;2: Spatial distribution of the discontinuities
 <div aria-describedby="fig-juno_traj-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <div class="quarto-layout-row quarto-layout-valign-top">
 <div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
-<p><a href="https://www.nasa.gov/wp-content/uploads/2023/03/575573main_Juno20110727-3-43_full.jpg" class="lightbox" data-description="Figure&nbsp;3: Juno Spacecraft Cruise Trajectory" data-gallery="quarto-lightbox-gallery-5"><img src="https://www.nasa.gov/wp-content/uploads/2023/03/575573main_Juno20110727-3-43_full.jpg" class="img-fluid figure-img"></a></p>
+<p><a href="https://www.nasa.gov/wp-content/uploads/2023/03/575573main_Juno20110727-3-43_full.jpg" class="lightbox" data-gallery="quarto-lightbox-gallery-5" data-description="Figure&nbsp;3: Juno Spacecraft Cruise Trajectory"><img src="https://www.nasa.gov/wp-content/uploads/2023/03/575573main_Juno20110727-3-43_full.jpg" class="img-fluid figure-img"></a></p>
 </div>
 <div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
 <div class="quarto-video ratio ratio-16x9"><iframe data-external="1" src="https://www.youtube.com/embed/sYp5p2oL51g" title="Juno spacecraft trajectory animation" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen=""></iframe></div>
@@ -380,19 +382,19 @@ Figure&nbsp;3: Juno Spacecraft Cruise Trajectory
 </section>
 <section id="results" class="level2 page-columns page-full">
 <h2 class="anchored" data-anchor-id="results">Results</h2>
-<p>For all results, see <a href="notebooks/analysis/index.qmd">results page</a>.</p>
+<p>For all results, see <a href="./notebooks/results-preview.html">results page</a>.</p>
 <section id="occurrence-rates" class="level3 page-columns page-full">
 <h3 class="anchored" data-anchor-id="occurrence-rates">Occurrence rates</h3>
-<div class="page-columns page-full"><p></p><div class="no-row-height column-margin column-container"><span class="">For code, see <a href="notebooks/analysis/01_occurence_rate.ipynb">noteboook</a>.</span></div></div>
+<div class="page-columns page-full"><p></p><div class="no-row-height column-margin column-container"><span class="">For code, see <a href="./notebooks/analysis/01_occurence_rate-preview.html">noteboook</a>.</span></div></div>
 <div id="fig-ocr_time" class="quarto-layout-panel">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-ocr_time-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <div class="quarto-layout-row quarto-layout-valign-top">
 <div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
-<p><a href="figures/ocr/ocr_time_cleaned.png" class="lightbox" data-description="Figure&nbsp;4: Occurrence rates with time" data-gallery="quarto-lightbox-gallery-6"><img src="figures/ocr/ocr_time_cleaned.png" class="img-fluid figure-img"></a></p>
+<p><a href="figures/ocr/ocr_time_cleaned.png" class="lightbox" data-gallery="quarto-lightbox-gallery-6" data-description="Figure&nbsp;4: Occurrence rates with time"><img src="figures/ocr/ocr_time_cleaned.png" class="img-fluid figure-img"></a></p>
 </div>
 <div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
-<p><a href="figures/ocr/ocr_time_N2_cleaned.png" class="lightbox" data-description="Figure&nbsp;4: Occurrence rates with time" data-gallery="quarto-lightbox-gallery-7"><img src="figures/ocr/ocr_time_N2_cleaned.png" class="img-fluid figure-img"></a></p>
+<p><a href="figures/ocr/ocr_time_N2_cleaned.png" class="lightbox" data-gallery="quarto-lightbox-gallery-7" data-description="Figure&nbsp;4: Occurrence rates with time"><img src="figures/ocr/ocr_time_N2_cleaned.png" class="img-fluid figure-img"></a></p>
 </div>
 </div>
 </div>
@@ -406,10 +408,10 @@ Figure&nbsp;4: Occurrence rates with time
 <div aria-describedby="fig-ocr_r-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <div class="quarto-layout-row quarto-layout-valign-top">
 <div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
-<p><a href="figures/ocr/ocr_r_cleaned.png" class="lightbox" data-description="Figure&nbsp;5: Occurrence rates with radial distance" data-gallery="quarto-lightbox-gallery-8"><img src="figures/ocr/ocr_r_cleaned.png" class="img-fluid figure-img"></a></p>
+<p><a href="figures/ocr/ocr_r_cleaned.png" class="lightbox" data-gallery="quarto-lightbox-gallery-8" data-description="Figure&nbsp;5: Occurrence rates with radial distance"><img src="figures/ocr/ocr_r_cleaned.png" class="img-fluid figure-img"></a></p>
 </div>
 <div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
-<p><a href="figures/ocr/ocr_r_N2_cleaned.png" class="lightbox" data-description="Figure&nbsp;5: Occurrence rates with radial distance" data-gallery="quarto-lightbox-gallery-9"><img src="figures/ocr/ocr_r_N2_cleaned.png" class="img-fluid figure-img"></a></p>
+<p><a href="figures/ocr/ocr_r_N2_cleaned.png" class="lightbox" data-gallery="quarto-lightbox-gallery-9" data-description="Figure&nbsp;5: Occurrence rates with radial distance"><img src="figures/ocr/ocr_r_N2_cleaned.png" class="img-fluid figure-img"></a></p>
 </div>
 </div>
 </div>
@@ -427,13 +429,13 @@ Figure&nbsp;5: Occurrence rates with radial distance
 <div class="quarto-layout-row quarto-layout-valign-top">
 <div class="quarto-figure quarto-figure-center quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
 <figure class="figure">
-<p><a href="figures/thickness/thickness_mn_dist.png" class="lightbox" data-description="" data-gallery="quarto-lightbox-gallery-10" title="MN thickness"><img src="figures/thickness/thickness_mn_dist.png" class="img-fluid figure-img"></a></p>
+<p><a href="figures/thickness/thickness_mn_dist.png" class="lightbox" data-gallery="quarto-lightbox-gallery-10" data-description="" title="MN thickness"><img src="figures/thickness/thickness_mn_dist.png" class="img-fluid figure-img"></a></p>
 <figcaption>MN thickness</figcaption>
 </figure>
 </div>
 <div class="quarto-figure quarto-figure-center quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
 <figure class="figure">
-<p><a href="figures/current/current_mn_dist.png" class="lightbox" data-description="" data-gallery="quarto-lightbox-gallery-11" title="MN current"><img src="figures/current/current_mn_dist.png" class="img-fluid figure-img"></a></p>
+<p><a href="figures/current/current_mn_dist.png" class="lightbox" data-gallery="quarto-lightbox-gallery-11" data-description="" title="MN current"><img src="figures/current/current_mn_dist.png" class="img-fluid figure-img"></a></p>
 <figcaption>MN current</figcaption>
 </figure>
 </div>
@@ -441,13 +443,13 @@ Figure&nbsp;5: Occurrence rates with radial distance
 <div class="quarto-layout-row quarto-layout-valign-top">
 <div class="quarto-figure quarto-figure-center quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
 <figure class="figure">
-<p><a href="figures/thickness/thickness_mn_N1_dist.png" class="lightbox" data-description="" data-gallery="quarto-lightbox-gallery-12" title="MN normalized thickness"><img src="figures/thickness/thickness_mn_N1_dist.png" class="img-fluid figure-img"></a></p>
+<p><a href="figures/thickness/thickness_mn_N1_dist.png" class="lightbox" data-gallery="quarto-lightbox-gallery-12" data-description="" title="MN normalized thickness"><img src="figures/thickness/thickness_mn_N1_dist.png" class="img-fluid figure-img"></a></p>
 <figcaption>MN normalized thickness</figcaption>
 </figure>
 </div>
 <div class="quarto-figure quarto-figure-center quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
 <figure class="figure">
-<p><a href="figures/current/current_mn_N1_dist.png" class="lightbox" data-description="" data-gallery="quarto-lightbox-gallery-13" title="MN normalized current"><img src="figures/current/current_mn_N1_dist.png" class="img-fluid figure-img"></a></p>
+<p><a href="figures/current/current_mn_N1_dist.png" class="lightbox" data-gallery="quarto-lightbox-gallery-13" data-description="" title="MN normalized current"><img src="figures/current/current_mn_N1_dist.png" class="img-fluid figure-img"></a></p>
 <figcaption>MN normalized current</figcaption>
 </figure>
 </div>
@@ -469,6 +471,57 @@ Figure&nbsp;6: Thickness and current density distribution
 <li>The thickness of IDs increases with the radial distance from the Sun, but after normalization to ion inertial length, the thickness of IDs decreases.</li>
 <li>The current intensity of IDs decrease with the radial distance from the Sun, but after normalization to the Alfven current , the current intensity of IDs increases.</li>
 </ul>
+</section>
+<section id="figures" class="level2 page-columns page-full">
+<h2 class="anchored" data-anchor-id="figures">Figures</h2>
+<div id="fig-examples" class="quarto-layout-panel">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-examples-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<div class="quarto-layout-row quarto-layout-valign-top">
+<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
+<p><a href="figures/examples/artemis_id_example.png" class="lightbox" data-gallery="quarto-lightbox-gallery-14" data-description="Figure&nbsp;7: Examples of IDs from ARTEMIS, STEREO, and JUNO"><img src="figures/examples/artemis_id_example.png" class="img-fluid figure-img"></a></p>
+</div>
+<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
+<p><a href="figures/examples/stereo_id_example.png" class="lightbox" data-gallery="quarto-lightbox-gallery-15" data-description="Figure&nbsp;7: Examples of IDs from ARTEMIS, STEREO, and JUNO"><img src="figures/examples/stereo_id_example.png" class="img-fluid figure-img"></a></p>
+</div>
+</div>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-examples-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;7: Examples of IDs from ARTEMIS, STEREO, and JUNO
+</figcaption>
+</figure>
+</div>
+<div id="fig-omni_overview" class="quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-omni_overview-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<a href="figures/omni_overview.png" class="lightbox" data-gallery="quarto-lightbox-gallery-16" data-description="Figure&nbsp;8: Near-Earth’ solar wind plasma data during JUNO cruise phase"><img src="figures/omni_overview.png" class="img-fluid figure-img"></a>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-omni_overview-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;8: Near-Earth’ solar wind plasma data during JUNO cruise phase
+</figcaption>
+</figure>
+</div>
+<div class="page-columns page-full"><p></p><div class="no-row-height column-margin column-container"><span class="">For code, see <a href="./notebooks/20_omni_overview-preview.html">noteboook</a>.</span></div></div>
+<div id="fig-model_validation" class="quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-model_validation-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<a href="figures/model/juno_model_validation_full.png" class="lightbox" data-gallery="quarto-lightbox-gallery-17" data-description="Figure&nbsp;9: Model validation"><img src="figures/model/juno_model_validation_full.png" class="img-fluid figure-img"></a>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-model_validation-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;9: Model validation
+</figcaption>
+</figure>
+</div>
+<div id="fig-ts_effect" class="quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-ts_effect-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<a href="figures/ts_effect.png" class="lightbox" data-gallery="quarto-lightbox-gallery-18" data-description="Figure&nbsp;10: Effect of the time resolution on the discontinuity properties"><img src="figures/ts_effect.png" class="img-fluid figure-img"></a>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-ts_effect-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;10: Effect of the time resolution on the discontinuity properties
+</figcaption>
+</figure>
+</div>
 
 </section>
 
@@ -497,7 +550,17 @@ Liu, Y. Y., H. S. Fu, J. B. Cao, Y. Yu, C. M. Liu, Z. Wang, Z. Z. Guo, and R. J.
 <div id="ref-söding2001" class="csl-entry" role="listitem">
 Söding, A., F. M. Neubauer, B. T. Tsurutani, N. F. Ness, and R. P. Lepping. 2001. <span>“Radial and Latitudinal Dependencies of Discontinuities in the Solar Wind Between 0.3 and 19 AU and <span>-</span>80° and +10°.”</span> <em>Annales Geophysicae</em> 19 (7): 667–80. <a href="https://doi.org/10.5194/angeo-19-667-2001">https://doi.org/10.5194/angeo-19-667-2001</a>.
 </div>
-</div></section></div></main>
+</div></section><section class="quarto-appendix-contents" id="quarto-citation"><h2 class="anchored quarto-appendix-heading">Citation</h2><div><div class="quarto-appendix-secondary-label">BibTeX citation:</div><pre class="sourceCode code-with-copy quarto-appendix-bibtex"><code class="sourceCode bibtex">@online{zhang,
+  author = {Zhang, Zijin and V. Artemyev, Anton and Angelopoulos,
+    Vassilis and Chen, Shi},
+  title = {Solar Wind Discontinuities Spatial Evolution},
+  langid = {en}
+}
+</code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre><div class="quarto-appendix-secondary-label">For attribution, please cite this work as:</div><div id="ref-zhang" class="csl-entry quarto-appendix-citeas" role="listitem">
+Zhang, Zijin, Anton V. Artemyev, Vassilis Angelopoulos, and Shi Chen.
+n.d. <span>“Solar Wind Discontinuities Spatial Evolution.”</span> JGR:
+Space Physics.
+</div></div></section></div></main>
 <!-- /main column -->
 <script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
@@ -897,7 +960,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 });
 </script>
 </div> <!-- /content -->
-<script>var lightboxQuarto = GLightbox({"closeEffect":"zoom","loop":false,"openEffect":"zoom","descPosition":"bottom","selector":".lightbox"});</script>
+<script>var lightboxQuarto = GLightbox({"descPosition":"bottom","closeEffect":"zoom","loop":false,"selector":".lightbox","openEffect":"zoom"});</script>
 
 
 
