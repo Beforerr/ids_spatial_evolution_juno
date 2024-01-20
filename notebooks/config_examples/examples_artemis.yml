@@ -1,0 +1,32 @@
+
+timerange: ["2012-03-27T12:03:30", "2012-03-27T12:05:00"]
+panels:
+  - satellite: THEMIS
+    probe: b
+    instrument: FGM
+    id: thb_fgl_gse
+    name: $B$
+    units: nT
+    process:
+      trans:
+        - "mva"
+        - "magnitude_join"
+
+  - satellite: THEMIS
+    probe: b
+    instrument: "GMOM"
+    id: "thb_ptiff_velocity_gse"
+    process:
+      trans:
+        - "magnitude"
+    name: Ion Speed
+
+    units: km/s
+
+output:
+  path: "figures/examples/artemis_id_example"
+  formats:
+    - "png"
+    - "svg"
+    # - "csv"
+  # display: True

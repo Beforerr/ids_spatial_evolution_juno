@@ -183,4 +183,20 @@ Thickness and current density distribution
 
 ## Figures
 
-![](figures/omni_overview)
+::: {#fig-examples layout-nrow="1"}
+
+![](figures/examples/artemis_id_example)
+
+![](figures/examples/stereo_id_example)
+
+Examples of IDs from ARTEMIS, STEREO, and JUNO
+
+:::
+
+![Near-Earth' solar wind plasma data during JUNO cruise phase](figures/omni_overview){#fig-omni_overview}
+
+[For code, see [noteboook](notebooks/20_omni_overview.ipynb).]{.aside}
+
+![Model validation](figures/model/juno_model_validation_full){#fig-model_validation}
+
+![Effect of the time resolution on the discontinuity properties](figures/ts_effect){#fig-ts_effect}
