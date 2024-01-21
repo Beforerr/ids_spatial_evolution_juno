@@ -183,6 +183,8 @@ Thickness and current density distribution
 
 ## Figures
 
+![Juno orbit](https://github.com/Beforerr/finesst_solar_wind_discontinuities/blob/main/figures/orbits/juno_orbit_white.svg?raw=true){#fig-juno_orbit}
+
 ::: {#fig-examples layout-nrow="1"}
 
 ![](figures/examples/artemis_id_example)

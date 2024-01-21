@@ -5,6 +5,8 @@ project:
 
 manuscript:
   article: index.qmd
+  resources: 
+    - presentations/AGU23_poster.pdf
 
 format:
   html:
