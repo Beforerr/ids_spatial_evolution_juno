@@ -11,7 +11,7 @@ bibliography: ../files/references.bib
 date: 2023-12-11
 code-links:
   - text: Poster PDF
-    url: https://beforerr.github.io/ids_spatial_evolution_juno/presentations.AGU23_poster.pdf
+    href: ./AGU23_poster.pdf
 ---
 
 ## [Poster PDF](./AGU23_poster.pdf)
