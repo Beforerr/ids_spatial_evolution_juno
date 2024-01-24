@@ -7,7 +7,6 @@ author:
   - name: Anton Artemyev
   - name: Vassilis Angelopoulos
   - name: Shi Chen
-bibliography: ../files/references.bib
 date: 2023-12-11
 code-links:
   - text: Poster PDF

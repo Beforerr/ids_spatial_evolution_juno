@@ -19,6 +19,6 @@ output:
   path: "../figures/omni_overview"
   formats:
     - "png"
-    - "svg"
+    - "pdf"
     # - "csv"
   display: True

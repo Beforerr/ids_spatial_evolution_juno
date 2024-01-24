@@ -20,7 +20,6 @@ author:
 affiliations:
   - id: ucla
     name: University of California, Los Angeles
-bibliography: files/references.bib
 execute: 
   eval: false
 code-links:
@@ -29,12 +28,9 @@ code-links:
     text: Tana
 ---
 
-## Update
-
-- Normalization of the daily rates to 400 km/s ?
 
 
-## Background
+# Background
 
 'Discontinuities' are discontinuous spatial changes in plasma parameters/characteristics and magnetic fields [@colburn1966].
 
@@ -58,13 +54,13 @@ Discontinuities examples across the heliosphere
 Spatial distribution of the discontinuities
 :::
 
-### Importance
+## Importance
 
 -   Contribution of Strong Discontinuities to the Power Spectrum
 
     > The strong discontinuities produce a power-law spectrum in the 'inertial subrange' with a spectral index near the Kolmogorov -5/3 index. The discontinuity spectrum contains about half of the power of the full solar-wind magnetic ﬁeld over this 'inertial subrange'. [@borovsky2010]
 
-### Motivations
+## Motivations
 
 Studying the radial distribution of occurrence rate, as well as the properties of solar wind discontinuities may help answer the following questions:
 
@@ -99,12 +95,12 @@ To eliminate the effect of the solar wind structure, we use data from other miss
 | Solar Orbiter | 0.28-0.91 |                     |                                      | 2020 - Today              |
 | Ulysis        |           |                     |                                      |                           |
 
-## Methods
+# Methods
 
 - We use [@liu2022a] method to identify IDs, which has better compatibility for the IDs with minor field changes.
 - Then the minimum variance analysis is applied to each ID event to obtain the boundary normal (LMN) coordinate and extract IDs' features.
 
-### ID identification (limited feature extraction / anomaly detection)
+## ID identification (limited feature extraction / anomaly detection)
 
 Traditional methods for ID identiﬁcation, such as the criteria of
 
@@ -125,7 +121,7 @@ $$ \textrm{Index}_3 = \frac{| \Delta \vec{B} |}{|B_{bg}|} $$
 
 $$ \textrm{Index}_1 \ge 2, \textrm{Index}_2 \ge 1, \textrm{Index}_3 \ge 0.1 $$
 
-### Solar Wind Model {#solar-wind-model}
+## Solar Wind Model {#solar-wind-model}
 
 Sadly, JUNO does not provide plasma data during the cruise phase, so to estimate the plasma state we will use MHD model.
 
@@ -140,11 +136,11 @@ Some key points about the model
 
 For model validation part, please see [JUNO Model Report](notebooks/analysis/20_model.ipynb).
 
-## Results
+# Results
 
 For all results, see [results page](notebooks/results.qmd).
 
-### Occurrence rates
+## Occurrence rates
 
 [For code, see [noteboook](notebooks/analysis/01_occurence_rate.ipynb).]{.aside}
 
@@ -164,7 +160,7 @@ Occurrence rates with time
 Occurrence rates with radial distance
 :::
 
-### Properties
+## Properties
 
 ::: {#fig-thickness-distribution .column-page layout-ncol="2"}
 ![MN thickness](figures/thickness/thickness_mn_dist)
@@ -178,32 +174,30 @@ Occurrence rates with radial distance
 Thickness and current density distribution
 :::
 
-## Conclusion
+# Conclusion
 
--   We have collected 5 years of solar wind discontinuities from JUNO, ARTEMIS and STEREO.
+-   We have collected 5 years of solar wind discontinuities from JUNO, aMIS and STEREO.
 -   We have developed a pipeline to identify solar wind discontinuities. (Modular, Performant, Scalable)
 -   The normalized occurrence rate of IDs drops with the radial distance from the Sun, following $1/r$ law.
 -   The thickness of IDs increases with the radial distance from the Sun, but after normalization to ion inertial length, the thickness of IDs decreases.
 -   The current intensity of IDs decrease with the radial distance from the Sun, but after normalization to the Alfven current , the current intensity of IDs increases.
 
-## Figures
-
-![Juno orbit](https://github.com/Beforerr/finesst_solar_wind_discontinuities/blob/main/figures/orbits/juno_orbit_white.svg?raw=true){#fig-juno_orbit}
+# Figures
 
 ::: {#fig-examples layout-nrow="1"}
 
-![](figures/examples/artemis_id_example)
+![](figures/examples/artemis_id_example.png)
 
-![](figures/examples/stereo_id_example)
+![](figures/examples/stereo_id_example.png)
 
 Examples of IDs from ARTEMIS, STEREO, and JUNO
 
 :::
 
-![Near-Earth' solar wind plasma data during JUNO cruise phase](figures/omni_overview){#fig-omni_overview}
+<!-- ![Near-Earth' solar wind plasma data during JUNO cruise phase](figures/omni_overview){#fig-omni_overview} -->
 
 [For code, see [noteboook](notebooks/20_omni_overview.ipynb).]{.aside}
 
-![Model validation](figures/model/juno_model_validation_full){#fig-model_validation}
+![Model validation](figures/model/juno_model_validation_full){#fig-modelValidation}
 
-![Effect of the time resolution on the discontinuity properties](figures/ts_effect){#fig-ts_effect}
+![Effect of the time resolution on the discontinuity properties](figures/ts_effect){#fig-tsEffect}

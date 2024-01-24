@@ -14,3 +14,9 @@ examples:
    ipython notebooks/01_ids_example.ipynb 'notebooks/config_examples/examples_psp.yml'
    ipython notebooks/01_ids_example.ipynb 'notebooks/config_examples/examples_stereo.yml'
    ipython notebooks/01_ids_example.ipynb 'notebooks/config_examples/examples_artemis.yml'
+
+clean:
+   find . -name '.DS_Store' -type f -delete
+
+process-bib:
+   quarto render index.qmd --to latex -M cite-method:natbib -M bibliography:files/bibliography/references.bib

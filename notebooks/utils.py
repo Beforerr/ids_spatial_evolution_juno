@@ -66,6 +66,8 @@ def export(config: OutputConfig, tvars2plot):
         tplot(tvars2plot)
     if "png" in config.formats:
         tplot(tvars2plot, save_png=path, display=False)
+    if "pdf" in config.formats:
+        tplot(tvars2plot, save_pdf=path, display=False)
     if "svg" in config.formats:
         tplot(tvars2plot, save_svg=path, display=False)
     if "csv" in config.formats:
