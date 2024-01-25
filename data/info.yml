@@ -1,0 +1,59 @@
+missions:
+  Juno:
+    launch_date: 2011-08-05
+    instruments:
+      MAG:
+        name: Magnetometer
+        type: magnetometer
+        time_resolutions: 1 Hz
+      JADE:
+        name: Jovian Auroral Distributions Experiment
+      JEDI:
+        name: Jovian Energetic particle Detector Instrument
+    radial_coverage: 1 - 5.5 AU
+    programme: New Frontiers program
+    website:
+      - "[NASA](https://science.nasa.gov/mission/juno)"
+  ARTEMIS:
+    launch_date: 2007-02-17
+    instruments:
+      FGM:
+        name: Fluxgate magnetometer
+        type: magnetometer
+        time_resolutions: 5 Hz, ...
+  STEREO-A:
+    launch_date: 2006-10-26
+    instruments:
+      IMPACT:
+        name: In-situ Measurements of Particles and CME Transients
+        type: suite
+        instruments:
+          MAG:
+            name: Magnetometer
+            type: magnetometer
+            time_resolutions: 8 Hz
+      PLASTIC:
+        name: Plasma and Suprathermal Ion Composition
+        type: plasma
+  WIND:
+    launch_date: 1994-11-01
+    instruments:
+      MFI:
+        name: Magnetic Field Investigation
+        type: magnetometer
+        time_resolutions: 11 Hz
+      SWE:
+        name: Solar Wind Experiment
+        type: plasma
+    website:
+      - "[NASA](https://science.nasa.gov/mission/wind/)"
+  Solar Orbiter:
+    launch_date: 2020-02-10
+    radial_coverage: 0.28 - 0.9 AU
+    website:
+      - "[ESA](https://sci.esa.int/web/solar-orbiter)"
+  Parker Solar Probe:
+    launch_date: 2018-08-12
+    radial_coverage: 0.05 - 1 AU
+    website:
+      - "[NASA](https://science.nasa.gov/mission/parker-solar-probe)"

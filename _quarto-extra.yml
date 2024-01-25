@@ -1,0 +1,15 @@
+format:
+  pdf:
+    cite-method: natbib # biblatex is not supported
+    latex-clean: false
+    bibliography:
+      - files/bibliography/full_anton.bib
+      - files/bibliography/addon_anton.bib
+
+  typst:
+    output-file: index_typst.pdf
+    default-image-extension: png
+
+bibliography:
+  - files/bibexport.bib
+  - ../research.bib

@@ -1,43 +1,27 @@
 project:
   type: manuscript
-  preview: 
+  preview:
     port: 4002
 
 manuscript:
   article: index.qmd
-  resources: 
+  resources:
     - presentations/AGU23_poster.pdf
 
 format:
   html:
     comments:
       hypothesis: true
-
-  # (other formats)
-  # pdf: default
-  typst+demo:
-    default-image-extension: png
-  pdf+temp: # for temporary use to generate bib file
-    latex-clean: false
-    bibliography: 
-      - files/bibliography/references.bib
-      - files/bibliography/full_anton.bib
-      - files/bibliography/addon_anton.bib
-  agu-pdf+agu:
+  agu-pdf:
     cite-method: natbib # biblatex is not supported
     keep-tex: true
-    latex-clean: false
-    # default-image-extension: svg
 
 execute:
   freeze: true
-  cache: true
 
 citation:
   container-title: "JGR: Space Physics"
 
 bibliography:
   - files/bibexport.bib
-  # - files/bibliography/references.bib
-  # - files/bibliography/full_anton.bib
-  # - files/bibliography/addon_anton.bib
+  - ../research.bib

@@ -19,4 +19,7 @@ clean:
    find . -name '.DS_Store' -type f -delete
 
 process-bib:
-   quarto render index.qmd --to latex -M cite-method:natbib -M bibliography:files/bibliography/references.bib
+   touch files/bibexport.bib
+   quarto render index.qmd --to pdf --profile bib
+   $HOME/Library/TinyTeX/texmf-dist/scripts/bibexport/bibexport.sh -o files/bibexport.bib --nosave index.aux
+   rm index.{log,bbl,blg,aux}
