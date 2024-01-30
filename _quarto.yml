@@ -15,6 +15,9 @@ format:
   agu-pdf:
     cite-method: natbib # biblatex is not supported
     keep-tex: true
+    bibliography:
+      - files/bibliography/full_anton.bib
+      - files/bibliography/addon_anton.bib
 
 execute:
   freeze: true

@@ -1,5 +1,5 @@
 ---
-title: Solar wind discontinuities spatial evolution
+title: Solar wind discontinuities spatial evolution in the outer heliosphere
 author:
   - name: Zijin Zhang
     email: zijin@ucla.edu
@@ -26,6 +26,8 @@ code-links:
   - repo
   - href: https://app.tana.inc?nodeid=Kmdzbyj-36NM
     text: Tana
+  - href: https://www.overleaf.com/project/65b0a9c80a3616adf6e599e8
+    text: Overleaf
 ---
 
 # Background
@@ -34,6 +36,7 @@ code-links:
 
 They are observed across the heliosphere from inner heliosphere [@liuCategorizingMHDDiscontinuities2022] to the heliosheath [@burlagaCurrentSheetsHeliosheath2011].
 
+::: {.content-visible when-format="html"}
 ::: {#fig-ids_examples .column-page layout-ncol="2"}
 ![Current sheets in the heliosheath: Voyager 1, 2009](images/jgra21162-fig-0009.png){fig-alt="Hodograms produced by means of a minimum variance analysis for the current sheets associated with the sector boundaries in Figures 8 and 10. (b, d, and f) The value of the component of B along the minimum variance direction (Bm) as a function of time, N. (a, c, and e) The components of B along the intermediate variance direction (Bi) and maximum variance direction (BM)."}
 
@@ -41,8 +44,13 @@ They are observed across the heliosphere from inner heliosphere [@liuCategorizin
 
 Discontinuities examples across the heliosphere
 :::
+:::
 
-@sodingRadialLatitudinalDependencies2001 studied the radial distribution of discontinuities in the solar wind between 0.3 and 19 AU during solar activity minimum. @liuCharacteristicsInterplanetaryDiscontinuities2021 studied the spatial evolution of the discontinuities from 0.13-0.9 AU, using measurements from the Parker Solar Probe. [Typical rate of occurrence is about 50 per day at 1AU]{.aside}
+@sodingRadialLatitudinalDependencies2001 studied the radial distribution of discontinuities in the solar wind between 0.3 and 19 AU during solar activity minimum. @liuCharacteristicsInterplanetaryDiscontinuities2021 studied the spatial evolution of the discontinuities from 0.13-0.9 AU, using measurements from the Parker Solar Probe. 
+
+::: {.content-visible when-format="html"}
+
+[Typical rate of occurrence is about 50 per day at 1AU]{.aside}
 
 ::: {#fig-ids_distribution .column-page layout-ncol="2"}
 [![Discontinuities between 0.3 and 19 AU](images/söding2001_fig4.png){fig-alt="Distribution of DD per day over r with a bin size of 0.1 AU and the standard deviations as error bars on logarithmic scale; TS criterion at the top and B at the bottom; darker lines represent intervals in the ecliptic which are used for the given fit and lighter ones are out of the ecliptic; right Voyager 2 in detail on linear scale."}](https://www.researchgate.net/figure/Distribution-of-DD-per-day-over-r-with-a-bin-size-of-01-AU-and-the-standard-deviations_fig4_29624789)
@@ -50,6 +58,7 @@ Discontinuities examples across the heliosphere
 ![Discontinuities between 0.13–0.9 AU](images/liu2021_fig2.png){fig-alt="Histograms as a function of heliocentric distance of (a) the number of events, (b) the PSP detection time, and (c)–(e) the occurrence rates of the total IDs, RDs and TDs. Panel (f) shows the ratio of RD occurrence rate to TD occurrence rate. The orange curves in panels (c) and (d) are the power-function fittings of ID and RD occurrence rates, with the coefficient of determination R2 being 0.983 and 0.985, respectively. The uncertainties of the power-law indices correspond to 95% confidence bounds."}
 
 Spatial distribution of the discontinuities
+:::
 :::
 
 ## Importance

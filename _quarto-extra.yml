@@ -9,7 +9,3 @@ format:
   typst:
     output-file: index_typst.pdf
     default-image-extension: png
-
-bibliography:
-  - files/bibexport.bib
-  - ../research.bib

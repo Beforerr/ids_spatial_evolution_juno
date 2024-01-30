@@ -16,10 +16,14 @@ examples:
    ipython notebooks/01_ids_example.ipynb 'notebooks/config_examples/examples_artemis.yml'
 
 clean:
+   rm index.{log,bbl,blg,aux}
    find . -name '.DS_Store' -type f -delete
 
-process-bib:
+update-overleaf: sync-overleaf clean
+   cd overleaf; git add .; git commit -am "update"; git push
+
+sync-overleaf:
    touch files/bibexport.bib
-   quarto render index.qmd --to pdf --profile bib
+   quarto render index.qmd --to agu-pdf -M latex-clean:false
    $HOME/Library/TinyTeX/texmf-dist/scripts/bibexport/bibexport.sh -o files/bibexport.bib --nosave index.aux
-   rm index.{log,bbl,blg,aux}
+   rsync _manuscript/_tex/ overleaf/ -r
