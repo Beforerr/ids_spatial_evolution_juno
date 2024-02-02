@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
     <meta charset="utf-8">
-    <meta name="generator" content="quarto-1.4.518">
+    <meta name="generator" content="quarto-1.4.547">
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -206,7 +206,8 @@
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#classification-of-candidates" id="toc-classification-of-candidates" class="nav-link active" data-scroll-target="#classification-of-candidates">Classification of candidates</a></li>
+  <li><a href="#id-classification" id="toc-id-classification" class="nav-link active" data-scroll-target="#id-classification">ID classification</a></li>
+  <li><a href="#classification-of-candidates" id="toc-classification-of-candidates" class="nav-link" data-scroll-target="#classification-of-candidates">Classification of candidates</a></li>
   <li><a href="#distribution-of-the-dd-types" id="toc-distribution-of-the-dd-types" class="nav-link" data-scroll-target="#distribution-of-the-dd-types">Distribution of the DD types</a></li>
   </ul>
 </nav>
@@ -215,10 +216,12 @@
 </div>
 <main class="content quarto-banner-title-block" id="quarto-document-content">      
 
-       <div class="cell-container"><div class="cell-decorator"><pre>In [1]:</pre></div><div id="cell-1" class="cell">
+       <div class="cell-container"><div class="cell-decorator"><pre>In [1]:</pre></div><div id="cell-0" class="cell">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div></div>
-<div id="cell-2" class="cell markdown">
+<div id="cell-1" class="cell markdown">
+<section id="id-classification" class="level3">
+<h3 class="anchored" data-anchor-id="id-classification">ID classification</h3>
 <p>In this method, TDs and RDs satisfy $ &lt; 0.2$ and $ | | &gt; 0.4$ B BN bg ∣∣ ∣∣ , &lt; D 0.2 B B bg ∣∣ ∣ ∣ , respectively. Moreover, IDs with &lt; 0.4 B BN bg ∣∣ ∣∣ , &lt; D 0.2 B B bg ∣∣ ∣ ∣ could be either TDs or RDs, and so are termed EDs. Similarly, NDs are defined as &gt; 0.4 B BN bg ∣∣ ∣∣ , &gt; D 0.2 B B bg ∣∣ ∣ ∣ because they can be neither TDs nor RDs. It is worth noting that EDs and NDs here are not physical concepts like RDs and TDs. RDs or TDs correspond to specific types of structures in the MHD framework, while EDs and NDs are introduced just to better quantify the statistical results.</p>
 <p>Criteria Used to Classify Discontinuities on the Basis of Magnetic Data Type</p>
 <table class="table table-sm table-striped small">
@@ -252,8 +255,9 @@
 </tr>
 </tbody>
 </table>
+</section>
 </div>
-<div class="cell-container"><div class="cell-decorator"><pre>In [3]:</pre></div><div id="cell-3" class="cell">
+<div class="cell-container"><div class="cell-decorator"><pre>In [3]:</pre></div><div id="cell-2" class="cell">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>BnOverB_RD_lower_threshold <span class="op">=</span> <span class="fl">0.4</span></span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>dBOverB_RD_upper_threshold <span class="op">=</span> <span class="fl">0.2</span></span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -266,7 +270,7 @@
 <span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a>BnOverB_ND_lower_threshold <span class="op">=</span> BnOverB_TD_upper_threshold</span>
 <span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a>dBOverB_ND_lower_threshold <span class="op">=</span> dBOverB_RD_upper_threshold</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div></div>
-<div class="cell-container"><div class="cell-decorator"><pre>In [4]:</pre></div><div id="cell-4" class="cell">
+<div class="cell-container"><div class="cell-decorator"><pre>In [4]:</pre></div><div id="cell-3" class="cell">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> classify_id(BnOverB, dBOverB):</span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>    BnOverB <span class="op">=</span> np.<span class="bu">abs</span>(np.asarray(BnOverB))</span>
 <span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>    dBOverB <span class="op">=</span> np.asarray(dBOverB)</span>
@@ -291,12 +295,12 @@
 <span id="cb3-22"><a href="#cb3-22" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb3-23"><a href="#cb3-23" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> result</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div></div>
-<div id="cell-5" class="cell markdown">
+<div id="cell-4" class="cell markdown">
 <section id="classification-of-candidates" class="level2">
 <h2 class="anchored" data-anchor-id="classification-of-candidates">Classification of candidates</h2>
 </section>
 </div>
-<div class="cell-container"><div class="cell-decorator"><pre>In [6]:</pre></div><div id="cell-6" class="cell">
+<div class="cell-container"><div class="cell-decorator"><pre>In [6]:</pre></div><div id="cell-5" class="cell">
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>sns.jointplot(</span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>    candidates_jno_tau_60s,</span>
 <span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>    x<span class="op">=</span><span class="st">'dBOverB'</span>, y<span class="op">=</span><span class="st">'BnOverB'</span>,</span>
@@ -317,7 +321,7 @@
 </pre>
 </div>
 </div></div>
-<div class="cell-container"><div class="cell-decorator"><pre>In [7]:</pre></div><div id="cell-7" class="cell">
+<div class="cell-container"><div class="cell-decorator"><pre>In [7]:</pre></div><div id="cell-6" class="cell">
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>sns.jointplot(</span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>    all_candidates,</span>
 <span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>    x<span class="op">=</span><span class="st">'dBOverB'</span>, y<span class="op">=</span><span class="st">'BnOverB'</span>,</span>
@@ -338,17 +342,17 @@
 </pre>
 </div>
 </div></div>
-<div id="cell-8" class="cell markdown">
+<div id="cell-7" class="cell markdown">
 <section id="distribution-of-the-dd-types" class="level3">
 <h3 class="anchored" data-anchor-id="distribution-of-the-dd-types">Distribution of the DD types</h3>
 </section>
 </div>
-<div id="cell-9" class="cell markdown">
+<div id="cell-8" class="cell markdown">
 <section id="plot-distribution-of-types-for-each-missions" class="level5">
 <h5 class="anchored" data-anchor-id="plot-distribution-of-types-for-each-missions">Plot distribution of types for each missions</h5>
 </section>
 </div>
-<div class="cell-container"><div class="cell-decorator"><pre>In [10]:</pre></div><div id="cell-10" class="cell">
+<div class="cell-container"><div class="cell-decorator"><pre>In [10]:</pre></div><div id="cell-9" class="cell">
 <div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>alt.Chart(all_candidates).encode(</span>
 <span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>    x<span class="op">=</span>alt.X(<span class="st">"count()"</span>).stack(<span class="st">"normalize"</span>).title(<span class="st">"Share of ID types"</span>),</span>
 <span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>    y<span class="op">=</span>alt.Y(<span class="st">'sat'</span>).title(<span class="va">None</span>),</span>
@@ -373,7 +377,7 @@
 </pre>
 </div>
 </div></div>
-<div class="cell-container"><div class="cell-decorator"><pre>In [11]:</pre></div><div id="cell-11" class="cell">
+<div class="cell-container"><div class="cell-decorator"><pre>In [11]:</pre></div><div id="cell-10" class="cell">
 <div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>distributions <span class="op">=</span> all_candidates.group_by(<span class="st">"sat"</span>, <span class="st">"type"</span>).agg(pl.count()).with_columns(</span>
 <span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>    (pl.col(<span class="st">"count"</span>) <span class="op">/</span> pl.<span class="bu">sum</span>(<span class="st">"count"</span>).over(<span class="st">"sat"</span>)).alias(<span class="st">"ratio"</span>)</span>
 <span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>)</span>
@@ -394,12 +398,12 @@
 </pre>
 </div>
 </div></div>
-<div id="cell-12" class="cell markdown">
+<div id="cell-11" class="cell markdown">
 <section id="plot-distribution-of-types-for-each-missions-over-time" class="level5">
 <h5 class="anchored" data-anchor-id="plot-distribution-of-types-for-each-missions-over-time">Plot distribution of types for each missions <strong>over time</strong></h5>
 </section>
 </div>
-<div class="cell-container"><div class="cell-decorator"><pre>In [13]:</pre></div><div id="cell-13" class="cell">
+<div class="cell-container"><div class="cell-decorator"><pre>In [13]:</pre></div><div id="cell-12" class="cell">
 <div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>alt.Chart(all_candidates).mark_bar(binSpacing<span class="op">=</span><span class="dv">0</span>).encode(</span>
 <span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>    x<span class="op">=</span><span class="st">"yearmonth(time)"</span>,</span>
 <span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>    y<span class="op">=</span>alt.Y(<span class="st">"count()"</span>).stack(<span class="st">"normalize"</span>).title(<span class="st">"Share of ID types"</span>),</span>
@@ -419,7 +423,7 @@
 </pre>
 </div>
 </div></div>
-<div class="cell-container"><div class="cell-decorator"><pre>In [14]:</pre></div><div id="cell-14" class="cell">
+<div class="cell-container"><div class="cell-decorator"><pre>In [14]:</pre></div><div id="cell-13" class="cell">
 <div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="op">%%</span>R</span>
 <span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>plot_type_distribution <span class="op">&lt;-</span> function(data, bin_width <span class="op">=</span> <span class="dv">30</span>) { </span>
 <span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>    data$date_only <span class="op">&lt;-</span> <span class="im">as</span>.Date(data$time)</span>
@@ -577,27 +581,6 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       }
     }
     stripColumnClz(note)
-    const typesetMath = (el) => {
-      if (window.MathJax) {
-        // MathJax Typeset
-        window.MathJax.typeset([el]);
-      } else if (window.katex) {
-        // KaTeX Render
-        var mathElements = el.getElementsByClassName("math");
-        var macros = [];
-        for (var i = 0; i < mathElements.length; i++) {
-          var texText = mathElements[i].firstChild;
-          if (mathElements[i].tagName == "SPAN") {
-            window.katex.render(texText.data, mathElements[i], {
-              displayMode: mathElements[i].classList.contains('display'),
-              throwOnError: false,
-              macros: macros,
-              fleqn: false
-            });
-          }
-        }
-      }
-    }
     if (id === null || id.startsWith('sec-')) {
       // Special case sections, only their first couple elements
       const container = document.createElement("div");
@@ -612,10 +595,14 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
             break;
           }
         }
-        typesetMath(container);
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
         return container.innerHTML
       } else {
-        typesetMath(note);
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
         return note.innerHTML;
       }
     } else {
@@ -624,8 +611,15 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       if (anchorLink) {
         anchorLink.remove();
       }
-      typesetMath(note);
-      return note.innerHTML;
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      // TODO in 1.5, we should make sure this works without a callout special case
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
+      }
     }
   }
   for (var i=0; i<xrefs.length; i++) {

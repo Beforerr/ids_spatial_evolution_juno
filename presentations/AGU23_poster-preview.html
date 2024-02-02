@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
     <meta charset="utf-8">
-    <meta name="generator" content="quarto-1.4.518">
+    <meta name="generator" content="quarto-1.4.547">
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -24,27 +24,7 @@
         margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
         vertical-align: middle;
       }
-      /* CSS for citations */
-      div.csl-bib-body { }
-      div.csl-entry {
-        clear: both;
-        margin-bottom: 0em;
-      }
-      .hanging-indent div.csl-entry {
-        margin-left:2em;
-        text-indent:-2em;
-      }
-      div.csl-left-margin {
-        min-width:2em;
-        float:left;
-      }
-      div.csl-right-inline {
-        margin-left:2em;
-        padding-left:1em;
-      }
-      div.csl-indent {
-        margin-left: 2em;
-      }    </style>
+    </style>
 
     <style>
       body.hypothesis-enabled #quarto-embed-header {
@@ -244,16 +224,16 @@
 </section>
 <section id="introduction-motivation" class="level2">
 <h2 class="anchored" data-anchor-id="introduction-motivation">Introduction &amp; Motivation</h2>
-<p>‘Discontinuities’ are discontinuous spatial changes in plasma parameters/characteristics and magnetic fields <span class="citation" data-cites="colburn1966">(<a href="#ref-colburn1966" role="doc-biblioref">Colburn and Sonett 1966</a>)</span>.</p>
+<p>‘Discontinuities’ are discontinuous spatial changes in plasma parameters/characteristics and magnetic fields <span class="citation" data-cites="colburn1966">(<a href="#ref-colburn1966" role="doc-biblioref"><strong>colburn1966?</strong></a>)</span>.</p>
 <p><img src="../images/jgra21162-fig-0009.png" class="img-fluid" style="width:48.0%" alt="Current sheets in the heliosheath: Voyager 1, 2009"> <img src="https://github.com/Beforerr/ion_scattering_by_SWD/blob/385bfe5f1b147ef18d64e9507af77a38b5a9f091/figures/example_mva_noted.jpg?raw=true" class="img-fluid" style="width:48.0%" alt="Characteristics of magnetic field"></p>
-<p><span class="citation" data-cites="söding2001">Söding et al. (<a href="#ref-söding2001" role="doc-biblioref">2001</a>)</span> studied the radial distribution of discontinuities in the solar wind.</p>
+<p><span class="citation" data-cites="söding2001">(<a href="#ref-söding2001" role="doc-biblioref"><strong>söding2001?</strong></a>)</span> studied the radial distribution of discontinuities in the solar wind.</p>
 <p><img src="../images/söding2001_fig4.png" class="img-fluid" style="width:60.0%" alt="Discontinuities between 0.3 and 19 AU"> <img src="https://www.nasa.gov/wp-content/uploads/2023/03/575573main_Juno20110727-3-43_full.jpg" class="img-fluid" style="width:38.0%" alt="Juno orbit"></p>
 <p>Joint observations of JUNO &amp; ARTEMIS &amp; Other missions really provides a unique opportunity!!!</p>
 </section>
 <section id="method" class="level2">
 <h2 class="anchored" data-anchor-id="method">Method</h2>
 <ul>
-<li>We use <span class="citation" data-cites="liu2022a">(<a href="#ref-liu2022a" role="doc-biblioref">Liu et al. 2022</a>)</span> method to identify IDs, which has better compatibility for the IDs with minor field changes.</li>
+<li>We use <span class="citation" data-cites="liu2022a">(<a href="#ref-liu2022a" role="doc-biblioref"><strong>liu2022a?</strong></a>)</span> method to identify IDs, which has better compatibility for the IDs with minor field changes.</li>
 <li>Then the minimum variance analysis is applied to each ID event to obtain the boundary normal (LMN) coordinate and extract IDs’ features.</li>
 <li>Hamiltonian model is applied for investigation of ion dynamics in the solar wind discontinuity configuration.</li>
 </ul>
@@ -285,17 +265,6 @@ H=\frac{1}{2}\left(\frac{\alpha^2 z^3}{6 \sqrt{\kappa_m^2+1}}-z \sqrt{\kappa_m^2
 <li>High energy particle has higher chance to cross uncertainty curve</li>
 <li>High shear magnetic field will make separatrix vanishes and the geometrical jumps of the quasiadiabatic invariant disappear</li>
 </ul>
-<div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list">
-<div id="ref-colburn1966" class="csl-entry" role="listitem">
-Colburn, D. S., and C. P. Sonett. 1966. <span>“Discontinuities in the Solar Wind.”</span> <em>Space Science Reviews</em> 5 (4): 439–506. <a href="https://doi.org/10.1007/BF00240575">https://doi.org/10.1007/BF00240575</a>.
-</div>
-<div id="ref-liu2022a" class="csl-entry" role="listitem">
-Liu, Y. Y., H. S. Fu, J. B. Cao, Z. Wang, R. J. He, Z. Z. Guo, Y. Xu, and Y. Yu. 2022. <span>“Magnetic Discontinuities in the Solar Wind and Magnetosheath: Magnetospheric Multiscale Mission (MMS) Observations.”</span> <em>Astrophysical Journal</em> 930 (1): 63. <a href="https://doi.org/10.3847/1538-4357/ac62d2">https://doi.org/10.3847/1538-4357/ac62d2</a>.
-</div>
-<div id="ref-söding2001" class="csl-entry" role="listitem">
-Söding, A., F. M. Neubauer, B. T. Tsurutani, N. F. Ness, and R. P. Lepping. 2001. <span>“Radial and Latitudinal Dependencies of Discontinuities in the Solar Wind Between 0.3 and 19 AU and <span>-</span>80° and +10°.”</span> <em>Annales Geophysicae</em> 19 (7): 667–80. <a href="https://doi.org/10.5194/angeo-19-667-2001">https://doi.org/10.5194/angeo-19-667-2001</a>.
-</div>
-</div>
 </section>
      </main>
 <!-- /main column -->  <script id="quarto-html-after-body" type="application/javascript">
@@ -426,27 +395,6 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       }
     }
     stripColumnClz(note)
-    const typesetMath = (el) => {
-      if (window.MathJax) {
-        // MathJax Typeset
-        window.MathJax.typeset([el]);
-      } else if (window.katex) {
-        // KaTeX Render
-        var mathElements = el.getElementsByClassName("math");
-        var macros = [];
-        for (var i = 0; i < mathElements.length; i++) {
-          var texText = mathElements[i].firstChild;
-          if (mathElements[i].tagName == "SPAN") {
-            window.katex.render(texText.data, mathElements[i], {
-              displayMode: mathElements[i].classList.contains('display'),
-              throwOnError: false,
-              macros: macros,
-              fleqn: false
-            });
-          }
-        }
-      }
-    }
     if (id === null || id.startsWith('sec-')) {
       // Special case sections, only their first couple elements
       const container = document.createElement("div");
@@ -461,10 +409,14 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
             break;
           }
         }
-        typesetMath(container);
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
         return container.innerHTML
       } else {
-        typesetMath(note);
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
         return note.innerHTML;
       }
     } else {
@@ -473,8 +425,15 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       if (anchorLink) {
         anchorLink.remove();
       }
-      typesetMath(note);
-      return note.innerHTML;
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      // TODO in 1.5, we should make sure this works without a callout special case
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
+      }
     }
   }
   for (var i=0; i<xrefs.length; i++) {
@@ -694,6 +653,30 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     }
   }
 });
-</script>  </div> <!-- /content -->  <script>var lightboxQuarto = GLightbox({"openEffect":"zoom","selector":".lightbox","descPosition":"bottom","closeEffect":"zoom","loop":false});</script> 
+</script>  </div> <!-- /content -->  <script>var lightboxQuarto = GLightbox({"selector":".lightbox","openEffect":"zoom","loop":false,"closeEffect":"zoom","descPosition":"bottom"});
+window.onload = () => {
+  lightboxQuarto.on('slide_before_load', (data) => {
+    const { slideIndex, slideNode, slideConfig, player, trigger } = data;
+    const href = trigger.getAttribute('href');
+    if (href !== null) {
+      const imgEl = window.document.querySelector(`a[href="${href}"] img`);
+      if (imgEl !== null) {
+        const srcAttr = imgEl.getAttribute("src");
+        if (srcAttr && srcAttr.startsWith("data:")) {
+          slideConfig.href = srcAttr;
+        }
+      }
+    } 
+  });
+
+  lightboxQuarto.on('slide_after_load', (data) => {
+    const { slideIndex, slideNode, slideConfig, player, trigger } = data;
+    if (window.Quarto?.typesetMath) {
+      window.Quarto.typesetMath(slideNode);
+    }
+  });
+
+};
+          </script> 
   
 </body></html>
