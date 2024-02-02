@@ -1,0 +1,126 @@
+This is BibTeX, Version 0.99d (TeX Live 2023)
+Capacity: max_strings=200000, hash_size=200000, hash_prime=170003
+The top-level auxiliary file: index.aux
+The style file: apacite.bst
+Illegal, another \bibstyle command---line 5 of file index.aux
+ : \bibstyle
+ :          {plainnat}
+I'm skipping whatever remains of this command
+White space in argument---line 31 of file index.aux
+ : \bibdata{files/bibexport.bib,../research.bib,files/bibliography/full\protect
+ :                                                                              \TU\textunderscore anton.bib,files/bibliography/addon\protect \TU\textunderscore anton.bib}
+I'm skipping whatever remains of this command
+Reallocated glb_str_ptr (elt_size=4) to 20 items from 10.
+Reallocated global_strs (elt_size=200001) to 20 items from 10.
+Reallocated glb_str_end (elt_size=4) to 20 items from 10.
+Reallocated singl_function (elt_size=4) to 100 items from 50.
+Reallocated wiz_functions (elt_size=4) to 6000 items from 3000.
+Reallocated singl_function (elt_size=4) to 100 items from 50.
+Reallocated singl_function (elt_size=4) to 100 items from 50.
+Reallocated wiz_functions (elt_size=4) to 9000 items from 6000.
+Reallocated singl_function (elt_size=4) to 100 items from 50.
+Database file #1: files/bibexport.bib
+Database file #2: ../research.bib
+Repeated entry---line 438 of file ../research.bib
+ : @article{borovskyContributionStrongDiscontinuities2010
+ :                                                       ,
+I'm skipping whatever remains of this entry
+Repeated entry---line 558 of file ../research.bib
+ : @article{burlagaCurrentSheetsHeliosheath2011
+ :                                             ,
+I'm skipping whatever remains of this entry
+Repeated entry---line 729 of file ../research.bib
+ : @article{colburnDiscontinuitiesSolarWind1966
+ :                                             ,
+I'm skipping whatever remains of this entry
+Repeated entry---line 743 of file ../research.bib
+ : @article{connerneyJunoMagneticField2017
+ :                                        ,
+I'm skipping whatever remains of this entry
+Repeated entry---line 995 of file ../research.bib
+ : @article{grecoIntermittentMHDStructures2008
+ :                                            ,
+I'm skipping whatever remains of this entry
+Repeated entry---line 1021 of file ../research.bib
+ : @article{grecoStatisticalAnalysisDiscontinuities2009
+ :                                                     ,
+I'm skipping whatever remains of this entry
+Repeated entry---line 1244 of file ../research.bib
+ : @article{keeblerMSWIM2DTwodimensionalOuter2022
+ :                                               ,
+I'm skipping whatever remains of this entry
+Repeated entry---line 1378 of file ../research.bib
+ : @article{lerchePropagationMagneticDisturbances1975
+ :                                                   ,
+I'm skipping whatever remains of this entry
+Repeated entry---line 1423 of file ../research.bib
+ : @article{liuCategorizingMHDDiscontinuities2022
+ :                                               ,
+I'm skipping whatever remains of this entry
+Repeated entry---line 1467 of file ../research.bib
+ : @article{liuMagneticDiscontinuitiesSolar2022
+ :                                             ,
+I'm skipping whatever remains of this entry
+Repeated entry---line 1785 of file ../research.bib
+ : @article{medvedevDissipativeDynamicsCollisionless1997
+ :                                                      ,
+I'm skipping whatever remains of this entry
+Repeated entry---line 2329 of file ../research.bib
+ : @article{sodingRadialLatitudinalDependencies2001
+ :                                                 ,
+I'm skipping whatever remains of this entry
+Repeated entry---line 2610 of file ../research.bib
+ : @article{tsurutaniReviewInterplanetaryDiscontinuities2011
+ :                                                          ,
+I'm skipping whatever remains of this entry
+Repeated entry---line 2902 of file ../research.bib
+ : @article{wentzelMotionMagneticDiscontinuities1964
+ :                                                  ,
+I'm skipping whatever remains of this entry
+Repeated entry---line 2960 of file ../research.bib
+ : @article{yangFormationRotationalDiscontinuities2015
+ :                                                    ,
+I'm skipping whatever remains of this entry
+apacite.bst [2013/07/21 v6.03 APA bibliography style]
+You've used 15 entries,
+            6951 wiz_defined-function locations,
+            1398 strings with 15175 characters,
+and the built_in function-call counts, 35129 in all, are:
+= -- 4177
+> -- 320
+< -- 1802
++ -- 2061
+- -- 30
+* -- 2441
+:= -- 6570
+add.period$ -- 56
+call.type$ -- 15
+change.case$ -- 279
+chr.to.int$ -- 0
+cite$ -- 30
+duplicate$ -- 1080
+empty$ -- 1256
+format.name$ -- 620
+if$ -- 6316
+int.to.chr$ -- 0
+int.to.str$ -- 45
+missing$ -- 0
+newline$ -- 446
+num.names$ -- 120
+pop$ -- 452
+preamble$ -- 1
+purify$ -- 84
+quote$ -- 0
+skip$ -- 2035
+stack$ -- 0
+substring$ -- 2221
+swap$ -- 605
+text.length$ -- 54
+text.prefix$ -- 0
+top$ -- 1
+type$ -- 1200
+warning$ -- 0
+while$ -- 226
+width$ -- 0
+write$ -- 586
+(There were 17 error messages)
