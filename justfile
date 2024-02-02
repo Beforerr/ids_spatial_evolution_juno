@@ -28,7 +28,7 @@ clean:
 update: update-overleaf update-repo publish
 
 update-repo:
-   git add .; git commit -am "update"; git push
+   git commit -am "update"; git push
 
 update-overleaf: sync-overleaf
    cd overleaf; git add .; git commit -am "update"; git push
