@@ -25,12 +25,12 @@ clean:
    rm index.{log,bbl,blg,aux}
    find . -name '.DS_Store' -type f -delete
 
-update: update-repo update-overleaf publish
+update: update-overleaf update-repo publish
 
 update-repo:
    git add .; git commit -am "update"; git push
 
-update-overleaf: sync-overleaf clean
+update-overleaf: sync-overleaf
    cd overleaf; git add .; git commit -am "update"; git push
 
 sync-overleaf:
