@@ -188,15 +188,56 @@ The goal of our paper is to investigate, statistically, discontinuities at diffe
 
 First, the missions, instruments and data used are listed. Then, we brieﬂy describe the method used to identify the discontinuities and the model used to estimate the plasma state at Juno location due to the lack of plasma data during its cruise phase. Finally, we present the results of the spatial evolution of the discontinuities with respect to their characteristics (spatial scales and current density), and discuss the implications of our findings.
 
-\section{Methods}\label{methods}
+\section{Dataset, models, and methods}\label{dataset-models-and-methods}
 
-\begin{itemize}
-\tightlist
-\item
-  We use \citep{liuMagneticDiscontinuitiesSolar2022} method to identify IDs, which has better compatibility for the IDs with minor field changes.
-\item
-  Then the minimum variance analysis is applied to each ID event to obtain the boundary normal (LMN) coordinate and extract IDs' features.
-\end{itemize}
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 10\tabcolsep) * \real{0.1220}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 10\tabcolsep) * \real{0.0976}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 10\tabcolsep) * \real{0.1402}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 10\tabcolsep) * \real{0.1159}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 10\tabcolsep) * \real{0.1280}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 10\tabcolsep) * \real{0.3963}}@{}}
+
+\caption{\label{tbl-missions}Missions info}
+
+\tabularnewline
+
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+Mission
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+\(\delta t_B\)
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+\(\delta t_{plasma}\)
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Radial coverage
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Launch date
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+website
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+Juno & 1 Hz & & 1 - 5.5 AU & 2011-08-05 00:00:00 &
+{[}`\href{https://science.nasa.gov/mission/juno}{NASA}'{]} \\
+ARTEMIS & 5 Hz, \ldots{} & & & 2007-02-17 00:00:00 & \\
+STEREO-A & 8 Hz & & & 2006-10-26 00:00:00 & \\
+WIND & 11 Hz & & & 1994-11-01 00:00:00 &
+{[}`\href{https://science.nasa.gov/mission/wind/}{NASA}'{]} \\
+Solar Orbiter & & & 0.28 - 0.9 AU & 2020-02-10 00:00:00 &
+{[}`\href{https://sci.esa.int/web/solar-orbiter}{ESA}'{]} \\
+Parker Solar Probe & & & 0.05 - 1 AU & 2018-08-12 00:00:00 &
+{[}`\href{https://science.nasa.gov/mission/parker-solar-probe}{NASA}'{]} \\
+
+\end{longtable}
+
+\textsubscript{Source: \href{https://Beforerr.github.io/ids_spatial_evolution_juno/notes.ipynb.html\#cell-tbl-missions}{Notes}}
+
+\subsection{Methods}\label{methods}
+
+We will use Liu's \citep{liu2022a} method to identify discontinuities in the solar wind. This method has better compatibility for the discontinuities with minor field changes, and is more robust to the situation encountered in the outer heliosphere. For each sampling instant \(t\), we define three intervals: the pre-interval \([-1,-1/2]\cdot T+t\), the middle interval \([-1/,1/2]\cdot T+t\), and the post-interval \([1/2,1]\cdot T+t\), in which \(T\) are time lags. Let time series of the magnetic field data in these three intervals are labeled \({\mathbf B}_-\), \({\mathbf B}_0\), \({\mathbf B}_+\), respectively. Then for an discontinuity, the following three conditions should be satisfied: (1) \(\sigma({\mathbf B}_0)>2\max\left(\sigma({\mathbf B}_-, \sigma({\mathbf B}_+)\right)\), (2) \(\sigma\left({\mathbf B}_-+{\mathbf B}_+\right)>\sigma({\mathbf B}_-)+\sigma({\mathbf B}_+)\), and (3) \(|\Delta {\mathbf B}|>|{\mathbf B}_{bg}|/10\), in which \(\sigma\) and \({\mathbf B}_{bg}\) represent the standard deviation and the background magnetic field magnitude, and \(\Delta {\mathbf B}={\mathbf B}(t+T/2)-{\mathbf B}(t-T/2)\). The first two conditions guarantee that the field changes of the discontinuity identified are large enough to be distinguished from the stochastic fluctuations on magnetic fields, while the third is a supplementary condition to reduce the uncertainty of recognition. We also will use the minimum or maximum variance analysis (MVA) analysis \citep{sonnerupMinimumMaximumVariance1998, sonnerupMagnetopauseStructureAttitude1967} to determine the main (most varying) magnetic field component, \(B_l\), and medium variation component, \(B_m\). Figure~\ref{fig-examples} shows several examples of solar wind discontinuities detected by different spacecraft.
 
 \begin{figure*}
 
@@ -301,16 +342,17 @@ For model validation part, please see \href{notebooks/20_model.ipynb}{JUNO Model
 
 \begin{figure*}
 
-\begin{minipage}{0.33\linewidth}
+\begin{minipage}{0.25\linewidth}
 \includegraphics{figures/examples/artemis_id_example.pdf}\end{minipage}%
 %
-\begin{minipage}{0.33\linewidth}
+\begin{minipage}{0.25\linewidth}
 \includegraphics{figures/examples/stereo_id_example.pdf}\end{minipage}%
 %
-\begin{minipage}{0.33\linewidth}
+\begin{minipage}{0.25\linewidth}
 \includegraphics{figures/examples/wind_id_example.pdf}\end{minipage}%
-
-\caption{\label{fig-examples}Examples of IDs from ARTEMIS, STEREO, and Wind}
+%
+\begin{minipage}{0.25\linewidth}
+Examples of IDs from ARTEMIS, STEREO, and Wind\end{minipage}%
 
 \end{figure*}%
 
@@ -341,6 +383,29 @@ Overview of the solar wind at 1 AU
 \caption{\label{fig-modelValidation}Model validation}
 
 \end{figure}%
+
+\begin{figure*}
+
+\begin{minipage}{0.33\linewidth}
+\includegraphics{figures/thickness/thickness_k_dist.pdf}\end{minipage}%
+%
+\begin{minipage}{0.33\linewidth}
+\includegraphics{figures/thickness/thickness_k_N1_dist.pdf}\end{minipage}%
+%
+\begin{minipage}{0.33\linewidth}
+\includegraphics{figures/thickness/thickness_k_N1_r_dist.pdf}\end{minipage}%
+
+\end{figure*}%
+
+\begin{figure*}
+
+\begin{minipage}{0.50\linewidth}
+\includegraphics{figures/current/current_k_dist.pdf}\end{minipage}%
+%
+\begin{minipage}{0.50\linewidth}
+\includegraphics{figures/current/current_k_N1_dist.pdf}\end{minipage}%
+
+\end{figure*}%
 
 \begin{figure}
 
