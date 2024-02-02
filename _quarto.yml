@@ -28,3 +28,5 @@ citation:
 bibliography:
   - files/bibexport.bib
   - ../research.bib
+
+wrap: preserve

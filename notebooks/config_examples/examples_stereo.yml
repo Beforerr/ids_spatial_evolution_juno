@@ -1,4 +1,4 @@
-timerange: ["2016-06-28T11:46:20", "2016-06-28T11:46:50"]
+timerange: ["2016-06-28T11:46:00", "2016-06-28T11:47:10"]
 panels:
   - satellite: STEREO
     instrument: MAG
@@ -11,17 +11,17 @@ panels:
         - "slice-3"
         - "mva"
         - "magnitude_join"
-  # - satellite: STEREO
-  #   instrument: PLASTIC
-  #   probe: a
-  #   id: proton_bulk_speed
-  #   name: Ion Speed
-  #   units: km/s
+  - satellite: STEREO
+    instrument: PLASTIC
+    probe: a
+    id: proton_bulk_speed
+    name: Ion Speed
+    units: km/s
 
 output:
   path: "figures/examples/stereo_id_example"
   formats:
-    - "png"
-    - "svg"
-    # - "csv"
+    # - "png"
+    # - "pdf"
+    - "csv"
   # display: True

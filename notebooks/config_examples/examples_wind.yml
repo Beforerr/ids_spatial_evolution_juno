@@ -1,0 +1,29 @@
+
+timerange: ["2011-08-26T21:26:00.000Z", "2011-08-26T21:27:30.000Z"]
+panels:
+  - satellite: Wind
+    instrument: MFI
+    datatype: h4-rtn
+    id: BRTN
+    name: $B$
+    units: nT
+    process:
+      trans:
+        - "mva"
+        - "magnitude_join"
+  - satellite: Wind
+    instrument: SWE
+    id: U_eGSE
+    name: Electron Speed
+    units: km/s
+    process:
+      trans:
+        - "magnitude"
+
+output:
+  path: figures/examples/wind_id_example
+  formats:
+    # - "png"
+    # - "pdf"
+    - "csv"
+  # display: True

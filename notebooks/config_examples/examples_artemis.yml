@@ -14,19 +14,20 @@ panels:
 
   - satellite: THEMIS
     probe: b
-    instrument: "GMOM"
-    id: "thb_ptiff_velocity_gse"
+    instrument: "MOM"
+    id: "thb_peim_velocity_gse"
+    # instrument: "GMOM"
+    # id: "thb_ptiff_velocity_gse"
     process:
       trans:
         - "magnitude"
     name: Ion Speed
-
     units: km/s
 
 output:
   path: "figures/examples/artemis_id_example"
   formats:
     - "png"
-    - "svg"
+    - "pdf"
     # - "csv"
   # display: True

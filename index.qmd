@@ -28,27 +28,24 @@ code-links:
     text: Tana
   - href: https://www.overleaf.com/project/65b0a9c80a3616adf6e599e8
     text: Overleaf
+abstract: We present a study of the spatial evolution of solar wind discontinuities in the outer heliosphere using data from the Juno spacecraft during its cruise phase. We identify and analyze the properties of the discontinuities at different radial distances from the Sun. By differentiating the temporal effect (correlated with solar activity) and spatial variations (correlated with radial distance), we find that (1) the normalized occurrence rate of IDs drops with the radial distance from the Sun, following a $1/r$ law; (2) The thickness of IDs increases with the radial distance from the Sun, but after normalization to the ion inertial length, the thickness of IDs decreases; (3) The current intensity of IDs decreases with the radial distance from the Sun, but after normalization to the Alfven current, the current intensity of IDs increases.
 ---
 
-# Background
+# Introduction
 
-'Discontinuities' are discontinuous spatial changes in plasma parameters/characteristics and magnetic fields [@colburnDiscontinuitiesSolarWind1966].
+Rapid variations in interplanetary magnetic fields, commonly recognized as solar wind magnetic discontinuities [@colburnDiscontinuitiesSolarWind1966], embody localized transient rotations or jumps of the magnetic field. Considered important for efficient plasma heating, they carry the most intense currents found in the solar wind and obserrved throughout the heliosphere from inner heliosphere [@liuCategorizingMHDDiscontinuities2022] to the heliosheath [@burlagaCurrentSheetsHeliosheath2011]. Theoretical models [@lerchePropagationMagneticDisturbances1975, @medvedevDissipativeDynamicsCollisionless1997] and MHD simulations [@grecoIntermittentMHDStructures2008, @grecoStatisticalAnalysisDiscontinuities2009, @yangFormationRotationalDiscontinuities2015] suggest that the formation and destruction of discontinuities are closely related to the nonlinear dynamics of Alfvén waves and/or Alfvénic turbuluence. These nonlinear processes can create significant isolated disturbances to the otherwise adiabatic evolution of the solar wind flow (?Reference?) and host many processes, including magnetic reconnection (?Reference?) and Fermi acceleration of particles [@wentzelMotionMagneticDiscontinuities1964]. Moreover, they contribute significantly to the magnetic fluctuation spectra [@borovskyContributionStrongDiscontinuities2010] and can affect space weather [@tsurutaniReviewInterplanetaryDiscontinuities2011]. Therefore, the study of the spatial evolution of solar wind discontinuities is important for understanding the dynamics of the solar wind and test the local generation mechanism of discontinuities. However, previous study of solar wind discontinuities evolution [@sodingRadialLatitudinalDependencies2001] in the outer heliosphere were rarely in conjunction with measurements closer to the Sun. Moreover, the intervals in their study spread over multiple solar cycles though they are selected during solar activity minimum. Thus it is presently unclear whether their frequency and properties are the result of solar variability or due to the natural evolution of the discontinuities during their propagation and interaction with the ambient solar wind.
 
-They are observed across the heliosphere from inner heliosphere [@liuCategorizingMHDDiscontinuities2022] to the heliosheath [@burlagaCurrentSheetsHeliosheath2011].
+The goal of our paper is to investigate, statistically, discontinuities at different radial distance in the outer heliosphere to obtain a understanding of their formation and evolution. Our methodology involves integrating Juno measurements [@connerneyJunoMagneticField2017] between $1$ and $5$ AU with those at $1$ AU to distinguish temporal effect and spatial variations by examining the discontinuity characteristics at two radial distances simultaneously.
 
-::: {.content-visible when-format="html"}
-::: {#fig-ids_examples .column-page layout-ncol="2"}
-![Current sheets in the heliosheath: Voyager 1, 2009](images/jgra21162-fig-0009.png){fig-alt="Hodograms produced by means of a minimum variance analysis for the current sheets associated with the sector boundaries in Figures 8 and 10. (b, d, and f) The value of the component of B along the minimum variance direction (Bm) as a function of time, N. (a, c, and e) The components of B along the intermediate variance direction (Bi) and maximum variance direction (BM)."}
+First, the missions, instruments and data used are listed. Then, we brieﬂy describe the method used to identify the discontinuities and the model used to estimate the plasma state at Juno location due to the lack of plasma data during its cruise phase.  Finally, we present the results of the spatial evolution of the discontinuities with respect to their characteristics (spatial scales and current density), and discuss the implications of our findings.
 
-![A rotational discontinuity (RD) detected at 0.126 AU](images/jgra57047-fig-0002-m.jpg){fig-alt="The properties of a rotational discontinuity (RD) detected at 0.126 AU on 28 January 2020. (a) The magnetic field magnitude and three components in Radial‐Tangential‐Normal (RTN) coordinate system, (b) the magnetic field in local magnetic normal (LMN) coordinate system, (c and d) the proton velocity in RTN and LMN coordinate systems, (e) the proton density, (f) the proton thermal pressure, the magnetic pressure and the sum, (g) the tangential components of the electric field in LMN coordinate system in the RD rest frame, (h) the position, orientation, and motion of the RD, (i–k) the distributions of BL, JM, and J · E across the RD, (l and m) the jump conditions across the RD. In (h), the cyan plane and arrow represent the RD and its motion vector, and the yellow curve shows the PSP orbit. In (j), both the colors and the curve correspond to the values of JM, and two vertical dashed lines indicate the area of $\vert {J}_{M}\vert > \frac{1}{3}\text{max}\left(\vert {J}_{M}\vert \right)$ whose width is defined as the half thickness of the discontinuity. In (m), the solid lines present the actual upstream and downstream velocities, while the dashed lines show the theoretical downstream velocity to satisfy the Walén relation."}
+:::: {.content-visible when-format="html"}
+::: {.callout-note collapse="false"}
 
-Discontinuities examples across the heliosphere
-:::
-:::
+## Related works
 
-@sodingRadialLatitudinalDependencies2001 studied the radial distribution of discontinuities in the solar wind between 0.3 and 19 AU during solar activity minimum. @liuCharacteristicsInterplanetaryDiscontinuities2021 studied the spatial evolution of the discontinuities from 0.13-0.9 AU, using measurements from the Parker Solar Probe. 
-
-::: {.content-visible when-format="html"}
+- @sodingRadialLatitudinalDependencies2001 studied the radial distribution of discontinuities in the solar wind between 0.3 and 19 AU during solar activity minimum.
+- @liuCharacteristicsInterplanetaryDiscontinuities2021 studied the spatial evolution of the discontinuities from 0.13-0.9 AU, using measurements from the Parker Solar Probe. 
 
 [Typical rate of occurrence is about 50 per day at 1AU]{.aside}
 
@@ -60,17 +57,38 @@ Discontinuities examples across the heliosphere
 Spatial distribution of the discontinuities
 :::
 :::
-
-## Importance
-
--   Contribution of Strong Discontinuities to the Power Spectrum
-
-    > The strong discontinuities produce a power-law spectrum in the 'inertial subrange' with a spectral index near the Kolmogorov -5/3 index. The discontinuity spectrum contains about half of the power of the full solar-wind magnetic ﬁeld over this 'inertial subrange'. [@borovskyContributionStrongDiscontinuities2010]
+::::
 
 # Methods
 
 - We use [@liuMagneticDiscontinuitiesSolar2022] method to identify IDs, which has better compatibility for the IDs with minor field changes.
 - Then the minimum variance analysis is applied to each ID event to obtain the boundary normal (LMN) coordinate and extract IDs' features.
+
+
+
+::: {#fig-examples .column-page layout-nrow="1"}
+
+![](figures/examples/artemis_id_example)
+
+![](figures/examples/stereo_id_example)
+
+![](figures/examples/wind_id_example)
+
+Examples of IDs from ARTEMIS, STEREO, and Wind
+
+:::
+
+:::: {.content-visible when-format="html"}
+::: {.callout-note collapse="false"}
+::: {#fig-ids_examples layout-ncol="2"}
+![Current sheets in the heliosheath: Voyager 1, 2009](images/jgra21162-fig-0009.png){fig-alt="Hodograms produced by means of a minimum variance analysis for the current sheets associated with the sector boundaries in Figures 8 and 10. (b, d, and f) The value of the component of B along the minimum variance direction (Bm) as a function of time, N. (a, c, and e) The components of B along the intermediate variance direction (Bi) and maximum variance direction (BM)."}
+
+![A rotational discontinuity (RD) detected at 0.126 AU](images/jgra57047-fig-0002-m.jpg){fig-alt="The properties of a rotational discontinuity (RD) detected at 0.126 AU on 28 January 2020. (a) The magnetic field magnitude and three components in Radial‐Tangential‐Normal (RTN) coordinate system, (b) the magnetic field in local magnetic normal (LMN) coordinate system, (c and d) the proton velocity in RTN and LMN coordinate systems, (e) the proton density, (f) the proton thermal pressure, the magnetic pressure and the sum, (g) the tangential components of the electric field in LMN coordinate system in the RD rest frame, (h) the position, orientation, and motion of the RD, (i–k) the distributions of BL, JM, and J · E across the RD, (l and m) the jump conditions across the RD. In (h), the cyan plane and arrow represent the RD and its motion vector, and the yellow curve shows the PSP orbit. In (j), both the colors and the curve correspond to the values of JM, and two vertical dashed lines indicate the area of $\vert {J}_{M}\vert > \frac{1}{3}\text{max}\left(\vert {J}_{M}\vert \right)$ whose width is defined as the half thickness of the discontinuity. In (m), the solid lines present the actual upstream and downstream velocities, while the dashed lines show the theoretical downstream velocity to satisfy the Walén relation."}
+
+Discontinuities examples across the heliosphere
+:::
+:::
+::::
 
 
 ## ID identification (limited feature extraction / anomaly detection)
@@ -102,7 +120,7 @@ $$
 \textrm{Index}_1 \ge 2, \textrm{Index}_2 \ge 1, \textrm{Index}_3 \ge 0.1 
 $$
 
-## Solar Wind Model {#solar-wind-model}
+## Solar Wind Model
 
 Sadly, JUNO does not provide plasma data during the cruise phase, so to estimate the plasma state we will use MHD model.
 
@@ -127,17 +145,25 @@ For model validation part, please see [JUNO Model Report](notebooks/20_model.ipy
 
 # Figures
 
-::: {#fig-examples layout-nrow="1"}
+![Juno orbit](figures/juno_orbit_white){#fig-orbit}
 
-![](figures/examples/artemis_id_example.png)
+::: {#fig-examples .column-page layout-nrow="1"}
 
-![](figures/examples/stereo_id_example.png)
+![](figures/examples/artemis_id_example)
 
-Examples of IDs from ARTEMIS, STEREO, and JUNO
+![](figures/examples/stereo_id_example)
+
+![](figures/examples/wind_id_example)
+
+Examples of IDs from ARTEMIS, STEREO, and Wind
 
 :::
 
-<!-- ![Near-Earth' solar wind plasma data during JUNO cruise phase](figures/omni_overview){#fig-omni_overview} -->
+
+![Near-Earth's solar wind plasma data during JUNO cruise phase](figures/omni_overview){#fig-overview}
+
+Overview of the solar wind at 1 AU
+
 
 [For code, see [noteboook](notebooks/20_omni_overview.ipynb).]{.aside}
 

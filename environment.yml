@@ -1,0 +1,7 @@
+dependencies:
+  - kedro
+  - kedro-viz
+  # - kedro-datasets
+  - pip
+  - pip:
+    - kedro-datasets

@@ -4,21 +4,31 @@ panels:
   - satellite: "OMNI"
     instrument: "data"
     datatype: hourly
+    id: N
+    name: Ion Number Density
+    units: cm$^{-3}$
+
+  - satellite: OMNI
+    instrument: data
+    datatype: hourly
     id: V
-    name: Plasma Speed
+    name: Ion Speed
     units: km/s
 
-  - satellite: "OMNI"
-    instrument: "data"
-    datatype: hourly
-    id: N
-    name: Ion number density
-    units: cm^-3
+  - ds: STA_COHO1HR_MERGED_MAG_PLASMA
+    id: plasmaDensity
+    name: Ion Number Density
+    units: cm$^{-3}$
+
+  - ds: STA_COHO1HR_MERGED_MAG_PLASMA
+    id: plasmaSpeed
+    name: Ion Speed
+    units: km/s
 
 output:
-  path: "../figures/omni_overview"
+  path: figures/omni_overview
   formats:
     - "png"
     - "pdf"
     # - "csv"
-  display: True
+  display: False
