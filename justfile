@@ -25,7 +25,7 @@ clean:
    rm index.{log,bbl,blg,aux}
    find . -name '.DS_Store' -type f -delete
 
-update: update-overleaf update-repo publish
+update: update-overleaf clean update-repo publish
 
 update-repo:
    git commit -am "update"; git push
