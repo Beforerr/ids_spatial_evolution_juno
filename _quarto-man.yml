@@ -1,0 +1,25 @@
+project:
+  type: manuscript
+
+manuscript:
+  article: manuscript/article.qmd
+
+format:
+  html:
+    comments:
+      hypothesis: true
+  agu-pdf:
+    cite-method: natbib # biblatex is not supported
+    keep-tex: true
+    bibliography:
+      - files/bibliography/full_anton.bib
+      - files/bibliography/addon_anton.bib
+
+citation:
+  container-title: "JGR: Space Physics"
+
+bibliography:
+  - files/bibexport.bib
+  - ../research.bib
+
+wrap: preserve

@@ -5,6 +5,8 @@ format:
     bibliography:
       - files/bibliography/full_anton.bib
       - files/bibliography/addon_anton.bib
+    lof: true
+    lot: true
 
   typst:
     output-file: index_typst.pdf

@@ -1,3 +1,9 @@
+env-install:
+   micromamba env create --file environment.yml
+
+env-update:
+   micromamba install --file environment.yml
+
 preview:
    quarto preview --no-render
 

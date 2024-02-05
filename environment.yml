@@ -1,7 +1,10 @@
+name: juno
 dependencies:
   - kedro
   - kedro-viz
+  - grpcio # used in `modin`, using conda for (Apple Silicon) Support
   # - kedro-datasets
   - pip
   - pip:
     - kedro-datasets
+    - modin[ray]

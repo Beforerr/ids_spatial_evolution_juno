@@ -143,9 +143,15 @@ For model validation part, please see [JUNO Model Report](notebooks/20_model.ipy
 -   The thickness of IDs increases with the radial distance from the Sun, but after normalization to ion inertial length, the thickness of IDs decreases.
 -   The current intensity of IDs decrease with the radial distance from the Sun, but after normalization to the Alfven current , the current intensity of IDs increases.
 
+
+# Acknowledgements
+
+Sunspot data from the World Data Center SILSO, Royal Observatory of Belgium, Brussels
+
 # Figures
 
 ![Juno orbit](figures/juno_orbit_white){#fig-orbit}
+
 
 ::: {.column-page layout-nrow="1"}
 ![](figures/examples/artemis_id_example)
