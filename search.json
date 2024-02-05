@@ -1,0 +1,57 @@
+[
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "Solar wind discontinuities spatial evolution in the outer heliosphere",
+    "section": "",
+    "text": "Related works\n\n\n\n\n\n\nSöding et al. (2001) studied the radial distribution of discontinuities in the solar wind between 0.3 and 19 AU during solar activity minimum.\nLiu et al. (2021) studied the spatial evolution of the discontinuities from 0.13-0.9 AU, using measurements from the Parker Solar Probe.\n\n\n\n\n\n\n\n\n\n\nDiscontinuities between 0.3 and 19 AU\n\n\n\n\n\n\n\nDiscontinuities between 0.13–0.9 AU\n\n\n\n\n\n\nFigure 1: Spatial distribution of the discontinuities\n\n\n\n\n\n\n\n\n\n\nTypical rate of occurrence is about 50 per day at 1AUReferences\n\nLiu, Y. Y., H. S. Fu, J. B. Cao, C. M. Liu, Z. Wang, Z. Z. Guo, Y. Xu, S. D. Bale, and J. C. Kasper. 2021. “Characteristics of Interplanetary Discontinuities in the Inner Heliosphere Revealed by Parker Solar Probe.” Astrophysical Journal 916 (2): 65. https://doi.org/10.3847/1538-4357/ac06a1.\n\n\nSöding, A., F. M. Neubauer, B. T. Tsurutani, N. F. Ness, and R. P. Lepping. 2001. “Radial and Latitudinal Dependencies of Discontinuities in the Solar Wind Between 0.3 and 19 AU and -80 and +10.” Annales Geophysicae 19 (7): 667–80. https://doi.org/10.5194/angeo-19-667-2001."
+  },
+  {
+    "objectID": "presentations/AGU23_poster.html#main-findings",
+    "href": "presentations/AGU23_poster.html#main-findings",
+    "title": "Solar wind discontinuities spatial evolution and energetic ion scattering",
+    "section": "Main findings",
+    "text": "Main findings\n\nSolar wind discontinuities evolve in space with occurrence rate decreasing, thickness increasing and current density decreasing with distance from the Sun. And they are probably generated locally beyond 1 AU.\nBackground sheared magnetic field plays an important role in determining the efficiency of ion pitch angle scattering, and characterize three ion populations: transient, trapped, regular.",
+    "crumbs": [
+      "Home",
+      "Presentations",
+      "Solar wind discontinuities spatial evolution and energetic ion scattering"
+    ]
+  },
+  {
+    "objectID": "presentations/AGU23_poster.html#introduction-motivation",
+    "href": "presentations/AGU23_poster.html#introduction-motivation",
+    "title": "Solar wind discontinuities spatial evolution and energetic ion scattering",
+    "section": "Introduction & Motivation",
+    "text": "Introduction & Motivation\n‘Discontinuities’ are discontinuous spatial changes in plasma parameters/characteristics and magnetic fields (colburn1966?).\n\n\n(söding2001?) studied the radial distribution of discontinuities in the solar wind.\n\n\nJoint observations of JUNO & ARTEMIS & Other missions really provides a unique opportunity!!!",
+    "crumbs": [
+      "Home",
+      "Presentations",
+      "Solar wind discontinuities spatial evolution and energetic ion scattering"
+    ]
+  },
+  {
+    "objectID": "presentations/AGU23_poster.html#method",
+    "href": "presentations/AGU23_poster.html#method",
+    "title": "Solar wind discontinuities spatial evolution and energetic ion scattering",
+    "section": "Method",
+    "text": "Method\n\nWe use (liu2022a?) method to identify IDs, which has better compatibility for the IDs with minor field changes.\nThen the minimum variance analysis is applied to each ID event to obtain the boundary normal (LMN) coordinate and extract IDs’ features.\nHamiltonian model is applied for investigation of ion dynamics in the solar wind discontinuity configuration.\n\nThe most generalized form of dimensionless hamiltonian equation for ions in force-free rotational magnetic discontinuities configuration is\n\\[\nH=\\frac{1}{2}\\left(\\frac{1}{6} \\alpha^2 c_2 z^3-c_1 z+p_x\\right)^2+\\frac{p_z^2}{2}+\\frac{1}{2}\\left(\\kappa x-\\frac{\\alpha z^2}{2}\\right)^2\n\\]\nWith \\(B_l^2+B_m^2=\\text { const }\\), we have\n\\[\nH=\\frac{1}{2}\\left(\\frac{\\alpha^2 z^3}{6 \\sqrt{\\kappa_m^2+1}}-z \\sqrt{\\kappa_m^2+1}+p_x\\right)^2+\\frac{p_z^2}{2}+\\frac{1}{2}\\left(\\kappa_n x-\\frac{\\alpha z^2}{2}\\right)^2\n\\]\nThe system has three parameters\n\\[\n\\kappa_n=\\frac{B_n}{B_{l, \\max }}\n\\quad\n\\kappa_m=\\frac{B_{m, 0}}{B_{l, \\max }}\n\\quad\n\\alpha=\\frac{l_0}{L}=\\frac{\\text { gyro radius }}{\\text { system length }}\n\\]",
+    "crumbs": [
+      "Home",
+      "Presentations",
+      "Solar wind discontinuities spatial evolution and energetic ion scattering"
+    ]
+  },
+  {
+    "objectID": "presentations/AGU23_poster.html#results",
+    "href": "presentations/AGU23_poster.html#results",
+    "title": "Solar wind discontinuities spatial evolution and energetic ion scattering",
+    "section": "Results",
+    "text": "Results\n\nNormalized occurrence rate of IDs drops with the radial distance from the Sun, following 1/r law.\n\n\n\n\n\n\nHigh energy particle has higher chance to cross uncertainty curve\nHigh shear magnetic field will make separatrix vanishes and the geometrical jumps of the quasiadiabatic invariant disappear",
+    "crumbs": [
+      "Home",
+      "Presentations",
+      "Solar wind discontinuities spatial evolution and energetic ion scattering"
+    ]
+  }
+]
