@@ -2,7 +2,6 @@ project:
   type: manuscript
   render: 
     - "!*.qmd"
-    - "!presentations/"
 
 manuscript:
   article: article.qmd # Current can not be put in a subdirectory
@@ -14,6 +13,7 @@ format:
   agu-pdf:
     cite-method: natbib # biblatex is not supported
     keep-tex: true
+    latex-clean: false
     bibliography:
       - files/bibliography/full_anton.bib
       - files/bibliography/addon_anton.bib

@@ -33,7 +33,7 @@ download:
    wget https://raw.githubusercontent.com/Beforerr/finesst_solar_wind_discontinuities/main/figures/orbits/juno_orbit_white.png -O figures/juno_orbit_white.png
 
 clean:
-   rm index.{log,bbl,blg,aux}
+   rm article.{log,bbl,blg,aux} trackchanges.sty agujournal2019.cls
    find . -name '.DS_Store' -type f -delete
 
 update: update-overleaf clean update-repo publish
@@ -46,6 +46,6 @@ update-overleaf: sync-overleaf
 
 sync-overleaf:
    touch files/bibexport.bib
-   quarto render index.qmd --to agu-pdf -M latex-clean:false
-   $HOME/Library/TinyTeX/texmf-dist/scripts/bibexport/bibexport.sh -o files/bibexport.bib --nosave index.aux
+   quarto render --profile man --to agu-pdf
+   $HOME/Library/TinyTeX/texmf-dist/scripts/bibexport/bibexport.sh -o files/bibexport.bib --nosave article.aux
    rsync _manuscript/_tex/ overleaf/ -r
