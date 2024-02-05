@@ -1,8 +1,11 @@
 project:
   type: manuscript
+  render: 
+    - "!*.qmd"
+    - "!presentations/"
 
 manuscript:
-  article: manuscript/article.qmd
+  article: article.qmd # Current can not be put in a subdirectory
 
 format:
   html:
@@ -17,9 +20,3 @@ format:
 
 citation:
   container-title: "JGR: Space Physics"
-
-bibliography:
-  - files/bibexport.bib
-  - ../research.bib
-
-wrap: preserve

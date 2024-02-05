@@ -1,29 +1,21 @@
 project:
-  type: manuscript
+  type: website
   preview:
     port: 4002
+  render:
+    - "*.qmd"
+    - "!article.qmd"
 
-manuscript:
-  article: index.qmd
-  resources:
-    - presentations/AGU23_poster.pdf
+website:
+  navbar:
+    left:
+      - text: "Home"
+        href: index.qmd
+      - text: "Manuscript"
+        href: _manuscript/index.html
+  sidebar:
+    contents: auto
 
-format:
-  html:
-    comments:
-      hypothesis: true
-  agu-pdf:
-    cite-method: natbib # biblatex is not supported
-    keep-tex: true
-    bibliography:
-      - files/bibliography/full_anton.bib
-      - files/bibliography/addon_anton.bib
-
-execute:
-  freeze: true
-
-citation:
-  container-title: "JGR: Space Physics"
 
 bibliography:
   - files/bibexport.bib

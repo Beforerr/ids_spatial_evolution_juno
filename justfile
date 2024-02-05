@@ -7,6 +7,11 @@ env-update:
 preview:
    quarto preview --no-render
 
+render:
+   quarto render --profile man --to html
+   quarto render --profile web
+   cp -r _manuscript _site/
+
 publish:
    quarto publish gh-pages --no-render --no-prompt
 
