@@ -44,6 +44,9 @@ ul.task-list li input[type="checkbox"] {
 <script src="../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
 <link href="../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script src="../site_libs/quarto-contrib/glightbox/glightbox.min.js"></script>
+<link href="../site_libs/quarto-contrib/glightbox/glightbox.min.css" rel="stylesheet">
+<link href="../site_libs/quarto-contrib/glightbox/lightbox.css" rel="stylesheet">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -193,8 +196,18 @@ window.Quarto = {
 <div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        
-    <div class="quarto-code-links"><h2>Code Links</h2><ul><li><a href="./AGU23_poster.pdf"><i class="bi bi-link-45deg"></i>Poster PDF</a></li></ul></div></div>
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#poster-pdf" id="toc-poster-pdf" class="nav-link active" data-scroll-target="#poster-pdf">Poster PDF</a></li>
+  <li><a href="#main-findings" id="toc-main-findings" class="nav-link" data-scroll-target="#main-findings">Main findings</a></li>
+  <li><a href="#introduction-motivation" id="toc-introduction-motivation" class="nav-link" data-scroll-target="#introduction-motivation">Introduction &amp; Motivation</a></li>
+  <li><a href="#method" id="toc-method" class="nav-link" data-scroll-target="#method">Method</a></li>
+  <li><a href="#results" id="toc-results" class="nav-link" data-scroll-target="#results">Results</a></li>
+  </ul>
+<div class="quarto-code-links"><h2>Code Links</h2><ul><li><a href="./AGU23_poster.pdf"><i class="bi bi-link-45deg"></i>Poster PDF</a></li></ul></div></nav>
+    </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
@@ -285,13 +298,13 @@ H=\frac{1}{2}\left(\frac{\alpha^2 z^3}{6 \sqrt{\kappa_m^2+1}}-z \sqrt{\kappa_m^2
 </section>
 <section id="results" class="level2">
 <h2 class="anchored" data-anchor-id="results">Results</h2>
-<p><img src="../figures/ocr/ocr_time_cleaned.png" class="img-fluid" style="width:48.0%"></p>
+<p><a href="../figures/ocr/ocr_time_cleaned.png" class="lightbox" data-gallery="quarto-lightbox-gallery-1"><img src="../figures/ocr/ocr_time_cleaned.png" class="img-fluid" style="width:48.0%"></a></p>
 <p>Normalized occurrence rate of IDs drops with the radial distance from the Sun, following 1/r law.</p>
 <p><img src="../figures/thickness/thickness_mn_dist.png" class="img-fluid" style="width:48.0%">
 <img src="../figures/current/current_mn_dist.png" class="img-fluid" style="width:48.0%"></p>
-<p><img src="https://github.com/Beforerr/ion_scattering_by_SWD/blob/385bfe5f1b147ef18d64e9507af77a38b5a9f091/figures/example_traj.png?raw=true" class="img-fluid"></p>
-<p><img src="https://github.com/Beforerr/ion_scattering_by_SWD/blob/f6fbedc30f93bd799e2bb8cb6afe7aa31d58b98b/figures/example_scatter.png?raw=true" class="img-fluid" style="width:48.0%"></p>
-<p><img src="https://github.com/Beforerr/ion_scattering_by_SWD/blob/1728b9a32010b72e2ec6c156a76467fe25a51d88/figures/uncertainty_curve_length.png?raw=true" class="img-fluid" style="width:48.0%"></p>
+<p><a href="https://github.com/Beforerr/ion_scattering_by_SWD/blob/385bfe5f1b147ef18d64e9507af77a38b5a9f091/figures/example_traj.png?raw=true" class="lightbox" data-gallery="quarto-lightbox-gallery-2"><img src="https://github.com/Beforerr/ion_scattering_by_SWD/blob/385bfe5f1b147ef18d64e9507af77a38b5a9f091/figures/example_traj.png?raw=true" class="img-fluid"></a></p>
+<p><a href="https://github.com/Beforerr/ion_scattering_by_SWD/blob/f6fbedc30f93bd799e2bb8cb6afe7aa31d58b98b/figures/example_scatter.png?raw=true" class="lightbox" data-gallery="quarto-lightbox-gallery-3"><img src="https://github.com/Beforerr/ion_scattering_by_SWD/blob/f6fbedc30f93bd799e2bb8cb6afe7aa31d58b98b/figures/example_scatter.png?raw=true" class="img-fluid" style="width:48.0%"></a></p>
+<p><a href="https://github.com/Beforerr/ion_scattering_by_SWD/blob/1728b9a32010b72e2ec6c156a76467fe25a51d88/figures/uncertainty_curve_length.png?raw=true" class="lightbox" data-gallery="quarto-lightbox-gallery-4"><img src="https://github.com/Beforerr/ion_scattering_by_SWD/blob/1728b9a32010b72e2ec6c156a76467fe25a51d88/figures/uncertainty_curve_length.png?raw=true" class="img-fluid" style="width:48.0%"></a></p>
 <ul>
 <li>High energy particle has higher chance to cross uncertainty curve</li>
 <li>High shear magnetic field will make separatrix vanishes and the geometrical jumps of the quasiadiabatic invariant disappear</li>
@@ -689,6 +702,31 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 });
 </script>
 </div> <!-- /content -->
+<script>var lightboxQuarto = GLightbox({"selector":".lightbox","loop":false,"openEffect":"zoom","closeEffect":"zoom","descPosition":"bottom"});
+window.onload = () => {
+  lightboxQuarto.on('slide_before_load', (data) => {
+    const { slideIndex, slideNode, slideConfig, player, trigger } = data;
+    const href = trigger.getAttribute('href');
+    if (href !== null) {
+      const imgEl = window.document.querySelector(`a[href="${href}"] img`);
+      if (imgEl !== null) {
+        const srcAttr = imgEl.getAttribute("src");
+        if (srcAttr && srcAttr.startsWith("data:")) {
+          slideConfig.href = srcAttr;
+        }
+      }
+    } 
+  });
+
+  lightboxQuarto.on('slide_after_load', (data) => {
+    const { slideIndex, slideNode, slideConfig, player, trigger } = data;
+    if (window.Quarto?.typesetMath) {
+      window.Quarto.typesetMath(slideNode);
+    }
+  });
+
+};
+          </script>
 
 
 
