@@ -16,7 +16,10 @@ website:
   sidebar:
     contents: auto
 
-lightbox: auto
+format:
+  html: 
+    lightbox: auto
+    toc: true
 
 bibliography:
   - files/bibexport.bib

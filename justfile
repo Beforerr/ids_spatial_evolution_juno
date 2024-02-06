@@ -20,9 +20,6 @@ publish:
 setup-agu:
    quarto add quarto-journals/agu --no-prompt
 
-publish-poster:
-  Rscript -e 'pagedown::chrome_print("notebooks/manuscripts/.AGU23_poster.rmd")'
-
 examples:
    ipython notebooks/01_ids_example.ipynb 'notebooks/config_examples/examples_stereo.yml'
    ipython notebooks/01_ids_example.ipynb 'notebooks/config_examples/examples_artemis.yml'
@@ -51,3 +48,7 @@ sync-overleaf:
    quarto render --profile man --to agu-pdf
    $HOME/Library/TinyTeX/texmf-dist/scripts/bibexport/bibexport.sh -o files/bibexport.bib --nosave article.aux
    rsync _manuscript/_tex/ overleaf/ -r
+
+
+publish-poster:
+  Rscript -e 'pagedown::chrome_print("notebooks/manuscripts/.AGU23_poster.rmd")'
