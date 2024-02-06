@@ -54,22 +54,3 @@ class Config(BaseModel):
                 if not panel.get('timerange'):
                     panel['timerange'] = timerange
         return values
-
-class GraphicalConfig(BaseModel):
-    ylabel: str = None
-    
-
-
-def export(config: OutputConfig, tvars2plot):
-    path = config.path
-    if config.display:
-        tplot(tvars2plot)
-    if "png" in config.formats:
-        tplot(tvars2plot, save_png=path, display=False)
-    if "pdf" in config.formats:
-        tplot(tvars2plot, save_pdf=path, display=False)
-    if "svg" in config.formats:
-        tplot(tvars2plot, save_svg=path, display=False)
-    if "csv" in config.formats:
-        da: DataArray = get_data(tvars2plot, xarray=True)
-        da.to_pandas().to_csv(path + ".csv")

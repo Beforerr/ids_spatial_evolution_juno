@@ -1,29 +1,45 @@
 timerange: ["2011-08-01", "2016-07-01"]
 
 panels:
-  - satellite: "OMNI"
-    instrument: "data"
+  - satellite: OMNI
+    instrument: data
     datatype: hourly
     id: N
-    name: Ion Number Density
+    name: "OMNI\nDensity"
     units: cm$^{-3}$
+    process:
+      trans:
+        - name: avg
+          res: 345600 # 4 days
 
   - satellite: OMNI
     instrument: data
     datatype: hourly
     id: V
-    name: Ion Speed
+    name: "OMNI\nSpeed"
     units: km/s
+    process:
+      trans:
+        - name: avg
+          res: 345600 # 4 days
 
   - ds: STA_COHO1HR_MERGED_MAG_PLASMA
     id: plasmaDensity
-    name: Ion Number Density
+    name: "STEREO-A\nDensity"
     units: cm$^{-3}$
+    process:
+      trans:
+        - name: avg
+          res: 345600 # 4 days
 
   - ds: STA_COHO1HR_MERGED_MAG_PLASMA
     id: plasmaSpeed
-    name: Ion Speed
+    name: "STEREO-A\nSpeed"
     units: km/s
+    process:
+      trans:
+        - name: avg
+          res: 345600 # 4 days
 
 output:
   path: figures/omni_overview
@@ -31,4 +47,3 @@ output:
     - "png"
     - "pdf"
     # - "csv"
-  display: False

@@ -29,5 +29,8 @@ output:
   formats:
     - "png"
     - "pdf"
-    # - "csv"
-  # display: True
+  figure:
+    figwidth: 3.3
+  figure_extra:
+    sync_legend_colors: true
+    hide_legend_lines: true

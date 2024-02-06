@@ -4,7 +4,7 @@ project:
     port: 4002
   render:
     - "*.qmd"
-    - "!article.qmd"
+    # - "!article.qmd"
 
 website:
   navbar:
@@ -16,6 +16,7 @@ website:
   sidebar:
     contents: auto
 
+lightbox: auto
 
 bibliography:
   - files/bibexport.bib

@@ -7,10 +7,12 @@ env-update:
 preview:
    quarto preview --no-render
 
-render:
+render-manuscripts:
    quarto render --profile man --to html
-   quarto render --profile web
    cp -r _manuscript _site/
+
+render: render-manuscripts
+   quarto render --profile web
 
 publish:
    quarto publish gh-pages --no-render --no-prompt
@@ -25,7 +27,7 @@ examples:
    ipython notebooks/01_ids_example.ipynb 'notebooks/config_examples/examples_stereo.yml'
    ipython notebooks/01_ids_example.ipynb 'notebooks/config_examples/examples_artemis.yml'
    ipython notebooks/01_ids_example.ipynb 'notebooks/config_examples/examples_wind.yml'
-   ipython notebooks/20_omni_overview.ipynb 'notebooks/omni.yml'
+   # ipython notebooks/20_omni_overview.ipynb 'notebooks/omni.yml'
 
 download:
    wget --user-agent="Mozilla/5.0" https://agupubs.onlinelibrary.wiley.com/cms/asset/8e244339-32cf-4703-9101-c1d9b4a3fa7c/jgra57047-fig-0002-m.jpg -O images/jgra57047-fig-0002-m.jpg

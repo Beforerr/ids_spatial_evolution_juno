@@ -43,10 +43,21 @@ The goal of our paper is to investigate, statistically, discontinuities at diffe
 
 First, the missions, instruments and data used are listed. Then, we brieﬂy describe the method used to identify the discontinuities and the model used to estimate the plasma state at Juno location due to the lack of plasma data during its cruise phase. Finally, we present the results of the spatial evolution of the discontinuities with respect to their characteristics (spatial scales and current density), and discuss the implications of our findings.
 
+::: {#fig-overview layout-ncol=1}
+![](figures/juno_orbit_white){}
+
+![](figures/juno-hg-loc_sunspot-number)
+
+Juno orbit, its longitudinal difference with Earth & STEREO missions and sunspot number during its cruise phase
+
+:::
 
 # Dataset, models, and methods
 
 {{< embed notes.ipynb#tbl-missions >}}
+
+
+![Near-Earth's and STEREO-A solar wind plasma data during JUNO cruise phase](figures/omni_overview){#fig-overview}
 
 ## Methods
 
@@ -55,15 +66,8 @@ We will use Liu's [@liu2022a] method to identify discontinuities in the solar wi
 <!-- - We use [@liuMagneticDiscontinuitiesSolar2022] method to identify IDs, which has better compatibility for the IDs with minor field changes.
 - Then the minimum variance analysis is applied to each ID event to obtain the boundary normal (LMN) coordinate and extract IDs' features. -->
 
-::: {#fig-examples .column-page layout-nrow="1"}
-![](figures/examples/artemis_id_example)
 
-![](figures/examples/stereo_id_example)
-
-![](figures/examples/wind_id_example)
-
-Examples of IDs from ARTEMIS, STEREO, and Wind
-:::
+![Examples of IDs from ARTEMIS, STEREO, and Wind](figures/fig_examples){#fig-examples}
 
 ::: {.content-visible when-format="html"}
 ::: {.callout-note collapse="false"}
@@ -136,20 +140,7 @@ Sunspot data from the World Data Center SILSO, Royal Observatory of Belgium, Bru
 
 # Figures
 
-![Juno orbit](figures/juno_orbit_white){#fig-orbit}
 
-
-::: {.column-page layout-nrow="1"}
-![](figures/examples/artemis_id_example)
-
-![](figures/examples/stereo_id_example)
-
-![](figures/examples/wind_id_example)
-
-Examples of IDs from ARTEMIS, STEREO, and Wind
-:::
-
-![Near-Earth's solar wind plasma data during JUNO cruise phase](figures/omni_overview){#fig-overview}
 
 Overview of the solar wind at 1 AU
 

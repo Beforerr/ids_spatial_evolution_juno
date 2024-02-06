@@ -1,4 +1,4 @@
-timerange: ["2016-06-28T11:46:00", "2016-06-28T11:47:10"]
+timerange: ["2016-06-28T11:45:00", "2016-06-28T11:48:10"]
 panels:
   - satellite: STEREO
     instrument: MAG
@@ -21,7 +21,10 @@ panels:
 output:
   path: "figures/examples/stereo_id_example"
   formats:
-    # - "png"
-    # - "pdf"
-    - "csv"
-  # display: True
+    - "png"
+    - "pdf"
+  figure:
+    figwidth: 3.3
+  figure_extra:
+    hide_legends: true
+    hide_ylabels: true
