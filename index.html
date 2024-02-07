@@ -90,6 +90,35 @@ div.csl-indent {
   }
 }</script>
 
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN") {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
 
 </head>
 
@@ -113,9 +142,21 @@ div.csl-indent {
     <a class="nav-link" href="./_manuscript/index.html"> 
 <span class="menu-text">Manuscript</span></a>
   </li>  
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-presentation" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Presentation</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-presentation">    
+        <li>
+    <a class="dropdown-item" href="./presentations/AGU23_poster.html">
+ <span class="dropdown-text">AGU23 Poster</span></a>
+  </li>  
+    </ul>
+  </li>
 </ul>
           </div> <!-- /navcollapse -->
           <div class="quarto-navbar-tools">
+    <a href="https://github.com/Beforerr/ids_spatial_evolution_juno" title="" class="quarto-navigation-tool px-1" aria-label=""><i class="bi bi-github"></i></a>
 </div>
       </div> <!-- /container-fluid -->
     </nav>
@@ -136,12 +177,6 @@ div.csl-indent {
   <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
     <div class="sidebar-menu-container"> 
     <ul class="list-unstyled mt-1">
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./article.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Solar wind discontinuities spatial evolution in the outer heliosphere</span></a>
-  </div>
-</li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true">
@@ -159,30 +194,21 @@ div.csl-indent {
 </li>
       </ul>
   </li>
-        <li class="sidebar-item sidebar-item-section">
-      <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true">
- <span class="menu-text">Presentations</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true" aria-label="Toggle section">
-            <i class="bi bi-chevron-right ms-2"></i>
-          </a> 
-      </div>
-      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./presentations/AGU23_poster.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Solar wind discontinuities spatial evolution and energetic ion scattering</span></a>
-  </div>
-</li>
-      </ul>
-  </li>
     </ul>
     </div>
 </nav>
 <div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#publications" id="toc-publications" class="nav-link active" data-scroll-target="#publications">Publications</a></li>
+  <li><a href="#updates" id="toc-updates" class="nav-link" data-scroll-target="#updates">Updates</a></li>
+  <li><a href="#related-works" id="toc-related-works" class="nav-link" data-scroll-target="#related-works">Related works</a></li>
+  </ul>
+</nav>
     </div>
 <!-- main -->
 <main class="content page-columns page-full" id="quarto-document-content">
@@ -206,23 +232,56 @@ div.csl-indent {
 </header>
 
 
-<div class="callout callout-style-default callout-note callout-titled">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-1-contents" aria-controls="callout-1" aria-expanded="true" aria-label="Toggle callout">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
+<section id="publications" class="level2">
+<h2 class="anchored" data-anchor-id="publications">Publications</h2>
+<ul>
+<li>manuscript please see <a href="_manuscript/index.html">here</a></li>
+<li>AGU poster <a href="./presentations/AGU23_poster.html">here</a></li>
+</ul>
+</section>
+<section id="updates" class="level2 page-columns page-full">
+<h2 class="anchored" data-anchor-id="updates">Updates</h2>
+<div>
+
 </div>
-<div class="callout-title-container flex-fill">
-Related works
+<div class="column-screen quarto-layout-panel" data-layout-ncol="4">
+<div class="quarto-layout-row">
+<div class="quarto-layout-cell" style="flex-basis: 25.0%;justify-content: center;">
+<p><a href="figures/new/current/current_k_r_dist.png" class="lightbox" data-gallery="quarto-lightbox-gallery-1"><img src="figures/new/current/current_k_r_dist.png" class="img-fluid"></a></p>
 </div>
-<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+<div class="quarto-layout-cell" style="flex-basis: 25.0%;justify-content: center;">
+<p><a href="figures/new/current/current_k_N1_r_dist.png" class="lightbox" data-gallery="quarto-lightbox-gallery-2"><img src="figures/new/current/current_k_N1_r_dist.png" class="img-fluid"></a></p>
 </div>
-<div id="callout-1" class="callout-1-contents callout-collapse collapse show">
-<div class="callout-body-container callout-body">
+<div class="quarto-layout-cell" style="flex-basis: 25.0%;justify-content: center;">
+<p><a href="figures/new/thickness/thickness_k_r_dist.png" class="lightbox" data-gallery="quarto-lightbox-gallery-3"><img src="figures/new/thickness/thickness_k_r_dist.png" class="img-fluid"></a></p>
+</div>
+<div class="quarto-layout-cell" style="flex-basis: 25.0%;justify-content: center;">
+<p><a href="figures/new/thickness/thickness_k_N1_r_dist.png" class="lightbox" data-gallery="quarto-lightbox-gallery-4"><img src="figures/new/thickness/thickness_k_N1_r_dist.png" class="img-fluid"></a></p>
+</div>
+</div>
+<div class="quarto-layout-row">
+<div class="quarto-layout-cell" style="flex-basis: 25.0%;justify-content: center;">
+<p><a href="figures/current/current_r_dist.png" class="lightbox" data-gallery="quarto-lightbox-gallery-5"><img src="figures/current/current_r_dist.png" class="img-fluid"></a></p>
+</div>
+<div class="quarto-layout-cell" style="flex-basis: 25.0%;justify-content: center;">
+<p><a href="figures/current/current_N1_r_dist.png" class="lightbox" data-gallery="quarto-lightbox-gallery-6"><img src="figures/current/current_N1_r_dist.png" class="img-fluid"></a></p>
+</div>
+<div class="quarto-layout-cell" style="flex-basis: 25.0%;justify-content: center;">
+<p><a href="figures/thickness/thickness_k_r_dist.png" class="lightbox" data-gallery="quarto-lightbox-gallery-7"><img src="figures/thickness/thickness_k_r_dist.png" class="img-fluid"></a></p>
+</div>
+<div class="quarto-layout-cell" style="flex-basis: 25.0%;justify-content: center;">
+<p><a href="figures/thickness/thickness_k_N1_r_dist.png" class="lightbox" data-gallery="quarto-lightbox-gallery-8"><img src="figures/thickness/thickness_k_N1_r_dist.png" class="img-fluid"></a></p>
+</div>
+</div>
+</div>
+</section>
+<section id="related-works" class="level2 page-columns page-full">
+<h2 class="anchored" data-anchor-id="related-works">Related works</h2>
 <ul>
 <li><span class="citation" data-cites="sodingRadialLatitudinalDependencies2001">Söding et al. (<a href="#ref-sodingRadialLatitudinalDependencies2001" role="doc-biblioref">2001</a>)</span> studied the radial distribution of discontinuities in the solar wind between 0.3 and 19 AU during solar activity minimum.</li>
 <li><span class="citation" data-cites="liuCharacteristicsInterplanetaryDiscontinuities2021">Liu et al. (<a href="#ref-liuCharacteristicsInterplanetaryDiscontinuities2021" role="doc-biblioref">2021</a>)</span> studied the spatial evolution of the discontinuities from 0.13-0.9 AU, using measurements from the Parker Solar Probe.</li>
 </ul>
-<p></p>
+<div class="page-columns page-full"><p></p><div class="no-row-height column-margin column-container"><span class="margin-aside">Typical rate of occurrence is about 50 per day at 1AU</span></div></div>
 <div id="fig-ids_distribution" class="quarto-layout-panel">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-ids_distribution-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
@@ -238,7 +297,7 @@ Related works
 <div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: flex-start;">
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><a href="images/liu2021_fig2.png" class="lightbox" data-glightbox="description: .lightbox-desc-2" data-gallery="quarto-lightbox-gallery-2" title="Discontinuities between 0.13–0.9 AU"><img src="images/liu2021_fig2.png" class="img-fluid figure-img" alt="Histograms as a function of heliocentric distance of (a) the number of events, (b) the PSP detection time, and (c)–(e) the occurrence rates of the total IDs, RDs and TDs. Panel (f) shows the ratio of RD occurrence rate to TD occurrence rate. The orange curves in panels (c) and (d) are the power-function fittings of ID and RD occurrence rates, with the coefficient of determination R2 being 0.983 and 0.985, respectively. The uncertainties of the power-law indices correspond to 95% confidence bounds."></a></p>
+<p><a href="images/liu2021_fig2.png" class="lightbox" data-gallery="quarto-lightbox-gallery-10" data-glightbox="description: .lightbox-desc-10" title="Discontinuities between 0.13–0.9 AU"><img src="images/liu2021_fig2.png" class="img-fluid figure-img" alt="Histograms as a function of heliocentric distance of (a) the number of events, (b) the PSP detection time, and (c)–(e) the occurrence rates of the total IDs, RDs and TDs. Panel (f) shows the ratio of RD occurrence rate to TD occurrence rate. The orange curves in panels (c) and (d) are the power-function fittings of ID and RD occurrence rates, with the coefficient of determination R2 being 0.983 and 0.985, respectively. The uncertainties of the power-law indices correspond to 95% confidence bounds."></a></p>
 <figcaption>Discontinuities between 0.13–0.9 AU</figcaption>
 </figure>
 </div>
@@ -250,23 +309,21 @@ Figure&nbsp;1: Spatial distribution of the discontinuities
 </figcaption>
 </figure>
 </div>
-</div>
-</div>
-</div>
 
 
-<div class="no-row-height column-margin column-container"><span class="margin-aside callout-1-contents callout-collapse collapse show callout-margin-content">Typical rate of occurrence is about 50 per day at 1AU</span></div><div class="hidden" aria-hidden="true">
-<span class="glightbox-desc lightbox-desc-1">Discontinuities between 0.3 and 19 AU</span>
-<span class="glightbox-desc lightbox-desc-2">Discontinuities between 0.13–0.9 AU</span>
+<div class="hidden" aria-hidden="true">
+<span class="glightbox-desc lightbox-desc-9">Discontinuities between 0.3 and 19 AU</span>
+<span class="glightbox-desc lightbox-desc-10">Discontinuities between 0.13–0.9 AU</span>
 </div>
 
+</section>
 
 <div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" role="doc-bibliography" id="quarto-bibliography"><h2 class="anchored quarto-appendix-heading">References</h2><div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list">
 <div id="ref-liuCharacteristicsInterplanetaryDiscontinuities2021" class="csl-entry" role="listitem">
 Liu, Y. Y., H. S. Fu, J. B. Cao, C. M. Liu, Z. Wang, Z. Z. Guo, Y. Xu, S. D. Bale, and J. C. Kasper. 2021. <span>“Characteristics of Interplanetary Discontinuities in the Inner Heliosphere Revealed by Parker Solar Probe.”</span> <em>Astrophysical Journal</em> 916 (2): 65. <a href="https://doi.org/10.3847/1538-4357/ac06a1">https://doi.org/10.3847/1538-4357/ac06a1</a>.
 </div>
 <div id="ref-sodingRadialLatitudinalDependencies2001" class="csl-entry" role="listitem">
-Söding, A., F. M. Neubauer, B. T. Tsurutani, N. F. Ness, and R. P. Lepping. 2001. <span>“Radial and Latitudinal Dependencies of Discontinuities in the Solar Wind Between 0.3 and 19 <span>AU</span> and -80<span></span> and +10<span></span>.”</span> <em>Annales Geophysicae</em> 19 (7): 667–80. <a href="https://doi.org/10.5194/angeo-19-667-2001">https://doi.org/10.5194/angeo-19-667-2001</a>.
+Söding, A., F. M. Neubauer, B. T. Tsurutani, N. F. Ness, and R. P. Lepping. 2001. <span>“Radial and Latitudinal Dependencies of Discontinuities in the Solar Wind Between 0.3 and 19 <span>AU</span> and -80<span><span class="math inline">\(^\circ\)</span></span> and +10<span><span class="math inline">\(^\circ\)</span></span>.”</span> <em>Annales Geophysicae</em> 19 (7): 667–80. <a href="https://doi.org/10.5194/angeo-19-667-2001">https://doi.org/10.5194/angeo-19-667-2001</a>.
 </div>
 </div></section></div></main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
@@ -657,7 +714,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 });
 </script>
 </div> <!-- /content -->
-<script>var lightboxQuarto = GLightbox({"selector":".lightbox","loop":false,"descPosition":"bottom","openEffect":"zoom","closeEffect":"zoom"});
+<script>var lightboxQuarto = GLightbox({"selector":".lightbox","loop":false,"openEffect":"zoom","descPosition":"bottom","closeEffect":"zoom"});
 window.onload = () => {
   lightboxQuarto.on('slide_before_load', (data) => {
     const { slideIndex, slideNode, slideConfig, player, trigger } = data;
