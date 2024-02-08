@@ -292,7 +292,7 @@ window.Quarto = {
 <div>
 
 </div>
-<div class="column-screen quarto-layout-panel" data-layout-nrow="1">
+<div class="column-page quarto-layout-panel" data-layout-ncol="4">
 <div class="quarto-layout-row">
 <div class="quarto-layout-cell" style="flex-basis: 25.0%;justify-content: flex-start;">
 <div class="quarto-figure quarto-figure-center">
@@ -327,8 +327,15 @@ window.Quarto = {
 </div>
 </div>
 </div>
+<div class="quarto-layout-row">
+<div class="quarto-layout-cell" style="flex-basis: 25.0%;justify-content: center;">
+<p><a href="figures/ts_method/wind_fit.png" class="lightbox" data-gallery="quarto-lightbox-gallery-13"><img src="figures/ts_method/wind_fit.png" class="img-fluid"></a></p>
 </div>
-<p><a href="figures/ts_method/all.png" class="lightbox" data-gallery="quarto-lightbox-gallery-13"><img src="figures/ts_method/all.png" class="img-fluid"></a></p>
+<div class="quarto-layout-cell" style="flex-basis: 25.0%;justify-content: center;">
+<p><a href="figures/ts_method/all.png" class="lightbox" data-gallery="quarto-lightbox-gallery-14"><img src="figures/ts_method/all.png" class="img-fluid"></a></p>
+</div>
+</div>
+</div>
 <!-- ::: {.column-screen layout-nrow="1"}
 
 ![Effect of the time resolution on the discontinuity properties](figures/ts_effect_fit_new)
@@ -359,7 +366,7 @@ window.Quarto = {
 <div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: flex-start;">
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><a href="images/liu2021_fig2.png" class="lightbox" data-gallery="quarto-lightbox-gallery-15" data-glightbox="description: .lightbox-desc-15" title="Discontinuities between 0.13–0.9 AU"><img src="images/liu2021_fig2.png" class="img-fluid figure-img" alt="Histograms as a function of heliocentric distance of (a) the number of events, (b) the PSP detection time, and (c)–(e) the occurrence rates of the total IDs, RDs and TDs. Panel (f) shows the ratio of RD occurrence rate to TD occurrence rate. The orange curves in panels (c) and (d) are the power-function fittings of ID and RD occurrence rates, with the coefficient of determination R2 being 0.983 and 0.985, respectively. The uncertainties of the power-law indices correspond to 95% confidence bounds."></a></p>
+<p><a href="images/liu2021_fig2.png" class="lightbox" data-gallery="quarto-lightbox-gallery-16" data-glightbox="description: .lightbox-desc-16" title="Discontinuities between 0.13–0.9 AU"><img src="images/liu2021_fig2.png" class="img-fluid figure-img" alt="Histograms as a function of heliocentric distance of (a) the number of events, (b) the PSP detection time, and (c)–(e) the occurrence rates of the total IDs, RDs and TDs. Panel (f) shows the ratio of RD occurrence rate to TD occurrence rate. The orange curves in panels (c) and (d) are the power-function fittings of ID and RD occurrence rates, with the coefficient of determination R2 being 0.983 and 0.985, respectively. The uncertainties of the power-law indices correspond to 95% confidence bounds."></a></p>
 <figcaption>Discontinuities between 0.13–0.9 AU</figcaption>
 </figure>
 </div>
@@ -378,8 +385,8 @@ Figure&nbsp;1: Spatial distribution of the discontinuities
 <span class="glightbox-desc lightbox-desc-10">Juno</span>
 <span class="glightbox-desc lightbox-desc-11">Derivative method</span>
 <span class="glightbox-desc lightbox-desc-12">Fit method</span>
-<span class="glightbox-desc lightbox-desc-14">Discontinuities between 0.3 and 19 AU</span>
-<span class="glightbox-desc lightbox-desc-15">Discontinuities between 0.13–0.9 AU</span>
+<span class="glightbox-desc lightbox-desc-15">Discontinuities between 0.3 and 19 AU</span>
+<span class="glightbox-desc lightbox-desc-16">Discontinuities between 0.13–0.9 AU</span>
 </div>
 
 </section>
@@ -780,7 +787,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 });
 </script>
 </div> <!-- /content -->
-<script>var lightboxQuarto = GLightbox({"loop":false,"descPosition":"bottom","closeEffect":"zoom","openEffect":"zoom","selector":".lightbox"});
+<script>var lightboxQuarto = GLightbox({"selector":".lightbox","openEffect":"zoom","closeEffect":"zoom","descPosition":"bottom","loop":false});
 window.onload = () => {
   lightboxQuarto.on('slide_before_load', (data) => {
     const { slideIndex, slideNode, slideConfig, player, trigger } = data;
