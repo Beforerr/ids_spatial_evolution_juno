@@ -9,10 +9,10 @@ preview:
 
 render-manuscripts:
    quarto render --profile man --to html
-   cp -r _manuscript _site/
 
 render: render-manuscripts
    quarto render --profile web
+   cp -r _manuscript _site/
 
 publish:
    quarto publish gh-pages --no-render --no-prompt
@@ -35,7 +35,7 @@ clean:
    rm article.{log,bbl,blg,aux} trackchanges.sty agujournal2019.cls
    find . -name '.DS_Store' -type f -delete
 
-update: update-overleaf clean update-repo publish
+update: update-overleaf clean update-repo render publish
 
 update-repo:
    git add .; git commit -am "update"; git push

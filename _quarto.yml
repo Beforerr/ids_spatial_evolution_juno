@@ -13,8 +13,15 @@ website:
         href: index.qmd
       - text: "Manuscript"
         href: _manuscript/index.html
+      - text: "Presentation"
+        menu: 
+          - href: presentations/AGU23_poster.qmd
+            text: AGU23 Poster
+    tools:
+      - icon: github
+        href: https://github.com/Beforerr/ids_spatial_evolution_juno
   sidebar:
-    contents: auto
+    contents: notebooks
 
 format:
   html: 

@@ -27,7 +27,7 @@ model.raw_jno_ss_se_1min:
     type: partitions.PartitionedDataset
     path: data/01_raw/jno_ss_se_1min
     dataset:
-        type: ids_finder.utils.lbl.LblDataset
+        type: discontinuitypy.utils.lbl.LblDataset
     filename_suffix: ".lbl"
     metadata:
         kedro-viz:

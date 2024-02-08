@@ -1,10 +1,27 @@
 name: juno
 dependencies:
-  - kedro
-  - kedro-viz
+  - python<3.11
+  - jupyter
+
+  - polars
+  - xarray
+  # - ray-default
+
+  - pydantic
+
+  # - kedro
+  # - kedro-viz
+  
   - grpcio # used in `modin`, using conda for (Apple Silicon) Support
   # - kedro-datasets
+
+  - pytables # used in `pyspedas`
+
   - pip
   - pip:
-    - kedro-datasets
-    - modin[ray]
+    # - kedro-datasets
+    # - modin[ray]
+    - pyspedas
+    # - ../space_analysis
+    # - ../ids_finder
+    # - ../beforerr_dev

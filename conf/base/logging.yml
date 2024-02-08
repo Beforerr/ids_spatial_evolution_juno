@@ -34,7 +34,7 @@ loggers:
   kedro:
     level: INFO
 
-  ids_finder:
+  discontinuitypy:
     level: INFO
 
 root:

@@ -1,6 +1,6 @@
 [tool.kedro]
-package_name = "ids_finder"
-project_name = "ids_finder"
+package_name = "discontinuitypy"
+project_name = "discontinuitypy"
 kedro_init_version = "0.18.13"
 source_dir = '.'
 
@@ -10,7 +10,7 @@ profile = "black"
 [tool.pytest.ini_options]
 addopts = """
 --cov-report term-missing \
---cov src/ids_finder -ra"""
+--cov src/discontinuitypy -ra"""
 
 [tool.coverage.report]
 fail_under = 0

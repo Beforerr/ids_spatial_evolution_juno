@@ -2,7 +2,63 @@
 title: Solar wind discontinuities spatial evolution in the outer heliosphere
 ---
 
-::: {.callout-note collapse="false"}
+## Publications
+
+- manuscript please see [here](_manuscript/index.html)
+- AGU poster [here](presentations/AGU23_poster.qmd)
+
+## Updates
+
+::: {.column-screen layout-ncol="4"}
+![](figures/new/current/current_k_r_dist)
+
+![](figures/new/current/current_k_N1_r_dist)
+
+![](figures/new/thickness/thickness_k_r_dist)
+
+![](figures/new/thickness/thickness_k_N1_r_dist)
+
+New
+:::
+
+::: {.column-screen layout-ncol="4"}
+
+![](figures/current/current_r_dist)
+
+![](figures/current/current_N1_r_dist)
+
+![](figures/thickness/thickness_k_r_dist)
+
+![](figures/thickness/thickness_k_N1_r_dist)
+
+Old
+:::
+
+
+::: {.column-screen layout-nrow="1"}
+
+![Wind](figures/ts_method/wind)
+
+![Juno](figures/ts_method/juno)
+
+![Derivative method](figures/ts_method/derivative)
+
+![Fit method](figures/ts_method/fit)
+
+:::
+
+![](figures/ts_method/all)
+
+
+<!-- ::: {.column-screen layout-nrow="1"}
+
+![Effect of the time resolution on the discontinuity properties](figures/ts_effect_fit_new)
+
+![Effect of the time resolution on the discontinuity properties](figures/ts_effect)
+
+::: -->
+
+
 ## Related works
 
 -   @sodingRadialLatitudinalDependencies2001 studied the radial distribution of discontinuities in the solar wind between 0.3 and 19 AU during solar activity minimum.
@@ -16,5 +72,4 @@ title: Solar wind discontinuities spatial evolution in the outer heliosphere
 ![Discontinuities between 0.13–0.9 AU](images/liu2021_fig2.png){fig-alt="Histograms as a function of heliocentric distance of (a) the number of events, (b) the PSP detection time, and (c)–(e) the occurrence rates of the total IDs, RDs and TDs. Panel (f) shows the ratio of RD occurrence rate to TD occurrence rate. The orange curves in panels (c) and (d) are the power-function fittings of ID and RD occurrence rates, with the coefficient of determination R2 being 0.983 and 0.985, respectively. The uncertainties of the power-law indices correspond to 95% confidence bounds."}
 
 Spatial distribution of the discontinuities
-:::
 :::
