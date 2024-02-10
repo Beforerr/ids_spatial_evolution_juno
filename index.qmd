@@ -9,6 +9,15 @@ title: Solar wind discontinuities spatial evolution in the outer heliosphere
 
 ## Updates
 
+::: {.column-screen layout-nrow="1"}
+
+![](figures/new/thickness/thickness_k_fit_r_dist)
+
+![](figures/new/thickness/thickness_k_fit_N1_r_dist)
+
+New Fit Width
+:::
+
 ::: {.column-screen layout-ncol="4"}
 ![](figures/new/current/current_k_r_dist)
 
@@ -35,7 +44,7 @@ Old
 :::
 
 
-::: {.column-screen layout-nrow="1"}
+::: {.column-screen layout-ncol="4"}
 
 ![Wind](figures/ts_method/wind)
 
@@ -45,9 +54,15 @@ Old
 
 ![Fit method](figures/ts_method/fit)
 
-:::
+
+![](figures/ts_method/wind_fit)
 
 ![](figures/ts_method/all)
+
+:::
+
+
+
 
 
 <!-- ::: {.column-screen layout-nrow="1"}

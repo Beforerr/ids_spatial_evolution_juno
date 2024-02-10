@@ -1,3 +1,5 @@
+update: update-overleaf clean update-repo render publish
+
 env-install:
    micromamba env create --file environment.yml
 
@@ -34,8 +36,6 @@ download:
 clean:
    rm article.{log,bbl,blg,aux} trackchanges.sty agujournal2019.cls
    find . -name '.DS_Store' -type f -delete
-
-update: update-overleaf clean update-repo render publish
 
 update-repo:
    git add .; git commit -am "update"; git push

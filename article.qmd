@@ -43,14 +43,16 @@ The goal of our paper is to investigate, statistically, discontinuities at diffe
 
 First, the missions, instruments and data used are listed. Then, we brieﬂy describe the method used to identify the discontinuities and the model used to estimate the plasma state at Juno location due to the lack of plasma data during its cruise phase. Finally, we present the results of the spatial evolution of the discontinuities with respect to their characteristics (spatial scales and current density), and discuss the implications of our findings.
 
-::: {#fig-overview layout-ncol=1}
-![](figures/juno_orbit_white){}
+:::: column-screen-inset
+::: {#fig-overview layout-nrow=1}
+![](figures/juno_orbit_white){#fig-orbit width=85%}
 
 ![](figures/juno-hg-loc_sunspot-number){#fig-hg-loc-sunspot}
 
 Juno orbit, its longitudinal difference with Earth & STEREO missions and sunspot number during its cruise phase
 
 :::
+::::
 
 # Dataset, models, and methods
 

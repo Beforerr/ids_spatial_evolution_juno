@@ -42,7 +42,7 @@ panels:
           res: 345600 # 4 days
 
 output:
-  path: figures/omni_overview
+  path: ../figures/omni_overview
   formats:
     - "png"
     - "pdf"

@@ -21,7 +21,7 @@ website:
       - icon: github
         href: https://github.com/Beforerr/ids_spatial_evolution_juno
   sidebar:
-    contents: notebooks
+    contents: auto
 
 format:
   html: 
