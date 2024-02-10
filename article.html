@@ -146,9 +146,21 @@ window.Quarto = {
     <a class="nav-link" href="./_manuscript/index.html"> 
 <span class="menu-text">Manuscript</span></a>
   </li>  
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-presentation" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Presentation</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-presentation">    
+        <li>
+    <a class="dropdown-item" href="./presentations/AGU23_poster.html">
+ <span class="dropdown-text">AGU23 Poster</span></a>
+  </li>  
+    </ul>
+  </li>
 </ul>
           </div> <!-- /navcollapse -->
           <div class="quarto-navbar-tools">
+    <a href="https://github.com/Beforerr/ids_spatial_evolution_juno" title="" class="quarto-navigation-tool px-1" aria-label=""><i class="bi bi-github"></i></a>
 </div>
       </div> <!-- /container-fluid -->
     </nav>
@@ -298,28 +310,36 @@ window.Quarto = {
 </header>
 
 
-<section id="introduction" class="level1">
+<section id="introduction" class="level1 page-columns page-full">
 <h1>Introduction</h1>
 <p>Rapid variations in interplanetary magnetic fields, commonly recognized as solar wind magnetic discontinuities <span class="citation" data-cites="colburnDiscontinuitiesSolarWind1966">(<a href="#ref-colburnDiscontinuitiesSolarWind1966" role="doc-biblioref">Colburn and Sonett 1966</a>)</span>, embody localized transient rotations or jumps of the magnetic field. Considered important for efficient plasma heating, they carry the most intense currents found in the solar wind and obserrved throughout the heliosphere from inner heliosphere <span class="citation" data-cites="liuCategorizingMHDDiscontinuities2022">(<a href="#ref-liuCategorizingMHDDiscontinuities2022" role="doc-biblioref">Liu, Fu, Cao, Yu, et al. 2022</a>)</span> to the heliosheath <span class="citation" data-cites="burlagaCurrentSheetsHeliosheath2011">(<a href="#ref-burlagaCurrentSheetsHeliosheath2011" role="doc-biblioref">Burlaga and Ness 2011</a>)</span>. Theoretical models <span class="citation" data-cites="lerchePropagationMagneticDisturbances1975 medvedevDissipativeDynamicsCollisionless1997">(<a href="#ref-lerchePropagationMagneticDisturbances1975" role="doc-biblioref">Lerche 1975</a>; <a href="#ref-medvedevDissipativeDynamicsCollisionless1997" role="doc-biblioref">Medvedev et al. 1997</a>)</span> and MHD simulations <span class="citation" data-cites="grecoIntermittentMHDStructures2008 grecoStatisticalAnalysisDiscontinuities2009 yangFormationRotationalDiscontinuities2015">(<a href="#ref-grecoIntermittentMHDStructures2008" role="doc-biblioref">Greco et al. 2008</a>, <a href="#ref-grecoStatisticalAnalysisDiscontinuities2009" role="doc-biblioref">2009</a>; <a href="#ref-yangFormationRotationalDiscontinuities2015" role="doc-biblioref">Yang et al. 2015</a>)</span> suggest that the formation and destruction of discontinuities are closely related to the nonlinear dynamics of Alfvén waves and/or Alfvénic turbuluence. These nonlinear processes can create significant isolated disturbances to the otherwise adiabatic evolution of the solar wind flow (?Reference?) and host many processes, including magnetic reconnection (?Reference?) and Fermi acceleration of particles <span class="citation" data-cites="wentzelMotionMagneticDiscontinuities1964">(<a href="#ref-wentzelMotionMagneticDiscontinuities1964" role="doc-biblioref">Wentzel 1964</a>)</span>. Moreover, they contribute significantly to the magnetic fluctuation spectra <span class="citation" data-cites="borovskyContributionStrongDiscontinuities2010">(<a href="#ref-borovskyContributionStrongDiscontinuities2010" role="doc-biblioref">Borovsky 2010</a>)</span> and can affect space weather <span class="citation" data-cites="tsurutaniReviewInterplanetaryDiscontinuities2011">(<a href="#ref-tsurutaniReviewInterplanetaryDiscontinuities2011" role="doc-biblioref">Tsurutani et al. 2011</a>)</span>. Therefore, the study of the spatial evolution of solar wind discontinuities is important for understanding the dynamics of the solar wind and test the local generation mechanism of discontinuities. However, previous study of solar wind discontinuities evolution <span class="citation" data-cites="sodingRadialLatitudinalDependencies2001">(<a href="#ref-sodingRadialLatitudinalDependencies2001" role="doc-biblioref">Söding et al. 2001</a>)</span> in the outer heliosphere were rarely in conjunction with measurements closer to the Sun. Moreover, the intervals in their study spread over multiple solar cycles though they are selected during solar activity minimum. Thus it is presently unclear whether their frequency and properties are the result of solar variability or due to the natural evolution of the discontinuities during their propagation and interaction with the ambient solar wind.</p>
 <p>The goal of our paper is to investigate, statistically, discontinuities at different radial distance in the outer heliosphere to obtain a understanding of their formation and evolution. Our methodology involves integrating Juno measurements <span class="citation" data-cites="connerneyJunoMagneticField2017">(<a href="#ref-connerneyJunoMagneticField2017" role="doc-biblioref">Connerney et al. 2017</a>)</span> between <span class="math inline">\(1\)</span> and <span class="math inline">\(5\)</span> AU with those at <span class="math inline">\(1\)</span> AU to distinguish temporal effect and spatial variations by examining the discontinuity characteristics at two radial distances simultaneously.</p>
 <p>First, the missions, instruments and data used are listed. Then, we brieﬂy describe the method used to identify the discontinuities and the model used to estimate the plasma state at Juno location due to the lack of plasma data during its cruise phase. Finally, we present the results of the spatial evolution of the discontinuities with respect to their characteristics (spatial scales and current density), and discuss the implications of our findings.</p>
-<div id="fig-overview" class="quarto-layout-panel">
-<figure class="quarto-float quarto-float-fig figure">
-<div aria-describedby="fig-overview-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<div class="quarto-layout-row">
-<div class="quarto-layout-cell" style="flex-basis: 100.0%;justify-content: center;">
-<p><a href="figures/juno_orbit_white.png" class="lightbox" data-glightbox="description: .lightbox-desc-1" data-gallery="quarto-lightbox-gallery-1"><img src="figures/juno_orbit_white.png" class="img-fluid figure-img"></a></p>
+<div class="page-columns page-full">
+<div id="fig-overview" class="quarto-layout-panel page-columns page-full">
+<figure class="quarto-float quarto-float-fig figure page-columns page-full">
+<div aria-describedby="fig-overview-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca" class="page-columns page-full">
+<div class="quarto-layout-row column-screen-inset">
+<div class="quarto-layout-cell-subref quarto-layout-cell" data-ref-parent="fig-overview" style="flex-basis: 50.0%;justify-content: flex-start;">
+<div id="fig-orbit" class="quarto-figure quarto-figure-center quarto-float anchored">
+<figure class="quarto-float quarto-subfloat-fig figure">
+<div aria-describedby="fig-orbit-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<a href="figures/juno_orbit_white.png" class="lightbox" data-gallery="fig-overview" data-glightbox="description: .lightbox-desc-1"><img src="figures/juno_orbit_white.png" id="fig-orbit" class="img-fluid figure-img" style="width:85.0%" data-ref-parent="fig-overview"></a>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-subfloat-caption quarto-subfloat-fig" id="fig-orbit-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+(a)
+</figcaption>
+</figure>
 </div>
 </div>
-<div class="quarto-layout-row">
-<div class="quarto-layout-cell-subref quarto-layout-cell" data-ref-parent="fig-overview" style="flex-basis: 100.0%;justify-content: flex-start;">
+<div class="quarto-layout-cell-subref quarto-layout-cell" data-ref-parent="fig-overview" style="flex-basis: 50.0%;justify-content: flex-start;">
 <div id="fig-hg-loc-sunspot" class="quarto-figure quarto-figure-center quarto-float anchored">
 <figure class="quarto-float quarto-subfloat-fig figure">
 <div aria-describedby="fig-hg-loc-sunspot-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<a href="figures/juno-hg-loc_sunspot-number.png" class="lightbox" data-glightbox="description: .lightbox-desc-2" data-gallery="fig-overview"><img src="figures/juno-hg-loc_sunspot-number.png" id="fig-hg-loc-sunspot" class="img-fluid figure-img" data-ref-parent="fig-overview"></a>
+<a href="figures/juno-hg-loc_sunspot-number.png" class="lightbox" data-gallery="fig-overview" data-glightbox="description: .lightbox-desc-2"><img src="figures/juno-hg-loc_sunspot-number.png" id="fig-hg-loc-sunspot" class="img-fluid figure-img" data-ref-parent="fig-overview"></a>
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-subfloat-caption quarto-subfloat-fig" id="fig-hg-loc-sunspot-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-(a)
+(b)
 </figcaption>
 </figure>
 </div>
@@ -330,6 +350,7 @@ window.Quarto = {
 Figure&nbsp;1: Juno orbit, its longitudinal difference with Earth &amp; STEREO missions and sunspot number during its cruise phase
 </figcaption>
 </figure>
+</div>
 </div>
 </section>
 <section id="dataset-models-and-methods" class="level1">
@@ -417,20 +438,20 @@ Table&nbsp;1: Missions info
 <div id="fig-overview" class="quarto-figure quarto-figure-center quarto-float anchored">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-overview-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<a href="figures/omni_overview.png" class="lightbox" data-glightbox="description: .lightbox-desc-3" data-gallery="quarto-lightbox-gallery-3"><img src="figures/omni_overview.png" class="img-fluid figure-img"></a>
+<a href="figures/omni_overview.png" class="lightbox" data-gallery="quarto-lightbox-gallery-3" data-glightbox="description: .lightbox-desc-3"><img src="figures/omni_overview.png" class="img-fluid figure-img"></a>
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-overview-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figure&nbsp;2: Near-Earth’s and STEREO-A solar wind plasma data during JUNO cruise phase
 </figcaption>
 </figure>
 </div>
-<p>The solar wind plasma state, as evidenced by the sunspot number (referenced in <a href="#fig-hg-loc-sunspot" class="quarto-xref">Figure&nbsp;2 (a)</a> and <a href="#fig-overview" class="quarto-xref">Figure&nbsp;2</a>), plays a crucial role in understanding the dynamics of discontinuities. During the initial phase of the JUNO mission, the sunspot number reached its peak, indicating a period of heightened solar activity. However, by the end of the mission’s cruise phase, there was a significant decline in solar activity. This variation underscores the importance of calibrating the discontinuity properties in relation to solar activity levels to account for temporal fluctuations.</p>
-<p>Furthermore, an analysis of <a href="#fig-hg-loc-sunspot" class="quarto-xref">Figure&nbsp;2 (a)</a> reveals the significance of the heliographic longitudinal difference between the Juno mission and Near-Earth missions (such as Wind and ARTEMIS) as well as STEREO-A missions. This longitudinal discrepancy ensures comprehensive coverage of the plasma en route to Juno. Specifically, when there is a substantial longitudinal difference between Juno and Earth, the difference between Juno and STEREO-A tends to be minimal, and vice versa. This relationship facilitates an extensive observation network for the plasma traveling towards Juno.</p>
+<p>The solar wind plasma state, as evidenced by the sunspot number (referenced in <a href="#fig-hg-loc-sunspot" class="quarto-xref">Figure&nbsp;2 (b)</a> and <a href="#fig-overview" class="quarto-xref">Figure&nbsp;2</a>), plays a crucial role in understanding the dynamics of discontinuities. During the initial phase of the JUNO mission, the sunspot number reached its peak, indicating a period of heightened solar activity. However, by the end of the mission’s cruise phase, there was a significant decline in solar activity. This variation underscores the importance of calibrating the discontinuity properties in relation to solar activity levels to account for temporal fluctuations.</p>
+<p>Furthermore, an analysis of <a href="#fig-hg-loc-sunspot" class="quarto-xref">Figure&nbsp;2 (b)</a> reveals the significance of the heliographic longitudinal difference between the Juno mission and Near-Earth missions (such as Wind and ARTEMIS) as well as STEREO-A missions. This longitudinal discrepancy ensures comprehensive coverage of the plasma en route to Juno. Specifically, when there is a substantial longitudinal difference between Juno and Earth, the difference between Juno and STEREO-A tends to be minimal, and vice versa. This relationship facilitates an extensive observation network for the plasma traveling towards Juno.</p>
 <p>June measurements do not include plasma characteristics, and to estimate discontinuity spatial scale (thicknesses) we will use solar wind speed obtained from the model of solar wind propagation. The hourly solar wind model data from the Two-Dimensional Outer Heliosphere Solar Wind Modeling (MSWIM2D) <span class="citation" data-cites="keebler2022">(<a href="#ref-keebler2022" role="doc-biblioref"><strong>keebler2022?</strong></a>)</span> will be employed to determine the ion bulk velocity <span class="math inline">\(v\)</span> and plasma density <span class="math inline">\(n\)</span> at the location of the Juno mission. Utilizing the BATSRUS MHD solver, this model is capable of simulating the propagation of the solar wind from 1 to 75 astronomical units (AU) in the ecliptic plane, effectively encompassing the region of interest for our study. <a href="#fig-model" class="quarto-xref">Figure&nbsp;3</a> shows comparison of magnetic field magnitudes obtained from MSWIM2D and measured by Juno.</p>
 <div id="fig-model" class="quarto-figure quarto-figure-center quarto-float anchored">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-model-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<a href="figures/model/juno_model_validation_full.png" class="lightbox" data-glightbox="description: .lightbox-desc-4" data-gallery="quarto-lightbox-gallery-4"><img src="figures/model/juno_model_validation_full.png" class="img-fluid figure-img"></a>
+<a href="figures/model/juno_model_validation_full.png" class="lightbox" data-gallery="quarto-lightbox-gallery-4" data-glightbox="description: .lightbox-desc-4"><img src="figures/model/juno_model_validation_full.png" class="img-fluid figure-img"></a>
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-model-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figure&nbsp;3: Model validation
@@ -446,7 +467,7 @@ Figure&nbsp;3: Model validation
 <div id="fig-examples" class="quarto-figure quarto-figure-center quarto-float anchored">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-examples-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<a href="figures/fig_examples.png" class="lightbox" data-glightbox="description: .lightbox-desc-5" data-gallery="quarto-lightbox-gallery-5"><img src="figures/fig_examples.png" class="img-fluid figure-img"></a>
+<a href="figures/fig_examples.png" class="lightbox" data-gallery="quarto-lightbox-gallery-5" data-glightbox="description: .lightbox-desc-5"><img src="figures/fig_examples.png" class="img-fluid figure-img"></a>
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-examples-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figure&nbsp;4: Examples of IDs from ARTEMIS, STEREO, and Wind
@@ -472,7 +493,7 @@ Note
 <div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: flex-start;">
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><a href="images/jgra21162-fig-0009.png" class="lightbox" data-glightbox="description: .lightbox-desc-6" data-gallery="quarto-lightbox-gallery-6" title="Current sheets in the heliosheath: Voyager 1, 2009"><img src="images/jgra21162-fig-0009.png" class="img-fluid figure-img" alt="Hodograms produced by means of a minimum variance analysis for the current sheets associated with the sector boundaries in Figures 8 and 10. (b, d, and f) The value of the component of B along the minimum variance direction (Bm) as a function of time, N. (a, c, and e) The components of B along the intermediate variance direction (Bi) and maximum variance direction (BM)."></a></p>
+<p><a href="images/jgra21162-fig-0009.png" class="lightbox" data-gallery="quarto-lightbox-gallery-6" data-glightbox="description: .lightbox-desc-6" title="Current sheets in the heliosheath: Voyager 1, 2009"><img src="images/jgra21162-fig-0009.png" class="img-fluid figure-img" alt="Hodograms produced by means of a minimum variance analysis for the current sheets associated with the sector boundaries in Figures 8 and 10. (b, d, and f) The value of the component of B along the minimum variance direction (Bm) as a function of time, N. (a, c, and e) The components of B along the intermediate variance direction (Bi) and maximum variance direction (BM)."></a></p>
 <figcaption>Current sheets in the heliosheath: Voyager 1, 2009</figcaption>
 </figure>
 </div>
@@ -480,7 +501,7 @@ Note
 <div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: flex-start;">
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><a href="images/jgra57047-fig-0002-m.jpg" class="lightbox" data-glightbox="description: .lightbox-desc-7" data-gallery="quarto-lightbox-gallery-7" title="A rotational discontinuity (RD) detected at 0.126&nbsp;AU"><img src="images/jgra57047-fig-0002-m.jpg" class="img-fluid figure-img" alt="The properties of a rotational discontinuity (RD) detected at 0.126&nbsp;AU on 28 January 2020. (a) The magnetic field magnitude and three components in Radial‐Tangential‐Normal (RTN) coordinate system, (b) the magnetic field in local magnetic normal (LMN) coordinate system, (c and d) the proton velocity in RTN and LMN coordinate systems, (e) the proton density, (f) the proton thermal pressure, the magnetic pressure and the sum, (g) the tangential components of the electric field in LMN coordinate system in the RD rest frame, (h) the position, orientation, and motion of the RD, (i–k) the distributions of BL, JM, and J&nbsp;·&nbsp;E across the RD, (l and m) the jump conditions across the RD. In (h), the cyan plane and arrow represent the RD and its motion vector, and the yellow curve shows the PSP orbit. In (j), both the colors and the curve correspond to the values of JM, and two vertical dashed lines indicate the area of $\vert {J}_{M}\vert > \frac{1}{3}\text{max}\left(\vert {J}_{M}\vert \right)$ whose width is defined as the half thickness of the discontinuity. In (m), the solid lines present the actual upstream and downstream velocities, while the dashed lines show the theoretical downstream velocity to satisfy the Walén relation."></a></p>
+<p><a href="images/jgra57047-fig-0002-m.jpg" class="lightbox" data-gallery="quarto-lightbox-gallery-7" data-glightbox="description: .lightbox-desc-7" title="A rotational discontinuity (RD) detected at 0.126&nbsp;AU"><img src="images/jgra57047-fig-0002-m.jpg" class="img-fluid figure-img" alt="The properties of a rotational discontinuity (RD) detected at 0.126&nbsp;AU on 28 January 2020. (a) The magnetic field magnitude and three components in Radial‐Tangential‐Normal (RTN) coordinate system, (b) the magnetic field in local magnetic normal (LMN) coordinate system, (c and d) the proton velocity in RTN and LMN coordinate systems, (e) the proton density, (f) the proton thermal pressure, the magnetic pressure and the sum, (g) the tangential components of the electric field in LMN coordinate system in the RD rest frame, (h) the position, orientation, and motion of the RD, (i–k) the distributions of BL, JM, and J&nbsp;·&nbsp;E across the RD, (l and m) the jump conditions across the RD. In (h), the cyan plane and arrow represent the RD and its motion vector, and the yellow curve shows the PSP orbit. In (j), both the colors and the curve correspond to the values of JM, and two vertical dashed lines indicate the area of $\vert {J}_{M}\vert > \frac{1}{3}\text{max}\left(\vert {J}_{M}\vert \right)$ whose width is defined as the half thickness of the discontinuity. In (m), the solid lines present the actual upstream and downstream velocities, while the dashed lines show the theoretical downstream velocity to satisfy the Walén relation."></a></p>
 <figcaption>A rotational discontinuity (RD) detected at 0.126&nbsp;AU</figcaption>
 </figure>
 </div>
@@ -526,7 +547,7 @@ Figure&nbsp;5: Discontinuities examples across the heliosphere
 <div id="fig-rate" class="quarto-figure quarto-figure-center quarto-float anchored">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-rate-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<a href="figures/ocr/ocr_time_cleaned.png" class="lightbox" data-glightbox="description: .lightbox-desc-8" data-gallery="quarto-lightbox-gallery-8"><img src="figures/ocr/ocr_time_cleaned.png" class="img-fluid figure-img" style="width:45.0%"></a>
+<a href="figures/ocr/ocr_time_cleaned.png" class="lightbox" data-gallery="quarto-lightbox-gallery-8" data-glightbox="description: .lightbox-desc-8"><img src="figures/ocr/ocr_time_cleaned.png" class="img-fluid figure-img" style="width:45.0%"></a>
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-rate-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figure&nbsp;6: The number of discontinuities measured by Juno per day coincides with the discontinuity number measured by STEREO, WIND, and ARTEMIS, when Juno is around <span class="math inline">\(1\)</span> AU. This number (occurrence rate) decreases with distance (with time after <span class="math inline">\(\sim 2013\)</span>), as Juno moves from <span class="math inline">\(1\)</span> AU to <span class="math inline">\(5\)</span> AU. We will use the similar comparison for discontinuity characteristics and occurrence rate derived for PSP and Juno. The radial distance of Juno for 2011-2015 is shown in <a href="#fig-model" class="quarto-xref">Figure&nbsp;3</a>.
@@ -584,7 +605,7 @@ Figure&nbsp;6: The number of discontinuities measured by Juno per day coincides 
 <div id="fig-tsEffect" class="quarto-figure quarto-figure-center quarto-float anchored">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-tsEffect-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<a href="figures/ts_effect.png" class="lightbox" data-glightbox="description: .lightbox-desc-14" data-gallery="quarto-lightbox-gallery-14"><img src="figures/ts_effect.png" class="img-fluid figure-img"></a>
+<a href="figures/ts_effect.png" class="lightbox" data-gallery="quarto-lightbox-gallery-14" data-glightbox="description: .lightbox-desc-14"><img src="figures/ts_effect.png" class="img-fluid figure-img"></a>
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-tsEffect-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figure&nbsp;7: Effect of the time resolution on the discontinuity properties
@@ -594,8 +615,8 @@ Figure&nbsp;7: Effect of the time resolution on the discontinuity properties
 
 
 <div class="hidden" aria-hidden="true">
-<span class="glightbox-desc lightbox-desc-1">Figure&nbsp;1: Juno orbit, its longitudinal difference with Earth &amp; STEREO missions and sunspot number during its cruise phase</span>
-<span class="glightbox-desc lightbox-desc-2">Figure&nbsp;1&nbsp;(a): </span>
+<span class="glightbox-desc lightbox-desc-1">Figure&nbsp;1&nbsp;(a): </span>
+<span class="glightbox-desc lightbox-desc-2">Figure&nbsp;1&nbsp;(b): </span>
 <span class="glightbox-desc lightbox-desc-3">Figure&nbsp;2: Near-Earth’s and STEREO-A solar wind plasma data during JUNO cruise phase</span>
 <span class="glightbox-desc lightbox-desc-4">Figure&nbsp;3: Model validation</span>
 <span class="glightbox-desc lightbox-desc-5">Figure&nbsp;4: Examples of IDs from ARTEMIS, STEREO, and Wind</span>
@@ -639,7 +660,7 @@ Liu, Y. Y., H. S. Fu, J. B. Cao, Y. Yu, C. M. Liu, Z. Wang, Z. Z. Guo, and R. J.
 Medvedev, M. V., P. H. Diamond, V. I. Shevchenko, and V. L. Galinsky. 1997. <span>“<span>Dissipative Dynamics of Collisionless Nonlinear Alfv<span>\</span>’en Wave Trains</span>.”</span> <em>Physical Review Letters</em> 78 (26): 4934–37. <a href="https://doi.org/10.1103/PhysRevLett.78.4934">https://doi.org/10.1103/PhysRevLett.78.4934</a>.
 </div>
 <div id="ref-sodingRadialLatitudinalDependencies2001" class="csl-entry" role="listitem">
-Söding, A., F. M. Neubauer, B. T. Tsurutani, N. F. Ness, and R. P. Lepping. 2001. <span>“Radial and Latitudinal Dependencies of Discontinuities in the Solar Wind Between 0.3 and 19 <span>AU</span> and -80<span></span> and +10<span></span>.”</span> <em>Annales Geophysicae</em> 19 (7): 667–80. <a href="https://doi.org/10.5194/angeo-19-667-2001">https://doi.org/10.5194/angeo-19-667-2001</a>.
+Söding, A., F. M. Neubauer, B. T. Tsurutani, N. F. Ness, and R. P. Lepping. 2001. <span>“Radial and Latitudinal Dependencies of Discontinuities in the Solar Wind Between 0.3 and 19 <span>AU</span> and -80<span><span class="math inline">\(^\circ\)</span></span> and +10<span><span class="math inline">\(^\circ\)</span></span>.”</span> <em>Annales Geophysicae</em> 19 (7): 667–80. <a href="https://doi.org/10.5194/angeo-19-667-2001">https://doi.org/10.5194/angeo-19-667-2001</a>.
 </div>
 <div id="ref-sonnerupMagnetopauseStructureAttitude1967" class="csl-entry" role="listitem">
 Sonnerup, B. U. Ö, and L. J. Cahill Jr. 1967. <span>“Magnetopause Structure and Attitude from <span>Explorer</span> 12 Observations.”</span> <em>Journal of Geophysical Research (1896-1977)</em> 72 (1): 171–83. <a href="https://doi.org/10.1029/JZ072i001p00171">https://doi.org/10.1029/JZ072i001p00171</a>.
@@ -1048,7 +1069,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 });
 </script>
 </div> <!-- /content -->
-<script>var lightboxQuarto = GLightbox({"descPosition":"bottom","selector":".lightbox","openEffect":"zoom","closeEffect":"zoom","loop":false});
+<script>var lightboxQuarto = GLightbox({"selector":".lightbox","descPosition":"bottom","loop":false,"closeEffect":"zoom","openEffect":"zoom"});
 window.onload = () => {
   lightboxQuarto.on('slide_before_load', (data) => {
     const { slideIndex, slideNode, slideConfig, player, trigger } = data;
