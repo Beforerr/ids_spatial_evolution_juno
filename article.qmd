@@ -33,8 +33,6 @@ code-links:
 abstract: We present a study of the spatial evolution of solar wind discontinuities in the outer heliosphere using data from the Juno spacecraft during its cruise phase. We identify and analyze the properties of the discontinuities at different radial distances from the Sun. By differentiating the temporal effect (correlated with solar activity) and spatial variations (correlated with radial distance), we find that (1) the normalized occurrence rate of IDs drops with the radial distance from the Sun, following a $1/r$ law; (2) The thickness of IDs increases with the radial distance from the Sun, but after normalization to the ion inertial length, the thickness of IDs decreases; (3) The current intensity of IDs decreases with the radial distance from the Sun, but after normalization to the Alfven current, the current intensity of IDs increases.
 ---
 
-
-
 # Introduction
 
 Rapid variations in interplanetary magnetic fields, commonly recognized as solar wind magnetic discontinuities [@colburnDiscontinuitiesSolarWind1966], embody localized transient rotations or jumps of the magnetic field. Considered important for efficient plasma heating, they carry the most intense currents found in the solar wind and obserrved throughout the heliosphere from inner heliosphere [@liuCategorizingMHDDiscontinuities2022] to the heliosheath [@burlagaCurrentSheetsHeliosheath2011]. Theoretical models [@lerchePropagationMagneticDisturbances1975; @medvedevDissipativeDynamicsCollisionless1997] and MHD simulations [@grecoIntermittentMHDStructures2008; @grecoStatisticalAnalysisDiscontinuities2009; @yangFormationRotationalDiscontinuities2015] suggest that the formation and destruction of discontinuities are closely related to the nonlinear dynamics of Alfvén waves and/or Alfvénic turbuluence. These nonlinear processes can create significant isolated disturbances to the otherwise adiabatic evolution of the solar wind flow (?Reference?) and host many processes, including magnetic reconnection (?Reference?) and Fermi acceleration of particles [@wentzelMotionMagneticDiscontinuities1964]. Moreover, they contribute significantly to the magnetic fluctuation spectra [@borovskyContributionStrongDiscontinuities2010] and can affect space weather [@tsurutaniReviewInterplanetaryDiscontinuities2011]. Therefore, the study of the spatial evolution of solar wind discontinuities is important for understanding the dynamics of the solar wind and test the local generation mechanism of discontinuities. However, previous study of solar wind discontinuities evolution [@sodingRadialLatitudinalDependencies2001] in the outer heliosphere were rarely in conjunction with measurements closer to the Sun. Moreover, the intervals in their study spread over multiple solar cycles though they are selected during solar activity minimum. Thus it is presently unclear whether their frequency and properties are the result of solar variability or due to the natural evolution of the discontinuities during their propagation and interaction with the ambient solar wind.
@@ -44,15 +42,20 @@ The goal of our paper is to investigate, statistically, discontinuities at diffe
 First, the missions, instruments and data used are listed. Then, we brieﬂy describe the method used to identify the discontinuities and the model used to estimate the plasma state at Juno location due to the lack of plasma data during its cruise phase. Finally, we present the results of the spatial evolution of the discontinuities with respect to their characteristics (spatial scales and current density), and discuss the implications of our findings.
 
 :::: column-screen-inset
-::: {#fig-overview layout-nrow=1}
-![](figures/juno_orbit_white){#fig-orbit width=85%}
+::: {#fig-overview}
 
-![](figures/juno-hg-loc_sunspot-number){#fig-hg-loc-sunspot}
+<!-- ![](figures/juno_orbit_white){#fig-orbit width=85%} -->
 
-Juno orbit, its longitudinal difference with Earth & STEREO missions and sunspot number during its cruise phase
+<!-- ![](figures/juno-hg-loc_sunspot-number){#fig-hg-loc-sunspot} -->
+
+![](figures/fig_overview)
+
+Juno orbit, its longitudinal difference with Earth & STEREO missions, sunspot number during its cruise phase and near-Earth’s and STEREO-A solar wind plasma data during JUNO cruise phase
 
 :::
 ::::
+
+
 
 # Dataset, models, and methods
 
@@ -62,7 +65,7 @@ Juno orbit, its longitudinal difference with Earth & STEREO missions and sunspot
 
 In this study we use datasets of four missions measuring solar wind magnetic field and plasma. Synergistic observations of these missions should advance our understanding of the solar wind discontinuities, their radial distribution and evolution [@velliUnderstandingOriginsHeliosphere2020].
 
-![Near-Earth's and STEREO-A solar wind plasma data during JUNO cruise phase](figures/omni_overview){#fig-overview}
+<!-- ![Near-Earth's and STEREO-A solar wind plasma data during JUNO cruise phase](figures/omni_overview){#fig-overview} -->
 
 The solar wind plasma state, as evidenced by the sunspot number (referenced in @fig-hg-loc-sunspot and @fig-overview), plays a crucial role in understanding the dynamics of discontinuities. During the initial phase of the JUNO mission, the sunspot number reached its peak, indicating a period of heightened solar activity. However, by the end of the mission's cruise phase, there was a significant decline in solar activity. This variation underscores the importance of calibrating the discontinuity properties in relation to solar activity levels to account for temporal fluctuations.
 
