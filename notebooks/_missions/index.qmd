@@ -9,3 +9,9 @@ This module includes helpful functions for working with mission (magnetic field 
 - [Wind](wind/index.ipynb)
 - [THEMIS/ARTEMIS](themis/index.ipynb)
 - [STEREO](stereo/index.ipynb)
+
+
+Note: `speasy` and `pyspedas` are not suitable for processing large datasets, although they are useful for downloading and processing small datasets.
+
+- `speasy` cache file and data are not persistent
+- `pyspedas` loads the entire dataset into memory

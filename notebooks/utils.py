@@ -1,56 +1,49 @@
-from pydantic import constr, BaseModel, root_validator
-from datetime import datetime, date
-from pytplot import tplot, get_data
+def get_and_process_data(
+    mag_dataset, mag_parameters, plasma_dataset, plasma_parameters, timerange, tau, ts,
+    provider = 'archive/local'
+):
+    # define variables
+    mag_vars = Variables(
+        provider = provider,
+        dataset=mag_dataset,
+        parameters=mag_parameters,
+        timerange=timerange,
+    ).retrieve_data()
 
-from xarray import DataArray
+    plasma_vars = Variables(
+        provider = provider,
+        dataset=plasma_dataset,
+        parameters=plasma_parameters,
+        timerange=timerange,
+    ).retrieve_data()
 
-class TplotConfig(BaseModel):
-    tvar: str = None
-    trans: list[str] = None
-    
-class ProcessConfig(BaseModel):
-    tvar: str = None
-    trans: list[str] = list()
+    # get column names
+    bcols = mag_vars.data[0].columns
+    density_col = plasma_vars.data[0].columns[0]
+    vec_cols = plasma_vars.data[1].columns
+    temperature_col = plasma_vars.data[2].columns[0]
 
+    # get data
+    mag_data = mag_vars.to_polars()
+    plasma_data = (
+        plasma_vars.to_polars()
+        .with_columns(plasma_speed=pl_norm(vec_cols))
+        .rename({density_col: "plasma_density"})
+    )
+    # process temperature data
+    if plasma_vars.data[2].unit == "km/s":
+        plasma_data = plasma_data.pipe(df_thermal_spd2temp, temperature_col)
+    else:
+        plasma_data = plasma_data.rename({temperature_col: "plasma_temperature"})
 
-class PanelConfig(BaseModel):
-
-    timerange: list[datetime | date] = None
-    
-    id: str = None
-    name: str = None
-    units: str = None
-    
-    satellite: constr(to_lower=True)
-    instrument: constr(to_lower=True)
-    datatype: str = None
-    probe: str = None
-    
-    process: ProcessConfig = None
-    tplot: TplotConfig = None
-
-
-class OutputConfig(BaseModel):
-    path : str = None
-    filename: str = None
-    
-    formats: list[str] = list()
-    display: bool = False
-
-
-class Config(BaseModel):
-    panels: list[PanelConfig]
-    timerange: list[datetime | date] = None
-    output: OutputConfig = None
-    backend: str = None
-    
-    @root_validator(pre=True)
-    def set_default_timerange(cls, values):
-        timerange = values.get('timerange', None)
-        panels = values.get('panels', [])
-        
-        if timerange:
-            for panel in panels:
-                if not panel.get('timerange'):
-                    panel['timerange'] = timerange
-        return values
+    return IDsDataset(
+        mag_data=mag_data.pipe(resample, every=ts),
+        plasma_data=plasma_data,
+        tau=tau,
+        ts=ts,
+        bcols=bcols,
+        vec_cols=vec_cols,
+        density_col="plasma_density",
+        speed_col="plasma_speed",
+        temperature_col="plasma_temperature",
+    ).find_events(return_best_fit=False).update_candidates_with_plasma_data()

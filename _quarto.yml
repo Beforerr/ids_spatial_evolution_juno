@@ -17,6 +17,8 @@ website:
         menu: 
           - href: presentations/AGU23_poster.qmd
             text: AGU23 Poster
+          - href: presentations/SPARTHRB_Zijin_202310.pptx
+            text: SPARTHRB 2023 Fall
     tools:
       - icon: github
         href: https://github.com/Beforerr/ids_spatial_evolution_juno
