@@ -52,3 +52,9 @@ sync-overleaf:
 
 publish-poster:
   Rscript -e 'pagedown::chrome_print("notebooks/manuscripts/.AGU23_poster.rmd")'
+
+download-data:
+   #!/usr/bin/env bash
+   mkdir -p ~/data/spdf && cd ~/data/spdf
+   echo {2011..2016} | xargs -n 1 -P 6 -I {} wget -nc -r -np -nH -R "index.html*" "https://spdf.gsfc.nasa.gov/pub/data/themis/thb/l2/fgm/{}/"
+   echo {2011..2016} | xargs -n 1 -P 6 -I {} wget -nc -r -np -nH -R "index.html*" "https://spdf.gsfc.nasa.gov/pub/data/themis/thb/l2/mom/{}/"
