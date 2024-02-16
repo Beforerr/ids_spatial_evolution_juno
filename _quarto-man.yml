@@ -17,6 +17,8 @@ format:
     bibliography:
       - files/bibliography/full_anton.bib
       - files/bibliography/addon_anton.bib
+    # lof: true
+    # lot: true
 
 citation:
   container-title: "JGR: Space Physics"
