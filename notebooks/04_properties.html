@@ -475,7 +475,7 @@ R[write to console]: The following objects are masked from ‘package:base’:
 <span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a><span class="bu">format</span> <span class="op">=</span> <span class="st">"arrow"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div id="cell-8" class="cell" data-execution_count="5">
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>parameters <span class="op">=</span> [<span class="st">'j0_k'</span>, <span class="st">'j0_k_norm'</span>,  <span class="st">'L_k_fit'</span>, <span class="st">'L_k'</span>, <span class="st">'L_k_fit_norm'</span>, <span class="st">'L_k_norm'</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>parameters <span class="op">=</span> [<span class="st">'j0_k'</span>, <span class="st">'j0_k_norm'</span>,  <span class="st">'L_k'</span>, <span class="st">'L_k_norm'</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div id="cell-9" class="cell" data-execution_count="6">
 <div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> load_events(name: <span class="bu">str</span>, ts: <span class="bu">float</span>, tau: <span class="bu">float</span>, method <span class="op">=</span><span class="st">'derivative'</span>) <span class="op">-&gt;</span> pl.DataFrame:</span>
@@ -500,12 +500,13 @@ R[write to console]: The following objects are masked from ‘package:base’:
 <span id="cb7-20"><a href="#cb7-20" aria-hidden="true" tabindex="-1"></a>wind_df <span class="op">=</span> load_events(<span class="st">'Wind'</span>, <span class="dv">1</span>, <span class="dv">60</span>, <span class="st">'fit'</span>)</span>
 <span id="cb7-21"><a href="#cb7-21" aria-hidden="true" tabindex="-1"></a>sta_df <span class="op">=</span> load_events(<span class="st">'STA'</span>, <span class="dv">1</span>, <span class="dv">60</span>, <span class="st">'fit'</span>)</span>
 <span id="cb7-22"><a href="#cb7-22" aria-hidden="true" tabindex="-1"></a>jno_df <span class="op">=</span> load_events(<span class="st">'JNO'</span>, <span class="dv">1</span>, <span class="dv">60</span>, <span class="st">'fit'</span>)</span>
-<span id="cb7-23"><a href="#cb7-23" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-24"><a href="#cb7-24" aria-hidden="true" tabindex="-1"></a>other_events <span class="op">=</span> pl.concat([wind_df, sta_df], how<span class="op">=</span><span class="st">'diagonal'</span>)</span>
-<span id="cb7-25"><a href="#cb7-25" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-26"><a href="#cb7-26" aria-hidden="true" tabindex="-1"></a>logger.info(<span class="ss">f"Columns: </span><span class="sc">{</span>other_events<span class="sc">.</span>columns<span class="sc">}</span><span class="ss">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb7-23"><a href="#cb7-23" aria-hidden="true" tabindex="-1"></a>jno_df_tau_300 <span class="op">=</span> load_events(<span class="st">'JNO'</span>, <span class="dv">1</span>, <span class="dv">300</span>, <span class="st">'fit'</span>)</span>
+<span id="cb7-24"><a href="#cb7-24" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-25"><a href="#cb7-25" aria-hidden="true" tabindex="-1"></a>other_events <span class="op">=</span> pl.concat([wind_df, sta_df], how<span class="op">=</span><span class="st">'diagonal'</span>)</span>
+<span id="cb7-26"><a href="#cb7-26" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-27"><a href="#cb7-27" aria-hidden="true" tabindex="-1"></a>logger.info(<span class="ss">f"Columns: </span><span class="sc">{</span>jno_df<span class="sc">.</span>columns<span class="sc">}</span><span class="ss">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
-<pre><code>2024-02-16 17:56:54.802 | INFO     | __main__:&lt;module&gt;:26 - Columns: ['time', 'tstart', 'tstop', 'd_tstart', 'd_tstop', 'd_time', 'time_before', 'time_after', 'duration', 'count', 'B_std', 'B_mean', 'dB_vec', 'index_diff', 'index_std', 'index_fluctuation', 'B.after', 'B.before', 'b_mag', 'b_n', 'bn_over_b', 'd_star', 'db_mag', 'db_over_b', 'db_over_b_max', 'fit.stat.chisqr', 'fit.stat.rsquared', 'fit.vars.amplitude', 'fit.vars.c', 'fit.vars.sigma', 'rotation_angle', 'dB_x', 'dB_y', 'dB_z', 'dB_lmn_x', 'dB_lmn_y', 'dB_lmn_z', 'k_x', 'k_y', 'k_z', 'Vl_x', 'Vl_y', 'Vl_z', 'Vn_x', 'Vn_y', 'Vn_z', 'plasma_density', 'VX (GSM)', 'VY (GSM)', 'VZ (GSM)', 'SW Vth', 'plasma_speed', 'plasma_temperature', 'VX (GSM)_before', 'VY (GSM)_before', 'VZ (GSM)_before', 'n.before', 'v.ion.before', 'T.before', 'VX (GSM)_after', 'VY (GSM)_after', 'VZ (GSM)_after', 'n.after', 'v.ion.after', 'T.after', 'v_l', 'v_n', 'v_k', 'v_mn', 'L_k_fit', 'L_n', 'L_mn', 'L_k', 'j0_mn', 'j0_k', 'ion_inertial_length', 'Alfven_speed', 'j_Alfven', 'L_k_norm', 'L_k_fit_norm', 'L_n_norm', 'L_mn_norm', 'j0_mn_norm', 'j0_k_norm', 'v.ion.before.l', 'v.ion.after.l', 'B.vec.before.l', 'B.vec.before.m', 'B.vec.before.n', 'B.vec.after.l', 'B.vec.after.m', 'B.vec.after.n', 'v.Alfven.before', 'v.Alfven.after', 'v.Alfven.before.l', 'v.Alfven.after.l', 'n.change', 'v.ion.change', 'v.ion.change.l', 'T.change', 'B.change', 'v.Alfven.change', 'v.Alfven.change.l', 'sat', 'ts', 'method', 'ts_method', 'label', 'proton_number_density', 'proton_Vr_RTN', 'proton_Vt_RTN', 'proton_Vn_RTN', 'proton_Vr_RTN_before', 'proton_Vt_RTN_before', 'proton_Vn_RTN_before', 'proton_Vr_RTN_after', 'proton_Vt_RTN_after', 'proton_Vn_RTN_after']</code></pre>
+<pre><code>2024-02-17 15:02:36.839 | INFO     | __main__:&lt;module&gt;:27 - Columns: ['time', 'tstart', 'tstop', 'd_tstart', 'd_tstop', 'd_time', 'time_before', 'time_after', 'count', 'B_std', 'B_mean', 'dB_vec', 'index_diff', 'index_std', 'index_fluctuation', 'B.after', 'B.before', 'b_mag', 'b_n', 'bn_over_b', 'd_star', 'db_mag', 'db_over_b', 'db_over_b_max', 'fit.stat.chisqr', 'fit.stat.rsquared', 'fit.vars.amplitude', 'fit.vars.c', 'fit.vars.sigma', 'rotation_angle', 'dB_x', 'dB_y', 'dB_z', 'dB_lmn_x', 'dB_lmn_y', 'dB_lmn_z', 'k_x', 'k_y', 'k_z', 'Vl_x', 'Vl_y', 'Vl_z', 'Vn_x', 'Vn_y', 'Vn_z', 'duration', 'radial_distance', 'plasma_density', 'plasma_temperature', 'model_b_r', 'model_b_t', 'model_b_n', 'v_x', 'v_y', 'v_z', 'plasma_speed', 'B_background_x', 'B_background_y', 'B_background_z', 'v_x_before', 'v_y_before', 'v_z_before', 'n.before', 'v.ion.before', 'plasma_temperature_before', 'v_x_after', 'v_y_after', 'v_z_after', 'n.after', 'v.ion.after', 'plasma_temperature_after', 'v_l', 'v_n', 'v_k', 'v_mn', 'L_k', 'j0_k', 'ion_inertial_length', 'Alfven_speed', 'j_Alfven', 'L_k_norm', 'j0_k_norm', 'v.ion.before.l', 'v.ion.after.l', 'B.vec.before.l', 'B.vec.before.m', 'B.vec.before.n', 'B.vec.after.l', 'B.vec.after.m', 'B.vec.after.n', 'v.Alfven.before', 'v.Alfven.after', 'v.Alfven.before.l', 'v.Alfven.after.l', 'n.change', 'v.ion.change', 'v.ion.change.l', 'B.change', 'v.Alfven.change', 'v.Alfven.change.l', 'sat', 'ts', 'method', 'ts_method', 'label']</code></pre>
 </div>
 </div>
 <p>Some extreme values are present in the data. We will remove them.</p>
@@ -520,7 +521,7 @@ R[write to console]: The following objects are masked from ‘package:base’:
 <span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb9-9"><a href="#cb9-9" aria-hidden="true" tabindex="-1"></a>check_candidates(jno_df)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
-<pre><code>2024-02-16 17:56:54.816 | INFO     | __main__:check_candidates:6 - ['time', 'tstart', 'tstop', 'd_tstart', 'd_tstop', 'd_time', 'time_before', 'time_after', 'duration', 'count', 'B_std', 'B_mean', 'dB_vec', 'index_diff', 'index_std', 'index_fluctuation', 'B.after', 'B.before', 'b_mag', 'b_n', 'bn_over_b', 'd_star', 'db_mag', 'db_over_b', 'db_over_b_max', 'fit.stat.chisqr', 'fit.stat.rsquared', 'fit.vars.amplitude', 'fit.vars.c', 'fit.vars.sigma', 'rotation_angle', 'dB_x', 'dB_y', 'dB_z', 'dB_lmn_x', 'dB_lmn_y', 'dB_lmn_z', 'k_x', 'k_y', 'k_z', 'Vl_x', 'Vl_y', 'Vl_z', 'Vn_x', 'Vn_y', 'Vn_z', 'radial_distance', 'plasma_density', 'plasma_temperature', 'model_b_r', 'model_b_t', 'model_b_n', 'v_x', 'v_y', 'v_z', 'plasma_speed', 'B_background_x', 'B_background_y', 'B_background_z', 'v_x_before', 'v_y_before', 'v_z_before', 'n.before', 'v.ion.before', 'T.before', 'v_x_after', 'v_y_after', 'v_z_after', 'n.after', 'v.ion.after', 'T.after', 'v_l', 'v_n', 'v_k', 'v_mn', 'L_k_fit', 'L_n', 'L_mn', 'L_k', 'j0_mn', 'j0_k', 'ion_inertial_length', 'Alfven_speed', 'j_Alfven', 'L_k_norm', 'L_k_fit_norm', 'L_n_norm', 'L_mn_norm', 'j0_mn_norm', 'j0_k_norm', 'v.ion.before.l', 'v.ion.after.l', 'B.vec.before.l', 'B.vec.before.m', 'B.vec.before.n', 'B.vec.after.l', 'B.vec.after.m', 'B.vec.after.n', 'v.Alfven.before', 'v.Alfven.after', 'v.Alfven.before.l', 'v.Alfven.after.l', 'n.change', 'v.ion.change', 'v.ion.change.l', 'T.change', 'B.change', 'v.Alfven.change', 'v.Alfven.change.l', 'sat', 'ts', 'method', 'ts_method', 'label']</code></pre>
+<pre><code>2024-02-17 15:02:36.853 | INFO     | __main__:check_candidates:6 - ['time', 'tstart', 'tstop', 'd_tstart', 'd_tstop', 'd_time', 'time_before', 'time_after', 'count', 'B_std', 'B_mean', 'dB_vec', 'index_diff', 'index_std', 'index_fluctuation', 'B.after', 'B.before', 'b_mag', 'b_n', 'bn_over_b', 'd_star', 'db_mag', 'db_over_b', 'db_over_b_max', 'fit.stat.chisqr', 'fit.stat.rsquared', 'fit.vars.amplitude', 'fit.vars.c', 'fit.vars.sigma', 'rotation_angle', 'dB_x', 'dB_y', 'dB_z', 'dB_lmn_x', 'dB_lmn_y', 'dB_lmn_z', 'k_x', 'k_y', 'k_z', 'Vl_x', 'Vl_y', 'Vl_z', 'Vn_x', 'Vn_y', 'Vn_z', 'duration', 'radial_distance', 'plasma_density', 'plasma_temperature', 'model_b_r', 'model_b_t', 'model_b_n', 'v_x', 'v_y', 'v_z', 'plasma_speed', 'B_background_x', 'B_background_y', 'B_background_z', 'v_x_before', 'v_y_before', 'v_z_before', 'n.before', 'v.ion.before', 'plasma_temperature_before', 'v_x_after', 'v_y_after', 'v_z_after', 'n.after', 'v.ion.after', 'plasma_temperature_after', 'v_l', 'v_n', 'v_k', 'v_mn', 'L_k', 'j0_k', 'ion_inertial_length', 'Alfven_speed', 'j_Alfven', 'L_k_norm', 'j0_k_norm', 'v.ion.before.l', 'v.ion.after.l', 'B.vec.before.l', 'B.vec.before.m', 'B.vec.before.n', 'B.vec.after.l', 'B.vec.after.m', 'B.vec.after.n', 'v.Alfven.before', 'v.Alfven.after', 'v.Alfven.before.l', 'v.Alfven.after.l', 'n.change', 'v.ion.change', 'v.ion.change.l', 'B.change', 'v.Alfven.change', 'v.Alfven.change.l', 'sat', 'ts', 'method', 'ts_method', 'label']</code></pre>
 </div>
 <div class="cell-output cell-output-display" data-execution_count="7">
 <div><style>
@@ -530,7 +531,7 @@ R[write to console]: The following objects are masked from ‘package:base’:
   white-space: pre-wrap;
 }
 </style>
-<small>shape: (9, 9)</small>
+<small>shape: (9, 7)</small>
 <table class="dataframe table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
 <thead>
 <tr class="header">
@@ -539,17 +540,13 @@ R[write to console]: The following objects are masked from ‘package:base’:
 <th data-quarto-table-cell-role="th">sat</th>
 <th data-quarto-table-cell-role="th">j0_k</th>
 <th data-quarto-table-cell-role="th">j0_k_norm</th>
-<th data-quarto-table-cell-role="th">L_k_fit</th>
 <th data-quarto-table-cell-role="th">L_k</th>
-<th data-quarto-table-cell-role="th">L_k_fit_norm</th>
 <th data-quarto-table-cell-role="th">L_k_norm</th>
 </tr>
 <tr class="odd">
 <th>str</th>
 <th>str</th>
 <th>str</th>
-<th>f64</th>
-<th>f64</th>
 <th>f64</th>
 <th>f64</th>
 <th>f64</th>
@@ -565,8 +562,6 @@ R[write to console]: The following objects are masked from ‘package:base’:
 <td>63143.0</td>
 <td>63143.0</td>
 <td>63143.0</td>
-<td>63143.0</td>
-<td>63143.0</td>
 </tr>
 <tr class="even">
 <td>"null_count"</td>
@@ -576,84 +571,68 @@ R[write to console]: The following objects are masked from ‘package:base’:
 <td>0.0</td>
 <td>0.0</td>
 <td>0.0</td>
-<td>0.0</td>
-<td>0.0</td>
 </tr>
 <tr class="odd">
 <td>"mean"</td>
 <td>"2013-05-14 11:…</td>
 <td>null</td>
-<td>82.27062</td>
-<td>4.421198</td>
-<td>13584.588436</td>
+<td>125.040783</td>
+<td>12.398706</td>
 <td>9410.339035</td>
-<td>66.485861</td>
 <td>45.121054</td>
 </tr>
 <tr class="even">
 <td>"std"</td>
 <td>null</td>
 <td>null</td>
-<td>14379.63164</td>
-<td>502.18201</td>
-<td>71124.942703</td>
+<td>12236.23217</td>
+<td>1077.446348</td>
 <td>5438.269571</td>
-<td>378.126838</td>
 <td>34.72957</td>
 </tr>
 <tr class="odd">
 <td>"min"</td>
 <td>"2011-08-25 16:…</td>
 <td>"JNO"</td>
-<td>0.000044</td>
-<td>0.000002</td>
-<td>0.000145</td>
+<td>0.000018</td>
+<td>0.000036</td>
 <td>1.187819</td>
-<td>0.000001</td>
 <td>0.001187</td>
 </tr>
 <tr class="even">
 <td>"25%"</td>
 <td>"2012-03-08 20:…</td>
 <td>null</td>
-<td>0.141089</td>
-<td>0.021349</td>
-<td>684.287668</td>
+<td>0.124872</td>
+<td>0.018557</td>
 <td>5123.132655</td>
-<td>2.892811</td>
 <td>20.526554</td>
 </tr>
 <tr class="odd">
 <td>"50%"</td>
 <td>"2013-03-05 15:…</td>
 <td>null</td>
-<td>0.326004</td>
-<td>0.051113</td>
-<td>1486.867028</td>
+<td>0.2963</td>
+<td>0.046239</td>
 <td>8643.437318</td>
-<td>6.428969</td>
 <td>36.506577</td>
 </tr>
 <tr class="even">
 <td>"75%"</td>
 <td>"2014-03-11 18:…</td>
 <td>null</td>
-<td>0.810645</td>
-<td>0.11534</td>
-<td>3614.292659</td>
+<td>0.748768</td>
+<td>0.108717</td>
 <td>12991.083881</td>
-<td>16.255481</td>
 <td>59.95483</td>
 </tr>
 <tr class="odd">
 <td>"max"</td>
 <td>"2016-06-29 23:…</td>
 <td>"JNO"</td>
-<td>3.5708e6</td>
-<td>93596.16631</td>
-<td>2.5404e6</td>
+<td>2.4550e6</td>
+<td>187435.626378</td>
 <td>42775.89897</td>
-<td>10409.01271</td>
 <td>382.018872</td>
 </tr>
 </tbody>
@@ -662,7 +641,7 @@ R[write to console]: The following objects are masked from ‘package:base’:
 </div>
 </div>
 <div id="cell-12" class="cell" data-execution_count="8">
-<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> remove_extreme(df, cols <span class="op">=</span> [<span class="st">'j0_k'</span>, <span class="st">'L_k_fit'</span>], q <span class="op">=</span> <span class="fl">0.96</span>):</span>
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> remove_extreme(df, cols <span class="op">=</span> [<span class="st">'j0_k'</span>, <span class="st">'L_k'</span>], q <span class="op">=</span> <span class="fl">0.96</span>):</span>
 <span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>    filter_conditions <span class="op">=</span> [</span>
 <span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>        pl.col(col) <span class="op">&lt;</span> pl.col(col).quantile(q) <span class="cf">for</span> col <span class="kw">in</span> cols</span>
 <span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a>    ] <span class="op">+</span> [</span>
@@ -671,12 +650,21 @@ R[write to console]: The following objects are masked from ‘package:base’:
 <span id="cb11-7"><a href="#cb11-7" aria-hidden="true" tabindex="-1"></a>    </span>
 <span id="cb11-8"><a href="#cb11-8" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> df.<span class="bu">filter</span>(filter_conditions)</span>
 <span id="cb11-9"><a href="#cb11-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-10"><a href="#cb11-10" aria-hidden="true" tabindex="-1"></a>jno_df <span class="op">=</span> remove_extreme(jno_df)</span>
-<span id="cb11-11"><a href="#cb11-11" aria-hidden="true" tabindex="-1"></a>other_events <span class="op">=</span> remove_extreme(other_events)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb11-10"><a href="#cb11-10" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> keep_good_fit(df: pl.DataFrame, rsquared <span class="op">=</span> <span class="fl">0.95</span>):</span>
+<span id="cb11-11"><a href="#cb11-11" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> df.<span class="bu">filter</span>(pl.col(<span class="st">'fit.stat.rsquared'</span>) <span class="op">&gt;</span> rsquared)</span>
+<span id="cb11-12"><a href="#cb11-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-13"><a href="#cb11-13" aria-hidden="true" tabindex="-1"></a><span class="co"># jno_df = jno_df.pipe(remove_extreme).pipe(keep_good_fit)</span></span>
+<span id="cb11-14"><a href="#cb11-14" aria-hidden="true" tabindex="-1"></a><span class="co"># other_events = other_events.pipe(remove_extreme).pipe(keep_good_fit)</span></span>
+<span id="cb11-15"><a href="#cb11-15" aria-hidden="true" tabindex="-1"></a><span class="co"># jno_df_tau_300 = jno_df_tau_300.pipe(remove_extreme).pipe(keep_good_fit)</span></span>
+<span id="cb11-16"><a href="#cb11-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-17"><a href="#cb11-17" aria-hidden="true" tabindex="-1"></a>jno_df <span class="op">=</span> jno_df.pipe(keep_good_fit)</span>
+<span id="cb11-18"><a href="#cb11-18" aria-hidden="true" tabindex="-1"></a>other_events <span class="op">=</span> other_events.pipe(keep_good_fit)</span>
+<span id="cb11-19"><a href="#cb11-19" aria-hidden="true" tabindex="-1"></a>jno_df_tau_300 <span class="op">=</span> jno_df_tau_300.pipe(keep_good_fit)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div id="cell-13" class="cell" data-execution_count="9">
 <div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="op">%</span>R <span class="op">-</span>i jno_df <span class="op">-</span>c conv_pl</span>
-<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a><span class="op">%</span>R <span class="op">-</span>i other_events <span class="op">-</span>c conv_pl</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a><span class="op">%</span>R <span class="op">-</span>i other_events <span class="op">-</span>c conv_pl</span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a><span class="op">%</span>R <span class="op">-</span>i jno_df_tau_300 <span class="op">-</span>c conv_pl</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div id="cell-14" class="cell" data-execution_count="10">
 <div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="op">%%</span>R</span>
@@ -685,86 +673,80 @@ R[write to console]: The following objects are masked from ‘package:base’:
 <span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a>x_lab_r <span class="op">&lt;-</span> <span class="st">"Radial Distance (AU)"</span></span>
 <span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a>x_lab_t <span class="op">&lt;-</span> <span class="st">"Time"</span></span>
 <span id="cb13-6"><a href="#cb13-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb13-7"><a href="#cb13-7" aria-hidden="true" tabindex="-1"></a>y_lab_t <span class="op">&lt;-</span> <span class="st">"Log Time Duration (s)"</span></span>
+<span id="cb13-7"><a href="#cb13-7" aria-hidden="true" tabindex="-1"></a>y_lab_t <span class="op">&lt;-</span> <span class="st">"Time Duration (s)"</span></span>
 <span id="cb13-8"><a href="#cb13-8" aria-hidden="true" tabindex="-1"></a>y_lab_L <span class="op">&lt;-</span> <span class="st">"Log Thickness (km)"</span></span>
 <span id="cb13-9"><a href="#cb13-9" aria-hidden="true" tabindex="-1"></a>y_lab_L_norm <span class="op">&lt;-</span> expression(Log<span class="op">~</span>Thickness<span class="op">~</span>(d[i]))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="cell-15" class="cell" data-execution_count="13">
-<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="op">%%</span>R <span class="op">-</span>w <span class="dv">350</span> <span class="op">-</span>h <span class="dv">350</span> <span class="op">-</span>u mm</span>
-<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>add_mode <span class="op">&lt;-</span> FALSE</span>
-<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>y_bins <span class="op">&lt;-</span> <span class="dv">16</span></span>
-<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a>log_y <span class="op">&lt;-</span> FALSE</span>
-<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a>y_lim_duration <span class="op">&lt;-</span> c(<span class="fl">0.1</span>, <span class="dv">30</span>)</span>
-<span id="cb14-6"><a href="#cb14-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb14-7"><a href="#cb14-7" aria-hidden="true" tabindex="-1"></a>y_col <span class="op">&lt;-</span> <span class="st">"duration"</span></span>
-<span id="cb14-8"><a href="#cb14-8" aria-hidden="true" tabindex="-1"></a>ylab <span class="op">&lt;-</span> y_lab_t</span>
-<span id="cb14-9"><a href="#cb14-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb14-10"><a href="#cb14-10" aria-hidden="true" tabindex="-1"></a>x_col <span class="op">&lt;-</span> <span class="st">"radial_distance"</span></span>
-<span id="cb14-11"><a href="#cb14-11" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb14-12"><a href="#cb14-12" aria-hidden="true" tabindex="-1"></a>p <span class="op">&lt;-</span> plot_binned_data(jno_df, x_col <span class="op">=</span> x_col, y_col <span class="op">=</span> y_col, x_bins <span class="op">=</span> <span class="dv">8</span>, y_bins <span class="op">=</span> y_bins, y_lim <span class="op">=</span> y_lim_duration, log_y <span class="op">=</span> log_y, add_mode<span class="op">=</span>add_mode)</span>
-<span id="cb14-13"><a href="#cb14-13" aria-hidden="true" tabindex="-1"></a>p1 <span class="op">&lt;-</span> p <span class="op">+</span> labs(x <span class="op">=</span> NULL, y<span class="op">=</span> ylab) <span class="op">+</span> ggtitle(p1title)</span>
-<span id="cb14-14"><a href="#cb14-14" aria-hidden="true" tabindex="-1"></a></span>
+<div id="cell-15" class="cell" data-execution_count="15">
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="op">%%</span>R <span class="op">-</span>w <span class="dv">350</span> <span class="op">-</span>h <span class="dv">180</span> <span class="op">-</span>u mm</span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>add_mode <span class="op">&lt;-</span> TRUE</span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>x_bins <span class="op">&lt;-</span> <span class="dv">5</span></span>
+<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a>y_bins <span class="op">&lt;-</span> <span class="dv">12</span></span>
+<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a>log_y <span class="op">&lt;-</span> FALSE</span>
+<span id="cb14-6"><a href="#cb14-6" aria-hidden="true" tabindex="-1"></a>y_lim_duration <span class="op">&lt;-</span> c(<span class="fl">0.1</span>, <span class="dv">60</span>)</span>
+<span id="cb14-7"><a href="#cb14-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-8"><a href="#cb14-8" aria-hidden="true" tabindex="-1"></a>y_col <span class="op">&lt;-</span> <span class="st">"duration"</span></span>
+<span id="cb14-9"><a href="#cb14-9" aria-hidden="true" tabindex="-1"></a>ylab <span class="op">&lt;-</span> y_lab_t</span>
+<span id="cb14-10"><a href="#cb14-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-11"><a href="#cb14-11" aria-hidden="true" tabindex="-1"></a>x_col <span class="op">&lt;-</span> <span class="st">"radial_distance"</span></span>
+<span id="cb14-12"><a href="#cb14-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-13"><a href="#cb14-13" aria-hidden="true" tabindex="-1"></a>p <span class="op">&lt;-</span> plot_binned_data(jno_df, x_col <span class="op">=</span> x_col, y_col <span class="op">=</span> y_col, x_bins <span class="op">=</span> x_bins, y_bins <span class="op">=</span> y_bins, y_lim <span class="op">=</span> y_lim_duration, log_y <span class="op">=</span> log_y, add_mode<span class="op">=</span>add_mode)</span>
+<span id="cb14-14"><a href="#cb14-14" aria-hidden="true" tabindex="-1"></a>p1 <span class="op">&lt;-</span> p <span class="op">+</span> labs(x <span class="op">=</span> NULL, y<span class="op">=</span> ylab) <span class="op">+</span> ggtitle(<span class="st">"a) Juno"</span>)</span>
 <span id="cb14-15"><a href="#cb14-15" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb14-16"><a href="#cb14-16" aria-hidden="true" tabindex="-1"></a>x_col <span class="op">&lt;-</span> <span class="st">"time"</span></span>
-<span id="cb14-17"><a href="#cb14-17" aria-hidden="true" tabindex="-1"></a>p <span class="op">&lt;-</span> plot_binned_data(other_events, x_col <span class="op">=</span> x_col, y_col <span class="op">=</span> y_col, x_bins <span class="op">=</span> <span class="dv">8</span>, y_bins <span class="op">=</span> y_bins, y_lim <span class="op">=</span> y_lim_duration, log_y <span class="op">=</span> log_y, add_mode<span class="op">=</span>add_mode)</span>
-<span id="cb14-18"><a href="#cb14-18" aria-hidden="true" tabindex="-1"></a>p2 <span class="op">&lt;-</span> p <span class="op">+</span> labs(x <span class="op">=</span> NULL, y<span class="op">=</span> ylab) <span class="op">+</span> ggtitle(p2title)</span>
+<span id="cb14-16"><a href="#cb14-16" aria-hidden="true" tabindex="-1"></a>y_lim_duration <span class="op">&lt;-</span> c(<span class="fl">0.1</span>, <span class="dv">300</span>)</span>
+<span id="cb14-17"><a href="#cb14-17" aria-hidden="true" tabindex="-1"></a>p <span class="op">&lt;-</span> plot_binned_data(jno_df_tau_300, x_col <span class="op">=</span> x_col, y_col <span class="op">=</span> y_col, x_bins <span class="op">=</span> x_bins, y_bins <span class="op">=</span> y_bins, y_lim <span class="op">=</span> y_lim_duration, log_y <span class="op">=</span> log_y, add_mode<span class="op">=</span>add_mode)</span>
+<span id="cb14-18"><a href="#cb14-18" aria-hidden="true" tabindex="-1"></a>p2 <span class="op">&lt;-</span> p <span class="op">+</span> labs(x <span class="op">=</span> NULL, y<span class="op">=</span> ylab) <span class="op">+</span> ggtitle(<span class="st">"b) Juno Long Interval"</span>)</span>
 <span id="cb14-19"><a href="#cb14-19" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb14-20"><a href="#cb14-20" aria-hidden="true" tabindex="-1"></a>p <span class="op">&lt;-</span> (p1 <span class="op">+</span> p2) <span class="op">+</span> plot_layout(ncol <span class="op">=</span> <span class="dv">1</span>, guides <span class="op">=</span> <span class="st">"collect"</span>) <span class="op">&amp;</span> scale_fill_viridis_c(limits <span class="op">=</span> c(<span class="fl">0.01</span>, <span class="fl">0.20</span>), name<span class="op">=</span><span class="st">"pdf"</span>)</span>
+<span id="cb14-20"><a href="#cb14-20" aria-hidden="true" tabindex="-1"></a><span class="co"># p &lt;- (p1 + p2) + plot_layout(ncol = 1, guides = "collect") &amp; scale_fill_viridis_c(limits = c(0.01, 0.20), name="pdf")</span></span>
 <span id="cb14-21"><a href="#cb14-21" aria-hidden="true" tabindex="-1"></a><span class="co"># save_plot("new/duration/duration_dist")</span></span>
-<span id="cb14-22"><a href="#cb14-22" aria-hidden="true" tabindex="-1"></a>p</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>Scale for fill is already present.
-Adding another scale for fill, which will replace the existing scale.
-Scale for fill is already present.
-Adding another scale for fill, which will replace the existing scale.</code></pre>
-</div>
+<span id="cb14-22"><a href="#cb14-22" aria-hidden="true" tabindex="-1"></a>p1 <span class="op">+</span> p2 </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
-<p><a href="04_properties_files/figure-html/cell-12-output-2.png" class="lightbox" data-gallery="quarto-lightbox-gallery-1"><img src="04_properties_files/figure-html/cell-12-output-2.png" class="img-fluid figure-img"></a></p>
+<p><a href="04_properties_files/figure-html/cell-12-output-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-1"><img src="04_properties_files/figure-html/cell-12-output-1.png" class="img-fluid figure-img"></a></p>
 </figure>
 </div>
 </div>
 </div>
 <div id="cell-16" class="cell" data-execution_count="13">
-<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="op">%%</span>R <span class="op">-</span>w <span class="dv">350</span> <span class="op">-</span>h <span class="dv">350</span> <span class="op">-</span>u mm</span>
-<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>layout <span class="op">&lt;-</span> plot_layout(ncol <span class="op">=</span> <span class="dv">2</span>, byrow <span class="op">=</span> FALSE, guides <span class="op">=</span> <span class="st">"collect"</span>)</span>
-<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a>add_mode <span class="op">&lt;-</span> FALSE</span>
-<span id="cb16-5"><a href="#cb16-5" aria-hidden="true" tabindex="-1"></a>y_bins <span class="op">&lt;-</span> <span class="dv">24</span></span>
-<span id="cb16-6"><a href="#cb16-6" aria-hidden="true" tabindex="-1"></a>y_lim_j0 <span class="op">&lt;-</span> c(<span class="fl">0.03</span>, <span class="dv">20</span>)</span>
-<span id="cb16-7"><a href="#cb16-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb16-8"><a href="#cb16-8" aria-hidden="true" tabindex="-1"></a>x_col <span class="op">&lt;-</span> <span class="st">"radial_distance"</span></span>
-<span id="cb16-9"><a href="#cb16-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb16-10"><a href="#cb16-10" aria-hidden="true" tabindex="-1"></a>y_col <span class="op">&lt;-</span> <span class="st">"j0_k"</span></span>
-<span id="cb16-11"><a href="#cb16-11" aria-hidden="true" tabindex="-1"></a>ylab <span class="op">&lt;-</span> expression(Log<span class="op">~</span>J<span class="op">~</span>(nA<span class="op">~</span>m<span class="op">^-</span><span class="dv">2</span>))</span>
-<span id="cb16-12"><a href="#cb16-12" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb16-13"><a href="#cb16-13" aria-hidden="true" tabindex="-1"></a><span class="co"># y_lim_j0 &lt;- NULL</span></span>
-<span id="cb16-14"><a href="#cb16-14" aria-hidden="true" tabindex="-1"></a>p <span class="op">&lt;-</span> plot_binned_data(jno_df, x_col <span class="op">=</span> x_col, y_col <span class="op">=</span> y_col, x_bins <span class="op">=</span> <span class="dv">8</span>, y_bins <span class="op">=</span> y_bins, y_lim <span class="op">=</span> y_lim_j0, log_y <span class="op">=</span> TRUE, add_mode<span class="op">=</span>add_mode)</span>
-<span id="cb16-15"><a href="#cb16-15" aria-hidden="true" tabindex="-1"></a>p1 <span class="op">&lt;-</span> p <span class="op">+</span> labs(x <span class="op">=</span> NULL, y<span class="op">=</span> ylab) <span class="op">+</span> ggtitle(p1title)</span>
-<span id="cb16-16"><a href="#cb16-16" aria-hidden="true" tabindex="-1"></a><span class="co"># save_plot("new/current/current_k_r_dist")</span></span>
-<span id="cb16-17"><a href="#cb16-17" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb16-18"><a href="#cb16-18" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb16-19"><a href="#cb16-19" aria-hidden="true" tabindex="-1"></a>y_col <span class="op">&lt;-</span> <span class="st">"j0_k_norm"</span></span>
-<span id="cb16-20"><a href="#cb16-20" aria-hidden="true" tabindex="-1"></a>y_lim_j0_norm <span class="op">&lt;-</span> c(<span class="fl">0.002</span>, <span class="dv">1</span>)</span>
-<span id="cb16-21"><a href="#cb16-21" aria-hidden="true" tabindex="-1"></a>ylab <span class="op">&lt;-</span> expression(Log<span class="op">~</span>Normalized<span class="op">~</span>J<span class="op">~</span>(J[A]))</span>
-<span id="cb16-22"><a href="#cb16-22" aria-hidden="true" tabindex="-1"></a>p <span class="op">&lt;-</span> plot_binned_data(jno_df, x_col <span class="op">=</span> x_col, y_col <span class="op">=</span> y_col, x_bins <span class="op">=</span> <span class="dv">8</span>, y_bins <span class="op">=</span> y_bins, y_lim <span class="op">=</span> y_lim_j0_norm, log_y <span class="op">=</span> TRUE, add_mode<span class="op">=</span>add_mode)</span>
-<span id="cb16-23"><a href="#cb16-23" aria-hidden="true" tabindex="-1"></a>p2 <span class="op">&lt;-</span> p <span class="op">+</span> labs(x <span class="op">=</span> x_lab_r, y<span class="op">=</span> ylab)</span>
-<span id="cb16-24"><a href="#cb16-24" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb16-25"><a href="#cb16-25" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb16-26"><a href="#cb16-26" aria-hidden="true" tabindex="-1"></a>x_col <span class="op">&lt;-</span> <span class="st">"time"</span></span>
-<span id="cb16-27"><a href="#cb16-27" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb16-28"><a href="#cb16-28" aria-hidden="true" tabindex="-1"></a>y_col <span class="op">&lt;-</span> <span class="st">"j0_k"</span></span>
-<span id="cb16-29"><a href="#cb16-29" aria-hidden="true" tabindex="-1"></a>p <span class="op">&lt;-</span> plot_binned_data(other_events, x_col <span class="op">=</span> x_col, y_col <span class="op">=</span> y_col, x_bins <span class="op">=</span> <span class="dv">8</span>, y_bins <span class="op">=</span> y_bins, y_lim <span class="op">=</span> y_lim_j0, log_y <span class="op">=</span> TRUE, add_mode<span class="op">=</span>add_mode)</span>
-<span id="cb16-30"><a href="#cb16-30" aria-hidden="true" tabindex="-1"></a>p3 <span class="op">&lt;-</span> p <span class="op">+</span> labs(x <span class="op">=</span> NULL, y<span class="op">=</span> NULL) <span class="op">+</span> ggtitle(p2title)</span>
-<span id="cb16-31"><a href="#cb16-31" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb16-32"><a href="#cb16-32" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb16-33"><a href="#cb16-33" aria-hidden="true" tabindex="-1"></a>y_col <span class="op">&lt;-</span> <span class="st">"j0_k_norm"</span></span>
-<span id="cb16-34"><a href="#cb16-34" aria-hidden="true" tabindex="-1"></a>p <span class="op">&lt;-</span> plot_binned_data(other_events, x_col <span class="op">=</span> x_col, y_col <span class="op">=</span> y_col, x_bins <span class="op">=</span> <span class="dv">8</span>, y_bins <span class="op">=</span> y_bins, y_lim <span class="op">=</span> y_lim_j0_norm, log_y <span class="op">=</span> TRUE, add_mode<span class="op">=</span>add_mode)</span>
-<span id="cb16-35"><a href="#cb16-35" aria-hidden="true" tabindex="-1"></a>p4 <span class="op">&lt;-</span> p <span class="op">+</span> labs(x <span class="op">=</span> x_lab_t, y<span class="op">=</span> NULL)</span>
-<span id="cb16-36"><a href="#cb16-36" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb16-37"><a href="#cb16-37" aria-hidden="true" tabindex="-1"></a>(p1 <span class="op">+</span> p2 <span class="op">+</span> p3 <span class="op">+</span> p4) <span class="op">+</span> layout <span class="op">&amp;</span> scale_fill_viridis_c(limits <span class="op">=</span> c(<span class="fl">0.01</span>, <span class="fl">0.13</span>), trans <span class="op">=</span> <span class="st">"log10"</span>, name<span class="op">=</span><span class="st">"pdf"</span>)</span>
-<span id="cb16-38"><a href="#cb16-38" aria-hidden="true" tabindex="-1"></a>save_plot(<span class="st">"new/current/current_k_dist"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="op">%%</span>R <span class="op">-</span>w <span class="dv">350</span> <span class="op">-</span>h <span class="dv">350</span> <span class="op">-</span>u mm</span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>layout <span class="op">&lt;-</span> plot_layout(ncol <span class="op">=</span> <span class="dv">2</span>, byrow <span class="op">=</span> FALSE, guides <span class="op">=</span> <span class="st">"collect"</span>)</span>
+<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a>add_mode <span class="op">&lt;-</span> FALSE</span>
+<span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a>y_bins <span class="op">&lt;-</span> <span class="dv">24</span></span>
+<span id="cb15-6"><a href="#cb15-6" aria-hidden="true" tabindex="-1"></a>y_lim_j0 <span class="op">&lt;-</span> c(<span class="fl">0.03</span>, <span class="dv">20</span>)</span>
+<span id="cb15-7"><a href="#cb15-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-8"><a href="#cb15-8" aria-hidden="true" tabindex="-1"></a>x_col <span class="op">&lt;-</span> <span class="st">"radial_distance"</span></span>
+<span id="cb15-9"><a href="#cb15-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-10"><a href="#cb15-10" aria-hidden="true" tabindex="-1"></a>y_col <span class="op">&lt;-</span> <span class="st">"j0_k"</span></span>
+<span id="cb15-11"><a href="#cb15-11" aria-hidden="true" tabindex="-1"></a>ylab <span class="op">&lt;-</span> expression(Log<span class="op">~</span>J<span class="op">~</span>(nA<span class="op">~</span>m<span class="op">^-</span><span class="dv">2</span>))</span>
+<span id="cb15-12"><a href="#cb15-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-13"><a href="#cb15-13" aria-hidden="true" tabindex="-1"></a><span class="co"># y_lim_j0 &lt;- NULL</span></span>
+<span id="cb15-14"><a href="#cb15-14" aria-hidden="true" tabindex="-1"></a>p <span class="op">&lt;-</span> plot_binned_data(jno_df, x_col <span class="op">=</span> x_col, y_col <span class="op">=</span> y_col, x_bins <span class="op">=</span> <span class="dv">8</span>, y_bins <span class="op">=</span> y_bins, y_lim <span class="op">=</span> y_lim_j0, log_y <span class="op">=</span> TRUE, add_mode<span class="op">=</span>add_mode)</span>
+<span id="cb15-15"><a href="#cb15-15" aria-hidden="true" tabindex="-1"></a>p1 <span class="op">&lt;-</span> p <span class="op">+</span> labs(x <span class="op">=</span> NULL, y<span class="op">=</span> ylab) <span class="op">+</span> ggtitle(p1title)</span>
+<span id="cb15-16"><a href="#cb15-16" aria-hidden="true" tabindex="-1"></a><span class="co"># save_plot("new/current/current_k_r_dist")</span></span>
+<span id="cb15-17"><a href="#cb15-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-18"><a href="#cb15-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-19"><a href="#cb15-19" aria-hidden="true" tabindex="-1"></a>y_col <span class="op">&lt;-</span> <span class="st">"j0_k_norm"</span></span>
+<span id="cb15-20"><a href="#cb15-20" aria-hidden="true" tabindex="-1"></a>y_lim_j0_norm <span class="op">&lt;-</span> c(<span class="fl">0.002</span>, <span class="dv">1</span>)</span>
+<span id="cb15-21"><a href="#cb15-21" aria-hidden="true" tabindex="-1"></a>ylab <span class="op">&lt;-</span> expression(Log<span class="op">~</span>Normalized<span class="op">~</span>J<span class="op">~</span>(J[A]))</span>
+<span id="cb15-22"><a href="#cb15-22" aria-hidden="true" tabindex="-1"></a>p <span class="op">&lt;-</span> plot_binned_data(jno_df, x_col <span class="op">=</span> x_col, y_col <span class="op">=</span> y_col, x_bins <span class="op">=</span> <span class="dv">8</span>, y_bins <span class="op">=</span> y_bins, y_lim <span class="op">=</span> y_lim_j0_norm, log_y <span class="op">=</span> TRUE, add_mode<span class="op">=</span>add_mode)</span>
+<span id="cb15-23"><a href="#cb15-23" aria-hidden="true" tabindex="-1"></a>p2 <span class="op">&lt;-</span> p <span class="op">+</span> labs(x <span class="op">=</span> x_lab_r, y<span class="op">=</span> ylab)</span>
+<span id="cb15-24"><a href="#cb15-24" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-25"><a href="#cb15-25" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-26"><a href="#cb15-26" aria-hidden="true" tabindex="-1"></a>x_col <span class="op">&lt;-</span> <span class="st">"time"</span></span>
+<span id="cb15-27"><a href="#cb15-27" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-28"><a href="#cb15-28" aria-hidden="true" tabindex="-1"></a>y_col <span class="op">&lt;-</span> <span class="st">"j0_k"</span></span>
+<span id="cb15-29"><a href="#cb15-29" aria-hidden="true" tabindex="-1"></a>p <span class="op">&lt;-</span> plot_binned_data(other_events, x_col <span class="op">=</span> x_col, y_col <span class="op">=</span> y_col, x_bins <span class="op">=</span> <span class="dv">8</span>, y_bins <span class="op">=</span> y_bins, y_lim <span class="op">=</span> y_lim_j0, log_y <span class="op">=</span> TRUE, add_mode<span class="op">=</span>add_mode)</span>
+<span id="cb15-30"><a href="#cb15-30" aria-hidden="true" tabindex="-1"></a>p3 <span class="op">&lt;-</span> p <span class="op">+</span> labs(x <span class="op">=</span> NULL, y<span class="op">=</span> NULL) <span class="op">+</span> ggtitle(p2title)</span>
+<span id="cb15-31"><a href="#cb15-31" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-32"><a href="#cb15-32" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-33"><a href="#cb15-33" aria-hidden="true" tabindex="-1"></a>y_col <span class="op">&lt;-</span> <span class="st">"j0_k_norm"</span></span>
+<span id="cb15-34"><a href="#cb15-34" aria-hidden="true" tabindex="-1"></a>p <span class="op">&lt;-</span> plot_binned_data(other_events, x_col <span class="op">=</span> x_col, y_col <span class="op">=</span> y_col, x_bins <span class="op">=</span> <span class="dv">8</span>, y_bins <span class="op">=</span> y_bins, y_lim <span class="op">=</span> y_lim_j0_norm, log_y <span class="op">=</span> TRUE, add_mode<span class="op">=</span>add_mode)</span>
+<span id="cb15-35"><a href="#cb15-35" aria-hidden="true" tabindex="-1"></a>p4 <span class="op">&lt;-</span> p <span class="op">+</span> labs(x <span class="op">=</span> x_lab_t, y<span class="op">=</span> NULL)</span>
+<span id="cb15-36"><a href="#cb15-36" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-37"><a href="#cb15-37" aria-hidden="true" tabindex="-1"></a>(p1 <span class="op">+</span> p2 <span class="op">+</span> p3 <span class="op">+</span> p4) <span class="op">+</span> layout <span class="op">&amp;</span> scale_fill_viridis_c(limits <span class="op">=</span> c(<span class="fl">0.01</span>, <span class="fl">0.13</span>), trans <span class="op">=</span> <span class="st">"log10"</span>, name<span class="op">=</span><span class="st">"pdf"</span>)</span>
+<span id="cb15-38"><a href="#cb15-38" aria-hidden="true" tabindex="-1"></a>save_plot(<span class="st">"new/current/current_k_dist"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Scale for fill is already present.
 Adding another scale for fill, which will replace the existing scale.
@@ -779,47 +761,47 @@ Saving 13.8 x 13.8 in image</code></pre>
 </div>
 </div>
 <div id="cell-17" class="cell" data-execution_count="14">
-<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="op">%%</span>R <span class="op">-</span>w <span class="dv">350</span> <span class="op">-</span>h <span class="dv">350</span> <span class="op">-</span>u mm</span>
-<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>x_col <span class="op">&lt;-</span> <span class="st">"radial_distance"</span></span>
-<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a>y_bins <span class="op">&lt;-</span> <span class="dv">16</span></span>
-<span id="cb18-4"><a href="#cb18-4" aria-hidden="true" tabindex="-1"></a>add_mode <span class="op">&lt;-</span> FALSE</span>
-<span id="cb18-5"><a href="#cb18-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-6"><a href="#cb18-6" aria-hidden="true" tabindex="-1"></a>y_lim_L <span class="op">&lt;-</span> c(<span class="dv">100</span>, <span class="dv">40000</span>)</span>
-<span id="cb18-7"><a href="#cb18-7" aria-hidden="true" tabindex="-1"></a>y_lim_L_norm <span class="op">&lt;-</span> c(<span class="fl">0.2</span>, <span class="dv">200</span>)</span>
-<span id="cb18-8"><a href="#cb18-8" aria-hidden="true" tabindex="-1"></a><span class="co"># y_lim_L &lt;- NULL</span></span>
-<span id="cb18-9"><a href="#cb18-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-10"><a href="#cb18-10" aria-hidden="true" tabindex="-1"></a><span class="co">## Panel 01</span></span>
-<span id="cb18-11"><a href="#cb18-11" aria-hidden="true" tabindex="-1"></a>y_col <span class="op">&lt;-</span> <span class="st">"L_k_fit"</span></span>
-<span id="cb18-12"><a href="#cb18-12" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-13"><a href="#cb18-13" aria-hidden="true" tabindex="-1"></a>y_lim <span class="op">&lt;-</span> y_lim_L</span>
-<span id="cb18-14"><a href="#cb18-14" aria-hidden="true" tabindex="-1"></a>ylab <span class="op">&lt;-</span> y_lab_L</span>
-<span id="cb18-15"><a href="#cb18-15" aria-hidden="true" tabindex="-1"></a>p <span class="op">&lt;-</span> plot_binned_data(jno_df, x_col <span class="op">=</span> x_col, y_col <span class="op">=</span> y_col, x_bins <span class="op">=</span> <span class="dv">8</span>, y_bins <span class="op">=</span> y_bins, y_lim <span class="op">=</span> y_lim, log_y <span class="op">=</span> TRUE, add_mode<span class="op">=</span>add_mode)</span>
-<span id="cb18-16"><a href="#cb18-16" aria-hidden="true" tabindex="-1"></a>p1 <span class="op">&lt;-</span> p <span class="op">+</span> labs(x <span class="op">=</span> NULL, y<span class="op">=</span> ylab) <span class="op">+</span> ggtitle(p1title)</span>
-<span id="cb18-17"><a href="#cb18-17" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-18"><a href="#cb18-18" aria-hidden="true" tabindex="-1"></a><span class="co">## Panel 02</span></span>
-<span id="cb18-19"><a href="#cb18-19" aria-hidden="true" tabindex="-1"></a>y_col <span class="op">&lt;-</span> <span class="st">"L_k_fit_norm"</span></span>
-<span id="cb18-20"><a href="#cb18-20" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-21"><a href="#cb18-21" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-22"><a href="#cb18-22" aria-hidden="true" tabindex="-1"></a>y_lim <span class="op">&lt;-</span> y_lim_L_norm</span>
-<span id="cb18-23"><a href="#cb18-23" aria-hidden="true" tabindex="-1"></a>ylab <span class="op">&lt;-</span> y_lab_L_norm</span>
-<span id="cb18-24"><a href="#cb18-24" aria-hidden="true" tabindex="-1"></a>p <span class="op">&lt;-</span> plot_binned_data(jno_df, x_col <span class="op">=</span> x_col, y_col <span class="op">=</span> y_col, x_bins <span class="op">=</span> <span class="dv">8</span>, y_bins <span class="op">=</span> y_bins, y_lim <span class="op">=</span> y_lim, log_y <span class="op">=</span> TRUE, add_mode<span class="op">=</span>add_mode)</span>
-<span id="cb18-25"><a href="#cb18-25" aria-hidden="true" tabindex="-1"></a>p2 <span class="op">&lt;-</span> p <span class="op">+</span> labs(x <span class="op">=</span> x_lab_r, y<span class="op">=</span> ylab)</span>
-<span id="cb18-26"><a href="#cb18-26" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-27"><a href="#cb18-27" aria-hidden="true" tabindex="-1"></a><span class="co">## Panel 03</span></span>
-<span id="cb18-28"><a href="#cb18-28" aria-hidden="true" tabindex="-1"></a>x_col <span class="op">&lt;-</span> <span class="st">"time"</span></span>
-<span id="cb18-29"><a href="#cb18-29" aria-hidden="true" tabindex="-1"></a>y_col <span class="op">&lt;-</span> <span class="st">"L_k_fit"</span></span>
-<span id="cb18-30"><a href="#cb18-30" aria-hidden="true" tabindex="-1"></a>y_lim <span class="op">&lt;-</span> y_lim_L</span>
-<span id="cb18-31"><a href="#cb18-31" aria-hidden="true" tabindex="-1"></a>p <span class="op">&lt;-</span> plot_binned_data(other_events, x_col <span class="op">=</span> x_col, y_col <span class="op">=</span> y_col, x_bins <span class="op">=</span> <span class="dv">8</span>, y_bins <span class="op">=</span> y_bins, y_lim <span class="op">=</span> y_lim, log_y <span class="op">=</span> TRUE, add_mode<span class="op">=</span>add_mode)</span>
-<span id="cb18-32"><a href="#cb18-32" aria-hidden="true" tabindex="-1"></a>p3 <span class="op">&lt;-</span> p <span class="op">+</span> labs(x <span class="op">=</span> NULL, y<span class="op">=</span> NULL) <span class="op">+</span> ggtitle(p2title)</span>
-<span id="cb18-33"><a href="#cb18-33" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-34"><a href="#cb18-34" aria-hidden="true" tabindex="-1"></a><span class="co">## Panel 04</span></span>
-<span id="cb18-35"><a href="#cb18-35" aria-hidden="true" tabindex="-1"></a>y_col <span class="op">&lt;-</span> <span class="st">"L_k_fit_norm"</span></span>
-<span id="cb18-36"><a href="#cb18-36" aria-hidden="true" tabindex="-1"></a>y_lim <span class="op">&lt;-</span> y_lim_L_norm</span>
-<span id="cb18-37"><a href="#cb18-37" aria-hidden="true" tabindex="-1"></a>p <span class="op">&lt;-</span> plot_binned_data(other_events, x_col <span class="op">=</span> x_col, y_col <span class="op">=</span> y_col, x_bins <span class="op">=</span> <span class="dv">8</span>, y_bins <span class="op">=</span> y_bins, y_lim <span class="op">=</span> y_lim, log_y <span class="op">=</span> TRUE, add_mode<span class="op">=</span>add_mode)</span>
-<span id="cb18-38"><a href="#cb18-38" aria-hidden="true" tabindex="-1"></a>p4 <span class="op">&lt;-</span> p <span class="op">+</span> labs(x <span class="op">=</span> x_lab_t, y<span class="op">=</span> NULL)</span>
-<span id="cb18-39"><a href="#cb18-39" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-40"><a href="#cb18-40" aria-hidden="true" tabindex="-1"></a>(p1 <span class="op">+</span> p2 <span class="op">+</span> p3 <span class="op">+</span> p4) <span class="op">+</span> layout <span class="op">&amp;</span> scale_fill_viridis_c(limits <span class="op">=</span> c(<span class="fl">0.01</span>, <span class="fl">0.18</span>), trans <span class="op">=</span> <span class="st">"log10"</span>, name<span class="op">=</span><span class="st">"pdf"</span>)</span>
-<span id="cb18-41"><a href="#cb18-41" aria-hidden="true" tabindex="-1"></a>save_plot(<span class="st">"new/thickness/thickness_k_fit_dist"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="op">%%</span>R <span class="op">-</span>w <span class="dv">350</span> <span class="op">-</span>h <span class="dv">350</span> <span class="op">-</span>u mm</span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>x_col <span class="op">&lt;-</span> <span class="st">"radial_distance"</span></span>
+<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a>y_bins <span class="op">&lt;-</span> <span class="dv">16</span></span>
+<span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a>add_mode <span class="op">&lt;-</span> FALSE</span>
+<span id="cb17-5"><a href="#cb17-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-6"><a href="#cb17-6" aria-hidden="true" tabindex="-1"></a>y_lim_L <span class="op">&lt;-</span> c(<span class="dv">100</span>, <span class="dv">40000</span>)</span>
+<span id="cb17-7"><a href="#cb17-7" aria-hidden="true" tabindex="-1"></a>y_lim_L_norm <span class="op">&lt;-</span> c(<span class="fl">0.2</span>, <span class="dv">200</span>)</span>
+<span id="cb17-8"><a href="#cb17-8" aria-hidden="true" tabindex="-1"></a><span class="co"># y_lim_L &lt;- NULL</span></span>
+<span id="cb17-9"><a href="#cb17-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-10"><a href="#cb17-10" aria-hidden="true" tabindex="-1"></a><span class="co">## Panel 01</span></span>
+<span id="cb17-11"><a href="#cb17-11" aria-hidden="true" tabindex="-1"></a>y_col <span class="op">&lt;-</span> <span class="st">"L_k_fit"</span></span>
+<span id="cb17-12"><a href="#cb17-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-13"><a href="#cb17-13" aria-hidden="true" tabindex="-1"></a>y_lim <span class="op">&lt;-</span> y_lim_L</span>
+<span id="cb17-14"><a href="#cb17-14" aria-hidden="true" tabindex="-1"></a>ylab <span class="op">&lt;-</span> y_lab_L</span>
+<span id="cb17-15"><a href="#cb17-15" aria-hidden="true" tabindex="-1"></a>p <span class="op">&lt;-</span> plot_binned_data(jno_df, x_col <span class="op">=</span> x_col, y_col <span class="op">=</span> y_col, x_bins <span class="op">=</span> <span class="dv">8</span>, y_bins <span class="op">=</span> y_bins, y_lim <span class="op">=</span> y_lim, log_y <span class="op">=</span> TRUE, add_mode<span class="op">=</span>add_mode)</span>
+<span id="cb17-16"><a href="#cb17-16" aria-hidden="true" tabindex="-1"></a>p1 <span class="op">&lt;-</span> p <span class="op">+</span> labs(x <span class="op">=</span> NULL, y<span class="op">=</span> ylab) <span class="op">+</span> ggtitle(p1title)</span>
+<span id="cb17-17"><a href="#cb17-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-18"><a href="#cb17-18" aria-hidden="true" tabindex="-1"></a><span class="co">## Panel 02</span></span>
+<span id="cb17-19"><a href="#cb17-19" aria-hidden="true" tabindex="-1"></a>y_col <span class="op">&lt;-</span> <span class="st">"L_k_fit_norm"</span></span>
+<span id="cb17-20"><a href="#cb17-20" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-21"><a href="#cb17-21" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-22"><a href="#cb17-22" aria-hidden="true" tabindex="-1"></a>y_lim <span class="op">&lt;-</span> y_lim_L_norm</span>
+<span id="cb17-23"><a href="#cb17-23" aria-hidden="true" tabindex="-1"></a>ylab <span class="op">&lt;-</span> y_lab_L_norm</span>
+<span id="cb17-24"><a href="#cb17-24" aria-hidden="true" tabindex="-1"></a>p <span class="op">&lt;-</span> plot_binned_data(jno_df, x_col <span class="op">=</span> x_col, y_col <span class="op">=</span> y_col, x_bins <span class="op">=</span> <span class="dv">8</span>, y_bins <span class="op">=</span> y_bins, y_lim <span class="op">=</span> y_lim, log_y <span class="op">=</span> TRUE, add_mode<span class="op">=</span>add_mode)</span>
+<span id="cb17-25"><a href="#cb17-25" aria-hidden="true" tabindex="-1"></a>p2 <span class="op">&lt;-</span> p <span class="op">+</span> labs(x <span class="op">=</span> x_lab_r, y<span class="op">=</span> ylab)</span>
+<span id="cb17-26"><a href="#cb17-26" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-27"><a href="#cb17-27" aria-hidden="true" tabindex="-1"></a><span class="co">## Panel 03</span></span>
+<span id="cb17-28"><a href="#cb17-28" aria-hidden="true" tabindex="-1"></a>x_col <span class="op">&lt;-</span> <span class="st">"time"</span></span>
+<span id="cb17-29"><a href="#cb17-29" aria-hidden="true" tabindex="-1"></a>y_col <span class="op">&lt;-</span> <span class="st">"L_k_fit"</span></span>
+<span id="cb17-30"><a href="#cb17-30" aria-hidden="true" tabindex="-1"></a>y_lim <span class="op">&lt;-</span> y_lim_L</span>
+<span id="cb17-31"><a href="#cb17-31" aria-hidden="true" tabindex="-1"></a>p <span class="op">&lt;-</span> plot_binned_data(other_events, x_col <span class="op">=</span> x_col, y_col <span class="op">=</span> y_col, x_bins <span class="op">=</span> <span class="dv">8</span>, y_bins <span class="op">=</span> y_bins, y_lim <span class="op">=</span> y_lim, log_y <span class="op">=</span> TRUE, add_mode<span class="op">=</span>add_mode)</span>
+<span id="cb17-32"><a href="#cb17-32" aria-hidden="true" tabindex="-1"></a>p3 <span class="op">&lt;-</span> p <span class="op">+</span> labs(x <span class="op">=</span> NULL, y<span class="op">=</span> NULL) <span class="op">+</span> ggtitle(p2title)</span>
+<span id="cb17-33"><a href="#cb17-33" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-34"><a href="#cb17-34" aria-hidden="true" tabindex="-1"></a><span class="co">## Panel 04</span></span>
+<span id="cb17-35"><a href="#cb17-35" aria-hidden="true" tabindex="-1"></a>y_col <span class="op">&lt;-</span> <span class="st">"L_k_fit_norm"</span></span>
+<span id="cb17-36"><a href="#cb17-36" aria-hidden="true" tabindex="-1"></a>y_lim <span class="op">&lt;-</span> y_lim_L_norm</span>
+<span id="cb17-37"><a href="#cb17-37" aria-hidden="true" tabindex="-1"></a>p <span class="op">&lt;-</span> plot_binned_data(other_events, x_col <span class="op">=</span> x_col, y_col <span class="op">=</span> y_col, x_bins <span class="op">=</span> <span class="dv">8</span>, y_bins <span class="op">=</span> y_bins, y_lim <span class="op">=</span> y_lim, log_y <span class="op">=</span> TRUE, add_mode<span class="op">=</span>add_mode)</span>
+<span id="cb17-38"><a href="#cb17-38" aria-hidden="true" tabindex="-1"></a>p4 <span class="op">&lt;-</span> p <span class="op">+</span> labs(x <span class="op">=</span> x_lab_t, y<span class="op">=</span> NULL)</span>
+<span id="cb17-39"><a href="#cb17-39" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-40"><a href="#cb17-40" aria-hidden="true" tabindex="-1"></a>(p1 <span class="op">+</span> p2 <span class="op">+</span> p3 <span class="op">+</span> p4) <span class="op">+</span> layout <span class="op">&amp;</span> scale_fill_viridis_c(limits <span class="op">=</span> c(<span class="fl">0.01</span>, <span class="fl">0.18</span>), trans <span class="op">=</span> <span class="st">"log10"</span>, name<span class="op">=</span><span class="st">"pdf"</span>)</span>
+<span id="cb17-41"><a href="#cb17-41" aria-hidden="true" tabindex="-1"></a>save_plot(<span class="st">"new/thickness/thickness_k_fit_dist"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Scale for fill is already present.
 Adding another scale for fill, which will replace the existing scale.
@@ -834,26 +816,26 @@ Saving 13.8 x 13.8 in image</code></pre>
 </div>
 </div>
 <div id="cell-18" class="cell" data-execution_count="40">
-<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="op">%%</span>R</span>
-<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a>x_col <span class="op">&lt;-</span> <span class="st">"radial_distance"</span></span>
-<span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a>xlab <span class="op">&lt;-</span> <span class="st">"Radial Distance (AU)"</span></span>
-<span id="cb20-4"><a href="#cb20-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb20-5"><a href="#cb20-5" aria-hidden="true" tabindex="-1"></a>y_col <span class="op">&lt;-</span> <span class="st">"L_k_fit"</span></span>
-<span id="cb20-6"><a href="#cb20-6" aria-hidden="true" tabindex="-1"></a>ylab <span class="op">&lt;-</span> <span class="st">"Log Thickness (km)"</span></span>
-<span id="cb20-7"><a href="#cb20-7" aria-hidden="true" tabindex="-1"></a>y_lim <span class="op">&lt;-</span> c(<span class="dv">100</span>, <span class="dv">40000</span>)</span>
-<span id="cb20-8"><a href="#cb20-8" aria-hidden="true" tabindex="-1"></a><span class="co"># y_lim &lt;- NULL</span></span>
-<span id="cb20-9"><a href="#cb20-9" aria-hidden="true" tabindex="-1"></a>p <span class="op">&lt;-</span> plot_binned_data(jno_df, x_col <span class="op">=</span> x_col, y_col <span class="op">=</span> y_col, x_bins <span class="op">=</span> <span class="dv">8</span>, y_bins <span class="op">=</span> <span class="dv">32</span>, y_lim <span class="op">=</span> y_lim, log_y <span class="op">=</span> TRUE)</span>
-<span id="cb20-10"><a href="#cb20-10" aria-hidden="true" tabindex="-1"></a>p <span class="op">&lt;-</span> p <span class="op">+</span> labs(x <span class="op">=</span> xlab, y<span class="op">=</span> ylab)</span>
-<span id="cb20-11"><a href="#cb20-11" aria-hidden="true" tabindex="-1"></a><span class="co"># save_plot("new/thickness/thickness_k_fit_r_dist")</span></span>
-<span id="cb20-12"><a href="#cb20-12" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb20-13"><a href="#cb20-13" aria-hidden="true" tabindex="-1"></a>y_col <span class="op">&lt;-</span> <span class="st">"L_k_fit_norm"</span></span>
-<span id="cb20-14"><a href="#cb20-14" aria-hidden="true" tabindex="-1"></a>y_lim <span class="op">&lt;-</span> c(<span class="fl">0.2</span>, <span class="dv">100</span>)</span>
-<span id="cb20-15"><a href="#cb20-15" aria-hidden="true" tabindex="-1"></a><span class="co"># y_lim &lt;- NULL</span></span>
-<span id="cb20-16"><a href="#cb20-16" aria-hidden="true" tabindex="-1"></a>ylab <span class="op">&lt;-</span> expression(Log<span class="op">~</span>Thickness<span class="op">~</span>(d[i]))</span>
-<span id="cb20-17"><a href="#cb20-17" aria-hidden="true" tabindex="-1"></a>p <span class="op">&lt;-</span> plot_binned_data(jno_df, x_col <span class="op">=</span> x_col, y_col <span class="op">=</span> y_col, x_bins <span class="op">=</span> <span class="dv">8</span>, y_bins <span class="op">=</span> <span class="dv">32</span>, y_lim <span class="op">=</span> y_lim, log_y <span class="op">=</span> TRUE)</span>
-<span id="cb20-18"><a href="#cb20-18" aria-hidden="true" tabindex="-1"></a>p <span class="op">&lt;-</span> p <span class="op">+</span> labs(x <span class="op">=</span> xlab, y<span class="op">=</span> ylab)</span>
-<span id="cb20-19"><a href="#cb20-19" aria-hidden="true" tabindex="-1"></a>save_plot(<span class="st">"new/thickness/thickness_k_fit_N1_r_dist"</span>)</span>
-<span id="cb20-20"><a href="#cb20-20" aria-hidden="true" tabindex="-1"></a>p</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="op">%%</span>R</span>
+<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>x_col <span class="op">&lt;-</span> <span class="st">"radial_distance"</span></span>
+<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a>xlab <span class="op">&lt;-</span> <span class="st">"Radial Distance (AU)"</span></span>
+<span id="cb19-4"><a href="#cb19-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-5"><a href="#cb19-5" aria-hidden="true" tabindex="-1"></a>y_col <span class="op">&lt;-</span> <span class="st">"L_k_fit"</span></span>
+<span id="cb19-6"><a href="#cb19-6" aria-hidden="true" tabindex="-1"></a>ylab <span class="op">&lt;-</span> <span class="st">"Log Thickness (km)"</span></span>
+<span id="cb19-7"><a href="#cb19-7" aria-hidden="true" tabindex="-1"></a>y_lim <span class="op">&lt;-</span> c(<span class="dv">100</span>, <span class="dv">40000</span>)</span>
+<span id="cb19-8"><a href="#cb19-8" aria-hidden="true" tabindex="-1"></a><span class="co"># y_lim &lt;- NULL</span></span>
+<span id="cb19-9"><a href="#cb19-9" aria-hidden="true" tabindex="-1"></a>p <span class="op">&lt;-</span> plot_binned_data(jno_df, x_col <span class="op">=</span> x_col, y_col <span class="op">=</span> y_col, x_bins <span class="op">=</span> <span class="dv">8</span>, y_bins <span class="op">=</span> <span class="dv">32</span>, y_lim <span class="op">=</span> y_lim, log_y <span class="op">=</span> TRUE)</span>
+<span id="cb19-10"><a href="#cb19-10" aria-hidden="true" tabindex="-1"></a>p <span class="op">&lt;-</span> p <span class="op">+</span> labs(x <span class="op">=</span> xlab, y<span class="op">=</span> ylab)</span>
+<span id="cb19-11"><a href="#cb19-11" aria-hidden="true" tabindex="-1"></a><span class="co"># save_plot("new/thickness/thickness_k_fit_r_dist")</span></span>
+<span id="cb19-12"><a href="#cb19-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-13"><a href="#cb19-13" aria-hidden="true" tabindex="-1"></a>y_col <span class="op">&lt;-</span> <span class="st">"L_k_fit_norm"</span></span>
+<span id="cb19-14"><a href="#cb19-14" aria-hidden="true" tabindex="-1"></a>y_lim <span class="op">&lt;-</span> c(<span class="fl">0.2</span>, <span class="dv">100</span>)</span>
+<span id="cb19-15"><a href="#cb19-15" aria-hidden="true" tabindex="-1"></a><span class="co"># y_lim &lt;- NULL</span></span>
+<span id="cb19-16"><a href="#cb19-16" aria-hidden="true" tabindex="-1"></a>ylab <span class="op">&lt;-</span> expression(Log<span class="op">~</span>Thickness<span class="op">~</span>(d[i]))</span>
+<span id="cb19-17"><a href="#cb19-17" aria-hidden="true" tabindex="-1"></a>p <span class="op">&lt;-</span> plot_binned_data(jno_df, x_col <span class="op">=</span> x_col, y_col <span class="op">=</span> y_col, x_bins <span class="op">=</span> <span class="dv">8</span>, y_bins <span class="op">=</span> <span class="dv">32</span>, y_lim <span class="op">=</span> y_lim, log_y <span class="op">=</span> TRUE)</span>
+<span id="cb19-18"><a href="#cb19-18" aria-hidden="true" tabindex="-1"></a>p <span class="op">&lt;-</span> p <span class="op">+</span> labs(x <span class="op">=</span> xlab, y<span class="op">=</span> ylab)</span>
+<span id="cb19-19"><a href="#cb19-19" aria-hidden="true" tabindex="-1"></a>save_plot(<span class="st">"new/thickness/thickness_k_fit_N1_r_dist"</span>)</span>
+<span id="cb19-20"><a href="#cb19-20" aria-hidden="true" tabindex="-1"></a>p</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Saving 6.67 x 6.67 in image
 Saving 6.67 x 6.67 in image</code></pre>
@@ -1259,7 +1241,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 });
 </script>
 </div> <!-- /content -->
-<script>var lightboxQuarto = GLightbox({"selector":".lightbox","descPosition":"bottom","openEffect":"zoom","loop":false,"closeEffect":"zoom"});
+<script>var lightboxQuarto = GLightbox({"openEffect":"zoom","loop":false,"selector":".lightbox","closeEffect":"zoom","descPosition":"bottom"});
 window.onload = () => {
   lightboxQuarto.on('slide_before_load', (data) => {
     const { slideIndex, slideNode, slideConfig, player, trigger } = data;

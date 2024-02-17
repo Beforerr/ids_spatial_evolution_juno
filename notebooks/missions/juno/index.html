@@ -405,7 +405,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#coordinate-system-of-data" id="toc-coordinate-system-of-data" class="nav-link" data-scroll-target="#coordinate-system-of-data">Coordinate System of Data</a></li>
   </ul></li>
   <li><a href="#setup" id="toc-setup" class="nav-link" data-scroll-target="#setup">Setup</a></li>
-  <li><a href="#check-the-discontinuity-in-the-last-year-of-juno-cruise-phase" id="toc-check-the-discontinuity-in-the-last-year-of-juno-cruise-phase" class="nav-link" data-scroll-target="#check-the-discontinuity-in-the-last-year-of-juno-cruise-phase">Check the discontinuity in the last year of Juno cruise phase</a></li>
+  <li><a href="#check-the-discontinuity-in-the-last-year-of-juno-cruise-phase" id="toc-check-the-discontinuity-in-the-last-year-of-juno-cruise-phase" class="nav-link" data-scroll-target="#check-the-discontinuity-in-the-last-year-of-juno-cruise-phase">Check the discontinuity in the last year of Juno cruise phase</a>
+  <ul class="collapse">
+  <li><a href="#first-year" id="toc-first-year" class="nav-link" data-scroll-target="#first-year">First year</a></li>
+  <li><a href="#last-year" id="toc-last-year" class="nav-link" data-scroll-target="#last-year">Last year</a></li>
+  </ul></li>
   <li><a href="#processing-the-whole-data" id="toc-processing-the-whole-data" class="nav-link" data-scroll-target="#processing-the-whole-data">Processing the whole data</a></li>
   <li><a href="#obsolete" id="toc-obsolete" class="nav-link" data-scroll-target="#obsolete">Obsolete</a>
   <ul class="collapse">
@@ -512,1172 +516,440 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 <section id="setup" class="level2">
 <h2 class="anchored" data-anchor-id="setup">Setup</h2>
-<div id="cell-8" class="cell" data-execution_count="2">
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> discontinuitypy.datasets <span class="im">import</span> IDsDataset</span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> polars <span class="im">as</span> pl</span>
-<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> fastcore.utils <span class="im">import</span> walk</span>
-<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> loguru <span class="im">import</span> logger</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display">
-<script type="application/javascript">
-(function(root) {
-  function now() {
-    return new Date();
-  }
-
-  var force = true;
-  var py_version = '3.3.4'.replace('rc', '-rc.').replace('.dev', '-dev.');
-  var reloading = false;
-  var Bokeh = root.Bokeh;
-
-  if (typeof (root._bokeh_timeout) === "undefined" || force) {
-    root._bokeh_timeout = Date.now() + 5000;
-    root._bokeh_failed_load = false;
-  }
-
-  function run_callbacks() {
-    try {
-      root._bokeh_onload_callbacks.forEach(function(callback) {
-        if (callback != null)
-          callback();
-      });
-    } finally {
-      delete root._bokeh_onload_callbacks;
-    }
-    console.debug("Bokeh: all callbacks have finished");
-  }
-
-  function load_libs(css_urls, js_urls, js_modules, js_exports, callback) {
-    if (css_urls == null) css_urls = [];
-    if (js_urls == null) js_urls = [];
-    if (js_modules == null) js_modules = [];
-    if (js_exports == null) js_exports = {};
-
-    root._bokeh_onload_callbacks.push(callback);
-
-    if (root._bokeh_is_loading > 0) {
-      console.debug("Bokeh: BokehJS is being loaded, scheduling callback at", now());
-      return null;
-    }
-    if (js_urls.length === 0 && js_modules.length === 0 && Object.keys(js_exports).length === 0) {
-      run_callbacks();
-      return null;
-    }
-    if (!reloading) {
-      console.debug("Bokeh: BokehJS not loaded, scheduling load and callback at", now());
-    }
-
-    function on_load() {
-      root._bokeh_is_loading--;
-      if (root._bokeh_is_loading === 0) {
-        console.debug("Bokeh: all BokehJS libraries/stylesheets loaded");
-        run_callbacks()
-      }
-    }
-    window._bokeh_on_load = on_load
-
-    function on_error() {
-      console.error("failed to load " + url);
-    }
-
-    var skip = [];
-    if (window.requirejs) {
-      window.requirejs.config({'packages': {}, 'paths': {'jspanel': 'https://cdn.jsdelivr.net/npm/jspanel4@4.12.0/dist/jspanel', 'jspanel-modal': 'https://cdn.jsdelivr.net/npm/jspanel4@4.12.0/dist/extensions/modal/jspanel.modal', 'jspanel-tooltip': 'https://cdn.jsdelivr.net/npm/jspanel4@4.12.0/dist/extensions/tooltip/jspanel.tooltip', 'jspanel-hint': 'https://cdn.jsdelivr.net/npm/jspanel4@4.12.0/dist/extensions/hint/jspanel.hint', 'jspanel-layout': 'https://cdn.jsdelivr.net/npm/jspanel4@4.12.0/dist/extensions/layout/jspanel.layout', 'jspanel-contextmenu': 'https://cdn.jsdelivr.net/npm/jspanel4@4.12.0/dist/extensions/contextmenu/jspanel.contextmenu', 'jspanel-dock': 'https://cdn.jsdelivr.net/npm/jspanel4@4.12.0/dist/extensions/dock/jspanel.dock', 'gridstack': 'https://cdn.jsdelivr.net/npm/gridstack@7.2.3/dist/gridstack-all', 'notyf': 'https://cdn.jsdelivr.net/npm/notyf@3/notyf.min'}, 'shim': {'jspanel': {'exports': 'jsPanel'}, 'gridstack': {'exports': 'GridStack'}}});
-      require(["jspanel"], function(jsPanel) {
-    window.jsPanel = jsPanel
-    on_load()
-      })
-      require(["jspanel-modal"], function() {
-    on_load()
-      })
-      require(["jspanel-tooltip"], function() {
-    on_load()
-      })
-      require(["jspanel-hint"], function() {
-    on_load()
-      })
-      require(["jspanel-layout"], function() {
-    on_load()
-      })
-      require(["jspanel-contextmenu"], function() {
-    on_load()
-      })
-      require(["jspanel-dock"], function() {
-    on_load()
-      })
-      require(["gridstack"], function(GridStack) {
-    window.GridStack = GridStack
-    on_load()
-      })
-      require(["notyf"], function() {
-    on_load()
-      })
-      root._bokeh_is_loading = css_urls.length + 9;
-    } else {
-      root._bokeh_is_loading = css_urls.length + js_urls.length + js_modules.length + Object.keys(js_exports).length;
-    }
-
-    var existing_stylesheets = []
-    var links = document.getElementsByTagName('link')
-    for (var i = 0; i < links.length; i++) {
-      var link = links[i]
-      if (link.href != null) {
-    existing_stylesheets.push(link.href)
-      }
-    }
-    for (var i = 0; i < css_urls.length; i++) {
-      var url = css_urls[i];
-      if (existing_stylesheets.indexOf(url) !== -1) {
-    on_load()
-    continue;
-      }
-      const element = document.createElement("link");
-      element.onload = on_load;
-      element.onerror = on_error;
-      element.rel = "stylesheet";
-      element.type = "text/css";
-      element.href = url;
-      console.debug("Bokeh: injecting link tag for BokehJS stylesheet: ", url);
-      document.body.appendChild(element);
-    }    if (((window['jsPanel'] !== undefined) && (!(window['jsPanel'] instanceof HTMLElement))) || window.requirejs) {
-      var urls = ['https://cdn.holoviz.org/panel/1.3.8/dist/bundled/floatpanel/jspanel4@4.12.0/dist/jspanel.js', 'https://cdn.holoviz.org/panel/1.3.8/dist/bundled/floatpanel/jspanel4@4.12.0/dist/extensions/modal/jspanel.modal.js', 'https://cdn.holoviz.org/panel/1.3.8/dist/bundled/floatpanel/jspanel4@4.12.0/dist/extensions/tooltip/jspanel.tooltip.js', 'https://cdn.holoviz.org/panel/1.3.8/dist/bundled/floatpanel/jspanel4@4.12.0/dist/extensions/hint/jspanel.hint.js', 'https://cdn.holoviz.org/panel/1.3.8/dist/bundled/floatpanel/jspanel4@4.12.0/dist/extensions/layout/jspanel.layout.js', 'https://cdn.holoviz.org/panel/1.3.8/dist/bundled/floatpanel/jspanel4@4.12.0/dist/extensions/contextmenu/jspanel.contextmenu.js', 'https://cdn.holoviz.org/panel/1.3.8/dist/bundled/floatpanel/jspanel4@4.12.0/dist/extensions/dock/jspanel.dock.js'];
-      for (var i = 0; i < urls.length; i++) {
-        skip.push(urls[i])
-      }
-    }    if (((window['GridStack'] !== undefined) && (!(window['GridStack'] instanceof HTMLElement))) || window.requirejs) {
-      var urls = ['https://cdn.holoviz.org/panel/1.3.8/dist/bundled/gridstack/gridstack@7.2.3/dist/gridstack-all.js'];
-      for (var i = 0; i < urls.length; i++) {
-        skip.push(urls[i])
-      }
-    }    if (((window['Notyf'] !== undefined) && (!(window['Notyf'] instanceof HTMLElement))) || window.requirejs) {
-      var urls = ['https://cdn.holoviz.org/panel/1.3.8/dist/bundled/notificationarea/notyf@3/notyf.min.js'];
-      for (var i = 0; i < urls.length; i++) {
-        skip.push(urls[i])
-      }
-    }    var existing_scripts = []
-    var scripts = document.getElementsByTagName('script')
-    for (var i = 0; i < scripts.length; i++) {
-      var script = scripts[i]
-      if (script.src != null) {
-    existing_scripts.push(script.src)
-      }
-    }
-    for (var i = 0; i < js_urls.length; i++) {
-      var url = js_urls[i];
-      if (skip.indexOf(url) !== -1 || existing_scripts.indexOf(url) !== -1) {
-    if (!window.requirejs) {
-      on_load();
-    }
-    continue;
-      }
-      var element = document.createElement('script');
-      element.onload = on_load;
-      element.onerror = on_error;
-      element.async = false;
-      element.src = url;
-      console.debug("Bokeh: injecting script tag for BokehJS library: ", url);
-      document.head.appendChild(element);
-    }
-    for (var i = 0; i < js_modules.length; i++) {
-      var url = js_modules[i];
-      if (skip.indexOf(url) !== -1 || existing_scripts.indexOf(url) !== -1) {
-    if (!window.requirejs) {
-      on_load();
-    }
-    continue;
-      }
-      var element = document.createElement('script');
-      element.onload = on_load;
-      element.onerror = on_error;
-      element.async = false;
-      element.src = url;
-      element.type = "module";
-      console.debug("Bokeh: injecting script tag for BokehJS library: ", url);
-      document.head.appendChild(element);
-    }
-    for (const name in js_exports) {
-      var url = js_exports[name];
-      if (skip.indexOf(url) >= 0 || root[name] != null) {
-    if (!window.requirejs) {
-      on_load();
-    }
-    continue;
-      }
-      var element = document.createElement('script');
-      element.onerror = on_error;
-      element.async = false;
-      element.type = "module";
-      console.debug("Bokeh: injecting script tag for BokehJS library: ", url);
-      element.textContent = `
-      import ${name} from "${url}"
-      window.${name} = ${name}
-      window._bokeh_on_load()
-      `
-      document.head.appendChild(element);
-    }
-    if (!js_urls.length && !js_modules.length) {
-      on_load()
-    }
-  };
-
-  function inject_raw_css(css) {
-    const element = document.createElement("style");
-    element.appendChild(document.createTextNode(css));
-    document.body.appendChild(element);
-  }
-
-  var js_urls = ["https://cdn.bokeh.org/bokeh/release/bokeh-3.3.4.min.js", "https://cdn.bokeh.org/bokeh/release/bokeh-gl-3.3.4.min.js", "https://cdn.bokeh.org/bokeh/release/bokeh-widgets-3.3.4.min.js", "https://cdn.bokeh.org/bokeh/release/bokeh-tables-3.3.4.min.js", "https://cdn.holoviz.org/panel/1.3.8/dist/panel.min.js"];
-  var js_modules = [];
-  var js_exports = {};
-  var css_urls = [];
-  var inline_js = [    function(Bokeh) {
-      Bokeh.set_log_level("info");
-    },
-function(Bokeh) {} // ensure no trailing comma for IE
-  ];
-
-  function run_inline_js() {
-    if ((root.Bokeh !== undefined) || (force === true)) {
-      for (var i = 0; i < inline_js.length; i++) {
-    try {
-          inline_js[i].call(root, root.Bokeh);
-    } catch(e) {
-      if (!reloading) {
-        throw e;
-      }
-    }
-      }
-      // Cache old bokeh versions
-      if (Bokeh != undefined && !reloading) {
-    var NewBokeh = root.Bokeh;
-    if (Bokeh.versions === undefined) {
-      Bokeh.versions = new Map();
-    }
-    if (NewBokeh.version !== Bokeh.version) {
-      Bokeh.versions.set(NewBokeh.version, NewBokeh)
-    }
-    root.Bokeh = Bokeh;
-      }} else if (Date.now() < root._bokeh_timeout) {
-      setTimeout(run_inline_js, 100);
-    } else if (!root._bokeh_failed_load) {
-      console.log("Bokeh: BokehJS failed to load within specified timeout.");
-      root._bokeh_failed_load = true;
-    }
-    root._bokeh_is_initializing = false
-  }
-
-  function load_or_wait() {
-    // Implement a backoff loop that tries to ensure we do not load multiple
-    // versions of Bokeh and its dependencies at the same time.
-    // In recent versions we use the root._bokeh_is_initializing flag
-    // to determine whether there is an ongoing attempt to initialize
-    // bokeh, however for backward compatibility we also try to ensure
-    // that we do not start loading a newer (Panel>=1.0 and Bokeh>3) version
-    // before older versions are fully initialized.
-    if (root._bokeh_is_initializing && Date.now() > root._bokeh_timeout) {
-      root._bokeh_is_initializing = false;
-      root._bokeh_onload_callbacks = undefined;
-      console.log("Bokeh: BokehJS was loaded multiple times but one version failed to initialize.");
-      load_or_wait();
-    } else if (root._bokeh_is_initializing || (typeof root._bokeh_is_initializing === "undefined" && root._bokeh_onload_callbacks !== undefined)) {
-      setTimeout(load_or_wait, 100);
-    } else {
-      root._bokeh_is_initializing = true
-      root._bokeh_onload_callbacks = []
-      var bokeh_loaded = Bokeh != null && (Bokeh.version === py_version || (Bokeh.versions !== undefined && Bokeh.versions.has(py_version)));
-      if (!reloading && !bokeh_loaded) {
-    root.Bokeh = undefined;
-      }
-      load_libs(css_urls, js_urls, js_modules, js_exports, function() {
-    console.debug("Bokeh: BokehJS plotting callback run at", now());
-    run_inline_js();
-      });
-    }
-  }
-  // Give older versions of the autoload script a head-start to ensure
-  // they initialize before we start loading newer version.
-  setTimeout(load_or_wait, 100)
-}(window));
-</script>
+<p>::: {#cell-8 .cell 0=‘h’ 1=‘i’ 2=‘d’ 3=‘e’}</p>
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="op">%</span>load_ext autoreload</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="op">%</span>autoreload <span class="dv">2</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>:::</p>
+<div id="cell-9" class="cell">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> discontinuitypy.datasets <span class="im">import</span> IDsDataset</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> polars <span class="im">as</span> pl</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> fastcore.utils <span class="im">import</span> walk</span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> loguru <span class="im">import</span> logger</span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> datetime <span class="im">import</span> timedelta</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="cell-output cell-output-display">
-<script type="application/javascript">
-
-if ((window.PyViz === undefined) || (window.PyViz instanceof HTMLElement)) {
-  window.PyViz = {comms: {}, comm_status:{}, kernels:{}, receivers: {}, plot_index: []}
-}
-
-
-    function JupyterCommManager() {
-    }
-
-    JupyterCommManager.prototype.register_target = function(plot_id, comm_id, msg_handler) {
-      if (window.comm_manager || ((window.Jupyter !== undefined) && (Jupyter.notebook.kernel != null))) {
-        var comm_manager = window.comm_manager || Jupyter.notebook.kernel.comm_manager;
-        comm_manager.register_target(comm_id, function(comm) {
-          comm.on_msg(msg_handler);
-        });
-      } else if ((plot_id in window.PyViz.kernels) && (window.PyViz.kernels[plot_id])) {
-        window.PyViz.kernels[plot_id].registerCommTarget(comm_id, function(comm) {
-          comm.onMsg = msg_handler;
-        });
-      } else if (typeof google != 'undefined' && google.colab.kernel != null) {
-        google.colab.kernel.comms.registerTarget(comm_id, (comm) => {
-          var messages = comm.messages[Symbol.asyncIterator]();
-          function processIteratorResult(result) {
-            var message = result.value;
-            console.log(message)
-            var content = {data: message.data, comm_id};
-            var buffers = []
-            for (var buffer of message.buffers || []) {
-              buffers.push(new DataView(buffer))
-            }
-            var metadata = message.metadata || {};
-            var msg = {content, buffers, metadata}
-            msg_handler(msg);
-            return messages.next().then(processIteratorResult);
-          }
-          return messages.next().then(processIteratorResult);
-        })
-      }
-    }
-
-    JupyterCommManager.prototype.get_client_comm = function(plot_id, comm_id, msg_handler) {
-      if (comm_id in window.PyViz.comms) {
-        return window.PyViz.comms[comm_id];
-      } else if (window.comm_manager || ((window.Jupyter !== undefined) && (Jupyter.notebook.kernel != null))) {
-        var comm_manager = window.comm_manager || Jupyter.notebook.kernel.comm_manager;
-        var comm = comm_manager.new_comm(comm_id, {}, {}, {}, comm_id);
-        if (msg_handler) {
-          comm.on_msg(msg_handler);
-        }
-      } else if ((plot_id in window.PyViz.kernels) && (window.PyViz.kernels[plot_id])) {
-        var comm = window.PyViz.kernels[plot_id].connectToComm(comm_id);
-        comm.open();
-        if (msg_handler) {
-          comm.onMsg = msg_handler;
-        }
-      } else if (typeof google != 'undefined' && google.colab.kernel != null) {
-        var comm_promise = google.colab.kernel.comms.open(comm_id)
-        comm_promise.then((comm) => {
-          window.PyViz.comms[comm_id] = comm;
-          if (msg_handler) {
-            var messages = comm.messages[Symbol.asyncIterator]();
-            function processIteratorResult(result) {
-              var message = result.value;
-              var content = {data: message.data};
-              var metadata = message.metadata || {comm_id};
-              var msg = {content, metadata}
-              msg_handler(msg);
-              return messages.next().then(processIteratorResult);
-            }
-            return messages.next().then(processIteratorResult);
-          }
-        }) 
-        var sendClosure = (data, metadata, buffers, disposeOnDone) => {
-          return comm_promise.then((comm) => {
-            comm.send(data, metadata, buffers, disposeOnDone);
-          });
-        };
-        var comm = {
-          send: sendClosure
-        };
-      }
-      window.PyViz.comms[comm_id] = comm;
-      return comm;
-    }
-    window.PyViz.comm_manager = new JupyterCommManager();
-    
-
-
-var JS_MIME_TYPE = 'application/javascript';
-var HTML_MIME_TYPE = 'text/html';
-var EXEC_MIME_TYPE = 'application/vnd.holoviews_exec.v0+json';
-var CLASS_NAME = 'output';
-
-/**
- * Render data to the DOM node
- */
-function render(props, node) {
-  var div = document.createElement("div");
-  var script = document.createElement("script");
-  node.appendChild(div);
-  node.appendChild(script);
-}
-
-/**
- * Handle when a new output is added
- */
-function handle_add_output(event, handle) {
-  var output_area = handle.output_area;
-  var output = handle.output;
-  if ((output.data == undefined) || (!output.data.hasOwnProperty(EXEC_MIME_TYPE))) {
-    return
-  }
-  var id = output.metadata[EXEC_MIME_TYPE]["id"];
-  var toinsert = output_area.element.find("." + CLASS_NAME.split(' ')[0]);
-  if (id !== undefined) {
-    var nchildren = toinsert.length;
-    var html_node = toinsert[nchildren-1].children[0];
-    html_node.innerHTML = output.data[HTML_MIME_TYPE];
-    var scripts = [];
-    var nodelist = html_node.querySelectorAll("script");
-    for (var i in nodelist) {
-      if (nodelist.hasOwnProperty(i)) {
-        scripts.push(nodelist[i])
-      }
-    }
-
-    scripts.forEach( function (oldScript) {
-      var newScript = document.createElement("script");
-      var attrs = [];
-      var nodemap = oldScript.attributes;
-      for (var j in nodemap) {
-        if (nodemap.hasOwnProperty(j)) {
-          attrs.push(nodemap[j])
-        }
-      }
-      attrs.forEach(function(attr) { newScript.setAttribute(attr.name, attr.value) });
-      newScript.appendChild(document.createTextNode(oldScript.innerHTML));
-      oldScript.parentNode.replaceChild(newScript, oldScript);
-    });
-    if (JS_MIME_TYPE in output.data) {
-      toinsert[nchildren-1].children[1].textContent = output.data[JS_MIME_TYPE];
-    }
-    output_area._hv_plot_id = id;
-    if ((window.Bokeh !== undefined) && (id in Bokeh.index)) {
-      window.PyViz.plot_index[id] = Bokeh.index[id];
-    } else {
-      window.PyViz.plot_index[id] = null;
-    }
-  } else if (output.metadata[EXEC_MIME_TYPE]["server_id"] !== undefined) {
-    var bk_div = document.createElement("div");
-    bk_div.innerHTML = output.data[HTML_MIME_TYPE];
-    var script_attrs = bk_div.children[0].attributes;
-    for (var i = 0; i < script_attrs.length; i++) {
-      toinsert[toinsert.length - 1].childNodes[1].setAttribute(script_attrs[i].name, script_attrs[i].value);
-    }
-    // store reference to server id on output_area
-    output_area._bokeh_server_id = output.metadata[EXEC_MIME_TYPE]["server_id"];
-  }
-}
-
-/**
- * Handle when an output is cleared or removed
- */
-function handle_clear_output(event, handle) {
-  var id = handle.cell.output_area._hv_plot_id;
-  var server_id = handle.cell.output_area._bokeh_server_id;
-  if (((id === undefined) || !(id in PyViz.plot_index)) && (server_id !== undefined)) { return; }
-  var comm = window.PyViz.comm_manager.get_client_comm("hv-extension-comm", "hv-extension-comm", function () {});
-  if (server_id !== null) {
-    comm.send({event_type: 'server_delete', 'id': server_id});
-    return;
-  } else if (comm !== null) {
-    comm.send({event_type: 'delete', 'id': id});
-  }
-  delete PyViz.plot_index[id];
-  if ((window.Bokeh !== undefined) & (id in window.Bokeh.index)) {
-    var doc = window.Bokeh.index[id].model.document
-    doc.clear();
-    const i = window.Bokeh.documents.indexOf(doc);
-    if (i > -1) {
-      window.Bokeh.documents.splice(i, 1);
-    }
-  }
-}
-
-/**
- * Handle kernel restart event
- */
-function handle_kernel_cleanup(event, handle) {
-  delete PyViz.comms["hv-extension-comm"];
-  window.PyViz.plot_index = {}
-}
-
-/**
- * Handle update_display_data messages
- */
-function handle_update_output(event, handle) {
-  handle_clear_output(event, {cell: {output_area: handle.output_area}})
-  handle_add_output(event, handle)
-}
-
-function register_renderer(events, OutputArea) {
-  function append_mime(data, metadata, element) {
-    // create a DOM node to render to
-    var toinsert = this.create_output_subarea(
-    metadata,
-    CLASS_NAME,
-    EXEC_MIME_TYPE
-    );
-    this.keyboard_manager.register_events(toinsert);
-    // Render to node
-    var props = {data: data, metadata: metadata[EXEC_MIME_TYPE]};
-    render(props, toinsert[0]);
-    element.append(toinsert);
-    return toinsert
-  }
-
-  events.on('output_added.OutputArea', handle_add_output);
-  events.on('output_updated.OutputArea', handle_update_output);
-  events.on('clear_output.CodeCell', handle_clear_output);
-  events.on('delete.Cell', handle_clear_output);
-  events.on('kernel_ready.Kernel', handle_kernel_cleanup);
-
-  OutputArea.prototype.register_mime_type(EXEC_MIME_TYPE, append_mime, {
-    safe: true,
-    index: 0
-  });
-}
-
-if (window.Jupyter !== undefined) {
-  try {
-    var events = require('base/js/events');
-    var OutputArea = require('notebook/js/outputarea').OutputArea;
-    if (OutputArea.prototype.mime_types().indexOf(EXEC_MIME_TYPE) == -1) {
-      register_renderer(events, OutputArea);
-    }
-  } catch(err) {
-  }
-}
-
-</script>
+<div id="cell-10" class="cell" data-execution_count="18">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>mission <span class="op">=</span> <span class="st">"JNO"</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>ts <span class="op">=</span> timedelta(seconds<span class="op">=</span><span class="dv">1</span>)</span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>tau <span class="op">=</span> timedelta(seconds<span class="op">=</span><span class="dv">60</span>)</span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>data_dir <span class="op">=</span> <span class="st">'../../../data'</span></span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>dir_path <span class="op">=</span> <span class="ss">f'</span><span class="sc">{</span>data_dir<span class="sc">}</span><span class="ss">/03_primary/JNO_MAG_ts_</span><span class="sc">{</span>ts<span class="sc">.</span>seconds<span class="sc">}</span><span class="ss">s'</span></span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a>juno_state_path <span class="op">=</span> <span class="ss">f'</span><span class="sc">{</span>data_dir<span class="sc">}</span><span class="ss">/03_primary/JNO_STATE_ts_3600s.parquet'</span></span>
+<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a>vec_cols <span class="op">=</span> [<span class="st">'v_x'</span>, <span class="st">'v_y'</span>, <span class="st">'v_z'</span>]</span>
+<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a><span class="bu">format</span> <span class="op">=</span> <span class="st">'arrow'</span></span>
+<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a>fname <span class="op">=</span> <span class="ss">f'events.</span><span class="sc">{</span>mission<span class="sc">}</span><span class="ss">.ts_</span><span class="sc">{</span>ts<span class="sc">.</span>total_seconds()<span class="sc">:.2f}</span><span class="ss">s_tau_</span><span class="sc">{</span>tau<span class="sc">.</span>seconds<span class="sc">}</span><span class="ss">s.</span><span class="sc">{</span><span class="bu">format</span><span class="sc">}</span><span class="ss">'</span></span>
+<span id="cb4-13"><a href="#cb4-13" aria-hidden="true" tabindex="-1"></a>output_path <span class="op">=</span> <span class="ss">f'</span><span class="sc">{</span>data_dir<span class="sc">}</span><span class="ss">/05_reporting/</span><span class="sc">{</span>fname<span class="sc">}</span><span class="ss">'</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="cell-output cell-output-display">
-<style>*[data-root-id],
-*[data-root-id] > * {
-  box-sizing: border-box;
-  font-family: var(--jp-ui-font-family);
-  font-size: var(--jp-ui-font-size1);
-  color: var(--vscode-editor-foreground, var(--jp-ui-font-color1));
-}
-
-/* Override VSCode background color */
-.cell-output-ipywidget-background:has(
-    > .cell-output-ipywidget-background > .lm-Widget > *[data-root-id]
-  ),
-.cell-output-ipywidget-background:has(> .lm-Widget > *[data-root-id]) {
-  background-color: transparent !important;
-}
-</style>
-</div>
-<div class="cell-output cell-output-display">
-<div id="p1002">
-  <div id="e788bfaf-670d-4b8f-b2ab-9a582744c783" data-root-id="p1002" style="display: contents;"></div>
-</div>
-<script type="application/javascript">(function(root) {
-  var docs_json = {"c290234d-6ca9-4ecd-8f4a-82de17a80579":{"version":"3.3.4","title":"Bokeh Application","roots":[{"type":"object","name":"panel.models.browser.BrowserInfo","id":"p1002"},{"type":"object","name":"panel.models.comm_manager.CommManager","id":"p1003","attributes":{"plot_id":"p1002","comm_id":"d62d2e5351c94414b3fc8dbfc85de6d2","client_comm_id":"c8c12d1299b14f53b2027169aec3c385"}}],"defs":[{"type":"model","name":"ReactiveHTML1"},{"type":"model","name":"FlexBox1","properties":[{"name":"align_content","kind":"Any","default":"flex-start"},{"name":"align_items","kind":"Any","default":"flex-start"},{"name":"flex_direction","kind":"Any","default":"row"},{"name":"flex_wrap","kind":"Any","default":"wrap"},{"name":"justify_content","kind":"Any","default":"flex-start"}]},{"type":"model","name":"FloatPanel1","properties":[{"name":"config","kind":"Any","default":{"type":"map"}},{"name":"contained","kind":"Any","default":true},{"name":"position","kind":"Any","default":"right-top"},{"name":"offsetx","kind":"Any","default":null},{"name":"offsety","kind":"Any","default":null},{"name":"theme","kind":"Any","default":"primary"},{"name":"status","kind":"Any","default":"normalized"}]},{"type":"model","name":"GridStack1","properties":[{"name":"mode","kind":"Any","default":"warn"},{"name":"ncols","kind":"Any","default":null},{"name":"nrows","kind":"Any","default":null},{"name":"allow_resize","kind":"Any","default":true},{"name":"allow_drag","kind":"Any","default":true},{"name":"state","kind":"Any","default":[]}]},{"type":"model","name":"drag1","properties":[{"name":"slider_width","kind":"Any","default":5},{"name":"slider_color","kind":"Any","default":"black"},{"name":"value","kind":"Any","default":50}]},{"type":"model","name":"click1","properties":[{"name":"terminal_output","kind":"Any","default":""},{"name":"debug_name","kind":"Any","default":""},{"name":"clears","kind":"Any","default":0}]},{"type":"model","name":"copy_to_clipboard1","properties":[{"name":"fill","kind":"Any","default":"none"},{"name":"value","kind":"Any","default":null}]},{"type":"model","name":"FastWrapper1","properties":[{"name":"object","kind":"Any","default":null},{"name":"style","kind":"Any","default":null}]},{"type":"model","name":"NotificationAreaBase1","properties":[{"name":"js_events","kind":"Any","default":{"type":"map"}},{"name":"position","kind":"Any","default":"bottom-right"},{"name":"_clear","kind":"Any","default":0}]},{"type":"model","name":"NotificationArea1","properties":[{"name":"js_events","kind":"Any","default":{"type":"map"}},{"name":"notifications","kind":"Any","default":[]},{"name":"position","kind":"Any","default":"bottom-right"},{"name":"_clear","kind":"Any","default":0},{"name":"types","kind":"Any","default":[{"type":"map","entries":[["type","warning"],["background","#ffc107"],["icon",{"type":"map","entries":[["className","fas fa-exclamation-triangle"],["tagName","i"],["color","white"]]}]]},{"type":"map","entries":[["type","info"],["background","#007bff"],["icon",{"type":"map","entries":[["className","fas fa-info-circle"],["tagName","i"],["color","white"]]}]]}]}]},{"type":"model","name":"Notification","properties":[{"name":"background","kind":"Any","default":null},{"name":"duration","kind":"Any","default":3000},{"name":"icon","kind":"Any","default":null},{"name":"message","kind":"Any","default":""},{"name":"notification_type","kind":"Any","default":null},{"name":"_destroyed","kind":"Any","default":false}]},{"type":"model","name":"TemplateActions1","properties":[{"name":"open_modal","kind":"Any","default":0},{"name":"close_modal","kind":"Any","default":0}]},{"type":"model","name":"BootstrapTemplateActions1","properties":[{"name":"open_modal","kind":"Any","default":0},{"name":"close_modal","kind":"Any","default":0}]},{"type":"model","name":"MaterialTemplateActions1","properties":[{"name":"open_modal","kind":"Any","default":0},{"name":"close_modal","kind":"Any","default":0}]}]}};
-  var render_items = [{"docid":"c290234d-6ca9-4ecd-8f4a-82de17a80579","roots":{"p1002":"e788bfaf-670d-4b8f-b2ab-9a582744c783"},"root_ids":["p1002"]}];
-  var docs = Object.values(docs_json)
-  if (!docs) {
-    return
-  }
-  const py_version = docs[0].version.replace('rc', '-rc.').replace('.dev', '-dev.')
-  function embed_document(root) {
-    var Bokeh = get_bokeh(root)
-    Bokeh.embed.embed_items_notebook(docs_json, render_items);
-    for (const render_item of render_items) {
-      for (const root_id of render_item.root_ids) {
-    const id_el = document.getElementById(root_id)
-    if (id_el.children.length && (id_el.children[0].className === 'bk-root')) {
-      const root_el = id_el.children[0]
-      root_el.id = root_el.id + '-rendered'
-    }
-      }
-    }
-  }
-  function get_bokeh(root) {
-    if (root.Bokeh === undefined) {
-      return null
-    } else if (root.Bokeh.version !== py_version) {
-      if (root.Bokeh.versions === undefined || !root.Bokeh.versions.has(py_version)) {
-    return null
-      }
-      return root.Bokeh.versions.get(py_version);
-    } else if (root.Bokeh.version === py_version) {
-      return root.Bokeh
-    }
-    return null
-  }
-  function is_loaded(root) {
-    var Bokeh = get_bokeh(root)
-    return (Bokeh != null && Bokeh.Panel !== undefined)
-  }
-  if (is_loaded(root)) {
-    embed_document(root);
-  } else {
-    var attempts = 0;
-    var timer = setInterval(function(root) {
-      if (is_loaded(root)) {
-        clearInterval(timer);
-        embed_document(root);
-      } else if (document.readyState == "complete") {
-        attempts++;
-        if (attempts > 200) {
-          clearInterval(timer);
-      var Bokeh = get_bokeh(root)
-      if (Bokeh == null || Bokeh.Panel == null) {
-            console.warn("Panel: ERROR: Unable to run Panel code because Bokeh or Panel library is missing");
-      } else {
-        console.warn("Panel: WARNING: Attempting to render but not all required libraries could be resolved.")
-        embed_document(root)
-      }
-        }
-      }
-    }, 25, root)
-  }
-})(window);</script>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code>16-Feb-24 22:55:54: UserWarning: Traceback (most recent call last):
-  File "/Users/zijin/micromamba/envs/psp_conjunction/lib/python3.11/site-packages/pdpipe/__init__.py", line 85, in &lt;module&gt;
-    from . import skintegrate
-  File "/Users/zijin/micromamba/envs/psp_conjunction/lib/python3.11/site-packages/pdpipe/skintegrate.py", line 20, in &lt;module&gt;
-    from sklearn.base import BaseEstimator
-ModuleNotFoundError: No module named 'sklearn'
-
-
-16-Feb-24 22:55:54: UserWarning: pdpipe: Scikit-learn or skutil import failed. Scikit-learn-dependent pipeline stages will not be loaded.
-
-16-Feb-24 22:55:54: UserWarning: Traceback (most recent call last):
-  File "/Users/zijin/micromamba/envs/psp_conjunction/lib/python3.11/site-packages/pdpipe/__init__.py", line 105, in &lt;module&gt;
-    from . import nltk_stages
-  File "/Users/zijin/micromamba/envs/psp_conjunction/lib/python3.11/site-packages/pdpipe/nltk_stages.py", line 19, in &lt;module&gt;
-    import nltk
-ModuleNotFoundError: No module named 'nltk'
-
-
-16-Feb-24 22:55:54: UserWarning: pdpipe: nltk import failed. nltk-dependent  pipeline stages will not be loaded.
-</code></pre>
-</div>
-</div>
-<div id="cell-9" class="cell" data-execution_count="3">
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>ts <span class="op">=</span> <span class="dv">1</span> <span class="co"># unit: seconds</span></span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>tau <span class="op">=</span> <span class="dv">60</span> <span class="co"># unit: seconds</span></span>
-<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>data_dir <span class="op">=</span> <span class="st">'../../../data'</span></span>
-<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>dir_path <span class="op">=</span> <span class="ss">f'</span><span class="sc">{</span>data_dir<span class="sc">}</span><span class="ss">/03_primary/JNO_MAG_ts_</span><span class="sc">{</span>ts<span class="sc">}</span><span class="ss">s'</span></span>
-<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>juno_state_path <span class="op">=</span> <span class="ss">f'</span><span class="sc">{</span>data_dir<span class="sc">}</span><span class="ss">/03_primary/JNO_STATE_ts_3600s.parquet'</span></span>
-<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>vec_cols <span class="op">=</span> [<span class="st">'v_x'</span>, <span class="st">'v_y'</span>, <span class="st">'v_z'</span>]</span>
-<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a><span class="bu">format</span> <span class="op">=</span> <span class="st">'arrow'</span></span>
-<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a>fname <span class="op">=</span> <span class="ss">f'events.JNO.ts_</span><span class="sc">{</span>ts<span class="sc">}</span><span class="ss">s_tau_</span><span class="sc">{</span>tau<span class="sc">}</span><span class="ss">s.</span><span class="sc">{</span><span class="bu">format</span><span class="sc">}</span><span class="ss">'</span></span>
-<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a>output_path <span class="op">=</span> <span class="ss">f'</span><span class="sc">{</span>data_dir<span class="sc">}</span><span class="ss">/05_reporting/</span><span class="sc">{</span>fname<span class="sc">}</span><span class="ss">'</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<div id="cell-10" class="cell" data-execution_count="4">
+<div id="cell-11" class="cell">
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>plasma_data <span class="op">=</span> pl.scan_parquet(juno_state_path).sort(<span class="st">'time'</span>)</span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>logger.info(plasma_data.columns)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stderr">
-<pre><code>2024-02-16 22:55:56.735 | INFO     | __main__:&lt;module&gt;:2 - ['radial_distance', 'plasma_density', 'plasma_temperature', 'time', 'model_b_r', 'model_b_t', 'model_b_n', 'v_x', 'v_y', 'v_z', 'plasma_speed', 'B_background_x', 'B_background_y', 'B_background_z']</code></pre>
 </div>
-</div>
-<div id="cell-11" class="cell" data-execution_count="5">
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>juno_events <span class="op">=</span> []</span>
-<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> mag_path <span class="kw">in</span> walk(dir_path):</span>
-<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>    juno_mag_data <span class="op">=</span> pl.scan_parquet(mag_path).drop(<span class="st">'X'</span>, <span class="st">'Y'</span>, <span class="st">'Z'</span>).sort(<span class="st">'time'</span>)</span>
-<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>    _juno_events <span class="op">=</span> (</span>
-<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a>        IDsDataset(</span>
-<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a>            mag_data<span class="op">=</span>juno_mag_data,</span>
-<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a>            plasma_data<span class="op">=</span>plasma_data,</span>
-<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a>            tau<span class="op">=</span>tau,</span>
-<span id="cb7-10"><a href="#cb7-10" aria-hidden="true" tabindex="-1"></a>            ts<span class="op">=</span>ts,</span>
-<span id="cb7-11"><a href="#cb7-11" aria-hidden="true" tabindex="-1"></a>            vec_cols<span class="op">=</span>vec_cols,</span>
-<span id="cb7-12"><a href="#cb7-12" aria-hidden="true" tabindex="-1"></a>            density_col<span class="op">=</span><span class="st">"plasma_density"</span>,</span>
-<span id="cb7-13"><a href="#cb7-13" aria-hidden="true" tabindex="-1"></a>            speed_col<span class="op">=</span><span class="st">"plasma_speed"</span>,</span>
-<span id="cb7-14"><a href="#cb7-14" aria-hidden="true" tabindex="-1"></a>            temperature_col<span class="op">=</span><span class="st">"plasma_temperature"</span>,</span>
-<span id="cb7-15"><a href="#cb7-15" aria-hidden="true" tabindex="-1"></a>        )</span>
-<span id="cb7-16"><a href="#cb7-16" aria-hidden="true" tabindex="-1"></a>        .find_events(return_best_fit<span class="op">=</span><span class="va">False</span>)</span>
-<span id="cb7-17"><a href="#cb7-17" aria-hidden="true" tabindex="-1"></a>        .update_candidates_with_plasma_data()</span>
-<span id="cb7-18"><a href="#cb7-18" aria-hidden="true" tabindex="-1"></a>        .events</span>
-<span id="cb7-19"><a href="#cb7-19" aria-hidden="true" tabindex="-1"></a>    )</span>
-<span id="cb7-20"><a href="#cb7-20" aria-hidden="true" tabindex="-1"></a>    </span>
-<span id="cb7-21"><a href="#cb7-21" aria-hidden="true" tabindex="-1"></a>    juno_events.append(_juno_events)</span>
-<span id="cb7-22"><a href="#cb7-22" aria-hidden="true" tabindex="-1"></a>    </span>
-<span id="cb7-23"><a href="#cb7-23" aria-hidden="true" tabindex="-1"></a>juno_ids_dataset <span class="op">=</span> IDsDataset(</span>
-<span id="cb7-24"><a href="#cb7-24" aria-hidden="true" tabindex="-1"></a>    events<span class="op">=</span>pl.concat(juno_events),</span>
-<span id="cb7-25"><a href="#cb7-25" aria-hidden="true" tabindex="-1"></a>    mag_data<span class="op">=</span> pl.scan_parquet(<span class="bu">list</span>(walk(dir_path))).drop(<span class="st">'X'</span>, <span class="st">'Y'</span>, <span class="st">'Z'</span>).sort(<span class="st">'time'</span>)</span>
-<span id="cb7-26"><a href="#cb7-26" aria-hidden="true" tabindex="-1"></a>).export(output_path)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stderr">
-<pre><code>16-Feb-24 22:56:03: UserWarning: Ray execution environment not yet initialized. Initializing...
-To remove this warning, run the following python code before doing dataframe operations:
-
-    import ray
-    ray.init()
-
-
-2024-02-16 22:56:06,150 INFO worker.py:1724 -- Started a local Ray instance.
-16-Feb-24 22:56:07: UserWarning: Distributing &lt;class 'pandas.core.frame.DataFrame'&gt; object. This may take some time.
-
-(_deploy_ray_func pid=91790) UserWarning: Traceback (most recent call last):
-(_deploy_ray_func pid=91790)   File "/Users/zijin/micromamba/envs/psp_conjunction/lib/python3.11/site-packages/pdpipe/__init__.py", line 85, in &lt;module&gt;
-(_deploy_ray_func pid=91790)     from . import skintegrate
-(_deploy_ray_func pid=91790)   File "/Users/zijin/micromamba/envs/psp_conjunction/lib/python3.11/site-packages/pdpipe/skintegrate.py", line 20, in &lt;module&gt;
-(_deploy_ray_func pid=91790)     from sklearn.base import BaseEstimator
-(_deploy_ray_func pid=91790) ModuleNotFoundError: No module named 'sklearn'
-(_deploy_ray_func pid=91790) 
-(_deploy_ray_func pid=91790) UserWarning: pdpipe: Scikit-learn or skutil import failed. Scikit-learn-dependent pipeline stages will not be loaded.
-(_deploy_ray_func pid=91790) UserWarning: Traceback (most recent call last):
-(_deploy_ray_func pid=91790)   File "/Users/zijin/micromamba/envs/psp_conjunction/lib/python3.11/site-packages/pdpipe/__init__.py", line 105, in &lt;module&gt;
-(_deploy_ray_func pid=91790)     from . import nltk_stages
-(_deploy_ray_func pid=91790)   File "/Users/zijin/micromamba/envs/psp_conjunction/lib/python3.11/site-packages/pdpipe/nltk_stages.py", line 19, in &lt;module&gt;
-(_deploy_ray_func pid=91790)     import nltk
-(_deploy_ray_func pid=91790) ModuleNotFoundError: No module named 'nltk'
-(_deploy_ray_func pid=91790) 
-(_deploy_ray_func pid=91790) UserWarning: pdpipe: nltk import failed. nltk-dependent  pipeline stages will not be loaded.
-(_deploy_ray_func pid=91790) UserWarning: Distributing &lt;class 'dict'&gt; object. This may take some time.
-Distributing Dataframe:   0%           Elapsed time: 00:00, estimated remaining time: ?
-Distributing Dataframe: 100%██████████ Elapsed time: 00:00, estimated remaining time: 00:00
-Distributing Dataframe: 100%██████████ Elapsed time: 00:00, estimated remaining time: 00:00
-(_deploy_ray_func pid=91794) UserWarning: Traceback (most recent call last): [repeated 22x across cluster] (Ray deduplicates logs by default. Set RAY_DEDUP_LOGS=0 to disable log deduplication, or see https://docs.ray.io/en/master/ray-observability/ray-logging.html#log-deduplication for more options.)
-(_deploy_ray_func pid=91794)   File "/Users/zijin/micromamba/envs/psp_conjunction/lib/python3.11/site-packages/pdpipe/nltk_stages.py", line 19, in &lt;module&gt; [repeated 44x across cluster]
-(_deploy_ray_func pid=91794)     from . import skintegrate [repeated 11x across cluster]
-(_deploy_ray_func pid=91794)     from sklearn.base import BaseEstimator [repeated 11x across cluster]
-(_deploy_ray_func pid=91794) ModuleNotFoundError: No module named 'sklearn' [repeated 11x across cluster]
-(_deploy_ray_func pid=91789)  [repeated 23x across cluster]
-(_deploy_ray_func pid=91794) UserWarning: pdpipe: Scikit-learn or skutil import failed. Scikit-learn-dependent pipeline stages will not be loaded. [repeated 11x across cluster]
-(_deploy_ray_func pid=91794)     from . import nltk_stages [repeated 11x across cluster]
-(_deploy_ray_func pid=91794)     import nltk [repeated 11x across cluster]
-(_deploy_ray_func pid=91794) ModuleNotFoundError: No module named 'nltk' [repeated 11x across cluster]
-(_deploy_ray_func pid=91794) UserWarning: pdpipe: nltk import failed. nltk-dependent  pipeline stages will not be loaded. [repeated 11x across cluster]
-(_deploy_ray_func pid=91790) UserWarning: Distributing &lt;class 'dict'&gt; object. This may take some time. [repeated 3944x across cluster]
-Distributing Dataframe:   0%           Elapsed time: 00:00, estimated remaining time: ? [repeated 273x across cluster]
-Distributing Dataframe: 100%██████████ Elapsed time: 00:00, estimated remaining time: 00:00 [repeated 3670x across cluster]
-Distributing Dataframe: 100%██████████ Elapsed time: 00:00, estimated remaining time: 00:00 [repeated 273x across cluster]
-(_deploy_ray_func pid=91795) RuntimeWarning: overflow encountered in exp
-(_deploy_ray_func pid=91788) UserWarning: Distributing &lt;class 'dict'&gt; object. This may take some time. [repeated 1477x across cluster]
-Distributing Dataframe:   0%           Elapsed time: 00:00, estimated remaining time: ? [repeated 127x across cluster]
-Distributing Dataframe: 100%██████████ Elapsed time: 00:00, estimated remaining time: 00:00 [repeated 1350x across cluster]
-Distributing Dataframe: 100%██████████ Elapsed time: 00:00, estimated remaining time: 00:00 [repeated 127x across cluster]
-(_deploy_ray_func pid=91795) RuntimeWarning: overflow encountered in exp [repeated 18x across cluster]
-16-Feb-24 22:56:27: UserWarning: Distributing &lt;class 'pandas.core.frame.DataFrame'&gt; object. This may take some time.
-
-(_deploy_ray_func pid=91790) UserWarning: Distributing &lt;class 'dict'&gt; object. This may take some time.
-Distributing Dataframe: 100%██████████ Elapsed time: 00:00, estimated remaining time: 00:00
-(_deploy_ray_func pid=91790) RuntimeWarning: overflow encountered in exp [repeated 4x across cluster]
-(_deploy_ray_func pid=91789) UserWarning: Distributing &lt;class 'dict'&gt; object. This may take some time.
-Distributing Dataframe: 100%██████████ Elapsed time: 00:00, estimated remaining time: 00:00
-Distributing Dataframe:   0%           Elapsed time: 00:00, estimated remaining time: ?
-Distributing Dataframe: 100%██████████ Elapsed time: 00:00, estimated remaining time: 00:00
-Distributing Dataframe:   0%           Elapsed time: 00:00, estimated remaining time: ?
-Distributing Dataframe: 100%██████████ Elapsed time: 00:00, estimated remaining time: 00:00
-(_deploy_ray_func pid=91799) 
-(_deploy_ray_func pid=91790) UserWarning: Distributing &lt;class 'dict'&gt; object. This may take some time. [repeated 4431x across cluster]
-Distributing Dataframe: 100%██████████ Elapsed time: 00:00, estimated remaining time: 00:00 [repeated 4150x across cluster]
-Distributing Dataframe:   0%           Elapsed time: 00:00, estimated remaining time: ? [repeated 385x across cluster]
-Distributing Dataframe: 100%██████████ Elapsed time: 00:00, estimated remaining time: 00:00 [repeated 385x across cluster]
-(_deploy_ray_func pid=91799)  [repeated 4x across cluster]
-(_deploy_ray_func pid=91790) UserWarning: Distributing &lt;class 'dict'&gt; object. This may take some time. [repeated 4991x across cluster]
-Distributing Dataframe: 100%██████████ Elapsed time: 00:00, estimated remaining time: 00:00 [repeated 4581x across cluster]
-Distributing Dataframe:   0%           Elapsed time: 00:00, estimated remaining time: ? [repeated 381x across cluster]
-Distributing Dataframe: 100%██████████ Elapsed time: 00:00, estimated remaining time: 00:00 [repeated 381x across cluster]
-(_deploy_ray_func pid=91789)  [repeated 3x across cluster]
-(_deploy_ray_func pid=91792) RuntimeWarning: overflow encountered in exp
-(_deploy_ray_func pid=91788) UserWarning: Distributing &lt;class 'dict'&gt; object. This may take some time. [repeated 3240x across cluster]
-Distributing Dataframe: 100%██████████ Elapsed time: 00:00, estimated remaining time: 00:00 [repeated 2856x across cluster]
-Distributing Dataframe:   0%           Elapsed time: 00:00, estimated remaining time: ? [repeated 307x across cluster]
-Distributing Dataframe: 100%██████████ Elapsed time: 00:00, estimated remaining time: 00:00 [repeated 307x across cluster]
-(_deploy_ray_func pid=91797)  [repeated 3x across cluster]
-(_deploy_ray_func pid=91788) RuntimeWarning: overflow encountered in exp [repeated 13x across cluster]
-(_deploy_ray_func pid=91789) RuntimeWarning: overflow encountered in exp [repeated 20x across cluster]
-(_deploy_ray_func pid=91961) RuntimeWarning: overflow encountered in exp [repeated 21x across cluster]
-16-Feb-24 22:57:02: UserWarning: Distributing &lt;class 'pandas.core.frame.DataFrame'&gt; object. This may take some time.
-
-(_deploy_ray_func pid=91790) UserWarning: Distributing &lt;class 'dict'&gt; object. This may take some time.
-Distributing Dataframe: 100%██████████ Elapsed time: 00:00, estimated remaining time: 00:00
-(_deploy_ray_func pid=91929) RuntimeWarning: overflow encountered in exp
-Distributing Dataframe:   0%           Elapsed time: 00:00, estimated remaining time: ?
-Distributing Dataframe: 100%██████████ Elapsed time: 00:00, estimated remaining time: 00:00
-Distributing Dataframe:   0%           Elapsed time: 00:00, estimated remaining time: ?
-Distributing Dataframe: 100%██████████ Elapsed time: 00:00, estimated remaining time: 00:00
-Distributing Dataframe:   0%           Elapsed time: 00:00, estimated remaining time: ?
-Distributing Dataframe: 100%██████████ Elapsed time: 00:00, estimated remaining time: 00:00
-Distributing Dataframe:   0%           Elapsed time: 00:00, estimated remaining time: ?
-(_deploy_ray_func pid=91929) UserWarning: Traceback (most recent call last):
-(_deploy_ray_func pid=91929)   File "/Users/zijin/micromamba/envs/psp_conjunction/lib/python3.11/site-packages/pdpipe/__init__.py", line 85, in &lt;module&gt;
-(_deploy_ray_func pid=91929)     from . import skintegrate
-(_deploy_ray_func pid=91929)   File "/Users/zijin/micromamba/envs/psp_conjunction/lib/python3.11/site-packages/pdpipe/skintegrate.py", line 20, in &lt;module&gt;
-(_deploy_ray_func pid=91929)     from sklearn.base import BaseEstimator
-(_deploy_ray_func pid=91929) ModuleNotFoundError: No module named 'sklearn'
-(_deploy_ray_func pid=91929) 
-(_deploy_ray_func pid=91929) UserWarning: pdpipe: Scikit-learn or skutil import failed. Scikit-learn-dependent pipeline stages will not be loaded.
-(_deploy_ray_func pid=91929) UserWarning: Traceback (most recent call last):
-(_deploy_ray_func pid=91929)   File "/Users/zijin/micromamba/envs/psp_conjunction/lib/python3.11/site-packages/pdpipe/__init__.py", line 105, in &lt;module&gt;
-(_deploy_ray_func pid=91929)     from . import nltk_stages
-(_deploy_ray_func pid=91929)   File "/Users/zijin/micromamba/envs/psp_conjunction/lib/python3.11/site-packages/pdpipe/nltk_stages.py", line 19, in &lt;module&gt;
-(_deploy_ray_func pid=91929)     import nltk
-(_deploy_ray_func pid=91929) ModuleNotFoundError: No module named 'nltk'
-(_deploy_ray_func pid=91929) 
-(_deploy_ray_func pid=91929) UserWarning: pdpipe: nltk import failed. nltk-dependent  pipeline stages will not be loaded.
-Distributing Dataframe: 100%██████████ Elapsed time: 00:00, estimated remaining time: 00:00
-(_deploy_ray_func pid=91788) RuntimeWarning: overflow encountered in exp
-(_deploy_ray_func pid=91788) UserWarning: Distributing &lt;class 'dict'&gt; object. This may take some time. [repeated 2484x across cluster]
-Distributing Dataframe: 100%██████████ Elapsed time: 00:00, estimated remaining time: 00:00 [repeated 2243x across cluster]
-Distributing Dataframe:   0%           Elapsed time: 00:00, estimated remaining time: ? [repeated 237x across cluster]
-Distributing Dataframe: 100%██████████ Elapsed time: 00:00, estimated remaining time: 00:00 [repeated 237x across cluster]
-(_deploy_ray_func pid=91790)  [repeated 4x across cluster]
-16-Feb-24 22:57:14: UserWarning: Distributing &lt;class 'pandas.core.frame.DataFrame'&gt; object. This may take some time.
-
-(_deploy_ray_func pid=92061) RuntimeWarning: overflow encountered in exp [repeated 10x across cluster]
-(_deploy_ray_func pid=91790) UserWarning: Distributing &lt;class 'dict'&gt; object. This may take some time.
-Distributing Dataframe: 100%██████████ Elapsed time: 00:00, estimated remaining time: 00:00
-(_deploy_ray_func pid=91789) UserWarning: Distributing &lt;class 'dict'&gt; object. This may take some time.
-Distributing Dataframe: 100%██████████ Elapsed time: 00:00, estimated remaining time: 00:00
-(_deploy_ray_func pid=91789) UserWarning: Distributing &lt;class 'dict'&gt; object. This may take some time.
-Distributing Dataframe:   0%           Elapsed time: 00:00, estimated remaining time: ?
-Distributing Dataframe: 100%██████████ Elapsed time: 00:00, estimated remaining time: 00:00
-(_deploy_ray_func pid=91798) 
-(_deploy_ray_func pid=91790) UserWarning: Distributing &lt;class 'dict'&gt; object. This may take some time. [repeated 3613x across cluster]
-Distributing Dataframe: 100%██████████ Elapsed time: 00:00, estimated remaining time: 00:00 [repeated 3251x across cluster]
-Distributing Dataframe:   0%           Elapsed time: 00:00, estimated remaining time: ? [repeated 362x across cluster]
-Distributing Dataframe: 100%██████████ Elapsed time: 00:00, estimated remaining time: 00:00 [repeated 362x across cluster]
-(_deploy_ray_func pid=91795)  [repeated 4x across cluster]
-(_deploy_ray_func pid=91789) UserWarning: Distributing &lt;class 'dict'&gt; object. This may take some time. [repeated 4993x across cluster]
-Distributing Dataframe: 100%██████████ Elapsed time: 00:00, estimated remaining time: 00:00 [repeated 4639x across cluster]
-Distributing Dataframe:   0%           Elapsed time: 00:00, estimated remaining time: ? [repeated 353x across cluster]
-Distributing Dataframe: 100%██████████ Elapsed time: 00:00, estimated remaining time: 00:00 [repeated 353x across cluster]
-(_deploy_ray_func pid=91790)  [repeated 2x across cluster]
-(_deploy_ray_func pid=91790) UserWarning: Distributing &lt;class 'dict'&gt; object. This may take some time. [repeated 4705x across cluster]
-Distributing Dataframe: 100%██████████ Elapsed time: 00:00, estimated remaining time: 00:00 [repeated 4312x across cluster]
-Distributing Dataframe:   0%           Elapsed time: 00:00, estimated remaining time: ? [repeated 394x across cluster]
-Distributing Dataframe: 100%██████████ Elapsed time: 00:00, estimated remaining time: 00:00 [repeated 394x across cluster]
-(_deploy_ray_func pid=91929)  [repeated 7x across cluster]
-(_deploy_ray_func pid=91799) RuntimeWarning: overflow encountered in exp
-(_deploy_ray_func pid=91788) UserWarning: Distributing &lt;class 'dict'&gt; object. This may take some time. [repeated 4322x across cluster]
-Distributing Dataframe: 100%██████████ Elapsed time: 00:00, estimated remaining time: 00:00 [repeated 3901x across cluster]
-Distributing Dataframe:   0%           Elapsed time: 00:00, estimated remaining time: ? [repeated 421x across cluster]
-Distributing Dataframe: 100%██████████ Elapsed time: 00:00, estimated remaining time: 00:00 [repeated 421x across cluster]
-(_deploy_ray_func pid=91788)  [repeated 4x across cluster]
-(_deploy_ray_func pid=91795) RuntimeWarning: overflow encountered in exp [repeated 17x across cluster]
-(_deploy_ray_func pid=91788) RuntimeWarning: overflow encountered in exp [repeated 21x across cluster]
-(_deploy_ray_func pid=91795) RuntimeWarning: overflow encountered in exp [repeated 19x across cluster]
-16-Feb-24 22:58:03: UserWarning: Distributing &lt;class 'pandas.core.frame.DataFrame'&gt; object. This may take some time.
-
-(_deploy_ray_func pid=91790) UserWarning: Distributing &lt;class 'dict'&gt; object. This may take some time.
-Distributing Dataframe: 100%██████████ Elapsed time: 00:00, estimated remaining time: 00:00
-(_deploy_ray_func pid=91794) RuntimeWarning: overflow encountered in exp [repeated 8x across cluster]
-Distributing Dataframe:   0%           Elapsed time: 00:00, estimated remaining time: ?
-Distributing Dataframe: 100%██████████ Elapsed time: 00:00, estimated remaining time: 00:00
-Distributing Dataframe:   0%           Elapsed time: 00:00, estimated remaining time: ?
-Distributing Dataframe: 100%██████████ Elapsed time: 00:00, estimated remaining time: 00:00
-Distributing Dataframe:   0%           Elapsed time: 00:00, estimated remaining time: ?
-Distributing Dataframe: 100%██████████ Elapsed time: 00:00, estimated remaining time: 00:00
-Distributing Dataframe:   0%           Elapsed time: 00:00, estimated remaining time: ?
-Distributing Dataframe: 100%██████████ Elapsed time: 00:00, estimated remaining time: 00:00
-Distributing Dataframe:   0%           Elapsed time: 00:00, estimated remaining time: ?
-Distributing Dataframe: 100%██████████ Elapsed time: 00:00, estimated remaining time: 00:00
-Distributing Dataframe:   0%           Elapsed time: 00:00, estimated remaining time: ?
-Distributing Dataframe: 100%██████████ Elapsed time: 00:00, estimated remaining time: 00:00
-Distributing Dataframe:   0%           Elapsed time: 00:00, estimated remaining time: ?
-Distributing Dataframe: 100%██████████ Elapsed time: 00:00, estimated remaining time: 00:00
-Distributing Dataframe:   0%           Elapsed time: 00:00, estimated remaining time: ?
-Distributing Dataframe: 100%██████████ Elapsed time: 00:00, estimated remaining time: 00:00
-Distributing Dataframe:   0%           Elapsed time: 00:00, estimated remaining time: ?
-Distributing Dataframe: 100%██████████ Elapsed time: 00:00, estimated remaining time: 00:00
-Distributing Dataframe:   0%           Elapsed time: 00:00, estimated remaining time: ?
-Distributing Dataframe: 100%██████████ Elapsed time: 00:00, estimated remaining time: 00:00
-(_deploy_ray_func pid=91792) 
-(_deploy_ray_func pid=91788) UserWarning: Distributing &lt;class 'dict'&gt; object. This may take some time. [repeated 4625x across cluster]
-Distributing Dataframe: 100%██████████ Elapsed time: 00:00, estimated remaining time: 00:00 [repeated 4248x across cluster]
-Distributing Dataframe:   0%           Elapsed time: 00:00, estimated remaining time: ? [repeated 383x across cluster]
-Distributing Dataframe: 100%██████████ Elapsed time: 00:00, estimated remaining time: 00:00 [repeated 383x across cluster]
-(_deploy_ray_func pid=91790)  [repeated 7x across cluster]
-(_deploy_ray_func pid=91789) UserWarning: Distributing &lt;class 'dict'&gt; object. This may take some time. [repeated 5382x across cluster]
-Distributing Dataframe: 100%██████████ Elapsed time: 00:00, estimated remaining time: 00:00 [repeated 4766x across cluster]
-Distributing Dataframe:   0%           Elapsed time: 00:00, estimated remaining time: ? [repeated 613x across cluster]
-Distributing Dataframe: 100%██████████ Elapsed time: 00:00, estimated remaining time: 00:00 [repeated 613x across cluster]
-(_deploy_ray_func pid=91796)  [repeated 4x across cluster]
-(_deploy_ray_func pid=91788) UserWarning: Distributing &lt;class 'dict'&gt; object. This may take some time. [repeated 4548x across cluster]
-Distributing Dataframe: 100%██████████ Elapsed time: 00:00, estimated remaining time: 00:00 [repeated 3924x across cluster]
-(_deploy_ray_func pid=91792) RuntimeWarning: overflow encountered in exp
-Distributing Dataframe:   0%           Elapsed time: 00:00, estimated remaining time: ? [repeated 612x across cluster]
-Distributing Dataframe: 100%██████████ Elapsed time: 00:00, estimated remaining time: 00:00 [repeated 612x across cluster]
-(_deploy_ray_func pid=91788)  [repeated 4x across cluster]
-(_deploy_ray_func pid=91788) UserWarning: Distributing &lt;class 'dict'&gt; object. This may take some time. [repeated 3x across cluster]
-Distributing Dataframe: 100%██████████ Elapsed time: 00:00, estimated remaining time: 00:00 [repeated 2x across cluster]
-(_deploy_ray_func pid=91789) RuntimeWarning: overflow encountered in exp [repeated 20x across cluster]
-(_deploy_ray_func pid=91790) RuntimeWarning: overflow encountered in exp [repeated 36x across cluster]
-(_deploy_ray_func pid=91794) RuntimeWarning: overflow encountered in exp [repeated 26x across cluster]
-16-Feb-24 22:58:42: UserWarning: Distributing &lt;class 'pandas.core.frame.DataFrame'&gt; object. This may take some time.
-
-(_deploy_ray_func pid=91790) UserWarning: Distributing &lt;class 'dict'&gt; object. This may take some time.
-Distributing Dataframe: 100%██████████ Elapsed time: 00:00, estimated remaining time: 00:00
-(_deploy_ray_func pid=91790) UserWarning: Distributing &lt;class 'dict'&gt; object. This may take some time.
-Distributing Dataframe: 100%██████████ Elapsed time: 00:00, estimated remaining time: 00:00
-(_deploy_ray_func pid=92331) RuntimeWarning: overflow encountered in exp [repeated 10x across cluster]
-Distributing Dataframe:   0%           Elapsed time: 00:00, estimated remaining time: ?
-Distributing Dataframe: 100%██████████ Elapsed time: 00:00, estimated remaining time: 00:00
-Distributing Dataframe:   0%           Elapsed time: 00:00, estimated remaining time: ?
-Distributing Dataframe: 100%██████████ Elapsed time: 00:00, estimated remaining time: 00:00
-Distributing Dataframe:   0%           Elapsed time: 00:00, estimated remaining time: ?
-Distributing Dataframe: 100%██████████ Elapsed time: 00:00, estimated remaining time: 00:00
-Distributing Dataframe:   0%           Elapsed time: 00:00, estimated remaining time: ?
-Distributing Dataframe: 100%██████████ Elapsed time: 00:00, estimated remaining time: 00:00
-Distributing Dataframe:   0%           Elapsed time: 00:00, estimated remaining time: ?
-Distributing Dataframe: 100%██████████ Elapsed time: 00:00, estimated remaining time: 00:00
-Distributing Dataframe:   0%           Elapsed time: 00:00, estimated remaining time: ?
-Distributing Dataframe: 100%██████████ Elapsed time: 00:00, estimated remaining time: 00:00
-Distributing Dataframe:   0%           Elapsed time: 00:00, estimated remaining time: ?
-Distributing Dataframe: 100%██████████ Elapsed time: 00:00, estimated remaining time: 00:00
-Distributing Dataframe:   0%           Elapsed time: 00:00, estimated remaining time: ?
-Distributing Dataframe: 100%██████████ Elapsed time: 00:00, estimated remaining time: 00:00
-(_deploy_ray_func pid=91789) 
-(_deploy_ray_func pid=91790) UserWarning: Distributing &lt;class 'dict'&gt; object. This may take some time. [repeated 3829x across cluster]
-Distributing Dataframe: 100%██████████ Elapsed time: 00:00, estimated remaining time: 00:00 [repeated 3454x across cluster]
-Distributing Dataframe:   0%           Elapsed time: 00:00, estimated remaining time: ? [repeated 371x across cluster]
-Distributing Dataframe: 100%██████████ Elapsed time: 00:00, estimated remaining time: 00:00 [repeated 371x across cluster]
-(_deploy_ray_func pid=91793)  [repeated 6x across cluster]
-(_deploy_ray_func pid=91790) UserWarning: Distributing &lt;class 'dict'&gt; object. This may take some time. [repeated 4456x across cluster]
-Distributing Dataframe: 100%██████████ Elapsed time: 00:00, estimated remaining time: 00:00 [repeated 4068x across cluster]
-Distributing Dataframe:   0%           Elapsed time: 00:00, estimated remaining time: ? [repeated 394x across cluster]
-Distributing Dataframe: 100%██████████ Elapsed time: 00:00, estimated remaining time: 00:00 [repeated 394x across cluster]
-(_deploy_ray_func pid=91795) 
-(_deploy_ray_func pid=91792) RuntimeWarning: overflow encountered in exp
-(_deploy_ray_func pid=91788) UserWarning: Distributing &lt;class 'dict'&gt; object. This may take some time. [repeated 2118x across cluster]
-Distributing Dataframe: 100%██████████ Elapsed time: 00:00, estimated remaining time: 00:00 [repeated 1917x across cluster]
-Distributing Dataframe:   0%           Elapsed time: 00:00, estimated remaining time: ? [repeated 191x across cluster]
-Distributing Dataframe: 100%██████████ Elapsed time: 00:00, estimated remaining time: 00:00 [repeated 191x across cluster]
-(_deploy_ray_func pid=92460) RuntimeWarning: overflow encountered in exp [repeated 16x across cluster]
-(_deploy_ray_func pid=92496) RuntimeWarning: overflow encountered in exp [repeated 20x across cluster]</code></pre>
-</div>
-<div class="cell-output cell-output-display">
-<script type="application/vnd.jupyter.widget-view+json">
-{"model_id":"efb750e2aa1d464580d5a4762b4a5c22","version_major":2,"version_minor":0,"quarto_mimetype":"application/vnd.jupyter.widget-view+json"}
-</script>
-</div>
-<div class="cell-output cell-output-display">
-<script type="application/vnd.jupyter.widget-view+json">
-{"model_id":"a9e8e24a45544595822848b19950589c","version_major":2,"version_minor":0,"quarto_mimetype":"application/vnd.jupyter.widget-view+json"}
-</script>
-</div>
-<div class="cell-output cell-output-display">
-<script type="application/vnd.jupyter.widget-view+json">
-{"model_id":"b7b0a8f0fd644b25a07924b59f7b7e97","version_major":2,"version_minor":0,"quarto_mimetype":"application/vnd.jupyter.widget-view+json"}
-</script>
-</div>
-<div class="cell-output cell-output-display">
-<script type="application/vnd.jupyter.widget-view+json">
-{"model_id":"47361d704caf4f4dab6597a07ea0bfbc","version_major":2,"version_minor":0,"quarto_mimetype":"application/vnd.jupyter.widget-view+json"}
-</script>
-</div>
-<div class="cell-output cell-output-display">
-<script type="application/vnd.jupyter.widget-view+json">
-{"model_id":"70c924b0b2db4eb598b8a50795950992","version_major":2,"version_minor":0,"quarto_mimetype":"application/vnd.jupyter.widget-view+json"}
-</script>
-</div>
-<div class="cell-output cell-output-display">
-<script type="application/vnd.jupyter.widget-view+json">
-{"model_id":"9caf2c0321704907977f6414bca1aac0","version_major":2,"version_minor":0,"quarto_mimetype":"application/vnd.jupyter.widget-view+json"}
-</script>
-</div>
-<div class="cell-output cell-output-display">
-<script type="application/vnd.jupyter.widget-view+json">
-{"model_id":"b411eadf245e4c5d9b830ac97d240942","version_major":2,"version_minor":0,"quarto_mimetype":"application/vnd.jupyter.widget-view+json"}
-</script>
-</div>
+<div id="cell-12" class="cell">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>juno_events <span class="op">=</span> []</span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> mag_path <span class="kw">in</span> walk(dir_path):</span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>    juno_mag_data <span class="op">=</span> pl.scan_parquet(mag_path).drop(<span class="st">'X'</span>, <span class="st">'Y'</span>, <span class="st">'Z'</span>).sort(<span class="st">'time'</span>)</span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>    _juno_events <span class="op">=</span> (</span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a>        IDsDataset(</span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a>            mag_data<span class="op">=</span>juno_mag_data,</span>
+<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a>            plasma_data<span class="op">=</span>plasma_data,</span>
+<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a>            tau<span class="op">=</span>tau,</span>
+<span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a>            ts<span class="op">=</span>ts,</span>
+<span id="cb6-11"><a href="#cb6-11" aria-hidden="true" tabindex="-1"></a>            vec_cols<span class="op">=</span>vec_cols,</span>
+<span id="cb6-12"><a href="#cb6-12" aria-hidden="true" tabindex="-1"></a>            density_col<span class="op">=</span><span class="st">"plasma_density"</span>,</span>
+<span id="cb6-13"><a href="#cb6-13" aria-hidden="true" tabindex="-1"></a>            speed_col<span class="op">=</span><span class="st">"plasma_speed"</span>,</span>
+<span id="cb6-14"><a href="#cb6-14" aria-hidden="true" tabindex="-1"></a>            temperature_col<span class="op">=</span><span class="st">"plasma_temperature"</span>,</span>
+<span id="cb6-15"><a href="#cb6-15" aria-hidden="true" tabindex="-1"></a>        )</span>
+<span id="cb6-16"><a href="#cb6-16" aria-hidden="true" tabindex="-1"></a>        .find_events(return_best_fit<span class="op">=</span><span class="va">False</span>)</span>
+<span id="cb6-17"><a href="#cb6-17" aria-hidden="true" tabindex="-1"></a>        .update_candidates_with_plasma_data()</span>
+<span id="cb6-18"><a href="#cb6-18" aria-hidden="true" tabindex="-1"></a>        .events</span>
+<span id="cb6-19"><a href="#cb6-19" aria-hidden="true" tabindex="-1"></a>    )</span>
+<span id="cb6-20"><a href="#cb6-20" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb6-21"><a href="#cb6-21" aria-hidden="true" tabindex="-1"></a>    juno_events.append(_juno_events)</span>
+<span id="cb6-22"><a href="#cb6-22" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb6-23"><a href="#cb6-23" aria-hidden="true" tabindex="-1"></a>juno_ids_dataset <span class="op">=</span> IDsDataset(</span>
+<span id="cb6-24"><a href="#cb6-24" aria-hidden="true" tabindex="-1"></a>    events<span class="op">=</span>pl.concat(juno_events),</span>
+<span id="cb6-25"><a href="#cb6-25" aria-hidden="true" tabindex="-1"></a>    mag_data<span class="op">=</span> pl.scan_parquet(<span class="bu">list</span>(walk(dir_path))).drop(<span class="st">'X'</span>, <span class="st">'Y'</span>, <span class="st">'Z'</span>).sort(<span class="st">'time'</span>)</span>
+<span id="cb6-26"><a href="#cb6-26" aria-hidden="true" tabindex="-1"></a>).export(output_path)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="check-the-discontinuity-in-the-last-year-of-juno-cruise-phase" class="level2 page-columns page-full">
 <h2 class="anchored" data-anchor-id="check-the-discontinuity-in-the-last-year-of-juno-cruise-phase">Check the discontinuity in the last year of Juno cruise phase</h2>
-<div id="cell-13" class="cell" data-execution_count="4">
-<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>mag_path <span class="op">=</span> <span class="bu">sorted</span>(<span class="bu">list</span>(walk(dir_path)))[<span class="op">-</span><span class="dv">1</span>]</span>
-<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>juno_mag_data <span class="op">=</span> pl.scan_parquet(mag_path).drop(<span class="st">'X'</span>, <span class="st">'Y'</span>, <span class="st">'Z'</span>).sort(<span class="st">'time'</span>)</span>
-<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>ids_ds <span class="op">=</span> (</span>
-<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a>    IDsDataset(</span>
-<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a>        mag_data<span class="op">=</span>juno_mag_data,</span>
-<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a>        plasma_data<span class="op">=</span>plasma_data,</span>
-<span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a>        tau<span class="op">=</span>tau,</span>
-<span id="cb9-9"><a href="#cb9-9" aria-hidden="true" tabindex="-1"></a>        ts<span class="op">=</span>ts,</span>
-<span id="cb9-10"><a href="#cb9-10" aria-hidden="true" tabindex="-1"></a>        vec_cols<span class="op">=</span>vec_cols,</span>
-<span id="cb9-11"><a href="#cb9-11" aria-hidden="true" tabindex="-1"></a>        density_col<span class="op">=</span><span class="st">"plasma_density"</span>,</span>
-<span id="cb9-12"><a href="#cb9-12" aria-hidden="true" tabindex="-1"></a>        speed_col<span class="op">=</span><span class="st">"plasma_speed"</span>,</span>
-<span id="cb9-13"><a href="#cb9-13" aria-hidden="true" tabindex="-1"></a>        temperature_col<span class="op">=</span><span class="st">"plasma_temperature"</span>,</span>
-<span id="cb9-14"><a href="#cb9-14" aria-hidden="true" tabindex="-1"></a>    )</span>
-<span id="cb9-15"><a href="#cb9-15" aria-hidden="true" tabindex="-1"></a>    .find_events(return_best_fit<span class="op">=</span><span class="va">True</span>)</span>
-<span id="cb9-16"><a href="#cb9-16" aria-hidden="true" tabindex="-1"></a>    .update_candidates_with_plasma_data()</span>
-<span id="cb9-17"><a href="#cb9-17" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<section id="first-year" class="level3 page-columns page-full">
+<h3 class="anchored" data-anchor-id="first-year">First year</h3>
+<div id="cell-15" class="cell" data-execution_count="19">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>mag_path <span class="op">=</span> <span class="bu">sorted</span>(<span class="bu">list</span>(walk(dir_path)))[<span class="dv">0</span>]</span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>tau <span class="op">=</span> timedelta(seconds<span class="op">=</span><span class="dv">60</span>)</span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>juno_mag_data <span class="op">=</span> pl.scan_parquet(mag_path).drop(<span class="st">'X'</span>, <span class="st">'Y'</span>, <span class="st">'Z'</span>).sort(<span class="st">'time'</span>)</span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>ids_ds <span class="op">=</span> (</span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a>    IDsDataset(</span>
+<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a>        mag_data<span class="op">=</span>juno_mag_data,</span>
+<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a>        plasma_data<span class="op">=</span>plasma_data,</span>
+<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a>        tau<span class="op">=</span>tau,</span>
+<span id="cb7-10"><a href="#cb7-10" aria-hidden="true" tabindex="-1"></a>        ts<span class="op">=</span>ts,</span>
+<span id="cb7-11"><a href="#cb7-11" aria-hidden="true" tabindex="-1"></a>        vec_cols<span class="op">=</span>vec_cols,</span>
+<span id="cb7-12"><a href="#cb7-12" aria-hidden="true" tabindex="-1"></a>        density_col<span class="op">=</span><span class="st">"plasma_density"</span>,</span>
+<span id="cb7-13"><a href="#cb7-13" aria-hidden="true" tabindex="-1"></a>        speed_col<span class="op">=</span><span class="st">"plasma_speed"</span>,</span>
+<span id="cb7-14"><a href="#cb7-14" aria-hidden="true" tabindex="-1"></a>        temperature_col<span class="op">=</span><span class="st">"plasma_temperature"</span>,</span>
+<span id="cb7-15"><a href="#cb7-15" aria-hidden="true" tabindex="-1"></a>    )</span>
+<span id="cb7-16"><a href="#cb7-16" aria-hidden="true" tabindex="-1"></a>    .find_events(return_best_fit<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb7-17"><a href="#cb7-17" aria-hidden="true" tabindex="-1"></a>    .update_candidates_with_plasma_data()</span>
+<span id="cb7-18"><a href="#cb7-18" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
-<pre><code>16-Feb-24 22:52:38: UserWarning: Ray execution environment not yet initialized. Initializing...
-To remove this warning, run the following python code before doing dataframe operations:
+<pre><code>17-Feb-24 15:09:08: DeprecationWarning: `pl.count()` is deprecated. Please use `pl.len()` instead.
 
-    import ray
-    ray.init()
+17-Feb-24 15:09:08: DeprecationWarning: `map_alias` is deprecated. It has been moved to `name.map`.
 
+17-Feb-24 15:09:08: DeprecationWarning: `map_alias` is deprecated. It has been moved to `name.map`.
 
-2024-02-16 22:52:40,078 INFO worker.py:1724 -- Started a local Ray instance.
-16-Feb-24 22:52:41: UserWarning: Distributing &lt;class 'pandas.core.frame.DataFrame'&gt; object. This may take some time.
+17-Feb-24 15:09:10: UserWarning: Distributing &lt;class 'pandas.core.frame.DataFrame'&gt; object. This may take some time.
 
-(_deploy_ray_func pid=91304) UserWarning: Traceback (most recent call last):
-(_deploy_ray_func pid=91304)   File "/Users/zijin/micromamba/envs/psp_conjunction/lib/python3.11/site-packages/pdpipe/__init__.py", line 85, in &lt;module&gt;
-(_deploy_ray_func pid=91304)     from . import skintegrate
-(_deploy_ray_func pid=91304)   File "/Users/zijin/micromamba/envs/psp_conjunction/lib/python3.11/site-packages/pdpipe/skintegrate.py", line 20, in &lt;module&gt;
-(_deploy_ray_func pid=91304)     from sklearn.base import BaseEstimator
-(_deploy_ray_func pid=91304) ModuleNotFoundError: No module named 'sklearn'
-(_deploy_ray_func pid=91304) 
-(_deploy_ray_func pid=91304) UserWarning: pdpipe: Scikit-learn or skutil import failed. Scikit-learn-dependent pipeline stages will not be loaded.
-(_deploy_ray_func pid=91304) UserWarning: Traceback (most recent call last):
-(_deploy_ray_func pid=91304)   File "/Users/zijin/micromamba/envs/psp_conjunction/lib/python3.11/site-packages/pdpipe/__init__.py", line 105, in &lt;module&gt;
-(_deploy_ray_func pid=91304)     from . import nltk_stages
-(_deploy_ray_func pid=91304)   File "/Users/zijin/micromamba/envs/psp_conjunction/lib/python3.11/site-packages/pdpipe/nltk_stages.py", line 19, in &lt;module&gt;
-(_deploy_ray_func pid=91304)     import nltk
-(_deploy_ray_func pid=91304) ModuleNotFoundError: No module named 'nltk'
-(_deploy_ray_func pid=91304) 
-(_deploy_ray_func pid=91304) UserWarning: pdpipe: nltk import failed. nltk-dependent  pipeline stages will not be loaded.
-(_deploy_ray_func pid=91305) UserWarning: Distributing &lt;class 'dict'&gt; object. This may take some time.
-Distributing Dataframe:   0%           Elapsed time: 00:00, estimated remaining time: ?
-Distributing Dataframe: 100%██████████ Elapsed time: 00:00, estimated remaining time: 00:00
-Distributing Dataframe: 100%██████████ Elapsed time: 00:00, estimated remaining time: 00:00
-(_deploy_ray_func pid=91309) RuntimeWarning: overflow encountered in exp
-(_deploy_ray_func pid=91306) UserWarning: Traceback (most recent call last): [repeated 22x across cluster] (Ray deduplicates logs by default. Set RAY_DEDUP_LOGS=0 to disable log deduplication, or see https://docs.ray.io/en/master/ray-observability/ray-logging.html#log-deduplication for more options.)
-(_deploy_ray_func pid=91306)   File "/Users/zijin/micromamba/envs/psp_conjunction/lib/python3.11/site-packages/pdpipe/nltk_stages.py", line 19, in &lt;module&gt; [repeated 44x across cluster]
-(_deploy_ray_func pid=91306)     from . import skintegrate [repeated 11x across cluster]
-(_deploy_ray_func pid=91306)     from sklearn.base import BaseEstimator [repeated 11x across cluster]
-(_deploy_ray_func pid=91306) ModuleNotFoundError: No module named 'sklearn' [repeated 11x across cluster]
-(_deploy_ray_func pid=91306)  [repeated 25x across cluster]
-(_deploy_ray_func pid=91306) UserWarning: pdpipe: Scikit-learn or skutil import failed. Scikit-learn-dependent pipeline stages will not be loaded. [repeated 11x across cluster]
-(_deploy_ray_func pid=91306)     from . import nltk_stages [repeated 11x across cluster]
-(_deploy_ray_func pid=91306)     import nltk [repeated 11x across cluster]
-(_deploy_ray_func pid=91306) ModuleNotFoundError: No module named 'nltk' [repeated 11x across cluster]
-(_deploy_ray_func pid=91306) UserWarning: pdpipe: nltk import failed. nltk-dependent  pipeline stages will not be loaded. [repeated 11x across cluster]
-(_deploy_ray_func pid=91306) UserWarning: Distributing &lt;class 'dict'&gt; object. This may take some time. [repeated 2484x across cluster]
-Distributing Dataframe:   0%           Elapsed time: 00:00, estimated remaining time: ? [repeated 239x across cluster]
-Distributing Dataframe: 100%██████████ Elapsed time: 00:00, estimated remaining time: 00:00 [repeated 2244x across cluster]
-Distributing Dataframe: 100%██████████ Elapsed time: 00:00, estimated remaining time: 00:00 [repeated 239x across cluster]</code></pre>
+17-Feb-24 15:09:39: DeprecationWarning: np.find_common_type is deprecated.  Please use `np.result_type` or `np.promote_types`.
+See https://numpy.org/devdocs/release/1.25.0-notes.html and the docs for more information.  (Deprecated NumPy 1.25)
+
+17-Feb-24 15:09:39: DeprecationWarning: `nanoseconds` is deprecated. It has been renamed to `total_nanoseconds`.
+
+17-Feb-24 15:09:39: PendingDeprecationWarning: The `dims` argument has been renamed to `dim`, and will be removed in the future. This renaming is taking place throughout xarray over the next few releases.
+
+17-Feb-24 15:09:39: PendingDeprecationWarning: The `dims` argument has been renamed to `dim`, and will be removed in the future. This renaming is taking place throughout xarray over the next few releases.
+
+17-Feb-24 15:09:39: PendingDeprecationWarning: The `dims` argument has been renamed to `dim`, and will be removed in the future. This renaming is taking place throughout xarray over the next few releases.
+
+17-Feb-24 15:09:39: DeprecationWarning: `suffix` is deprecated. It has been moved to `name.suffix`.
+
+17-Feb-24 15:09:39: DeprecationWarning: `suffix` is deprecated. It has been moved to `name.suffix`.
+
+17-Feb-24 15:09:39: DeprecationWarning: `suffix` is deprecated. It has been moved to `name.suffix`.
+
+17-Feb-24 15:09:39: PendingDeprecationWarning: The `dims` argument has been renamed to `dim`, and will be removed in the future. This renaming is taking place throughout xarray over the next few releases.
+
+17-Feb-24 15:09:39: PendingDeprecationWarning: The `dims` argument has been renamed to `dim`, and will be removed in the future. This renaming is taking place throughout xarray over the next few releases.
+</code></pre>
 </div>
 <div class="cell-output cell-output-display">
 <script type="application/vnd.jupyter.widget-view+json">
-{"model_id":"e151d7d36a7547a196ff207fb2e43509","version_major":2,"version_minor":0,"quarto_mimetype":"application/vnd.jupyter.widget-view+json"}
+{"model_id":"74d304e2a10042c5b2b0e53ac03b2302","version_major":2,"version_minor":0,"quarto_mimetype":"application/vnd.jupyter.widget-view+json"}
 </script>
 </div>
 <div class="cell-output cell-output-display">
 <script type="application/vnd.jupyter.widget-view+json">
-{"model_id":"0d4fb900130945848534f87c4047a481","version_major":2,"version_minor":0,"quarto_mimetype":"application/vnd.jupyter.widget-view+json"}
+{"model_id":"187fef2b214f4ea48be038f513f411c9","version_major":2,"version_minor":0,"quarto_mimetype":"application/vnd.jupyter.widget-view+json"}
 </script>
 </div>
 </div>
-<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>ids_ds.plot_candidates(num<span class="op">=</span><span class="dv">20</span>, plot_fit_data<span class="op">=</span><span class="va">True</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>ids_ds.plot_candidates(num<span class="op">=</span><span class="dv">20</span>, plot_fit_data<span class="op">=</span><span class="va">True</span>, predicates<span class="op">=</span>(pl.col(<span class="st">'fit.stat.rsquared'</span>) <span class="op">&gt;</span> <span class="fl">0.95</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
-<pre><code>2024-02-16 22:52:51.562 | INFO     | discontinuitypy.datasets:plot_candidates:205 - Candidates indices: [1858, 1167, 1014, 2346, 784, 833, 1623, 2242, 2280, 1117, 257, 1339, 905, 1388, 39, 1238, 281, 294, 596, 1127]</code></pre>
+<pre><code>2024-02-17 15:09:51.206 | INFO     | discontinuitypy.datasets:plot_candidates:215 - Candidates indices: [10436  8841 13616  9794   120 11659  3392  3969  8190  2869 13639 11070
+  4853 13902  8554  9970 11430  8080   723  8650]</code></pre>
 </div>
-<div id="cell-14" class="cell column-page quarto-layout-panel" data-execution_count="5" data-layout-ncol="3">
+<div id="cell-16" class="cell column-page quarto-layout-panel" data-layout-ncol="3" data-execution_count="20">
 <div class="quarto-layout-row">
 <div class="quarto-layout-cell" style="flex-basis: 33.3%;justify-content: flex-start;">
 <pre><code>[(&lt;Figure size 1200x500 with 1 Axes&gt;,
-  &lt;Axes: title={'center': '\n#Fit# $\\max dB/dt$: -0.04, $R^2$: 0.98, $\\chi^2$: 0.01'}, ylabel='$B$\n[nT LMN]'&gt;),
+  &lt;Axes: title={'center': '\n#Fit# $\\max dB/dt$: -0.06, $R^2$: 0.96, $\\chi^2$: 0.13'}, ylabel='$B$\n[nT LMN]'&gt;),
  (&lt;Figure size 1200x500 with 1 Axes&gt;,
-  &lt;Axes: title={'center': '\n#Fit# $\\max dB/dt$: -0.10, $R^2$: 0.91, $\\chi^2$: 0.08'}, ylabel='$B$\n[nT LMN]'&gt;),
+  &lt;Axes: title={'center': '\n#Fit# $\\max dB/dt$: 0.17, $R^2$: 0.98, $\\chi^2$: 0.05'}, ylabel='$B$\n[nT LMN]'&gt;),
  (&lt;Figure size 1200x500 with 1 Axes&gt;,
-  &lt;Axes: title={'center': '\n#Fit# $\\max dB/dt$: -0.03, $R^2$: 0.94, $\\chi^2$: 0.05'}, ylabel='$B$\n[nT LMN]'&gt;),
+  &lt;Axes: title={'center': '\n#Fit# $\\max dB/dt$: -0.98, $R^2$: 0.99, $\\chi^2$: 0.15'}, ylabel='$B$\n[nT LMN]'&gt;),
  (&lt;Figure size 1200x500 with 1 Axes&gt;,
-  &lt;Axes: title={'center': '\n#Fit# $\\max dB/dt$: -0.12, $R^2$: 0.99, $\\chi^2$: 0.22'}, ylabel='$B$\n[nT LMN]'&gt;),
+  &lt;Axes: title={'center': '\n#Fit# $\\max dB/dt$: 0.73, $R^2$: 0.97, $\\chi^2$: 1.86'}, ylabel='$B$\n[nT LMN]'&gt;),
  (&lt;Figure size 1200x500 with 1 Axes&gt;,
-  &lt;Axes: title={'center': '\n#Fit# $\\max dB/dt$: -0.17, $R^2$: 0.79, $\\chi^2$: 0.27'}, ylabel='$B$\n[nT LMN]'&gt;),
+  &lt;Axes: title={'center': '\n#Fit# $\\max dB/dt$: 0.23, $R^2$: 0.99, $\\chi^2$: 0.06'}, ylabel='$B$\n[nT LMN]'&gt;),
  (&lt;Figure size 1200x500 with 1 Axes&gt;,
-  &lt;Axes: title={'center': '\n#Fit# $\\max dB/dt$: 0.19, $R^2$: 0.96, $\\chi^2$: 0.07'}, ylabel='$B$\n[nT LMN]'&gt;),
+  &lt;Axes: title={'center': '\n#Fit# $\\max dB/dt$: -0.02, $R^2$: 0.99, $\\chi^2$: 0.01'}, ylabel='$B$\n[nT LMN]'&gt;),
  (&lt;Figure size 1200x500 with 1 Axes&gt;,
-  &lt;Axes: title={'center': '\n#Fit# $\\max dB/dt$: -0.19, $R^2$: 0.84, $\\chi^2$: 1.10'}, ylabel='$B$\n[nT LMN]'&gt;),
+  &lt;Axes: title={'center': '\n#Fit# $\\max dB/dt$: -0.15, $R^2$: 0.97, $\\chi^2$: 1.10'}, ylabel='$B$\n[nT LMN]'&gt;),
  (&lt;Figure size 1200x500 with 1 Axes&gt;,
-  &lt;Axes: title={'center': '\n#Fit# $\\max dB/dt$: -0.75, $R^2$: 0.99, $\\chi^2$: 4.09'}, ylabel='$B$\n[nT LMN]'&gt;),
+  &lt;Axes: title={'center': '\n#Fit# $\\max dB/dt$: -0.29, $R^2$: 0.95, $\\chi^2$: 1.15'}, ylabel='$B$\n[nT LMN]'&gt;),
  (&lt;Figure size 1200x500 with 1 Axes&gt;,
-  &lt;Axes: title={'center': '\n#Fit# $\\max dB/dt$: -0.30, $R^2$: 1.00, $\\chi^2$: 0.01'}, ylabel='$B$\n[nT LMN]'&gt;),
+  &lt;Axes: title={'center': '\n#Fit# $\\max dB/dt$: 0.30, $R^2$: 0.97, $\\chi^2$: 0.82'}, ylabel='$B$\n[nT LMN]'&gt;),
  (&lt;Figure size 1200x500 with 1 Axes&gt;,
-  &lt;Axes: title={'center': '\n#Fit# $\\max dB/dt$: 0.09, $R^2$: 0.96, $\\chi^2$: 0.43'}, ylabel='$B$\n[nT LMN]'&gt;),
+  &lt;Axes: title={'center': '\n#Fit# $\\max dB/dt$: 1.49, $R^2$: 0.98, $\\chi^2$: 1.03'}, ylabel='$B$\n[nT LMN]'&gt;),
  (&lt;Figure size 1200x500 with 1 Axes&gt;,
-  &lt;Axes: title={'center': '\n#Fit# $\\max dB/dt$: -0.03, $R^2$: 0.97, $\\chi^2$: 0.01'}, ylabel='$B$\n[nT LMN]'&gt;),
+  &lt;Axes: title={'center': '\n#Fit# $\\max dB/dt$: 0.28, $R^2$: 0.99, $\\chi^2$: 0.02'}, ylabel='$B$\n[nT LMN]'&gt;),
  (&lt;Figure size 1200x500 with 1 Axes&gt;,
-  &lt;Axes: title={'center': '\n#Fit# $\\max dB/dt$: 0.09, $R^2$: 0.98, $\\chi^2$: 0.01'}, ylabel='$B$\n[nT LMN]'&gt;),
+  &lt;Axes: title={'center': '\n#Fit# $\\max dB/dt$: 0.13, $R^2$: 0.99, $\\chi^2$: 0.01'}, ylabel='$B$\n[nT LMN]'&gt;),
  (&lt;Figure size 1200x500 with 1 Axes&gt;,
-  &lt;Axes: title={'center': '\n#Fit# $\\max dB/dt$: 0.01, $R^2$: 0.70, $\\chi^2$: 0.06'}, ylabel='$B$\n[nT LMN]'&gt;),
+  &lt;Axes: title={'center': '\n#Fit# $\\max dB/dt$: 0.20, $R^2$: 0.98, $\\chi^2$: 0.03'}, ylabel='$B$\n[nT LMN]'&gt;),
  (&lt;Figure size 1200x500 with 1 Axes&gt;,
-  &lt;Axes: title={'center': '\n#Fit# $\\max dB/dt$: -0.10, $R^2$: 1.00, $\\chi^2$: 0.00'}, ylabel='$B$\n[nT LMN]'&gt;),
+  &lt;Axes: title={'center': '\n#Fit# $\\max dB/dt$: 0.04, $R^2$: 0.95, $\\chi^2$: 0.24'}, ylabel='$B$\n[nT LMN]'&gt;),
  (&lt;Figure size 1200x500 with 1 Axes&gt;,
-  &lt;Axes: title={'center': '\n#Fit# $\\max dB/dt$: -0.17, $R^2$: 0.87, $\\chi^2$: 0.30'}, ylabel='$B$\n[nT LMN]'&gt;),
+  &lt;Axes: title={'center': '\n#Fit# $\\max dB/dt$: 0.22, $R^2$: 0.96, $\\chi^2$: 0.06'}, ylabel='$B$\n[nT LMN]'&gt;),
  (&lt;Figure size 1200x500 with 1 Axes&gt;,
-  &lt;Axes: title={'center': '\n#Fit# $\\max dB/dt$: 0.02, $R^2$: 0.99, $\\chi^2$: 0.01'}, ylabel='$B$\n[nT LMN]'&gt;),
+  &lt;Axes: title={'center': '\n#Fit# $\\max dB/dt$: -0.03, $R^2$: 0.95, $\\chi^2$: 0.33'}, ylabel='$B$\n[nT LMN]'&gt;),
  (&lt;Figure size 1200x500 with 1 Axes&gt;,
-  &lt;Axes: title={'center': '\n#Fit# $\\max dB/dt$: 0.01, $R^2$: 0.92, $\\chi^2$: 0.02'}, ylabel='$B$\n[nT LMN]'&gt;),
+  &lt;Axes: title={'center': '\n#Fit# $\\max dB/dt$: -0.17, $R^2$: 0.96, $\\chi^2$: 11.09'}, ylabel='$B$\n[nT LMN]'&gt;),
  (&lt;Figure size 1200x500 with 1 Axes&gt;,
-  &lt;Axes: title={'center': '\n#Fit# $\\max dB/dt$: -0.02, $R^2$: 0.93, $\\chi^2$: 0.07'}, ylabel='$B$\n[nT LMN]'&gt;),
+  &lt;Axes: title={'center': '\n#Fit# $\\max dB/dt$: 0.21, $R^2$: 0.99, $\\chi^2$: 0.01'}, ylabel='$B$\n[nT LMN]'&gt;),
  (&lt;Figure size 1200x500 with 1 Axes&gt;,
-  &lt;Axes: title={'center': '\n#Fit# $\\max dB/dt$: -0.06, $R^2$: 0.98, $\\chi^2$: 0.05'}, ylabel='$B$\n[nT LMN]'&gt;),
+  &lt;Axes: title={'center': '\n#Fit# $\\max dB/dt$: -0.23, $R^2$: 0.98, $\\chi^2$: 0.04'}, ylabel='$B$\n[nT LMN]'&gt;),
  (&lt;Figure size 1200x500 with 1 Axes&gt;,
-  &lt;Axes: title={'center': '\n#Fit# $\\max dB/dt$: 0.09, $R^2$: 0.99, $\\chi^2$: 0.02'}, ylabel='$B$\n[nT LMN]'&gt;)]</code></pre>
+  &lt;Axes: title={'center': '\n#Fit# $\\max dB/dt$: 0.11, $R^2$: 0.98, $\\chi^2$: 0.06'}, ylabel='$B$\n[nT LMN]'&gt;)]</code></pre>
 </div>
 <div class="quarto-layout-cell" style="flex-basis: 33.3%;justify-content: center;">
-<p><a href="index_files/figure-html/cell-7-output-3.png" class="lightbox" data-gallery="quarto-lightbox-gallery-1"><img src="index_files/figure-html/cell-7-output-3.png" class="img-fluid"></a></p>
+<p><a href="index_files/figure-html/cell-8-output-3.png" class="lightbox" data-gallery="quarto-lightbox-gallery-1"><img src="index_files/figure-html/cell-8-output-3.png" class="img-fluid"></a></p>
 </div>
 <div class="quarto-layout-cell" style="flex-basis: 33.3%;justify-content: center;">
-<p><a href="index_files/figure-html/cell-7-output-4.png" class="lightbox" data-gallery="quarto-lightbox-gallery-2"><img src="index_files/figure-html/cell-7-output-4.png" class="img-fluid"></a></p>
+<p><a href="index_files/figure-html/cell-8-output-4.png" class="lightbox" data-gallery="quarto-lightbox-gallery-2"><img src="index_files/figure-html/cell-8-output-4.png" class="img-fluid"></a></p>
 </div>
 </div>
 <div class="quarto-layout-row">
 <div class="quarto-layout-cell" style="flex-basis: 33.3%;justify-content: center;">
-<p><a href="index_files/figure-html/cell-7-output-5.png" class="lightbox" data-gallery="quarto-lightbox-gallery-3"><img src="index_files/figure-html/cell-7-output-5.png" class="img-fluid"></a></p>
+<p><a href="index_files/figure-html/cell-8-output-5.png" class="lightbox" data-gallery="quarto-lightbox-gallery-3"><img src="index_files/figure-html/cell-8-output-5.png" class="img-fluid"></a></p>
 </div>
 <div class="quarto-layout-cell" style="flex-basis: 33.3%;justify-content: center;">
-<p><a href="index_files/figure-html/cell-7-output-6.png" class="lightbox" data-gallery="quarto-lightbox-gallery-4"><img src="index_files/figure-html/cell-7-output-6.png" class="img-fluid"></a></p>
+<p><a href="index_files/figure-html/cell-8-output-6.png" class="lightbox" data-gallery="quarto-lightbox-gallery-4"><img src="index_files/figure-html/cell-8-output-6.png" class="img-fluid"></a></p>
 </div>
 <div class="quarto-layout-cell" style="flex-basis: 33.3%;justify-content: center;">
-<p><a href="index_files/figure-html/cell-7-output-7.png" class="lightbox" data-gallery="quarto-lightbox-gallery-5"><img src="index_files/figure-html/cell-7-output-7.png" class="img-fluid"></a></p>
+<p><a href="index_files/figure-html/cell-8-output-7.png" class="lightbox" data-gallery="quarto-lightbox-gallery-5"><img src="index_files/figure-html/cell-8-output-7.png" class="img-fluid"></a></p>
 </div>
 </div>
 <div class="quarto-layout-row">
 <div class="quarto-layout-cell" style="flex-basis: 33.3%;justify-content: center;">
-<p><a href="index_files/figure-html/cell-7-output-8.png" class="lightbox" data-gallery="quarto-lightbox-gallery-6"><img src="index_files/figure-html/cell-7-output-8.png" class="img-fluid"></a></p>
+<p><a href="index_files/figure-html/cell-8-output-8.png" class="lightbox" data-gallery="quarto-lightbox-gallery-6"><img src="index_files/figure-html/cell-8-output-8.png" class="img-fluid"></a></p>
 </div>
 <div class="quarto-layout-cell" style="flex-basis: 33.3%;justify-content: center;">
-<p><a href="index_files/figure-html/cell-7-output-9.png" class="lightbox" data-gallery="quarto-lightbox-gallery-7"><img src="index_files/figure-html/cell-7-output-9.png" class="img-fluid"></a></p>
+<p><a href="index_files/figure-html/cell-8-output-9.png" class="lightbox" data-gallery="quarto-lightbox-gallery-7"><img src="index_files/figure-html/cell-8-output-9.png" class="img-fluid"></a></p>
 </div>
 <div class="quarto-layout-cell" style="flex-basis: 33.3%;justify-content: center;">
-<p><a href="index_files/figure-html/cell-7-output-10.png" class="lightbox" data-gallery="quarto-lightbox-gallery-8"><img src="index_files/figure-html/cell-7-output-10.png" class="img-fluid"></a></p>
+<p><a href="index_files/figure-html/cell-8-output-10.png" class="lightbox" data-gallery="quarto-lightbox-gallery-8"><img src="index_files/figure-html/cell-8-output-10.png" class="img-fluid"></a></p>
 </div>
 </div>
 <div class="quarto-layout-row">
 <div class="quarto-layout-cell" style="flex-basis: 33.3%;justify-content: center;">
-<p><a href="index_files/figure-html/cell-7-output-11.png" class="lightbox" data-gallery="quarto-lightbox-gallery-9"><img src="index_files/figure-html/cell-7-output-11.png" class="img-fluid"></a></p>
+<p><a href="index_files/figure-html/cell-8-output-11.png" class="lightbox" data-gallery="quarto-lightbox-gallery-9"><img src="index_files/figure-html/cell-8-output-11.png" class="img-fluid"></a></p>
 </div>
 <div class="quarto-layout-cell" style="flex-basis: 33.3%;justify-content: center;">
-<p><a href="index_files/figure-html/cell-7-output-12.png" class="lightbox" data-gallery="quarto-lightbox-gallery-10"><img src="index_files/figure-html/cell-7-output-12.png" class="img-fluid"></a></p>
+<p><a href="index_files/figure-html/cell-8-output-12.png" class="lightbox" data-gallery="quarto-lightbox-gallery-10"><img src="index_files/figure-html/cell-8-output-12.png" class="img-fluid"></a></p>
 </div>
 <div class="quarto-layout-cell" style="flex-basis: 33.3%;justify-content: center;">
-<p><a href="index_files/figure-html/cell-7-output-13.png" class="lightbox" data-gallery="quarto-lightbox-gallery-11"><img src="index_files/figure-html/cell-7-output-13.png" class="img-fluid"></a></p>
+<p><a href="index_files/figure-html/cell-8-output-13.png" class="lightbox" data-gallery="quarto-lightbox-gallery-11"><img src="index_files/figure-html/cell-8-output-13.png" class="img-fluid"></a></p>
 </div>
 </div>
 <div class="quarto-layout-row">
 <div class="quarto-layout-cell" style="flex-basis: 33.3%;justify-content: center;">
-<p><a href="index_files/figure-html/cell-7-output-14.png" class="lightbox" data-gallery="quarto-lightbox-gallery-12"><img src="index_files/figure-html/cell-7-output-14.png" class="img-fluid"></a></p>
+<p><a href="index_files/figure-html/cell-8-output-14.png" class="lightbox" data-gallery="quarto-lightbox-gallery-12"><img src="index_files/figure-html/cell-8-output-14.png" class="img-fluid"></a></p>
 </div>
 <div class="quarto-layout-cell" style="flex-basis: 33.3%;justify-content: center;">
-<p><a href="index_files/figure-html/cell-7-output-15.png" class="lightbox" data-gallery="quarto-lightbox-gallery-13"><img src="index_files/figure-html/cell-7-output-15.png" class="img-fluid"></a></p>
+<p><a href="index_files/figure-html/cell-8-output-15.png" class="lightbox" data-gallery="quarto-lightbox-gallery-13"><img src="index_files/figure-html/cell-8-output-15.png" class="img-fluid"></a></p>
 </div>
 <div class="quarto-layout-cell" style="flex-basis: 33.3%;justify-content: center;">
-<p><a href="index_files/figure-html/cell-7-output-16.png" class="lightbox" data-gallery="quarto-lightbox-gallery-14"><img src="index_files/figure-html/cell-7-output-16.png" class="img-fluid"></a></p>
+<p><a href="index_files/figure-html/cell-8-output-16.png" class="lightbox" data-gallery="quarto-lightbox-gallery-14"><img src="index_files/figure-html/cell-8-output-16.png" class="img-fluid"></a></p>
 </div>
 </div>
 <div class="quarto-layout-row">
 <div class="quarto-layout-cell" style="flex-basis: 33.3%;justify-content: center;">
-<p><a href="index_files/figure-html/cell-7-output-17.png" class="lightbox" data-gallery="quarto-lightbox-gallery-15"><img src="index_files/figure-html/cell-7-output-17.png" class="img-fluid"></a></p>
+<p><a href="index_files/figure-html/cell-8-output-17.png" class="lightbox" data-gallery="quarto-lightbox-gallery-15"><img src="index_files/figure-html/cell-8-output-17.png" class="img-fluid"></a></p>
 </div>
 <div class="quarto-layout-cell" style="flex-basis: 33.3%;justify-content: center;">
-<p><a href="index_files/figure-html/cell-7-output-18.png" class="lightbox" data-gallery="quarto-lightbox-gallery-16"><img src="index_files/figure-html/cell-7-output-18.png" class="img-fluid"></a></p>
+<p><a href="index_files/figure-html/cell-8-output-18.png" class="lightbox" data-gallery="quarto-lightbox-gallery-16"><img src="index_files/figure-html/cell-8-output-18.png" class="img-fluid"></a></p>
 </div>
 <div class="quarto-layout-cell" style="flex-basis: 33.3%;justify-content: center;">
-<p><a href="index_files/figure-html/cell-7-output-19.png" class="lightbox" data-gallery="quarto-lightbox-gallery-17"><img src="index_files/figure-html/cell-7-output-19.png" class="img-fluid"></a></p>
+<p><a href="index_files/figure-html/cell-8-output-19.png" class="lightbox" data-gallery="quarto-lightbox-gallery-17"><img src="index_files/figure-html/cell-8-output-19.png" class="img-fluid"></a></p>
 </div>
 </div>
 <div class="quarto-layout-row">
 <div class="quarto-layout-cell" style="flex-basis: 33.3%;justify-content: center;">
-<p><a href="index_files/figure-html/cell-7-output-20.png" class="lightbox" data-gallery="quarto-lightbox-gallery-18"><img src="index_files/figure-html/cell-7-output-20.png" class="img-fluid"></a></p>
+<p><a href="index_files/figure-html/cell-8-output-20.png" class="lightbox" data-gallery="quarto-lightbox-gallery-18"><img src="index_files/figure-html/cell-8-output-20.png" class="img-fluid"></a></p>
 </div>
 <div class="quarto-layout-cell" style="flex-basis: 33.3%;justify-content: center;">
-<p><a href="index_files/figure-html/cell-7-output-21.png" class="lightbox" data-gallery="quarto-lightbox-gallery-19"><img src="index_files/figure-html/cell-7-output-21.png" class="img-fluid"></a></p>
+<p><a href="index_files/figure-html/cell-8-output-21.png" class="lightbox" data-gallery="quarto-lightbox-gallery-19"><img src="index_files/figure-html/cell-8-output-21.png" class="img-fluid"></a></p>
 </div>
 <div class="quarto-layout-cell" style="flex-basis: 33.3%;justify-content: center;">
-<p><a href="index_files/figure-html/cell-7-output-22.png" class="lightbox" data-gallery="quarto-lightbox-gallery-20"><img src="index_files/figure-html/cell-7-output-22.png" class="img-fluid"></a></p>
+<p><a href="index_files/figure-html/cell-8-output-22.png" class="lightbox" data-gallery="quarto-lightbox-gallery-20"><img src="index_files/figure-html/cell-8-output-22.png" class="img-fluid"></a></p>
 </div>
 </div>
 </div>
+</section>
+<section id="last-year" class="level3 page-columns page-full">
+<h3 class="anchored" data-anchor-id="last-year">Last year</h3>
+<div id="cell-18" class="cell" data-execution_count="14">
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="co"># mag_path = sorted(list(walk(dir_path)))[-1]</span></span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>tau <span class="op">=</span> timedelta(seconds<span class="op">=</span><span class="dv">300</span>)</span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>mag_path <span class="op">=</span> <span class="bu">sorted</span>(<span class="bu">list</span>(walk(dir_path)))[<span class="op">-</span><span class="dv">1</span>]</span>
+<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a>juno_mag_data <span class="op">=</span> pl.scan_parquet(mag_path).drop(<span class="st">'X'</span>, <span class="st">'Y'</span>, <span class="st">'Z'</span>).sort(<span class="st">'time'</span>)</span>
+<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a>ids_ds <span class="op">=</span> (</span>
+<span id="cb12-7"><a href="#cb12-7" aria-hidden="true" tabindex="-1"></a>    IDsDataset(</span>
+<span id="cb12-8"><a href="#cb12-8" aria-hidden="true" tabindex="-1"></a>        mag_data<span class="op">=</span>juno_mag_data,</span>
+<span id="cb12-9"><a href="#cb12-9" aria-hidden="true" tabindex="-1"></a>        plasma_data<span class="op">=</span>plasma_data,</span>
+<span id="cb12-10"><a href="#cb12-10" aria-hidden="true" tabindex="-1"></a>        tau<span class="op">=</span>tau,</span>
+<span id="cb12-11"><a href="#cb12-11" aria-hidden="true" tabindex="-1"></a>        ts<span class="op">=</span>ts,</span>
+<span id="cb12-12"><a href="#cb12-12" aria-hidden="true" tabindex="-1"></a>        vec_cols<span class="op">=</span>vec_cols,</span>
+<span id="cb12-13"><a href="#cb12-13" aria-hidden="true" tabindex="-1"></a>        density_col<span class="op">=</span><span class="st">"plasma_density"</span>,</span>
+<span id="cb12-14"><a href="#cb12-14" aria-hidden="true" tabindex="-1"></a>        speed_col<span class="op">=</span><span class="st">"plasma_speed"</span>,</span>
+<span id="cb12-15"><a href="#cb12-15" aria-hidden="true" tabindex="-1"></a>        temperature_col<span class="op">=</span><span class="st">"plasma_temperature"</span>,</span>
+<span id="cb12-16"><a href="#cb12-16" aria-hidden="true" tabindex="-1"></a>    )</span>
+<span id="cb12-17"><a href="#cb12-17" aria-hidden="true" tabindex="-1"></a>    .find_events(return_best_fit<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb12-18"><a href="#cb12-18" aria-hidden="true" tabindex="-1"></a>    .update_candidates_with_plasma_data()</span>
+<span id="cb12-19"><a href="#cb12-19" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>17-Feb-24 15:07:29: DeprecationWarning: `pl.count()` is deprecated. Please use `pl.len()` instead.
+
+17-Feb-24 15:07:29: DeprecationWarning: `map_alias` is deprecated. It has been moved to `name.map`.
+
+17-Feb-24 15:07:29: DeprecationWarning: `map_alias` is deprecated. It has been moved to `name.map`.
+
+17-Feb-24 15:07:31: UserWarning: Distributing &lt;class 'pandas.core.frame.DataFrame'&gt; object. This may take some time.
+
+17-Feb-24 15:07:36: DeprecationWarning: `nanoseconds` is deprecated. It has been renamed to `total_nanoseconds`.
+
+17-Feb-24 15:07:36: PendingDeprecationWarning: The `dims` argument has been renamed to `dim`, and will be removed in the future. This renaming is taking place throughout xarray over the next few releases.
+
+17-Feb-24 15:07:36: PendingDeprecationWarning: The `dims` argument has been renamed to `dim`, and will be removed in the future. This renaming is taking place throughout xarray over the next few releases.
+
+17-Feb-24 15:07:36: PendingDeprecationWarning: The `dims` argument has been renamed to `dim`, and will be removed in the future. This renaming is taking place throughout xarray over the next few releases.
+
+17-Feb-24 15:07:36: DeprecationWarning: `suffix` is deprecated. It has been moved to `name.suffix`.
+
+17-Feb-24 15:07:36: DeprecationWarning: `suffix` is deprecated. It has been moved to `name.suffix`.
+
+17-Feb-24 15:07:36: DeprecationWarning: `suffix` is deprecated. It has been moved to `name.suffix`.
+
+17-Feb-24 15:07:36: PendingDeprecationWarning: The `dims` argument has been renamed to `dim`, and will be removed in the future. This renaming is taking place throughout xarray over the next few releases.
+
+17-Feb-24 15:07:36: PendingDeprecationWarning: The `dims` argument has been renamed to `dim`, and will be removed in the future. This renaming is taking place throughout xarray over the next few releases.
+</code></pre>
+</div>
+<div class="cell-output cell-output-display">
+<script type="application/vnd.jupyter.widget-view+json">
+{"model_id":"40ab345968fc435a963434e7ab729976","version_major":2,"version_minor":0,"quarto_mimetype":"application/vnd.jupyter.widget-view+json"}
+</script>
+</div>
+<div class="cell-output cell-output-display">
+<script type="application/vnd.jupyter.widget-view+json">
+{"model_id":"66d66368818144d0b50d05bdf7b54903","version_major":2,"version_minor":0,"quarto_mimetype":"application/vnd.jupyter.widget-view+json"}
+</script>
+</div>
+</div>
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>ids_ds.plot_candidates(num<span class="op">=</span><span class="dv">20</span>, plot_fit_data<span class="op">=</span><span class="va">True</span>, predicates<span class="op">=</span>(pl.col(<span class="st">'fit.stat.rsquared'</span>) <span class="op">&gt;</span> <span class="fl">0.95</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>2024-02-17 15:07:37.771 | INFO     | discontinuitypy.datasets:plot_candidates:215 - Candidates indices: [1104  694 1238 1324  313  331 1240  790  689 1233   34  670  674 1045
+ 1439  411 1043  793    5  436]</code></pre>
+</div>
+<div id="cell-19" class="cell column-page quarto-layout-panel" data-layout-ncol="3" data-execution_count="15">
+<div class="quarto-layout-row">
+<div class="quarto-layout-cell" style="flex-basis: 33.3%;justify-content: flex-start;">
+<pre><code>[(&lt;Figure size 1200x500 with 1 Axes&gt;,
+  &lt;Axes: title={'center': '\n#Fit# $\\max dB/dt$: 0.02, $R^2$: 0.98, $\\chi^2$: 2.03'}, ylabel='$B$\n[nT LMN]'&gt;),
+ (&lt;Figure size 1200x500 with 1 Axes&gt;,
+  &lt;Axes: title={'center': '\n#Fit# $\\max dB/dt$: 0.17, $R^2$: 0.98, $\\chi^2$: 0.21'}, ylabel='$B$\n[nT LMN]'&gt;),
+ (&lt;Figure size 1200x500 with 1 Axes&gt;,
+  &lt;Axes: title={'center': '\n#Fit# $\\max dB/dt$: -0.07, $R^2$: 0.98, $\\chi^2$: 0.33'}, ylabel='$B$\n[nT LMN]'&gt;),
+ (&lt;Figure size 1200x500 with 1 Axes&gt;,
+  &lt;Axes: title={'center': '\n#Fit# $\\max dB/dt$: 0.02, $R^2$: 0.97, $\\chi^2$: 0.32'}, ylabel='$B$\n[nT LMN]'&gt;),
+ (&lt;Figure size 1200x500 with 1 Axes&gt;,
+  &lt;Axes: title={'center': '\n#Fit# $\\max dB/dt$: -0.11, $R^2$: 0.95, $\\chi^2$: 0.22'}, ylabel='$B$\n[nT LMN]'&gt;),
+ (&lt;Figure size 1200x500 with 1 Axes&gt;,
+  &lt;Axes: title={'center': '\n#Fit# $\\max dB/dt$: 0.02, $R^2$: 0.96, $\\chi^2$: 0.81'}, ylabel='$B$\n[nT LMN]'&gt;),
+ (&lt;Figure size 1200x500 with 1 Axes&gt;,
+  &lt;Axes: title={'center': '\n#Fit# $\\max dB/dt$: -0.07, $R^2$: 0.98, $\\chi^2$: 0.33'}, ylabel='$B$\n[nT LMN]'&gt;),
+ (&lt;Figure size 1200x500 with 1 Axes&gt;,
+  &lt;Axes: title={'center': '\n#Fit# $\\max dB/dt$: -0.02, $R^2$: 0.98, $\\chi^2$: 0.12'}, ylabel='$B$\n[nT LMN]'&gt;),
+ (&lt;Figure size 1200x500 with 1 Axes&gt;,
+  &lt;Axes: title={'center': '\n#Fit# $\\max dB/dt$: 0.22, $R^2$: 0.97, $\\chi^2$: 0.09'}, ylabel='$B$\n[nT LMN]'&gt;),
+ (&lt;Figure size 1200x500 with 1 Axes&gt;,
+  &lt;Axes: title={'center': '\n#Fit# $\\max dB/dt$: 0.40, $R^2$: 0.98, $\\chi^2$: 0.30'}, ylabel='$B$\n[nT LMN]'&gt;),
+ (&lt;Figure size 1200x500 with 1 Axes&gt;,
+  &lt;Axes: title={'center': '\n#Fit# $\\max dB/dt$: -0.04, $R^2$: 0.96, $\\chi^2$: 0.89'}, ylabel='$B$\n[nT LMN]'&gt;),
+ (&lt;Figure size 1200x500 with 1 Axes&gt;,
+  &lt;Axes: title={'center': '\n#Fit# $\\max dB/dt$: 0.02, $R^2$: 0.97, $\\chi^2$: 1.42'}, ylabel='$B$\n[nT LMN]'&gt;),
+ (&lt;Figure size 1200x500 with 1 Axes&gt;,
+  &lt;Axes: title={'center': '\n#Fit# $\\max dB/dt$: 0.25, $R^2$: 0.98, $\\chi^2$: 0.08'}, ylabel='$B$\n[nT LMN]'&gt;),
+ (&lt;Figure size 1200x500 with 1 Axes&gt;,
+  &lt;Axes: title={'center': '\n#Fit# $\\max dB/dt$: -0.03, $R^2$: 0.98, $\\chi^2$: 0.14'}, ylabel='$B$\n[nT LMN]'&gt;),
+ (&lt;Figure size 1200x500 with 1 Axes&gt;,
+  &lt;Axes: title={'center': '\n#Fit# $\\max dB/dt$: -0.15, $R^2$: 1.00, $\\chi^2$: 5.87'}, ylabel='$B$\n[nT LMN]'&gt;),
+ (&lt;Figure size 1200x500 with 1 Axes&gt;,
+  &lt;Axes: title={'center': '\n#Fit# $\\max dB/dt$: -0.26, $R^2$: 0.99, $\\chi^2$: 0.37'}, ylabel='$B$\n[nT LMN]'&gt;),
+ (&lt;Figure size 1200x500 with 1 Axes&gt;,
+  &lt;Axes: title={'center': '\n#Fit# $\\max dB/dt$: -0.03, $R^2$: 0.98, $\\chi^2$: 0.14'}, ylabel='$B$\n[nT LMN]'&gt;),
+ (&lt;Figure size 1200x500 with 1 Axes&gt;,
+  &lt;Axes: title={'center': '\n#Fit# $\\max dB/dt$: -0.06, $R^2$: 0.97, $\\chi^2$: 0.67'}, ylabel='$B$\n[nT LMN]'&gt;),
+ (&lt;Figure size 1200x500 with 1 Axes&gt;,
+  &lt;Axes: title={'center': '\n#Fit# $\\max dB/dt$: 0.02, $R^2$: 0.97, $\\chi^2$: 0.47'}, ylabel='$B$\n[nT LMN]'&gt;),
+ (&lt;Figure size 1200x500 with 1 Axes&gt;,
+  &lt;Axes: title={'center': '\n#Fit# $\\max dB/dt$: 0.03, $R^2$: 0.95, $\\chi^2$: 0.73'}, ylabel='$B$\n[nT LMN]'&gt;)]</code></pre>
+</div>
+<div class="quarto-layout-cell" style="flex-basis: 33.3%;justify-content: center;">
+<p><a href="index_files/figure-html/cell-10-output-3.png" class="lightbox" data-gallery="quarto-lightbox-gallery-21"><img src="index_files/figure-html/cell-10-output-3.png" class="img-fluid"></a></p>
+</div>
+<div class="quarto-layout-cell" style="flex-basis: 33.3%;justify-content: center;">
+<p><a href="index_files/figure-html/cell-10-output-4.png" class="lightbox" data-gallery="quarto-lightbox-gallery-22"><img src="index_files/figure-html/cell-10-output-4.png" class="img-fluid"></a></p>
+</div>
+</div>
+<div class="quarto-layout-row">
+<div class="quarto-layout-cell" style="flex-basis: 33.3%;justify-content: center;">
+<p><a href="index_files/figure-html/cell-10-output-5.png" class="lightbox" data-gallery="quarto-lightbox-gallery-23"><img src="index_files/figure-html/cell-10-output-5.png" class="img-fluid"></a></p>
+</div>
+<div class="quarto-layout-cell" style="flex-basis: 33.3%;justify-content: center;">
+<p><a href="index_files/figure-html/cell-10-output-6.png" class="lightbox" data-gallery="quarto-lightbox-gallery-24"><img src="index_files/figure-html/cell-10-output-6.png" class="img-fluid"></a></p>
+</div>
+<div class="quarto-layout-cell" style="flex-basis: 33.3%;justify-content: center;">
+<p><a href="index_files/figure-html/cell-10-output-7.png" class="lightbox" data-gallery="quarto-lightbox-gallery-25"><img src="index_files/figure-html/cell-10-output-7.png" class="img-fluid"></a></p>
+</div>
+</div>
+<div class="quarto-layout-row">
+<div class="quarto-layout-cell" style="flex-basis: 33.3%;justify-content: center;">
+<p><a href="index_files/figure-html/cell-10-output-8.png" class="lightbox" data-gallery="quarto-lightbox-gallery-26"><img src="index_files/figure-html/cell-10-output-8.png" class="img-fluid"></a></p>
+</div>
+<div class="quarto-layout-cell" style="flex-basis: 33.3%;justify-content: center;">
+<p><a href="index_files/figure-html/cell-10-output-9.png" class="lightbox" data-gallery="quarto-lightbox-gallery-27"><img src="index_files/figure-html/cell-10-output-9.png" class="img-fluid"></a></p>
+</div>
+<div class="quarto-layout-cell" style="flex-basis: 33.3%;justify-content: center;">
+<p><a href="index_files/figure-html/cell-10-output-10.png" class="lightbox" data-gallery="quarto-lightbox-gallery-28"><img src="index_files/figure-html/cell-10-output-10.png" class="img-fluid"></a></p>
+</div>
+</div>
+<div class="quarto-layout-row">
+<div class="quarto-layout-cell" style="flex-basis: 33.3%;justify-content: center;">
+<p><a href="index_files/figure-html/cell-10-output-11.png" class="lightbox" data-gallery="quarto-lightbox-gallery-29"><img src="index_files/figure-html/cell-10-output-11.png" class="img-fluid"></a></p>
+</div>
+<div class="quarto-layout-cell" style="flex-basis: 33.3%;justify-content: center;">
+<p><a href="index_files/figure-html/cell-10-output-12.png" class="lightbox" data-gallery="quarto-lightbox-gallery-30"><img src="index_files/figure-html/cell-10-output-12.png" class="img-fluid"></a></p>
+</div>
+<div class="quarto-layout-cell" style="flex-basis: 33.3%;justify-content: center;">
+<p><a href="index_files/figure-html/cell-10-output-13.png" class="lightbox" data-gallery="quarto-lightbox-gallery-31"><img src="index_files/figure-html/cell-10-output-13.png" class="img-fluid"></a></p>
+</div>
+</div>
+<div class="quarto-layout-row">
+<div class="quarto-layout-cell" style="flex-basis: 33.3%;justify-content: center;">
+<p><a href="index_files/figure-html/cell-10-output-14.png" class="lightbox" data-gallery="quarto-lightbox-gallery-32"><img src="index_files/figure-html/cell-10-output-14.png" class="img-fluid"></a></p>
+</div>
+<div class="quarto-layout-cell" style="flex-basis: 33.3%;justify-content: center;">
+<p><a href="index_files/figure-html/cell-10-output-15.png" class="lightbox" data-gallery="quarto-lightbox-gallery-33"><img src="index_files/figure-html/cell-10-output-15.png" class="img-fluid"></a></p>
+</div>
+<div class="quarto-layout-cell" style="flex-basis: 33.3%;justify-content: center;">
+<p><a href="index_files/figure-html/cell-10-output-16.png" class="lightbox" data-gallery="quarto-lightbox-gallery-34"><img src="index_files/figure-html/cell-10-output-16.png" class="img-fluid"></a></p>
+</div>
+</div>
+<div class="quarto-layout-row">
+<div class="quarto-layout-cell" style="flex-basis: 33.3%;justify-content: center;">
+<p><a href="index_files/figure-html/cell-10-output-17.png" class="lightbox" data-gallery="quarto-lightbox-gallery-35"><img src="index_files/figure-html/cell-10-output-17.png" class="img-fluid"></a></p>
+</div>
+<div class="quarto-layout-cell" style="flex-basis: 33.3%;justify-content: center;">
+<p><a href="index_files/figure-html/cell-10-output-18.png" class="lightbox" data-gallery="quarto-lightbox-gallery-36"><img src="index_files/figure-html/cell-10-output-18.png" class="img-fluid"></a></p>
+</div>
+<div class="quarto-layout-cell" style="flex-basis: 33.3%;justify-content: center;">
+<p><a href="index_files/figure-html/cell-10-output-19.png" class="lightbox" data-gallery="quarto-lightbox-gallery-37"><img src="index_files/figure-html/cell-10-output-19.png" class="img-fluid"></a></p>
+</div>
+</div>
+<div class="quarto-layout-row">
+<div class="quarto-layout-cell" style="flex-basis: 33.3%;justify-content: center;">
+<p><a href="index_files/figure-html/cell-10-output-20.png" class="lightbox" data-gallery="quarto-lightbox-gallery-38"><img src="index_files/figure-html/cell-10-output-20.png" class="img-fluid"></a></p>
+</div>
+<div class="quarto-layout-cell" style="flex-basis: 33.3%;justify-content: center;">
+<p><a href="index_files/figure-html/cell-10-output-21.png" class="lightbox" data-gallery="quarto-lightbox-gallery-39"><img src="index_files/figure-html/cell-10-output-21.png" class="img-fluid"></a></p>
+</div>
+<div class="quarto-layout-cell" style="flex-basis: 33.3%;justify-content: center;">
+<p><a href="index_files/figure-html/cell-10-output-22.png" class="lightbox" data-gallery="quarto-lightbox-gallery-40"><img src="index_files/figure-html/cell-10-output-22.png" class="img-fluid"></a></p>
+</div>
+</div>
+</div>
+</section>
 </section>
 <section id="processing-the-whole-data" class="level2">
 <h2 class="anchored" data-anchor-id="processing-the-whole-data">Processing the whole data</h2>
@@ -1689,21 +961,21 @@ Distributing Dataframe: 100%██████████ Elapsed time: 00:00, 
 <p>1 day of data resampled by 1 sec is about 12 MB.</p>
 <p>So 1 year of data is about 4 GB, and 6 years of JUNO Cruise data is about 24 GB.</p>
 <p>Downloading rate is about 250 KB/s, so it will take about 3 days to download all the data.</p>
-<div id="cell-19" class="cell">
-<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>num_of_files <span class="op">=</span> <span class="dv">6</span><span class="op">*</span><span class="dv">365</span></span>
-<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>jno_file_size <span class="op">=</span> <span class="fl">12e3</span></span>
-<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>thm_file_size <span class="op">=</span> <span class="fl">40e3</span></span>
-<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a>files_size <span class="op">=</span> jno_file_size <span class="op">+</span> thm_file_size</span>
-<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a>downloading_rate <span class="op">=</span> <span class="dv">250</span></span>
-<span id="cb14-6"><a href="#cb14-6" aria-hidden="true" tabindex="-1"></a>processing_rate <span class="op">=</span> <span class="dv">1</span><span class="op">/</span><span class="dv">60</span></span>
-<span id="cb14-7"><a href="#cb14-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb14-8"><a href="#cb14-8" aria-hidden="true" tabindex="-1"></a>time_to_download <span class="op">=</span> num_of_files <span class="op">*</span> files_size <span class="op">/</span> downloading_rate <span class="op">/</span> <span class="dv">60</span> <span class="op">/</span> <span class="dv">60</span></span>
-<span id="cb14-9"><a href="#cb14-9" aria-hidden="true" tabindex="-1"></a>space_required <span class="op">=</span> num_of_files <span class="op">*</span> files_size <span class="op">/</span> <span class="fl">1e6</span></span>
-<span id="cb14-10"><a href="#cb14-10" aria-hidden="true" tabindex="-1"></a>time_to_process <span class="op">=</span> num_of_files <span class="op">/</span> processing_rate <span class="op">/</span> <span class="dv">60</span> <span class="op">/</span> <span class="dv">60</span></span>
-<span id="cb14-11"><a href="#cb14-11" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb14-12"><a href="#cb14-12" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Time to download: </span><span class="sc">{</span>time_to_download<span class="sc">:.2f}</span><span class="ss"> hours"</span>)</span>
-<span id="cb14-13"><a href="#cb14-13" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Disk space required: </span><span class="sc">{</span>space_required<span class="sc">:.2f}</span><span class="ss"> GB"</span>)</span>
-<span id="cb14-14"><a href="#cb14-14" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Time to process: </span><span class="sc">{</span>time_to_process<span class="sc">:.2f}</span><span class="ss"> hours"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="cell-24" class="cell">
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>num_of_files <span class="op">=</span> <span class="dv">6</span><span class="op">*</span><span class="dv">365</span></span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>jno_file_size <span class="op">=</span> <span class="fl">12e3</span></span>
+<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a>thm_file_size <span class="op">=</span> <span class="fl">40e3</span></span>
+<span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a>files_size <span class="op">=</span> jno_file_size <span class="op">+</span> thm_file_size</span>
+<span id="cb17-5"><a href="#cb17-5" aria-hidden="true" tabindex="-1"></a>downloading_rate <span class="op">=</span> <span class="dv">250</span></span>
+<span id="cb17-6"><a href="#cb17-6" aria-hidden="true" tabindex="-1"></a>processing_rate <span class="op">=</span> <span class="dv">1</span><span class="op">/</span><span class="dv">60</span></span>
+<span id="cb17-7"><a href="#cb17-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-8"><a href="#cb17-8" aria-hidden="true" tabindex="-1"></a>time_to_download <span class="op">=</span> num_of_files <span class="op">*</span> files_size <span class="op">/</span> downloading_rate <span class="op">/</span> <span class="dv">60</span> <span class="op">/</span> <span class="dv">60</span></span>
+<span id="cb17-9"><a href="#cb17-9" aria-hidden="true" tabindex="-1"></a>space_required <span class="op">=</span> num_of_files <span class="op">*</span> files_size <span class="op">/</span> <span class="fl">1e6</span></span>
+<span id="cb17-10"><a href="#cb17-10" aria-hidden="true" tabindex="-1"></a>time_to_process <span class="op">=</span> num_of_files <span class="op">/</span> processing_rate <span class="op">/</span> <span class="dv">60</span> <span class="op">/</span> <span class="dv">60</span></span>
+<span id="cb17-11"><a href="#cb17-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-12"><a href="#cb17-12" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Time to download: </span><span class="sc">{</span>time_to_download<span class="sc">:.2f}</span><span class="ss"> hours"</span>)</span>
+<span id="cb17-13"><a href="#cb17-13" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Disk space required: </span><span class="sc">{</span>space_required<span class="sc">:.2f}</span><span class="ss"> GB"</span>)</span>
+<span id="cb17-14"><a href="#cb17-14" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Time to process: </span><span class="sc">{</span>time_to_process<span class="sc">:.2f}</span><span class="ss"> hours"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 
 
@@ -2099,7 +1371,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 });
 </script>
 </div> <!-- /content -->
-<script>var lightboxQuarto = GLightbox({"selector":".lightbox","loop":false,"closeEffect":"zoom","descPosition":"bottom","openEffect":"zoom"});
+<script>var lightboxQuarto = GLightbox({"descPosition":"bottom","openEffect":"zoom","loop":false,"selector":".lightbox","closeEffect":"zoom"});
 window.onload = () => {
   lightboxQuarto.on('slide_before_load', (data) => {
     const { slideIndex, slideNode, slideConfig, player, trigger } = data;
