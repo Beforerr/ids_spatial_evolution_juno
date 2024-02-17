@@ -4,42 +4,55 @@
     "href": "presentations/AGU23_poster.html#main-findings",
     "title": "Solar wind discontinuities spatial evolution and energetic ion scattering",
     "section": "Main findings",
-    "text": "Main findings\n\nSolar wind discontinuities evolve in space with occurrence rate decreasing, thickness increasing and current density decreasing with distance from the Sun. And they are probably generated locally beyond 1 AU.\nBackground sheared magnetic field plays an important role in determining the efficiency of ion pitch angle scattering, and characterize three ion populations: transient, trapped, regular."
+    "text": "Main findings\n\nSolar wind discontinuities evolve in space with occurrence rate decreasing, thickness increasing and current density decreasing with distance from the Sun. And they are probably generated locally beyond 1 AU.\nBackground sheared magnetic field plays an important role in determining the efficiency of ion pitch angle scattering, and characterize three ion populations: transient, trapped, regular.",
+    "crumbs": [
+      "Home",
+      "Presentations",
+      "Solar wind discontinuities spatial evolution and energetic ion scattering"
+    ]
   },
   {
     "objectID": "presentations/AGU23_poster.html#introduction-motivation",
     "href": "presentations/AGU23_poster.html#introduction-motivation",
     "title": "Solar wind discontinuities spatial evolution and energetic ion scattering",
     "section": "Introduction & Motivation",
-    "text": "Introduction & Motivation\n‘Discontinuities’ are discontinuous spatial changes in plasma parameters/characteristics and magnetic fields (colburn1966?).\n\n\n(söding2001?) studied the radial distribution of discontinuities in the solar wind.\n\n\nJoint observations of JUNO & ARTEMIS & Other missions really provides a unique opportunity!!!"
+    "text": "Introduction & Motivation\n‘Discontinuities’ are discontinuous spatial changes in plasma parameters/characteristics and magnetic fields (colburn1966?).\n\n\n(söding2001?) studied the radial distribution of discontinuities in the solar wind.\n\n\nJoint observations of JUNO & ARTEMIS & Other missions really provides a unique opportunity!!!",
+    "crumbs": [
+      "Home",
+      "Presentations",
+      "Solar wind discontinuities spatial evolution and energetic ion scattering"
+    ]
   },
   {
     "objectID": "presentations/AGU23_poster.html#method",
     "href": "presentations/AGU23_poster.html#method",
     "title": "Solar wind discontinuities spatial evolution and energetic ion scattering",
     "section": "Method",
-    "text": "Method\n\nWe use (liu2022a?) method to identify IDs, which has better compatibility for the IDs with minor field changes.\nThen the minimum variance analysis is applied to each ID event to obtain the boundary normal (LMN) coordinate and extract IDs’ features.\nHamiltonian model is applied for investigation of ion dynamics in the solar wind discontinuity configuration.\n\nThe most generalized form of dimensionless hamiltonian equation for ions in force-free rotational magnetic discontinuities configuration is\n\\[\nH=\\frac{1}{2}\\left(\\frac{1}{6} \\alpha^2 c_2 z^3-c_1 z+p_x\\right)^2+\\frac{p_z^2}{2}+\\frac{1}{2}\\left(\\kappa x-\\frac{\\alpha z^2}{2}\\right)^2\n\\]\nWith \\(B_l^2+B_m^2=\\text { const }\\), we have\n\\[\nH=\\frac{1}{2}\\left(\\frac{\\alpha^2 z^3}{6 \\sqrt{\\kappa_m^2+1}}-z \\sqrt{\\kappa_m^2+1}+p_x\\right)^2+\\frac{p_z^2}{2}+\\frac{1}{2}\\left(\\kappa_n x-\\frac{\\alpha z^2}{2}\\right)^2\n\\]\nThe system has three parameters\n\\[\n\\kappa_n=\\frac{B_n}{B_{l, \\max }}\n\\quad\n\\kappa_m=\\frac{B_{m, 0}}{B_{l, \\max }}\n\\quad\n\\alpha=\\frac{l_0}{L}=\\frac{\\text { gyro radius }}{\\text { system length }}\n\\]"
+    "text": "Method\n\nWe use (liu2022a?) method to identify IDs, which has better compatibility for the IDs with minor field changes.\nThen the minimum variance analysis is applied to each ID event to obtain the boundary normal (LMN) coordinate and extract IDs’ features.\nHamiltonian model is applied for investigation of ion dynamics in the solar wind discontinuity configuration.\n\nThe most generalized form of dimensionless hamiltonian equation for ions in force-free rotational magnetic discontinuities configuration is\n\\[\nH=\\frac{1}{2}\\left(\\frac{1}{6} \\alpha^2 c_2 z^3-c_1 z+p_x\\right)^2+\\frac{p_z^2}{2}+\\frac{1}{2}\\left(\\kappa x-\\frac{\\alpha z^2}{2}\\right)^2\n\\]\nWith \\(B_l^2+B_m^2=\\text { const }\\), we have\n\\[\nH=\\frac{1}{2}\\left(\\frac{\\alpha^2 z^3}{6 \\sqrt{\\kappa_m^2+1}}-z \\sqrt{\\kappa_m^2+1}+p_x\\right)^2+\\frac{p_z^2}{2}+\\frac{1}{2}\\left(\\kappa_n x-\\frac{\\alpha z^2}{2}\\right)^2\n\\]\nThe system has three parameters\n\\[\n\\kappa_n=\\frac{B_n}{B_{l, \\max }}\n\\quad\n\\kappa_m=\\frac{B_{m, 0}}{B_{l, \\max }}\n\\quad\n\\alpha=\\frac{l_0}{L}=\\frac{\\text { gyro radius }}{\\text { system length }}\n\\]",
+    "crumbs": [
+      "Home",
+      "Presentations",
+      "Solar wind discontinuities spatial evolution and energetic ion scattering"
+    ]
   },
   {
     "objectID": "presentations/AGU23_poster.html#results",
     "href": "presentations/AGU23_poster.html#results",
     "title": "Solar wind discontinuities spatial evolution and energetic ion scattering",
     "section": "Results",
-    "text": "Results\n\nNormalized occurrence rate of IDs drops with the radial distance from the Sun, following 1/r law.\n\n\n\n\n\n\nHigh energy particle has higher chance to cross uncertainty curve\nHigh shear magnetic field will make separatrix vanishes and the geometrical jumps of the quasiadiabatic invariant disappear"
-  },
-  {
-    "objectID": "index.html",
-    "href": "index.html",
-    "title": "Solar wind discontinuities spatial evolution in the outer heliosphere",
-    "section": "",
-    "text": "manuscript please see here\nAGU poster here"
+    "text": "Results\n\nNormalized occurrence rate of IDs drops with the radial distance from the Sun, following 1/r law.\n\n\n\n\n\n\nHigh energy particle has higher chance to cross uncertainty curve\nHigh shear magnetic field will make separatrix vanishes and the geometrical jumps of the quasiadiabatic invariant disappear",
+    "crumbs": [
+      "Home",
+      "Presentations",
+      "Solar wind discontinuities spatial evolution and energetic ion scattering"
+    ]
   },
   {
     "objectID": "article.html",
     "href": "article.html",
     "title": "Solar wind discontinuities spatial evolution in the outer heliosphere",
     "section": "",
-    "text": "Rapid variations in interplanetary magnetic fields, commonly recognized as solar wind magnetic discontinuities (Colburn and Sonett 1966), embody localized transient rotations or jumps of the magnetic field. Considered important for efficient plasma heating, they carry the most intense currents found in the solar wind and obserrved throughout the heliosphere from inner heliosphere (Liu, Fu, Cao, Yu, et al. 2022) to the heliosheath (Burlaga and Ness 2011). Theoretical models (Lerche 1975; Medvedev et al. 1997) and MHD simulations (Greco et al. 2008, 2009; Yang et al. 2015) suggest that the formation and destruction of discontinuities are closely related to the nonlinear dynamics of Alfvén waves and/or Alfvénic turbuluence. These nonlinear processes can create significant isolated disturbances to the otherwise adiabatic evolution of the solar wind flow (?Reference?) and host many processes, including magnetic reconnection (?Reference?) and Fermi acceleration of particles (Wentzel 1964). Moreover, they contribute significantly to the magnetic fluctuation spectra (Borovsky 2010) and can affect space weather (Tsurutani et al. 2011). Therefore, the study of the spatial evolution of solar wind discontinuities is important for understanding the dynamics of the solar wind and test the local generation mechanism of discontinuities. However, previous study of solar wind discontinuities evolution (Söding et al. 2001) in the outer heliosphere were rarely in conjunction with measurements closer to the Sun. Moreover, the intervals in their study spread over multiple solar cycles though they are selected during solar activity minimum. Thus it is presently unclear whether their frequency and properties are the result of solar variability or due to the natural evolution of the discontinuities during their propagation and interaction with the ambient solar wind.\nThe goal of our paper is to investigate, statistically, discontinuities at different radial distance in the outer heliosphere to obtain a understanding of their formation and evolution. Our methodology involves integrating Juno measurements (Connerney et al. 2017) between \\(1\\) and \\(5\\) AU with those at \\(1\\) AU to distinguish temporal effect and spatial variations by examining the discontinuity characteristics at two radial distances simultaneously.\nFirst, the missions, instruments and data used are listed. Then, we brieﬂy describe the method used to identify the discontinuities and the model used to estimate the plasma state at Juno location due to the lack of plasma data during its cruise phase. Finally, we present the results of the spatial evolution of the discontinuities with respect to their characteristics (spatial scales and current density), and discuss the implications of our findings.\n\n\n\n\n\n\n\n\n\n\n\n\n(a)\n\n\n\n\n\n\n\n\n\n\n\n(b)\n\n\n\n\n\n\n\nFigure 1: Juno orbit, its longitudinal difference with Earth & STEREO missions and sunspot number during its cruise phase",
+    "text": "What I did: I studied the solar wind discontinuities in the outer heliosphere using data from the Juno spacecraft during its cruise phase. I identified and analyzed the properties of the discontinuities at different radial distances from the Sun. I differentiated the temporal effect (correlated with solar activity) and spatial variations (correlated with radial distance).\nWhat I found: The normalized occurrence rate of IDs drops with the radial distance from the Sun, following a \\(1/r\\) law. The thickness of IDs increases with the radial distance from the Sun, but after normalization to the ion inertial length, the thickness of IDs decreases. The current intensity of IDs decreases with the radial distance from the Sun, but after normalization to the Alfven current, the current intensity of IDs increases.\nWhat it means: The results of this study provide a better understanding of the solar wind discontinuities in the outer heliosphere and their spatial evolution. This information is important for understanding the dynamics of the solar wind and testing the local generation mechanism of discontinuities.",
     "crumbs": [
       "Home",
       "Solar wind discontinuities spatial evolution in the outer heliosphere"
@@ -50,7 +63,18 @@
     "href": "article.html#dataset",
     "title": "Solar wind discontinuities spatial evolution in the outer heliosphere",
     "section": "Dataset",
-    "text": "Dataset\nIn this study we use datasets of four missions measuring solar wind magnetic field and plasma. Synergistic observations of these missions should advance our understanding of the solar wind discontinuities, their radial distribution and evolution (Velli et al. 2020).\n\n\n\n\n\n\nFigure 2: Near-Earth’s and STEREO-A solar wind plasma data during JUNO cruise phase\n\n\n\nThe solar wind plasma state, as evidenced by the sunspot number (referenced in Figure 2 (b) and Figure 2), plays a crucial role in understanding the dynamics of discontinuities. During the initial phase of the JUNO mission, the sunspot number reached its peak, indicating a period of heightened solar activity. However, by the end of the mission’s cruise phase, there was a significant decline in solar activity. This variation underscores the importance of calibrating the discontinuity properties in relation to solar activity levels to account for temporal fluctuations.\nFurthermore, an analysis of Figure 2 (b) reveals the significance of the heliographic longitudinal difference between the Juno mission and Near-Earth missions (such as Wind and ARTEMIS) as well as STEREO-A missions. This longitudinal discrepancy ensures comprehensive coverage of the plasma en route to Juno. Specifically, when there is a substantial longitudinal difference between Juno and Earth, the difference between Juno and STEREO-A tends to be minimal, and vice versa. This relationship facilitates an extensive observation network for the plasma traveling towards Juno.\nJune measurements do not include plasma characteristics, and to estimate discontinuity spatial scale (thicknesses) we will use solar wind speed obtained from the model of solar wind propagation. The hourly solar wind model data from the Two-Dimensional Outer Heliosphere Solar Wind Modeling (MSWIM2D) (keebler2022?) will be employed to determine the ion bulk velocity \\(v\\) and plasma density \\(n\\) at the location of the Juno mission. Utilizing the BATSRUS MHD solver, this model is capable of simulating the propagation of the solar wind from 1 to 75 astronomical units (AU) in the ecliptic plane, effectively encompassing the region of interest for our study. Figure 3 shows comparison of magnetic field magnitudes obtained from MSWIM2D and measured by Juno.\n\n\n\n\n\n\nFigure 3: Model validation",
+    "text": "Dataset\nIn this study we use datasets of four missions measuring solar wind magnetic field and plasma. Synergistic observations of these missions should advance our understanding of the solar wind discontinuities, their radial distribution and evolution (Velli et al. 2020).\n\nThe solar wind plasma state, as evidenced by the sunspot number (referenced in Figure 1), plays a crucial role in understanding the dynamics of discontinuities. During the initial phase of the JUNO mission, the sunspot number reached its peak, indicating a period of heightened solar activity. However, by the end of the mission’s cruise phase, there was a significant decline in solar activity. This variation underscores the importance of calibrating the discontinuity properties in relation to solar activity levels to account for temporal fluctuations.\nFurthermore, an analysis of Figure 1 reveals the significance of the heliographic longitudinal difference between the Juno mission and Near-Earth missions (such as Wind and ARTEMIS) as well as STEREO-A missions. This longitudinal discrepancy ensures comprehensive coverage of the plasma en route to Juno. Specifically, when there is a substantial longitudinal difference between Juno and Earth, the difference between Juno and STEREO-A tends to be minimal, and vice versa. This relationship facilitates an extensive observation network for the plasma traveling towards Juno.\nThe time resolution of the magnetic field and plasma data for Juno, Wind, ARTEMIS, STEREO is summarized in the table below.\n\n\n\n\n\nTable 1: Missions info\n\n\n\n\n\n\nMission\n\\(\\delta t_B\\)\n\\(\\delta t_{plasma}\\)\nRadial coverage\nLaunch date\nwebsite\n\n\n\n\nJuno\n1 Hz\n\n1 - 5.5 AU\n2011-08-05 00:00:00\n[‘NASA’]\n\n\nARTEMIS\n5 Hz, …\n\n\n2007-02-17 00:00:00\n\n\n\nSTEREO-A\n8 Hz\n\n\n2006-10-26 00:00:00\n\n\n\nWIND\n11 Hz\n\n\n1994-11-01 00:00:00\n[‘NASA’]\n\n\nSolar Orbiter\n\n\n0.28 - 0.9 AU\n2020-02-10 00:00:00\n[‘ESA’]\n\n\nParker Solar Probe\n\n\n0.05 - 1 AU\n2018-08-12 00:00:00\n[‘NASA’]\n\n\n\n\n\n\n\n\nSource: Notes",
+    "crumbs": [
+      "Home",
+      "Solar wind discontinuities spatial evolution in the outer heliosphere"
+    ]
+  },
+  {
+    "objectID": "article.html#model",
+    "href": "article.html#model",
+    "title": "Solar wind discontinuities spatial evolution in the outer heliosphere",
+    "section": "Model",
+    "text": "Model\nJune measurements do not include plasma characteristics, and to estimate discontinuity spatial scale (thicknesses) we will use solar wind speed obtained from the model of solar wind propagation. The hourly solar wind model data from the Two-Dimensional Outer Heliosphere Solar Wind Modeling (MSWIM2D) (Keebler et al. 2022) will be employed to determine the ion bulk velocity \\(v\\) and plasma density \\(n\\) at the location of the Juno mission. Utilizing the BATSRUS MHD solver, this model is capable of simulating the propagation of the solar wind from 1 to 75 astronomical units (AU) in the ecliptic plane, effectively encompassing the region of interest for our study. Figure 2 shows comparison of magnetic field magnitudes obtained from MSWIM2D and measured by Juno.\nThe model time resolution is hourly. After averaging Juno data to the same time resolution, we see that the model data is consistent with the Juno magnetic field data.\n\n\n\n\n\n\nFigure 2: a, Magnetic field magnitude from MSWIM2D and Juno. b-c, Plasma speed and density from MSWIM2D model. d, Juno radial distance from the Sun.",
     "crumbs": [
       "Home",
       "Solar wind discontinuities spatial evolution in the outer heliosphere"
@@ -61,22 +85,84 @@
     "href": "article.html#methods",
     "title": "Solar wind discontinuities spatial evolution in the outer heliosphere",
     "section": "Methods",
-    "text": "Methods\nWe will use Liu’s (Liu, Fu, Cao, Wang, et al. 2022) method to identify discontinuities in the solar wind. This method has better compatibility for the discontinuities with minor field changes, and is more robust to the situation encountered in the outer heliosphere. For each sampling instant \\(t\\), we define three intervals: the pre-interval \\([-1,-1/2]\\cdot T+t\\), the middle interval \\([-1/,1/2]\\cdot T+t\\), and the post-interval \\([1/2,1]\\cdot T+t\\), in which \\(T\\) are time lags. Let time series of the magnetic field data in these three intervals are labeled \\({\\mathbf B}_-\\), \\({\\mathbf B}_0\\), \\({\\mathbf B}_+\\), respectively. Then for an discontinuity, the following three conditions should be satisfied: (1) \\(\\sigma({\\mathbf B}_0)&gt;2\\max\\left(\\sigma({\\mathbf B}_-, \\sigma({\\mathbf B}_+)\\right)\\), (2) \\(\\sigma\\left({\\mathbf B}_-+{\\mathbf B}_+\\right)&gt;\\sigma({\\mathbf B}_-)+\\sigma({\\mathbf B}_+)\\), and (3) \\(|\\Delta {\\mathbf B}|&gt;|{\\mathbf B}_{bg}|/10\\), in which \\(\\sigma\\) and \\({\\mathbf B}_{bg}\\) represent the standard deviation and the background magnetic field magnitude, and \\(\\Delta {\\mathbf B}={\\mathbf B}(t+T/2)-{\\mathbf B}(t-T/2)\\). The first two conditions guarantee that the field changes of the discontinuity identified are large enough to be distinguished from the stochastic fluctuations on magnetic fields, while the third is a supplementary condition to reduce the uncertainty of recognition. We also will use the minimum or maximum variance analysis (MVA) analysis (Bengt U. Ö. Sonnerup and Scheible 1998; B. U. Ö. Sonnerup and Cahill Jr. 1967) to determine the main (most varying) magnetic field component, \\(B_l\\), and medium variation component, \\(B_m\\). Figure 4 shows several examples of solar wind discontinuities detected by different spacecraft.\n\n\n\n\n\n\n\nFigure 4: Examples of IDs from ARTEMIS, STEREO, and Wind\n\n\n\n\n\n\n\n\n\nNote\n\n\n\n\n\n\n\n\n\n\n\n\n\nCurrent sheets in the heliosheath: Voyager 1, 2009\n\n\n\n\n\n\n\nA rotational discontinuity (RD) detected at 0.126 AU\n\n\n\n\n\n\nFigure 5: Discontinuities examples across the heliosphere",
+    "text": "Methods\nWe use Liu’s (Liu, Fu, Cao, Wang, et al. 2022) method to identify discontinuities in the solar wind. This method has better compatibility for the discontinuities with minor field changes, and is more robust to the situation encountered in the outer heliosphere. For each sampling instant \\(t\\), we define three intervals: the pre-interval \\([-1,-1/2]\\cdot T+t\\), the middle interval \\([-1/,1/2]\\cdot T+t\\), and the post-interval \\([1/2,1]\\cdot T+t\\), in which \\(T\\) are time lags. Let time series of the magnetic field data in these three intervals are labeled \\({\\mathbf B}_-\\), \\({\\mathbf B}_0\\), \\({\\mathbf B}_+\\), respectively. Then for an discontinuity, the following three conditions should be satisfied: (1) \\(\\sigma({\\mathbf B}_0) &gt; 2\\max\\left(\\sigma({\\mathbf B}_-), \\sigma({\\mathbf B}_+)\\right)\\), (2) \\(\\sigma\\left({\\mathbf B}_-+{\\mathbf B}_+\\right)&gt;\\sigma({\\mathbf B}_-)+\\sigma({\\mathbf B}_+)\\), and (3) \\(|\\Delta {\\mathbf B}|&gt;|{\\mathbf B}_{bg}|/10\\), in which \\(\\sigma\\) and \\({\\mathbf B}_{bg}\\) represent the standard deviation and the background magnetic field magnitude, and \\(\\Delta {\\mathbf B}={\\mathbf B}(t+T/2)-{\\mathbf B}(t-T/2)\\). The first two conditions guarantee that the field changes of the discontinuity identified are large enough to be distinguished from the stochastic fluctuations or Alfven waves on magnetic fields, while the third is a supplementary condition to reduce the uncertainty of recognition.\nThen for each discontinuity identified, we calculate the distance matrix of the time series sequence (distance between each pair of magnetic field vectors) to determine the leading edge and trailing edge of the discontinuity. After that, we use the minimum or maximum variance analysis (MVA) analysis (Bengt U. Ö. Sonnerup and Scheible 1998; B. U. Ö. Sonnerup and Cahill Jr. 1967) to get the main (most varying) magnetic field component, \\(B_l\\), and medium variation component, \\(B_m\\). The maxium variance direction is then fitted by a step-like functions to extract the parameters to properly describe the discontinuity (we used logistic function here). Then we combine the magnetic field data and plasma data to obtain the thickness and the current density of the discontinuity.\n\\[\nB(t; A, \\mu, \\sigma, {\\mathrm{form=logistic}}) = A \\left[1 - \\frac{1}{1 + e^{\\alpha}} \\right]\n\\]\nwhere \\(\\alpha = (t - \\mu)/{\\sigma}\\).\nFigure 3 shows several examples of solar wind discontinuities detected by different spacecraft.\n\n\n\n\n\n\n\nFigure 3: Examples of IDs from ARTEMIS, STEREO, and Wind",
     "crumbs": [
       "Home",
       "Solar wind discontinuities spatial evolution in the outer heliosphere"
     ]
   },
   {
-    "objectID": "article.html#id-identification-limited-feature-extraction-anomaly-detection",
-    "href": "article.html#id-identification-limited-feature-extraction-anomaly-detection",
+    "objectID": "article.html#occurrence-rate",
+    "href": "article.html#occurrence-rate",
     "title": "Solar wind discontinuities spatial evolution in the outer heliosphere",
-    "section": "ID identification (limited feature extraction / anomaly detection)",
-    "text": "ID identification (limited feature extraction / anomaly detection)\nTraditional methods for ID identiﬁcation, such as the criteria of\n\nBurlaga & Ness (1969; B-criterion) : a directional change of the magnetic ﬁeld larger than 30° during 60 s\nTsurutani & Smith (1979; TS-criterion) : \\(|ΔB|/|B| \\geq 0.5\\) within 3 minutes\n\nMostly rely on magnetic ﬁeld variations with a certain time lag. B-criterion has, as its main condition.\nIn their methods, the IDs below the thresholds are artiﬁcially abandoned. Therefore, identiﬁcation criteria may affect the statistical results, and there is likely to be a discrepancy between the ﬁndings via B-criterion and TS- criterion.\nLiu’s method : The first two conditions guarantee that the field changes of the IDs identiﬁed are large enough to be distinguished from the stochastic fluctuations on magnetic fields, while the third is a supplementary condition to reduce the uncertainty of recognition.\n\\[\n\\textrm{Index}_1 = \\frac{\\sigma(\\vec{B})}{Max(\\sigma(\\vec{B}_-),\\sigma(\\vec{B}_+))}\n\\]\n\\[\n\\textrm{Index}_2 = \\frac{\\sigma(\\vec{B}_- + \\vec{B}_+)} {\\sigma(\\vec{B}_-) + \\sigma(\\vec{B}_+)}\n\\]\n\\[\n\\textrm{Index}_3 = \\frac{| \\Delta \\vec{B} |}{|B_{bg}|}\n\\]\n\\[\n\\textrm{Index}_1 \\ge 2, \\textrm{Index}_2 \\ge 1, \\textrm{Index}_3 \\ge 0.1\n\\]",
+    "section": "Occurrence rate",
+    "text": "Occurrence rate\nThe occurrence rate of IDs is investigated with regards of the radial distance from the Sun.\nNote the quantity of IDs per day is corrected with respect to data gap and the time the mission spent in the pristine solar wind.\nARTEMIS spacecrafts will only be exposed in the solar wind for a relative short time during its orbits around the Moon and the Moon would be in the magnetosphere for a long time as it orbits the earth. (The data is obtained from OMNIWEB, link: omniweb.gsfc.nasa.gov/ftpbrowser/themis_b_sw.txt)\nThe rate of occurrence depends linearly on the solar wind velocity (Söding et al. 2001), however the plasma velocity data in Juno mission is not available during its cruise phase. Therefore, we do not normalize the occurrence rate with respect to the solar wind speed. This influence of the solar wind speed on the occurrence rate might be mitigated by the fact all the spacecrafts are in the ecliptic plane, and the solar wind speed is not expected to change significantly with the radial distance from the Sun beyond \\(1\\) AU. So the decrease of the occurrence rate with the radial distance from the Sun is expected to be a real effect of the radial distance from the Sun.\n\n\n\n\n\n\n\n\n\n\n\n\n\nFigure 4: The number of discontinuities measured by Juno per day coincides with the discontinuity number measured by STEREO, WIND, and ARTEMIS, when Juno is around \\(1\\) AU. This number (occurrence rate) decreases with distance (with time after \\(\\sim 2013\\)), as Juno moves from \\(1\\) AU to \\(5\\) AU. We will use the similar comparison for discontinuity characteristics and occurrence rate derived for PSP and Juno. The radial distance of Juno for 2011-2016 is shown in Figure 2.",
     "crumbs": [
       "Home",
       "Solar wind discontinuities spatial evolution in the outer heliosphere"
     ]
+  },
+  {
+    "objectID": "article.html#thickness",
+    "href": "article.html#thickness",
+    "title": "Solar wind discontinuities spatial evolution in the outer heliosphere",
+    "section": "Thickness",
+    "text": "Thickness\nThe thickness \\(d\\) of a discontinuity is determined by\n\\[\nd = (v \\cdot n) \\Delta T\n\\]\nwith \\(v = v_{sw} - v_{s/c} + U\\) , where \\(\\Delta T\\) is the transition time (a factor of the \\(sigma\\) used in fitting) , \\(v_{sw}\\) is the solar wind velocity. The velocity of the spacecraft \\(v_{s/c}\\) and the propagation speed of the discontinuities \\(U\\) are negligible in our case.\nThe transition time \\(\\Delta T\\) is determined in one second resolution data for all our missions to reduce the system error. (Note that highest time resolution of the data is not needed for the transition time determination by fitting method, see discussion in the appendix).\n\n\n\n\n\n\n\n\n\n\n\n\n\nFigure 5: a, Thickness of IDs as a function of the radial distance from the Sun. b, Thickness of IDs normalized to the ion inertial length as a function of the radial distance from the Sun.",
+    "crumbs": [
+      "Home",
+      "Solar wind discontinuities spatial evolution in the outer heliosphere"
+    ]
+  },
+  {
+    "objectID": "article.html#current-density",
+    "href": "article.html#current-density",
+    "title": "Solar wind discontinuities spatial evolution in the outer heliosphere",
+    "section": "Current density",
+    "text": "Current density\nThe peak current density \\(J_m\\) of a discontinuity is determined by\n\\[\nJ_m = - \\frac{1}{\\mu_0 V_n} \\frac{d B_m}{d t},\n\\]\nwhere \\(\\mu_0\\) is the vacuum permeability and \\(V_n\\) is the normal component of the proton flow velocity.\n\n\n\n\n\n\n\n\n\n\n\n\n\nFigure 6: a, Current density of IDs as a function of the radial distance from the Sun. b, Current density of IDs normalized to the Alfven current as a function of the radial distance from the Sun.",
+    "crumbs": [
+      "Home",
+      "Solar wind discontinuities spatial evolution in the outer heliosphere"
+    ]
+  },
+  {
+    "objectID": "article.html#occurrence-rate-1",
+    "href": "article.html#occurrence-rate-1",
+    "title": "Solar wind discontinuities spatial evolution in the outer heliosphere",
+    "section": "Occurrence rate",
+    "text": "Occurrence rate\nThe normalized occurrence rate of IDs drops with the radial distance from the Sun, following \\(1/r\\) law.",
+    "crumbs": [
+      "Home",
+      "Solar wind discontinuities spatial evolution in the outer heliosphere"
+    ]
+  },
+  {
+    "objectID": "article.html#thickness-1",
+    "href": "article.html#thickness-1",
+    "title": "Solar wind discontinuities spatial evolution in the outer heliosphere",
+    "section": "Thickness",
+    "text": "Thickness\nThe thickness of IDs increases with the radial distance from the Sun, but after normalization to ion inertial length, the thickness of IDs decreases.",
+    "crumbs": [
+      "Home",
+      "Solar wind discontinuities spatial evolution in the outer heliosphere"
+    ]
+  },
+  {
+    "objectID": "article.html#current-density-1",
+    "href": "article.html#current-density-1",
+    "title": "Solar wind discontinuities spatial evolution in the outer heliosphere",
+    "section": "Current density",
+    "text": "Current density\nThe current density of IDs decrease with the radial distance from the Sun, but after normalization to the Alfven current , the current density of IDs increases.",
+    "crumbs": [
+      "Home",
+      "Solar wind discontinuities spatial evolution in the outer heliosphere"
+    ]
+  },
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "Solar wind discontinuities spatial evolution in the outer heliosphere",
+    "section": "",
+    "text": "manuscript please see here\nAGU poster here"
   },
   {
     "objectID": "index.html#publications",
@@ -86,17 +172,17 @@
     "text": "manuscript please see here\nAGU poster here"
   },
   {
-    "objectID": "index.html#related-works",
-    "href": "index.html#related-works",
-    "title": "Solar wind discontinuities spatial evolution in the outer heliosphere",
-    "section": "Related works",
-    "text": "Related works\n\nSöding et al. (2001) studied the radial distribution of discontinuities in the solar wind between 0.3 and 19 AU during solar activity minimum.\nLiu et al. (2021) studied the spatial evolution of the discontinuities from 0.13-0.9 AU, using measurements from the Parker Solar Probe.\n\nTypical rate of occurrence is about 50 per day at 1AU\n\n\n\n\n\n\n\n\nDiscontinuities between 0.3 and 19 AU\n\n\n\n\n\n\n\nDiscontinuities between 0.13–0.9 AU\n\n\n\n\n\n\nFigure 1: Spatial distribution of the discontinuities\n\n\n\n\n\n\nWind\nJuno\nDerivative method\nFit method\nDiscontinuities between 0.3 and 19 AU\nDiscontinuities between 0.13–0.9 AU"
-  },
-  {
     "objectID": "index.html#updates",
     "href": "index.html#updates",
     "title": "Solar wind discontinuities spatial evolution in the outer heliosphere",
     "section": "Updates",
-    "text": "Updates\n\n\n\n\n\n\n\n\n\n\n\n\nNew Fit Width\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nNew\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nOld\n\n\n\n\n\n\n\n\n\n\n\n\nWind\n\n\n\n\n\n\n\nJuno\n\n\n\n\n\n\n\nDerivative method\n\n\n\n\n\n\n\nFit method"
+    "text": "Updates\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nNew Fit Width\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nNew\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nOld\n\n\n\n\n\n\n\n\n\n\n\n\nWind\n\n\n\n\n\n\n\nJuno\n\n\n\n\n\n\n\nDerivative method\n\n\n\n\n\n\n\nFit method"
+  },
+  {
+    "objectID": "index.html#related-works",
+    "href": "index.html#related-works",
+    "title": "Solar wind discontinuities spatial evolution in the outer heliosphere",
+    "section": "Related works",
+    "text": "Related works\n\nSöding et al. (2001) studied the radial distribution of discontinuities in the solar wind between 0.3 and 19 AU during solar activity minimum.\nLiu et al. (2021) studied the spatial evolution of the discontinuities from 0.13-0.9 AU, using measurements from the Parker Solar Probe.\n\nTypical rate of occurrence is about 50 per day at 1AU\n\n\n\n\n\n\n\n\nDiscontinuities between 0.3 and 19 AU\n\n\n\n\n\n\n\nDiscontinuities between 0.13–0.9 AU\n\n\n\n\n\n\nFigure 1: Spatial distribution of the discontinuities\n\n\n\n\n\n\n\n\n\nNote\n\n\n\n\n\n\n\n\n\n\n\n\n\nCurrent sheets in the heliosheath: Voyager 1, 2009\n\n\n\n\n\n\n\nA rotational discontinuity (RD) detected at 0.126 AU\n\n\n\n\n\n\nFigure 2: Discontinuities examples across the heliosphere\n\n\n\n\n\n\n\n\n\nWind\nJuno\nDerivative method\nFit method\nDiscontinuities between 0.3 and 19 AU\nDiscontinuities between 0.13–0.9 AU\nCurrent sheets in the heliosheath: Voyager 1, 2009\nA rotational discontinuity (RD) detected at 0.126 AU"
   }
 ]
