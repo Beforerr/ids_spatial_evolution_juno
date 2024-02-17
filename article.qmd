@@ -142,6 +142,9 @@ $$
 
 with $v = v_{sw} - v_{s/c} + U$ , where $\Delta T$ is the transition time (a factor of the $sigma$ used in fitting) , $v_{sw}$ is the solar wind velocity. The velocity of the spacecraft $v_{s/c}$ and the propagation speed of the discontinuities $U$ are negligible in our case.
 
+In @vaskoKineticscaleCurrentSheets2022 paper, CS thickness is estimated by the formula $d = \frac{\Delta B_l}{2 \mu_0 < J_m> }$. Because of @eq-j, $d = \frac{\Delta B_l}{2 \mu_0 < J_m> } = \frac{\Delta B_l V_n }{2 <\frac{d B_m}{ d t} >}$
+
+
 The transition time $\Delta T$ is determined in one second resolution data for all our missions to reduce the system error. (Note that highest time resolution of the data is not needed for the transition time determination by fitting method, see discussion in the appendix).
 
 ::: {#fig-thickness layout-nrow="1"}
@@ -158,7 +161,7 @@ The peak current density $J_m$ of a discontinuity is determined by
 
 $$
 J_m = - \frac{1}{\mu_0 V_n} \frac{d B_m}{d t},
-$$
+$$ {#eq-j}
 
 where $\mu_0$ is the vacuum permeability and $V_n$ is the normal component of the proton flow velocity.
 

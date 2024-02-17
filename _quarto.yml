@@ -2,8 +2,9 @@ project:
   type: website
   preview:
     port: 4002
-  render:
-    - "*.qmd"
+  # render:
+    # - "*.qmd"
+    # - "*.qmd"
     # - "!article.qmd"
 
 website:
