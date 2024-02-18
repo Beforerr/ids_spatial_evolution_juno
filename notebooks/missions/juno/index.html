@@ -57,7 +57,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </style>
 
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg==" crossorigin="anonymous"></script><script src="../../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../../site_libs/quarto-nav/quarto-nav.js"></script>
 <script src="../../../site_libs/quarto-nav/headroom.min.js"></script>
 <script src="../../../site_libs/clipboard/clipboard.min.js"></script>
 <script src="../../../site_libs/quarto-search/autocomplete.umd.js"></script>
@@ -103,10 +103,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     "search-label": "Search"
   }
 }</script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.6/require.min.js" integrity="sha512-c3Nl8+7g4LMSTdrm621y7kf9v3SDPnhxLNhcjFJbKECVnmZHTdo+IRO05sNLTH/D3vA6u1X32ehoLC7WFVdheg==" crossorigin="anonymous"></script>
-
-<script type="application/javascript">define('jquery', [],function() {return window.jQuery;})</script>
-<script src="https://unpkg.com/@jupyter-widgets/html-manager@*/dist/embed-amd.js" crossorigin="anonymous"></script>
 
 
 </head>
@@ -357,12 +353,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <ul id="quarto-sidebar-section-7" class="collapse list-unstyled sidebar-section depth3 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../../notebooks/missions/juno/mag.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">JUNO Magnetic field data pipeline</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
   <a href="../../../notebooks/missions/juno/state.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">JUNO State data pipeline</span></a>
   </div>
@@ -400,13 +390,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#background" id="toc-background" class="nav-link active" data-scroll-target="#background">Background</a>
+  <li><a href="#setup" id="toc-setup" class="nav-link active" data-scroll-target="#setup">Setup</a></li>
+  <li><a href="#check-the-discontinuity-in-juno-cruise-phase" id="toc-check-the-discontinuity-in-juno-cruise-phase" class="nav-link" data-scroll-target="#check-the-discontinuity-in-juno-cruise-phase">Check the discontinuity in Juno cruise phase</a>
   <ul class="collapse">
-  <li><a href="#coordinate-system-of-data" id="toc-coordinate-system-of-data" class="nav-link" data-scroll-target="#coordinate-system-of-data">Coordinate System of Data</a></li>
-  </ul></li>
-  <li><a href="#setup" id="toc-setup" class="nav-link" data-scroll-target="#setup">Setup</a></li>
-  <li><a href="#check-the-discontinuity-in-the-last-year-of-juno-cruise-phase" id="toc-check-the-discontinuity-in-the-last-year-of-juno-cruise-phase" class="nav-link" data-scroll-target="#check-the-discontinuity-in-the-last-year-of-juno-cruise-phase">Check the discontinuity in the last year of Juno cruise phase</a>
-  <ul class="collapse">
+  <li><a href="#full-time-resolution-data" id="toc-full-time-resolution-data" class="nav-link" data-scroll-target="#full-time-resolution-data">Full time resolution data</a></li>
   <li><a href="#first-year" id="toc-first-year" class="nav-link" data-scroll-target="#first-year">First year</a></li>
   <li><a href="#last-year" id="toc-last-year" class="nav-link" data-scroll-target="#last-year">Last year</a></li>
   </ul></li>
@@ -442,512 +429,290 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <p>See following notebooks for details:</p>
 <ul>
-<li><a href="../../../notebooks/missions/juno/mag.html">Magnetic field data</a></li>
 <li><a href="../../../notebooks/missions/juno/state.html">State data</a></li>
 </ul>
-<section id="background" class="level2">
-<h2 class="anchored" data-anchor-id="background">Background</h2>
-<p>Spacecraft-Solar equatorial</p>
-<p>https://pds-ppi.igpp.ucla.edu/data/JNO-SS-3-FGM-CAL-V1.0/INDEX/INDEX.TAB</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode txt code-with-copy"><code class="sourceCode default"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>------------------------------------------------------------------------------</span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>Juno Mission Phases                                                           </span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>------------------------------------------------------------------------------</span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>Start       Mission                                                           </span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>Date        Phase                                                             </span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>==============================================================================</span>
-<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>2011-08-05  Launch                                                            </span>
-<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>2011-08-08  Inner Cruise 1                                                    </span>
-<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>2011-10-10  Inner Cruise 2                                                    </span>
-<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>2013-05-28  Inner Cruise 3                                                    </span>
-<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>2013-11-05  Quiet Cruise                                                      </span>
-<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>2016-01-05  Jupiter Approach                                                  </span>
-<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>2016-06-30  Jupiter Orbital Insertion                                         </span>
-<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a>2016-07-05  Capture Orbit                                                     </span>
-<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a>2016-10-19  Period Reduction Maneuver                                         </span>
-<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a>2016-10-20  Orbits 1-2                                                        </span>
-<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a>2016-11-09  Science Orbits                                                    </span>
-<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a>2017-10-11  Deorbit</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<section id="coordinate-system-of-data" class="level3">
-<h3 class="anchored" data-anchor-id="coordinate-system-of-data">Coordinate System of Data</h3>
-<ol type="1">
-<li><strong>SE (Solar Equatorial)</strong>
-<ul>
-<li>Code: <code>se</code></li>
-<li>Resampling options:
-<ul>
-<li>Number of seconds (1 or 60): <code>se_rN[N]s</code></li>
-<li>Resampled 1 hour: <code>se_r1h</code></li>
-</ul></li>
-</ul></li>
-<li><strong>PC (Planetocentric)</strong>
-<ul>
-<li>Code: <code>pc</code></li>
-<li>Resampling options:
-<ul>
-<li>Number of seconds (1 or 60): <code>pc_rN[N]s</code></li>
-</ul></li>
-</ul></li>
-<li><strong>SS (Sun-State)</strong>
-<ul>
-<li>Code: <code>ss</code></li>
-<li>Resampling options:
-<ul>
-<li>Number of seconds (1 or 60): <code>ss_rN[N]s</code></li>
-</ul></li>
-</ul></li>
-<li><strong>PL (Payload)</strong>
-<ul>
-<li>Code: <code>pl</code></li>
-<li>Resampling options:
-<ul>
-<li>Number of seconds (1 or 60): <code>pl_rN[N]s</code></li>
-</ul></li>
-</ul></li>
-</ol>
-<p>There are three principal coordinate systems used to represent the data in this archive.</p>
-<ul>
-<li>The SE coordinate system is a Spacecraft- Solar equatorial system and it will be used for cruise data only.</li>
-<li>The sun-state (ss) and planetocentric (pc) will be used for Earth Fly By (EFB) and Jupiter orbital data.</li>
-<li>Cartesian representations are used for all three coordinate systems. These coordinate systems are specified relative to a “target body” which may be any solar system object (but for this orbital operations will Jupiter). In what follows we will reference Jupiter as the target body, but, for example, if observations near a satellite (such as Io) are desired in Io-centric coordinates, the satellite Io may be specified as the target body.</li>
-</ul>
-<p>The SE coordinate system is defined using the sun-spacecraft vector as the primary reference vector; sun’s rotation axis as the secondary reference vector (z). The x axis lies along the sun-spacecraft vector, the z axis is in the plane defined by the Sun’s rotation axis and the spacecraft-sun vector. The y axis completes the system.</p>
-<p>The ss coordinate system is defined using the instantaneous Jupiter-Sun vector as the primary reference vector (x direction). The X-axis lies along this vector and is taken to be positive toward the Sun. The Jupiter orbital velocity vector is the second vector used to define the coordinate system; the y axis lies in the plane determined by the Jupiter-Sun vector and the velocity vector and is orthogonal to the x axis (very nearly the negative of the velocity vector). The vector cross product of x and y yields a vector z parallel to the northward (upward) normal of the orbit plane of Jupiter. This system is sometimes called a sun-state (ss) coordinate system since its principal vectors are the Sun vector and the Jupiter state vector.</p>
-</section>
-</section>
 <section id="setup" class="level2">
 <h2 class="anchored" data-anchor-id="setup">Setup</h2>
-<p>::: {#cell-8 .cell 0=‘h’ 1=‘i’ 2=‘d’ 3=‘e’}</p>
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="op">%</span>load_ext autoreload</span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="op">%</span>autoreload <span class="dv">2</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>::: {#cell-2 .cell 0=‘h’ 1=‘i’ 2=‘d’ 3=‘e’}</p>
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="op">%</span>load_ext autoreload</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="op">%</span>autoreload <span class="dv">2</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>:::</p>
-<div id="cell-9" class="cell">
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> discontinuitypy.datasets <span class="im">import</span> IDsDataset</span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> polars <span class="im">as</span> pl</span>
-<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> fastcore.utils <span class="im">import</span> walk</span>
-<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> loguru <span class="im">import</span> logger</span>
+<div id="cell-3" class="cell">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> discontinuitypy.datasets <span class="im">import</span> IDsDataset</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> polars <span class="im">as</span> pl</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> fastcore.utils <span class="im">import</span> walk</span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> loguru <span class="im">import</span> logger</span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> tqdm.auto <span class="im">import</span> tqdm</span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> datetime <span class="im">import</span> timedelta</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div id="cell-4" class="cell">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>mission <span class="op">=</span> <span class="st">"JNO"</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>ts <span class="op">=</span> timedelta(seconds<span class="op">=</span><span class="dv">1</span>)</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>tau <span class="op">=</span> timedelta(seconds<span class="op">=</span><span class="dv">60</span>)</span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> datetime <span class="im">import</span> timedelta</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>data_dir <span class="op">=</span> <span class="st">'../../../data'</span></span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>dir_path <span class="op">=</span> <span class="ss">f'</span><span class="sc">{</span>data_dir<span class="sc">}</span><span class="ss">/03_primary/JNO_MAG_ts_</span><span class="sc">{</span>ts<span class="sc">.</span>seconds<span class="sc">}</span><span class="ss">s'</span></span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>juno_state_path <span class="op">=</span> <span class="ss">f'</span><span class="sc">{</span>data_dir<span class="sc">}</span><span class="ss">/03_primary/JNO_STATE_ts_3600s.parquet'</span></span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a>vec_cols <span class="op">=</span> [<span class="st">'v_x'</span>, <span class="st">'v_y'</span>, <span class="st">'v_z'</span>]</span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a><span class="bu">format</span> <span class="op">=</span> <span class="st">'arrow'</span></span>
+<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a>fname <span class="op">=</span> <span class="ss">f'events.</span><span class="sc">{</span>mission<span class="sc">}</span><span class="ss">.ts_</span><span class="sc">{</span>ts<span class="sc">.</span>total_seconds()<span class="sc">:.2f}</span><span class="ss">s_tau_</span><span class="sc">{</span>tau<span class="sc">.</span>seconds<span class="sc">}</span><span class="ss">s.</span><span class="sc">{</span><span class="bu">format</span><span class="sc">}</span><span class="ss">'</span></span>
+<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a>output_path <span class="op">=</span> <span class="ss">f'</span><span class="sc">{</span>data_dir<span class="sc">}</span><span class="ss">/05_reporting/</span><span class="sc">{</span>fname<span class="sc">}</span><span class="ss">'</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="cell-10" class="cell" data-execution_count="18">
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>mission <span class="op">=</span> <span class="st">"JNO"</span></span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>ts <span class="op">=</span> timedelta(seconds<span class="op">=</span><span class="dv">1</span>)</span>
-<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>tau <span class="op">=</span> timedelta(seconds<span class="op">=</span><span class="dv">60</span>)</span>
-<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>data_dir <span class="op">=</span> <span class="st">'../../../data'</span></span>
-<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>dir_path <span class="op">=</span> <span class="ss">f'</span><span class="sc">{</span>data_dir<span class="sc">}</span><span class="ss">/03_primary/JNO_MAG_ts_</span><span class="sc">{</span>ts<span class="sc">.</span>seconds<span class="sc">}</span><span class="ss">s'</span></span>
-<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a>juno_state_path <span class="op">=</span> <span class="ss">f'</span><span class="sc">{</span>data_dir<span class="sc">}</span><span class="ss">/03_primary/JNO_STATE_ts_3600s.parquet'</span></span>
-<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a>vec_cols <span class="op">=</span> [<span class="st">'v_x'</span>, <span class="st">'v_y'</span>, <span class="st">'v_z'</span>]</span>
-<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a><span class="bu">format</span> <span class="op">=</span> <span class="st">'arrow'</span></span>
-<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a>fname <span class="op">=</span> <span class="ss">f'events.</span><span class="sc">{</span>mission<span class="sc">}</span><span class="ss">.ts_</span><span class="sc">{</span>ts<span class="sc">.</span>total_seconds()<span class="sc">:.2f}</span><span class="ss">s_tau_</span><span class="sc">{</span>tau<span class="sc">.</span>seconds<span class="sc">}</span><span class="ss">s.</span><span class="sc">{</span><span class="bu">format</span><span class="sc">}</span><span class="ss">'</span></span>
-<span id="cb4-13"><a href="#cb4-13" aria-hidden="true" tabindex="-1"></a>output_path <span class="op">=</span> <span class="ss">f'</span><span class="sc">{</span>data_dir<span class="sc">}</span><span class="ss">/05_reporting/</span><span class="sc">{</span>fname<span class="sc">}</span><span class="ss">'</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="cell-5" class="cell">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>plasma_data <span class="op">=</span> pl.scan_parquet(juno_state_path).sort(<span class="st">'time'</span>)</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>logger.info(plasma_data.columns)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="cell-11" class="cell">
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>plasma_data <span class="op">=</span> pl.scan_parquet(juno_state_path).sort(<span class="st">'time'</span>)</span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>logger.info(plasma_data.columns)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<div id="cell-12" class="cell">
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>juno_events <span class="op">=</span> []</span>
-<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> mag_path <span class="kw">in</span> walk(dir_path):</span>
-<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>    juno_mag_data <span class="op">=</span> pl.scan_parquet(mag_path).drop(<span class="st">'X'</span>, <span class="st">'Y'</span>, <span class="st">'Z'</span>).sort(<span class="st">'time'</span>)</span>
-<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>    _juno_events <span class="op">=</span> (</span>
-<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a>        IDsDataset(</span>
-<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a>            mag_data<span class="op">=</span>juno_mag_data,</span>
-<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a>            plasma_data<span class="op">=</span>plasma_data,</span>
-<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a>            tau<span class="op">=</span>tau,</span>
-<span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a>            ts<span class="op">=</span>ts,</span>
-<span id="cb6-11"><a href="#cb6-11" aria-hidden="true" tabindex="-1"></a>            vec_cols<span class="op">=</span>vec_cols,</span>
-<span id="cb6-12"><a href="#cb6-12" aria-hidden="true" tabindex="-1"></a>            density_col<span class="op">=</span><span class="st">"plasma_density"</span>,</span>
-<span id="cb6-13"><a href="#cb6-13" aria-hidden="true" tabindex="-1"></a>            speed_col<span class="op">=</span><span class="st">"plasma_speed"</span>,</span>
-<span id="cb6-14"><a href="#cb6-14" aria-hidden="true" tabindex="-1"></a>            temperature_col<span class="op">=</span><span class="st">"plasma_temperature"</span>,</span>
-<span id="cb6-15"><a href="#cb6-15" aria-hidden="true" tabindex="-1"></a>        )</span>
-<span id="cb6-16"><a href="#cb6-16" aria-hidden="true" tabindex="-1"></a>        .find_events(return_best_fit<span class="op">=</span><span class="va">False</span>)</span>
-<span id="cb6-17"><a href="#cb6-17" aria-hidden="true" tabindex="-1"></a>        .update_candidates_with_plasma_data()</span>
-<span id="cb6-18"><a href="#cb6-18" aria-hidden="true" tabindex="-1"></a>        .events</span>
-<span id="cb6-19"><a href="#cb6-19" aria-hidden="true" tabindex="-1"></a>    )</span>
-<span id="cb6-20"><a href="#cb6-20" aria-hidden="true" tabindex="-1"></a>    </span>
-<span id="cb6-21"><a href="#cb6-21" aria-hidden="true" tabindex="-1"></a>    juno_events.append(_juno_events)</span>
-<span id="cb6-22"><a href="#cb6-22" aria-hidden="true" tabindex="-1"></a>    </span>
-<span id="cb6-23"><a href="#cb6-23" aria-hidden="true" tabindex="-1"></a>juno_ids_dataset <span class="op">=</span> IDsDataset(</span>
-<span id="cb6-24"><a href="#cb6-24" aria-hidden="true" tabindex="-1"></a>    events<span class="op">=</span>pl.concat(juno_events),</span>
-<span id="cb6-25"><a href="#cb6-25" aria-hidden="true" tabindex="-1"></a>    mag_data<span class="op">=</span> pl.scan_parquet(<span class="bu">list</span>(walk(dir_path))).drop(<span class="st">'X'</span>, <span class="st">'Y'</span>, <span class="st">'Z'</span>).sort(<span class="st">'time'</span>)</span>
-<span id="cb6-26"><a href="#cb6-26" aria-hidden="true" tabindex="-1"></a>).export(output_path)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="cell-6" class="cell">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>juno_events <span class="op">=</span> []</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> mag_path <span class="kw">in</span> walk(dir_path):</span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>    mag_data <span class="op">=</span> pl.scan_parquet(mag_path).drop(<span class="st">'X'</span>, <span class="st">'Y'</span>, <span class="st">'Z'</span>).sort(<span class="st">'time'</span>)</span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>    _juno_events <span class="op">=</span> (</span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>        IDsDataset(</span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>            mag_data<span class="op">=</span>mag_data,</span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a>            plasma_data<span class="op">=</span>plasma_data,</span>
+<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a>            tau<span class="op">=</span>tau,</span>
+<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a>            ts<span class="op">=</span>ts,</span>
+<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a>            vec_cols<span class="op">=</span>vec_cols,</span>
+<span id="cb5-12"><a href="#cb5-12" aria-hidden="true" tabindex="-1"></a>            density_col<span class="op">=</span><span class="st">"plasma_density"</span>,</span>
+<span id="cb5-13"><a href="#cb5-13" aria-hidden="true" tabindex="-1"></a>            speed_col<span class="op">=</span><span class="st">"plasma_speed"</span>,</span>
+<span id="cb5-14"><a href="#cb5-14" aria-hidden="true" tabindex="-1"></a>            temperature_col<span class="op">=</span><span class="st">"plasma_temperature"</span>,</span>
+<span id="cb5-15"><a href="#cb5-15" aria-hidden="true" tabindex="-1"></a>        )</span>
+<span id="cb5-16"><a href="#cb5-16" aria-hidden="true" tabindex="-1"></a>        .find_events(return_best_fit<span class="op">=</span><span class="va">False</span>)</span>
+<span id="cb5-17"><a href="#cb5-17" aria-hidden="true" tabindex="-1"></a>        .update_candidates_with_plasma_data()</span>
+<span id="cb5-18"><a href="#cb5-18" aria-hidden="true" tabindex="-1"></a>        .events</span>
+<span id="cb5-19"><a href="#cb5-19" aria-hidden="true" tabindex="-1"></a>    )</span>
+<span id="cb5-20"><a href="#cb5-20" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb5-21"><a href="#cb5-21" aria-hidden="true" tabindex="-1"></a>    juno_events.append(_juno_events)</span>
+<span id="cb5-22"><a href="#cb5-22" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb5-23"><a href="#cb5-23" aria-hidden="true" tabindex="-1"></a>juno_ids_dataset <span class="op">=</span> IDsDataset(</span>
+<span id="cb5-24"><a href="#cb5-24" aria-hidden="true" tabindex="-1"></a>    events<span class="op">=</span>pl.concat(juno_events),</span>
+<span id="cb5-25"><a href="#cb5-25" aria-hidden="true" tabindex="-1"></a>    mag_data<span class="op">=</span> pl.scan_parquet(<span class="bu">list</span>(walk(dir_path))).drop(<span class="st">'X'</span>, <span class="st">'Y'</span>, <span class="st">'Z'</span>).sort(<span class="st">'time'</span>)</span>
+<span id="cb5-26"><a href="#cb5-26" aria-hidden="true" tabindex="-1"></a>).export(output_path)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
-<section id="check-the-discontinuity-in-the-last-year-of-juno-cruise-phase" class="level2 page-columns page-full">
-<h2 class="anchored" data-anchor-id="check-the-discontinuity-in-the-last-year-of-juno-cruise-phase">Check the discontinuity in the last year of Juno cruise phase</h2>
+<section id="check-the-discontinuity-in-juno-cruise-phase" class="level2 page-columns page-full">
+<h2 class="anchored" data-anchor-id="check-the-discontinuity-in-juno-cruise-phase">Check the discontinuity in Juno cruise phase</h2>
+<section id="full-time-resolution-data" class="level3">
+<h3 class="anchored" data-anchor-id="full-time-resolution-data">Full time resolution data</h3>
+<p>0.03 s - 0.125 s time resolution</p>
+<div id="cell-9" class="cell">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> space_analysis.missions.juno.fgm <span class="im">import</span> download_data</span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> discontinuitypy.utils.basic <span class="im">import</span> resample</span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> toolz <span class="im">import</span> compose</span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> fastcore.utils <span class="im">import</span> mkdir</span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> os</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div id="cell-10" class="cell">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> preprocess(</span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>    fp,</span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>    every <span class="op">=</span> timedelta(seconds <span class="op">=</span> <span class="fl">0.125</span>),</span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>    dir_path <span class="op">=</span> <span class="st">"../../../data/02_intermediate/JNO_MAG_8hz"</span>,</span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>    update <span class="op">=</span> <span class="va">False</span></span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a>):</span>
+<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a>    fname <span class="op">=</span> fp.split(<span class="st">'/'</span>)[<span class="op">-</span><span class="dv">1</span>]</span>
+<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a>    output_path <span class="op">=</span> <span class="ss">f"</span><span class="sc">{</span>dir_path<span class="sc">}</span><span class="ss">/</span><span class="sc">{</span>fname<span class="sc">}</span><span class="ss">"</span></span>
+<span id="cb7-10"><a href="#cb7-10" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb7-11"><a href="#cb7-11" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> <span class="kw">not</span> os.path.exists(output_path) <span class="kw">or</span> update:</span>
+<span id="cb7-12"><a href="#cb7-12" aria-hidden="true" tabindex="-1"></a>        mkdir(dir_path, parents<span class="op">=</span><span class="va">True</span>, exist_ok <span class="op">=</span> <span class="va">True</span>)</span>
+<span id="cb7-13"><a href="#cb7-13" aria-hidden="true" tabindex="-1"></a>        df <span class="op">=</span> pl.scan_ipc(fp).sort(<span class="st">'time'</span>).pipe(resample, every <span class="op">=</span> every)</span>
+<span id="cb7-14"><a href="#cb7-14" aria-hidden="true" tabindex="-1"></a>        df.collect().write_ipc(output_path)</span>
+<span id="cb7-15"><a href="#cb7-15" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> output_path</span>
+<span id="cb7-16"><a href="#cb7-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-17"><a href="#cb7-17" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> process(fp, ids_dataset: IDsDataset):</span>
+<span id="cb7-18"><a href="#cb7-18" aria-hidden="true" tabindex="-1"></a>    df <span class="op">=</span> pl.scan_ipc(fp).sort(<span class="st">'time'</span>).unique(<span class="st">'time'</span>)</span>
+<span id="cb7-19"><a href="#cb7-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-20"><a href="#cb7-20" aria-hidden="true" tabindex="-1"></a>    ids_dataset.data <span class="op">=</span> df</span>
+<span id="cb7-21"><a href="#cb7-21" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb7-22"><a href="#cb7-22" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-23"><a href="#cb7-23" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> ids_dataset.find_events(return_best_fit<span class="op">=</span><span class="va">False</span>, sparse_num <span class="op">=</span> <span class="dv">30</span>).update_candidates_with_plasma_data().events</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div id="cell-11" class="cell">
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> pipe <span class="im">import</span> Pipe, select</span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> typing <span class="im">import</span> Iterable</span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> split_list(l, n):</span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> <span class="bu">isinstance</span>(l, <span class="bu">map</span>):</span>
+<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a>        l <span class="op">=</span> <span class="bu">list</span>(l)</span>
+<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">0</span>, <span class="bu">len</span>(l), n):</span>
+<span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a>        <span class="cf">yield</span> l[i:i<span class="op">+</span>n]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div id="cell-12" class="cell" data-execution_count="129">
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>mag_paths <span class="op">=</span> download_data(datatype<span class="op">=</span><span class="st">"FULL"</span>) <span class="op">|</span> select(preprocess)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div id="cell-13" class="cell">
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>ts <span class="op">=</span> timedelta(seconds<span class="op">=</span><span class="fl">0.125</span>)</span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>fname <span class="op">=</span> <span class="ss">f'events.</span><span class="sc">{</span>mission<span class="sc">}</span><span class="ss">.ts_</span><span class="sc">{</span>ts<span class="sc">.</span>total_seconds()<span class="sc">:.2f}</span><span class="ss">s_tau_</span><span class="sc">{</span>tau<span class="sc">.</span>seconds<span class="sc">}</span><span class="ss">s.</span><span class="sc">{</span><span class="bu">format</span><span class="sc">}</span><span class="ss">'</span></span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a>output_path <span class="op">=</span> <span class="ss">f'</span><span class="sc">{</span>data_dir<span class="sc">}</span><span class="ss">/05_reporting/</span><span class="sc">{</span>fname<span class="sc">}</span><span class="ss">'</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div id="cell-14" class="cell">
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>ids_ds <span class="op">=</span> IDsDataset(</span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>    plasma_data<span class="op">=</span>plasma_data,</span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>    tau<span class="op">=</span>tau,</span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a>    ts<span class="op">=</span>ts,</span>
+<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a>    vec_cols<span class="op">=</span>vec_cols,</span>
+<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a>    density_col<span class="op">=</span><span class="st">"plasma_density"</span>,</span>
+<span id="cb11-7"><a href="#cb11-7" aria-hidden="true" tabindex="-1"></a>    speed_col<span class="op">=</span><span class="st">"plasma_speed"</span>,</span>
+<span id="cb11-8"><a href="#cb11-8" aria-hidden="true" tabindex="-1"></a>    temperature_col<span class="op">=</span><span class="st">"plasma_temperature"</span>,</span>
+<span id="cb11-9"><a href="#cb11-9" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Reasonably splitting the data files may accelerate the processing.</p>
+<div id="cell-16" class="cell">
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>fps <span class="op">=</span> split_list(mag_paths, n<span class="op">=</span><span class="dv">100</span>)</span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>ids_ds.data <span class="op">=</span> pl.scan_ipc(mag_paths)</span>
+<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a>ids_ds.events <span class="op">=</span> pl.concat(fps <span class="op">|</span> select(process)) </span>
+<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a>ids_ds.export(output_path)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div id="cell-17" class="cell" data-execution_count="128">
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>ids_ds.plot_candidates(num<span class="op">=</span><span class="dv">10</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>2024-02-18 12:28:11.590 | INFO     | discontinuitypy.datasets:plot_candidates:215 - Candidates indices: [16989 34500 28437 33181 48613 58490 34060 59141  6222 27809]</code></pre>
+</div>
+<div class="cell-output cell-output-display" data-execution_count="128">
+<pre><code>[(&lt;Figure size 1200x500 with 1 Axes&gt;, &lt;Axes: ylabel='$B$\n[nT LMN]'&gt;),
+ (&lt;Figure size 1200x500 with 1 Axes&gt;, &lt;Axes: ylabel='$B$\n[nT LMN]'&gt;),
+ (&lt;Figure size 1200x500 with 1 Axes&gt;, &lt;Axes: ylabel='$B$\n[nT LMN]'&gt;),
+ (&lt;Figure size 1200x500 with 1 Axes&gt;, &lt;Axes: ylabel='$B$\n[nT LMN]'&gt;),
+ (&lt;Figure size 1200x500 with 1 Axes&gt;, &lt;Axes: ylabel='$B$\n[nT LMN]'&gt;),
+ (&lt;Figure size 1200x500 with 1 Axes&gt;, &lt;Axes: ylabel='$B$\n[nT LMN]'&gt;),
+ (&lt;Figure size 1200x500 with 1 Axes&gt;, &lt;Axes: ylabel='$B$\n[nT LMN]'&gt;),
+ (&lt;Figure size 1200x500 with 1 Axes&gt;, &lt;Axes: ylabel='$B$\n[nT LMN]'&gt;),
+ (&lt;Figure size 1200x500 with 1 Axes&gt;, &lt;Axes: ylabel='$B$\n[nT LMN]'&gt;),
+ (&lt;Figure size 1200x500 with 1 Axes&gt;, &lt;Axes: ylabel='$B$\n[nT LMN]'&gt;)]</code></pre>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><a href="index_files/figure-html/cell-14-output-3.png" class="lightbox" data-gallery="quarto-lightbox-gallery-1"><img src="index_files/figure-html/cell-14-output-3.png" class="img-fluid figure-img"></a></p>
+</figure>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><a href="index_files/figure-html/cell-14-output-4.png" class="lightbox" data-gallery="quarto-lightbox-gallery-2"><img src="index_files/figure-html/cell-14-output-4.png" class="img-fluid figure-img"></a></p>
+</figure>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><a href="index_files/figure-html/cell-14-output-5.png" class="lightbox" data-gallery="quarto-lightbox-gallery-3"><img src="index_files/figure-html/cell-14-output-5.png" class="img-fluid figure-img"></a></p>
+</figure>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><a href="index_files/figure-html/cell-14-output-6.png" class="lightbox" data-gallery="quarto-lightbox-gallery-4"><img src="index_files/figure-html/cell-14-output-6.png" class="img-fluid figure-img"></a></p>
+</figure>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><a href="index_files/figure-html/cell-14-output-7.png" class="lightbox" data-gallery="quarto-lightbox-gallery-5"><img src="index_files/figure-html/cell-14-output-7.png" class="img-fluid figure-img"></a></p>
+</figure>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><a href="index_files/figure-html/cell-14-output-8.png" class="lightbox" data-gallery="quarto-lightbox-gallery-6"><img src="index_files/figure-html/cell-14-output-8.png" class="img-fluid figure-img"></a></p>
+</figure>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><a href="index_files/figure-html/cell-14-output-9.png" class="lightbox" data-gallery="quarto-lightbox-gallery-7"><img src="index_files/figure-html/cell-14-output-9.png" class="img-fluid figure-img"></a></p>
+</figure>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><a href="index_files/figure-html/cell-14-output-10.png" class="lightbox" data-gallery="quarto-lightbox-gallery-8"><img src="index_files/figure-html/cell-14-output-10.png" class="img-fluid figure-img"></a></p>
+</figure>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><a href="index_files/figure-html/cell-14-output-11.png" class="lightbox" data-gallery="quarto-lightbox-gallery-9"><img src="index_files/figure-html/cell-14-output-11.png" class="img-fluid figure-img"></a></p>
+</figure>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><a href="index_files/figure-html/cell-14-output-12.png" class="lightbox" data-gallery="quarto-lightbox-gallery-10"><img src="index_files/figure-html/cell-14-output-12.png" class="img-fluid figure-img"></a></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
 <section id="first-year" class="level3 page-columns page-full">
 <h3 class="anchored" data-anchor-id="first-year">First year</h3>
-<div id="cell-15" class="cell" data-execution_count="19">
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>mag_path <span class="op">=</span> <span class="bu">sorted</span>(<span class="bu">list</span>(walk(dir_path)))[<span class="dv">0</span>]</span>
-<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>tau <span class="op">=</span> timedelta(seconds<span class="op">=</span><span class="dv">60</span>)</span>
-<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>juno_mag_data <span class="op">=</span> pl.scan_parquet(mag_path).drop(<span class="st">'X'</span>, <span class="st">'Y'</span>, <span class="st">'Z'</span>).sort(<span class="st">'time'</span>)</span>
-<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>ids_ds <span class="op">=</span> (</span>
-<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a>    IDsDataset(</span>
-<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a>        mag_data<span class="op">=</span>juno_mag_data,</span>
-<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a>        plasma_data<span class="op">=</span>plasma_data,</span>
-<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a>        tau<span class="op">=</span>tau,</span>
-<span id="cb7-10"><a href="#cb7-10" aria-hidden="true" tabindex="-1"></a>        ts<span class="op">=</span>ts,</span>
-<span id="cb7-11"><a href="#cb7-11" aria-hidden="true" tabindex="-1"></a>        vec_cols<span class="op">=</span>vec_cols,</span>
-<span id="cb7-12"><a href="#cb7-12" aria-hidden="true" tabindex="-1"></a>        density_col<span class="op">=</span><span class="st">"plasma_density"</span>,</span>
-<span id="cb7-13"><a href="#cb7-13" aria-hidden="true" tabindex="-1"></a>        speed_col<span class="op">=</span><span class="st">"plasma_speed"</span>,</span>
-<span id="cb7-14"><a href="#cb7-14" aria-hidden="true" tabindex="-1"></a>        temperature_col<span class="op">=</span><span class="st">"plasma_temperature"</span>,</span>
-<span id="cb7-15"><a href="#cb7-15" aria-hidden="true" tabindex="-1"></a>    )</span>
-<span id="cb7-16"><a href="#cb7-16" aria-hidden="true" tabindex="-1"></a>    .find_events(return_best_fit<span class="op">=</span><span class="va">True</span>)</span>
-<span id="cb7-17"><a href="#cb7-17" aria-hidden="true" tabindex="-1"></a>    .update_candidates_with_plasma_data()</span>
-<span id="cb7-18"><a href="#cb7-18" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stderr">
-<pre><code>17-Feb-24 15:09:08: DeprecationWarning: `pl.count()` is deprecated. Please use `pl.len()` instead.
+<div id="cell-19" class="cell">
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>mag_path <span class="op">=</span> <span class="bu">sorted</span>(<span class="bu">list</span>(walk(dir_path)))[<span class="dv">0</span>]</span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>tau <span class="op">=</span> timedelta(seconds<span class="op">=</span><span class="dv">60</span>)</span>
+<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a>mag_data <span class="op">=</span> pl.scan_parquet(mag_path).drop(<span class="st">'X'</span>, <span class="st">'Y'</span>, <span class="st">'Z'</span>).sort(<span class="st">'time'</span>)</span>
+<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-5"><a href="#cb16-5" aria-hidden="true" tabindex="-1"></a>ids_ds <span class="op">=</span> (</span>
+<span id="cb16-6"><a href="#cb16-6" aria-hidden="true" tabindex="-1"></a>    IDsDataset(</span>
+<span id="cb16-7"><a href="#cb16-7" aria-hidden="true" tabindex="-1"></a>        mag_data<span class="op">=</span>mag_data,</span>
+<span id="cb16-8"><a href="#cb16-8" aria-hidden="true" tabindex="-1"></a>        plasma_data<span class="op">=</span>plasma_data,</span>
+<span id="cb16-9"><a href="#cb16-9" aria-hidden="true" tabindex="-1"></a>        tau<span class="op">=</span>tau,</span>
+<span id="cb16-10"><a href="#cb16-10" aria-hidden="true" tabindex="-1"></a>        ts<span class="op">=</span>ts,</span>
+<span id="cb16-11"><a href="#cb16-11" aria-hidden="true" tabindex="-1"></a>        vec_cols<span class="op">=</span>vec_cols,</span>
+<span id="cb16-12"><a href="#cb16-12" aria-hidden="true" tabindex="-1"></a>        density_col<span class="op">=</span><span class="st">"plasma_density"</span>,</span>
+<span id="cb16-13"><a href="#cb16-13" aria-hidden="true" tabindex="-1"></a>        speed_col<span class="op">=</span><span class="st">"plasma_speed"</span>,</span>
+<span id="cb16-14"><a href="#cb16-14" aria-hidden="true" tabindex="-1"></a>        temperature_col<span class="op">=</span><span class="st">"plasma_temperature"</span>,</span>
+<span id="cb16-15"><a href="#cb16-15" aria-hidden="true" tabindex="-1"></a>    )</span>
+<span id="cb16-16"><a href="#cb16-16" aria-hidden="true" tabindex="-1"></a>    .find_events(return_best_fit<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb16-17"><a href="#cb16-17" aria-hidden="true" tabindex="-1"></a>    .update_candidates_with_plasma_data()</span>
+<span id="cb16-18"><a href="#cb16-18" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>ids_ds.plot_candidates(num<span class="op">=</span><span class="dv">20</span>, plot_fit_data<span class="op">=</span><span class="va">True</span>, predicates<span class="op">=</span>(pl.col(<span class="st">'fit.stat.rsquared'</span>) <span class="op">&gt;</span> <span class="fl">0.95</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="cell-20" class="cell column-page quarto-layout-panel" data-layout-ncol="3">
 
-17-Feb-24 15:09:08: DeprecationWarning: `map_alias` is deprecated. It has been moved to `name.map`.
-
-17-Feb-24 15:09:08: DeprecationWarning: `map_alias` is deprecated. It has been moved to `name.map`.
-
-17-Feb-24 15:09:10: UserWarning: Distributing &lt;class 'pandas.core.frame.DataFrame'&gt; object. This may take some time.
-
-17-Feb-24 15:09:39: DeprecationWarning: np.find_common_type is deprecated.  Please use `np.result_type` or `np.promote_types`.
-See https://numpy.org/devdocs/release/1.25.0-notes.html and the docs for more information.  (Deprecated NumPy 1.25)
-
-17-Feb-24 15:09:39: DeprecationWarning: `nanoseconds` is deprecated. It has been renamed to `total_nanoseconds`.
-
-17-Feb-24 15:09:39: PendingDeprecationWarning: The `dims` argument has been renamed to `dim`, and will be removed in the future. This renaming is taking place throughout xarray over the next few releases.
-
-17-Feb-24 15:09:39: PendingDeprecationWarning: The `dims` argument has been renamed to `dim`, and will be removed in the future. This renaming is taking place throughout xarray over the next few releases.
-
-17-Feb-24 15:09:39: PendingDeprecationWarning: The `dims` argument has been renamed to `dim`, and will be removed in the future. This renaming is taking place throughout xarray over the next few releases.
-
-17-Feb-24 15:09:39: DeprecationWarning: `suffix` is deprecated. It has been moved to `name.suffix`.
-
-17-Feb-24 15:09:39: DeprecationWarning: `suffix` is deprecated. It has been moved to `name.suffix`.
-
-17-Feb-24 15:09:39: DeprecationWarning: `suffix` is deprecated. It has been moved to `name.suffix`.
-
-17-Feb-24 15:09:39: PendingDeprecationWarning: The `dims` argument has been renamed to `dim`, and will be removed in the future. This renaming is taking place throughout xarray over the next few releases.
-
-17-Feb-24 15:09:39: PendingDeprecationWarning: The `dims` argument has been renamed to `dim`, and will be removed in the future. This renaming is taking place throughout xarray over the next few releases.
-</code></pre>
-</div>
-<div class="cell-output cell-output-display">
-<script type="application/vnd.jupyter.widget-view+json">
-{"model_id":"74d304e2a10042c5b2b0e53ac03b2302","version_major":2,"version_minor":0,"quarto_mimetype":"application/vnd.jupyter.widget-view+json"}
-</script>
-</div>
-<div class="cell-output cell-output-display">
-<script type="application/vnd.jupyter.widget-view+json">
-{"model_id":"187fef2b214f4ea48be038f513f411c9","version_major":2,"version_minor":0,"quarto_mimetype":"application/vnd.jupyter.widget-view+json"}
-</script>
-</div>
-</div>
-<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>ids_ds.plot_candidates(num<span class="op">=</span><span class="dv">20</span>, plot_fit_data<span class="op">=</span><span class="va">True</span>, predicates<span class="op">=</span>(pl.col(<span class="st">'fit.stat.rsquared'</span>) <span class="op">&gt;</span> <span class="fl">0.95</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stderr">
-<pre><code>2024-02-17 15:09:51.206 | INFO     | discontinuitypy.datasets:plot_candidates:215 - Candidates indices: [10436  8841 13616  9794   120 11659  3392  3969  8190  2869 13639 11070
-  4853 13902  8554  9970 11430  8080   723  8650]</code></pre>
-</div>
-<div id="cell-16" class="cell column-page quarto-layout-panel" data-layout-ncol="3" data-execution_count="20">
-<div class="quarto-layout-row">
-<div class="quarto-layout-cell" style="flex-basis: 33.3%;justify-content: flex-start;">
-<pre><code>[(&lt;Figure size 1200x500 with 1 Axes&gt;,
-  &lt;Axes: title={'center': '\n#Fit# $\\max dB/dt$: -0.06, $R^2$: 0.96, $\\chi^2$: 0.13'}, ylabel='$B$\n[nT LMN]'&gt;),
- (&lt;Figure size 1200x500 with 1 Axes&gt;,
-  &lt;Axes: title={'center': '\n#Fit# $\\max dB/dt$: 0.17, $R^2$: 0.98, $\\chi^2$: 0.05'}, ylabel='$B$\n[nT LMN]'&gt;),
- (&lt;Figure size 1200x500 with 1 Axes&gt;,
-  &lt;Axes: title={'center': '\n#Fit# $\\max dB/dt$: -0.98, $R^2$: 0.99, $\\chi^2$: 0.15'}, ylabel='$B$\n[nT LMN]'&gt;),
- (&lt;Figure size 1200x500 with 1 Axes&gt;,
-  &lt;Axes: title={'center': '\n#Fit# $\\max dB/dt$: 0.73, $R^2$: 0.97, $\\chi^2$: 1.86'}, ylabel='$B$\n[nT LMN]'&gt;),
- (&lt;Figure size 1200x500 with 1 Axes&gt;,
-  &lt;Axes: title={'center': '\n#Fit# $\\max dB/dt$: 0.23, $R^2$: 0.99, $\\chi^2$: 0.06'}, ylabel='$B$\n[nT LMN]'&gt;),
- (&lt;Figure size 1200x500 with 1 Axes&gt;,
-  &lt;Axes: title={'center': '\n#Fit# $\\max dB/dt$: -0.02, $R^2$: 0.99, $\\chi^2$: 0.01'}, ylabel='$B$\n[nT LMN]'&gt;),
- (&lt;Figure size 1200x500 with 1 Axes&gt;,
-  &lt;Axes: title={'center': '\n#Fit# $\\max dB/dt$: -0.15, $R^2$: 0.97, $\\chi^2$: 1.10'}, ylabel='$B$\n[nT LMN]'&gt;),
- (&lt;Figure size 1200x500 with 1 Axes&gt;,
-  &lt;Axes: title={'center': '\n#Fit# $\\max dB/dt$: -0.29, $R^2$: 0.95, $\\chi^2$: 1.15'}, ylabel='$B$\n[nT LMN]'&gt;),
- (&lt;Figure size 1200x500 with 1 Axes&gt;,
-  &lt;Axes: title={'center': '\n#Fit# $\\max dB/dt$: 0.30, $R^2$: 0.97, $\\chi^2$: 0.82'}, ylabel='$B$\n[nT LMN]'&gt;),
- (&lt;Figure size 1200x500 with 1 Axes&gt;,
-  &lt;Axes: title={'center': '\n#Fit# $\\max dB/dt$: 1.49, $R^2$: 0.98, $\\chi^2$: 1.03'}, ylabel='$B$\n[nT LMN]'&gt;),
- (&lt;Figure size 1200x500 with 1 Axes&gt;,
-  &lt;Axes: title={'center': '\n#Fit# $\\max dB/dt$: 0.28, $R^2$: 0.99, $\\chi^2$: 0.02'}, ylabel='$B$\n[nT LMN]'&gt;),
- (&lt;Figure size 1200x500 with 1 Axes&gt;,
-  &lt;Axes: title={'center': '\n#Fit# $\\max dB/dt$: 0.13, $R^2$: 0.99, $\\chi^2$: 0.01'}, ylabel='$B$\n[nT LMN]'&gt;),
- (&lt;Figure size 1200x500 with 1 Axes&gt;,
-  &lt;Axes: title={'center': '\n#Fit# $\\max dB/dt$: 0.20, $R^2$: 0.98, $\\chi^2$: 0.03'}, ylabel='$B$\n[nT LMN]'&gt;),
- (&lt;Figure size 1200x500 with 1 Axes&gt;,
-  &lt;Axes: title={'center': '\n#Fit# $\\max dB/dt$: 0.04, $R^2$: 0.95, $\\chi^2$: 0.24'}, ylabel='$B$\n[nT LMN]'&gt;),
- (&lt;Figure size 1200x500 with 1 Axes&gt;,
-  &lt;Axes: title={'center': '\n#Fit# $\\max dB/dt$: 0.22, $R^2$: 0.96, $\\chi^2$: 0.06'}, ylabel='$B$\n[nT LMN]'&gt;),
- (&lt;Figure size 1200x500 with 1 Axes&gt;,
-  &lt;Axes: title={'center': '\n#Fit# $\\max dB/dt$: -0.03, $R^2$: 0.95, $\\chi^2$: 0.33'}, ylabel='$B$\n[nT LMN]'&gt;),
- (&lt;Figure size 1200x500 with 1 Axes&gt;,
-  &lt;Axes: title={'center': '\n#Fit# $\\max dB/dt$: -0.17, $R^2$: 0.96, $\\chi^2$: 11.09'}, ylabel='$B$\n[nT LMN]'&gt;),
- (&lt;Figure size 1200x500 with 1 Axes&gt;,
-  &lt;Axes: title={'center': '\n#Fit# $\\max dB/dt$: 0.21, $R^2$: 0.99, $\\chi^2$: 0.01'}, ylabel='$B$\n[nT LMN]'&gt;),
- (&lt;Figure size 1200x500 with 1 Axes&gt;,
-  &lt;Axes: title={'center': '\n#Fit# $\\max dB/dt$: -0.23, $R^2$: 0.98, $\\chi^2$: 0.04'}, ylabel='$B$\n[nT LMN]'&gt;),
- (&lt;Figure size 1200x500 with 1 Axes&gt;,
-  &lt;Axes: title={'center': '\n#Fit# $\\max dB/dt$: 0.11, $R^2$: 0.98, $\\chi^2$: 0.06'}, ylabel='$B$\n[nT LMN]'&gt;)]</code></pre>
-</div>
-<div class="quarto-layout-cell" style="flex-basis: 33.3%;justify-content: center;">
-<p><a href="index_files/figure-html/cell-8-output-3.png" class="lightbox" data-gallery="quarto-lightbox-gallery-1"><img src="index_files/figure-html/cell-8-output-3.png" class="img-fluid"></a></p>
-</div>
-<div class="quarto-layout-cell" style="flex-basis: 33.3%;justify-content: center;">
-<p><a href="index_files/figure-html/cell-8-output-4.png" class="lightbox" data-gallery="quarto-lightbox-gallery-2"><img src="index_files/figure-html/cell-8-output-4.png" class="img-fluid"></a></p>
-</div>
-</div>
-<div class="quarto-layout-row">
-<div class="quarto-layout-cell" style="flex-basis: 33.3%;justify-content: center;">
-<p><a href="index_files/figure-html/cell-8-output-5.png" class="lightbox" data-gallery="quarto-lightbox-gallery-3"><img src="index_files/figure-html/cell-8-output-5.png" class="img-fluid"></a></p>
-</div>
-<div class="quarto-layout-cell" style="flex-basis: 33.3%;justify-content: center;">
-<p><a href="index_files/figure-html/cell-8-output-6.png" class="lightbox" data-gallery="quarto-lightbox-gallery-4"><img src="index_files/figure-html/cell-8-output-6.png" class="img-fluid"></a></p>
-</div>
-<div class="quarto-layout-cell" style="flex-basis: 33.3%;justify-content: center;">
-<p><a href="index_files/figure-html/cell-8-output-7.png" class="lightbox" data-gallery="quarto-lightbox-gallery-5"><img src="index_files/figure-html/cell-8-output-7.png" class="img-fluid"></a></p>
-</div>
-</div>
-<div class="quarto-layout-row">
-<div class="quarto-layout-cell" style="flex-basis: 33.3%;justify-content: center;">
-<p><a href="index_files/figure-html/cell-8-output-8.png" class="lightbox" data-gallery="quarto-lightbox-gallery-6"><img src="index_files/figure-html/cell-8-output-8.png" class="img-fluid"></a></p>
-</div>
-<div class="quarto-layout-cell" style="flex-basis: 33.3%;justify-content: center;">
-<p><a href="index_files/figure-html/cell-8-output-9.png" class="lightbox" data-gallery="quarto-lightbox-gallery-7"><img src="index_files/figure-html/cell-8-output-9.png" class="img-fluid"></a></p>
-</div>
-<div class="quarto-layout-cell" style="flex-basis: 33.3%;justify-content: center;">
-<p><a href="index_files/figure-html/cell-8-output-10.png" class="lightbox" data-gallery="quarto-lightbox-gallery-8"><img src="index_files/figure-html/cell-8-output-10.png" class="img-fluid"></a></p>
-</div>
-</div>
-<div class="quarto-layout-row">
-<div class="quarto-layout-cell" style="flex-basis: 33.3%;justify-content: center;">
-<p><a href="index_files/figure-html/cell-8-output-11.png" class="lightbox" data-gallery="quarto-lightbox-gallery-9"><img src="index_files/figure-html/cell-8-output-11.png" class="img-fluid"></a></p>
-</div>
-<div class="quarto-layout-cell" style="flex-basis: 33.3%;justify-content: center;">
-<p><a href="index_files/figure-html/cell-8-output-12.png" class="lightbox" data-gallery="quarto-lightbox-gallery-10"><img src="index_files/figure-html/cell-8-output-12.png" class="img-fluid"></a></p>
-</div>
-<div class="quarto-layout-cell" style="flex-basis: 33.3%;justify-content: center;">
-<p><a href="index_files/figure-html/cell-8-output-13.png" class="lightbox" data-gallery="quarto-lightbox-gallery-11"><img src="index_files/figure-html/cell-8-output-13.png" class="img-fluid"></a></p>
-</div>
-</div>
-<div class="quarto-layout-row">
-<div class="quarto-layout-cell" style="flex-basis: 33.3%;justify-content: center;">
-<p><a href="index_files/figure-html/cell-8-output-14.png" class="lightbox" data-gallery="quarto-lightbox-gallery-12"><img src="index_files/figure-html/cell-8-output-14.png" class="img-fluid"></a></p>
-</div>
-<div class="quarto-layout-cell" style="flex-basis: 33.3%;justify-content: center;">
-<p><a href="index_files/figure-html/cell-8-output-15.png" class="lightbox" data-gallery="quarto-lightbox-gallery-13"><img src="index_files/figure-html/cell-8-output-15.png" class="img-fluid"></a></p>
-</div>
-<div class="quarto-layout-cell" style="flex-basis: 33.3%;justify-content: center;">
-<p><a href="index_files/figure-html/cell-8-output-16.png" class="lightbox" data-gallery="quarto-lightbox-gallery-14"><img src="index_files/figure-html/cell-8-output-16.png" class="img-fluid"></a></p>
-</div>
-</div>
-<div class="quarto-layout-row">
-<div class="quarto-layout-cell" style="flex-basis: 33.3%;justify-content: center;">
-<p><a href="index_files/figure-html/cell-8-output-17.png" class="lightbox" data-gallery="quarto-lightbox-gallery-15"><img src="index_files/figure-html/cell-8-output-17.png" class="img-fluid"></a></p>
-</div>
-<div class="quarto-layout-cell" style="flex-basis: 33.3%;justify-content: center;">
-<p><a href="index_files/figure-html/cell-8-output-18.png" class="lightbox" data-gallery="quarto-lightbox-gallery-16"><img src="index_files/figure-html/cell-8-output-18.png" class="img-fluid"></a></p>
-</div>
-<div class="quarto-layout-cell" style="flex-basis: 33.3%;justify-content: center;">
-<p><a href="index_files/figure-html/cell-8-output-19.png" class="lightbox" data-gallery="quarto-lightbox-gallery-17"><img src="index_files/figure-html/cell-8-output-19.png" class="img-fluid"></a></p>
-</div>
-</div>
-<div class="quarto-layout-row">
-<div class="quarto-layout-cell" style="flex-basis: 33.3%;justify-content: center;">
-<p><a href="index_files/figure-html/cell-8-output-20.png" class="lightbox" data-gallery="quarto-lightbox-gallery-18"><img src="index_files/figure-html/cell-8-output-20.png" class="img-fluid"></a></p>
-</div>
-<div class="quarto-layout-cell" style="flex-basis: 33.3%;justify-content: center;">
-<p><a href="index_files/figure-html/cell-8-output-21.png" class="lightbox" data-gallery="quarto-lightbox-gallery-19"><img src="index_files/figure-html/cell-8-output-21.png" class="img-fluid"></a></p>
-</div>
-<div class="quarto-layout-cell" style="flex-basis: 33.3%;justify-content: center;">
-<p><a href="index_files/figure-html/cell-8-output-22.png" class="lightbox" data-gallery="quarto-lightbox-gallery-20"><img src="index_files/figure-html/cell-8-output-22.png" class="img-fluid"></a></p>
-</div>
-</div>
 </div>
 </section>
 <section id="last-year" class="level3 page-columns page-full">
 <h3 class="anchored" data-anchor-id="last-year">Last year</h3>
-<div id="cell-18" class="cell" data-execution_count="14">
-<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="co"># mag_path = sorted(list(walk(dir_path)))[-1]</span></span>
-<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>tau <span class="op">=</span> timedelta(seconds<span class="op">=</span><span class="dv">300</span>)</span>
-<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>mag_path <span class="op">=</span> <span class="bu">sorted</span>(<span class="bu">list</span>(walk(dir_path)))[<span class="op">-</span><span class="dv">1</span>]</span>
-<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a>juno_mag_data <span class="op">=</span> pl.scan_parquet(mag_path).drop(<span class="st">'X'</span>, <span class="st">'Y'</span>, <span class="st">'Z'</span>).sort(<span class="st">'time'</span>)</span>
-<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a>ids_ds <span class="op">=</span> (</span>
-<span id="cb12-7"><a href="#cb12-7" aria-hidden="true" tabindex="-1"></a>    IDsDataset(</span>
-<span id="cb12-8"><a href="#cb12-8" aria-hidden="true" tabindex="-1"></a>        mag_data<span class="op">=</span>juno_mag_data,</span>
-<span id="cb12-9"><a href="#cb12-9" aria-hidden="true" tabindex="-1"></a>        plasma_data<span class="op">=</span>plasma_data,</span>
-<span id="cb12-10"><a href="#cb12-10" aria-hidden="true" tabindex="-1"></a>        tau<span class="op">=</span>tau,</span>
-<span id="cb12-11"><a href="#cb12-11" aria-hidden="true" tabindex="-1"></a>        ts<span class="op">=</span>ts,</span>
-<span id="cb12-12"><a href="#cb12-12" aria-hidden="true" tabindex="-1"></a>        vec_cols<span class="op">=</span>vec_cols,</span>
-<span id="cb12-13"><a href="#cb12-13" aria-hidden="true" tabindex="-1"></a>        density_col<span class="op">=</span><span class="st">"plasma_density"</span>,</span>
-<span id="cb12-14"><a href="#cb12-14" aria-hidden="true" tabindex="-1"></a>        speed_col<span class="op">=</span><span class="st">"plasma_speed"</span>,</span>
-<span id="cb12-15"><a href="#cb12-15" aria-hidden="true" tabindex="-1"></a>        temperature_col<span class="op">=</span><span class="st">"plasma_temperature"</span>,</span>
-<span id="cb12-16"><a href="#cb12-16" aria-hidden="true" tabindex="-1"></a>    )</span>
-<span id="cb12-17"><a href="#cb12-17" aria-hidden="true" tabindex="-1"></a>    .find_events(return_best_fit<span class="op">=</span><span class="va">True</span>)</span>
-<span id="cb12-18"><a href="#cb12-18" aria-hidden="true" tabindex="-1"></a>    .update_candidates_with_plasma_data()</span>
-<span id="cb12-19"><a href="#cb12-19" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stderr">
-<pre><code>17-Feb-24 15:07:29: DeprecationWarning: `pl.count()` is deprecated. Please use `pl.len()` instead.
+<div id="cell-22" class="cell">
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="co"># mag_path = sorted(list(walk(dir_path)))[-1]</span></span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>tau <span class="op">=</span> timedelta(seconds<span class="op">=</span><span class="dv">300</span>)</span>
+<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a>mag_path <span class="op">=</span> <span class="bu">sorted</span>(<span class="bu">list</span>(walk(dir_path)))[<span class="op">-</span><span class="dv">1</span>]</span>
+<span id="cb18-4"><a href="#cb18-4" aria-hidden="true" tabindex="-1"></a>mag_data <span class="op">=</span> pl.scan_parquet(mag_path).drop(<span class="st">'X'</span>, <span class="st">'Y'</span>, <span class="st">'Z'</span>).sort(<span class="st">'time'</span>)</span>
+<span id="cb18-5"><a href="#cb18-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-6"><a href="#cb18-6" aria-hidden="true" tabindex="-1"></a>ids_ds <span class="op">=</span> (</span>
+<span id="cb18-7"><a href="#cb18-7" aria-hidden="true" tabindex="-1"></a>    IDsDataset(</span>
+<span id="cb18-8"><a href="#cb18-8" aria-hidden="true" tabindex="-1"></a>        mag_data<span class="op">=</span>mag_data,</span>
+<span id="cb18-9"><a href="#cb18-9" aria-hidden="true" tabindex="-1"></a>        plasma_data<span class="op">=</span>plasma_data,</span>
+<span id="cb18-10"><a href="#cb18-10" aria-hidden="true" tabindex="-1"></a>        tau<span class="op">=</span>tau,</span>
+<span id="cb18-11"><a href="#cb18-11" aria-hidden="true" tabindex="-1"></a>        ts<span class="op">=</span>ts,</span>
+<span id="cb18-12"><a href="#cb18-12" aria-hidden="true" tabindex="-1"></a>        vec_cols<span class="op">=</span>vec_cols,</span>
+<span id="cb18-13"><a href="#cb18-13" aria-hidden="true" tabindex="-1"></a>        density_col<span class="op">=</span><span class="st">"plasma_density"</span>,</span>
+<span id="cb18-14"><a href="#cb18-14" aria-hidden="true" tabindex="-1"></a>        speed_col<span class="op">=</span><span class="st">"plasma_speed"</span>,</span>
+<span id="cb18-15"><a href="#cb18-15" aria-hidden="true" tabindex="-1"></a>        temperature_col<span class="op">=</span><span class="st">"plasma_temperature"</span>,</span>
+<span id="cb18-16"><a href="#cb18-16" aria-hidden="true" tabindex="-1"></a>    )</span>
+<span id="cb18-17"><a href="#cb18-17" aria-hidden="true" tabindex="-1"></a>    .find_events(return_best_fit<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb18-18"><a href="#cb18-18" aria-hidden="true" tabindex="-1"></a>    .update_candidates_with_plasma_data()</span>
+<span id="cb18-19"><a href="#cb18-19" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>ids_ds.plot_candidates(num<span class="op">=</span><span class="dv">20</span>, plot_fit_data<span class="op">=</span><span class="va">True</span>, predicates<span class="op">=</span>(pl.col(<span class="st">'fit.stat.rsquared'</span>) <span class="op">&gt;</span> <span class="fl">0.95</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="cell-23" class="cell column-page quarto-layout-panel" data-layout-ncol="3">
 
-17-Feb-24 15:07:29: DeprecationWarning: `map_alias` is deprecated. It has been moved to `name.map`.
-
-17-Feb-24 15:07:29: DeprecationWarning: `map_alias` is deprecated. It has been moved to `name.map`.
-
-17-Feb-24 15:07:31: UserWarning: Distributing &lt;class 'pandas.core.frame.DataFrame'&gt; object. This may take some time.
-
-17-Feb-24 15:07:36: DeprecationWarning: `nanoseconds` is deprecated. It has been renamed to `total_nanoseconds`.
-
-17-Feb-24 15:07:36: PendingDeprecationWarning: The `dims` argument has been renamed to `dim`, and will be removed in the future. This renaming is taking place throughout xarray over the next few releases.
-
-17-Feb-24 15:07:36: PendingDeprecationWarning: The `dims` argument has been renamed to `dim`, and will be removed in the future. This renaming is taking place throughout xarray over the next few releases.
-
-17-Feb-24 15:07:36: PendingDeprecationWarning: The `dims` argument has been renamed to `dim`, and will be removed in the future. This renaming is taking place throughout xarray over the next few releases.
-
-17-Feb-24 15:07:36: DeprecationWarning: `suffix` is deprecated. It has been moved to `name.suffix`.
-
-17-Feb-24 15:07:36: DeprecationWarning: `suffix` is deprecated. It has been moved to `name.suffix`.
-
-17-Feb-24 15:07:36: DeprecationWarning: `suffix` is deprecated. It has been moved to `name.suffix`.
-
-17-Feb-24 15:07:36: PendingDeprecationWarning: The `dims` argument has been renamed to `dim`, and will be removed in the future. This renaming is taking place throughout xarray over the next few releases.
-
-17-Feb-24 15:07:36: PendingDeprecationWarning: The `dims` argument has been renamed to `dim`, and will be removed in the future. This renaming is taking place throughout xarray over the next few releases.
-</code></pre>
-</div>
-<div class="cell-output cell-output-display">
-<script type="application/vnd.jupyter.widget-view+json">
-{"model_id":"40ab345968fc435a963434e7ab729976","version_major":2,"version_minor":0,"quarto_mimetype":"application/vnd.jupyter.widget-view+json"}
-</script>
-</div>
-<div class="cell-output cell-output-display">
-<script type="application/vnd.jupyter.widget-view+json">
-{"model_id":"66d66368818144d0b50d05bdf7b54903","version_major":2,"version_minor":0,"quarto_mimetype":"application/vnd.jupyter.widget-view+json"}
-</script>
-</div>
-</div>
-<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>ids_ds.plot_candidates(num<span class="op">=</span><span class="dv">20</span>, plot_fit_data<span class="op">=</span><span class="va">True</span>, predicates<span class="op">=</span>(pl.col(<span class="st">'fit.stat.rsquared'</span>) <span class="op">&gt;</span> <span class="fl">0.95</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stderr">
-<pre><code>2024-02-17 15:07:37.771 | INFO     | discontinuitypy.datasets:plot_candidates:215 - Candidates indices: [1104  694 1238 1324  313  331 1240  790  689 1233   34  670  674 1045
- 1439  411 1043  793    5  436]</code></pre>
-</div>
-<div id="cell-19" class="cell column-page quarto-layout-panel" data-layout-ncol="3" data-execution_count="15">
-<div class="quarto-layout-row">
-<div class="quarto-layout-cell" style="flex-basis: 33.3%;justify-content: flex-start;">
-<pre><code>[(&lt;Figure size 1200x500 with 1 Axes&gt;,
-  &lt;Axes: title={'center': '\n#Fit# $\\max dB/dt$: 0.02, $R^2$: 0.98, $\\chi^2$: 2.03'}, ylabel='$B$\n[nT LMN]'&gt;),
- (&lt;Figure size 1200x500 with 1 Axes&gt;,
-  &lt;Axes: title={'center': '\n#Fit# $\\max dB/dt$: 0.17, $R^2$: 0.98, $\\chi^2$: 0.21'}, ylabel='$B$\n[nT LMN]'&gt;),
- (&lt;Figure size 1200x500 with 1 Axes&gt;,
-  &lt;Axes: title={'center': '\n#Fit# $\\max dB/dt$: -0.07, $R^2$: 0.98, $\\chi^2$: 0.33'}, ylabel='$B$\n[nT LMN]'&gt;),
- (&lt;Figure size 1200x500 with 1 Axes&gt;,
-  &lt;Axes: title={'center': '\n#Fit# $\\max dB/dt$: 0.02, $R^2$: 0.97, $\\chi^2$: 0.32'}, ylabel='$B$\n[nT LMN]'&gt;),
- (&lt;Figure size 1200x500 with 1 Axes&gt;,
-  &lt;Axes: title={'center': '\n#Fit# $\\max dB/dt$: -0.11, $R^2$: 0.95, $\\chi^2$: 0.22'}, ylabel='$B$\n[nT LMN]'&gt;),
- (&lt;Figure size 1200x500 with 1 Axes&gt;,
-  &lt;Axes: title={'center': '\n#Fit# $\\max dB/dt$: 0.02, $R^2$: 0.96, $\\chi^2$: 0.81'}, ylabel='$B$\n[nT LMN]'&gt;),
- (&lt;Figure size 1200x500 with 1 Axes&gt;,
-  &lt;Axes: title={'center': '\n#Fit# $\\max dB/dt$: -0.07, $R^2$: 0.98, $\\chi^2$: 0.33'}, ylabel='$B$\n[nT LMN]'&gt;),
- (&lt;Figure size 1200x500 with 1 Axes&gt;,
-  &lt;Axes: title={'center': '\n#Fit# $\\max dB/dt$: -0.02, $R^2$: 0.98, $\\chi^2$: 0.12'}, ylabel='$B$\n[nT LMN]'&gt;),
- (&lt;Figure size 1200x500 with 1 Axes&gt;,
-  &lt;Axes: title={'center': '\n#Fit# $\\max dB/dt$: 0.22, $R^2$: 0.97, $\\chi^2$: 0.09'}, ylabel='$B$\n[nT LMN]'&gt;),
- (&lt;Figure size 1200x500 with 1 Axes&gt;,
-  &lt;Axes: title={'center': '\n#Fit# $\\max dB/dt$: 0.40, $R^2$: 0.98, $\\chi^2$: 0.30'}, ylabel='$B$\n[nT LMN]'&gt;),
- (&lt;Figure size 1200x500 with 1 Axes&gt;,
-  &lt;Axes: title={'center': '\n#Fit# $\\max dB/dt$: -0.04, $R^2$: 0.96, $\\chi^2$: 0.89'}, ylabel='$B$\n[nT LMN]'&gt;),
- (&lt;Figure size 1200x500 with 1 Axes&gt;,
-  &lt;Axes: title={'center': '\n#Fit# $\\max dB/dt$: 0.02, $R^2$: 0.97, $\\chi^2$: 1.42'}, ylabel='$B$\n[nT LMN]'&gt;),
- (&lt;Figure size 1200x500 with 1 Axes&gt;,
-  &lt;Axes: title={'center': '\n#Fit# $\\max dB/dt$: 0.25, $R^2$: 0.98, $\\chi^2$: 0.08'}, ylabel='$B$\n[nT LMN]'&gt;),
- (&lt;Figure size 1200x500 with 1 Axes&gt;,
-  &lt;Axes: title={'center': '\n#Fit# $\\max dB/dt$: -0.03, $R^2$: 0.98, $\\chi^2$: 0.14'}, ylabel='$B$\n[nT LMN]'&gt;),
- (&lt;Figure size 1200x500 with 1 Axes&gt;,
-  &lt;Axes: title={'center': '\n#Fit# $\\max dB/dt$: -0.15, $R^2$: 1.00, $\\chi^2$: 5.87'}, ylabel='$B$\n[nT LMN]'&gt;),
- (&lt;Figure size 1200x500 with 1 Axes&gt;,
-  &lt;Axes: title={'center': '\n#Fit# $\\max dB/dt$: -0.26, $R^2$: 0.99, $\\chi^2$: 0.37'}, ylabel='$B$\n[nT LMN]'&gt;),
- (&lt;Figure size 1200x500 with 1 Axes&gt;,
-  &lt;Axes: title={'center': '\n#Fit# $\\max dB/dt$: -0.03, $R^2$: 0.98, $\\chi^2$: 0.14'}, ylabel='$B$\n[nT LMN]'&gt;),
- (&lt;Figure size 1200x500 with 1 Axes&gt;,
-  &lt;Axes: title={'center': '\n#Fit# $\\max dB/dt$: -0.06, $R^2$: 0.97, $\\chi^2$: 0.67'}, ylabel='$B$\n[nT LMN]'&gt;),
- (&lt;Figure size 1200x500 with 1 Axes&gt;,
-  &lt;Axes: title={'center': '\n#Fit# $\\max dB/dt$: 0.02, $R^2$: 0.97, $\\chi^2$: 0.47'}, ylabel='$B$\n[nT LMN]'&gt;),
- (&lt;Figure size 1200x500 with 1 Axes&gt;,
-  &lt;Axes: title={'center': '\n#Fit# $\\max dB/dt$: 0.03, $R^2$: 0.95, $\\chi^2$: 0.73'}, ylabel='$B$\n[nT LMN]'&gt;)]</code></pre>
-</div>
-<div class="quarto-layout-cell" style="flex-basis: 33.3%;justify-content: center;">
-<p><a href="index_files/figure-html/cell-10-output-3.png" class="lightbox" data-gallery="quarto-lightbox-gallery-21"><img src="index_files/figure-html/cell-10-output-3.png" class="img-fluid"></a></p>
-</div>
-<div class="quarto-layout-cell" style="flex-basis: 33.3%;justify-content: center;">
-<p><a href="index_files/figure-html/cell-10-output-4.png" class="lightbox" data-gallery="quarto-lightbox-gallery-22"><img src="index_files/figure-html/cell-10-output-4.png" class="img-fluid"></a></p>
-</div>
-</div>
-<div class="quarto-layout-row">
-<div class="quarto-layout-cell" style="flex-basis: 33.3%;justify-content: center;">
-<p><a href="index_files/figure-html/cell-10-output-5.png" class="lightbox" data-gallery="quarto-lightbox-gallery-23"><img src="index_files/figure-html/cell-10-output-5.png" class="img-fluid"></a></p>
-</div>
-<div class="quarto-layout-cell" style="flex-basis: 33.3%;justify-content: center;">
-<p><a href="index_files/figure-html/cell-10-output-6.png" class="lightbox" data-gallery="quarto-lightbox-gallery-24"><img src="index_files/figure-html/cell-10-output-6.png" class="img-fluid"></a></p>
-</div>
-<div class="quarto-layout-cell" style="flex-basis: 33.3%;justify-content: center;">
-<p><a href="index_files/figure-html/cell-10-output-7.png" class="lightbox" data-gallery="quarto-lightbox-gallery-25"><img src="index_files/figure-html/cell-10-output-7.png" class="img-fluid"></a></p>
-</div>
-</div>
-<div class="quarto-layout-row">
-<div class="quarto-layout-cell" style="flex-basis: 33.3%;justify-content: center;">
-<p><a href="index_files/figure-html/cell-10-output-8.png" class="lightbox" data-gallery="quarto-lightbox-gallery-26"><img src="index_files/figure-html/cell-10-output-8.png" class="img-fluid"></a></p>
-</div>
-<div class="quarto-layout-cell" style="flex-basis: 33.3%;justify-content: center;">
-<p><a href="index_files/figure-html/cell-10-output-9.png" class="lightbox" data-gallery="quarto-lightbox-gallery-27"><img src="index_files/figure-html/cell-10-output-9.png" class="img-fluid"></a></p>
-</div>
-<div class="quarto-layout-cell" style="flex-basis: 33.3%;justify-content: center;">
-<p><a href="index_files/figure-html/cell-10-output-10.png" class="lightbox" data-gallery="quarto-lightbox-gallery-28"><img src="index_files/figure-html/cell-10-output-10.png" class="img-fluid"></a></p>
-</div>
-</div>
-<div class="quarto-layout-row">
-<div class="quarto-layout-cell" style="flex-basis: 33.3%;justify-content: center;">
-<p><a href="index_files/figure-html/cell-10-output-11.png" class="lightbox" data-gallery="quarto-lightbox-gallery-29"><img src="index_files/figure-html/cell-10-output-11.png" class="img-fluid"></a></p>
-</div>
-<div class="quarto-layout-cell" style="flex-basis: 33.3%;justify-content: center;">
-<p><a href="index_files/figure-html/cell-10-output-12.png" class="lightbox" data-gallery="quarto-lightbox-gallery-30"><img src="index_files/figure-html/cell-10-output-12.png" class="img-fluid"></a></p>
-</div>
-<div class="quarto-layout-cell" style="flex-basis: 33.3%;justify-content: center;">
-<p><a href="index_files/figure-html/cell-10-output-13.png" class="lightbox" data-gallery="quarto-lightbox-gallery-31"><img src="index_files/figure-html/cell-10-output-13.png" class="img-fluid"></a></p>
-</div>
-</div>
-<div class="quarto-layout-row">
-<div class="quarto-layout-cell" style="flex-basis: 33.3%;justify-content: center;">
-<p><a href="index_files/figure-html/cell-10-output-14.png" class="lightbox" data-gallery="quarto-lightbox-gallery-32"><img src="index_files/figure-html/cell-10-output-14.png" class="img-fluid"></a></p>
-</div>
-<div class="quarto-layout-cell" style="flex-basis: 33.3%;justify-content: center;">
-<p><a href="index_files/figure-html/cell-10-output-15.png" class="lightbox" data-gallery="quarto-lightbox-gallery-33"><img src="index_files/figure-html/cell-10-output-15.png" class="img-fluid"></a></p>
-</div>
-<div class="quarto-layout-cell" style="flex-basis: 33.3%;justify-content: center;">
-<p><a href="index_files/figure-html/cell-10-output-16.png" class="lightbox" data-gallery="quarto-lightbox-gallery-34"><img src="index_files/figure-html/cell-10-output-16.png" class="img-fluid"></a></p>
-</div>
-</div>
-<div class="quarto-layout-row">
-<div class="quarto-layout-cell" style="flex-basis: 33.3%;justify-content: center;">
-<p><a href="index_files/figure-html/cell-10-output-17.png" class="lightbox" data-gallery="quarto-lightbox-gallery-35"><img src="index_files/figure-html/cell-10-output-17.png" class="img-fluid"></a></p>
-</div>
-<div class="quarto-layout-cell" style="flex-basis: 33.3%;justify-content: center;">
-<p><a href="index_files/figure-html/cell-10-output-18.png" class="lightbox" data-gallery="quarto-lightbox-gallery-36"><img src="index_files/figure-html/cell-10-output-18.png" class="img-fluid"></a></p>
-</div>
-<div class="quarto-layout-cell" style="flex-basis: 33.3%;justify-content: center;">
-<p><a href="index_files/figure-html/cell-10-output-19.png" class="lightbox" data-gallery="quarto-lightbox-gallery-37"><img src="index_files/figure-html/cell-10-output-19.png" class="img-fluid"></a></p>
-</div>
-</div>
-<div class="quarto-layout-row">
-<div class="quarto-layout-cell" style="flex-basis: 33.3%;justify-content: center;">
-<p><a href="index_files/figure-html/cell-10-output-20.png" class="lightbox" data-gallery="quarto-lightbox-gallery-38"><img src="index_files/figure-html/cell-10-output-20.png" class="img-fluid"></a></p>
-</div>
-<div class="quarto-layout-cell" style="flex-basis: 33.3%;justify-content: center;">
-<p><a href="index_files/figure-html/cell-10-output-21.png" class="lightbox" data-gallery="quarto-lightbox-gallery-39"><img src="index_files/figure-html/cell-10-output-21.png" class="img-fluid"></a></p>
-</div>
-<div class="quarto-layout-cell" style="flex-basis: 33.3%;justify-content: center;">
-<p><a href="index_files/figure-html/cell-10-output-22.png" class="lightbox" data-gallery="quarto-lightbox-gallery-40"><img src="index_files/figure-html/cell-10-output-22.png" class="img-fluid"></a></p>
-</div>
-</div>
 </div>
 </section>
 </section>
@@ -961,21 +726,21 @@ See https://numpy.org/devdocs/release/1.25.0-notes.html and the docs for more in
 <p>1 day of data resampled by 1 sec is about 12 MB.</p>
 <p>So 1 year of data is about 4 GB, and 6 years of JUNO Cruise data is about 24 GB.</p>
 <p>Downloading rate is about 250 KB/s, so it will take about 3 days to download all the data.</p>
-<div id="cell-24" class="cell">
-<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>num_of_files <span class="op">=</span> <span class="dv">6</span><span class="op">*</span><span class="dv">365</span></span>
-<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>jno_file_size <span class="op">=</span> <span class="fl">12e3</span></span>
-<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a>thm_file_size <span class="op">=</span> <span class="fl">40e3</span></span>
-<span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a>files_size <span class="op">=</span> jno_file_size <span class="op">+</span> thm_file_size</span>
-<span id="cb17-5"><a href="#cb17-5" aria-hidden="true" tabindex="-1"></a>downloading_rate <span class="op">=</span> <span class="dv">250</span></span>
-<span id="cb17-6"><a href="#cb17-6" aria-hidden="true" tabindex="-1"></a>processing_rate <span class="op">=</span> <span class="dv">1</span><span class="op">/</span><span class="dv">60</span></span>
-<span id="cb17-7"><a href="#cb17-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb17-8"><a href="#cb17-8" aria-hidden="true" tabindex="-1"></a>time_to_download <span class="op">=</span> num_of_files <span class="op">*</span> files_size <span class="op">/</span> downloading_rate <span class="op">/</span> <span class="dv">60</span> <span class="op">/</span> <span class="dv">60</span></span>
-<span id="cb17-9"><a href="#cb17-9" aria-hidden="true" tabindex="-1"></a>space_required <span class="op">=</span> num_of_files <span class="op">*</span> files_size <span class="op">/</span> <span class="fl">1e6</span></span>
-<span id="cb17-10"><a href="#cb17-10" aria-hidden="true" tabindex="-1"></a>time_to_process <span class="op">=</span> num_of_files <span class="op">/</span> processing_rate <span class="op">/</span> <span class="dv">60</span> <span class="op">/</span> <span class="dv">60</span></span>
-<span id="cb17-11"><a href="#cb17-11" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb17-12"><a href="#cb17-12" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Time to download: </span><span class="sc">{</span>time_to_download<span class="sc">:.2f}</span><span class="ss"> hours"</span>)</span>
-<span id="cb17-13"><a href="#cb17-13" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Disk space required: </span><span class="sc">{</span>space_required<span class="sc">:.2f}</span><span class="ss"> GB"</span>)</span>
-<span id="cb17-14"><a href="#cb17-14" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Time to process: </span><span class="sc">{</span>time_to_process<span class="sc">:.2f}</span><span class="ss"> hours"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="cell-28" class="cell">
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>num_of_files <span class="op">=</span> <span class="dv">6</span><span class="op">*</span><span class="dv">365</span></span>
+<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a>jno_file_size <span class="op">=</span> <span class="fl">12e3</span></span>
+<span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a>thm_file_size <span class="op">=</span> <span class="fl">40e3</span></span>
+<span id="cb20-4"><a href="#cb20-4" aria-hidden="true" tabindex="-1"></a>files_size <span class="op">=</span> jno_file_size <span class="op">+</span> thm_file_size</span>
+<span id="cb20-5"><a href="#cb20-5" aria-hidden="true" tabindex="-1"></a>downloading_rate <span class="op">=</span> <span class="dv">250</span></span>
+<span id="cb20-6"><a href="#cb20-6" aria-hidden="true" tabindex="-1"></a>processing_rate <span class="op">=</span> <span class="dv">1</span><span class="op">/</span><span class="dv">60</span></span>
+<span id="cb20-7"><a href="#cb20-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-8"><a href="#cb20-8" aria-hidden="true" tabindex="-1"></a>time_to_download <span class="op">=</span> num_of_files <span class="op">*</span> files_size <span class="op">/</span> downloading_rate <span class="op">/</span> <span class="dv">60</span> <span class="op">/</span> <span class="dv">60</span></span>
+<span id="cb20-9"><a href="#cb20-9" aria-hidden="true" tabindex="-1"></a>space_required <span class="op">=</span> num_of_files <span class="op">*</span> files_size <span class="op">/</span> <span class="fl">1e6</span></span>
+<span id="cb20-10"><a href="#cb20-10" aria-hidden="true" tabindex="-1"></a>time_to_process <span class="op">=</span> num_of_files <span class="op">/</span> processing_rate <span class="op">/</span> <span class="dv">60</span> <span class="op">/</span> <span class="dv">60</span></span>
+<span id="cb20-11"><a href="#cb20-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-12"><a href="#cb20-12" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Time to download: </span><span class="sc">{</span>time_to_download<span class="sc">:.2f}</span><span class="ss"> hours"</span>)</span>
+<span id="cb20-13"><a href="#cb20-13" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Disk space required: </span><span class="sc">{</span>space_required<span class="sc">:.2f}</span><span class="ss"> GB"</span>)</span>
+<span id="cb20-14"><a href="#cb20-14" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Time to process: </span><span class="sc">{</span>time_to_process<span class="sc">:.2f}</span><span class="ss"> hours"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 
 
@@ -1371,7 +1136,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 });
 </script>
 </div> <!-- /content -->
-<script>var lightboxQuarto = GLightbox({"descPosition":"bottom","openEffect":"zoom","loop":false,"selector":".lightbox","closeEffect":"zoom"});
+<script>var lightboxQuarto = GLightbox({"selector":".lightbox","closeEffect":"zoom","loop":false,"openEffect":"zoom","descPosition":"bottom"});
 window.onload = () => {
   lightboxQuarto.on('slide_before_load', (data) => {
     const { slideIndex, slideNode, slideConfig, player, trigger } = data;
