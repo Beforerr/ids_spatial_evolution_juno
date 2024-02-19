@@ -1,63 +1,151 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+    <meta charset="utf-8">
+    <meta name="generator" content="quarto-1.4.547">
 
-<meta charset="utf-8">
-<meta name="generator" content="quarto-1.4.547">
-
-<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-
-
-<title>SWD Properties</title>
-<style>
-code{white-space: pre-wrap;}
-span.smallcaps{font-variant: small-caps;}
-div.columns{display: flex; gap: min(4vw, 1.5em);}
-div.column{flex: auto; overflow-x: auto;}
-div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
-ul.task-list{list-style: none;}
-ul.task-list li input[type="checkbox"] {
-  width: 0.8em;
-  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
-  vertical-align: middle;
-}
-/* CSS for syntax highlighting */
-pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { line-height: 1.25; }
-pre > code.sourceCode > span:empty { height: 1.2em; }
-.sourceCode { overflow: visible; }
-code.sourceCode > span { color: inherit; text-decoration: inherit; }
-div.sourceCode { margin: 1em 0; }
-pre.sourceCode { margin: 0; }
-@media screen {
-div.sourceCode { overflow: auto; }
-}
-@media print {
-pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
-}
-pre.numberSource code
-  { counter-reset: source-line 0; }
-pre.numberSource code > span
-  { position: relative; left: -4em; counter-increment: source-line; }
-pre.numberSource code > span > a:first-child::before
-  { content: counter(source-line);
-    position: relative; left: -1em; text-align: right; vertical-align: baseline;
-    border: none; display: inline-block;
-    -webkit-touch-callout: none; -webkit-user-select: none;
-    -khtml-user-select: none; -moz-user-select: none;
-    -ms-user-select: none; user-select: none;
-    padding: 0 4px; width: 4em;
-  }
-pre.numberSource { margin-left: 3em;  padding-left: 4px; }
-div.sourceCode
-  {   }
-@media screen {
-pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
-}
-</style>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg==" crossorigin="anonymous"></script><script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+    <title>SWD Properties</title>
+    <style>
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      div.columns{display: flex; gap: min(4vw, 1.5em);}
+      div.column{flex: auto; overflow-x: auto;}
+      div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+      ul.task-list{list-style: none;}
+      ul.task-list li input[type="checkbox"] {
+        width: 0.8em;
+        margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+        vertical-align: middle;
+      }
+      /* CSS for syntax highlighting */
+      pre > code.sourceCode { white-space: pre; position: relative; }
+      pre > code.sourceCode > span { line-height: 1.25; }
+      pre > code.sourceCode > span:empty { height: 1.2em; }
+      .sourceCode { overflow: visible; }
+      code.sourceCode > span { color: inherit; text-decoration: inherit; }
+      div.sourceCode { margin: 1em 0; }
+      pre.sourceCode { margin: 0; }
+      @media screen {
+      div.sourceCode { overflow: auto; }
+      }
+      @media print {
+      pre > code.sourceCode { white-space: pre-wrap; }
+      pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+      }
+      pre.numberSource code
+        { counter-reset: source-line 0; }
+      pre.numberSource code > span
+        { position: relative; left: -4em; counter-increment: source-line; }
+      pre.numberSource code > span > a:first-child::before
+        { content: counter(source-line);
+          position: relative; left: -1em; text-align: right; vertical-align: baseline;
+          border: none; display: inline-block;
+          -webkit-touch-callout: none; -webkit-user-select: none;
+          -khtml-user-select: none; -moz-user-select: none;
+          -ms-user-select: none; user-select: none;
+          padding: 0 4px; width: 4em;
+        }
+      pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+      div.sourceCode
+        {   }
+      @media screen {
+      pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+      }
+    </style>
+
+    <style>
+      body.hypothesis-enabled #quarto-embed-header {
+        padding-right: 36px;
+      }
+
+      #quarto-embed-header {
+        height: 3em;
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        border-bottom: solid 1px;
+      }
+
+      #quarto-embed-header h6 {
+        font-size: 1.1em;
+        padding-top: 0.6em;
+        margin-left: 1em;
+        margin-right: 1em;
+        font-weight: 400;
+      }
+
+      #quarto-embed-header a.quarto-back-link,
+      #quarto-embed-header a.quarto-download-embed {
+        font-size: 0.8em;
+        margin-top: 1em;
+        margin-bottom: 1em;
+        margin-left: 1em;
+        margin-right: 1em;
+      }
+
+      .quarto-back-container {
+        padding-left: 0.5em;
+        display: flex;
+      }
+
+      .headroom {
+          will-change: transform;
+          transition: transform 200ms linear;
+      }
+
+      .headroom--pinned {
+          transform: translateY(0%);
+      }
+
+      .headroom--unpinned {
+          transform: translateY(-100%);
+      }      
+    </style>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg==" crossorigin="anonymous"></script><script>
+    window.document.addEventListener("DOMContentLoaded", function () {
+
+      var header = window.document.querySelector("#quarto-embed-header");
+      const titleBannerEl = window.document.querySelector("body > #title-block-header");
+      if (titleBannerEl) {
+        titleBannerEl.style.paddingTop = header.clientHeight + "px";
+      }
+      const contentEl = window.document.getElementById('quarto-content');
+      for (const child of contentEl.children) {
+        child.style.paddingTop = header.clientHeight + "px";
+        child.style.marginTop = "1em";
+      }
+
+      // Use the article root if the `back` call doesn't work. This isn't perfect
+      // but should typically work
+      window.quartoBackToArticle = () => {
+        var currentUrl = window.location.href;
+        window.history.back();
+        setTimeout(() => {
+            // if location was not changed in 100 ms, then there is no history back
+            if(currentUrl === window.location.href){              
+                // redirect to site root
+                window.location.href = '/';
+            }
+        }, 100);
+      }
+
+      const headroom = new window.Headroom(header, {
+        tolerance: 5,
+        onPin: function () {
+        },
+        onUnpin: function () {
+        },
+      });
+      headroom.init();
+    });
+    </script>
+
+    
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
 <script src="../site_libs/quarto-nav/headroom.min.js"></script>
 <script src="../site_libs/clipboard/clipboard.min.js"></script>
 <script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
@@ -76,7 +164,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="../site_libs/quarto-contrib/glightbox/glightbox.min.js"></script>
 <link href="../site_libs/quarto-contrib/glightbox/glightbox.min.css" rel="stylesheet">
 <link href="../site_libs/quarto-contrib/glightbox/lightbox.css" rel="stylesheet">
-<script id="quarto-search-options" type="application/json">{
+     <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
   "collapse-after": 3,
@@ -102,17 +190,21 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     "search-submit-button-title": "Submit",
     "search-label": "Search"
   }
-}</script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.6/require.min.js" integrity="sha512-c3Nl8+7g4LMSTdrm621y7kf9v3SDPnhxLNhcjFJbKECVnmZHTdo+IRO05sNLTH/D3vA6u1X32ehoLC7WFVdheg==" crossorigin="anonymous"></script>
+}</script>  <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.6/require.min.js" integrity="sha512-c3Nl8+7g4LMSTdrm621y7kf9v3SDPnhxLNhcjFJbKECVnmZHTdo+IRO05sNLTH/D3vA6u1X32ehoLC7WFVdheg==" crossorigin="anonymous"></script>
 
-<script type="application/javascript">define('jquery', [],function() {return window.jQuery;})</script>
+<script type="application/javascript">define('jquery', [],function() {return window.jQuery;})</script>  
+      </head>
 
+  <body class="nav-sidebar floating nav-fixed quarto-notebook">
+    <div id="quarto-embed-header" class="headroom fixed-top bg-primary">
+      
+      <a onclick="window.quartoBackToArticle(); return false;" class="btn btn-primary quarto-back-link"><i class="bi bi-caret-left"></i> Back to Article</a>
+      <h6><i class="bi bi-journal-code"></i> SWD Properties</h6>
 
-</head>
+            <a href="../notebooks/04_properties.ipynb" class="btn btn-primary quarto-download-embed" download="04_properties.ipynb">Download Notebook</a>
+          </div>
 
-<body class="nav-sidebar floating nav-fixed">
-
-<div id="quarto-search-results"></div>
+     <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
     <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
       <div class="navbar-container container-fluid">
@@ -391,11 +483,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   </li>
     </ul>
     </div>
-</nav>
-<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
-<!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        <nav id="TOC" role="doc-toc" class="toc-active">
+    <nav id="TOC" role="doc-toc" class="toc-active">
     <h2 id="toc-title">On this page</h2>
    
   <ul>
@@ -404,11 +492,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#plotting-in-r" id="toc-plotting-in-r" class="nav-link" data-scroll-target="#plotting-in-r">Plotting in R</a></li>
   </ul>
 </nav>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
     </div>
 <!-- main -->
-<main class="content" id="quarto-document-content">
-
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../notebooks/00_overview.html">Notebooks</a></li><li class="breadcrumb-item"><a href="../notebooks/04_properties.html">SWD Properties</a></li></ol></nav>
+<main class="content" id="quarto-document-content">      <header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../notebooks/00_overview.html">Notebooks</a></li><li class="breadcrumb-item"><a href="../notebooks/04_properties.html">SWD Properties</a></li></ol></nav>
 <div class="quarto-title">
 <h1 class="title">SWD Properties</h1>
 </div>
@@ -424,11 +514,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   
 
 
-</header>
-
-
+</header>     <div id="cell-1" class="cell markdown">
 <section id="setup" class="level2">
 <h2 class="anchored" data-anchor-id="setup">Setup</h2>
+</section>
+</div>
 <p>::: {#cell-2 .cell 0=‘h’ 1=‘i’ 2=‘d’ 3=‘e’ execution_count=36}</p>
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> polars <span class="im">as</span> pl</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> loguru <span class="im">import</span> logger</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -441,8 +531,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   %reload_ext autoreload</code></pre>
 </div>
 <p>:::</p>
+<div id="cell-4" class="cell markdown">
 <p>Connect <code>python</code> with <code>R</code> kernel</p>
-<div id="cell-5" class="cell" data-notebookrungroups="{&quot;groupValue&quot;:&quot;1&quot;}" data-execution_count="65">
+</div>
+<div class="cell-container"><div class="cell-decorator"><pre>In [65]:</pre></div><div id="cell-5" class="cell" data-notebookrungroups="{&quot;groupValue&quot;:&quot;1&quot;}" data-execution_count="65">
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> beforerr.r <span class="im">import</span> py2rpy_polars</span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> rpy2.robjects <span class="im">as</span> robjects</span>
 <span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -456,17 +548,19 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <pre><code>The rpy2.ipython extension is already loaded. To reload it, use:
   %reload_ext rpy2.ipython</code></pre>
 </div>
-</div>
-</section>
+</div></div>
+<div id="cell-6" class="cell markdown">
 <section id="processing-datasets" class="level2">
 <h2 class="anchored" data-anchor-id="processing-datasets">Processing datasets</h2>
-<div id="cell-7" class="cell" data-execution_count="39">
+</section>
+</div>
+<div class="cell-container"><div class="cell-decorator"><pre>In [39]:</pre></div><div id="cell-7" class="cell" data-execution_count="39">
 <div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>ts <span class="op">=</span> <span class="dv">1</span> <span class="co"># unit: seconds</span></span>
 <span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>tau <span class="op">=</span> <span class="dv">60</span> <span class="co"># unit: seconds</span></span>
 <span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>data_dir <span class="op">=</span> <span class="st">"../data"</span></span>
 <span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a><span class="bu">format</span> <span class="op">=</span> <span class="st">"arrow"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<div id="cell-8" class="cell" data-execution_count="40">
+</div></div>
+<div class="cell-container"><div class="cell-decorator"><pre>In [40]:</pre></div><div id="cell-8" class="cell" data-execution_count="40">
 <div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> utils <span class="im">import</span> load_events, PARAMETERS</span>
 <span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>wind_df <span class="op">=</span> load_events(<span class="st">'Wind'</span>, <span class="dv">1</span>, <span class="dv">60</span>, <span class="st">'fit'</span>)</span>
@@ -483,9 +577,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="cell-output cell-output-stderr">
 <pre><code>2024-02-18 21:55:57.510 | INFO     | __main__:&lt;module&gt;:13 - Columns: ['time', 'tstart', 'tstop', 'd_tstart', 'd_tstop', 'd_time', 'time_before', 'time_after', 'count', 'B_std', 'B_mean', 'dB_vec', 'index_diff', 'index_std', 'index_fluctuation', 'B.after', 'B.before', 'b_mag', 'b_n', 'bn_over_b', 'd_star', 'db_mag', 'db_over_b', 'db_over_b_max', 'fit.stat.chisqr', 'fit.stat.rsquared', 'fit.vars.amplitude', 'fit.vars.c', 'fit.vars.sigma', 'rotation_angle', 'dB_x', 'dB_y', 'dB_z', 'dB_lmn_x', 'dB_lmn_y', 'dB_lmn_z', 'k_x', 'k_y', 'k_z', 'Vl_x', 'Vl_y', 'Vl_z', 'Vn_x', 'Vn_y', 'Vn_z', 'duration', 'radial_distance', 'plasma_density', 'plasma_temperature', 'model_b_r', 'model_b_t', 'model_b_n', 'v_x', 'v_y', 'v_z', 'plasma_speed', 'B_background_x', 'B_background_y', 'B_background_z', 'v_x_before', 'v_y_before', 'v_z_before', 'n.before', 'v.ion.before', 'plasma_temperature_before', 'v_x_after', 'v_y_after', 'v_z_after', 'n.after', 'v.ion.after', 'plasma_temperature_after', 'v_l', 'v_n', 'v_k', 'v_mn', 'L_k', 'j0_k', 'ion_inertial_length', 'Alfven_speed', 'j_Alfven', 'L_k_norm', 'j0_k_norm', 'v.ion.before.l', 'v.ion.after.l', 'B.vec.before.l', 'B.vec.before.m', 'B.vec.before.n', 'B.vec.after.l', 'B.vec.after.m', 'B.vec.after.n', 'v.Alfven.before', 'v.Alfven.after', 'v.Alfven.before.l', 'v.Alfven.after.l', 'n.change', 'v.ion.change', 'v.ion.change.l', 'B.change', 'v.Alfven.change', 'v.Alfven.change.l', 'sat', 'ts', 'method', 'ts_method', 'label', 'index_d_diff']</code></pre>
 </div>
-</div>
+</div></div>
+<div id="cell-9" class="cell markdown">
 <p>Some extreme values are present in the data. We will remove them.</p>
-<div id="cell-10" class="cell" data-execution_count="41">
+</div>
+<div class="cell-container"><div class="cell-decorator"><pre>In [41]:</pre></div><div id="cell-10" class="cell" data-execution_count="41">
 <div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>DISPLAY_VARS <span class="op">=</span> [<span class="st">'time'</span>, <span class="st">'sat'</span>] <span class="op">+</span> PARAMETERS</span>
 <span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> check_candidates(df):</span>
@@ -614,8 +710,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </table>
 </div>
 </div>
-</div>
-<div id="cell-11" class="cell" data-execution_count="42">
+</div></div>
+<div class="cell-container"><div class="cell-decorator"><pre>In [42]:</pre></div><div id="cell-11" class="cell" data-execution_count="42">
 <div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> remove_extreme(df, cols <span class="op">=</span> [<span class="st">'j0_k'</span>, <span class="st">'L_k'</span>], q <span class="op">=</span> <span class="fl">0.96</span>):</span>
 <span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>    filter_conditions <span class="op">=</span> [</span>
 <span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>        pl.col(col) <span class="op">&lt;</span> pl.col(col).quantile(q) <span class="cf">for</span> col <span class="kw">in</span> cols</span>
@@ -638,8 +734,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb11-20"><a href="#cb11-20" aria-hidden="true" tabindex="-1"></a>jno_df_8hz <span class="op">=</span> jno_df_8hz.pipe(keep_good_fit)</span>
 <span id="cb11-21"><a href="#cb11-21" aria-hidden="true" tabindex="-1"></a>jno_df_8hz_tau_20 <span class="op">=</span> jno_df_8hz_tau_20.pipe(keep_good_fit)</span>
 <span id="cb11-22"><a href="#cb11-22" aria-hidden="true" tabindex="-1"></a>jno_df_8hz_tau_20_der <span class="op">=</span> jno_df_8hz_tau_20_der.<span class="bu">filter</span>(pl.col(<span class="st">'len'</span>)<span class="op">==</span><span class="dv">160</span>, pl.col(<span class="st">'index_d_diff'</span>)<span class="op">&gt;</span><span class="fl">0.8</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<div id="cell-12" class="cell" data-execution_count="43">
+</div></div>
+<div class="cell-container"><div class="cell-decorator"><pre>In [43]:</pre></div><div id="cell-12" class="cell" data-execution_count="43">
 <div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>logger.info(<span class="ss">f"Number of events &gt; 5AU: </span><span class="sc">{</span>jno_df<span class="sc">.</span><span class="bu">filter</span>(pl.col(<span class="st">'radial_distance'</span>) <span class="op">&gt;</span> <span class="dv">4</span>)<span class="sc">.</span>height<span class="sc">}</span><span class="ss">"</span>)</span>
 <span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>logger.info(<span class="ss">f"Number of events &gt; 5AU: </span><span class="sc">{</span>jno_df<span class="sc">.</span><span class="bu">filter</span>(pl.col(<span class="st">'radial_distance'</span>) <span class="op">&gt;</span> <span class="dv">3</span>, pl.col(<span class="st">'radial_distance'</span>) <span class="op">&lt;</span> <span class="dv">4</span>)<span class="sc">.</span>height<span class="sc">}</span><span class="ss">"</span>)</span>
 <span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>logger.info(<span class="ss">f"Number of events &gt; 5AU: </span><span class="sc">{</span>jno_df_tau_300<span class="sc">.</span><span class="bu">filter</span>(pl.col(<span class="st">'radial_distance'</span>) <span class="op">&gt;</span> <span class="dv">4</span>)<span class="sc">.</span>height<span class="sc">}</span><span class="ss">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -648,19 +744,21 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 2024-02-18 21:56:00.093 | INFO     | __main__:&lt;module&gt;:2 - Number of events &gt; 5AU: 2033
 2024-02-18 21:56:00.094 | INFO     | __main__:&lt;module&gt;:3 - Number of events &gt; 5AU: 1035</code></pre>
 </div>
-</div>
-</section>
+</div></div>
+<div id="cell-13" class="cell markdown">
 <section id="plotting-in-r" class="level2">
 <h2 class="anchored" data-anchor-id="plotting-in-r">Plotting in R</h2>
-<div id="cell-14" class="cell" data-execution_count="44">
+</section>
+</div>
+<div class="cell-container"><div class="cell-decorator"><pre>In [44]:</pre></div><div id="cell-14" class="cell" data-execution_count="44">
 <div class="sourceCode cell-code" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="op">%</span>R <span class="op">-</span>i jno_df <span class="op">-</span>c conv_pl</span>
 <span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a><span class="op">%</span>R <span class="op">-</span>i other_events <span class="op">-</span>c conv_pl</span>
 <span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a><span class="op">%</span>R <span class="op">-</span>i jno_df_tau_300 <span class="op">-</span>c conv_pl</span>
 <span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a><span class="op">%</span>R <span class="op">-</span>i jno_df_8hz <span class="op">-</span>c conv_pl</span>
 <span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a><span class="op">%</span>R <span class="op">-</span>i jno_df_8hz_tau_20 <span class="op">-</span>c conv_pl</span>
 <span id="cb14-6"><a href="#cb14-6" aria-hidden="true" tabindex="-1"></a><span class="op">%</span>R <span class="op">-</span>i jno_df_8hz_tau_20_der <span class="op">-</span>c conv_pl</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<div id="cell-15" class="cell" data-execution_count="45">
+</div></div>
+<div class="cell-container"><div class="cell-decorator"><pre>In [45]:</pre></div><div id="cell-15" class="cell" data-execution_count="45">
 <div class="sourceCode cell-code" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="op">%%</span>R</span>
 <span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>p1title <span class="op">&lt;-</span> <span class="st">"a) Juno"</span></span>
 <span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>p2title <span class="op">&lt;-</span> <span class="st">"b) ARTEMIS, STEREO and Wind"</span></span>
@@ -672,8 +770,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb15-9"><a href="#cb15-9" aria-hidden="true" tabindex="-1"></a>y_lab_L_norm <span class="op">&lt;-</span> expression(Log<span class="op">~</span>Thickness<span class="op">~</span>(d[i]))</span>
 <span id="cb15-10"><a href="#cb15-10" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb15-11"><a href="#cb15-11" aria-hidden="true" tabindex="-1"></a>layout <span class="op">&lt;-</span> plot_layout(ncol <span class="op">=</span> <span class="dv">2</span>, byrow <span class="op">=</span> FALSE, guides <span class="op">=</span> <span class="st">"collect"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<div id="cell-16" class="cell" data-execution_count="77">
+</div></div>
+<div class="cell-container"><div class="cell-decorator"><pre>In [77]:</pre></div><div id="cell-16" class="cell" data-execution_count="77">
 <div class="sourceCode cell-code" id="cb16"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="op">%%</span>R <span class="op">-</span>w <span class="dv">350</span> <span class="op">-</span>h <span class="dv">350</span> <span class="op">-</span>u mm</span>
 <span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>add_mode <span class="op">&lt;-</span> TRUE</span>
 <span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a>x_bins <span class="op">&lt;-</span> <span class="dv">5</span></span>
@@ -709,14 +807,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 Saving 13.8 x 13.8 in image</code></pre>
 </div>
 <div class="cell-output cell-output-display">
-<div>
+<div class="">
 <figure class="figure">
-<p><a href="04_properties_files/figure-html/cell-12-output-2.png" class="lightbox" data-gallery="quarto-lightbox-gallery-1"><img src="04_properties_files/figure-html/cell-12-output-2.png" class="img-fluid figure-img"></a></p>
+<p class=""><a href="04_properties_files/figure-html/cell-12-output-2.png" class="lightbox" data-gallery="quarto-lightbox-gallery-1"><img src="04_properties_files/figure-html/cell-12-output-2.png" class="img-fluid figure-img"></a></p>
 </figure>
 </div>
 </div>
-</div>
-<div id="cell-17" class="cell" data-execution_count="46">
+</div></div>
+<div class="cell-container"><div class="cell-decorator"><pre>In [46]:</pre></div><div id="cell-17" class="cell" data-execution_count="46">
 <div class="sourceCode cell-code" id="cb18"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="op">%%</span>R <span class="op">-</span>w <span class="dv">350</span> <span class="op">-</span>h <span class="dv">350</span> <span class="op">-</span>u mm</span>
 <span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>add_mode <span class="op">&lt;-</span> TRUE</span>
 <span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a>x_bins <span class="op">&lt;-</span> <span class="dv">5</span></span>
@@ -733,14 +831,14 @@ Saving 13.8 x 13.8 in image</code></pre>
 <span id="cb18-14"><a href="#cb18-14" aria-hidden="true" tabindex="-1"></a>p1 <span class="op">&lt;-</span> p <span class="op">+</span> labs(x <span class="op">=</span> NULL, y<span class="op">=</span> ylab) <span class="op">+</span> ggtitle(<span class="st">"a) Juno Derivative Method"</span>)</span>
 <span id="cb18-15"><a href="#cb18-15" aria-hidden="true" tabindex="-1"></a>p1</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
-<div>
+<div class="">
 <figure class="figure">
-<p><a href="04_properties_files/figure-html/cell-13-output-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-2"><img src="04_properties_files/figure-html/cell-13-output-1.png" class="img-fluid figure-img"></a></p>
+<p class=""><a href="04_properties_files/figure-html/cell-13-output-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-2"><img src="04_properties_files/figure-html/cell-13-output-1.png" class="img-fluid figure-img"></a></p>
 </figure>
 </div>
 </div>
-</div>
-<div id="cell-18" class="cell" data-execution_count="116">
+</div></div>
+<div class="cell-container"><div class="cell-decorator"><pre>In [116]:</pre></div><div id="cell-18" class="cell" data-execution_count="116">
 <div class="sourceCode cell-code" id="cb19"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="op">%%</span>R <span class="op">-</span>w <span class="dv">350</span> <span class="op">-</span>h <span class="dv">350</span> <span class="op">-</span>u mm</span>
 <span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a>p <span class="op">&lt;-</span> plot_current_comparison(jno_df, other_events, p1title<span class="op">=</span><span class="st">"a) Juno"</span>)</span>
@@ -759,14 +857,14 @@ Saving 13.8 x 13.8 in image
 Saving 13.8 x 13.8 in image</code></pre>
 </div>
 <div class="cell-output cell-output-display">
-<div>
+<div class="">
 <figure class="figure">
-<p><a href="04_properties_files/figure-html/cell-14-output-2.png" class="lightbox" data-gallery="quarto-lightbox-gallery-3"><img src="04_properties_files/figure-html/cell-14-output-2.png" class="img-fluid figure-img"></a></p>
+<p class=""><a href="04_properties_files/figure-html/cell-14-output-2.png" class="lightbox" data-gallery="quarto-lightbox-gallery-3"><img src="04_properties_files/figure-html/cell-14-output-2.png" class="img-fluid figure-img"></a></p>
 </figure>
 </div>
 </div>
-</div>
-<div id="cell-19" class="cell" data-execution_count="118">
+</div></div>
+<div class="cell-container"><div class="cell-decorator"><pre>In [118]:</pre></div><div id="cell-19" class="cell" data-execution_count="118">
 <div class="sourceCode cell-code" id="cb21"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="op">%%</span>R <span class="op">-</span>w <span class="dv">350</span> <span class="op">-</span>h <span class="dv">350</span> <span class="op">-</span>u mm</span>
 <span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a>p <span class="op">&lt;-</span> plot_current_comparison(jno_df_8hz_tau_20, other_events, p1title<span class="op">=</span><span class="st">"a) Juno: High Time Resolution, Low Tau"</span>)</span>
 <span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a>save_plot(<span class="st">"new/current/current_k_dist-8hz-tau_20"</span>)</span>
@@ -795,8 +893,8 @@ Adding another scale for fill, which will replace the existing scale.
 Saving 13.8 x 13.8 in image
 Saving 13.8 x 13.8 in image</code></pre>
 </div>
-</div>
-<div id="cell-20" class="cell" data-execution_count="138">
+</div></div>
+<div class="cell-container"><div class="cell-decorator"><pre>In [138]:</pre></div><div id="cell-20" class="cell" data-execution_count="138">
 <div class="sourceCode cell-code" id="cb23"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="op">%%</span>R <span class="op">-</span>w <span class="dv">350</span> <span class="op">-</span>h <span class="dv">350</span> <span class="op">-</span>u mm</span>
 <span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a>p <span class="op">&lt;-</span> plot_thickness_comparison(jno_df, other_events, p1title<span class="op">=</span><span class="st">"a) Juno"</span>)</span>
@@ -815,14 +913,14 @@ Saving 13.8 x 13.8 in image
 Saving 13.8 x 13.8 in image</code></pre>
 </div>
 <div class="cell-output cell-output-display">
-<div>
+<div class="">
 <figure class="figure">
-<p><a href="04_properties_files/figure-html/cell-16-output-2.png" class="lightbox" data-gallery="quarto-lightbox-gallery-4"><img src="04_properties_files/figure-html/cell-16-output-2.png" class="img-fluid figure-img"></a></p>
+<p class=""><a href="04_properties_files/figure-html/cell-16-output-2.png" class="lightbox" data-gallery="quarto-lightbox-gallery-4"><img src="04_properties_files/figure-html/cell-16-output-2.png" class="img-fluid figure-img"></a></p>
 </figure>
 </div>
 </div>
-</div>
-<div id="cell-fig-jno-8hz-tau-20-der" class="cell" data-execution_count="82">
+</div></div>
+<div class="cell-container"><div class="cell-decorator"><pre>In [82]:</pre></div><div id="cell-fig-jno-8hz-tau-20-der" class="cell" data-execution_count="82">
 <div class="sourceCode cell-code" id="cb25"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="op">%%</span>R <span class="op">-</span>w <span class="dv">350</span> <span class="op">-</span>h <span class="dv">350</span> <span class="op">-</span>u mm</span>
 <span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a>p1 <span class="op">&lt;-</span> plot_q_and_qnorm_r_l(</span>
@@ -844,8 +942,8 @@ Saving 13.8 x 13.8 in image</code></pre>
 <div class="cell-output cell-output-display">
 <div id="fig-jno-8hz-tau-20-der" class="quarto-figure quarto-figure-center quarto-float anchored">
 <figure class="quarto-float quarto-float-fig figure">
-<div aria-describedby="fig-jno-8hz-tau-20-der-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<a href="04_properties_files/figure-html/fig-jno-8hz-tau-20-der-output-1.png" class="lightbox" data-glightbox="description: .lightbox-desc-5" data-gallery="quarto-lightbox-gallery-5"><img src="04_properties_files/figure-html/fig-jno-8hz-tau-20-der-output-1.png" id="fig-jno-8hz-tau-20-der" class="img-fluid figure-img"></a>
+<div aria-describedby="fig-jno-8hz-tau-20-der-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca" class="">
+<a href="04_properties_files/figure-html/fig-jno-8hz-tau-20-der-output-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-5" data-glightbox="description: .lightbox-desc-5"><img src="04_properties_files/figure-html/fig-jno-8hz-tau-20-der-output-1.png" id="fig-jno-8hz-tau-20-der" class="img-fluid figure-img"></a>
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig quarto-uncaptioned" id="fig-jno-8hz-tau-20-der-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figure&nbsp;1
@@ -853,8 +951,8 @@ Figure&nbsp;1
 </figure>
 </div>
 </div>
-</div>
-<div id="cell-22" class="cell" data-execution_count="81">
+</div></div>
+<div class="cell-container"><div class="cell-decorator"><pre>In [81]:</pre></div><div id="cell-22" class="cell" data-execution_count="81">
 <div class="sourceCode cell-code" id="cb26"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="op">%%</span>R <span class="op">-</span>w <span class="dv">350</span> <span class="op">-</span>h <span class="dv">350</span> <span class="op">-</span>u mm</span>
 <span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb26-3"><a href="#cb26-3" aria-hidden="true" tabindex="-1"></a>p <span class="op">&lt;-</span> plot_thickness_comparison(jno_df_8hz_tau_20, other_events, p1title<span class="op">=</span><span class="st">"a) Juno: High Time Resolution, Low Tau"</span>)</span>
@@ -884,8 +982,8 @@ Adding another scale for fill, which will replace the existing scale.
 Saving 13.8 x 13.8 in image
 Saving 13.8 x 13.8 in image</code></pre>
 </div>
-</div>
-<div id="cell-23" class="cell" data-execution_count="40">
+</div></div>
+<div class="cell-container"><div class="cell-decorator"><pre>In [40]:</pre></div><div id="cell-23" class="cell" data-execution_count="40">
 <div class="sourceCode cell-code" id="cb28"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="op">%%</span>R</span>
 <span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a>x_col <span class="op">&lt;-</span> <span class="st">"radial_distance"</span></span>
 <span id="cb28-3"><a href="#cb28-3" aria-hidden="true" tabindex="-1"></a>xlab <span class="op">&lt;-</span> <span class="st">"Radial Distance (AU)"</span></span>
@@ -911,22 +1009,19 @@ Saving 13.8 x 13.8 in image</code></pre>
 Saving 6.67 x 6.67 in image</code></pre>
 </div>
 <div class="cell-output cell-output-display">
-<div>
+<div class="">
 <figure class="figure">
-<p><a href="04_properties_files/figure-html/cell-19-output-2.png" class="lightbox" data-gallery="quarto-lightbox-gallery-6"><img src="04_properties_files/figure-html/cell-19-output-2.png" class="img-fluid figure-img"></a></p>
+<p class=""><a href="04_properties_files/figure-html/cell-19-output-2.png" class="lightbox" data-gallery="quarto-lightbox-gallery-6"><img src="04_properties_files/figure-html/cell-19-output-2.png" class="img-fluid figure-img"></a></p>
 </figure>
 </div>
 </div>
-</div>
+</div></div>
 
 
 <div class="hidden" aria-hidden="true">
 <span class="glightbox-desc lightbox-desc-5">Figure&nbsp;1: </span>
 </div>
-</section>
-
-</main> <!-- /main -->
-<script id="quarto-html-after-body" type="application/javascript">
+     </main> <!-- /main -->  <script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
   const toggleBodyColorMode = (bsSheetEl) => {
     const mode = bsSheetEl.getAttribute("data-mode");
@@ -1312,9 +1407,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     }
   }
 });
-</script>
-</div> <!-- /content -->
-<script>var lightboxQuarto = GLightbox({"openEffect":"zoom","closeEffect":"zoom","descPosition":"bottom","selector":".lightbox","loop":false});
+</script>  </div> <!-- /content -->  <script>var lightboxQuarto = GLightbox({"loop":false,"closeEffect":"zoom","selector":".lightbox","descPosition":"bottom","openEffect":"zoom"});
 window.onload = () => {
   lightboxQuarto.on('slide_before_load', (data) => {
     const { slideIndex, slideNode, slideConfig, player, trigger } = data;
@@ -1338,9 +1431,6 @@ window.onload = () => {
   });
 
 };
-          </script>
-
-
-
-
+          </script> 
+  
 </body></html>
