@@ -9,6 +9,38 @@ title: Solar wind discontinuities spatial evolution in the outer heliosphere
 
 ## Updates
 
+### 02/19/2024
+
+{{< embed notebooks/04_properties.ipynb#fig-jno-8hz-tau-20-der >}}
+
+### 02/18/2024
+
+![](figures/new/duration/duration_dist_ts_comparison)
+
+#### Thickness
+::: {.column-screen layout-nrow="1"}
+![](figures/new/thickness/thickness_k_dist)
+
+![](figures/new/thickness/thickness_k_dist-8hz)
+
+![](figures/new/thickness/thickness_k_dist-8hz-tau_20)
+:::
+
+
+#### Current Density
+
+::: {.column-screen layout-nrow="1"}
+![](figures/new/current/current_k_dist)
+
+![](figures/new/current/current_k_dist-8hz)
+
+![](figures/new/current/current_k_dist-8hz-tau_20)
+
+:::
+
+
+### 02/17/2024
+
 ::: {.column-screen layout-nrow="1"}
 
 ![](figures/new/duration/duration_dist)
