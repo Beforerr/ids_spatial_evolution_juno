@@ -57,7 +57,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </style>
 
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg==" crossorigin="anonymous"></script><script src="../../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../../site_libs/quarto-nav/quarto-nav.js"></script>
 <script src="../../../site_libs/quarto-nav/headroom.min.js"></script>
 <script src="../../../site_libs/clipboard/clipboard.min.js"></script>
 <script src="../../../site_libs/quarto-search/autocomplete.umd.js"></script>
@@ -100,9 +100,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     "search-label": "Search"
   }
 }</script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.6/require.min.js" integrity="sha512-c3Nl8+7g4LMSTdrm621y7kf9v3SDPnhxLNhcjFJbKECVnmZHTdo+IRO05sNLTH/D3vA6u1X32ehoLC7WFVdheg==" crossorigin="anonymous"></script>
-
-<script type="application/javascript">define('jquery', [],function() {return window.jQuery;})</script>
 
 
 </head>
@@ -213,6 +210,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
+  <a href="../../../notebooks/05_sea.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Superposed epoch analysis</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
   <a href="../../../notebooks/11_ts_analysis.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Time resolution effect Analysis</span></a>
   </div>
@@ -227,6 +230,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <div class="sidebar-item-container"> 
   <a href="../../../notebooks/20_model.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Models</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../notebooks/30_data.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">30 Data</span></a>
   </div>
 </li>
           <li class="sidebar-item sidebar-item-section">
@@ -432,7 +441,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>Download data using <code>pyspedas</code>, but load it using <code>pycdfpp</code> (using <code>pyspedas</code> to load the data directly into <code>xarray</code> is very slow)</p>
 <p>Note STEREO-A plastic data file is “Non compliant ISTP file: No data variable found, this is suspicious”, <code>-9.999999848243207e+30</code> instead of <code>-1e+31</code> is used as fill value.</p>
 <pre><code>wget -r -np -nH -R "index.html*" https://spdf.gsfc.nasa.gov/pub/data/stereo/ahead/l2/plastic/1dmax/1min/201{1,2,3,4,5,6}/</code></pre>
-<div id="cell-2" class="cell" data-execution_count="2">
+<div id="cell-2" class="cell" data-execution_count="1">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> speasy <span class="im">as</span> spz</span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> space_analysis.utils.speasy <span class="im">import</span> Variables</span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> space_analysis.io.cdf <span class="im">import</span> cdf2pl</span>
@@ -448,619 +457,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pyspedas</span>
 <span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb2-15"><a href="#cb2-15" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> tqdm <span class="im">import</span> tqdm</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display">
-<script type="application/javascript">
-(function(root) {
-  function now() {
-    return new Date();
-  }
-
-  var force = true;
-  var py_version = '3.3.4'.replace('rc', '-rc.').replace('.dev', '-dev.');
-  var reloading = false;
-  var Bokeh = root.Bokeh;
-
-  if (typeof (root._bokeh_timeout) === "undefined" || force) {
-    root._bokeh_timeout = Date.now() + 5000;
-    root._bokeh_failed_load = false;
-  }
-
-  function run_callbacks() {
-    try {
-      root._bokeh_onload_callbacks.forEach(function(callback) {
-        if (callback != null)
-          callback();
-      });
-    } finally {
-      delete root._bokeh_onload_callbacks;
-    }
-    console.debug("Bokeh: all callbacks have finished");
-  }
-
-  function load_libs(css_urls, js_urls, js_modules, js_exports, callback) {
-    if (css_urls == null) css_urls = [];
-    if (js_urls == null) js_urls = [];
-    if (js_modules == null) js_modules = [];
-    if (js_exports == null) js_exports = {};
-
-    root._bokeh_onload_callbacks.push(callback);
-
-    if (root._bokeh_is_loading > 0) {
-      console.debug("Bokeh: BokehJS is being loaded, scheduling callback at", now());
-      return null;
-    }
-    if (js_urls.length === 0 && js_modules.length === 0 && Object.keys(js_exports).length === 0) {
-      run_callbacks();
-      return null;
-    }
-    if (!reloading) {
-      console.debug("Bokeh: BokehJS not loaded, scheduling load and callback at", now());
-    }
-
-    function on_load() {
-      root._bokeh_is_loading--;
-      if (root._bokeh_is_loading === 0) {
-        console.debug("Bokeh: all BokehJS libraries/stylesheets loaded");
-        run_callbacks()
-      }
-    }
-    window._bokeh_on_load = on_load
-
-    function on_error() {
-      console.error("failed to load " + url);
-    }
-
-    var skip = [];
-    if (window.requirejs) {
-      window.requirejs.config({'packages': {}, 'paths': {'jspanel': 'https://cdn.jsdelivr.net/npm/jspanel4@4.12.0/dist/jspanel', 'jspanel-modal': 'https://cdn.jsdelivr.net/npm/jspanel4@4.12.0/dist/extensions/modal/jspanel.modal', 'jspanel-tooltip': 'https://cdn.jsdelivr.net/npm/jspanel4@4.12.0/dist/extensions/tooltip/jspanel.tooltip', 'jspanel-hint': 'https://cdn.jsdelivr.net/npm/jspanel4@4.12.0/dist/extensions/hint/jspanel.hint', 'jspanel-layout': 'https://cdn.jsdelivr.net/npm/jspanel4@4.12.0/dist/extensions/layout/jspanel.layout', 'jspanel-contextmenu': 'https://cdn.jsdelivr.net/npm/jspanel4@4.12.0/dist/extensions/contextmenu/jspanel.contextmenu', 'jspanel-dock': 'https://cdn.jsdelivr.net/npm/jspanel4@4.12.0/dist/extensions/dock/jspanel.dock', 'gridstack': 'https://cdn.jsdelivr.net/npm/gridstack@7.2.3/dist/gridstack-all', 'notyf': 'https://cdn.jsdelivr.net/npm/notyf@3/notyf.min'}, 'shim': {'jspanel': {'exports': 'jsPanel'}, 'gridstack': {'exports': 'GridStack'}}});
-      require(["jspanel"], function(jsPanel) {
-    window.jsPanel = jsPanel
-    on_load()
-      })
-      require(["jspanel-modal"], function() {
-    on_load()
-      })
-      require(["jspanel-tooltip"], function() {
-    on_load()
-      })
-      require(["jspanel-hint"], function() {
-    on_load()
-      })
-      require(["jspanel-layout"], function() {
-    on_load()
-      })
-      require(["jspanel-contextmenu"], function() {
-    on_load()
-      })
-      require(["jspanel-dock"], function() {
-    on_load()
-      })
-      require(["gridstack"], function(GridStack) {
-    window.GridStack = GridStack
-    on_load()
-      })
-      require(["notyf"], function() {
-    on_load()
-      })
-      root._bokeh_is_loading = css_urls.length + 9;
-    } else {
-      root._bokeh_is_loading = css_urls.length + js_urls.length + js_modules.length + Object.keys(js_exports).length;
-    }
-
-    var existing_stylesheets = []
-    var links = document.getElementsByTagName('link')
-    for (var i = 0; i < links.length; i++) {
-      var link = links[i]
-      if (link.href != null) {
-    existing_stylesheets.push(link.href)
-      }
-    }
-    for (var i = 0; i < css_urls.length; i++) {
-      var url = css_urls[i];
-      if (existing_stylesheets.indexOf(url) !== -1) {
-    on_load()
-    continue;
-      }
-      const element = document.createElement("link");
-      element.onload = on_load;
-      element.onerror = on_error;
-      element.rel = "stylesheet";
-      element.type = "text/css";
-      element.href = url;
-      console.debug("Bokeh: injecting link tag for BokehJS stylesheet: ", url);
-      document.body.appendChild(element);
-    }    if (((window['jsPanel'] !== undefined) && (!(window['jsPanel'] instanceof HTMLElement))) || window.requirejs) {
-      var urls = ['https://cdn.holoviz.org/panel/1.3.8/dist/bundled/floatpanel/jspanel4@4.12.0/dist/jspanel.js', 'https://cdn.holoviz.org/panel/1.3.8/dist/bundled/floatpanel/jspanel4@4.12.0/dist/extensions/modal/jspanel.modal.js', 'https://cdn.holoviz.org/panel/1.3.8/dist/bundled/floatpanel/jspanel4@4.12.0/dist/extensions/tooltip/jspanel.tooltip.js', 'https://cdn.holoviz.org/panel/1.3.8/dist/bundled/floatpanel/jspanel4@4.12.0/dist/extensions/hint/jspanel.hint.js', 'https://cdn.holoviz.org/panel/1.3.8/dist/bundled/floatpanel/jspanel4@4.12.0/dist/extensions/layout/jspanel.layout.js', 'https://cdn.holoviz.org/panel/1.3.8/dist/bundled/floatpanel/jspanel4@4.12.0/dist/extensions/contextmenu/jspanel.contextmenu.js', 'https://cdn.holoviz.org/panel/1.3.8/dist/bundled/floatpanel/jspanel4@4.12.0/dist/extensions/dock/jspanel.dock.js'];
-      for (var i = 0; i < urls.length; i++) {
-        skip.push(urls[i])
-      }
-    }    if (((window['GridStack'] !== undefined) && (!(window['GridStack'] instanceof HTMLElement))) || window.requirejs) {
-      var urls = ['https://cdn.holoviz.org/panel/1.3.8/dist/bundled/gridstack/gridstack@7.2.3/dist/gridstack-all.js'];
-      for (var i = 0; i < urls.length; i++) {
-        skip.push(urls[i])
-      }
-    }    if (((window['Notyf'] !== undefined) && (!(window['Notyf'] instanceof HTMLElement))) || window.requirejs) {
-      var urls = ['https://cdn.holoviz.org/panel/1.3.8/dist/bundled/notificationarea/notyf@3/notyf.min.js'];
-      for (var i = 0; i < urls.length; i++) {
-        skip.push(urls[i])
-      }
-    }    var existing_scripts = []
-    var scripts = document.getElementsByTagName('script')
-    for (var i = 0; i < scripts.length; i++) {
-      var script = scripts[i]
-      if (script.src != null) {
-    existing_scripts.push(script.src)
-      }
-    }
-    for (var i = 0; i < js_urls.length; i++) {
-      var url = js_urls[i];
-      if (skip.indexOf(url) !== -1 || existing_scripts.indexOf(url) !== -1) {
-    if (!window.requirejs) {
-      on_load();
-    }
-    continue;
-      }
-      var element = document.createElement('script');
-      element.onload = on_load;
-      element.onerror = on_error;
-      element.async = false;
-      element.src = url;
-      console.debug("Bokeh: injecting script tag for BokehJS library: ", url);
-      document.head.appendChild(element);
-    }
-    for (var i = 0; i < js_modules.length; i++) {
-      var url = js_modules[i];
-      if (skip.indexOf(url) !== -1 || existing_scripts.indexOf(url) !== -1) {
-    if (!window.requirejs) {
-      on_load();
-    }
-    continue;
-      }
-      var element = document.createElement('script');
-      element.onload = on_load;
-      element.onerror = on_error;
-      element.async = false;
-      element.src = url;
-      element.type = "module";
-      console.debug("Bokeh: injecting script tag for BokehJS library: ", url);
-      document.head.appendChild(element);
-    }
-    for (const name in js_exports) {
-      var url = js_exports[name];
-      if (skip.indexOf(url) >= 0 || root[name] != null) {
-    if (!window.requirejs) {
-      on_load();
-    }
-    continue;
-      }
-      var element = document.createElement('script');
-      element.onerror = on_error;
-      element.async = false;
-      element.type = "module";
-      console.debug("Bokeh: injecting script tag for BokehJS library: ", url);
-      element.textContent = `
-      import ${name} from "${url}"
-      window.${name} = ${name}
-      window._bokeh_on_load()
-      `
-      document.head.appendChild(element);
-    }
-    if (!js_urls.length && !js_modules.length) {
-      on_load()
-    }
-  };
-
-  function inject_raw_css(css) {
-    const element = document.createElement("style");
-    element.appendChild(document.createTextNode(css));
-    document.body.appendChild(element);
-  }
-
-  var js_urls = ["https://cdn.bokeh.org/bokeh/release/bokeh-3.3.4.min.js", "https://cdn.bokeh.org/bokeh/release/bokeh-gl-3.3.4.min.js", "https://cdn.bokeh.org/bokeh/release/bokeh-widgets-3.3.4.min.js", "https://cdn.bokeh.org/bokeh/release/bokeh-tables-3.3.4.min.js", "https://cdn.holoviz.org/panel/1.3.8/dist/panel.min.js"];
-  var js_modules = [];
-  var js_exports = {};
-  var css_urls = [];
-  var inline_js = [    function(Bokeh) {
-      Bokeh.set_log_level("info");
-    },
-function(Bokeh) {} // ensure no trailing comma for IE
-  ];
-
-  function run_inline_js() {
-    if ((root.Bokeh !== undefined) || (force === true)) {
-      for (var i = 0; i < inline_js.length; i++) {
-    try {
-          inline_js[i].call(root, root.Bokeh);
-    } catch(e) {
-      if (!reloading) {
-        throw e;
-      }
-    }
-      }
-      // Cache old bokeh versions
-      if (Bokeh != undefined && !reloading) {
-    var NewBokeh = root.Bokeh;
-    if (Bokeh.versions === undefined) {
-      Bokeh.versions = new Map();
-    }
-    if (NewBokeh.version !== Bokeh.version) {
-      Bokeh.versions.set(NewBokeh.version, NewBokeh)
-    }
-    root.Bokeh = Bokeh;
-      }} else if (Date.now() < root._bokeh_timeout) {
-      setTimeout(run_inline_js, 100);
-    } else if (!root._bokeh_failed_load) {
-      console.log("Bokeh: BokehJS failed to load within specified timeout.");
-      root._bokeh_failed_load = true;
-    }
-    root._bokeh_is_initializing = false
-  }
-
-  function load_or_wait() {
-    // Implement a backoff loop that tries to ensure we do not load multiple
-    // versions of Bokeh and its dependencies at the same time.
-    // In recent versions we use the root._bokeh_is_initializing flag
-    // to determine whether there is an ongoing attempt to initialize
-    // bokeh, however for backward compatibility we also try to ensure
-    // that we do not start loading a newer (Panel>=1.0 and Bokeh>3) version
-    // before older versions are fully initialized.
-    if (root._bokeh_is_initializing && Date.now() > root._bokeh_timeout) {
-      root._bokeh_is_initializing = false;
-      root._bokeh_onload_callbacks = undefined;
-      console.log("Bokeh: BokehJS was loaded multiple times but one version failed to initialize.");
-      load_or_wait();
-    } else if (root._bokeh_is_initializing || (typeof root._bokeh_is_initializing === "undefined" && root._bokeh_onload_callbacks !== undefined)) {
-      setTimeout(load_or_wait, 100);
-    } else {
-      root._bokeh_is_initializing = true
-      root._bokeh_onload_callbacks = []
-      var bokeh_loaded = Bokeh != null && (Bokeh.version === py_version || (Bokeh.versions !== undefined && Bokeh.versions.has(py_version)));
-      if (!reloading && !bokeh_loaded) {
-    root.Bokeh = undefined;
-      }
-      load_libs(css_urls, js_urls, js_modules, js_exports, function() {
-    console.debug("Bokeh: BokehJS plotting callback run at", now());
-    run_inline_js();
-      });
-    }
-  }
-  // Give older versions of the autoload script a head-start to ensure
-  // they initialize before we start loading newer version.
-  setTimeout(load_or_wait, 100)
-}(window));
-</script>
-</div>
-<div class="cell-output cell-output-display">
-<script type="application/javascript">
-
-if ((window.PyViz === undefined) || (window.PyViz instanceof HTMLElement)) {
-  window.PyViz = {comms: {}, comm_status:{}, kernels:{}, receivers: {}, plot_index: []}
-}
-
-
-    function JupyterCommManager() {
-    }
-
-    JupyterCommManager.prototype.register_target = function(plot_id, comm_id, msg_handler) {
-      if (window.comm_manager || ((window.Jupyter !== undefined) && (Jupyter.notebook.kernel != null))) {
-        var comm_manager = window.comm_manager || Jupyter.notebook.kernel.comm_manager;
-        comm_manager.register_target(comm_id, function(comm) {
-          comm.on_msg(msg_handler);
-        });
-      } else if ((plot_id in window.PyViz.kernels) && (window.PyViz.kernels[plot_id])) {
-        window.PyViz.kernels[plot_id].registerCommTarget(comm_id, function(comm) {
-          comm.onMsg = msg_handler;
-        });
-      } else if (typeof google != 'undefined' && google.colab.kernel != null) {
-        google.colab.kernel.comms.registerTarget(comm_id, (comm) => {
-          var messages = comm.messages[Symbol.asyncIterator]();
-          function processIteratorResult(result) {
-            var message = result.value;
-            console.log(message)
-            var content = {data: message.data, comm_id};
-            var buffers = []
-            for (var buffer of message.buffers || []) {
-              buffers.push(new DataView(buffer))
-            }
-            var metadata = message.metadata || {};
-            var msg = {content, buffers, metadata}
-            msg_handler(msg);
-            return messages.next().then(processIteratorResult);
-          }
-          return messages.next().then(processIteratorResult);
-        })
-      }
-    }
-
-    JupyterCommManager.prototype.get_client_comm = function(plot_id, comm_id, msg_handler) {
-      if (comm_id in window.PyViz.comms) {
-        return window.PyViz.comms[comm_id];
-      } else if (window.comm_manager || ((window.Jupyter !== undefined) && (Jupyter.notebook.kernel != null))) {
-        var comm_manager = window.comm_manager || Jupyter.notebook.kernel.comm_manager;
-        var comm = comm_manager.new_comm(comm_id, {}, {}, {}, comm_id);
-        if (msg_handler) {
-          comm.on_msg(msg_handler);
-        }
-      } else if ((plot_id in window.PyViz.kernels) && (window.PyViz.kernels[plot_id])) {
-        var comm = window.PyViz.kernels[plot_id].connectToComm(comm_id);
-        comm.open();
-        if (msg_handler) {
-          comm.onMsg = msg_handler;
-        }
-      } else if (typeof google != 'undefined' && google.colab.kernel != null) {
-        var comm_promise = google.colab.kernel.comms.open(comm_id)
-        comm_promise.then((comm) => {
-          window.PyViz.comms[comm_id] = comm;
-          if (msg_handler) {
-            var messages = comm.messages[Symbol.asyncIterator]();
-            function processIteratorResult(result) {
-              var message = result.value;
-              var content = {data: message.data};
-              var metadata = message.metadata || {comm_id};
-              var msg = {content, metadata}
-              msg_handler(msg);
-              return messages.next().then(processIteratorResult);
-            }
-            return messages.next().then(processIteratorResult);
-          }
-        }) 
-        var sendClosure = (data, metadata, buffers, disposeOnDone) => {
-          return comm_promise.then((comm) => {
-            comm.send(data, metadata, buffers, disposeOnDone);
-          });
-        };
-        var comm = {
-          send: sendClosure
-        };
-      }
-      window.PyViz.comms[comm_id] = comm;
-      return comm;
-    }
-    window.PyViz.comm_manager = new JupyterCommManager();
-    
-
-
-var JS_MIME_TYPE = 'application/javascript';
-var HTML_MIME_TYPE = 'text/html';
-var EXEC_MIME_TYPE = 'application/vnd.holoviews_exec.v0+json';
-var CLASS_NAME = 'output';
-
-/**
- * Render data to the DOM node
- */
-function render(props, node) {
-  var div = document.createElement("div");
-  var script = document.createElement("script");
-  node.appendChild(div);
-  node.appendChild(script);
-}
-
-/**
- * Handle when a new output is added
- */
-function handle_add_output(event, handle) {
-  var output_area = handle.output_area;
-  var output = handle.output;
-  if ((output.data == undefined) || (!output.data.hasOwnProperty(EXEC_MIME_TYPE))) {
-    return
-  }
-  var id = output.metadata[EXEC_MIME_TYPE]["id"];
-  var toinsert = output_area.element.find("." + CLASS_NAME.split(' ')[0]);
-  if (id !== undefined) {
-    var nchildren = toinsert.length;
-    var html_node = toinsert[nchildren-1].children[0];
-    html_node.innerHTML = output.data[HTML_MIME_TYPE];
-    var scripts = [];
-    var nodelist = html_node.querySelectorAll("script");
-    for (var i in nodelist) {
-      if (nodelist.hasOwnProperty(i)) {
-        scripts.push(nodelist[i])
-      }
-    }
-
-    scripts.forEach( function (oldScript) {
-      var newScript = document.createElement("script");
-      var attrs = [];
-      var nodemap = oldScript.attributes;
-      for (var j in nodemap) {
-        if (nodemap.hasOwnProperty(j)) {
-          attrs.push(nodemap[j])
-        }
-      }
-      attrs.forEach(function(attr) { newScript.setAttribute(attr.name, attr.value) });
-      newScript.appendChild(document.createTextNode(oldScript.innerHTML));
-      oldScript.parentNode.replaceChild(newScript, oldScript);
-    });
-    if (JS_MIME_TYPE in output.data) {
-      toinsert[nchildren-1].children[1].textContent = output.data[JS_MIME_TYPE];
-    }
-    output_area._hv_plot_id = id;
-    if ((window.Bokeh !== undefined) && (id in Bokeh.index)) {
-      window.PyViz.plot_index[id] = Bokeh.index[id];
-    } else {
-      window.PyViz.plot_index[id] = null;
-    }
-  } else if (output.metadata[EXEC_MIME_TYPE]["server_id"] !== undefined) {
-    var bk_div = document.createElement("div");
-    bk_div.innerHTML = output.data[HTML_MIME_TYPE];
-    var script_attrs = bk_div.children[0].attributes;
-    for (var i = 0; i < script_attrs.length; i++) {
-      toinsert[toinsert.length - 1].childNodes[1].setAttribute(script_attrs[i].name, script_attrs[i].value);
-    }
-    // store reference to server id on output_area
-    output_area._bokeh_server_id = output.metadata[EXEC_MIME_TYPE]["server_id"];
-  }
-}
-
-/**
- * Handle when an output is cleared or removed
- */
-function handle_clear_output(event, handle) {
-  var id = handle.cell.output_area._hv_plot_id;
-  var server_id = handle.cell.output_area._bokeh_server_id;
-  if (((id === undefined) || !(id in PyViz.plot_index)) && (server_id !== undefined)) { return; }
-  var comm = window.PyViz.comm_manager.get_client_comm("hv-extension-comm", "hv-extension-comm", function () {});
-  if (server_id !== null) {
-    comm.send({event_type: 'server_delete', 'id': server_id});
-    return;
-  } else if (comm !== null) {
-    comm.send({event_type: 'delete', 'id': id});
-  }
-  delete PyViz.plot_index[id];
-  if ((window.Bokeh !== undefined) & (id in window.Bokeh.index)) {
-    var doc = window.Bokeh.index[id].model.document
-    doc.clear();
-    const i = window.Bokeh.documents.indexOf(doc);
-    if (i > -1) {
-      window.Bokeh.documents.splice(i, 1);
-    }
-  }
-}
-
-/**
- * Handle kernel restart event
- */
-function handle_kernel_cleanup(event, handle) {
-  delete PyViz.comms["hv-extension-comm"];
-  window.PyViz.plot_index = {}
-}
-
-/**
- * Handle update_display_data messages
- */
-function handle_update_output(event, handle) {
-  handle_clear_output(event, {cell: {output_area: handle.output_area}})
-  handle_add_output(event, handle)
-}
-
-function register_renderer(events, OutputArea) {
-  function append_mime(data, metadata, element) {
-    // create a DOM node to render to
-    var toinsert = this.create_output_subarea(
-    metadata,
-    CLASS_NAME,
-    EXEC_MIME_TYPE
-    );
-    this.keyboard_manager.register_events(toinsert);
-    // Render to node
-    var props = {data: data, metadata: metadata[EXEC_MIME_TYPE]};
-    render(props, toinsert[0]);
-    element.append(toinsert);
-    return toinsert
-  }
-
-  events.on('output_added.OutputArea', handle_add_output);
-  events.on('output_updated.OutputArea', handle_update_output);
-  events.on('clear_output.CodeCell', handle_clear_output);
-  events.on('delete.Cell', handle_clear_output);
-  events.on('kernel_ready.Kernel', handle_kernel_cleanup);
-
-  OutputArea.prototype.register_mime_type(EXEC_MIME_TYPE, append_mime, {
-    safe: true,
-    index: 0
-  });
-}
-
-if (window.Jupyter !== undefined) {
-  try {
-    var events = require('base/js/events');
-    var OutputArea = require('notebook/js/outputarea').OutputArea;
-    if (OutputArea.prototype.mime_types().indexOf(EXEC_MIME_TYPE) == -1) {
-      register_renderer(events, OutputArea);
-    }
-  } catch(err) {
-  }
-}
-
-</script>
-</div>
-<div class="cell-output cell-output-display">
-<style>*[data-root-id],
-*[data-root-id] > * {
-  box-sizing: border-box;
-  font-family: var(--jp-ui-font-family);
-  font-size: var(--jp-ui-font-size1);
-  color: var(--vscode-editor-foreground, var(--jp-ui-font-color1));
-}
-
-/* Override VSCode background color */
-.cell-output-ipywidget-background:has(
-    > .cell-output-ipywidget-background > .lm-Widget > *[data-root-id]
-  ),
-.cell-output-ipywidget-background:has(> .lm-Widget > *[data-root-id]) {
-  background-color: transparent !important;
-}
-</style>
-</div>
-<div class="cell-output cell-output-display">
-<div id="p1002">
-  <div id="a0899e63-dea3-4b47-9f1f-0099a04db7da" data-root-id="p1002" style="display: contents;"></div>
-</div>
-<script type="application/javascript">(function(root) {
-  var docs_json = {"ddbd4688-3b62-41e3-881e-40e9510994bb":{"version":"3.3.4","title":"Bokeh Application","roots":[{"type":"object","name":"panel.models.browser.BrowserInfo","id":"p1002"},{"type":"object","name":"panel.models.comm_manager.CommManager","id":"p1003","attributes":{"plot_id":"p1002","comm_id":"ba20509afc83460dad1c3310c85b7d00","client_comm_id":"c85a46ba509d4ce1a58808bf9ac77fd8"}}],"defs":[{"type":"model","name":"ReactiveHTML1"},{"type":"model","name":"FlexBox1","properties":[{"name":"align_content","kind":"Any","default":"flex-start"},{"name":"align_items","kind":"Any","default":"flex-start"},{"name":"flex_direction","kind":"Any","default":"row"},{"name":"flex_wrap","kind":"Any","default":"wrap"},{"name":"justify_content","kind":"Any","default":"flex-start"}]},{"type":"model","name":"FloatPanel1","properties":[{"name":"config","kind":"Any","default":{"type":"map"}},{"name":"contained","kind":"Any","default":true},{"name":"position","kind":"Any","default":"right-top"},{"name":"offsetx","kind":"Any","default":null},{"name":"offsety","kind":"Any","default":null},{"name":"theme","kind":"Any","default":"primary"},{"name":"status","kind":"Any","default":"normalized"}]},{"type":"model","name":"GridStack1","properties":[{"name":"mode","kind":"Any","default":"warn"},{"name":"ncols","kind":"Any","default":null},{"name":"nrows","kind":"Any","default":null},{"name":"allow_resize","kind":"Any","default":true},{"name":"allow_drag","kind":"Any","default":true},{"name":"state","kind":"Any","default":[]}]},{"type":"model","name":"drag1","properties":[{"name":"slider_width","kind":"Any","default":5},{"name":"slider_color","kind":"Any","default":"black"},{"name":"value","kind":"Any","default":50}]},{"type":"model","name":"click1","properties":[{"name":"terminal_output","kind":"Any","default":""},{"name":"debug_name","kind":"Any","default":""},{"name":"clears","kind":"Any","default":0}]},{"type":"model","name":"copy_to_clipboard1","properties":[{"name":"fill","kind":"Any","default":"none"},{"name":"value","kind":"Any","default":null}]},{"type":"model","name":"FastWrapper1","properties":[{"name":"object","kind":"Any","default":null},{"name":"style","kind":"Any","default":null}]},{"type":"model","name":"NotificationAreaBase1","properties":[{"name":"js_events","kind":"Any","default":{"type":"map"}},{"name":"position","kind":"Any","default":"bottom-right"},{"name":"_clear","kind":"Any","default":0}]},{"type":"model","name":"NotificationArea1","properties":[{"name":"js_events","kind":"Any","default":{"type":"map"}},{"name":"notifications","kind":"Any","default":[]},{"name":"position","kind":"Any","default":"bottom-right"},{"name":"_clear","kind":"Any","default":0},{"name":"types","kind":"Any","default":[{"type":"map","entries":[["type","warning"],["background","#ffc107"],["icon",{"type":"map","entries":[["className","fas fa-exclamation-triangle"],["tagName","i"],["color","white"]]}]]},{"type":"map","entries":[["type","info"],["background","#007bff"],["icon",{"type":"map","entries":[["className","fas fa-info-circle"],["tagName","i"],["color","white"]]}]]}]}]},{"type":"model","name":"Notification","properties":[{"name":"background","kind":"Any","default":null},{"name":"duration","kind":"Any","default":3000},{"name":"icon","kind":"Any","default":null},{"name":"message","kind":"Any","default":""},{"name":"notification_type","kind":"Any","default":null},{"name":"_destroyed","kind":"Any","default":false}]},{"type":"model","name":"TemplateActions1","properties":[{"name":"open_modal","kind":"Any","default":0},{"name":"close_modal","kind":"Any","default":0}]},{"type":"model","name":"BootstrapTemplateActions1","properties":[{"name":"open_modal","kind":"Any","default":0},{"name":"close_modal","kind":"Any","default":0}]},{"type":"model","name":"MaterialTemplateActions1","properties":[{"name":"open_modal","kind":"Any","default":0},{"name":"close_modal","kind":"Any","default":0}]}]}};
-  var render_items = [{"docid":"ddbd4688-3b62-41e3-881e-40e9510994bb","roots":{"p1002":"a0899e63-dea3-4b47-9f1f-0099a04db7da"},"root_ids":["p1002"]}];
-  var docs = Object.values(docs_json)
-  if (!docs) {
-    return
-  }
-  const py_version = docs[0].version.replace('rc', '-rc.').replace('.dev', '-dev.')
-  function embed_document(root) {
-    var Bokeh = get_bokeh(root)
-    Bokeh.embed.embed_items_notebook(docs_json, render_items);
-    for (const render_item of render_items) {
-      for (const root_id of render_item.root_ids) {
-    const id_el = document.getElementById(root_id)
-    if (id_el.children.length && (id_el.children[0].className === 'bk-root')) {
-      const root_el = id_el.children[0]
-      root_el.id = root_el.id + '-rendered'
-    }
-      }
-    }
-  }
-  function get_bokeh(root) {
-    if (root.Bokeh === undefined) {
-      return null
-    } else if (root.Bokeh.version !== py_version) {
-      if (root.Bokeh.versions === undefined || !root.Bokeh.versions.has(py_version)) {
-    return null
-      }
-      return root.Bokeh.versions.get(py_version);
-    } else if (root.Bokeh.version === py_version) {
-      return root.Bokeh
-    }
-    return null
-  }
-  function is_loaded(root) {
-    var Bokeh = get_bokeh(root)
-    return (Bokeh != null && Bokeh.Panel !== undefined)
-  }
-  if (is_loaded(root)) {
-    embed_document(root);
-  } else {
-    var attempts = 0;
-    var timer = setInterval(function(root) {
-      if (is_loaded(root)) {
-        clearInterval(timer);
-        embed_document(root);
-      } else if (document.readyState == "complete") {
-        attempts++;
-        if (attempts > 200) {
-          clearInterval(timer);
-      var Bokeh = get_bokeh(root)
-      if (Bokeh == null || Bokeh.Panel == null) {
-            console.warn("Panel: ERROR: Unable to run Panel code because Bokeh or Panel library is missing");
-      } else {
-        console.warn("Panel: WARNING: Attempting to render but not all required libraries could be resolved.")
-        embed_document(root)
-      }
-        }
-      }
-    }, 25, root)
-  }
-})(window);</script>
-</div>
 <div class="cell-output cell-output-stderr">
-<pre><code>20-Feb-24 15:05:58: UserWarning: Traceback (most recent call last):
+<pre><code>25-Feb-24 01:01:20: UserWarning: Traceback (most recent call last):
   File "/Users/zijin/micromamba/envs/psp_conjunction/lib/python3.11/site-packages/pdpipe/__init__.py", line 85, in &lt;module&gt;
     from . import skintegrate
   File "/Users/zijin/micromamba/envs/psp_conjunction/lib/python3.11/site-packages/pdpipe/skintegrate.py", line 20, in &lt;module&gt;
@@ -1068,9 +466,9 @@ if (window.Jupyter !== undefined) {
 ModuleNotFoundError: No module named 'sklearn'
 
 
-20-Feb-24 15:05:58: UserWarning: pdpipe: Scikit-learn or skutil import failed. Scikit-learn-dependent pipeline stages will not be loaded.
+25-Feb-24 01:01:20: UserWarning: pdpipe: Scikit-learn or skutil import failed. Scikit-learn-dependent pipeline stages will not be loaded.
 
-20-Feb-24 15:05:58: UserWarning: Traceback (most recent call last):
+25-Feb-24 01:01:20: UserWarning: Traceback (most recent call last):
   File "/Users/zijin/micromamba/envs/psp_conjunction/lib/python3.11/site-packages/pdpipe/__init__.py", line 105, in &lt;module&gt;
     from . import nltk_stages
   File "/Users/zijin/micromamba/envs/psp_conjunction/lib/python3.11/site-packages/pdpipe/nltk_stages.py", line 19, in &lt;module&gt;
@@ -1078,24 +476,24 @@ ModuleNotFoundError: No module named 'sklearn'
 ModuleNotFoundError: No module named 'nltk'
 
 
-20-Feb-24 15:05:58: UserWarning: pdpipe: nltk import failed. nltk-dependent  pipeline stages will not be loaded.
+25-Feb-24 01:01:20: UserWarning: pdpipe: nltk import failed. nltk-dependent  pipeline stages will not be loaded.
 </code></pre>
 </div>
 </div>
-<div id="cell-3" class="cell" data-execution_count="3">
+<div id="cell-3" class="cell" data-execution_count="2">
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> speasy <span class="im">as</span> spz</span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>entries <span class="op">=</span> spz.core.cache.entries()</span>
 <span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="co"># drop internal entries</span></span>
 <span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>entries <span class="op">=</span> <span class="bu">list</span>(<span class="bu">filter</span>(<span class="kw">lambda</span> e: <span class="st">'__internal__'</span> <span class="kw">not</span> <span class="kw">in</span> e, entries))</span>
 <span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(entries[::<span class="op">-</span><span class="dv">1</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>['cda/PSP_SWP_SPC_L3I/np_moment_gd/2019-04-07T12:00:00+00:00', 'cda/PSP_SWP_SPC_L3I/np_moment_gd/2019-04-07T00:00:00+00:00', 'cda/PSP_SWP_SPC_L3I/np_moment_gd/2019-04-06T12:00:00+00:00', 'https://cdaweb.gsfc.nasa.gov/tmp/wshv6OPm/psp_swps_spc_l3i_20190406120012_20190407235805.cdf', 'cda/PSP_SWP_SPI_SF00_L3_MOM/SUN_DIST/2019-04-07T12:00:00+00:00', 'cda/PSP_SWP_SPI_SF00_L3_MOM/SUN_DIST/2019-04-07T00:00:00+00:00', 'cda/PSP_SWP_SPI_SF00_L3_MOM/SUN_DIST/2019-04-06T12:00:00+00:00', 'https://cdaweb.gsfc.nasa.gov/tmp/wszcUkYV/psp_swps_spi_sf00_l3_mom_20190406120001_20190407235959.cdf', 'cda/PSP_SWP_SPI_SF00_L3_MOM/TEMP/2019-04-07T12:00:00+00:00', 'cda/PSP_SWP_SPI_SF00_L3_MOM/TEMP/2019-04-07T00:00:00+00:00', 'cda/PSP_SWP_SPI_SF00_L3_MOM/TEMP/2019-04-06T12:00:00+00:00', 'https://cdaweb.gsfc.nasa.gov/tmp/wsWQttvt/psp_swps_spi_sf00_l3_mom_20190406120001_20190407235959.cdf', 'cda/PSP_SWP_SPI_SF00_L3_MOM/VEL_RTN_SUN/2019-04-07T12:00:00+00:00', 'cda/PSP_SWP_SPI_SF00_L3_MOM/VEL_RTN_SUN/2019-04-07T00:00:00+00:00', 'cda/PSP_SWP_SPI_SF00_L3_MOM/VEL_RTN_SUN/2019-04-06T12:00:00+00:00', 'https://cdaweb.gsfc.nasa.gov/tmp/wsqD3Vl4/psp_swps_spi_sf00_l3_mom_20190406120001_20190407235959.cdf', 'cda/PSP_SWP_SPI_SF00_L3_MOM/DENS/2019-04-07T12:00:00+00:00', 'cda/PSP_SWP_SPI_SF00_L3_MOM/DENS/2019-04-07T00:00:00+00:00', 'cda/PSP_SWP_SPI_SF00_L3_MOM/DENS/2019-04-06T12:00:00+00:00', 'https://cdaweb.gsfc.nasa.gov/tmp/ws1kPspF/psp_swps_spi_sf00_l3_mom_20190406120001_20190407235959.cdf', 'cda/PSP_FLD_L3_RFS_LFR_QTN/N_elec/2019-04-07T12:00:00+00:00', 'cda/PSP_FLD_L3_RFS_LFR_QTN/N_elec/2019-04-07T00:00:00+00:00', 'cda/PSP_FLD_L3_RFS_LFR_QTN/N_elec/2019-04-06T12:00:00+00:00', 'https://cdaweb.gsfc.nasa.gov/tmp/wscwwzey/psp_flds_l3_rfs_lfr_qtn_20190406120006_20190407235922.cdf', 'cda/PSP_SWP_SPC_L3I/wp_moment_gd/2019-04-07T12:00:00+00:00', 'cda/PSP_SWP_SPC_L3I/wp_moment_gd/2019-04-07T00:00:00+00:00', 'cda/PSP_SWP_SPC_L3I/wp_moment_gd/2019-04-06T12:00:00+00:00', 'https://cdaweb.gsfc.nasa.gov/tmp/wsqkNkGL/psp_swps_spc_l3i_20190406120012_20190407235805.cdf', 'cda/PSP_SWP_SPC_L3I/vp_moment_RTN_gd/2019-04-07T12:00:00+00:00', 'cda/PSP_SWP_SPC_L3I/vp_moment_RTN_gd/2019-04-07T00:00:00+00:00', 'cda/PSP_SWP_SPC_L3I/vp_moment_RTN_gd/2019-04-06T12:00:00+00:00', 'https://cdaweb.gsfc.nasa.gov/tmp/wsBcRYzd/psp_swps_spc_l3i_20190406120012_20190407235805.cdf', 'cda/PSP_FLD_L3_SQTN_RFS_V1V2/electron_density/2019-04-07T12:00:00+00:00', 'cda/PSP_FLD_L3_SQTN_RFS_V1V2/electron_density/2019-04-07T00:00:00+00:00', 'cda/PSP_FLD_L3_SQTN_RFS_V1V2/electron_density/2019-04-06T12:00:00+00:00', 'https://cdaweb.gsfc.nasa.gov/tmp/ws5ziTed/psp_flds_l3_sqtn_rfs_v1v2_20190406120006_20190407235957.cdf', 'cda/PSP_FLD_L2_MAG_RTN/psp_fld_l2_mag_RTN/2019-04-07T12:00:00+00:00', 'cda/PSP_FLD_L2_MAG_RTN/psp_fld_l2_mag_RTN/2019-04-07T00:00:00+00:00', 'cda/PSP_FLD_L2_MAG_RTN/psp_fld_l2_mag_RTN/2019-04-06T12:00:00+00:00', 'https://cdaweb.gsfc.nasa.gov/tmp/wsZx9P7S/psp_flds_l2_mag_rtn_20190406120000_20190407235735.cdf', 'https://cdaweb.gsfc.nasa.gov/pub/software/cdawlib/0MASTERS/thb_l2_mom_00000000_v01.cdf', 'https://cdaweb.gsfc.nasa.gov/pub/software/cdawlib/0MASTERS/thb_l2_fgm_00000000_v01.cdf', 'https://cdaweb.gsfc.nasa.gov/pub/software/cdawlib/0MASTERS/sta_l2_pla_1dmax_1min_00000000_v01.cdf', 'https://cdaweb.gsfc.nasa.gov/pub/software/cdawlib/0MASTERS/sta_l2_magplasma_1m_00000000_v01.cdf', 'https://cdaweb.gsfc.nasa.gov/pub/software/cdawlib/0MASTERS/sta_l1_mag_rtn_00000000_v01.cdf', 'https://cdaweb.gsfc.nasa.gov/pub/software/cdawlib/0MASTERS/wi_k0_swe_00000000_v01.cdf', 'https://cdaweb.gsfc.nasa.gov/pub/software/cdawlib/0MASTERS/wi_h4-rtn_mfi_00000000_v01.cdf', 'http://cdpp.irap.omp.eu/themisdata/the/l2/sst/0000/the_l2_sst_00000000_v01.cdf', 'http://cdpp.irap.omp.eu/themisdata/the/l2/scm/0000/the_l2_scm_00000000_v01.cdf', 'http://cdpp.irap.omp.eu/themisdata/the/l2/mom/0000/the_l2_mom_00000000_v01.cdf', 'http://cdpp.irap.omp.eu/themisdata/the/l2/gmom/0000/the_l2_gmom_00000000_v01.cdf', 'http://cdpp.irap.omp.eu/themisdata/the/l2/fit/0000/the_l2_fit_00000000_v01.cdf', 'http://cdpp.irap.omp.eu/themisdata/the/l2/fgm/0000/the_l2_fgm_00000000_v01.cdf', 'http://cdpp.irap.omp.eu/themisdata/the/l2/fft/0000/the_l2_fft_00000000_v01.cdf', 'http://cdpp.irap.omp.eu/themisdata/the/l2/fbk/0000/the_l2_fbk_00000000_v01.cdf', 'http://cdpp.irap.omp.eu/themisdata/the/l2/esd/0000/the_l2_esd_00000000_v01.cdf', 'http://cdpp.irap.omp.eu/themisdata/the/l2/esa/0000/the_l2_esa_00000000_v01.cdf', 'http://cdpp.irap.omp.eu/themisdata/the/l2/efi/0000/the_l2_efi_00000000_v01.cdf', 'http://cdpp.irap.omp.eu/themisdata/thd/l2/sst/0000/thd_l2_sst_00000000_v01.cdf', 'http://cdpp.irap.omp.eu/themisdata/thd/l2/scm/0000/thd_l2_scm_00000000_v01.cdf', 'http://cdpp.irap.omp.eu/themisdata/thd/l2/mom/0000/thd_l2_mom_00000000_v01.cdf', 'http://cdpp.irap.omp.eu/themisdata/thd/l2/gmom/0000/thd_l2_gmom_00000000_v01.cdf', 'http://cdpp.irap.omp.eu/themisdata/thd/l2/fit/0000/thd_l2_fit_00000000_v01.cdf', 'http://cdpp.irap.omp.eu/themisdata/thd/l2/fgm/0000/thd_l2_fgm_00000000_v01.cdf', 'http://cdpp.irap.omp.eu/themisdata/thd/l2/fft/0000/thd_l2_fft_00000000_v01.cdf', 'http://cdpp.irap.omp.eu/themisdata/thd/l2/fbk/0000/thd_l2_fbk_00000000_v01.cdf', 'http://cdpp.irap.omp.eu/themisdata/thd/l2/esd/0000/thd_l2_esd_00000000_v01.cdf', 'http://cdpp.irap.omp.eu/themisdata/thd/l2/esa/0000/thd_l2_esa_00000000_v01.cdf', 'http://cdpp.irap.omp.eu/themisdata/thd/l2/efi/0000/thd_l2_efi_00000000_v01.cdf', 'http://cdpp.irap.omp.eu/themisdata/thc/l2/sst/0000/thc_l2_sst_00000000_v01.cdf', 'http://cdpp.irap.omp.eu/themisdata/thc/l2/scm/0000/thc_l2_scm_00000000_v01.cdf', 'http://cdpp.irap.omp.eu/themisdata/thc/l2/mom/0000/thc_l2_mom_00000000_v01.cdf', 'http://cdpp.irap.omp.eu/themisdata/thc/l2/gmom/0000/thc_l2_gmom_00000000_v01.cdf', 'http://cdpp.irap.omp.eu/themisdata/thc/l2/fit/0000/thc_l2_fit_00000000_v01.cdf', 'http://cdpp.irap.omp.eu/themisdata/thc/l2/fgm/0000/thc_l2_fgm_00000000_v01.cdf', 'http://cdpp.irap.omp.eu/themisdata/thc/l2/fft/0000/thc_l2_fft_00000000_v01.cdf', 'http://cdpp.irap.omp.eu/themisdata/thc/l2/fbk/0000/thc_l2_fbk_00000000_v01.cdf', 'http://cdpp.irap.omp.eu/themisdata/thc/l2/esd/0000/thc_l2_esd_00000000_v01.cdf', 'http://cdpp.irap.omp.eu/themisdata/thc/l2/esa/0000/thc_l2_esa_00000000_v01.cdf', 'http://cdpp.irap.omp.eu/themisdata/thc/l2/efi/0000/thc_l2_efi_00000000_v01.cdf', 'http://cdpp.irap.omp.eu/themisdata/thb/l2/sst/0000/thb_l2_sst_00000000_v01.cdf', 'http://cdpp.irap.omp.eu/themisdata/thb/l2/scm/0000/thb_l2_scm_00000000_v01.cdf', 'http://cdpp.irap.omp.eu/themisdata/thb/l2/mom/0000/thb_l2_mom_00000000_v01.cdf', 'http://cdpp.irap.omp.eu/themisdata/thb/l2/gmom/0000/thb_l2_gmom_00000000_v01.cdf', 'http://cdpp.irap.omp.eu/themisdata/thb/l2/fit/0000/thb_l2_fit_00000000_v01.cdf', 'http://cdpp.irap.omp.eu/themisdata/thb/l2/fgm/0000/thb_l2_fgm_00000000_v01.cdf', 'http://cdpp.irap.omp.eu/themisdata/thb/l2/fft/0000/thb_l2_fft_00000000_v01.cdf', 'http://cdpp.irap.omp.eu/themisdata/thb/l2/fbk/0000/thb_l2_fbk_00000000_v01.cdf', 'http://cdpp.irap.omp.eu/themisdata/thb/l2/esd/0000/thb_l2_esd_00000000_v01.cdf', 'http://cdpp.irap.omp.eu/themisdata/thb/l2/esa/0000/thb_l2_esa_00000000_v01.cdf', 'http://cdpp.irap.omp.eu/themisdata/thb/l2/efi/0000/thb_l2_efi_00000000_v01.cdf', 'http://cdpp.irap.omp.eu/themisdata/tha/l2/sst/0000/tha_l2_sst_00000000_v01.cdf', 'http://cdpp.irap.omp.eu/themisdata/tha/l2/scm/0000/tha_l2_scm_00000000_v01.cdf', 'http://cdpp.irap.omp.eu/themisdata/tha/l2/mom/0000/tha_l2_mom_00000000_v01.cdf', 'http://cdpp.irap.omp.eu/themisdata/tha/l2/gmom/0000/tha_l2_gmom_00000000_v01.cdf', 'http://cdpp.irap.omp.eu/themisdata/tha/l2/fit/0000/tha_l2_fit_00000000_v01.cdf', 'http://cdpp.irap.omp.eu/themisdata/tha/l2/fgm/0000/tha_l2_fgm_00000000_v01.cdf', 'http://cdpp.irap.omp.eu/themisdata/tha/l2/fft/0000/tha_l2_fft_00000000_v01.cdf', 'http://cdpp.irap.omp.eu/themisdata/tha/l2/fbk/0000/tha_l2_fbk_00000000_v01.cdf', 'http://cdpp.irap.omp.eu/themisdata/tha/l2/esd/0000/tha_l2_esd_00000000_v01.cdf', 'http://cdpp.irap.omp.eu/themisdata/tha/l2/esa/0000/tha_l2_esa_00000000_v01.cdf', 'http://cdpp.irap.omp.eu/themisdata/tha/l2/efi/0000/tha_l2_efi_00000000_v01.cdf', 'https://cdaweb.gsfc.nasa.gov/pub/software/cdawlib/0MASTERS/mms4_fpi_fast_l2_des-moms_00000000_v01.cdf', 'https://cdaweb.gsfc.nasa.gov/pub/software/cdawlib/0MASTERS/mms4_fpi_brst_l2_des-moms_00000000_v01.cdf', 'https://cdaweb.gsfc.nasa.gov/pub/software/cdawlib/0MASTERS/mms4_fgm_srvy_l2_00000000_v01.cdf', 'https://cdaweb.gsfc.nasa.gov/pub/software/cdawlib/0MASTERS/mms3_fpi_fast_l2_des-moms_00000000_v01.cdf', 'https://cdaweb.gsfc.nasa.gov/pub/software/cdawlib/0MASTERS/mms3_fpi_brst_l2_des-moms_00000000_v01.cdf', 'https://cdaweb.gsfc.nasa.gov/pub/software/cdawlib/0MASTERS/mms3_fgm_srvy_l2_00000000_v01.cdf', 'https://cdaweb.gsfc.nasa.gov/pub/software/cdawlib/0MASTERS/mms2_fpi_fast_l2_des-moms_00000000_v01.cdf', 'https://cdaweb.gsfc.nasa.gov/pub/software/cdawlib/0MASTERS/mms2_fpi_brst_l2_des-moms_00000000_v01.cdf', 'https://cdaweb.gsfc.nasa.gov/pub/software/cdawlib/0MASTERS/mms2_fgm_srvy_l2_00000000_v01.cdf', 'https://cdaweb.gsfc.nasa.gov/pub/software/cdawlib/0MASTERS/mms1_fpi_fast_l2_des-moms_00000000_v01.cdf', 'https://cdaweb.gsfc.nasa.gov/pub/software/cdawlib/0MASTERS/mms1_fpi_brst_l2_des-moms_00000000_v01.cdf', 'https://cdaweb.gsfc.nasa.gov/pub/software/cdawlib/0MASTERS/mms1_fgm_srvy_l2_00000000_v01.cdf', 'https://cdaweb.gsfc.nasa.gov/pub/software/cdawlib/0MASTERS/erg_pwe_hfa_l3_1min_00000000_v01.cdf', 'https://cdaweb.gsfc.nasa.gov/pub/software/cdawlib/0MASTERS/erg_lepe_l3_pa_00000000_v01.cdf', 'cache/version']</code></pre>
+<pre><code>['cda/WI_PLSP_3DP/MOM.P.MAGT3/2019-04-12T00:00:00+00:00', 'cda/WI_PLSP_3DP/MOM.P.MAGT3/2019-04-11T12:00:00+00:00', 'cda/WI_PLSP_3DP/MOM.P.MAGT3/2019-04-11T00:00:00+00:00', 'cda/WI_PLSP_3DP/MOM.P.MAGT3/2019-04-10T12:00:00+00:00', 'cda/WI_PLSP_3DP/MOM.P.MAGT3/2019-04-10T00:00:00+00:00', 'cda/WI_PLSP_3DP/MOM.P.MAGT3/2019-04-09T12:00:00+00:00', 'cda/WI_PLSP_3DP/MOM.P.MAGT3/2019-04-09T00:00:00+00:00', 'cda/WI_PLSP_3DP/MOM.P.MAGT3/2019-04-08T12:00:00+00:00', 'https://cdaweb.gsfc.nasa.gov/tmp/wsX7LELp/wi_plsps_3dp_20190408120000_20190412115954.cdf', 'https://cdaweb.gsfc.nasa.gov/tmp/wss6lQ5G/wi_plsps_3dp_20190408120000_20190412115954.cdf', 'https://cdaweb.gsfc.nasa.gov/tmp/wsgD6oUy/wi_plsps_3dp_20190408120000_20190412115954.cdf', 'https://cdaweb.gsfc.nasa.gov/tmp/ws2WbWGk/wi_plsps_3dp_20190408120000_20190412115954.cdf', 'https://cdaweb.gsfc.nasa.gov/tmp/wsw6URGt/wi_plsps_3dp_20190408120000_20190412115954.cdf', 'https://cdaweb.gsfc.nasa.gov/tmp/wsrsvJ7P/wi_plsps_3dp_20190408120000_20190412115954.cdf', 'cda/THB_L2_MOM/thb_peim_ptens_magQ/2019-04-12T00:00:00+00:00', 'cda/THB_L2_MOM/thb_peim_ptens_magQ/2019-04-11T12:00:00+00:00', 'cda/THB_L2_MOM/thb_peim_ptens_magQ/2019-04-11T00:00:00+00:00', 'cda/THB_L2_MOM/thb_peim_ptens_magQ/2019-04-10T12:00:00+00:00', 'cda/THB_L2_MOM/thb_peim_ptens_magQ/2019-04-10T00:00:00+00:00', 'cda/THB_L2_MOM/thb_peim_ptens_magQ/2019-04-09T12:00:00+00:00', 'cda/THB_L2_MOM/thb_peim_ptens_magQ/2019-04-09T00:00:00+00:00', 'cda/THB_L2_MOM/thb_peim_ptens_magQ/2019-04-08T12:00:00+00:00', 'https://cdaweb.gsfc.nasa.gov/tmp/wsJysIZz/thb_l2s_mom_20190408120000_20190412115958.cdf', 'cda/THB_L2_MOM/thb_peem_ptens_magQ/2019-04-12T00:00:00+00:00', 'cda/THB_L2_MOM/thb_peem_ptens_magQ/2019-04-11T12:00:00+00:00', 'cda/THB_L2_MOM/thb_peem_ptens_magQ/2019-04-11T00:00:00+00:00', 'cda/THB_L2_MOM/thb_peem_ptens_magQ/2019-04-10T12:00:00+00:00', 'cda/THB_L2_MOM/thb_peem_ptens_magQ/2019-04-10T00:00:00+00:00', 'cda/THB_L2_MOM/thb_peem_ptens_magQ/2019-04-09T12:00:00+00:00', 'cda/THB_L2_MOM/thb_peem_ptens_magQ/2019-04-09T00:00:00+00:00', 'cda/THB_L2_MOM/thb_peem_ptens_magQ/2019-04-08T12:00:00+00:00', 'https://cdaweb.gsfc.nasa.gov/tmp/ws2UEYKB/thb_l2s_mom_20190408120000_20190412115958.cdf', 'cda/WI_PM_3DP/P_TEMP/2019-04-12T00:00:00+00:00', 'cda/WI_PM_3DP/P_TEMP/2019-04-11T12:00:00+00:00', 'cda/WI_PM_3DP/P_TEMP/2019-04-11T00:00:00+00:00', 'cda/WI_PM_3DP/P_TEMP/2019-04-10T12:00:00+00:00', 'cda/WI_PM_3DP/P_TEMP/2019-04-10T00:00:00+00:00', 'cda/WI_PM_3DP/P_TEMP/2019-04-09T12:00:00+00:00', 'cda/WI_PM_3DP/P_TEMP/2019-04-09T00:00:00+00:00', 'cda/WI_PM_3DP/P_TEMP/2019-04-08T12:00:00+00:00', 'https://cdaweb.gsfc.nasa.gov/tmp/wspZgXLc/wi_pms_3dp_20190408120000_20190412115958.cdf', 'cda/WI_PM_3DP/P_VELS/2019-04-12T00:00:00+00:00', 'cda/WI_PM_3DP/P_VELS/2019-04-11T12:00:00+00:00', 'cda/WI_PM_3DP/P_VELS/2019-04-11T00:00:00+00:00', 'cda/WI_PM_3DP/P_VELS/2019-04-10T12:00:00+00:00', 'cda/WI_PM_3DP/P_VELS/2019-04-10T00:00:00+00:00', 'cda/WI_PM_3DP/P_VELS/2019-04-09T12:00:00+00:00', 'cda/WI_PM_3DP/P_VELS/2019-04-09T00:00:00+00:00', 'cda/WI_PM_3DP/P_VELS/2019-04-08T12:00:00+00:00', 'https://cdaweb.gsfc.nasa.gov/tmp/wsgZ9Qeq/wi_pms_3dp_20190408120000_20190412115958.cdf', 'cda/WI_PM_3DP/P_DENS/2019-04-12T00:00:00+00:00', 'cda/WI_PM_3DP/P_DENS/2019-04-11T12:00:00+00:00', 'cda/WI_PM_3DP/P_DENS/2019-04-11T00:00:00+00:00', 'cda/WI_PM_3DP/P_DENS/2019-04-10T12:00:00+00:00', 'cda/WI_PM_3DP/P_DENS/2019-04-10T00:00:00+00:00', 'cda/WI_PM_3DP/P_DENS/2019-04-09T12:00:00+00:00', 'cda/WI_PM_3DP/P_DENS/2019-04-09T00:00:00+00:00', 'cda/WI_PM_3DP/P_DENS/2019-04-08T12:00:00+00:00', 'https://cdaweb.gsfc.nasa.gov/tmp/wstZl9Kd/wi_pms_3dp_20190408120000_20190412115958.cdf', 'cda/WI_H2_MFI/BGSE/2019-04-12T00:00:00+00:00', 'cda/WI_H2_MFI/BGSE/2019-04-11T12:00:00+00:00', 'cda/WI_H2_MFI/BGSE/2019-04-11T00:00:00+00:00', 'cda/WI_H2_MFI/BGSE/2019-04-10T12:00:00+00:00', 'cda/WI_H2_MFI/BGSE/2019-04-10T00:00:00+00:00', 'cda/WI_H2_MFI/BGSE/2019-04-09T12:00:00+00:00', 'cda/WI_H2_MFI/BGSE/2019-04-09T00:00:00+00:00', 'cda/WI_H2_MFI/BGSE/2019-04-08T12:00:00+00:00', 'https://cdaweb.gsfc.nasa.gov/tmp/wsxSYUNJ/wi_h2s_mfi_20190408120000_20190412115959.cdf', 'cda/THB_L2_MOM/thb_peim_ptotQ/2019-04-12T00:00:00+00:00', 'cda/THB_L2_MOM/thb_peim_ptotQ/2019-04-11T12:00:00+00:00', 'cda/THB_L2_MOM/thb_peim_ptotQ/2019-04-11T00:00:00+00:00', 'cda/THB_L2_MOM/thb_peim_ptotQ/2019-04-10T12:00:00+00:00', 'cda/THB_L2_MOM/thb_peim_ptotQ/2019-04-10T00:00:00+00:00', 'cda/THB_L2_MOM/thb_peim_ptotQ/2019-04-09T12:00:00+00:00', 'cda/THB_L2_MOM/thb_peim_ptotQ/2019-04-09T00:00:00+00:00', 'cda/THB_L2_MOM/thb_peim_ptotQ/2019-04-08T12:00:00+00:00', 'https://cdaweb.gsfc.nasa.gov/tmp/wsFDFj77/thb_l2s_mom_20190408120000_20190412115958.cdf', 'cda/THB_L2_MOM/thb_peim_velocity_gseQ/2019-04-12T00:00:00+00:00', 'cda/THB_L2_MOM/thb_peim_velocity_gseQ/2019-04-11T12:00:00+00:00', 'cda/THB_L2_MOM/thb_peim_velocity_gseQ/2019-04-11T00:00:00+00:00', 'cda/THB_L2_MOM/thb_peim_velocity_gseQ/2019-04-10T12:00:00+00:00', 'https://cdaweb.gsfc.nasa.gov/tmp/wsOxDZT7/thb_l2s_mom_20190410120000_20190412115958.cdf', 'cda/THB_L2_MOM/thb_peim_velocity_gseQ/2019-04-09T00:00:00+00:00', 'cda/THB_L2_MOM/thb_peim_velocity_gseQ/2019-04-08T12:00:00+00:00', 'https://cdaweb.gsfc.nasa.gov/tmp/wsHyWZk9/thb_l2s_mom_20190408120000_20190409115958.cdf', 'cda/THB_L2_MOM/thb_peim_densityQ/2019-04-12T00:00:00+00:00', 'cda/THB_L2_MOM/thb_peim_densityQ/2019-04-11T12:00:00+00:00', 'cda/THB_L2_MOM/thb_peim_densityQ/2019-04-11T00:00:00+00:00', 'cda/THB_L2_MOM/thb_peim_densityQ/2019-04-10T12:00:00+00:00', 'https://cdaweb.gsfc.nasa.gov/tmp/wsOkO4D6/thb_l2s_mom_20190410120000_20190412115958.cdf', 'cda/THB_L2_MOM/thb_peim_densityQ/2019-04-09T00:00:00+00:00', 'cda/THB_L2_MOM/thb_peim_densityQ/2019-04-08T12:00:00+00:00', 'https://cdaweb.gsfc.nasa.gov/tmp/wsjw9VQW/thb_l2s_mom_20190408120000_20190409115958.cdf', 'cda/THB_L2_FGM/thb_fgl_gse/2019-04-12T00:00:00+00:00', 'cda/THB_L2_FGM/thb_fgl_gse/2019-04-11T12:00:00+00:00', 'cda/THB_L2_FGM/thb_fgl_gse/2019-04-11T00:00:00+00:00', 'cda/THB_L2_FGM/thb_fgl_gse/2019-04-10T12:00:00+00:00', 'https://cdaweb.gsfc.nasa.gov/tmp/wsPOK59Q/thb_l2s_fgm_20190410154948_20190412051612.cdf', 'cda/THB_L2_FGM/thb_fgl_gse/2019-04-09T00:00:00+00:00', 'cda/THB_L2_FGM/thb_fgl_gse/2019-04-08T12:00:00+00:00', 'https://cdaweb.gsfc.nasa.gov/tmp/wskTkvRu/thb_l2s_fgm_20190408120000_20190408192100.cdf', 'cda/THB_L2_MOM/thb_peim_densityQ/2019-04-10T00:00:00+00:00', 'cda/THB_L2_MOM/thb_peim_densityQ/2019-04-09T12:00:00+00:00', 'https://cdaweb.gsfc.nasa.gov/tmp/wsjUpKuw/thb_l2s_mom_20190409120003_20190410115956.cdf', 'cda/THB_L2_FGM/thb_fgl_gse/2019-04-10T00:00:00+00:00', 'cda/THB_L2_FGM/thb_fgl_gse/2019-04-09T12:00:00+00:00', 'https://cdaweb.gsfc.nasa.gov/tmp/wsfWpYWe/thb_l2s_fgm_20190409122948_20190409223612.cdf', 'cda/THB_L2_MOM/thb_peim_velocity_gseQ/2019-04-10T00:00:00+00:00', 'cda/THB_L2_MOM/thb_peim_velocity_gseQ/2019-04-09T12:00:00+00:00', 'https://cdaweb.gsfc.nasa.gov/tmp/wsF7wqKb/thb_l2s_mom_20190409120003_20190410115956.cdf', 'cda/SOLO_L2_MAG-RTN-NORMAL-1-MINUTE/B_RTN/2021-01-02T00:00:00+00:00', 'cda/SOLO_L2_MAG-RTN-NORMAL-1-MINUTE/B_RTN/2021-01-01T12:00:00+00:00', 'cda/SOLO_L2_MAG-RTN-NORMAL-1-MINUTE/B_RTN/2021-01-01T00:00:00+00:00', 'cda/SOLO_L2_MAG-RTN-NORMAL-1-MINUTE/B_RTN/2020-12-31T12:00:00+00:00', 'cda/WI_PLSP_3DP/ENERGY/2019-04-12T00:00:00+00:00', 'cda/WI_PLSP_3DP/ENERGY/2019-04-11T12:00:00+00:00', 'cda/WI_PLSP_3DP/ENERGY/2019-04-11T00:00:00+00:00', 'cda/WI_PLSP_3DP/ENERGY/2019-04-10T12:00:00+00:00', 'cda/WI_PLSP_3DP/ENERGY/2019-04-10T00:00:00+00:00', 'cda/WI_PLSP_3DP/ENERGY/2019-04-09T12:00:00+00:00', 'cda/WI_PLSP_3DP/ENERGY/2019-04-09T00:00:00+00:00', 'cda/WI_PLSP_3DP/ENERGY/2019-04-08T12:00:00+00:00', 'cda/WI_ELM2_3DP/MAGT3/2019-04-12T00:00:00+00:00', 'cda/WI_ELM2_3DP/MAGT3/2019-04-11T12:00:00+00:00', 'cda/WI_ELM2_3DP/MAGT3/2019-04-11T00:00:00+00:00', 'cda/WI_ELM2_3DP/MAGT3/2019-04-10T12:00:00+00:00', 'cda/WI_ELM2_3DP/MAGT3/2019-04-10T00:00:00+00:00', 'cda/WI_ELM2_3DP/MAGT3/2019-04-09T12:00:00+00:00', 'cda/WI_ELM2_3DP/MAGT3/2019-04-09T00:00:00+00:00', 'cda/WI_ELM2_3DP/MAGT3/2019-04-08T12:00:00+00:00', 'cda/THB_L2_MOM/thb_peim_t3_magQ/2019-04-12T00:00:00+00:00', 'cda/THB_L2_MOM/thb_peim_t3_magQ/2019-04-11T12:00:00+00:00', 'cda/THB_L2_MOM/thb_peim_t3_magQ/2019-04-11T00:00:00+00:00', 'cda/THB_L2_MOM/thb_peim_t3_magQ/2019-04-10T12:00:00+00:00', 'cda/THB_L2_MOM/thb_peim_t3_magQ/2019-04-10T00:00:00+00:00', 'cda/THB_L2_MOM/thb_peim_t3_magQ/2019-04-09T12:00:00+00:00', 'cda/THB_L2_MOM/thb_peim_t3_magQ/2019-04-09T00:00:00+00:00', 'cda/THB_L2_MOM/thb_peim_t3_magQ/2019-04-08T12:00:00+00:00', 'cda/THB_L2_MOM/thb_peem_t3_magQ/2019-04-12T00:00:00+00:00', 'cda/THB_L2_MOM/thb_peem_t3_magQ/2019-04-11T12:00:00+00:00', 'cda/THB_L2_MOM/thb_peem_t3_magQ/2019-04-11T00:00:00+00:00', 'cda/THB_L2_MOM/thb_peem_t3_magQ/2019-04-10T12:00:00+00:00', 'cda/THB_L2_MOM/thb_peem_t3_magQ/2019-04-10T00:00:00+00:00', 'cda/THB_L2_MOM/thb_peem_t3_magQ/2019-04-09T12:00:00+00:00', 'cda/THB_L2_MOM/thb_peem_t3_magQ/2019-04-09T00:00:00+00:00', 'cda/THB_L2_MOM/thb_peem_t3_magQ/2019-04-08T12:00:00+00:00', 'cda/PSP_SWP_SPC_L3I/np_moment_gd/2019-04-07T12:00:00+00:00', 'cda/PSP_SWP_SPC_L3I/np_moment_gd/2019-04-07T00:00:00+00:00', 'cda/PSP_SWP_SPC_L3I/np_moment_gd/2019-04-06T12:00:00+00:00', 'https://cdaweb.gsfc.nasa.gov/tmp/wshv6OPm/psp_swps_spc_l3i_20190406120012_20190407235805.cdf', 'cda/PSP_SWP_SPI_SF00_L3_MOM/SUN_DIST/2019-04-07T12:00:00+00:00', 'cda/PSP_SWP_SPI_SF00_L3_MOM/SUN_DIST/2019-04-07T00:00:00+00:00', 'cda/PSP_SWP_SPI_SF00_L3_MOM/SUN_DIST/2019-04-06T12:00:00+00:00', 'https://cdaweb.gsfc.nasa.gov/tmp/wszcUkYV/psp_swps_spi_sf00_l3_mom_20190406120001_20190407235959.cdf', 'cda/PSP_SWP_SPI_SF00_L3_MOM/TEMP/2019-04-07T12:00:00+00:00', 'cda/PSP_SWP_SPI_SF00_L3_MOM/TEMP/2019-04-07T00:00:00+00:00', 'cda/PSP_SWP_SPI_SF00_L3_MOM/TEMP/2019-04-06T12:00:00+00:00', 'https://cdaweb.gsfc.nasa.gov/tmp/wsWQttvt/psp_swps_spi_sf00_l3_mom_20190406120001_20190407235959.cdf', 'cda/PSP_SWP_SPI_SF00_L3_MOM/VEL_RTN_SUN/2019-04-07T12:00:00+00:00', 'cda/PSP_SWP_SPI_SF00_L3_MOM/VEL_RTN_SUN/2019-04-07T00:00:00+00:00', 'cda/PSP_SWP_SPI_SF00_L3_MOM/VEL_RTN_SUN/2019-04-06T12:00:00+00:00', 'https://cdaweb.gsfc.nasa.gov/tmp/wsqD3Vl4/psp_swps_spi_sf00_l3_mom_20190406120001_20190407235959.cdf', 'cda/PSP_SWP_SPI_SF00_L3_MOM/DENS/2019-04-07T12:00:00+00:00', 'cda/PSP_SWP_SPI_SF00_L3_MOM/DENS/2019-04-07T00:00:00+00:00', 'cda/PSP_SWP_SPI_SF00_L3_MOM/DENS/2019-04-06T12:00:00+00:00', 'https://cdaweb.gsfc.nasa.gov/tmp/ws1kPspF/psp_swps_spi_sf00_l3_mom_20190406120001_20190407235959.cdf', 'cda/PSP_FLD_L3_RFS_LFR_QTN/N_elec/2019-04-07T12:00:00+00:00', 'cda/PSP_FLD_L3_RFS_LFR_QTN/N_elec/2019-04-07T00:00:00+00:00', 'cda/PSP_FLD_L3_RFS_LFR_QTN/N_elec/2019-04-06T12:00:00+00:00', 'https://cdaweb.gsfc.nasa.gov/tmp/wscwwzey/psp_flds_l3_rfs_lfr_qtn_20190406120006_20190407235922.cdf', 'cda/PSP_SWP_SPC_L3I/wp_moment_gd/2019-04-07T12:00:00+00:00', 'cda/PSP_SWP_SPC_L3I/wp_moment_gd/2019-04-07T00:00:00+00:00', 'cda/PSP_SWP_SPC_L3I/wp_moment_gd/2019-04-06T12:00:00+00:00', 'https://cdaweb.gsfc.nasa.gov/tmp/wsqkNkGL/psp_swps_spc_l3i_20190406120012_20190407235805.cdf', 'cda/PSP_SWP_SPC_L3I/vp_moment_RTN_gd/2019-04-07T12:00:00+00:00', 'cda/PSP_SWP_SPC_L3I/vp_moment_RTN_gd/2019-04-07T00:00:00+00:00', 'cda/PSP_SWP_SPC_L3I/vp_moment_RTN_gd/2019-04-06T12:00:00+00:00', 'https://cdaweb.gsfc.nasa.gov/tmp/wsBcRYzd/psp_swps_spc_l3i_20190406120012_20190407235805.cdf', 'cda/PSP_FLD_L3_SQTN_RFS_V1V2/electron_density/2019-04-07T12:00:00+00:00', 'cda/PSP_FLD_L3_SQTN_RFS_V1V2/electron_density/2019-04-07T00:00:00+00:00', 'cda/PSP_FLD_L3_SQTN_RFS_V1V2/electron_density/2019-04-06T12:00:00+00:00', 'https://cdaweb.gsfc.nasa.gov/tmp/ws5ziTed/psp_flds_l3_sqtn_rfs_v1v2_20190406120006_20190407235957.cdf', 'cda/PSP_FLD_L2_MAG_RTN/psp_fld_l2_mag_RTN/2019-04-07T12:00:00+00:00', 'cda/PSP_FLD_L2_MAG_RTN/psp_fld_l2_mag_RTN/2019-04-07T00:00:00+00:00', 'cda/PSP_FLD_L2_MAG_RTN/psp_fld_l2_mag_RTN/2019-04-06T12:00:00+00:00', 'https://cdaweb.gsfc.nasa.gov/tmp/wsZx9P7S/psp_flds_l2_mag_rtn_20190406120000_20190407235735.cdf', 'https://cdaweb.gsfc.nasa.gov/pub/software/cdawlib/0MASTERS/thb_l2_mom_00000000_v01.cdf', 'https://cdaweb.gsfc.nasa.gov/pub/software/cdawlib/0MASTERS/thb_l2_fgm_00000000_v01.cdf', 'https://cdaweb.gsfc.nasa.gov/pub/software/cdawlib/0MASTERS/sta_l2_pla_1dmax_1min_00000000_v01.cdf', 'https://cdaweb.gsfc.nasa.gov/pub/software/cdawlib/0MASTERS/sta_l2_magplasma_1m_00000000_v01.cdf', 'https://cdaweb.gsfc.nasa.gov/pub/software/cdawlib/0MASTERS/sta_l1_mag_rtn_00000000_v01.cdf', 'https://cdaweb.gsfc.nasa.gov/pub/software/cdawlib/0MASTERS/wi_k0_swe_00000000_v01.cdf', 'https://cdaweb.gsfc.nasa.gov/pub/software/cdawlib/0MASTERS/wi_h4-rtn_mfi_00000000_v01.cdf', 'http://cdpp.irap.omp.eu/themisdata/the/l2/sst/0000/the_l2_sst_00000000_v01.cdf', 'http://cdpp.irap.omp.eu/themisdata/the/l2/scm/0000/the_l2_scm_00000000_v01.cdf', 'http://cdpp.irap.omp.eu/themisdata/the/l2/mom/0000/the_l2_mom_00000000_v01.cdf', 'http://cdpp.irap.omp.eu/themisdata/the/l2/gmom/0000/the_l2_gmom_00000000_v01.cdf', 'http://cdpp.irap.omp.eu/themisdata/the/l2/fit/0000/the_l2_fit_00000000_v01.cdf', 'http://cdpp.irap.omp.eu/themisdata/the/l2/fgm/0000/the_l2_fgm_00000000_v01.cdf', 'http://cdpp.irap.omp.eu/themisdata/the/l2/fft/0000/the_l2_fft_00000000_v01.cdf', 'http://cdpp.irap.omp.eu/themisdata/the/l2/fbk/0000/the_l2_fbk_00000000_v01.cdf', 'http://cdpp.irap.omp.eu/themisdata/the/l2/esd/0000/the_l2_esd_00000000_v01.cdf', 'http://cdpp.irap.omp.eu/themisdata/the/l2/esa/0000/the_l2_esa_00000000_v01.cdf', 'http://cdpp.irap.omp.eu/themisdata/the/l2/efi/0000/the_l2_efi_00000000_v01.cdf', 'http://cdpp.irap.omp.eu/themisdata/thd/l2/sst/0000/thd_l2_sst_00000000_v01.cdf', 'http://cdpp.irap.omp.eu/themisdata/thd/l2/scm/0000/thd_l2_scm_00000000_v01.cdf', 'http://cdpp.irap.omp.eu/themisdata/thd/l2/mom/0000/thd_l2_mom_00000000_v01.cdf', 'http://cdpp.irap.omp.eu/themisdata/thd/l2/gmom/0000/thd_l2_gmom_00000000_v01.cdf', 'http://cdpp.irap.omp.eu/themisdata/thd/l2/fit/0000/thd_l2_fit_00000000_v01.cdf', 'http://cdpp.irap.omp.eu/themisdata/thd/l2/fgm/0000/thd_l2_fgm_00000000_v01.cdf', 'http://cdpp.irap.omp.eu/themisdata/thd/l2/fft/0000/thd_l2_fft_00000000_v01.cdf', 'http://cdpp.irap.omp.eu/themisdata/thd/l2/fbk/0000/thd_l2_fbk_00000000_v01.cdf', 'http://cdpp.irap.omp.eu/themisdata/thd/l2/esd/0000/thd_l2_esd_00000000_v01.cdf', 'http://cdpp.irap.omp.eu/themisdata/thd/l2/esa/0000/thd_l2_esa_00000000_v01.cdf', 'http://cdpp.irap.omp.eu/themisdata/thd/l2/efi/0000/thd_l2_efi_00000000_v01.cdf', 'http://cdpp.irap.omp.eu/themisdata/thc/l2/sst/0000/thc_l2_sst_00000000_v01.cdf', 'http://cdpp.irap.omp.eu/themisdata/thc/l2/scm/0000/thc_l2_scm_00000000_v01.cdf', 'http://cdpp.irap.omp.eu/themisdata/thc/l2/mom/0000/thc_l2_mom_00000000_v01.cdf', 'http://cdpp.irap.omp.eu/themisdata/thc/l2/gmom/0000/thc_l2_gmom_00000000_v01.cdf', 'http://cdpp.irap.omp.eu/themisdata/thc/l2/fit/0000/thc_l2_fit_00000000_v01.cdf', 'http://cdpp.irap.omp.eu/themisdata/thc/l2/fgm/0000/thc_l2_fgm_00000000_v01.cdf', 'http://cdpp.irap.omp.eu/themisdata/thc/l2/fft/0000/thc_l2_fft_00000000_v01.cdf', 'http://cdpp.irap.omp.eu/themisdata/thc/l2/fbk/0000/thc_l2_fbk_00000000_v01.cdf', 'http://cdpp.irap.omp.eu/themisdata/thc/l2/esd/0000/thc_l2_esd_00000000_v01.cdf', 'http://cdpp.irap.omp.eu/themisdata/thc/l2/esa/0000/thc_l2_esa_00000000_v01.cdf', 'http://cdpp.irap.omp.eu/themisdata/thc/l2/efi/0000/thc_l2_efi_00000000_v01.cdf', 'http://cdpp.irap.omp.eu/themisdata/thb/l2/sst/0000/thb_l2_sst_00000000_v01.cdf', 'http://cdpp.irap.omp.eu/themisdata/thb/l2/scm/0000/thb_l2_scm_00000000_v01.cdf', 'http://cdpp.irap.omp.eu/themisdata/thb/l2/mom/0000/thb_l2_mom_00000000_v01.cdf', 'http://cdpp.irap.omp.eu/themisdata/thb/l2/gmom/0000/thb_l2_gmom_00000000_v01.cdf', 'http://cdpp.irap.omp.eu/themisdata/thb/l2/fit/0000/thb_l2_fit_00000000_v01.cdf', 'http://cdpp.irap.omp.eu/themisdata/thb/l2/fgm/0000/thb_l2_fgm_00000000_v01.cdf', 'http://cdpp.irap.omp.eu/themisdata/thb/l2/fft/0000/thb_l2_fft_00000000_v01.cdf', 'http://cdpp.irap.omp.eu/themisdata/thb/l2/fbk/0000/thb_l2_fbk_00000000_v01.cdf', 'http://cdpp.irap.omp.eu/themisdata/thb/l2/esd/0000/thb_l2_esd_00000000_v01.cdf', 'http://cdpp.irap.omp.eu/themisdata/thb/l2/esa/0000/thb_l2_esa_00000000_v01.cdf', 'http://cdpp.irap.omp.eu/themisdata/thb/l2/efi/0000/thb_l2_efi_00000000_v01.cdf', 'http://cdpp.irap.omp.eu/themisdata/tha/l2/sst/0000/tha_l2_sst_00000000_v01.cdf', 'http://cdpp.irap.omp.eu/themisdata/tha/l2/scm/0000/tha_l2_scm_00000000_v01.cdf', 'http://cdpp.irap.omp.eu/themisdata/tha/l2/mom/0000/tha_l2_mom_00000000_v01.cdf', 'http://cdpp.irap.omp.eu/themisdata/tha/l2/gmom/0000/tha_l2_gmom_00000000_v01.cdf', 'http://cdpp.irap.omp.eu/themisdata/tha/l2/fit/0000/tha_l2_fit_00000000_v01.cdf', 'http://cdpp.irap.omp.eu/themisdata/tha/l2/fgm/0000/tha_l2_fgm_00000000_v01.cdf', 'http://cdpp.irap.omp.eu/themisdata/tha/l2/fft/0000/tha_l2_fft_00000000_v01.cdf', 'http://cdpp.irap.omp.eu/themisdata/tha/l2/fbk/0000/tha_l2_fbk_00000000_v01.cdf', 'http://cdpp.irap.omp.eu/themisdata/tha/l2/esd/0000/tha_l2_esd_00000000_v01.cdf', 'http://cdpp.irap.omp.eu/themisdata/tha/l2/esa/0000/tha_l2_esa_00000000_v01.cdf', 'http://cdpp.irap.omp.eu/themisdata/tha/l2/efi/0000/tha_l2_efi_00000000_v01.cdf', 'https://cdaweb.gsfc.nasa.gov/pub/software/cdawlib/0MASTERS/mms4_fpi_fast_l2_des-moms_00000000_v01.cdf', 'https://cdaweb.gsfc.nasa.gov/pub/software/cdawlib/0MASTERS/mms4_fpi_brst_l2_des-moms_00000000_v01.cdf', 'https://cdaweb.gsfc.nasa.gov/pub/software/cdawlib/0MASTERS/mms4_fgm_srvy_l2_00000000_v01.cdf', 'https://cdaweb.gsfc.nasa.gov/pub/software/cdawlib/0MASTERS/mms3_fpi_fast_l2_des-moms_00000000_v01.cdf', 'https://cdaweb.gsfc.nasa.gov/pub/software/cdawlib/0MASTERS/mms3_fpi_brst_l2_des-moms_00000000_v01.cdf', 'https://cdaweb.gsfc.nasa.gov/pub/software/cdawlib/0MASTERS/mms3_fgm_srvy_l2_00000000_v01.cdf', 'https://cdaweb.gsfc.nasa.gov/pub/software/cdawlib/0MASTERS/mms2_fpi_fast_l2_des-moms_00000000_v01.cdf', 'https://cdaweb.gsfc.nasa.gov/pub/software/cdawlib/0MASTERS/mms2_fpi_brst_l2_des-moms_00000000_v01.cdf', 'https://cdaweb.gsfc.nasa.gov/pub/software/cdawlib/0MASTERS/mms2_fgm_srvy_l2_00000000_v01.cdf', 'https://cdaweb.gsfc.nasa.gov/pub/software/cdawlib/0MASTERS/mms1_fpi_fast_l2_des-moms_00000000_v01.cdf', 'https://cdaweb.gsfc.nasa.gov/pub/software/cdawlib/0MASTERS/mms1_fpi_brst_l2_des-moms_00000000_v01.cdf', 'https://cdaweb.gsfc.nasa.gov/pub/software/cdawlib/0MASTERS/mms1_fgm_srvy_l2_00000000_v01.cdf', 'https://cdaweb.gsfc.nasa.gov/pub/software/cdawlib/0MASTERS/erg_pwe_hfa_l3_1min_00000000_v01.cdf', 'https://cdaweb.gsfc.nasa.gov/pub/software/cdawlib/0MASTERS/erg_lepe_l3_pa_00000000_v01.cdf', 'cache/version']</code></pre>
 </div>
 </div>
-<div id="cell-4" class="cell" data-execution_count="4">
+<div id="cell-4" class="cell" data-execution_count="3">
 <div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>spz.update_inventories()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="cell-5" class="cell" data-execution_count="1">
+<div id="cell-5" class="cell" data-execution_count="4">
 <div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>timerange <span class="op">=</span> [<span class="st">"2011-08-25"</span>, <span class="st">"2016-06-30"</span>]</span>
 <span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="co"># timerange = ["2011-08-25", "2011-09-01"]</span></span>
 <span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>mission <span class="op">=</span> <span class="st">"STA"</span></span>
@@ -1117,74 +515,82 @@ ModuleNotFoundError: No module named 'nltk'
 <span id="cb7-19"><a href="#cb7-19" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb7-20"><a href="#cb7-20" aria-hidden="true" tabindex="-1"></a>fmt <span class="op">=</span> <span class="st">'arrow'</span></span>
 <span id="cb7-21"><a href="#cb7-21" aria-hidden="true" tabindex="-1"></a>fname <span class="op">=</span> <span class="ss">f"../../../data/05_reporting/events.</span><span class="sc">{</span>mission<span class="sc">}</span><span class="ss">.ts_</span><span class="sc">{</span>ts<span class="sc">.</span>total_seconds()<span class="sc">:.2f}</span><span class="ss">s_tau_60s.</span><span class="sc">{</span>fmt<span class="sc">}</span><span class="ss">"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-error">
-<pre><code>NameError: name 'timedelta' is not defined</code></pre>
-</div>
 </div>
 <section id="downloading-files" class="level2">
 <h2 class="anchored" data-anchor-id="downloading-files">Downloading files</h2>
 <div id="cell-7" class="cell">
-<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> download(timerange):</span>
-<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>    </span>
-<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>    files <span class="op">=</span> pyspedas.stereo.plastic(timerange, downloadonly<span class="op">=</span><span class="va">True</span>)</span>
-<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> <span class="bu">file</span> <span class="kw">in</span> files:</span>
-<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a>        parquet_file <span class="op">=</span> <span class="bu">file</span>.replace(<span class="st">'.cdf'</span>, <span class="ss">f'.</span><span class="sc">{</span>fmt<span class="sc">}</span><span class="ss">'</span>)</span>
-<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a>        cdf2pl(<span class="bu">file</span>, plasma_parameters).collect().write_ipc(parquet_file)</span>
-<span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a>        </span>
-<span id="cb9-9"><a href="#cb9-9" aria-hidden="true" tabindex="-1"></a>    mag_files <span class="op">=</span> pyspedas.stereo.mag(timerange, downloadonly<span class="op">=</span><span class="va">True</span>)</span>
-<span id="cb9-10"><a href="#cb9-10" aria-hidden="true" tabindex="-1"></a>    </span>
-<span id="cb9-11"><a href="#cb9-11" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> files</span>
-<span id="cb9-12"><a href="#cb9-12" aria-hidden="true" tabindex="-1"></a>    </span>
-<span id="cb9-13"><a href="#cb9-13" aria-hidden="true" tabindex="-1"></a>        </span>
-<span id="cb9-14"><a href="#cb9-14" aria-hidden="true" tabindex="-1"></a><span class="co"># download(timerange)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> download(timerange):</span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>    files <span class="op">=</span> pyspedas.stereo.plastic(timerange, downloadonly<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> <span class="bu">file</span> <span class="kw">in</span> files:</span>
+<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a>        parquet_file <span class="op">=</span> <span class="bu">file</span>.replace(<span class="st">'.cdf'</span>, <span class="ss">f'.</span><span class="sc">{</span>fmt<span class="sc">}</span><span class="ss">'</span>)</span>
+<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a>        cdf2pl(<span class="bu">file</span>, plasma_parameters).collect().write_ipc(parquet_file)</span>
+<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a>        </span>
+<span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a>    mag_files <span class="op">=</span> pyspedas.stereo.mag(timerange, downloadonly<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb8-10"><a href="#cb8-10" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb8-11"><a href="#cb8-11" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> files</span>
+<span id="cb8-12"><a href="#cb8-12" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb8-13"><a href="#cb8-13" aria-hidden="true" tabindex="-1"></a>        </span>
+<span id="cb8-14"><a href="#cb8-14" aria-hidden="true" tabindex="-1"></a><span class="co"># download(timerange)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="loading-data" class="level2">
 <h2 class="anchored" data-anchor-id="loading-data">Loading data</h2>
-<div id="cell-9" class="cell">
-<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> get_and_process_data(timerange):</span>
-<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>    mag_vars <span class="op">=</span> Variables(</span>
-<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>        provider <span class="op">=</span> provider,</span>
-<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a>        dataset<span class="op">=</span>mag_dataset,</span>
-<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a>        parameters<span class="op">=</span>mag_parameters,</span>
-<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a>        timerange<span class="op">=</span>timerange,</span>
-<span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a>    ).retrieve_data()</span>
-<span id="cb10-8"><a href="#cb10-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-9"><a href="#cb10-9" aria-hidden="true" tabindex="-1"></a>    bcols <span class="op">=</span> mag_vars.data[<span class="dv">0</span>].columns[:<span class="dv">3</span>]</span>
-<span id="cb10-10"><a href="#cb10-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-11"><a href="#cb10-11" aria-hidden="true" tabindex="-1"></a>    mag_data <span class="op">=</span> mag_vars.to_polars().drop(<span class="st">'BTotal'</span>)</span>
-<span id="cb10-12"><a href="#cb10-12" aria-hidden="true" tabindex="-1"></a>    </span>
-<span id="cb10-13"><a href="#cb10-13" aria-hidden="true" tabindex="-1"></a>    files <span class="op">=</span> pyspedas.stereo.plastic(timerange, downloadonly<span class="op">=</span><span class="va">True</span>, no_update<span class="op">=</span><span class="va">True</span>)</span>
-<span id="cb10-14"><a href="#cb10-14" aria-hidden="true" tabindex="-1"></a>    parquet_files <span class="op">=</span> [<span class="bu">file</span>.replace(<span class="st">'.cdf'</span>, <span class="ss">f'.</span><span class="sc">{</span>fmt<span class="sc">}</span><span class="ss">'</span>) <span class="cf">for</span> <span class="bu">file</span> <span class="kw">in</span> files]</span>
-<span id="cb10-15"><a href="#cb10-15" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-16"><a href="#cb10-16" aria-hidden="true" tabindex="-1"></a>    plasma_data <span class="op">=</span> pl.scan_ipc(parquet_files).with_columns(</span>
-<span id="cb10-17"><a href="#cb10-17" aria-hidden="true" tabindex="-1"></a>        plasma_density <span class="op">=</span> pl.when(pl.col(density_col) <span class="op">&lt;</span><span class="dv">0</span> ).then(<span class="va">None</span>).otherwise(pl.col(density_col)),</span>
-<span id="cb10-18"><a href="#cb10-18" aria-hidden="true" tabindex="-1"></a>        plasma_speed<span class="op">=</span>pl_norm(vec_cols), ).rename({temperature_col:<span class="st">'plasma_temperature'</span>}</span>
-<span id="cb10-19"><a href="#cb10-19" aria-hidden="true" tabindex="-1"></a>    )</span>
-<span id="cb10-20"><a href="#cb10-20" aria-hidden="true" tabindex="-1"></a>    </span>
-<span id="cb10-21"><a href="#cb10-21" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> IDsDataset(</span>
-<span id="cb10-22"><a href="#cb10-22" aria-hidden="true" tabindex="-1"></a>        mag_data<span class="op">=</span>mag_data.pipe(resample, every<span class="op">=</span>ts),</span>
-<span id="cb10-23"><a href="#cb10-23" aria-hidden="true" tabindex="-1"></a>        plasma_data<span class="op">=</span>plasma_data,</span>
-<span id="cb10-24"><a href="#cb10-24" aria-hidden="true" tabindex="-1"></a>        tau<span class="op">=</span>tau,</span>
-<span id="cb10-25"><a href="#cb10-25" aria-hidden="true" tabindex="-1"></a>        ts<span class="op">=</span>ts,</span>
-<span id="cb10-26"><a href="#cb10-26" aria-hidden="true" tabindex="-1"></a>        bcols<span class="op">=</span>bcols,</span>
-<span id="cb10-27"><a href="#cb10-27" aria-hidden="true" tabindex="-1"></a>        vec_cols<span class="op">=</span>vec_cols,</span>
-<span id="cb10-28"><a href="#cb10-28" aria-hidden="true" tabindex="-1"></a>        density_col<span class="op">=</span><span class="st">"plasma_density"</span>,</span>
-<span id="cb10-29"><a href="#cb10-29" aria-hidden="true" tabindex="-1"></a>        speed_col<span class="op">=</span><span class="st">"plasma_speed"</span>,</span>
-<span id="cb10-30"><a href="#cb10-30" aria-hidden="true" tabindex="-1"></a>        temperature_col<span class="op">=</span><span class="st">'plasma_temperature'</span>,</span>
-<span id="cb10-31"><a href="#cb10-31" aria-hidden="true" tabindex="-1"></a>    ).find_events(return_best_fit<span class="op">=</span><span class="va">False</span>).update_candidates_with_plasma_data()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="cell-9" class="cell" data-execution_count="7">
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>mag_vars <span class="op">=</span> Variables(</span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>    provider <span class="op">=</span> provider,</span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>    dataset<span class="op">=</span>mag_dataset,</span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>    parameters<span class="op">=</span>mag_parameters,</span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a>    timerange<span class="op">=</span>timerange,</span>
+<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a>).retrieve_data()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-error">
+<pre><code>KeyboardInterrupt: </code></pre>
+</div>
 </div>
 <div id="cell-10" class="cell">
-<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>ids : <span class="bu">list</span>[pl.DataFrame] <span class="op">=</span> []</span>
-<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> _tr <span class="kw">in</span> tqdm(TimeRange(timerange).split(<span class="dv">8</span>)):</span>
-<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>    </span>
-<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a>    _timerange <span class="op">=</span> [_tr.start.value, _tr.end.value]</span>
-<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a>    _id <span class="op">=</span> get_and_process_data(_timerange)</span>
-<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a>    ids.append(_id.events)</span>
-<span id="cb11-7"><a href="#cb11-7" aria-hidden="true" tabindex="-1"></a>    </span>
-<span id="cb11-8"><a href="#cb11-8" aria-hidden="true" tabindex="-1"></a><span class="bu">id</span> <span class="op">=</span> pl.concat(ids, how<span class="op">=</span><span class="st">'vertical_relaxed'</span>).select(cs.datetime(), cs.duration(), cs.numeric())</span>
-<span id="cb11-9"><a href="#cb11-9" aria-hidden="true" tabindex="-1"></a><span class="bu">id</span>.write_ipc(fname)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> get_and_process_data(timerange):</span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>    mag_vars <span class="op">=</span> Variables(</span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>        provider <span class="op">=</span> provider,</span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a>        dataset<span class="op">=</span>mag_dataset,</span>
+<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a>        parameters<span class="op">=</span>mag_parameters,</span>
+<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a>        timerange<span class="op">=</span>timerange,</span>
+<span id="cb11-7"><a href="#cb11-7" aria-hidden="true" tabindex="-1"></a>    ).retrieve_data()</span>
+<span id="cb11-8"><a href="#cb11-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-9"><a href="#cb11-9" aria-hidden="true" tabindex="-1"></a>    bcols <span class="op">=</span> mag_vars.data[<span class="dv">0</span>].columns[:<span class="dv">3</span>]</span>
+<span id="cb11-10"><a href="#cb11-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-11"><a href="#cb11-11" aria-hidden="true" tabindex="-1"></a>    mag_data <span class="op">=</span> mag_vars.to_polars().drop(<span class="st">'BTotal'</span>)</span>
+<span id="cb11-12"><a href="#cb11-12" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb11-13"><a href="#cb11-13" aria-hidden="true" tabindex="-1"></a>    files <span class="op">=</span> pyspedas.stereo.plastic(timerange, downloadonly<span class="op">=</span><span class="va">True</span>, no_update<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb11-14"><a href="#cb11-14" aria-hidden="true" tabindex="-1"></a>    parquet_files <span class="op">=</span> [<span class="bu">file</span>.replace(<span class="st">'.cdf'</span>, <span class="ss">f'.</span><span class="sc">{</span>fmt<span class="sc">}</span><span class="ss">'</span>) <span class="cf">for</span> <span class="bu">file</span> <span class="kw">in</span> files]</span>
+<span id="cb11-15"><a href="#cb11-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-16"><a href="#cb11-16" aria-hidden="true" tabindex="-1"></a>    plasma_data <span class="op">=</span> pl.scan_ipc(parquet_files).with_columns(</span>
+<span id="cb11-17"><a href="#cb11-17" aria-hidden="true" tabindex="-1"></a>        plasma_density <span class="op">=</span> pl.when(pl.col(density_col) <span class="op">&lt;</span><span class="dv">0</span> ).then(<span class="va">None</span>).otherwise(pl.col(density_col)),</span>
+<span id="cb11-18"><a href="#cb11-18" aria-hidden="true" tabindex="-1"></a>        plasma_speed<span class="op">=</span>pl_norm(vec_cols), ).rename({temperature_col:<span class="st">'plasma_temperature'</span>}</span>
+<span id="cb11-19"><a href="#cb11-19" aria-hidden="true" tabindex="-1"></a>    )</span>
+<span id="cb11-20"><a href="#cb11-20" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb11-21"><a href="#cb11-21" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> IDsDataset(</span>
+<span id="cb11-22"><a href="#cb11-22" aria-hidden="true" tabindex="-1"></a>        mag_data<span class="op">=</span>mag_data.pipe(resample, every<span class="op">=</span>ts),</span>
+<span id="cb11-23"><a href="#cb11-23" aria-hidden="true" tabindex="-1"></a>        plasma_data<span class="op">=</span>plasma_data,</span>
+<span id="cb11-24"><a href="#cb11-24" aria-hidden="true" tabindex="-1"></a>        tau<span class="op">=</span>tau,</span>
+<span id="cb11-25"><a href="#cb11-25" aria-hidden="true" tabindex="-1"></a>        ts<span class="op">=</span>ts,</span>
+<span id="cb11-26"><a href="#cb11-26" aria-hidden="true" tabindex="-1"></a>        bcols<span class="op">=</span>bcols,</span>
+<span id="cb11-27"><a href="#cb11-27" aria-hidden="true" tabindex="-1"></a>        vec_cols<span class="op">=</span>vec_cols,</span>
+<span id="cb11-28"><a href="#cb11-28" aria-hidden="true" tabindex="-1"></a>        density_col<span class="op">=</span><span class="st">"plasma_density"</span>,</span>
+<span id="cb11-29"><a href="#cb11-29" aria-hidden="true" tabindex="-1"></a>        speed_col<span class="op">=</span><span class="st">"plasma_speed"</span>,</span>
+<span id="cb11-30"><a href="#cb11-30" aria-hidden="true" tabindex="-1"></a>        temperature_col<span class="op">=</span><span class="st">'plasma_temperature'</span>,</span>
+<span id="cb11-31"><a href="#cb11-31" aria-hidden="true" tabindex="-1"></a>    ).find_events(return_best_fit<span class="op">=</span><span class="va">False</span>).update_candidates_with_plasma_data()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div id="cell-11" class="cell">
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>ids : <span class="bu">list</span>[pl.DataFrame] <span class="op">=</span> []</span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> _tr <span class="kw">in</span> tqdm(TimeRange(timerange).split(<span class="dv">8</span>)):</span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a>    _timerange <span class="op">=</span> [_tr.start.value, _tr.end.value]</span>
+<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a>    _id <span class="op">=</span> get_and_process_data(_timerange)</span>
+<span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a>    ids.append(_id.events)</span>
+<span id="cb12-7"><a href="#cb12-7" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb12-8"><a href="#cb12-8" aria-hidden="true" tabindex="-1"></a><span class="bu">id</span> <span class="op">=</span> pl.concat(ids, how<span class="op">=</span><span class="st">'vertical_relaxed'</span>).select(cs.datetime(), cs.duration(), cs.numeric())</span>
+<span id="cb12-9"><a href="#cb12-9" aria-hidden="true" tabindex="-1"></a><span class="bu">id</span>.write_ipc(fname)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 
 
