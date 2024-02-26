@@ -57,7 +57,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </style>
 
 
-<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg==" crossorigin="anonymous"></script><script src="../site_libs/quarto-nav/quarto-nav.js"></script>
 <script src="../site_libs/quarto-nav/headroom.min.js"></script>
 <script src="../site_libs/clipboard/clipboard.min.js"></script>
 <script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
@@ -103,6 +103,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     "search-label": "Search"
   }
 }</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.6/require.min.js" integrity="sha512-c3Nl8+7g4LMSTdrm621y7kf9v3SDPnhxLNhcjFJbKECVnmZHTdo+IRO05sNLTH/D3vA6u1X32ehoLC7WFVdheg==" crossorigin="anonymous"></script>
+
+<script type="application/javascript">define('jquery', [],function() {return window.jQuery;})</script>
 
 
 </head>
@@ -201,8 +204,32 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
+  <a href="../notebooks/03_profiles.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">03 Profiles</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
   <a href="../notebooks/04_properties.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">SWD Properties</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../notebooks/05_sea.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Superposed epoch analysis</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../notebooks/06_corr.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">06 Corr</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../notebooks/06_corr_julia.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">06 Corr Julia</span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -221,6 +248,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <div class="sidebar-item-container"> 
   <a href="../notebooks/20_model.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Models</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../notebooks/30_data.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">30 Data</span></a>
   </div>
 </li>
           <li class="sidebar-item sidebar-item-section">
@@ -353,12 +386,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <ul id="quarto-sidebar-section-7" class="collapse list-unstyled sidebar-section depth3 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../notebooks/missions/juno/mag.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">JUNO Magnetic field data pipeline</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
   <a href="../notebooks/missions/juno/state.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">JUNO State data pipeline</span></a>
   </div>
@@ -422,11 +449,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
-<div id="cell-1" class="cell" data-execution_count="8">
+<div id="cell-1" class="cell" data-execution_count="1">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> polars <span class="im">as</span> pl</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> polars.selectors <span class="im">as</span> cs</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>::: {#cell-2 .cell 0=‘h’ 1=‘i’ 2=‘d’ 3=‘e’ execution_count=9}</p>
+<p>::: {#cell-2 .cell 0=‘h’ 1=‘i’ 2=‘d’ 3=‘e’ execution_count=2}</p>
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> beforerr.r <span class="im">import</span> py2rpy_polars</span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> rpy2.robjects <span class="im">as</span> robjects</span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -436,141 +463,179 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>r.source(<span class="st">'utils.R'</span>)</span>
 <span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>conv_pl <span class="op">=</span> py2rpy_polars()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>The rpy2.ipython extension is already loaded. To reload it, use:
-  %reload_ext rpy2.ipython</code></pre>
+<div class="cell-output cell-output-stderr">
+<pre><code>R[write to console]: 
+Attaching package: ‘dplyr’
+
+
+R[write to console]: The following objects are masked from ‘package:stats’:
+
+    filter, lag
+
+
+R[write to console]: The following objects are masked from ‘package:base’:
+
+    intersect, setdiff, setequal, union
+
+
+R[write to console]: 
+Attaching package: ‘scales’
+
+
+R[write to console]: The following object is masked from ‘package:purrr’:
+
+    discard
+
+</code></pre>
 </div>
 <p>:::</p>
-<div id="cell-3" class="cell" data-execution_count="10">
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>ts <span class="op">=</span> <span class="dv">1</span> <span class="co"># unit: seconds</span></span>
+<div id="cell-3" class="cell" data-execution_count="6">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>ts <span class="op">=</span> <span class="fl">1.00</span> <span class="co"># unit: seconds</span></span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>tau <span class="op">=</span> <span class="dv">60</span> <span class="co"># unit: seconds</span></span>
 <span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>data_dir <span class="op">=</span> <span class="st">"../data"</span></span>
 <span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a><span class="bu">format</span> <span class="op">=</span> <span class="st">"arrow"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div id="cell-4" class="cell" data-execution_count="11">
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>parameters <span class="op">=</span> [<span class="st">'j0'</span>, <span class="st">'j0_norm'</span>, <span class="st">'j0_k'</span>, <span class="st">'j0_k_norm'</span>, <span class="st">'L_mn'</span>, <span class="st">'L_k'</span>, <span class="st">'L_mn_norm'</span>, <span class="st">'L_k_norm'</span>]</span>
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>parameters <span class="op">=</span> [<span class="st">'j0_k'</span>, <span class="st">'j0_k_norm'</span>, <span class="st">'L_k'</span>, <span class="st">'L_k_norm'</span>]</span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>juno_fit <span class="op">=</span> pl.read_ipc(<span class="ss">f"</span><span class="sc">{</span>data_dir<span class="sc">}</span><span class="ss">/05_reporting/events.JNO.ts_</span><span class="sc">{</span>ts<span class="sc">}</span><span class="ss">s_tau_</span><span class="sc">{</span>tau<span class="sc">}</span><span class="ss">s.arrow"</span>).with_columns(</span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>juno_fit <span class="op">=</span> pl.read_ipc(<span class="ss">f"</span><span class="sc">{</span>data_dir<span class="sc">}</span><span class="ss">/05_reporting/events.JNO.fit.ts_</span><span class="sc">{</span>ts<span class="sc">:.2f}</span><span class="ss">s_tau_</span><span class="sc">{</span>tau<span class="sc">}</span><span class="ss">s.arrow"</span>).with_columns(</span>
 <span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>    pl.col(parameters).<span class="bu">abs</span>(),</span>
 <span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>).with_columns(cs.numeric().cast(pl.Float64)).drop_nulls().<span class="bu">filter</span>(</span>
 <span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>    pl.col(<span class="st">"d_star"</span>) <span class="op">&lt;</span> <span class="dv">100</span>,  <span class="co"># exclude extreme values</span></span>
-<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>    pl.col(<span class="st">'j0'</span>) <span class="op">&lt;</span> <span class="dv">100</span></span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>    pl.col(<span class="st">'j0_k'</span>) <span class="op">&lt;</span> <span class="dv">100</span></span>
 <span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a>).with_columns(pl.col(<span class="st">'count'</span>).cast(pl.UInt32)).lazy()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-error">
+<pre><code>ColumnNotFoundError: count
+
+Error originated just after this operation:
+DF ["time", "tstart", "tstop", "t.d_end"]; PROJECT */92 COLUMNS; SELECTION: "None"</code></pre>
+</div>
 </div>
 <div id="cell-5" class="cell" data-execution_count="12">
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>parameters <span class="op">=</span> [<span class="st">'j0'</span>, <span class="st">'j0_norm'</span>, <span class="st">'j0_k'</span>, <span class="st">'j0_k_norm'</span>, <span class="st">'L_mn'</span>, <span class="st">'L_k'</span>, <span class="st">'L_mn_norm'</span>, <span class="st">'L_k_norm'</span>]</span>
-<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>wind_fit <span class="op">=</span> pl.read_ipc(<span class="ss">f"</span><span class="sc">{</span>data_dir<span class="sc">}</span><span class="ss">/05_reporting/events.Wind.ts_</span><span class="sc">{</span>ts<span class="sc">}</span><span class="ss">s_tau_</span><span class="sc">{</span>tau<span class="sc">}</span><span class="ss">s.arrow"</span>).with_columns(</span>
-<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>    pl.col(parameters).<span class="bu">abs</span>(),</span>
-<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>).with_columns(cs.numeric().cast(pl.Float64)).drop_nulls().<span class="bu">filter</span>(</span>
-<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a>    pl.col(<span class="st">"d_star"</span>) <span class="op">&lt;</span> <span class="dv">100</span>,  <span class="co"># exclude extreme values</span></span>
-<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a>    pl.col(<span class="st">'j0'</span>) <span class="op">&lt;</span> <span class="dv">100</span></span>
-<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a>).with_columns(pl.col(<span class="st">'count'</span>).cast(pl.UInt32)).lazy()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>parameters <span class="op">=</span> [<span class="st">'j0'</span>, <span class="st">'j0_norm'</span>, <span class="st">'j0_k'</span>, <span class="st">'j0_k_norm'</span>, <span class="st">'L_mn'</span>, <span class="st">'L_k'</span>, <span class="st">'L_mn_norm'</span>, <span class="st">'L_k_norm'</span>]</span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>wind_fit <span class="op">=</span> pl.read_ipc(<span class="ss">f"</span><span class="sc">{</span>data_dir<span class="sc">}</span><span class="ss">/05_reporting/events.Wind.ts_</span><span class="sc">{</span>ts<span class="sc">}</span><span class="ss">s_tau_</span><span class="sc">{</span>tau<span class="sc">}</span><span class="ss">s.arrow"</span>).with_columns(</span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>    pl.col(parameters).<span class="bu">abs</span>(),</span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>).with_columns(cs.numeric().cast(pl.Float64)).drop_nulls().<span class="bu">filter</span>(</span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a>    pl.col(<span class="st">"d_star"</span>) <span class="op">&lt;</span> <span class="dv">100</span>,  <span class="co"># exclude extreme values</span></span>
+<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a>    pl.col(<span class="st">'j0'</span>) <span class="op">&lt;</span> <span class="dv">100</span></span>
+<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a>).with_columns(pl.col(<span class="st">'count'</span>).cast(pl.UInt32)).lazy()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-error">
+<pre><code>FileNotFoundError: No such file or directory (os error 2): ../data/05_reporting/events.Wind.ts_1.0s_tau_60s.arrow</code></pre>
 </div>
-<div id="cell-6" class="cell" data-execution_count="16">
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> load_events(name: <span class="bu">str</span>, ts: <span class="bu">float</span>, tau: <span class="bu">float</span>, method <span class="op">=</span><span class="st">'derivative'</span>) <span class="op">-&gt;</span> pl.DataFrame:</span>
-<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> method <span class="op">==</span> <span class="st">'derivative'</span>:</span>
-<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>        <span class="bu">format</span> <span class="op">=</span> <span class="st">'parquet'</span></span>
-<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>        filepath <span class="op">=</span> <span class="ss">f"</span><span class="sc">{</span>data_dir<span class="sc">}</span><span class="ss">/08_reporting/events/l1/</span><span class="sc">{</span>name<span class="sc">}</span><span class="ss">_ts_</span><span class="sc">{</span>ts<span class="sc">}</span><span class="ss">s_tau_</span><span class="sc">{</span>tau<span class="sc">}</span><span class="ss">s.</span><span class="sc">{</span><span class="bu">format</span><span class="sc">}</span><span class="ss">"</span></span>
-<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>        df <span class="op">=</span> pl.scan_parquet(filepath)</span>
-<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a>    <span class="cf">elif</span> method <span class="op">==</span> <span class="st">'fit'</span>:</span>
-<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a>        <span class="bu">format</span> <span class="op">=</span> <span class="st">'arrow'</span></span>
-<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a>        filepath <span class="op">=</span> <span class="ss">f"</span><span class="sc">{</span>data_dir<span class="sc">}</span><span class="ss">/05_reporting/events.</span><span class="sc">{</span>name<span class="sc">}</span><span class="ss">.ts_</span><span class="sc">{</span>ts<span class="sc">:.2f}</span><span class="ss">s_tau_</span><span class="sc">{</span>tau<span class="sc">}</span><span class="ss">s.</span><span class="sc">{</span><span class="bu">format</span><span class="sc">}</span><span class="ss">"</span></span>
-<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a>        df <span class="op">=</span> pl.read_ipc(filepath).lazy()</span>
-<span id="cb7-10"><a href="#cb7-10" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> df.with_columns(</span>
-<span id="cb7-11"><a href="#cb7-11" aria-hidden="true" tabindex="-1"></a>        pl.col(parameters).<span class="bu">abs</span>(),</span>
-<span id="cb7-12"><a href="#cb7-12" aria-hidden="true" tabindex="-1"></a>        sat <span class="op">=</span> pl.lit(name),</span>
-<span id="cb7-13"><a href="#cb7-13" aria-hidden="true" tabindex="-1"></a>        ts <span class="op">=</span> pl.lit(<span class="ss">f'</span><span class="sc">{</span>ts<span class="sc">}</span><span class="ss">s'</span>),</span>
-<span id="cb7-14"><a href="#cb7-14" aria-hidden="true" tabindex="-1"></a>        method <span class="op">=</span> pl.lit(method),</span>
-<span id="cb7-15"><a href="#cb7-15" aria-hidden="true" tabindex="-1"></a>        ts_method <span class="op">=</span> pl.lit(<span class="ss">f'</span><span class="sc">{</span>ts<span class="sc">}</span><span class="ss">s </span><span class="sc">{</span>method<span class="sc">}</span><span class="ss">'</span>),</span>
-<span id="cb7-16"><a href="#cb7-16" aria-hidden="true" tabindex="-1"></a>        label <span class="op">=</span> pl.lit(<span class="ss">f'</span><span class="sc">{</span>name<span class="sc">}</span><span class="ss"> </span><span class="sc">{</span>ts<span class="sc">}</span><span class="ss">s </span><span class="sc">{</span>method<span class="sc">}</span><span class="ss">'</span>)</span>
-<span id="cb7-17"><a href="#cb7-17" aria-hidden="true" tabindex="-1"></a>    ).with_columns(cs.numeric().cast(pl.Float64))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="cell-7" class="cell" data-execution_count="24">
-<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>wind_ts_009_all <span class="op">=</span> load_events(<span class="st">'Wind'</span>, <span class="fl">0.09</span>, <span class="dv">60</span>)</span>
-<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>wind_ts_01_all <span class="op">=</span> load_events(<span class="st">'Wind'</span>, <span class="fl">0.1</span>, <span class="dv">60</span>)</span>
-<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>wind_ts_02_all <span class="op">=</span> load_events(<span class="st">'Wind'</span>, <span class="fl">0.2</span>, <span class="dv">60</span>)</span>
-<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>wind_ts_05_all <span class="op">=</span> load_events(<span class="st">'Wind'</span>, <span class="fl">0.5</span>, <span class="dv">60</span>)</span>
-<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a>wind_ts_1_all <span class="op">=</span> load_events(<span class="st">'Wind'</span>, <span class="dv">1</span>, <span class="dv">60</span>)</span>
-<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a>juno_ts_1_all <span class="op">=</span> load_events(<span class="st">'JNO'</span>, <span class="dv">1</span>, <span class="dv">60</span>)</span>
-<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a>juno_ts_1_fit <span class="op">=</span> load_events(<span class="st">'JNO'</span>, <span class="dv">1</span>, <span class="dv">60</span>, method<span class="op">=</span><span class="st">'fit'</span>)</span>
-<span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-10"><a href="#cb8-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-11"><a href="#cb8-11" aria-hidden="true" tabindex="-1"></a>wind_ts_01_fit <span class="op">=</span> load_events(<span class="st">'Wind'</span>, <span class="fl">0.09</span>, <span class="dv">60</span>, method<span class="op">=</span><span class="st">'fit'</span>)</span>
-<span id="cb8-12"><a href="#cb8-12" aria-hidden="true" tabindex="-1"></a>wind_ts_02_fit <span class="op">=</span> load_events(<span class="st">'Wind'</span>, <span class="fl">0.2</span>, <span class="dv">60</span>, method<span class="op">=</span><span class="st">'fit'</span>)</span>
-<span id="cb8-13"><a href="#cb8-13" aria-hidden="true" tabindex="-1"></a>wind_ts_05_fit <span class="op">=</span> load_events(<span class="st">'Wind'</span>, <span class="fl">0.5</span>, <span class="dv">60</span>, method<span class="op">=</span><span class="st">'fit'</span>)</span>
-<span id="cb8-14"><a href="#cb8-14" aria-hidden="true" tabindex="-1"></a>wind_ts_1_fit <span class="op">=</span> load_events(<span class="st">'Wind'</span>, <span class="dv">1</span>, <span class="dv">60</span>, method<span class="op">=</span><span class="st">'fit'</span>)</span>
-<span id="cb8-15"><a href="#cb8-15" aria-hidden="true" tabindex="-1"></a>wind_ts_2_fit <span class="op">=</span> load_events(<span class="st">'Wind'</span>, <span class="dv">2</span>, <span class="dv">60</span>, method<span class="op">=</span><span class="st">'fit'</span>)</span>
-<span id="cb8-16"><a href="#cb8-16" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-17"><a href="#cb8-17" aria-hidden="true" tabindex="-1"></a>wind_fit_dfs <span class="op">=</span> [wind_ts_01_fit, wind_ts_02_fit, wind_ts_05_fit, wind_ts_1_fit, wind_ts_2_fit]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="cell-6" class="cell" data-execution_count="13">
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> load_events(name: <span class="bu">str</span>, ts: <span class="bu">float</span>, tau: <span class="bu">float</span>, method <span class="op">=</span><span class="st">'derivative'</span>) <span class="op">-&gt;</span> pl.DataFrame:</span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> method <span class="op">==</span> <span class="st">'derivative'</span>:</span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>        <span class="bu">format</span> <span class="op">=</span> <span class="st">'parquet'</span></span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>        filepath <span class="op">=</span> <span class="ss">f"</span><span class="sc">{</span>data_dir<span class="sc">}</span><span class="ss">/08_reporting/events/l1/</span><span class="sc">{</span>name<span class="sc">}</span><span class="ss">_ts_</span><span class="sc">{</span>ts<span class="sc">}</span><span class="ss">s_tau_</span><span class="sc">{</span>tau<span class="sc">}</span><span class="ss">s.</span><span class="sc">{</span><span class="bu">format</span><span class="sc">}</span><span class="ss">"</span></span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a>        df <span class="op">=</span> pl.scan_parquet(filepath)</span>
+<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a>    <span class="cf">elif</span> method <span class="op">==</span> <span class="st">'fit'</span>:</span>
+<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a>        <span class="bu">format</span> <span class="op">=</span> <span class="st">'arrow'</span></span>
+<span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a>        filepath <span class="op">=</span> <span class="ss">f"</span><span class="sc">{</span>data_dir<span class="sc">}</span><span class="ss">/05_reporting/events.</span><span class="sc">{</span>name<span class="sc">}</span><span class="ss">.ts_</span><span class="sc">{</span>ts<span class="sc">:.2f}</span><span class="ss">s_tau_</span><span class="sc">{</span>tau<span class="sc">}</span><span class="ss">s.</span><span class="sc">{</span><span class="bu">format</span><span class="sc">}</span><span class="ss">"</span></span>
+<span id="cb9-9"><a href="#cb9-9" aria-hidden="true" tabindex="-1"></a>        df <span class="op">=</span> pl.read_ipc(filepath).lazy()</span>
+<span id="cb9-10"><a href="#cb9-10" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> df.with_columns(</span>
+<span id="cb9-11"><a href="#cb9-11" aria-hidden="true" tabindex="-1"></a>        pl.col(parameters).<span class="bu">abs</span>(),</span>
+<span id="cb9-12"><a href="#cb9-12" aria-hidden="true" tabindex="-1"></a>        sat <span class="op">=</span> pl.lit(name),</span>
+<span id="cb9-13"><a href="#cb9-13" aria-hidden="true" tabindex="-1"></a>        ts <span class="op">=</span> pl.lit(<span class="ss">f'</span><span class="sc">{</span>ts<span class="sc">}</span><span class="ss">s'</span>),</span>
+<span id="cb9-14"><a href="#cb9-14" aria-hidden="true" tabindex="-1"></a>        method <span class="op">=</span> pl.lit(method),</span>
+<span id="cb9-15"><a href="#cb9-15" aria-hidden="true" tabindex="-1"></a>        ts_method <span class="op">=</span> pl.lit(<span class="ss">f'</span><span class="sc">{</span>ts<span class="sc">}</span><span class="ss">s </span><span class="sc">{</span>method<span class="sc">}</span><span class="ss">'</span>),</span>
+<span id="cb9-16"><a href="#cb9-16" aria-hidden="true" tabindex="-1"></a>        label <span class="op">=</span> pl.lit(<span class="ss">f'</span><span class="sc">{</span>name<span class="sc">}</span><span class="ss"> </span><span class="sc">{</span>ts<span class="sc">}</span><span class="ss">s </span><span class="sc">{</span>method<span class="sc">}</span><span class="ss">'</span>)</span>
+<span id="cb9-17"><a href="#cb9-17" aria-hidden="true" tabindex="-1"></a>    ).with_columns(cs.numeric().cast(pl.Float64))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="cell-8" class="cell" data-execution_count="25">
-<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>time_filter <span class="op">=</span> pl.col(<span class="st">'time'</span>).dt.year()<span class="op">==</span><span class="dv">2016</span></span>
-<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>dfs <span class="op">=</span> [juno_ts_1_all, wind_ts_1_all, juno_ts_1_fit, wind_ts_009_all, wind_ts_01_all, wind_ts_02_all, wind_ts_05_all] <span class="op">+</span> wind_fit_dfs</span>
-<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> pl.concat([_.<span class="bu">filter</span>(time_filter) <span class="cf">for</span> _ <span class="kw">in</span> dfs], how<span class="op">=</span><span class="st">'diagonal'</span>).collect()</span>
-<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a><span class="op">%</span>R <span class="op">-</span>i df <span class="op">-</span>c conv_pl</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="cell-7" class="cell" data-execution_count="14">
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>wind_ts_009_all <span class="op">=</span> load_events(<span class="st">'Wind'</span>, <span class="fl">0.09</span>, <span class="dv">60</span>)</span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>wind_ts_01_all <span class="op">=</span> load_events(<span class="st">'Wind'</span>, <span class="fl">0.1</span>, <span class="dv">60</span>)</span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>wind_ts_02_all <span class="op">=</span> load_events(<span class="st">'Wind'</span>, <span class="fl">0.2</span>, <span class="dv">60</span>)</span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a>wind_ts_05_all <span class="op">=</span> load_events(<span class="st">'Wind'</span>, <span class="fl">0.5</span>, <span class="dv">60</span>)</span>
+<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a>wind_ts_1_all <span class="op">=</span> load_events(<span class="st">'Wind'</span>, <span class="dv">1</span>, <span class="dv">60</span>)</span>
+<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a>juno_ts_1_all <span class="op">=</span> load_events(<span class="st">'JNO'</span>, <span class="dv">1</span>, <span class="dv">60</span>)</span>
+<span id="cb10-8"><a href="#cb10-8" aria-hidden="true" tabindex="-1"></a>juno_ts_1_fit <span class="op">=</span> load_events(<span class="st">'JNO'</span>, <span class="dv">1</span>, <span class="dv">60</span>, method<span class="op">=</span><span class="st">'fit'</span>)</span>
+<span id="cb10-9"><a href="#cb10-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-10"><a href="#cb10-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-11"><a href="#cb10-11" aria-hidden="true" tabindex="-1"></a>wind_ts_01_fit <span class="op">=</span> load_events(<span class="st">'Wind'</span>, <span class="fl">0.09</span>, <span class="dv">60</span>, method<span class="op">=</span><span class="st">'fit'</span>)</span>
+<span id="cb10-12"><a href="#cb10-12" aria-hidden="true" tabindex="-1"></a>wind_ts_02_fit <span class="op">=</span> load_events(<span class="st">'Wind'</span>, <span class="fl">0.2</span>, <span class="dv">60</span>, method<span class="op">=</span><span class="st">'fit'</span>)</span>
+<span id="cb10-13"><a href="#cb10-13" aria-hidden="true" tabindex="-1"></a>wind_ts_05_fit <span class="op">=</span> load_events(<span class="st">'Wind'</span>, <span class="fl">0.5</span>, <span class="dv">60</span>, method<span class="op">=</span><span class="st">'fit'</span>)</span>
+<span id="cb10-14"><a href="#cb10-14" aria-hidden="true" tabindex="-1"></a>wind_ts_1_fit <span class="op">=</span> load_events(<span class="st">'Wind'</span>, <span class="dv">1</span>, <span class="dv">60</span>, method<span class="op">=</span><span class="st">'fit'</span>)</span>
+<span id="cb10-15"><a href="#cb10-15" aria-hidden="true" tabindex="-1"></a>wind_ts_2_fit <span class="op">=</span> load_events(<span class="st">'Wind'</span>, <span class="dv">2</span>, <span class="dv">60</span>, method<span class="op">=</span><span class="st">'fit'</span>)</span>
+<span id="cb10-16"><a href="#cb10-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-17"><a href="#cb10-17" aria-hidden="true" tabindex="-1"></a>wind_fit_dfs <span class="op">=</span> [wind_ts_01_fit, wind_ts_02_fit, wind_ts_05_fit, wind_ts_1_fit, wind_ts_2_fit]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="cell-9" class="cell" data-execution_count="26">
-<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="op">%%</span>R</span>
-<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>filename <span class="op">&lt;-</span> <span class="st">"ts_effect"</span></span>
-<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>filename <span class="op">&lt;-</span> <span class="st">"ts_effect_new"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="cell-8" class="cell" data-execution_count="16">
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>wind_ts_01_fit</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="16">
+<i>naive plan: (run <b>LazyFrame.explain(optimized=True)</b> to see the optimized plan)</i>
+    <p></p>
+    <div> WITH_COLUMNS:<p></p> [col("count").strict_cast(Float64), col("B_std").strict_cast(Float64), col("B_mean").strict_cast(Float64), col("dB_vec").strict_cast(Float64), col("index_diff").strict_cast(Float64), col("index_std").strict_cast(Float64), col("index_fluctuation").strict_cast(Float64), col("B.after").strict_cast(Float64), col("B.before").strict_cast(Float64), col("b_mag").strict_cast(Float64), col("b_n").strict_cast(Float64), col("bn_over_b").strict_cast(Float64), col("d_star").strict_cast(Float64), col("db_mag").strict_cast(Float64), col("db_over_b").strict_cast(Float64), col("db_over_b_max").strict_cast(Float64), col("fit.stat.chisqr").strict_cast(Float64), col("fit.stat.rsquared").strict_cast(Float64), col("fit.vars.amplitude").strict_cast(Float64), col("fit.vars.c").strict_cast(Float64), col("fit.vars.sigma").strict_cast(Float64), col("rotation_angle").strict_cast(Float64), col("dB_x").strict_cast(Float64), col("dB_y").strict_cast(Float64), col("dB_z").strict_cast(Float64), col("dB_lmn_x").strict_cast(Float64), col("dB_lmn_y").strict_cast(Float64), col("dB_lmn_z").strict_cast(Float64), col("k_x").strict_cast(Float64), col("k_y").strict_cast(Float64), col("k_z").strict_cast(Float64), col("Vl_x").strict_cast(Float64), col("Vl_y").strict_cast(Float64), col("Vl_z").strict_cast(Float64), col("Vn_x").strict_cast(Float64), col("Vn_y").strict_cast(Float64), col("Vn_z").strict_cast(Float64), col("plasma_density").strict_cast(Float64), col("VX (GSM)").strict_cast(Float64), col("VY (GSM)").strict_cast(Float64), col("VZ (GSM)").strict_cast(Float64), col("SW Vth").strict_cast(Float64), col("plasma_speed").strict_cast(Float64), col("plasma_temperature").strict_cast(Float64), col("n.before").strict_cast(Float64), col("T.before").strict_cast(Float64), col("v.ion.before").strict_cast(Float64), col("n.after").strict_cast(Float64), col("T.after").strict_cast(Float64), col("v.ion.after").strict_cast(Float64), col("v_l").strict_cast(Float64), col("v_n").strict_cast(Float64), col("v_k").strict_cast(Float64), col("v_mn").strict_cast(Float64), col("L_n").strict_cast(Float64), col("L_mn").strict_cast(Float64), col("L_k").strict_cast(Float64), col("j0").strict_cast(Float64), col("j0_k").strict_cast(Float64), col("ion_inertial_length").strict_cast(Float64), col("Alfven_speed").strict_cast(Float64), col("j_Alfven").strict_cast(Float64), col("L_n_norm").strict_cast(Float64), col("L_mn_norm").strict_cast(Float64), col("L_k_norm").strict_cast(Float64), col("j0_norm").strict_cast(Float64), col("j0_k_norm").strict_cast(Float64), col("v.Alfven.before").strict_cast(Float64), col("v.Alfven.after").strict_cast(Float64), col("n.change").strict_cast(Float64), col("v.ion.change").strict_cast(Float64), col("T.change").strict_cast(Float64), col("B.change").strict_cast(Float64), col("v.Alfven.change").strict_cast(Float64)]<p></p>   WITH_COLUMNS:<p></p>   [col("j0").abs(), col("j0_norm").abs(), col("j0_k").abs(), col("j0_k_norm").abs(), col("L_mn").abs(), col("L_k").abs(), col("L_mn_norm").abs(), col("L_k_norm").abs(), String(Wind).alias("sat"), String(0.09s).alias("ts"), String(fit).alias("method"), String(0.09s fit).alias("ts_method"), String(Wind 0.09s fit).alias("label")]<p></p>    DF ["time", "tstart", "tstop", "d_tstart"]; PROJECT */83 COLUMNS; SELECTION: "None"</div>
 </div>
-<div id="cell-10" class="cell" data-execution_count="80">
-<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="op">%%</span>R</span>
-<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="co"># sort color with 'JUNO 1s' first</span></span>
-<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>plot_ts_effect <span class="op">&lt;-</span> function(df, labels<span class="op">=</span>NULL, color <span class="op">=</span><span class="st">"label"</span>, L_mn_norm_lim <span class="op">=</span> c(<span class="dv">0</span>,<span class="dv">60</span>), j_norm_lim <span class="op">=</span> c(<span class="dv">0</span>,<span class="fl">0.8</span>), legend_title <span class="op">=</span> NULL) {</span>
-<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a>  <span class="co"># if labels is not null, select df with labels and reorder labels</span></span>
-<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> (<span class="op">!</span><span class="kw">is</span>.null(labels)){</span>
-<span id="cb11-7"><a href="#cb11-7" aria-hidden="true" tabindex="-1"></a>    df <span class="op">&lt;-</span> df <span class="op">%&gt;%</span></span>
-<span id="cb11-8"><a href="#cb11-8" aria-hidden="true" tabindex="-1"></a>      <span class="bu">filter</span>(label <span class="op">%</span><span class="kw">in</span><span class="op">%</span> labels) <span class="op">%&gt;%</span></span>
-<span id="cb11-9"><a href="#cb11-9" aria-hidden="true" tabindex="-1"></a>      mutate(label <span class="op">=</span> factor(label, levels <span class="op">=</span> labels))</span>
-<span id="cb11-10"><a href="#cb11-10" aria-hidden="true" tabindex="-1"></a>  }</span>
-<span id="cb11-11"><a href="#cb11-11" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-12"><a href="#cb11-12" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb11-13"><a href="#cb11-13" aria-hidden="true" tabindex="-1"></a>  add <span class="op">&lt;-</span> <span class="st">"mean"</span> <span class="co"># this seems to be computed before the limits are set</span></span>
-<span id="cb11-14"><a href="#cb11-14" aria-hidden="true" tabindex="-1"></a>  add <span class="op">&lt;-</span> NULL</span>
-<span id="cb11-15"><a href="#cb11-15" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb11-16"><a href="#cb11-16" aria-hidden="true" tabindex="-1"></a>  common_custom <span class="op">&lt;-</span> scale_color_okabeito(palette <span class="op">=</span> <span class="st">"black_first"</span>)</span>
-<span id="cb11-17"><a href="#cb11-17" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-18"><a href="#cb11-18" aria-hidden="true" tabindex="-1"></a>  x <span class="op">&lt;-</span> <span class="st">"L_mn"</span></span>
-<span id="cb11-19"><a href="#cb11-19" aria-hidden="true" tabindex="-1"></a>  x_lim <span class="op">&lt;-</span> c(<span class="dv">0</span>,<span class="dv">7500</span>)</span>
-<span id="cb11-20"><a href="#cb11-20" aria-hidden="true" tabindex="-1"></a>  p1 <span class="op">&lt;-</span> ggdensity(df, x <span class="op">=</span> x, color <span class="op">=</span> color, add <span class="op">=</span> add, alpha <span class="op">=</span> <span class="dv">0</span>) <span class="op">+</span> xlim(x_lim) <span class="op">+</span> common_custom</span>
-<span id="cb11-21"><a href="#cb11-21" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-22"><a href="#cb11-22" aria-hidden="true" tabindex="-1"></a>  x <span class="op">&lt;-</span> <span class="st">"L_mn_norm"</span></span>
-<span id="cb11-23"><a href="#cb11-23" aria-hidden="true" tabindex="-1"></a>  x_lab <span class="op">&lt;-</span> expression(paste(<span class="st">"Normalized Thickness ("</span>, d[i], <span class="st">")"</span>))</span>
-<span id="cb11-24"><a href="#cb11-24" aria-hidden="true" tabindex="-1"></a>  p2 <span class="op">&lt;-</span> ggdensity(df, x <span class="op">=</span> x, color <span class="op">=</span> color, add <span class="op">=</span> add, alpha <span class="op">=</span> <span class="dv">0</span>) <span class="op">+</span> xlim(L_mn_norm_lim) <span class="op">+</span> common_custom <span class="op">+</span> labs(x<span class="op">=</span>x_lab)</span>
-<span id="cb11-25"><a href="#cb11-25" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-26"><a href="#cb11-26" aria-hidden="true" tabindex="-1"></a>  x <span class="op">&lt;-</span> <span class="st">"j0"</span></span>
-<span id="cb11-27"><a href="#cb11-27" aria-hidden="true" tabindex="-1"></a>  x_lim <span class="op">&lt;-</span> c(<span class="dv">0</span>,<span class="dv">20</span>)</span>
-<span id="cb11-28"><a href="#cb11-28" aria-hidden="true" tabindex="-1"></a>  p3 <span class="op">&lt;-</span> ggdensity(df, x <span class="op">=</span> x, color <span class="op">=</span> color, add <span class="op">=</span> add, alpha <span class="op">=</span> <span class="dv">0</span>) <span class="op">+</span> xlim(x_lim) <span class="op">+</span> common_custom</span>
-<span id="cb11-29"><a href="#cb11-29" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-30"><a href="#cb11-30" aria-hidden="true" tabindex="-1"></a>  x <span class="op">&lt;-</span> <span class="st">"j0_norm"</span></span>
-<span id="cb11-31"><a href="#cb11-31" aria-hidden="true" tabindex="-1"></a>  x_lab <span class="op">&lt;-</span> expression(paste(<span class="st">"Normalized Current Intensity ("</span>, J[A], <span class="st">")"</span>))</span>
-<span id="cb11-32"><a href="#cb11-32" aria-hidden="true" tabindex="-1"></a>  p4 <span class="op">&lt;-</span> ggdensity(df, x <span class="op">=</span> x, color <span class="op">=</span> color, add <span class="op">=</span> add, alpha <span class="op">=</span> <span class="dv">0</span>) <span class="op">+</span> xlim(j_norm_lim) <span class="op">+</span> common_custom <span class="op">+</span> labs(x<span class="op">=</span>x_lab)</span>
-<span id="cb11-33"><a href="#cb11-33" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-34"><a href="#cb11-34" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-35"><a href="#cb11-35" aria-hidden="true" tabindex="-1"></a>  output <span class="op">&lt;-</span> <span class="bu">list</span>(p2, p4)</span>
-<span id="cb11-36"><a href="#cb11-36" aria-hidden="true" tabindex="-1"></a>  <span class="co"># change the legend title for each plot</span></span>
-<span id="cb11-37"><a href="#cb11-37" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> (<span class="op">!</span><span class="kw">is</span>.null(legend_title)){</span>
-<span id="cb11-38"><a href="#cb11-38" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> (i <span class="kw">in</span> <span class="dv">1</span>:length(output)){</span>
-<span id="cb11-39"><a href="#cb11-39" aria-hidden="true" tabindex="-1"></a>      output[[i]] <span class="op">&lt;-</span> ggpar(output[[i]], legend.title <span class="op">=</span> legend_title)</span>
-<span id="cb11-40"><a href="#cb11-40" aria-hidden="true" tabindex="-1"></a>    }</span>
-<span id="cb11-41"><a href="#cb11-41" aria-hidden="true" tabindex="-1"></a>  }</span>
-<span id="cb11-42"><a href="#cb11-42" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-43"><a href="#cb11-43" aria-hidden="true" tabindex="-1"></a>  purrr::<span class="bu">reduce</span>(output, `<span class="op">+</span>`) <span class="op">+</span> plot_layout(guides <span class="op">=</span> <span class="st">'collect'</span>, nrow<span class="op">=</span><span class="dv">2</span>) <span class="op">&amp;</span></span>
-<span id="cb11-44"><a href="#cb11-44" aria-hidden="true" tabindex="-1"></a>    theme(legend.position<span class="op">=</span><span class="st">'top'</span>)</span>
-<span id="cb11-45"><a href="#cb11-45" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb11-46"><a href="#cb11-46" aria-hidden="true" tabindex="-1"></a></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="cell-11" class="cell" data-execution_count="20">
-<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="op">%%</span>R</span>
-<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>filename <span class="op">&lt;-</span> <span class="st">"ts_method/all"</span></span>
-<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>p <span class="op">&lt;-</span> plot_ts_effect(df)</span>
-<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a>save_plot(filename)</span>
-<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a>p</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="cell-9" class="cell" data-execution_count="25">
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>time_filter <span class="op">=</span> pl.col(<span class="st">'time'</span>).dt.year()<span class="op">==</span><span class="dv">2016</span></span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>dfs <span class="op">=</span> [juno_ts_1_all, wind_ts_1_all, juno_ts_1_fit, wind_ts_009_all, wind_ts_01_all, wind_ts_02_all, wind_ts_05_all] <span class="op">+</span> wind_fit_dfs</span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> pl.concat([_.<span class="bu">filter</span>(time_filter) <span class="cf">for</span> _ <span class="kw">in</span> dfs], how<span class="op">=</span><span class="st">'diagonal'</span>).collect()</span>
+<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a><span class="op">%</span>R <span class="op">-</span>i df <span class="op">-</span>c conv_pl</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div id="cell-10" class="cell" data-execution_count="26">
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="op">%%</span>R</span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>filename <span class="op">&lt;-</span> <span class="st">"ts_effect"</span></span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>filename <span class="op">&lt;-</span> <span class="st">"ts_effect_new"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div id="cell-11" class="cell" data-execution_count="80">
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="op">%%</span>R</span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a><span class="co"># sort color with 'JUNO 1s' first</span></span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>plot_ts_effect <span class="op">&lt;-</span> function(df, labels<span class="op">=</span>NULL, color <span class="op">=</span><span class="st">"label"</span>, L_mn_norm_lim <span class="op">=</span> c(<span class="dv">0</span>,<span class="dv">60</span>), j_norm_lim <span class="op">=</span> c(<span class="dv">0</span>,<span class="fl">0.8</span>), legend_title <span class="op">=</span> NULL) {</span>
+<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a>  <span class="co"># if labels is not null, select df with labels and reorder labels</span></span>
+<span id="cb14-6"><a href="#cb14-6" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> (<span class="op">!</span><span class="kw">is</span>.null(labels)){</span>
+<span id="cb14-7"><a href="#cb14-7" aria-hidden="true" tabindex="-1"></a>    df <span class="op">&lt;-</span> df <span class="op">%&gt;%</span></span>
+<span id="cb14-8"><a href="#cb14-8" aria-hidden="true" tabindex="-1"></a>      <span class="bu">filter</span>(label <span class="op">%</span><span class="kw">in</span><span class="op">%</span> labels) <span class="op">%&gt;%</span></span>
+<span id="cb14-9"><a href="#cb14-9" aria-hidden="true" tabindex="-1"></a>      mutate(label <span class="op">=</span> factor(label, levels <span class="op">=</span> labels))</span>
+<span id="cb14-10"><a href="#cb14-10" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb14-11"><a href="#cb14-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-12"><a href="#cb14-12" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb14-13"><a href="#cb14-13" aria-hidden="true" tabindex="-1"></a>  add <span class="op">&lt;-</span> <span class="st">"mean"</span> <span class="co"># this seems to be computed before the limits are set</span></span>
+<span id="cb14-14"><a href="#cb14-14" aria-hidden="true" tabindex="-1"></a>  add <span class="op">&lt;-</span> NULL</span>
+<span id="cb14-15"><a href="#cb14-15" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb14-16"><a href="#cb14-16" aria-hidden="true" tabindex="-1"></a>  common_custom <span class="op">&lt;-</span> scale_color_okabeito(palette <span class="op">=</span> <span class="st">"black_first"</span>)</span>
+<span id="cb14-17"><a href="#cb14-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-18"><a href="#cb14-18" aria-hidden="true" tabindex="-1"></a>  x <span class="op">&lt;-</span> <span class="st">"L_mn"</span></span>
+<span id="cb14-19"><a href="#cb14-19" aria-hidden="true" tabindex="-1"></a>  x_lim <span class="op">&lt;-</span> c(<span class="dv">0</span>,<span class="dv">7500</span>)</span>
+<span id="cb14-20"><a href="#cb14-20" aria-hidden="true" tabindex="-1"></a>  p1 <span class="op">&lt;-</span> ggdensity(df, x <span class="op">=</span> x, color <span class="op">=</span> color, add <span class="op">=</span> add, alpha <span class="op">=</span> <span class="dv">0</span>) <span class="op">+</span> xlim(x_lim) <span class="op">+</span> common_custom</span>
+<span id="cb14-21"><a href="#cb14-21" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-22"><a href="#cb14-22" aria-hidden="true" tabindex="-1"></a>  x <span class="op">&lt;-</span> <span class="st">"L_mn_norm"</span></span>
+<span id="cb14-23"><a href="#cb14-23" aria-hidden="true" tabindex="-1"></a>  x_lab <span class="op">&lt;-</span> expression(paste(<span class="st">"Normalized Thickness ("</span>, d[i], <span class="st">")"</span>))</span>
+<span id="cb14-24"><a href="#cb14-24" aria-hidden="true" tabindex="-1"></a>  p2 <span class="op">&lt;-</span> ggdensity(df, x <span class="op">=</span> x, color <span class="op">=</span> color, add <span class="op">=</span> add, alpha <span class="op">=</span> <span class="dv">0</span>) <span class="op">+</span> xlim(L_mn_norm_lim) <span class="op">+</span> common_custom <span class="op">+</span> labs(x<span class="op">=</span>x_lab)</span>
+<span id="cb14-25"><a href="#cb14-25" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-26"><a href="#cb14-26" aria-hidden="true" tabindex="-1"></a>  x <span class="op">&lt;-</span> <span class="st">"j0"</span></span>
+<span id="cb14-27"><a href="#cb14-27" aria-hidden="true" tabindex="-1"></a>  x_lim <span class="op">&lt;-</span> c(<span class="dv">0</span>,<span class="dv">20</span>)</span>
+<span id="cb14-28"><a href="#cb14-28" aria-hidden="true" tabindex="-1"></a>  p3 <span class="op">&lt;-</span> ggdensity(df, x <span class="op">=</span> x, color <span class="op">=</span> color, add <span class="op">=</span> add, alpha <span class="op">=</span> <span class="dv">0</span>) <span class="op">+</span> xlim(x_lim) <span class="op">+</span> common_custom</span>
+<span id="cb14-29"><a href="#cb14-29" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-30"><a href="#cb14-30" aria-hidden="true" tabindex="-1"></a>  x <span class="op">&lt;-</span> <span class="st">"j0_norm"</span></span>
+<span id="cb14-31"><a href="#cb14-31" aria-hidden="true" tabindex="-1"></a>  x_lab <span class="op">&lt;-</span> expression(paste(<span class="st">"Normalized Current Intensity ("</span>, J[A], <span class="st">")"</span>))</span>
+<span id="cb14-32"><a href="#cb14-32" aria-hidden="true" tabindex="-1"></a>  p4 <span class="op">&lt;-</span> ggdensity(df, x <span class="op">=</span> x, color <span class="op">=</span> color, add <span class="op">=</span> add, alpha <span class="op">=</span> <span class="dv">0</span>) <span class="op">+</span> xlim(j_norm_lim) <span class="op">+</span> common_custom <span class="op">+</span> labs(x<span class="op">=</span>x_lab)</span>
+<span id="cb14-33"><a href="#cb14-33" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-34"><a href="#cb14-34" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-35"><a href="#cb14-35" aria-hidden="true" tabindex="-1"></a>  output <span class="op">&lt;-</span> <span class="bu">list</span>(p2, p4)</span>
+<span id="cb14-36"><a href="#cb14-36" aria-hidden="true" tabindex="-1"></a>  <span class="co"># change the legend title for each plot</span></span>
+<span id="cb14-37"><a href="#cb14-37" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> (<span class="op">!</span><span class="kw">is</span>.null(legend_title)){</span>
+<span id="cb14-38"><a href="#cb14-38" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> (i <span class="kw">in</span> <span class="dv">1</span>:length(output)){</span>
+<span id="cb14-39"><a href="#cb14-39" aria-hidden="true" tabindex="-1"></a>      output[[i]] <span class="op">&lt;-</span> ggpar(output[[i]], legend.title <span class="op">=</span> legend_title)</span>
+<span id="cb14-40"><a href="#cb14-40" aria-hidden="true" tabindex="-1"></a>    }</span>
+<span id="cb14-41"><a href="#cb14-41" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb14-42"><a href="#cb14-42" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-43"><a href="#cb14-43" aria-hidden="true" tabindex="-1"></a>  purrr::<span class="bu">reduce</span>(output, `<span class="op">+</span>`) <span class="op">+</span> plot_layout(guides <span class="op">=</span> <span class="st">'collect'</span>, nrow<span class="op">=</span><span class="dv">2</span>) <span class="op">&amp;</span></span>
+<span id="cb14-44"><a href="#cb14-44" aria-hidden="true" tabindex="-1"></a>    theme(legend.position<span class="op">=</span><span class="st">'top'</span>)</span>
+<span id="cb14-45"><a href="#cb14-45" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb14-46"><a href="#cb14-46" aria-hidden="true" tabindex="-1"></a></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div id="cell-12" class="cell" data-execution_count="20">
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="op">%%</span>R</span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>filename <span class="op">&lt;-</span> <span class="st">"ts_method/all"</span></span>
+<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>p <span class="op">&lt;-</span> plot_ts_effect(df)</span>
+<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a>save_plot(filename)</span>
+<span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a>p</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
 <pre><code>R[write to console]: In addition: 
 R[write to console]: Warning messages:
@@ -585,29 +650,29 @@ R[write to console]: 3: Removed 719 rows containing non-finite values (`stat_den
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
-<p><a href="11_ts_analysis_files/figure-html/cell-12-output-2.png" class="lightbox" data-gallery="quarto-lightbox-gallery-1"><img src="11_ts_analysis_files/figure-html/cell-12-output-2.png" class="img-fluid figure-img"></a></p>
+<p><a href="11_ts_analysis_files/figure-html/cell-13-output-2.png" class="lightbox" data-gallery="quarto-lightbox-gallery-1"><img src="11_ts_analysis_files/figure-html/cell-13-output-2.png" class="img-fluid figure-img"></a></p>
 </figure>
 </div>
 </div>
 </div>
-<div id="cell-12" class="cell" data-execution_count="44">
-<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="op">%%</span>R</span>
-<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a><span class="co"># filter df with sat = 'Wind'</span></span>
-<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>p1 <span class="op">&lt;-</span> df <span class="op">%&gt;%</span></span>
-<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a>  <span class="bu">filter</span>(sat <span class="op">==</span> <span class="st">'Wind'</span>) <span class="op">%&gt;%</span></span>
-<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a>    plot_ts_effect(color <span class="op">=</span> <span class="st">"ts_method"</span>)</span>
-<span id="cb14-6"><a href="#cb14-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb14-7"><a href="#cb14-7" aria-hidden="true" tabindex="-1"></a>filename <span class="op">&lt;-</span> <span class="st">"ts_method/wind"</span></span>
-<span id="cb14-8"><a href="#cb14-8" aria-hidden="true" tabindex="-1"></a>save_plot(filename)</span>
-<span id="cb14-9"><a href="#cb14-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb14-10"><a href="#cb14-10" aria-hidden="true" tabindex="-1"></a>p2 <span class="op">&lt;-</span> df <span class="op">%&gt;%</span></span>
-<span id="cb14-11"><a href="#cb14-11" aria-hidden="true" tabindex="-1"></a>  <span class="bu">filter</span>(sat <span class="op">==</span> <span class="st">'JNO'</span>) <span class="op">%&gt;%</span></span>
-<span id="cb14-12"><a href="#cb14-12" aria-hidden="true" tabindex="-1"></a>    plot_ts_effect(color <span class="op">=</span> <span class="st">"ts_method"</span>)</span>
-<span id="cb14-13"><a href="#cb14-13" aria-hidden="true" tabindex="-1"></a>    </span>
-<span id="cb14-14"><a href="#cb14-14" aria-hidden="true" tabindex="-1"></a>filename <span class="op">&lt;-</span> <span class="st">"ts_method/juno"</span></span>
-<span id="cb14-15"><a href="#cb14-15" aria-hidden="true" tabindex="-1"></a>save_plot(filename)</span>
-<span id="cb14-16"><a href="#cb14-16" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb14-17"><a href="#cb14-17" aria-hidden="true" tabindex="-1"></a>p1 <span class="op">|</span> p2</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="cell-13" class="cell" data-execution_count="44">
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="op">%%</span>R</span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a><span class="co"># filter df with sat = 'Wind'</span></span>
+<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a>p1 <span class="op">&lt;-</span> df <span class="op">%&gt;%</span></span>
+<span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a>  <span class="bu">filter</span>(sat <span class="op">==</span> <span class="st">'Wind'</span>) <span class="op">%&gt;%</span></span>
+<span id="cb17-5"><a href="#cb17-5" aria-hidden="true" tabindex="-1"></a>    plot_ts_effect(color <span class="op">=</span> <span class="st">"ts_method"</span>)</span>
+<span id="cb17-6"><a href="#cb17-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-7"><a href="#cb17-7" aria-hidden="true" tabindex="-1"></a>filename <span class="op">&lt;-</span> <span class="st">"ts_method/wind"</span></span>
+<span id="cb17-8"><a href="#cb17-8" aria-hidden="true" tabindex="-1"></a>save_plot(filename)</span>
+<span id="cb17-9"><a href="#cb17-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-10"><a href="#cb17-10" aria-hidden="true" tabindex="-1"></a>p2 <span class="op">&lt;-</span> df <span class="op">%&gt;%</span></span>
+<span id="cb17-11"><a href="#cb17-11" aria-hidden="true" tabindex="-1"></a>  <span class="bu">filter</span>(sat <span class="op">==</span> <span class="st">'JNO'</span>) <span class="op">%&gt;%</span></span>
+<span id="cb17-12"><a href="#cb17-12" aria-hidden="true" tabindex="-1"></a>    plot_ts_effect(color <span class="op">=</span> <span class="st">"ts_method"</span>)</span>
+<span id="cb17-13"><a href="#cb17-13" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb17-14"><a href="#cb17-14" aria-hidden="true" tabindex="-1"></a>filename <span class="op">&lt;-</span> <span class="st">"ts_method/juno"</span></span>
+<span id="cb17-15"><a href="#cb17-15" aria-hidden="true" tabindex="-1"></a>save_plot(filename)</span>
+<span id="cb17-16"><a href="#cb17-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-17"><a href="#cb17-17" aria-hidden="true" tabindex="-1"></a>p1 <span class="op">|</span> p2</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Saving 6.67 x 6.67 in image
 Saving 6.67 x 6.67 in image
@@ -641,22 +706,22 @@ R[write to console]: 4: Removed 61 rows containing non-finite values (`stat_dens
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
-<p><a href="11_ts_analysis_files/figure-html/cell-13-output-4.png" class="lightbox" data-gallery="quarto-lightbox-gallery-2"><img src="11_ts_analysis_files/figure-html/cell-13-output-4.png" class="img-fluid figure-img"></a></p>
+<p><a href="11_ts_analysis_files/figure-html/cell-14-output-4.png" class="lightbox" data-gallery="quarto-lightbox-gallery-2"><img src="11_ts_analysis_files/figure-html/cell-14-output-4.png" class="img-fluid figure-img"></a></p>
 </figure>
 </div>
 </div>
 </div>
-<div id="cell-13" class="cell" data-execution_count="82">
-<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="op">%%</span>R</span>
-<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>p <span class="op">&lt;-</span> df <span class="op">%&gt;%</span></span>
-<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a>  <span class="bu">filter</span>(method <span class="op">==</span> <span class="st">'fit'</span>, sat <span class="op">==</span> <span class="st">'Wind'</span>) <span class="op">%&gt;%</span></span>
-<span id="cb18-4"><a href="#cb18-4" aria-hidden="true" tabindex="-1"></a>    plot_ts_effect(color <span class="op">=</span> <span class="st">'ts'</span>, L_mn_norm_lim <span class="op">=</span> c(<span class="dv">0</span>,<span class="dv">300</span>), j_norm_lim <span class="op">=</span> c(<span class="dv">0</span>,<span class="fl">0.6</span>), legend_title <span class="op">=</span> <span class="st">"time resolution"</span>)</span>
-<span id="cb18-5"><a href="#cb18-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-6"><a href="#cb18-6" aria-hidden="true" tabindex="-1"></a>p <span class="op">&lt;-</span> p <span class="op">+</span> plot_annotation(title <span class="op">=</span> <span class="st">"Wind - Fit"</span>)</span>
-<span id="cb18-7"><a href="#cb18-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-8"><a href="#cb18-8" aria-hidden="true" tabindex="-1"></a>filename <span class="op">&lt;-</span> <span class="st">"ts_method/wind_fit"</span></span>
-<span id="cb18-9"><a href="#cb18-9" aria-hidden="true" tabindex="-1"></a>save_plot(filename)</span>
-<span id="cb18-10"><a href="#cb18-10" aria-hidden="true" tabindex="-1"></a>p</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="cell-14" class="cell" data-execution_count="82">
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="op">%%</span>R</span>
+<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a>p <span class="op">&lt;-</span> df <span class="op">%&gt;%</span></span>
+<span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a>  <span class="bu">filter</span>(method <span class="op">==</span> <span class="st">'fit'</span>, sat <span class="op">==</span> <span class="st">'Wind'</span>) <span class="op">%&gt;%</span></span>
+<span id="cb21-4"><a href="#cb21-4" aria-hidden="true" tabindex="-1"></a>    plot_ts_effect(color <span class="op">=</span> <span class="st">'ts'</span>, L_mn_norm_lim <span class="op">=</span> c(<span class="dv">0</span>,<span class="dv">300</span>), j_norm_lim <span class="op">=</span> c(<span class="dv">0</span>,<span class="fl">0.6</span>), legend_title <span class="op">=</span> <span class="st">"time resolution"</span>)</span>
+<span id="cb21-5"><a href="#cb21-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-6"><a href="#cb21-6" aria-hidden="true" tabindex="-1"></a>p <span class="op">&lt;-</span> p <span class="op">+</span> plot_annotation(title <span class="op">=</span> <span class="st">"Wind - Fit"</span>)</span>
+<span id="cb21-7"><a href="#cb21-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-8"><a href="#cb21-8" aria-hidden="true" tabindex="-1"></a>filename <span class="op">&lt;-</span> <span class="st">"ts_method/wind_fit"</span></span>
+<span id="cb21-9"><a href="#cb21-9" aria-hidden="true" tabindex="-1"></a>save_plot(filename)</span>
+<span id="cb21-10"><a href="#cb21-10" aria-hidden="true" tabindex="-1"></a>p</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Saving 6.67 x 6.67 in image
 Saving 6.67 x 6.67 in image</code></pre>
@@ -680,30 +745,30 @@ R[write to console]: 2: Removed 3013 rows containing non-finite values (`stat_de
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
-<p><a href="11_ts_analysis_files/figure-html/cell-14-output-4.png" class="lightbox" data-gallery="quarto-lightbox-gallery-3"><img src="11_ts_analysis_files/figure-html/cell-14-output-4.png" class="img-fluid figure-img"></a></p>
+<p><a href="11_ts_analysis_files/figure-html/cell-15-output-4.png" class="lightbox" data-gallery="quarto-lightbox-gallery-3"><img src="11_ts_analysis_files/figure-html/cell-15-output-4.png" class="img-fluid figure-img"></a></p>
 </figure>
 </div>
 </div>
 </div>
-<div id="cell-14" class="cell" data-execution_count="45">
-<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="op">%%</span>R</span>
-<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a>p1 <span class="op">&lt;-</span> df <span class="op">%&gt;%</span></span>
-<span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a>  <span class="bu">filter</span>(method <span class="op">==</span> <span class="st">'derivative'</span>) <span class="op">%&gt;%</span></span>
-<span id="cb22-4"><a href="#cb22-4" aria-hidden="true" tabindex="-1"></a>    plot_ts_effect</span>
-<span id="cb22-5"><a href="#cb22-5" aria-hidden="true" tabindex="-1"></a> </span>
-<span id="cb22-6"><a href="#cb22-6" aria-hidden="true" tabindex="-1"></a>filename <span class="op">&lt;-</span> <span class="st">"ts_method/derivative"</span></span>
-<span id="cb22-7"><a href="#cb22-7" aria-hidden="true" tabindex="-1"></a>save_plot(filename)</span>
-<span id="cb22-8"><a href="#cb22-8" aria-hidden="true" tabindex="-1"></a>p1</span>
-<span id="cb22-9"><a href="#cb22-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb22-10"><a href="#cb22-10" aria-hidden="true" tabindex="-1"></a>p2 <span class="op">&lt;-</span> df <span class="op">%&gt;%</span></span>
-<span id="cb22-11"><a href="#cb22-11" aria-hidden="true" tabindex="-1"></a>  <span class="bu">filter</span>(method <span class="op">==</span> <span class="st">'fit'</span>) <span class="op">%&gt;%</span></span>
-<span id="cb22-12"><a href="#cb22-12" aria-hidden="true" tabindex="-1"></a>    plot_ts_effect(L_mn_norm_lim <span class="op">=</span> c(<span class="dv">0</span>,<span class="dv">300</span>), j_norm_lim <span class="op">=</span> c(<span class="dv">0</span>,<span class="fl">0.6</span>))</span>
-<span id="cb22-13"><a href="#cb22-13" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb22-14"><a href="#cb22-14" aria-hidden="true" tabindex="-1"></a>filename <span class="op">&lt;-</span> <span class="st">"ts_method/fit"</span></span>
-<span id="cb22-15"><a href="#cb22-15" aria-hidden="true" tabindex="-1"></a>save_plot(filename)</span>
-<span id="cb22-16"><a href="#cb22-16" aria-hidden="true" tabindex="-1"></a>p2</span>
-<span id="cb22-17"><a href="#cb22-17" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb22-18"><a href="#cb22-18" aria-hidden="true" tabindex="-1"></a>p1 <span class="op">|</span> p2</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="cell-15" class="cell" data-execution_count="45">
+<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="op">%%</span>R</span>
+<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a>p1 <span class="op">&lt;-</span> df <span class="op">%&gt;%</span></span>
+<span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a>  <span class="bu">filter</span>(method <span class="op">==</span> <span class="st">'derivative'</span>) <span class="op">%&gt;%</span></span>
+<span id="cb25-4"><a href="#cb25-4" aria-hidden="true" tabindex="-1"></a>    plot_ts_effect</span>
+<span id="cb25-5"><a href="#cb25-5" aria-hidden="true" tabindex="-1"></a> </span>
+<span id="cb25-6"><a href="#cb25-6" aria-hidden="true" tabindex="-1"></a>filename <span class="op">&lt;-</span> <span class="st">"ts_method/derivative"</span></span>
+<span id="cb25-7"><a href="#cb25-7" aria-hidden="true" tabindex="-1"></a>save_plot(filename)</span>
+<span id="cb25-8"><a href="#cb25-8" aria-hidden="true" tabindex="-1"></a>p1</span>
+<span id="cb25-9"><a href="#cb25-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-10"><a href="#cb25-10" aria-hidden="true" tabindex="-1"></a>p2 <span class="op">&lt;-</span> df <span class="op">%&gt;%</span></span>
+<span id="cb25-11"><a href="#cb25-11" aria-hidden="true" tabindex="-1"></a>  <span class="bu">filter</span>(method <span class="op">==</span> <span class="st">'fit'</span>) <span class="op">%&gt;%</span></span>
+<span id="cb25-12"><a href="#cb25-12" aria-hidden="true" tabindex="-1"></a>    plot_ts_effect(L_mn_norm_lim <span class="op">=</span> c(<span class="dv">0</span>,<span class="dv">300</span>), j_norm_lim <span class="op">=</span> c(<span class="dv">0</span>,<span class="fl">0.6</span>))</span>
+<span id="cb25-13"><a href="#cb25-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-14"><a href="#cb25-14" aria-hidden="true" tabindex="-1"></a>filename <span class="op">&lt;-</span> <span class="st">"ts_method/fit"</span></span>
+<span id="cb25-15"><a href="#cb25-15" aria-hidden="true" tabindex="-1"></a>save_plot(filename)</span>
+<span id="cb25-16"><a href="#cb25-16" aria-hidden="true" tabindex="-1"></a>p2</span>
+<span id="cb25-17"><a href="#cb25-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-18"><a href="#cb25-18" aria-hidden="true" tabindex="-1"></a>p1 <span class="op">|</span> p2</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Saving 6.67 x 6.67 in image
 Saving 6.67 x 6.67 in image
@@ -737,7 +802,7 @@ R[write to console]: 4: Removed 313 rows containing non-finite values (`stat_den
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
-<p><a href="11_ts_analysis_files/figure-html/cell-15-output-4.png" class="lightbox" data-gallery="quarto-lightbox-gallery-4"><img src="11_ts_analysis_files/figure-html/cell-15-output-4.png" class="img-fluid figure-img"></a></p>
+<p><a href="11_ts_analysis_files/figure-html/cell-16-output-4.png" class="lightbox" data-gallery="quarto-lightbox-gallery-4"><img src="11_ts_analysis_files/figure-html/cell-16-output-4.png" class="img-fluid figure-img"></a></p>
 </figure>
 </div>
 </div>
@@ -1134,7 +1199,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 });
 </script>
 </div> <!-- /content -->
-<script>var lightboxQuarto = GLightbox({"closeEffect":"zoom","openEffect":"zoom","loop":false,"selector":".lightbox","descPosition":"bottom"});
+<script>var lightboxQuarto = GLightbox({"selector":".lightbox","descPosition":"bottom","loop":false,"openEffect":"zoom","closeEffect":"zoom"});
 window.onload = () => {
   lightboxQuarto.on('slide_before_load', (data) => {
     const { slideIndex, slideNode, slideConfig, player, trigger } = data;

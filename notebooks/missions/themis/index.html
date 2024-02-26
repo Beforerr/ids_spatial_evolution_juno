@@ -57,7 +57,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </style>
 
 
-<script src="../../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg==" crossorigin="anonymous"></script><script src="../../../site_libs/quarto-nav/quarto-nav.js"></script>
 <script src="../../../site_libs/quarto-nav/headroom.min.js"></script>
 <script src="../../../site_libs/clipboard/clipboard.min.js"></script>
 <script src="../../../site_libs/quarto-search/autocomplete.umd.js"></script>
@@ -100,6 +100,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     "search-label": "Search"
   }
 }</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.6/require.min.js" integrity="sha512-c3Nl8+7g4LMSTdrm621y7kf9v3SDPnhxLNhcjFJbKECVnmZHTdo+IRO05sNLTH/D3vA6u1X32ehoLC7WFVdheg==" crossorigin="anonymous"></script>
+
+<script type="application/javascript">define('jquery', [],function() {return window.jQuery;})</script>
 
 
 </head>
@@ -212,6 +215,18 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <div class="sidebar-item-container"> 
   <a href="../../../notebooks/05_sea.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Superposed epoch analysis</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../notebooks/06_corr.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">06 Corr</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../notebooks/06_corr_julia.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">06 Corr Julia</span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -459,7 +474,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> tqdm <span class="im">import</span> tqdm</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
-<pre><code>25-Feb-24 00:56:05: UserWarning: Traceback (most recent call last):
+<pre><code>25-Feb-24 21:20:54: UserWarning: Traceback (most recent call last):
   File "/Users/zijin/micromamba/envs/psp_conjunction/lib/python3.11/site-packages/pdpipe/__init__.py", line 85, in &lt;module&gt;
     from . import skintegrate
   File "/Users/zijin/micromamba/envs/psp_conjunction/lib/python3.11/site-packages/pdpipe/skintegrate.py", line 20, in &lt;module&gt;
@@ -467,9 +482,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 ModuleNotFoundError: No module named 'sklearn'
 
 
-25-Feb-24 00:56:05: UserWarning: pdpipe: Scikit-learn or skutil import failed. Scikit-learn-dependent pipeline stages will not be loaded.
+25-Feb-24 21:20:54: UserWarning: pdpipe: Scikit-learn or skutil import failed. Scikit-learn-dependent pipeline stages will not be loaded.
 
-25-Feb-24 00:56:05: UserWarning: Traceback (most recent call last):
+25-Feb-24 21:20:54: UserWarning: Traceback (most recent call last):
   File "/Users/zijin/micromamba/envs/psp_conjunction/lib/python3.11/site-packages/pdpipe/__init__.py", line 105, in &lt;module&gt;
     from . import nltk_stages
   File "/Users/zijin/micromamba/envs/psp_conjunction/lib/python3.11/site-packages/pdpipe/nltk_stages.py", line 19, in &lt;module&gt;
@@ -477,7 +492,7 @@ ModuleNotFoundError: No module named 'sklearn'
 ModuleNotFoundError: No module named 'nltk'
 
 
-25-Feb-24 00:56:05: UserWarning: pdpipe: nltk import failed. nltk-dependent  pipeline stages will not be loaded.
+25-Feb-24 21:20:54: UserWarning: pdpipe: nltk import failed. nltk-dependent  pipeline stages will not be loaded.
 </code></pre>
 </div>
 </div>
@@ -497,42 +512,92 @@ ModuleNotFoundError: No module named 'nltk'
 <span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a>fmt <span class="op">=</span> <span class="st">'arrow'</span></span>
 <span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a>fname <span class="op">=</span> <span class="ss">f"../../../data/05_reporting/events.</span><span class="sc">{</span>mission<span class="sc">}</span><span class="ss">.ts_</span><span class="sc">{</span>ts<span class="sc">.</span>total_seconds()<span class="sc">:.2f}</span><span class="ss">s_tau_60s.</span><span class="sc">{</span>fmt<span class="sc">}</span><span class="ss">"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="cell-4" class="cell" data-execution_count="3">
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co"># timerange = ["2011-08-25", "2016-06-30"]</span></span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="co"># timerange = ["2011-08-25", "2011-09-01"]</span></span>
+<div id="cell-4" class="cell" data-execution_count="8">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>timerange <span class="op">=</span> [<span class="st">"2011-08-25"</span>, <span class="st">"2016-06-30"</span>]</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>timerange <span class="op">=</span> [<span class="st">"2011-08-25"</span>, <span class="st">"2011-09-01"</span>]</span>
 <span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a><span class="co"># mission = "Wind"</span></span>
-<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a><span class="co"># ts = timedelta(seconds=1)</span></span>
-<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a><span class="co"># tau = timedelta(seconds=60)</span></span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>mission <span class="op">=</span> <span class="st">"Wind"</span></span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>ts <span class="op">=</span> timedelta(seconds<span class="op">=</span><span class="dv">1</span>)</span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>tau <span class="op">=</span> timedelta(seconds<span class="op">=</span><span class="dv">60</span>)</span>
 <span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a><span class="co"># provider = 'archive/local'</span></span>
-<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a><span class="co"># mag_dataset = "WI_H4-RTN_MFI"</span></span>
-<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a><span class="co"># mag_parameters = ["BRTN"]</span></span>
-<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a><span class="co"># plasma_dataset = "WI_K0_SWE"</span></span>
-<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a><span class="co"># plasma_parameters= ["Np", "V_GSM", "THERMAL_SPD"]</span></span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a>provider <span class="op">=</span> <span class="st">'archive/local'</span></span>
+<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a>mag_dataset <span class="op">=</span> <span class="st">"WI_H4-RTN_MFI"</span></span>
+<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a>mag_parameters <span class="op">=</span> [<span class="st">"BRTN"</span>]</span>
+<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a>plasma_dataset <span class="op">=</span> <span class="st">"WI_K0_SWE"</span></span>
+<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a>plasma_parameters<span class="op">=</span> [<span class="st">"Np"</span>, <span class="st">"V_GSM"</span>, <span class="st">"THERMAL_SPD"</span>]</span>
 <span id="cb4-13"><a href="#cb4-13" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-14"><a href="#cb4-14" aria-hidden="true" tabindex="-1"></a><span class="co"># fmt = 'arrow'</span></span>
-<span id="cb4-15"><a href="#cb4-15" aria-hidden="true" tabindex="-1"></a><span class="co"># fname = f"../../data/05_reporting/events.{mission}.ts_{ts.total_seconds():.2f}s_tau_60s.{fmt}"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb4-14"><a href="#cb4-14" aria-hidden="true" tabindex="-1"></a>fmt <span class="op">=</span> <span class="st">'arrow'</span></span>
+<span id="cb4-15"><a href="#cb4-15" aria-hidden="true" tabindex="-1"></a>fname <span class="op">=</span> <span class="ss">f"../../data/05_reporting/events.</span><span class="sc">{</span>mission<span class="sc">}</span><span class="ss">.ts_</span><span class="sc">{</span>ts<span class="sc">.</span>total_seconds()<span class="sc">:.2f}</span><span class="ss">s_tau_60s.</span><span class="sc">{</span>fmt<span class="sc">}</span><span class="ss">"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="cell-5" class="cell" data-execution_count="12">
+<div id="cell-5" class="cell" data-execution_count="9">
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>mag_vars <span class="op">=</span> Variables(</span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>    provider <span class="op">=</span> provider,</span>
 <span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>    dataset<span class="op">=</span>mag_dataset,</span>
 <span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>    parameters<span class="op">=</span>mag_parameters,</span>
 <span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>    timerange<span class="op">=</span>timerange,</span>
 <span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>).retrieve_data()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stderr">
-<pre><code>25-Feb-24 00:56:43: Non compliant ISTP file: swapping DEPEND_0 with DEPEND_TIME for thb_fgl_gse, if you think this is a bug report it here: https://github.com/SciQLop/PyISTP/issues
-25-Feb-24 00:56:43: Non compliant ISTP file: swapping DEPEND_0 with DEPEND_TIME for thb_fgl_gse, if you think this is a bug report it here: https://github.com/SciQLop/PyISTP/issues
-25-Feb-24 00:56:43: Non compliant ISTP file: swapping DEPEND_0 with DEPEND_TIME for thb_fgl_gse, if you think this is a bug report it here: https://github.com/SciQLop/PyISTP/issues
-25-Feb-24 00:56:43: Non compliant ISTP file: swapping DEPEND_0 with DEPEND_TIME for thb_fgl_gse, if you think this is a bug report it here: https://github.com/SciQLop/PyISTP/issues
-25-Feb-24 00:56:43: Non compliant ISTP file: swapping DEPEND_0 with DEPEND_TIME for thb_fgl_gse, if you think this is a bug report it here: https://github.com/SciQLop/PyISTP/issues
-25-Feb-24 00:56:43: Non compliant ISTP file: swapping DEPEND_0 with DEPEND_TIME for thb_fgl_gse, if you think this is a bug report it here: https://github.com/SciQLop/PyISTP/issues
-25-Feb-24 00:56:43: Non compliant ISTP file: swapping DEPEND_0 with DEPEND_TIME for thb_fgl_gse, if you think this is a bug report it here: https://github.com/SciQLop/PyISTP/issues
-25-Feb-24 00:56:43: Non compliant ISTP file: swapping DEPEND_0 with DEPEND_TIME for thb_fgl_gse, if you think this is a bug report it here: https://github.com/SciQLop/PyISTP/issues</code></pre>
+</div>
+<div id="cell-6" class="cell" data-execution_count="10">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>mag_vars.time_resolutions</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="10">
+<div><style>
+.dataframe > thead > tr,
+.dataframe > tbody > tr {
+  text-align: right;
+  white-space: pre-wrap;
+}
+</style>
+<small>shape: (8, 2)</small>
+<table class="dataframe table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th">statistic</th>
+<th data-quarto-table-cell-role="th">value</th>
+</tr>
+<tr class="odd">
+<th>str</th>
+<th>str</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>"count"</td>
+<td>"6053744"</td>
+</tr>
+<tr class="even">
+<td>"null_count"</td>
+<td>"1"</td>
+</tr>
+<tr class="odd">
+<td>"mean"</td>
+<td>"0:00:00.092974…</td>
+</tr>
+<tr class="even">
+<td>"min"</td>
+<td>"0:00:00.091000…</td>
+</tr>
+<tr class="odd">
+<td>"25%"</td>
+<td>"0:00:00.092000…</td>
+</tr>
+<tr class="even">
+<td>"50%"</td>
+<td>"0:00:00.092000…</td>
+</tr>
+<tr class="odd">
+<td>"75%"</td>
+<td>"0:00:00.092000…</td>
+</tr>
+<tr class="even">
+<td>"max"</td>
+<td>"0:04:36.092000…</td>
+</tr>
+</tbody>
+</table>
 </div>
 </div>
-<div id="cell-6" class="cell" data-execution_count="7">
+</div>
+<div id="cell-7" class="cell" data-execution_count="7">
 <div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>plasma_vars <span class="op">=</span> Variables(</span>
 <span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>    provider <span class="op">=</span> provider,</span>
 <span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>    dataset<span class="op">=</span>plasma_dataset,</span>
@@ -540,7 +605,7 @@ ModuleNotFoundError: No module named 'nltk'
 <span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>    timerange<span class="op">=</span>timerange,</span>
 <span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a>).retrieve_data()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="cell-7" class="cell" data-execution_count="9">
+<div id="cell-8" class="cell" data-execution_count="9">
 <div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> get_and_process_data(</span>
 <span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>    mag_dataset, mag_parameters, plasma_dataset, plasma_parameters, timerange, tau, ts, provider</span>
 <span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>):</span>
@@ -590,7 +655,7 @@ ModuleNotFoundError: No module named 'nltk'
 <span id="cb8-47"><a href="#cb8-47" aria-hidden="true" tabindex="-1"></a>        temperature_col<span class="op">=</span><span class="st">"plasma_temperature"</span>,</span>
 <span id="cb8-48"><a href="#cb8-48" aria-hidden="true" tabindex="-1"></a>    ).find_events(return_best_fit<span class="op">=</span><span class="va">False</span>).update_candidates_with_plasma_data()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="cell-8" class="cell" data-execution_count="10">
+<div id="cell-9" class="cell" data-execution_count="10">
 <div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>ids : <span class="bu">list</span>[pl.DataFrame] <span class="op">=</span> []</span>
 <span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> _tr <span class="kw">in</span> tqdm(TimeRange(timerange).split(<span class="dv">8</span>)):</span>
 <span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>    </span>
@@ -1276,7 +1341,7 @@ ModuleNotFoundError: No module named 'nltk'
 </section>
 <section id="solar-wind-pipeline" class="level2">
 <h2 class="anchored" data-anchor-id="solar-wind-pipeline">Solar wind pipeline</h2>
-<p>::: {#cell-10 .cell 0=‘e’ 1=‘x’ 2=‘p’ 3=‘o’ 4=‘r’ 5=‘t’}</p>
+<p>::: {#cell-11 .cell 0=‘e’ 1=‘x’ 2=‘p’ 3=‘o’ 4=‘r’ 5=‘t’}</p>
 <div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> discontinuitypy.utils.basic <span class="im">import</span> filter_tranges_df</span>
 <span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> filter_sw_events(events: pl.LazyFrame, sw_state: pl.LazyFrame) <span class="op">-&gt;</span> pl.LazyFrame:</span>
@@ -1312,7 +1377,7 @@ ModuleNotFoundError: No module named 'nltk'
 </section>
 <section id="pipelines" class="level2">
 <h2 class="anchored" data-anchor-id="pipelines">Pipelines</h2>
-<p>::: {#cell-12 .cell 0=‘e’ 1=‘x’ 2=‘p’ 3=‘o’ 4=‘r’ 5=‘t’}</p>
+<p>::: {#cell-13 .cell 0=‘e’ 1=‘x’ 2=‘p’ 3=‘o’ 4=‘r’ 5=‘t’}</p>
 <div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> create_pipeline(</span>
 <span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>    sat_id<span class="op">=</span><span class="st">"THB"</span>,</span>
 <span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>    params: Optional[<span class="bu">dict</span>] <span class="op">=</span> <span class="va">None</span>,</span>
