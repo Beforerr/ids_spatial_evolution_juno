@@ -57,7 +57,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </style>
 
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg==" crossorigin="anonymous"></script><script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
 <script src="../site_libs/quarto-nav/headroom.min.js"></script>
 <script src="../site_libs/clipboard/clipboard.min.js"></script>
 <script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
@@ -100,10 +100,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     "search-label": "Search"
   }
 }</script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.6/require.min.js" integrity="sha512-c3Nl8+7g4LMSTdrm621y7kf9v3SDPnhxLNhcjFJbKECVnmZHTdo+IRO05sNLTH/D3vA6u1X32ehoLC7WFVdheg==" crossorigin="anonymous"></script>
-
-<script type="application/javascript">define('jquery', [],function() {return window.jQuery;})</script>
-<script src="https://unpkg.com/@jupyter-widgets/html-manager@*/dist/embed-amd.js" crossorigin="anonymous"></script>
 
 
 </head>
@@ -208,6 +204,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
+  <a href="../notebooks/04_calc.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">04 Calc</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
   <a href="../notebooks/04_properties.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">SWD Properties</span></a>
   </div>
@@ -228,6 +230,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <div class="sidebar-item-container"> 
   <a href="../notebooks/06_corr_julia.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">06 Corr Julia</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../notebooks/10_examples.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Strong current density in 5AU</span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -429,434 +437,26 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="op">%</span>load_ext autoreload</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="op">%</span>autoreload <span class="dv">2</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>::: {#cell-1 .cell 0=‘h’ 1=‘i’ 2=‘d’ 3=‘e’ execution_count=2}</p>
+<p>::: {#cell-1 .cell 0=‘h’ 1=‘i’ 2=‘d’ 3=‘e’ execution_count=7}</p>
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> utils.config <span class="im">import</span> JunoConfig, WindConfig, IDsConfig</span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> rich <span class="im">import</span> <span class="bu">print</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="7">
+<pre><code>1</code></pre>
+</div>
 <p>:::</p>
-<div id="cell-2" class="cell" data-execution_count="3">
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>JunoConfig(ts<span class="op">=</span><span class="fl">0.125</span>).get_and_process_data().export()</span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>JunoConfig(method<span class="op">=</span><span class="st">'derivative'</span>).get_and_process_data().export()</span>
-<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>JunoConfig(ts<span class="op">=</span><span class="fl">0.125</span>, method<span class="op">=</span><span class="st">'derivative'</span>).get_and_process_data().export()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stderr">
-<pre><code>26-Feb-24 13:44:36: UserWarning: Ray execution environment not yet initialized. Initializing...
-To remove this warning, run the following python code before doing dataframe operations:
-
-    import ray
-    ray.init()
-
-
-2024-02-26 13:44:38,900 INFO worker.py:1724 -- Started a local Ray instance.
-26-Feb-24 13:44:39: UserWarning: Distributing &lt;class 'pandas.core.frame.DataFrame'&gt; object. This may take some time.
-
-(_deploy_ray_func pid=56962) RuntimeWarning: overflow encountered in exp
-(_deploy_ray_func pid=56962) RuntimeWarning: overflow encountered in exp
-(_deploy_ray_func pid=56973) RuntimeWarning: overflow encountered in exp [repeated 14x across cluster] (Ray deduplicates logs by default. Set RAY_DEDUP_LOGS=0 to disable log deduplication, or see https://docs.ray.io/en/master/ray-observability/ray-logging.html#log-deduplication for more options.)
-26-Feb-24 13:45:03: UserWarning: Distributing &lt;class 'pandas.core.frame.DataFrame'&gt; object. This may take some time.
-
-(_deploy_ray_func pid=56971) RuntimeWarning: overflow encountered in exp [repeated 6x across cluster]
-(_deploy_ray_func pid=56965) RuntimeWarning: overflow encountered in exp [repeated 14x across cluster]
-26-Feb-24 13:45:56: UserWarning: Distributing &lt;class 'pandas.core.frame.DataFrame'&gt; object. This may take some time.
-
-(_deploy_ray_func pid=56963) RuntimeWarning: overflow encountered in exp [repeated 5x across cluster]
-(_deploy_ray_func pid=56970) RuntimeWarning: overflow encountered in exp [repeated 10x across cluster]
-26-Feb-24 13:46:47: UserWarning: Distributing &lt;class 'pandas.core.frame.DataFrame'&gt; object. This may take some time.
-
-(_deploy_ray_func pid=56972) RuntimeWarning: overflow encountered in exp [repeated 3x across cluster]
-(_deploy_ray_func pid=56964) RuntimeWarning: overflow encountered in exp [repeated 9x across cluster]
-26-Feb-24 13:47:17: UserWarning: Distributing &lt;class 'pandas.core.frame.DataFrame'&gt; object. This may take some time.
-
-(_deploy_ray_func pid=56968) RuntimeWarning: overflow encountered in exp
-(_deploy_ray_func pid=56969) RuntimeWarning: overflow encountered in exp
-26-Feb-24 13:47:55: UserWarning: Distributing &lt;class 'pandas.core.frame.DataFrame'&gt; object. This may take some time.
-
-(_deploy_ray_func pid=56972) RuntimeWarning: overflow encountered in exp [repeated 5x across cluster]
-26-Feb-24 13:48:16: UserWarning: Distributing &lt;class 'pandas.core.frame.DataFrame'&gt; object. This may take some time.
-
-(_deploy_ray_func pid=56967) RuntimeWarning: overflow encountered in exp
-(_deploy_ray_func pid=56964) RuntimeWarning: overflow encountered in exp
-26-Feb-24 13:48:52: UserWarning: Distributing &lt;class 'pandas.core.frame.DataFrame'&gt; object. This may take some time.
-
-26-Feb-24 13:48:59: UserWarning: Distributing &lt;class 'pandas.core.frame.DataFrame'&gt; object. This may take some time.
-
-26-Feb-24 13:49:08: UserWarning: Distributing &lt;class 'pandas.core.frame.DataFrame'&gt; object. This may take some time.
-
-26-Feb-24 13:49:15: UserWarning: Distributing &lt;class 'pandas.core.frame.DataFrame'&gt; object. This may take some time.
-
-26-Feb-24 13:49:23: UserWarning: Distributing &lt;class 'pandas.core.frame.DataFrame'&gt; object. This may take some time.
-
-26-Feb-24 13:49:31: UserWarning: Distributing &lt;class 'pandas.core.frame.DataFrame'&gt; object. This may take some time.
-
-26-Feb-24 13:49:37: UserWarning: Distributing &lt;class 'pandas.core.frame.DataFrame'&gt; object. This may take some time.
-
-26-Feb-24 13:49:43: UserWarning: Distributing &lt;class 'pandas.core.frame.DataFrame'&gt; object. This may take some time.
-
-26-Feb-24 13:49:48: UserWarning: Distributing &lt;class 'pandas.core.frame.DataFrame'&gt; object. This may take some time.
-
-26-Feb-24 13:50:02: UserWarning: Distributing &lt;class 'pandas.core.frame.DataFrame'&gt; object. This may take some time.
-
-26-Feb-24 13:50:13: UserWarning: Distributing &lt;class 'pandas.core.frame.DataFrame'&gt; object. This may take some time.
-
-26-Feb-24 13:50:54: UserWarning: Distributing &lt;class 'pandas.core.frame.DataFrame'&gt; object. This may take some time.
-
-26-Feb-24 13:50:58: RuntimeWarning: invalid value encountered in divide
-
-26-Feb-24 13:51:35: UserWarning: Distributing &lt;class 'pandas.core.frame.DataFrame'&gt; object. This may take some time.
-
-26-Feb-24 13:51:56: UserWarning: Distributing &lt;class 'pandas.core.frame.DataFrame'&gt; object. This may take some time.
-
-26-Feb-24 13:51:57: RuntimeWarning: invalid value encountered in divide
-
-26-Feb-24 13:52:32: UserWarning: Distributing &lt;class 'pandas.core.frame.DataFrame'&gt; object. This may take some time.
-
-26-Feb-24 13:52:33: RuntimeWarning: invalid value encountered in divide
-
-26-Feb-24 13:52:50: UserWarning: Distributing &lt;class 'pandas.core.frame.DataFrame'&gt; object. This may take some time.
-
-26-Feb-24 13:53:25: UserWarning: Distributing &lt;class 'pandas.core.frame.DataFrame'&gt; object. This may take some time.
-</code></pre>
-</div>
-<div class="cell-output cell-output-display">
-<script type="application/vnd.jupyter.widget-view+json">
-{"model_id":"39e6afa14b3d4062a3b611105fb03f0b","version_major":2,"version_minor":0,"quarto_mimetype":"application/vnd.jupyter.widget-view+json"}
-</script>
-</div>
-<div class="cell-output cell-output-display">
-<script type="application/vnd.jupyter.widget-view+json">
-{"model_id":"c068318fa77b4799981551a5a378d348","version_major":2,"version_minor":0,"quarto_mimetype":"application/vnd.jupyter.widget-view+json"}
-</script>
-</div>
-<div class="cell-output cell-output-display">
-<script type="application/vnd.jupyter.widget-view+json">
-{"model_id":"c61fffba50c84f73b4c717b2cec88ea4","version_major":2,"version_minor":0,"quarto_mimetype":"application/vnd.jupyter.widget-view+json"}
-</script>
-</div>
-<div class="cell-output cell-output-display">
-<script type="application/vnd.jupyter.widget-view+json">
-{"model_id":"c9cada2692664d06853b6f88138460e5","version_major":2,"version_minor":0,"quarto_mimetype":"application/vnd.jupyter.widget-view+json"}
-</script>
-</div>
-<div class="cell-output cell-output-display">
-<script type="application/vnd.jupyter.widget-view+json">
-{"model_id":"1472eb64be6e4228af9a84e605bf6dc8","version_major":2,"version_minor":0,"quarto_mimetype":"application/vnd.jupyter.widget-view+json"}
-</script>
-</div>
-<div class="cell-output cell-output-display">
-<script type="application/vnd.jupyter.widget-view+json">
-{"model_id":"1704c310028141c6bb324dfe1ea87dac","version_major":2,"version_minor":0,"quarto_mimetype":"application/vnd.jupyter.widget-view+json"}
-</script>
-</div>
-<div class="cell-output cell-output-display">
-<script type="application/vnd.jupyter.widget-view+json">
-{"model_id":"a044cb1502b64aff9d779c6aa6a00054","version_major":2,"version_minor":0,"quarto_mimetype":"application/vnd.jupyter.widget-view+json"}
-</script>
-</div>
-<div class="cell-output cell-output-display">
-<script type="application/vnd.jupyter.widget-view+json">
-{"model_id":"13a076e8f2d545b99f983bb6755d9f80","version_major":2,"version_minor":0,"quarto_mimetype":"application/vnd.jupyter.widget-view+json"}
-</script>
-</div>
-<div class="cell-output cell-output-display">
-<script type="application/vnd.jupyter.widget-view+json">
-{"model_id":"b3c6a45a51bc4fe7b4b901a28c0cf1c6","version_major":2,"version_minor":0,"quarto_mimetype":"application/vnd.jupyter.widget-view+json"}
-</script>
-</div>
-<div class="cell-output cell-output-display">
-<script type="application/vnd.jupyter.widget-view+json">
-{"model_id":"dc45a690e3d346d294a2e81390fb3faf","version_major":2,"version_minor":0,"quarto_mimetype":"application/vnd.jupyter.widget-view+json"}
-</script>
-</div>
-<div class="cell-output cell-output-display">
-<script type="application/vnd.jupyter.widget-view+json">
-{"model_id":"70a3dba2d5314df28a2a7405f416755d","version_major":2,"version_minor":0,"quarto_mimetype":"application/vnd.jupyter.widget-view+json"}
-</script>
-</div>
-<div class="cell-output cell-output-display">
-<script type="application/vnd.jupyter.widget-view+json">
-{"model_id":"5b7d9f98730847c0a4e0a5cd4ce700e5","version_major":2,"version_minor":0,"quarto_mimetype":"application/vnd.jupyter.widget-view+json"}
-</script>
-</div>
-<div class="cell-output cell-output-display">
-<script type="application/vnd.jupyter.widget-view+json">
-{"model_id":"bacdc805775640058125cef0907ebc4c","version_major":2,"version_minor":0,"quarto_mimetype":"application/vnd.jupyter.widget-view+json"}
-</script>
-</div>
-<div class="cell-output cell-output-display">
-<script type="application/vnd.jupyter.widget-view+json">
-{"model_id":"f18e60afdf1a4d18bc545c0854f901e5","version_major":2,"version_minor":0,"quarto_mimetype":"application/vnd.jupyter.widget-view+json"}
-</script>
-</div>
-<div class="cell-output cell-output-display">
-<script type="application/vnd.jupyter.widget-view+json">
-{"model_id":"0fa6aa62273e45c3a078bef231e5d7fe","version_major":2,"version_minor":0,"quarto_mimetype":"application/vnd.jupyter.widget-view+json"}
-</script>
-</div>
-<div class="cell-output cell-output-display">
-<script type="application/vnd.jupyter.widget-view+json">
-{"model_id":"7b9c749c96cd4c94b64c65362842b927","version_major":2,"version_minor":0,"quarto_mimetype":"application/vnd.jupyter.widget-view+json"}
-</script>
-</div>
-<div class="cell-output cell-output-display">
-<script type="application/vnd.jupyter.widget-view+json">
-{"model_id":"00f73dc726c344e1bda0d62dd63517aa","version_major":2,"version_minor":0,"quarto_mimetype":"application/vnd.jupyter.widget-view+json"}
-</script>
-</div>
-<div class="cell-output cell-output-display">
-<script type="application/vnd.jupyter.widget-view+json">
-{"model_id":"228c7e3e93fd4e7eae0a7ad2ef55ea1c","version_major":2,"version_minor":0,"quarto_mimetype":"application/vnd.jupyter.widget-view+json"}
-</script>
-</div>
-<div class="cell-output cell-output-display">
-<script type="application/vnd.jupyter.widget-view+json">
-{"model_id":"7eb9980b13154e5fa0d94316200ab3cc","version_major":2,"version_minor":0,"quarto_mimetype":"application/vnd.jupyter.widget-view+json"}
-</script>
-</div>
-<div class="cell-output cell-output-display">
-<script type="application/vnd.jupyter.widget-view+json">
-{"model_id":"6d4fe584885e42179eb8c3d2d2ef0ffb","version_major":2,"version_minor":0,"quarto_mimetype":"application/vnd.jupyter.widget-view+json"}
-</script>
-</div>
-<div class="cell-output cell-output-display">
-<script type="application/vnd.jupyter.widget-view+json">
-{"model_id":"768404124ccc4bacaf02e610f7523a58","version_major":2,"version_minor":0,"quarto_mimetype":"application/vnd.jupyter.widget-view+json"}
-</script>
-</div>
-<div class="cell-output cell-output-display">
-<script type="application/vnd.jupyter.widget-view+json">
-{"model_id":"dff667ff34a14394859017c548d3bd3c","version_major":2,"version_minor":0,"quarto_mimetype":"application/vnd.jupyter.widget-view+json"}
-</script>
-</div>
-<div class="cell-output cell-output-display">
-<script type="application/vnd.jupyter.widget-view+json">
-{"model_id":"87e6cadee49e456bb4b08aead379df41","version_major":2,"version_minor":0,"quarto_mimetype":"application/vnd.jupyter.widget-view+json"}
-</script>
-</div>
-<div class="cell-output cell-output-display">
-<script type="application/vnd.jupyter.widget-view+json">
-{"model_id":"3f0678cf0ad04642ab013d7e2481fa3d","version_major":2,"version_minor":0,"quarto_mimetype":"application/vnd.jupyter.widget-view+json"}
-</script>
-</div>
-<div class="cell-output cell-output-display">
-<script type="application/vnd.jupyter.widget-view+json">
-{"model_id":"0cc133ca37ad43d28a8f6f477c028efb","version_major":2,"version_minor":0,"quarto_mimetype":"application/vnd.jupyter.widget-view+json"}
-</script>
-</div>
-<div class="cell-output cell-output-display">
-<script type="application/vnd.jupyter.widget-view+json">
-{"model_id":"9435195584ed486c8da33e6b605e772d","version_major":2,"version_minor":0,"quarto_mimetype":"application/vnd.jupyter.widget-view+json"}
-</script>
-</div>
-<div class="cell-output cell-output-display">
-<script type="application/vnd.jupyter.widget-view+json">
-{"model_id":"a5ac256735894a7a9e25c7e6748c5409","version_major":2,"version_minor":0,"quarto_mimetype":"application/vnd.jupyter.widget-view+json"}
-</script>
-</div>
-<div class="cell-output cell-output-display" data-execution_count="3">
-<pre><code>JunoConfig(name='JNO', data=&lt;LazyFrame [4 cols, {"time": Datetime(time_unit='us', time_zone=None) … "BZ SE": Float64}] at 0x2F89F45D0&gt;, ts=datetime.timedelta(microseconds=125000), tau=datetime.timedelta(seconds=60), events=shape: (94_095, 89)
-┌─────────────┬────────────┬─────┬──────────┬───┬────────────┬───────────┬────────────┬────────────┐
-│ time        ┆ index_diff ┆ len ┆ std      ┆ … ┆ v.ion.chan ┆ B.change  ┆ v.Alfven.c ┆ v.Alfven.c │
-│ ---         ┆ ---        ┆ --- ┆ ---      ┆   ┆ ge.l       ┆ ---       ┆ hange      ┆ hange.l    │
-│ datetime[ns ┆ f64        ┆ u32 ┆ f64      ┆   ┆ ---        ┆ f64       ┆ ---        ┆ ---        │
-│ ]           ┆            ┆     ┆          ┆   ┆ f64        ┆           ┆ f64        ┆ f64        │
-╞═════════════╪════════════╪═════╪══════════╪═══╪════════════╪═══════════╪════════════╪════════════╡
-│ 2011-08-25  ┆ 1.285665   ┆ 480 ┆ 2.59288  ┆ … ┆ NaN        ┆ -0.027436 ┆ NaN        ┆ NaN        │
-│ 15:25:30    ┆            ┆     ┆          ┆   ┆            ┆           ┆            ┆            │
-│ 2011-08-25  ┆ 1.367783   ┆ 480 ┆ 2.393473 ┆ … ┆ NaN        ┆ 0.063919  ┆ NaN        ┆ NaN        │
-│ 15:33:00    ┆            ┆     ┆          ┆   ┆            ┆           ┆            ┆            │
-│ 2011-08-25  ┆ 1.732598   ┆ 480 ┆ 2.20969  ┆ … ┆ NaN        ┆ 0.063919  ┆ NaN        ┆ NaN        │
-│ 15:33:30    ┆            ┆     ┆          ┆   ┆            ┆           ┆            ┆            │
-│ 2011-08-25  ┆ 1.367783   ┆ 480 ┆ 2.393473 ┆ … ┆ NaN        ┆ 0.063919  ┆ NaN        ┆ NaN        │
-│ 15:33:00    ┆            ┆     ┆          ┆   ┆            ┆           ┆            ┆            │
-│ 2011-08-25  ┆ 1.732598   ┆ 480 ┆ 2.20969  ┆ … ┆ NaN        ┆ 0.063919  ┆ NaN        ┆ NaN        │
-│ 15:33:30    ┆            ┆     ┆          ┆   ┆            ┆           ┆            ┆            │
-│ …           ┆ …          ┆ …   ┆ …        ┆ … ┆ …          ┆ …         ┆ …          ┆ …          │
-│ 2016-06-29  ┆ 1.157213   ┆ 480 ┆ 2.515025 ┆ … ┆ -0.000003  ┆ 0.876779  ┆ 110.19698  ┆ 96.402675  │
-│ 21:32:00    ┆            ┆     ┆          ┆   ┆            ┆           ┆            ┆            │
-│ 2016-06-29  ┆ 0.503273   ┆ 480 ┆ 2.069719 ┆ … ┆ 0.000279   ┆ 0.23649   ┆ 29.420787  ┆ -44.259203 │
-│ 23:32:30    ┆            ┆     ┆          ┆   ┆            ┆           ┆            ┆            │
-│ 2016-06-29  ┆ 0.419015   ┆ 480 ┆ 1.268489 ┆ … ┆ NaN        ┆ 0.332181  ┆ NaN        ┆ NaN        │
-│ 23:34:30    ┆            ┆     ┆          ┆   ┆            ┆           ┆            ┆            │
-│ 2016-06-29  ┆ 1.162055   ┆ 480 ┆ 2.828158 ┆ … ┆ NaN        ┆ 0.494918  ┆ NaN        ┆ NaN        │
-│ 23:38:00    ┆            ┆     ┆          ┆   ┆            ┆           ┆            ┆            │
-│ 2016-06-29  ┆ 0.419085   ┆ 480 ┆ 1.253931 ┆ … ┆ -0.000551  ┆ 0.097244  ┆ 12.077924  ┆ 110.593502 │
-│ 23:50:30    ┆            ┆     ┆          ┆   ┆            ┆           ┆            ┆            │
-└─────────────┴────────────┴─────┴──────────┴───┴────────────┴───────────┴────────────┴────────────┘, method='derivative', plasma_data=&lt;LazyFrame [14 cols, {"radial_distance": Float64 … "B_background_z": Float64}] at 0x2C12C8690&gt;, plasma_meta=PlasmaMeta(dataset=None, parameters=None, density_col='plasma_density', velocity_cols=['v_x', 'v_y', 'v_z'], speed_col=None, temperature_col=None), bcols=None, timerange=[datetime.datetime(2011, 8, 25, 0, 0, tzinfo=TzInfo(UTC)), datetime.datetime(2016, 6, 30, 0, 0, tzinfo=TzInfo(UTC))], split=8, fmt='arrow')</code></pre>
+<div id="cell-2" class="cell" data-execution_count="8">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>WindConfig().split</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="8">
+<pre><code>8</code></pre>
 </div>
 </div>
-<div id="cell-3" class="cell" data-execution_count="4">
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>WindConfig().get_and_process_data()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display">
-<script type="application/vnd.jupyter.widget-view+json">
-{"model_id":"366e8c71632d440c8dc38c9daaeb9479","version_major":2,"version_minor":0,"quarto_mimetype":"application/vnd.jupyter.widget-view+json"}
-</script>
+<div id="cell-3" class="cell">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>JunoConfig(ts<span class="op">=</span><span class="fl">0.125</span>).get_and_process_data().export()</span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>JunoConfig(method<span class="op">=</span><span class="st">'derivative'</span>).get_and_process_data().export()</span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>JunoConfig(ts<span class="op">=</span><span class="fl">0.125</span>, method<span class="op">=</span><span class="st">'derivative'</span>).get_and_process_data().export()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="cell-output cell-output-stderr">
-<pre><code>25-Feb-24 22:22:46: UserWarning: Ray execution environment not yet initialized. Initializing...
-To remove this warning, run the following python code before doing dataframe operations:
-
-    import ray
-    ray.init()
-
-
-2024-02-25 22:22:48,294 INFO worker.py:1724 -- Started a local Ray instance.
-25-Feb-24 22:22:49: UserWarning: Distributing &lt;class 'pandas.core.frame.DataFrame'&gt; object. This may take some time.
-
-(_deploy_ray_func pid=41762) UserWarning: Traceback (most recent call last):
-(_deploy_ray_func pid=41762)   File "/Users/zijin/micromamba/envs/psp_conjunction/lib/python3.11/site-packages/pdpipe/__init__.py", line 85, in &lt;module&gt;
-(_deploy_ray_func pid=41762)     from . import skintegrate
-(_deploy_ray_func pid=41762)   File "/Users/zijin/micromamba/envs/psp_conjunction/lib/python3.11/site-packages/pdpipe/skintegrate.py", line 20, in &lt;module&gt;
-(_deploy_ray_func pid=41762)     from sklearn.base import BaseEstimator
-(_deploy_ray_func pid=41762) ModuleNotFoundError: No module named 'sklearn'
-(_deploy_ray_func pid=41762) 
-(_deploy_ray_func pid=41762) UserWarning: pdpipe: Scikit-learn or skutil import failed. Scikit-learn-dependent pipeline stages will not be loaded.
-(_deploy_ray_func pid=41762) UserWarning: Traceback (most recent call last):
-(_deploy_ray_func pid=41762)   File "/Users/zijin/micromamba/envs/psp_conjunction/lib/python3.11/site-packages/pdpipe/__init__.py", line 105, in &lt;module&gt;
-(_deploy_ray_func pid=41762)     from . import nltk_stages
-(_deploy_ray_func pid=41762)   File "/Users/zijin/micromamba/envs/psp_conjunction/lib/python3.11/site-packages/pdpipe/nltk_stages.py", line 19, in &lt;module&gt;
-(_deploy_ray_func pid=41762)     import nltk
-(_deploy_ray_func pid=41762) ModuleNotFoundError: No module named 'nltk'
-(_deploy_ray_func pid=41762) 
-(_deploy_ray_func pid=41762) UserWarning: pdpipe: nltk import failed. nltk-dependent  pipeline stages will not be loaded.
-(_deploy_ray_func pid=41767) RuntimeWarning: overflow encountered in exp
-25-Feb-24 22:22:56: UserWarning: Distributing &lt;class 'pandas.core.frame.DataFrame'&gt; object. This may take some time.
-
-(_deploy_ray_func pid=41763) UserWarning: Traceback (most recent call last): [repeated 22x across cluster] (Ray deduplicates logs by default. Set RAY_DEDUP_LOGS=0 to disable log deduplication, or see https://docs.ray.io/en/master/ray-observability/ray-logging.html#log-deduplication for more options.)
-(_deploy_ray_func pid=41763)   File "/Users/zijin/micromamba/envs/psp_conjunction/lib/python3.11/site-packages/pdpipe/nltk_stages.py", line 19, in &lt;module&gt; [repeated 44x across cluster]
-(_deploy_ray_func pid=41763)     from . import skintegrate [repeated 11x across cluster]
-(_deploy_ray_func pid=41763)     from sklearn.base import BaseEstimator [repeated 11x across cluster]
-(_deploy_ray_func pid=41763) ModuleNotFoundError: No module named 'sklearn' [repeated 11x across cluster]
-(_deploy_ray_func pid=41763)  [repeated 22x across cluster]
-(_deploy_ray_func pid=41763) UserWarning: pdpipe: Scikit-learn or skutil import failed. Scikit-learn-dependent pipeline stages will not be loaded. [repeated 11x across cluster]
-(_deploy_ray_func pid=41763)     from . import nltk_stages [repeated 11x across cluster]
-(_deploy_ray_func pid=41763)     import nltk [repeated 11x across cluster]
-(_deploy_ray_func pid=41763) ModuleNotFoundError: No module named 'nltk' [repeated 11x across cluster]
-(_deploy_ray_func pid=41763) UserWarning: pdpipe: nltk import failed. nltk-dependent  pipeline stages will not be loaded. [repeated 11x across cluster]
-(_deploy_ray_func pid=41766) RuntimeWarning: overflow encountered in exp [repeated 2x across cluster]
-25-Feb-24 22:23:01: UserWarning: Distributing &lt;class 'pandas.core.frame.DataFrame'&gt; object. This may take some time.
-
-(_deploy_ray_func pid=41788) UserWarning: Traceback (most recent call last): [repeated 2x across cluster]
-(_deploy_ray_func pid=41788)   File "/Users/zijin/micromamba/envs/psp_conjunction/lib/python3.11/site-packages/pdpipe/nltk_stages.py", line 19, in &lt;module&gt; [repeated 4x across cluster]
-(_deploy_ray_func pid=41788)     from . import skintegrate
-(_deploy_ray_func pid=41788)     from sklearn.base import BaseEstimator
-(_deploy_ray_func pid=41788) ModuleNotFoundError: No module named 'sklearn'
-(_deploy_ray_func pid=41788)  [repeated 2x across cluster]
-(_deploy_ray_func pid=41788) UserWarning: pdpipe: Scikit-learn or skutil import failed. Scikit-learn-dependent pipeline stages will not be loaded.
-(_deploy_ray_func pid=41788)     from . import nltk_stages
-(_deploy_ray_func pid=41788)     import nltk
-(_deploy_ray_func pid=41788) ModuleNotFoundError: No module named 'nltk'
-(_deploy_ray_func pid=41788) UserWarning: pdpipe: nltk import failed. nltk-dependent  pipeline stages will not be loaded.
-(_deploy_ray_func pid=41761) RuntimeWarning: overflow encountered in exp
-(_deploy_ray_func pid=41764) RuntimeWarning: overflow encountered in exp
-25-Feb-24 22:23:07: UserWarning: Distributing &lt;class 'pandas.core.frame.DataFrame'&gt; object. This may take some time.
-
-(_deploy_ray_func pid=41758) RuntimeWarning: overflow encountered in exp
-(_deploy_ray_func pid=41765) RuntimeWarning: overflow encountered in exp
-25-Feb-24 22:23:12: UserWarning: Distributing &lt;class 'pandas.core.frame.DataFrame'&gt; object. This may take some time.
-
-(_deploy_ray_func pid=41758) RuntimeWarning: overflow encountered in exp
-25-Feb-24 22:23:17: UserWarning: Distributing &lt;class 'pandas.core.frame.DataFrame'&gt; object. This may take some time.
-
-(_deploy_ray_func pid=41762) RuntimeWarning: overflow encountered in exp
-(_deploy_ray_func pid=41762) RuntimeWarning: overflow encountered in exp
-25-Feb-24 22:23:22: UserWarning: Distributing &lt;class 'pandas.core.frame.DataFrame'&gt; object. This may take some time.
-
-25-Feb-24 22:23:28: UserWarning: Distributing &lt;class 'pandas.core.frame.DataFrame'&gt; object. This may take some time.
-
-(_deploy_ray_func pid=41803) UserWarning: Traceback (most recent call last):
-(_deploy_ray_func pid=41803)   File "/Users/zijin/micromamba/envs/psp_conjunction/lib/python3.11/site-packages/pdpipe/__init__.py", line 85, in &lt;module&gt;
-(_deploy_ray_func pid=41803)     from . import skintegrate
-(_deploy_ray_func pid=41803)   File "/Users/zijin/micromamba/envs/psp_conjunction/lib/python3.11/site-packages/pdpipe/skintegrate.py", line 20, in &lt;module&gt;
-(_deploy_ray_func pid=41803)     from sklearn.base import BaseEstimator
-(_deploy_ray_func pid=41803) ModuleNotFoundError: No module named 'sklearn'
-(_deploy_ray_func pid=41803) 
-(_deploy_ray_func pid=41803) UserWarning: pdpipe: Scikit-learn or skutil import failed. Scikit-learn-dependent pipeline stages will not be loaded.
-(_deploy_ray_func pid=41803) UserWarning: Traceback (most recent call last):
-(_deploy_ray_func pid=41803)   File "/Users/zijin/micromamba/envs/psp_conjunction/lib/python3.11/site-packages/pdpipe/__init__.py", line 105, in &lt;module&gt;
-(_deploy_ray_func pid=41803)     from . import nltk_stages
-(_deploy_ray_func pid=41803)   File "/Users/zijin/micromamba/envs/psp_conjunction/lib/python3.11/site-packages/pdpipe/nltk_stages.py", line 19, in &lt;module&gt;
-(_deploy_ray_func pid=41803)     import nltk
-(_deploy_ray_func pid=41803) ModuleNotFoundError: No module named 'nltk'
-(_deploy_ray_func pid=41803) 
-(_deploy_ray_func pid=41803) UserWarning: pdpipe: nltk import failed. nltk-dependent  pipeline stages will not be loaded.
-(_deploy_ray_func pid=41758) RuntimeWarning: overflow encountered in exp
-(_deploy_ray_func pid=41760) RuntimeWarning: overflow encountered in exp
-(_deploy_ray_func pid=41760) RuntimeWarning: overflow encountered in exp</code></pre>
-</div>
-<div class="cell-output cell-output-display">
-<script type="application/vnd.jupyter.widget-view+json">
-{"model_id":"3f771ca764034535b9a43972c7a7e8c6","version_major":2,"version_minor":0,"quarto_mimetype":"application/vnd.jupyter.widget-view+json"}
-</script>
-</div>
-<div class="cell-output cell-output-display">
-<script type="application/vnd.jupyter.widget-view+json">
-{"model_id":"4a423aa7b0fc481c91d5214bf9604be5","version_major":2,"version_minor":0,"quarto_mimetype":"application/vnd.jupyter.widget-view+json"}
-</script>
-</div>
-<div class="cell-output cell-output-display">
-<script type="application/vnd.jupyter.widget-view+json">
-{"model_id":"5e7defe97af64992ad5e7817bc037667","version_major":2,"version_minor":0,"quarto_mimetype":"application/vnd.jupyter.widget-view+json"}
-</script>
-</div>
-<div class="cell-output cell-output-display">
-<script type="application/vnd.jupyter.widget-view+json">
-{"model_id":"18320156f56f43faad052ca02394fe93","version_major":2,"version_minor":0,"quarto_mimetype":"application/vnd.jupyter.widget-view+json"}
-</script>
-</div>
-<div class="cell-output cell-output-display">
-<script type="application/vnd.jupyter.widget-view+json">
-{"model_id":"830913f6e3bc4392b9f904abbc0df6d8","version_major":2,"version_minor":0,"quarto_mimetype":"application/vnd.jupyter.widget-view+json"}
-</script>
-</div>
-<div class="cell-output cell-output-display">
-<script type="application/vnd.jupyter.widget-view+json">
-{"model_id":"37c73f975bf24b6d8e2b792bfe3620c9","version_major":2,"version_minor":0,"quarto_mimetype":"application/vnd.jupyter.widget-view+json"}
-</script>
-</div>
-<div class="cell-output cell-output-display">
-<script type="application/vnd.jupyter.widget-view+json">
-{"model_id":"17481f38775a4e61b8fe30456bdd0355","version_major":2,"version_minor":0,"quarto_mimetype":"application/vnd.jupyter.widget-view+json"}
-</script>
-</div>
-<div class="cell-output cell-output-display">
-<script type="application/vnd.jupyter.widget-view+json">
-{"model_id":"33ba0c2f481441beb34258d4211679e6","version_major":2,"version_minor":0,"quarto_mimetype":"application/vnd.jupyter.widget-view+json"}
-</script>
-</div>
-<div class="cell-output cell-output-display">
-<script type="application/vnd.jupyter.widget-view+json">
-{"model_id":"c531a5c7333c44aa81aa9fd63720c36e","version_major":2,"version_minor":0,"quarto_mimetype":"application/vnd.jupyter.widget-view+json"}
-</script>
-</div>
-<div class="cell-output cell-output-display" data-execution_count="4">
-<pre><code>WindConfig(name='Wind', data=None, ts=datetime.timedelta(microseconds=90909), tau=datetime.timedelta(seconds=60), events=shape: (15_451, 85)
-┌─────────────┬────────────┬─────┬──────────┬───┬────────────┬───────────┬────────────┬────────────┐
-│ time        ┆ index_diff ┆ len ┆ std      ┆ … ┆ v.ion.chan ┆ B.change  ┆ v.Alfven.c ┆ v.Alfven.c │
-│ ---         ┆ ---        ┆ --- ┆ ---      ┆   ┆ ge.l       ┆ ---       ┆ hange      ┆ hange.l    │
-│ datetime[ns ┆ f64        ┆ u32 ┆ f64      ┆   ┆ ---        ┆ f64       ┆ ---        ┆ ---        │
-│ ]           ┆            ┆     ┆          ┆   ┆ f64        ┆           ┆ f64        ┆ f64        │
-╞═════════════╪════════════╪═════╪══════════╪═══╪════════════╪═══════════╪════════════╪════════════╡
-│ 2011-08-25  ┆ 0.363093   ┆ 652 ┆ 0.424472 ┆ … ┆ 0.954637   ┆ 0.11199   ┆ 2.635821   ┆ -17.148157 │
-│ 11:55:30    ┆            ┆     ┆          ┆   ┆            ┆           ┆            ┆            │
-│ 2011-08-25  ┆ 0.527776   ┆ 652 ┆ 1.186464 ┆ … ┆ 1.901947   ┆ -0.1279   ┆ -1.640256  ┆ -46.068508 │
-│ 12:03:00    ┆            ┆     ┆          ┆   ┆            ┆           ┆            ┆            │
-│ 2011-08-25  ┆ 0.738704   ┆ 652 ┆ 1.214499 ┆ … ┆ 7.030438   ┆ -0.07397  ┆ -0.878025  ┆ -46.503469 │
-│ 12:45:30    ┆            ┆     ┆          ┆   ┆            ┆           ┆            ┆            │
-│ 2011-08-25  ┆ 0.596512   ┆ 652 ┆ 1.055139 ┆ … ┆ -4.38391   ┆ -0.04607  ┆ 0.335587   ┆ 51.035286  │
-│ 13:01:00    ┆            ┆     ┆          ┆   ┆            ┆           ┆            ┆            │
-│ 2011-08-25  ┆ 0.548615   ┆ 652 ┆ 0.932489 ┆ … ┆ -3.140805  ┆ 0.005149  ┆ -0.262627  ┆ 48.527497  │
-│ 13:01:30    ┆            ┆     ┆          ┆   ┆            ┆           ┆            ┆            │
-│ …           ┆ …          ┆ …   ┆ …        ┆ … ┆ …          ┆ …         ┆ …          ┆ …          │
-│ 2011-12-31  ┆ 0.177338   ┆ 651 ┆ 0.405754 ┆ … ┆ 1.707617   ┆ 0.044056  ┆ 0.433791   ┆ -18.084138 │
-│ 22:37:30    ┆            ┆     ┆          ┆   ┆            ┆           ┆            ┆            │
-│ 2011-12-31  ┆ 0.454224   ┆ 652 ┆ 1.003033 ┆ … ┆ 0.623015   ┆ -2.900305 ┆ -25.895795 ┆ 25.824665  │
-│ 23:10:00    ┆            ┆     ┆          ┆   ┆            ┆           ┆            ┆            │
-│ 2011-12-31  ┆ 2.19009    ┆ 650 ┆ 1.70836  ┆ … ┆ 2.57555    ┆ -0.780461 ┆ -6.373794  ┆ 42.57861   │
-│ 23:12:00    ┆            ┆     ┆          ┆   ┆            ┆           ┆            ┆            │
-│ 2011-12-31  ┆ 0.365984   ┆ 651 ┆ 0.693688 ┆ … ┆ -1.591858  ┆ -0.200937 ┆ -2.360091  ┆ -25.870619 │
-│ 23:30:00    ┆            ┆     ┆          ┆   ┆            ┆           ┆            ┆            │
-│ 2011-12-31  ┆ 0.188959   ┆ 652 ┆ 0.527779 ┆ … ┆ 0.501797   ┆ 0.157653  ┆ 1.095201   ┆ 13.391028  │
-│ 23:50:00    ┆            ┆     ┆          ┆   ┆            ┆           ┆            ┆            │
-└─────────────┴────────────┴─────┴──────────┴───┴────────────┴───────────┴────────────┴────────────┘, method='fit', plasma_data=None, plasma_meta=PlasmaMeta(dataset='WI_K0_SWE', parameters=['Np', 'V_GSM'], density_param=None, velocity_param=None, temperature_param=None, density_col='Ion N', velocity_cols=['VX (GSM)', 'VY (GSM)', 'VZ (GSM)'], speed_col=None, temperature_col=None, provider='archive/local'), bcols=None, timerange=[datetime.datetime(2011, 8, 25, 0, 0, tzinfo=TzInfo(UTC)), datetime.datetime(2012, 1, 1, 0, 0, tzinfo=TzInfo(UTC))], split=8, fmt='arrow', mag_meta=Meta(dataset='WI_H4-RTN_MFI', parameters=['BRTN'], provider='archive/local'))</code></pre>
-</div>
+<div id="cell-4" class="cell">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>WindConfig().get_and_process_data()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 
 
