@@ -1098,7 +1098,7 @@
     "href": "notebooks/10_examples.html",
     "title": "Discontinuities examples",
     "section": "",
-    "text": "Strong current density in 5AU\n\nj_config = JunoConfig(ts=0.125, method='derivative').load()\nj_config.events = j_config.events.filter(\n    pl.col(\"radial_distance\") &gt; 5,\n    pl.col(\"j0_k\") &gt; 4\n)\n\noffset  = timedelta(seconds=5)\nfigs = j_config.plot_candidates(num=15, add_plasma_params=True, offset=offset)\n\n2024-02-28 10:53:21.761 | INFO     | discontinuitypy.datasets:plot_candidates:241 - Candidates indices: [438 318 262 341   9 159 111  54 400 132 544 422 515 508  86]",
+    "text": "Strong current density in 5AU\n\nj_config = JunoConfig(ts=0.125, method='derivative').load()\nj_config.events = j_config.events.filter(\n    pl.col(\"radial_distance\") &gt; 5,\n    pl.col(\"j0_k\") &gt; 4\n)\n\noffset  = timedelta(seconds=2)\nfigs = j_config.plot_candidates(num=15, add_plasma_params=True, offset=offset)\n\n2024-02-28 12:47:33.753 | INFO     | discontinuitypy.datasets:plot_candidates:241 - Candidates indices: [519 177  92 456 396 161 242 375 473 520  17  37 459 315 448]\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\noffset  = timedelta(seconds=30)\nfigs = j_config.plot_candidates(num=15, add_plasma_params=True, offset=offset)\n\n2024-02-28 12:45:11.093 | INFO     | discontinuitypy.datasets:plot_candidates:241 - Candidates indices: [246 421  73 262 493 191 190 222  34 188 318 218 363   3  31]",
     "crumbs": [
       "Home",
       "Notebooks",
