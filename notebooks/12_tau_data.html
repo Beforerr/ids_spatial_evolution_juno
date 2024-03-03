@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Discontinuities examples</title>
+<title>Justification for the tau</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -57,7 +57,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </style>
 
 
-<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg==" crossorigin="anonymous"></script><script src="../site_libs/quarto-nav/quarto-nav.js"></script>
 <script src="../site_libs/quarto-nav/headroom.min.js"></script>
 <script src="../site_libs/clipboard/clipboard.min.js"></script>
 <script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
@@ -73,9 +73,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
 <link href="../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
-<script src="../site_libs/quarto-contrib/glightbox/glightbox.min.js"></script>
-<link href="../site_libs/quarto-contrib/glightbox/glightbox.min.css" rel="stylesheet">
-<link href="../site_libs/quarto-contrib/glightbox/lightbox.css" rel="stylesheet">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -103,6 +100,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     "search-label": "Search"
   }
 }</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.6/require.min.js" integrity="sha512-c3Nl8+7g4LMSTdrm621y7kf9v3SDPnhxLNhcjFJbKECVnmZHTdo+IRO05sNLTH/D3vA6u1X32ehoLC7WFVdheg==" crossorigin="anonymous"></script>
+
+<script type="application/javascript">define('jquery', [],function() {return window.jQuery;})</script>
+<script src="https://unpkg.com/@jupyter-widgets/html-manager@*/dist/embed-amd.js" crossorigin="anonymous"></script>
 
 
 </head>
@@ -154,7 +155,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../notebooks/00_overview.html">Notebooks</a></li><li class="breadcrumb-item"><a href="../notebooks/10_examples.html">Discontinuities examples</a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../notebooks/00_overview.html">Notebooks</a></li><li class="breadcrumb-item"><a href="../notebooks/12_tau_data.html">Justification for the tau</a></li></ol></nav>
         <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
     </div>
@@ -226,12 +227,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../notebooks/06_corr_julia.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Derivative method validation</span></a>
+ <span class="menu-text">06 Corr Julia</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../notebooks/10_examples.html" class="sidebar-item-text sidebar-link active">
+  <a href="../notebooks/10_examples.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Discontinuities examples</span></a>
   </div>
 </li>
@@ -255,7 +256,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../notebooks/12_tau_data.html" class="sidebar-item-text sidebar-link">
+  <a href="../notebooks/12_tau_data.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text">Justification for the tau</span></a>
   </div>
 </li>
@@ -434,20 +435,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        <nav id="TOC" role="doc-toc" class="toc-active">
-    <h2 id="toc-title">On this page</h2>
-   
-  <ul>
-  <li><a href="#strong-current-density-in-5au" id="toc-strong-current-density-in-5au" class="nav-link active" data-scroll-target="#strong-current-density-in-5au">Strong current density in 5AU</a></li>
-  </ul>
-</nav>
+        
     </div>
 <!-- main -->
-<main class="content page-columns page-full" id="quarto-document-content">
+<main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../notebooks/00_overview.html">Notebooks</a></li><li class="breadcrumb-item"><a href="../notebooks/10_examples.html">Discontinuities examples</a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../notebooks/00_overview.html">Notebooks</a></li><li class="breadcrumb-item"><a href="../notebooks/12_tau_data.html">Justification for the tau</a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title">Discontinuities examples</h1>
+<h1 class="title">Justification for the tau</h1>
 </div>
 
 
@@ -464,131 +459,118 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
-<section id="strong-current-density-in-5au" class="level1 page-columns page-full">
-<h1>Strong current density in 5AU</h1>
-<div id="cell-4" class="cell" data-execution_count="21">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>j_config <span class="op">=</span> JunoConfig(ts<span class="op">=</span><span class="fl">0.125</span>, method<span class="op">=</span><span class="st">'derivative'</span>).load()</span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>j_config.events <span class="op">=</span> j_config.events.with_row_index().<span class="bu">filter</span>(</span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>    pl.col(<span class="st">"radial_distance"</span>) <span class="op">&gt;</span> <span class="dv">5</span>,</span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>    pl.col(<span class="st">"j0_k"</span>) <span class="op">&gt;</span> <span class="dv">4</span></span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>::: {#cell-1 .cell 0=‘h’ 1=‘i’ 2=‘d’ 3=‘e’ execution_count=3}</p>
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> utils.config <span class="im">import</span> JunoConfig</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>:::</p>
+<div id="cell-2" class="cell" data-execution_count="6">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>JunoConfig(tau<span class="op">=</span><span class="dv">180</span>).get_and_process_data().export()</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>JunoConfig(tau<span class="op">=</span><span class="dv">20</span>).get_and_process_data().export()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
-<pre><code>02-Mar-24 16:24:50: PydanticDeprecatedSince20: Support for class-based `config` is deprecated, use ConfigDict instead. Deprecated in Pydantic V2.0 to be removed in V3.0. See Pydantic V2 Migration Guide at https://errors.pydantic.dev/2.6/migration/
-</code></pre>
+<pre><code>28-Feb-24 19:54:43: UserWarning: Distributing &lt;class 'pandas.core.frame.DataFrame'&gt; object. This may take some time.
+
+(_deploy_ray_func pid=36713) RuntimeWarning: overflow encountered in exp
+(_deploy_ray_func pid=36720) RuntimeWarning: overflow encountered in exp [repeated 32x across cluster]
+(_deploy_ray_func pid=36718) RuntimeWarning: overflow encountered in exp [repeated 21x across cluster]
+(_deploy_ray_func pid=36717) RuntimeWarning: overflow encountered in exp [repeated 17x across cluster]
+(_deploy_ray_func pid=36712) RuntimeWarning: overflow encountered in exp [repeated 22x across cluster]
+(_deploy_ray_func pid=36712) RuntimeWarning: overflow encountered in exp [repeated 5x across cluster]
+(_deploy_ray_func pid=36716) RuntimeWarning: overflow encountered in exp [repeated 8x across cluster]
+(_deploy_ray_func pid=36716) RuntimeWarning: overflow encountered in exp [repeated 3x across cluster]
+28-Feb-24 19:54:52: UserWarning: Distributing &lt;class 'pandas.core.frame.DataFrame'&gt; object. This may take some time.
+
+28-Feb-24 19:55:04: UserWarning: Distributing &lt;class 'pandas.core.frame.DataFrame'&gt; object. This may take some time.
+
+28-Feb-24 19:55:14: UserWarning: Distributing &lt;class 'pandas.core.frame.DataFrame'&gt; object. This may take some time.
+
+28-Feb-24 19:55:24: UserWarning: Distributing &lt;class 'pandas.core.frame.DataFrame'&gt; object. This may take some time.
+
+28-Feb-24 19:55:31: UserWarning: Distributing &lt;class 'pandas.core.frame.DataFrame'&gt; object. This may take some time.
+
+28-Feb-24 19:55:37: UserWarning: Distributing &lt;class 'pandas.core.frame.DataFrame'&gt; object. This may take some time.
+
+28-Feb-24 19:55:42: UserWarning: Distributing &lt;class 'pandas.core.frame.DataFrame'&gt; object. This may take some time.
+
+2024-02-28 19:55:44.719 | INFO     | discontinuitypy.datasets:write:40 - Dataframe written to ../data/05_reporting/events.JNO.fit.ts_1.00s_tau_180s.arrow</code></pre>
 </div>
+<div class="cell-output cell-output-display">
+<script type="application/vnd.jupyter.widget-view+json">
+{"model_id":"1ed1744150fd4e1da768b394ea316353","version_major":2,"version_minor":0,"quarto_mimetype":"application/vnd.jupyter.widget-view+json"}
+</script>
 </div>
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>offset  <span class="op">=</span> timedelta(seconds<span class="op">=</span><span class="dv">2</span>)</span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>indices<span class="op">=</span>[<span class="dv">91384</span>, <span class="dv">93825</span>, <span class="dv">93618</span>, <span class="dv">92389</span>]</span>
-<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>figs <span class="op">=</span> j_config.plot_candidates(indices<span class="op">=</span>indices, add_plasma_params<span class="op">=</span><span class="va">True</span>, offset<span class="op">=</span>offset, plot_current_density<span class="op">=</span><span class="va">True</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stderr">
-<pre><code>02-Mar-24 16:49:28: deriv_data was applied to: fgm_rot_tot_0-der
-02-Mar-24 16:49:28: deriv_data was applied to: fgm_rot_tot_0-der
-02-Mar-24 16:49:28: deriv_data was applied to: fgm_rot_tot_0-der
-02-Mar-24 16:49:29: deriv_data was applied to: fgm_rot_tot_0-der</code></pre>
+<div class="cell-output cell-output-display">
+<script type="application/vnd.jupyter.widget-view+json">
+{"model_id":"76f24182b80f46f58056d71c20950ff1","version_major":2,"version_minor":0,"quarto_mimetype":"application/vnd.jupyter.widget-view+json"}
+</script>
 </div>
-<div id="cell-5" class="cell column-screen quarto-layout-panel" data-layout-ncol="3" data-execution_count="32">
-<div class="quarto-layout-row">
-<div class="quarto-layout-cell" style="flex-basis: 33.3%;justify-content: center;">
-<p><a href="10_examples_files/figure-html/cell-5-output-2.png" class="lightbox" data-gallery="quarto-lightbox-gallery-1"><img src="10_examples_files/figure-html/cell-5-output-2.png" class="img-fluid"></a></p>
+<div class="cell-output cell-output-display">
+<script type="application/vnd.jupyter.widget-view+json">
+{"model_id":"2bec94dccace48fbb6994747b8b7d12c","version_major":2,"version_minor":0,"quarto_mimetype":"application/vnd.jupyter.widget-view+json"}
+</script>
 </div>
-<div class="quarto-layout-cell" style="flex-basis: 33.3%;justify-content: center;">
-<p><a href="10_examples_files/figure-html/cell-5-output-3.png" class="lightbox" data-gallery="quarto-lightbox-gallery-2"><img src="10_examples_files/figure-html/cell-5-output-3.png" class="img-fluid"></a></p>
+<div class="cell-output cell-output-display">
+<script type="application/vnd.jupyter.widget-view+json">
+{"model_id":"51458c0b46eb466bace880c20c8411dc","version_major":2,"version_minor":0,"quarto_mimetype":"application/vnd.jupyter.widget-view+json"}
+</script>
 </div>
-<div class="quarto-layout-cell" style="flex-basis: 33.3%;justify-content: center;">
-<p><a href="10_examples_files/figure-html/cell-5-output-4.png" class="lightbox" data-gallery="quarto-lightbox-gallery-3"><img src="10_examples_files/figure-html/cell-5-output-4.png" class="img-fluid"></a></p>
+<div class="cell-output cell-output-display">
+<script type="application/vnd.jupyter.widget-view+json">
+{"model_id":"b13d32581b0b4ee783b92890634c58f0","version_major":2,"version_minor":0,"quarto_mimetype":"application/vnd.jupyter.widget-view+json"}
+</script>
 </div>
+<div class="cell-output cell-output-display">
+<script type="application/vnd.jupyter.widget-view+json">
+{"model_id":"ea557a09655f42f4986badf39715fa58","version_major":2,"version_minor":0,"quarto_mimetype":"application/vnd.jupyter.widget-view+json"}
+</script>
 </div>
-<div class="quarto-layout-row">
-<div class="quarto-layout-cell" style="flex-basis: 33.3%;justify-content: center;">
-<p><a href="10_examples_files/figure-html/cell-5-output-5.png" class="lightbox" data-gallery="quarto-lightbox-gallery-4"><img src="10_examples_files/figure-html/cell-5-output-5.png" class="img-fluid"></a></p>
+<div class="cell-output cell-output-display">
+<script type="application/vnd.jupyter.widget-view+json">
+{"model_id":"b3066bdb0e1849e09032a4c6d5c9fb59","version_major":2,"version_minor":0,"quarto_mimetype":"application/vnd.jupyter.widget-view+json"}
+</script>
 </div>
+<div class="cell-output cell-output-display">
+<script type="application/vnd.jupyter.widget-view+json">
+{"model_id":"cf4603a045984352ae4c4ca07f0583fd","version_major":2,"version_minor":0,"quarto_mimetype":"application/vnd.jupyter.widget-view+json"}
+</script>
 </div>
+<div class="cell-output cell-output-display">
+<script type="application/vnd.jupyter.widget-view+json">
+{"model_id":"77cd30a4a7f14b0dba90b10eab5b7b2c","version_major":2,"version_minor":0,"quarto_mimetype":"application/vnd.jupyter.widget-view+json"}
+</script>
 </div>
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>figs <span class="op">=</span> j_config.plot_candidates(num<span class="op">=</span><span class="dv">3</span>, add_plasma_params<span class="op">=</span><span class="va">True</span>, offset<span class="op">=</span>offset, plot_current_density<span class="op">=</span><span class="va">True</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stderr">
-<pre><code>2024-03-02 16:48:30.020 | INFO     | discontinuitypy.datasets:plot_candidates:243 - Candidates indices: [93071 94082 92389]
-02-Mar-24 16:48:30: deriv_data was applied to: fgm_rot_tot_0-der
-02-Mar-24 16:48:30: deriv_data was applied to: fgm_rot_tot_0-der
-02-Mar-24 16:48:31: deriv_data was applied to: fgm_rot_tot_0-der</code></pre>
-</div>
-<div id="cell-6" class="cell column-screen quarto-layout-panel" data-layout-ncol="3" data-execution_count="30">
-<div class="quarto-layout-row">
-<div class="quarto-layout-cell" style="flex-basis: 33.3%;justify-content: center;">
-<p><a href="10_examples_files/figure-html/cell-6-output-2.png" class="lightbox" data-gallery="quarto-lightbox-gallery-5"><img src="10_examples_files/figure-html/cell-6-output-2.png" class="img-fluid"></a></p>
-</div>
-<div class="quarto-layout-cell" style="flex-basis: 33.3%;justify-content: center;">
-<p><a href="10_examples_files/figure-html/cell-6-output-3.png" class="lightbox" data-gallery="quarto-lightbox-gallery-6"><img src="10_examples_files/figure-html/cell-6-output-3.png" class="img-fluid"></a></p>
-</div>
-<div class="quarto-layout-cell" style="flex-basis: 33.3%;justify-content: center;">
-<p><a href="10_examples_files/figure-html/cell-6-output-4.png" class="lightbox" data-gallery="quarto-lightbox-gallery-7"><img src="10_examples_files/figure-html/cell-6-output-4.png" class="img-fluid"></a></p>
-</div>
-</div>
-</div>
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>offset  <span class="op">=</span> timedelta(seconds<span class="op">=</span><span class="dv">30</span>)</span>
-<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>figs <span class="op">=</span> j_config.plot_candidates(num<span class="op">=</span><span class="dv">15</span>, add_plasma_params<span class="op">=</span><span class="va">True</span>, offset<span class="op">=</span>offset)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stderr">
-<pre><code>2024-02-28 12:45:11.093 | INFO     | discontinuitypy.datasets:plot_candidates:241 - Candidates indices: [246 421  73 262 493 191 190 222  34 188 318 218 363   3  31]</code></pre>
-</div>
-<div id="cell-7" class="cell column-screen quarto-layout-panel" data-layout-ncol="3" data-execution_count="4">
-<div class="quarto-layout-row">
-<div class="quarto-layout-cell" style="flex-basis: 33.3%;justify-content: center;">
-<p><a href="10_examples_files/figure-html/cell-7-output-2.png" class="lightbox" data-gallery="quarto-lightbox-gallery-8"><img src="10_examples_files/figure-html/cell-7-output-2.png" class="img-fluid"></a></p>
-</div>
-<div class="quarto-layout-cell" style="flex-basis: 33.3%;justify-content: center;">
-<p><a href="10_examples_files/figure-html/cell-7-output-3.png" class="lightbox" data-gallery="quarto-lightbox-gallery-9"><img src="10_examples_files/figure-html/cell-7-output-3.png" class="img-fluid"></a></p>
-</div>
-<div class="quarto-layout-cell" style="flex-basis: 33.3%;justify-content: center;">
-<p><a href="10_examples_files/figure-html/cell-7-output-4.png" class="lightbox" data-gallery="quarto-lightbox-gallery-10"><img src="10_examples_files/figure-html/cell-7-output-4.png" class="img-fluid"></a></p>
-</div>
-</div>
-<div class="quarto-layout-row">
-<div class="quarto-layout-cell" style="flex-basis: 33.3%;justify-content: center;">
-<p><a href="10_examples_files/figure-html/cell-7-output-5.png" class="lightbox" data-gallery="quarto-lightbox-gallery-11"><img src="10_examples_files/figure-html/cell-7-output-5.png" class="img-fluid"></a></p>
-</div>
-<div class="quarto-layout-cell" style="flex-basis: 33.3%;justify-content: center;">
-<p><a href="10_examples_files/figure-html/cell-7-output-6.png" class="lightbox" data-gallery="quarto-lightbox-gallery-12"><img src="10_examples_files/figure-html/cell-7-output-6.png" class="img-fluid"></a></p>
-</div>
-<div class="quarto-layout-cell" style="flex-basis: 33.3%;justify-content: center;">
-<p><a href="10_examples_files/figure-html/cell-7-output-7.png" class="lightbox" data-gallery="quarto-lightbox-gallery-13"><img src="10_examples_files/figure-html/cell-7-output-7.png" class="img-fluid"></a></p>
-</div>
-</div>
-<div class="quarto-layout-row">
-<div class="quarto-layout-cell" style="flex-basis: 33.3%;justify-content: center;">
-<p><a href="10_examples_files/figure-html/cell-7-output-8.png" class="lightbox" data-gallery="quarto-lightbox-gallery-14"><img src="10_examples_files/figure-html/cell-7-output-8.png" class="img-fluid"></a></p>
-</div>
-<div class="quarto-layout-cell" style="flex-basis: 33.3%;justify-content: center;">
-<p><a href="10_examples_files/figure-html/cell-7-output-9.png" class="lightbox" data-gallery="quarto-lightbox-gallery-15"><img src="10_examples_files/figure-html/cell-7-output-9.png" class="img-fluid"></a></p>
-</div>
-<div class="quarto-layout-cell" style="flex-basis: 33.3%;justify-content: center;">
-<p><a href="10_examples_files/figure-html/cell-7-output-10.png" class="lightbox" data-gallery="quarto-lightbox-gallery-16"><img src="10_examples_files/figure-html/cell-7-output-10.png" class="img-fluid"></a></p>
-</div>
-</div>
-<div class="quarto-layout-row">
-<div class="quarto-layout-cell" style="flex-basis: 33.3%;justify-content: center;">
-<p><a href="10_examples_files/figure-html/cell-7-output-11.png" class="lightbox" data-gallery="quarto-lightbox-gallery-17"><img src="10_examples_files/figure-html/cell-7-output-11.png" class="img-fluid"></a></p>
-</div>
-<div class="quarto-layout-cell" style="flex-basis: 33.3%;justify-content: center;">
-<p><a href="10_examples_files/figure-html/cell-7-output-12.png" class="lightbox" data-gallery="quarto-lightbox-gallery-18"><img src="10_examples_files/figure-html/cell-7-output-12.png" class="img-fluid"></a></p>
-</div>
-<div class="quarto-layout-cell" style="flex-basis: 33.3%;justify-content: center;">
-<p><a href="10_examples_files/figure-html/cell-7-output-13.png" class="lightbox" data-gallery="quarto-lightbox-gallery-19"><img src="10_examples_files/figure-html/cell-7-output-13.png" class="img-fluid"></a></p>
-</div>
-</div>
-<div class="quarto-layout-row">
-<div class="quarto-layout-cell" style="flex-basis: 33.3%;justify-content: center;">
-<p><a href="10_examples_files/figure-html/cell-7-output-14.png" class="lightbox" data-gallery="quarto-lightbox-gallery-20"><img src="10_examples_files/figure-html/cell-7-output-14.png" class="img-fluid"></a></p>
-</div>
-<div class="quarto-layout-cell" style="flex-basis: 33.3%;justify-content: center;">
-<p><a href="10_examples_files/figure-html/cell-7-output-15.png" class="lightbox" data-gallery="quarto-lightbox-gallery-21"><img src="10_examples_files/figure-html/cell-7-output-15.png" class="img-fluid"></a></p>
-</div>
-<div class="quarto-layout-cell" style="flex-basis: 33.3%;justify-content: center;">
-<p><a href="10_examples_files/figure-html/cell-7-output-16.png" class="lightbox" data-gallery="quarto-lightbox-gallery-22"><img src="10_examples_files/figure-html/cell-7-output-16.png" class="img-fluid"></a></p>
-</div>
+<div class="cell-output cell-output-display" data-execution_count="6">
+<pre><code>JunoConfig(name='JNO', data=&lt;LazyFrame [4 cols, {"BX SE": Float64 … "time": Datetime(time_unit='us', time_zone=None)}] at 0x2A3CBBBD0&gt;, ts=datetime.timedelta(seconds=1), tau=datetime.timedelta(seconds=180), events=shape: (42_984, 94)
+┌─────────────┬────────────┬─────┬──────────┬───┬────────────┬───────────┬────────────┬────────────┐
+│ time        ┆ index_diff ┆ len ┆ std      ┆ … ┆ v.ion.chan ┆ B.change  ┆ v.Alfven.c ┆ v.Alfven.c │
+│ ---         ┆ ---        ┆ --- ┆ ---      ┆   ┆ ge.l       ┆ ---       ┆ hange      ┆ hange.l    │
+│ datetime[ns ┆ f64        ┆ u32 ┆ f64      ┆   ┆ ---        ┆ f64       ┆ ---        ┆ ---        │
+│ ]           ┆            ┆     ┆          ┆   ┆ f64        ┆           ┆ f64        ┆ f64        │
+╞═════════════╪════════════╪═════╪══════════╪═══╪════════════╪═══════════╪════════════╪════════════╡
+│ 2011-08-25  ┆ 1.457943   ┆ 180 ┆ 2.655685 ┆ … ┆ 0.0        ┆ 0.030584  ┆ 0.394842   ┆ 81.897526  │
+│ 15:33:00    ┆            ┆     ┆          ┆   ┆            ┆           ┆            ┆            │
+│ 2011-08-25  ┆ 0.37205    ┆ 180 ┆ 0.937567 ┆ … ┆ -0.032502  ┆ 0.242502  ┆ 3.52999    ┆ -50.821981 │
+│ 17:49:30    ┆            ┆     ┆          ┆   ┆            ┆           ┆            ┆            │
+│ 2011-08-25  ┆ 0.802401   ┆ 180 ┆ 1.548479 ┆ … ┆ -0.012796  ┆ 0.024578  ┆ 0.411154   ┆ -69.345459 │
+│ 17:51:00    ┆            ┆     ┆          ┆   ┆            ┆           ┆            ┆            │
+│ 2011-08-25  ┆ 1.47258    ┆ 180 ┆ 2.647456 ┆ … ┆ 0.013626   ┆ -0.271046 ┆ -3.9196    ┆ 90.960015  │
+│ 18:36:00    ┆            ┆     ┆          ┆   ┆            ┆           ┆            ┆            │
+│ 2011-08-25  ┆ 1.005952   ┆ 180 ┆ 1.614257 ┆ … ┆ -0.009481  ┆ 0.087428  ┆ 1.359867   ┆ 79.308791  │
+│ 20:39:00    ┆            ┆     ┆          ┆   ┆            ┆           ┆            ┆            │
+│ …           ┆ …          ┆ …   ┆ …        ┆ … ┆ …          ┆ …         ┆ …          ┆ …          │
+│ 2016-06-29  ┆ 1.286955   ┆ 180 ┆ 3.264029 ┆ … ┆ NaN        ┆ 0.939178  ┆ NaN        ┆ NaN        │
+│ 17:37:30    ┆            ┆     ┆          ┆   ┆            ┆           ┆            ┆            │
+│ 2016-06-29  ┆ 0.858761   ┆ 180 ┆ 2.697777 ┆ … ┆ NaN        ┆ 0.663428  ┆ NaN        ┆ NaN        │
+│ 17:49:30    ┆            ┆     ┆          ┆   ┆            ┆           ┆            ┆            │
+│ 2016-06-29  ┆ 0.864486   ┆ 180 ┆ 2.724823 ┆ … ┆ -0.011618  ┆ 0.872487  ┆ 111.977492 ┆ 1179.18351 │
+│ 17:51:00    ┆            ┆     ┆          ┆   ┆            ┆           ┆            ┆ 2          │
+│ 2016-06-29  ┆ 0.891457   ┆ 180 ┆ 3.344919 ┆ … ┆ -0.023165  ┆ 0.083389  ┆ 10.257005  ┆ -1231.4827 │
+│ 23:37:30    ┆            ┆     ┆          ┆   ┆            ┆           ┆            ┆ 57         │
+│ 2016-06-29  ┆ 0.933747   ┆ 180 ┆ 2.632613 ┆ … ┆ -0.030708  ┆ 2.284448  ┆ 283.917387 ┆ -979.80710 │
+│ 23:39:00    ┆            ┆     ┆          ┆   ┆            ┆           ┆            ┆ 6          │
+└─────────────┴────────────┴─────┴──────────┴───┴────────────┴───────────┴────────────┴────────────┘, method='fit', mag_meta=Meta(dataset=None, parameters=None), bcols=None, plasma_data=&lt;LazyFrame [14 cols, {"radial_distance": Float64 … "B_background_z": Float64}] at 0x174C37B50&gt;, plasma_meta=PlasmaMeta(dataset=None, parameters=None, density_col='plasma_density', velocity_cols=['v_x', 'v_y', 'v_z'], speed_col=None, temperature_col=None), ion_temp_data=None, ion_temp_meta=TempMeta(dataset=None, parameters=None, para_col=None, perp_cols=None), e_temp_data=None, e_temp_meta=TempMeta(dataset=None, parameters=None, para_col=None, perp_cols=None), timerange=[datetime.datetime(2011, 8, 25, 0, 0, tzinfo=TzInfo(UTC)), datetime.datetime(2016, 6, 30, 0, 0, tzinfo=TzInfo(UTC))], split=8, fmt='arrow')</code></pre>
 </div>
 </div>
 
 
-</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
@@ -979,31 +961,6 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 });
 </script>
 </div> <!-- /content -->
-<script>var lightboxQuarto = GLightbox({"selector":".lightbox","loop":false,"openEffect":"zoom","closeEffect":"zoom","descPosition":"bottom"});
-window.onload = () => {
-  lightboxQuarto.on('slide_before_load', (data) => {
-    const { slideIndex, slideNode, slideConfig, player, trigger } = data;
-    const href = trigger.getAttribute('href');
-    if (href !== null) {
-      const imgEl = window.document.querySelector(`a[href="${href}"] img`);
-      if (imgEl !== null) {
-        const srcAttr = imgEl.getAttribute("src");
-        if (srcAttr && srcAttr.startsWith("data:")) {
-          slideConfig.href = srcAttr;
-        }
-      }
-    } 
-  });
-
-  lightboxQuarto.on('slide_after_load', (data) => {
-    const { slideIndex, slideNode, slideConfig, player, trigger } = data;
-    if (window.Quarto?.typesetMath) {
-      window.Quarto.typesetMath(slideNode);
-    }
-  });
-
-};
-          </script>
 
 
 
