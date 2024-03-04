@@ -57,7 +57,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </style>
 
 
-<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg==" crossorigin="anonymous"></script><script src="../site_libs/quarto-nav/quarto-nav.js"></script>
 <script src="../site_libs/quarto-nav/headroom.min.js"></script>
 <script src="../site_libs/clipboard/clipboard.min.js"></script>
 <script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
@@ -100,6 +100,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     "search-label": "Search"
   }
 }</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.6/require.min.js" integrity="sha512-c3Nl8+7g4LMSTdrm621y7kf9v3SDPnhxLNhcjFJbKECVnmZHTdo+IRO05sNLTH/D3vA6u1X32ehoLC7WFVdheg==" crossorigin="anonymous"></script>
+
+<script type="application/javascript">define('jquery', [],function() {return window.jQuery;})</script>
+<script src="https://unpkg.com/@jupyter-widgets/html-manager@*/dist/embed-amd.js" crossorigin="anonymous"></script>
 
 
 </head>
@@ -192,12 +196,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../notebooks/01_ids_example.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Examples of discontinuities</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
   <a href="../notebooks/03_profiles.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">03 Profiles</span></a>
   </div>
@@ -229,13 +227,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../notebooks/06_corr_julia.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">06 Corr Julia</span></a>
+ <span class="menu-text">Results (Julia)</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../notebooks/10_examples.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Strong current density in 5AU</span></a>
+ <span class="menu-text">Discontinuities examples</span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -248,6 +246,18 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <div class="sidebar-item-container"> 
   <a href="../notebooks/11_ts_data.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Time resolution effect</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../notebooks/12_tau_analysis.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Justification for the tau</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../notebooks/12_tau_data.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Justification for the tau</span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -437,26 +447,140 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="op">%</span>load_ext autoreload</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="op">%</span>autoreload <span class="dv">2</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>::: {#cell-1 .cell 0=‘h’ 1=‘i’ 2=‘d’ 3=‘e’ execution_count=7}</p>
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> utils.config <span class="im">import</span> JunoConfig, WindConfig, IDsConfig</span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> rich <span class="im">import</span> <span class="bu">print</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="7">
-<pre><code>1</code></pre>
-</div>
+<p>::: {#cell-1 .cell 0=‘h’ 1=‘i’ 2=‘d’ 3=‘e’ execution_count=3}</p>
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> utils.config <span class="im">import</span> JunoConfig, WindConfig</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>:::</p>
-<div id="cell-2" class="cell" data-execution_count="8">
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>WindConfig().split</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="8">
+<div id="cell-2" class="cell" data-execution_count="4">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>WindConfig().split</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="4">
 <pre><code>8</code></pre>
 </div>
 </div>
-<div id="cell-3" class="cell">
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>JunoConfig(ts<span class="op">=</span><span class="fl">0.125</span>).get_and_process_data().export()</span>
-<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>JunoConfig(method<span class="op">=</span><span class="st">'derivative'</span>).get_and_process_data().export()</span>
-<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>JunoConfig(ts<span class="op">=</span><span class="fl">0.125</span>, method<span class="op">=</span><span class="st">'derivative'</span>).get_and_process_data().export()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="cell-3" class="cell" data-execution_count="5">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>JunoConfig(ts<span class="op">=</span><span class="fl">0.125</span>, method<span class="op">=</span><span class="st">'derivative'</span>).get_and_process_data().export()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>04-Mar-24 15:39:42: UserWarning: Ray execution environment not yet initialized. Initializing...
+To remove this warning, run the following python code before doing dataframe operations:
+
+    import ray
+    ray.init()
+
+
+2024-03-04 15:39:44,466 INFO worker.py:1724 -- Started a local Ray instance.
+04-Mar-24 15:39:45: UserWarning: Distributing &lt;class 'pandas.core.frame.DataFrame'&gt; object. This may take some time.
+
+04-Mar-24 15:40:00: UserWarning: Distributing &lt;class 'pandas.core.frame.DataFrame'&gt; object. This may take some time.
+
+04-Mar-24 15:41:02: UserWarning: Distributing &lt;class 'pandas.core.frame.DataFrame'&gt; object. This may take some time.
+
+04-Mar-24 15:41:07: RuntimeWarning: invalid value encountered in divide
+
+04-Mar-24 15:41:47: UserWarning: Distributing &lt;class 'pandas.core.frame.DataFrame'&gt; object. This may take some time.
+
+04-Mar-24 15:42:09: UserWarning: Distributing &lt;class 'pandas.core.frame.DataFrame'&gt; object. This may take some time.
+
+04-Mar-24 15:42:12: RuntimeWarning: invalid value encountered in divide
+
+04-Mar-24 15:42:48: UserWarning: Distributing &lt;class 'pandas.core.frame.DataFrame'&gt; object. This may take some time.
+
+04-Mar-24 15:42:49: RuntimeWarning: invalid value encountered in divide
+
+04-Mar-24 15:43:05: UserWarning: Distributing &lt;class 'pandas.core.frame.DataFrame'&gt; object. This may take some time.
+
+04-Mar-24 15:43:43: UserWarning: Distributing &lt;class 'pandas.core.frame.DataFrame'&gt; object. This may take some time.
+
+2024-03-04 15:43:44.779 | INFO     | discontinuitypy.datasets:write:40 - Dataframe written to ../data/05_reporting/events.JNO.derivative.ts_0.12s_tau_60s.arrow</code></pre>
 </div>
-<div id="cell-4" class="cell">
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>WindConfig().get_and_process_data()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<script type="application/vnd.jupyter.widget-view+json">
+{"model_id":"a5a6c989303c4e838f6d4b6dc49671ca","version_major":2,"version_minor":0,"quarto_mimetype":"application/vnd.jupyter.widget-view+json"}
+</script>
+</div>
+<div class="cell-output cell-output-display">
+<script type="application/vnd.jupyter.widget-view+json">
+{"model_id":"8e545b89832c4383b7f88c39f1b4e692","version_major":2,"version_minor":0,"quarto_mimetype":"application/vnd.jupyter.widget-view+json"}
+</script>
+</div>
+<div class="cell-output cell-output-display">
+<script type="application/vnd.jupyter.widget-view+json">
+{"model_id":"8963d6bf0fce498cbe11bfac4f302820","version_major":2,"version_minor":0,"quarto_mimetype":"application/vnd.jupyter.widget-view+json"}
+</script>
+</div>
+<div class="cell-output cell-output-display">
+<script type="application/vnd.jupyter.widget-view+json">
+{"model_id":"fc1f6983693e4eeaa38740ebe7d72db7","version_major":2,"version_minor":0,"quarto_mimetype":"application/vnd.jupyter.widget-view+json"}
+</script>
+</div>
+<div class="cell-output cell-output-display">
+<script type="application/vnd.jupyter.widget-view+json">
+{"model_id":"ffbe850d4af241dca00819b6be052d7b","version_major":2,"version_minor":0,"quarto_mimetype":"application/vnd.jupyter.widget-view+json"}
+</script>
+</div>
+<div class="cell-output cell-output-display">
+<script type="application/vnd.jupyter.widget-view+json">
+{"model_id":"8174cea6cb9a44e5bc65811dc75f2a2e","version_major":2,"version_minor":0,"quarto_mimetype":"application/vnd.jupyter.widget-view+json"}
+</script>
+</div>
+<div class="cell-output cell-output-display">
+<script type="application/vnd.jupyter.widget-view+json">
+{"model_id":"448d995dcb254741869ce59788f4ee2f","version_major":2,"version_minor":0,"quarto_mimetype":"application/vnd.jupyter.widget-view+json"}
+</script>
+</div>
+<div class="cell-output cell-output-display">
+<script type="application/vnd.jupyter.widget-view+json">
+{"model_id":"48aa6ece2cb5435082e405efd4a0f8aa","version_major":2,"version_minor":0,"quarto_mimetype":"application/vnd.jupyter.widget-view+json"}
+</script>
+</div>
+<div class="cell-output cell-output-display">
+<script type="application/vnd.jupyter.widget-view+json">
+{"model_id":"b5a55441bc484536ba70befbe7c61c7b","version_major":2,"version_minor":0,"quarto_mimetype":"application/vnd.jupyter.widget-view+json"}
+</script>
+</div>
+<div class="cell-output cell-output-display" data-execution_count="5">
+<pre><code>JunoConfig(name='JNO', data=&lt;LazyFrame [4 cols, {"time": Datetime(time_unit='us', time_zone=None) … "BZ SE": Float64}] at 0x29AD20050&gt;, ts=datetime.timedelta(microseconds=125000), tau=datetime.timedelta(seconds=60), events=shape: (94_095, 90)
+┌─────────────┬────────────┬─────┬──────────┬───┬────────────┬───────────┬────────────┬────────────┐
+│ time        ┆ index_diff ┆ len ┆ std      ┆ … ┆ v.ion.chan ┆ B.change  ┆ v.Alfven.c ┆ v.Alfven.c │
+│ ---         ┆ ---        ┆ --- ┆ ---      ┆   ┆ ge.l       ┆ ---       ┆ hange      ┆ hange.l    │
+│ datetime[ns ┆ f64        ┆ u32 ┆ f64      ┆   ┆ ---        ┆ f64       ┆ ---        ┆ ---        │
+│ ]           ┆            ┆     ┆          ┆   ┆ f64        ┆           ┆ f64        ┆ f64        │
+╞═════════════╪════════════╪═════╪══════════╪═══╪════════════╪═══════════╪════════════╪════════════╡
+│ 2011-08-25  ┆ 1.285665   ┆ 480 ┆ 2.59288  ┆ … ┆ NaN        ┆ -0.027436 ┆ NaN        ┆ NaN        │
+│ 15:25:30    ┆            ┆     ┆          ┆   ┆            ┆           ┆            ┆            │
+│ 2011-08-25  ┆ 1.367783   ┆ 480 ┆ 2.393473 ┆ … ┆ NaN        ┆ 0.063919  ┆ NaN        ┆ NaN        │
+│ 15:33:00    ┆            ┆     ┆          ┆   ┆            ┆           ┆            ┆            │
+│ 2011-08-25  ┆ 1.732598   ┆ 480 ┆ 2.20969  ┆ … ┆ NaN        ┆ 0.063919  ┆ NaN        ┆ NaN        │
+│ 15:33:30    ┆            ┆     ┆          ┆   ┆            ┆           ┆            ┆            │
+│ 2011-08-25  ┆ 1.367783   ┆ 480 ┆ 2.393473 ┆ … ┆ NaN        ┆ 0.063919  ┆ NaN        ┆ NaN        │
+│ 15:33:00    ┆            ┆     ┆          ┆   ┆            ┆           ┆            ┆            │
+│ 2011-08-25  ┆ 1.732598   ┆ 480 ┆ 2.20969  ┆ … ┆ NaN        ┆ 0.063919  ┆ NaN        ┆ NaN        │
+│ 15:33:30    ┆            ┆     ┆          ┆   ┆            ┆           ┆            ┆            │
+│ …           ┆ …          ┆ …   ┆ …        ┆ … ┆ …          ┆ …         ┆ …          ┆ …          │
+│ 2016-06-29  ┆ 1.157213   ┆ 480 ┆ 2.515025 ┆ … ┆ -0.000003  ┆ 0.876779  ┆ 110.19698  ┆ 96.402675  │
+│ 21:32:00    ┆            ┆     ┆          ┆   ┆            ┆           ┆            ┆            │
+│ 2016-06-29  ┆ 0.503273   ┆ 480 ┆ 2.069719 ┆ … ┆ 0.000279   ┆ 0.23649   ┆ 29.420787  ┆ -44.259203 │
+│ 23:32:30    ┆            ┆     ┆          ┆   ┆            ┆           ┆            ┆            │
+│ 2016-06-29  ┆ 0.419015   ┆ 480 ┆ 1.268489 ┆ … ┆ NaN        ┆ 0.332181  ┆ NaN        ┆ NaN        │
+│ 23:34:30    ┆            ┆     ┆          ┆   ┆            ┆           ┆            ┆            │
+│ 2016-06-29  ┆ 1.162055   ┆ 480 ┆ 2.828158 ┆ … ┆ NaN        ┆ 0.494918  ┆ NaN        ┆ NaN        │
+│ 23:38:00    ┆            ┆     ┆          ┆   ┆            ┆           ┆            ┆            │
+│ 2016-06-29  ┆ 0.419085   ┆ 480 ┆ 1.253931 ┆ … ┆ -0.000551  ┆ 0.097244  ┆ 12.077924  ┆ 110.593502 │
+│ 23:50:30    ┆            ┆     ┆          ┆   ┆            ┆           ┆            ┆            │
+└─────────────┴────────────┴─────┴──────────┴───┴────────────┴───────────┴────────────┴────────────┘, method='derivative', mag_meta=Meta(dataset=None, parameters=None), bcols=None, plasma_data=&lt;LazyFrame [14 cols, {"radial_distance": Float64 … "B_background_z": Float64}] at 0x2C17DCE50&gt;, plasma_meta=PlasmaMeta(dataset=None, parameters=None, density_col='plasma_density', velocity_cols=['v_x', 'v_y', 'v_z'], speed_col=None, temperature_col=None), ion_temp_data=None, ion_temp_meta=TempMeta(dataset=None, parameters=None, para_col=None, perp_cols=None), e_temp_data=None, e_temp_meta=TempMeta(dataset=None, parameters=None, para_col=None, perp_cols=None), timerange=[datetime.datetime(2011, 8, 25, 0, 0, tzinfo=TzInfo(UTC)), datetime.datetime(2016, 6, 30, 0, 0, tzinfo=TzInfo(UTC))], split=8, fmt='arrow')</code></pre>
+</div>
+</div>
+<div id="cell-4" class="cell" data-execution_count="6">
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>JunoConfig(ts<span class="op">=</span><span class="fl">0.125</span>, method<span class="op">=</span><span class="st">'derivative'</span>).path</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="6">
+<pre><code>Path('../data/05_reporting/events.JNO.derivative.ts_0.12s_tau_60s.arrow')</code></pre>
+</div>
+</div>
+<div id="cell-5" class="cell">
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>JunoConfig(ts<span class="op">=</span><span class="fl">0.125</span>).get_and_process_data().export()</span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>JunoConfig(method<span class="op">=</span><span class="st">'derivative'</span>).get_and_process_data().export()</span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>JunoConfig(ts<span class="op">=</span><span class="fl">0.125</span>, method<span class="op">=</span><span class="st">'derivative'</span>).get_and_process_data().export()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div id="cell-6" class="cell">
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>WindConfig().get_and_process_data()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 
 
