@@ -438,7 +438,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#strong-current-density-in-5au" id="toc-strong-current-density-in-5au" class="nav-link active" data-scroll-target="#strong-current-density-in-5au">Strong current density in 5AU</a></li>
+  <li><a href="#strong-current-density-in-5au" id="toc-strong-current-density-in-5au" class="nav-link active" data-scroll-target="#strong-current-density-in-5au">Strong current density in 5AU</a>
+  <ul class="collapse">
+  <li><a href="#fitting" id="toc-fitting" class="nav-link" data-scroll-target="#fitting">Fitting</a></li>
+  <li><a href="#derivative" id="toc-derivative" class="nav-link" data-scroll-target="#derivative">Derivative</a></li>
+  </ul></li>
   </ul>
 </nav>
     </div>
@@ -466,27 +470,32 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <section id="strong-current-density-in-5au" class="level1 page-columns page-full">
 <h1>Strong current density in 5AU</h1>
-<div id="cell-4" class="cell" data-execution_count="21">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>j_config <span class="op">=</span> JunoConfig(ts<span class="op">=</span><span class="fl">0.125</span>, method<span class="op">=</span><span class="st">'derivative'</span>).load()</span>
+<section id="fitting" class="level2 page-columns page-full">
+<h2 class="anchored" data-anchor-id="fitting">Fitting</h2>
+<div id="cell-5" class="cell" data-execution_count="42">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>j_config <span class="op">=</span> JunoConfig(ts<span class="op">=</span><span class="fl">0.125</span>).load()</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>j_config.events <span class="op">=</span> j_config.events.with_row_index().<span class="bu">filter</span>(</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>    pl.col(<span class="st">"radial_distance"</span>) <span class="op">&gt;</span> <span class="dv">5</span>,</span>
 <span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>    pl.col(<span class="st">"j0_k"</span>) <span class="op">&gt;</span> <span class="dv">4</span></span>
 <span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>indices <span class="op">=</span> [<span class="dv">72643</span>, <span class="dv">72280</span>, <span class="dv">69537</span>]</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>offset <span class="op">=</span> timedelta(seconds<span class="op">=</span><span class="dv">2</span>)</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>figs <span class="op">=</span> j_config.plot_candidates(</span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>    indices<span class="op">=</span>indices,</span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>    offset<span class="op">=</span>offset,</span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>    add_plasma_params<span class="op">=</span><span class="va">True</span>,</span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>    plot_current_density<span class="op">=</span><span class="va">True</span>,</span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>    plot_fit_data<span class="op">=</span><span class="va">True</span>,</span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
-<pre><code>02-Mar-24 16:24:50: PydanticDeprecatedSince20: Support for class-based `config` is deprecated, use ConfigDict instead. Deprecated in Pydantic V2.0 to be removed in V3.0. See Pydantic V2 Migration Guide at https://errors.pydantic.dev/2.6/migration/
-</code></pre>
+<pre><code>04-Mar-24 12:01:19: PydanticDeprecatedSince20: Support for class-based `config` is deprecated, use ConfigDict instead. Deprecated in Pydantic V2.0 to be removed in V3.0. See Pydantic V2 Migration Guide at https://errors.pydantic.dev/2.6/migration/
+
+04-Mar-24 12:01:24: deriv_data was applied to: fgm_rot_tot_0-der
+04-Mar-24 12:01:25: deriv_data was applied to: fgm_rot_tot_0-der
+04-Mar-24 12:01:25: deriv_data was applied to: fgm_rot_tot_0-der</code></pre>
 </div>
-</div>
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>offset  <span class="op">=</span> timedelta(seconds<span class="op">=</span><span class="dv">2</span>)</span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>indices<span class="op">=</span>[<span class="dv">91384</span>, <span class="dv">93825</span>, <span class="dv">93618</span>, <span class="dv">92389</span>]</span>
-<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>figs <span class="op">=</span> j_config.plot_candidates(indices<span class="op">=</span>indices, add_plasma_params<span class="op">=</span><span class="va">True</span>, offset<span class="op">=</span>offset, plot_current_density<span class="op">=</span><span class="va">True</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stderr">
-<pre><code>02-Mar-24 16:49:28: deriv_data was applied to: fgm_rot_tot_0-der
-02-Mar-24 16:49:28: deriv_data was applied to: fgm_rot_tot_0-der
-02-Mar-24 16:49:28: deriv_data was applied to: fgm_rot_tot_0-der
-02-Mar-24 16:49:29: deriv_data was applied to: fgm_rot_tot_0-der</code></pre>
-</div>
-<div id="cell-5" class="cell column-screen quarto-layout-panel" data-layout-ncol="3" data-execution_count="32">
+<div id="cell-6" class="cell column-screen quarto-layout-panel" data-layout-ncol="3" data-execution_count="48">
 <div class="quarto-layout-row">
 <div class="quarto-layout-cell" style="flex-basis: 33.3%;justify-content: center;">
 <p><a href="10_examples_files/figure-html/cell-5-output-2.png" class="lightbox" data-gallery="quarto-lightbox-gallery-1"><img src="10_examples_files/figure-html/cell-5-output-2.png" class="img-fluid"></a></p>
@@ -498,96 +507,135 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p><a href="10_examples_files/figure-html/cell-5-output-4.png" class="lightbox" data-gallery="quarto-lightbox-gallery-3"><img src="10_examples_files/figure-html/cell-5-output-4.png" class="img-fluid"></a></p>
 </div>
 </div>
-<div class="quarto-layout-row">
-<div class="quarto-layout-cell" style="flex-basis: 33.3%;justify-content: center;">
-<p><a href="10_examples_files/figure-html/cell-5-output-5.png" class="lightbox" data-gallery="quarto-lightbox-gallery-4"><img src="10_examples_files/figure-html/cell-5-output-5.png" class="img-fluid"></a></p>
 </div>
-</div>
-</div>
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>figs <span class="op">=</span> j_config.plot_candidates(num<span class="op">=</span><span class="dv">3</span>, add_plasma_params<span class="op">=</span><span class="va">True</span>, offset<span class="op">=</span>offset, plot_current_density<span class="op">=</span><span class="va">True</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>offset  <span class="op">=</span> timedelta(seconds<span class="op">=</span><span class="dv">2</span>)</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>figs <span class="op">=</span> j_config.plot_candidates(num<span class="op">=</span><span class="dv">3</span>, add_plasma_params<span class="op">=</span><span class="va">True</span>, offset<span class="op">=</span>offset, plot_current_density<span class="op">=</span><span class="va">True</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
-<pre><code>2024-03-02 16:48:30.020 | INFO     | discontinuitypy.datasets:plot_candidates:243 - Candidates indices: [93071 94082 92389]
-02-Mar-24 16:48:30: deriv_data was applied to: fgm_rot_tot_0-der
-02-Mar-24 16:48:30: deriv_data was applied to: fgm_rot_tot_0-der
-02-Mar-24 16:48:31: deriv_data was applied to: fgm_rot_tot_0-der</code></pre>
+<pre><code>2024-03-04 11:56:04.434 | INFO     | discontinuitypy.datasets:plot_candidates:243 - Candidates indices: [71224 71223 69537]
+04-Mar-24 11:56:08: deriv_data was applied to: fgm_rot_tot_0-der
+04-Mar-24 11:56:08: deriv_data was applied to: fgm_rot_tot_0-der
+04-Mar-24 11:56:09: deriv_data was applied to: fgm_rot_tot_0-der</code></pre>
 </div>
-<div id="cell-6" class="cell column-screen quarto-layout-panel" data-layout-ncol="3" data-execution_count="30">
+<div id="cell-7" class="cell column-screen quarto-layout-panel" data-layout-ncol="3" data-execution_count="46">
 <div class="quarto-layout-row">
 <div class="quarto-layout-cell" style="flex-basis: 33.3%;justify-content: center;">
-<p><a href="10_examples_files/figure-html/cell-6-output-2.png" class="lightbox" data-gallery="quarto-lightbox-gallery-5"><img src="10_examples_files/figure-html/cell-6-output-2.png" class="img-fluid"></a></p>
+<p><a href="10_examples_files/figure-html/cell-6-output-2.png" class="lightbox" data-gallery="quarto-lightbox-gallery-4"><img src="10_examples_files/figure-html/cell-6-output-2.png" class="img-fluid"></a></p>
 </div>
 <div class="quarto-layout-cell" style="flex-basis: 33.3%;justify-content: center;">
-<p><a href="10_examples_files/figure-html/cell-6-output-3.png" class="lightbox" data-gallery="quarto-lightbox-gallery-6"><img src="10_examples_files/figure-html/cell-6-output-3.png" class="img-fluid"></a></p>
+<p><a href="10_examples_files/figure-html/cell-6-output-3.png" class="lightbox" data-gallery="quarto-lightbox-gallery-5"><img src="10_examples_files/figure-html/cell-6-output-3.png" class="img-fluid"></a></p>
 </div>
 <div class="quarto-layout-cell" style="flex-basis: 33.3%;justify-content: center;">
-<p><a href="10_examples_files/figure-html/cell-6-output-4.png" class="lightbox" data-gallery="quarto-lightbox-gallery-7"><img src="10_examples_files/figure-html/cell-6-output-4.png" class="img-fluid"></a></p>
+<p><a href="10_examples_files/figure-html/cell-6-output-4.png" class="lightbox" data-gallery="quarto-lightbox-gallery-6"><img src="10_examples_files/figure-html/cell-6-output-4.png" class="img-fluid"></a></p>
 </div>
 </div>
 </div>
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>offset  <span class="op">=</span> timedelta(seconds<span class="op">=</span><span class="dv">30</span>)</span>
-<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>figs <span class="op">=</span> j_config.plot_candidates(num<span class="op">=</span><span class="dv">15</span>, add_plasma_params<span class="op">=</span><span class="va">True</span>, offset<span class="op">=</span>offset)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="derivative" class="level2 page-columns page-full">
+<h2 class="anchored" data-anchor-id="derivative">Derivative</h2>
+<div id="cell-9" class="cell" data-execution_count="21">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>j_config <span class="op">=</span> JunoConfig(ts<span class="op">=</span><span class="fl">0.125</span>, method<span class="op">=</span><span class="st">'derivative'</span>).load()</span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>j_config.events <span class="op">=</span> j_config.events.with_row_index().<span class="bu">filter</span>(</span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>    pl.col(<span class="st">"radial_distance"</span>) <span class="op">&gt;</span> <span class="dv">5</span>,</span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>    pl.col(<span class="st">"j0_k"</span>) <span class="op">&gt;</span> <span class="dv">4</span></span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
-<pre><code>2024-02-28 12:45:11.093 | INFO     | discontinuitypy.datasets:plot_candidates:241 - Candidates indices: [246 421  73 262 493 191 190 222  34 188 318 218 363   3  31]</code></pre>
+<pre><code>02-Mar-24 16:24:50: PydanticDeprecatedSince20: Support for class-based `config` is deprecated, use ConfigDict instead. Deprecated in Pydantic V2.0 to be removed in V3.0. See Pydantic V2 Migration Guide at https://errors.pydantic.dev/2.6/migration/
+</code></pre>
 </div>
-<div id="cell-7" class="cell column-screen quarto-layout-panel" data-layout-ncol="3" data-execution_count="4">
+</div>
+<div id="cell-10" class="cell" data-execution_count="37">
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>offset  <span class="op">=</span> timedelta(seconds<span class="op">=</span><span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>indices<span class="op">=</span>[<span class="dv">91384</span>, <span class="dv">93825</span>, <span class="dv">93618</span>, <span class="dv">92389</span>]</span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>figs <span class="op">=</span> j_config.plot_candidates(indices<span class="op">=</span>indices, add_plasma_params<span class="op">=</span><span class="va">True</span>, offset<span class="op">=</span>offset, plot_current_density<span class="op">=</span><span class="va">True</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>02-Mar-24 16:52:58: deriv_data was applied to: fgm_rot_tot_0-der
+02-Mar-24 16:52:58: deriv_data was applied to: fgm_rot_tot_0-der
+02-Mar-24 16:52:58: deriv_data was applied to: fgm_rot_tot_0-der
+02-Mar-24 16:52:59: deriv_data was applied to: fgm_rot_tot_0-der</code></pre>
+</div>
+<div id="cell-11" class="cell column-screen quarto-layout-panel" data-layout-ncol="3" data-execution_count="33">
 <div class="quarto-layout-row">
 <div class="quarto-layout-cell" style="flex-basis: 33.3%;justify-content: center;">
-<p><a href="10_examples_files/figure-html/cell-7-output-2.png" class="lightbox" data-gallery="quarto-lightbox-gallery-8"><img src="10_examples_files/figure-html/cell-7-output-2.png" class="img-fluid"></a></p>
+<p><a href="10_examples_files/figure-html/cell-9-output-2.png" class="lightbox" data-gallery="quarto-lightbox-gallery-7"><img src="10_examples_files/figure-html/cell-9-output-2.png" class="img-fluid"></a></p>
 </div>
 <div class="quarto-layout-cell" style="flex-basis: 33.3%;justify-content: center;">
-<p><a href="10_examples_files/figure-html/cell-7-output-3.png" class="lightbox" data-gallery="quarto-lightbox-gallery-9"><img src="10_examples_files/figure-html/cell-7-output-3.png" class="img-fluid"></a></p>
+<p><a href="10_examples_files/figure-html/cell-9-output-3.png" class="lightbox" data-gallery="quarto-lightbox-gallery-8"><img src="10_examples_files/figure-html/cell-9-output-3.png" class="img-fluid"></a></p>
 </div>
 <div class="quarto-layout-cell" style="flex-basis: 33.3%;justify-content: center;">
-<p><a href="10_examples_files/figure-html/cell-7-output-4.png" class="lightbox" data-gallery="quarto-lightbox-gallery-10"><img src="10_examples_files/figure-html/cell-7-output-4.png" class="img-fluid"></a></p>
-</div>
-</div>
-<div class="quarto-layout-row">
-<div class="quarto-layout-cell" style="flex-basis: 33.3%;justify-content: center;">
-<p><a href="10_examples_files/figure-html/cell-7-output-5.png" class="lightbox" data-gallery="quarto-lightbox-gallery-11"><img src="10_examples_files/figure-html/cell-7-output-5.png" class="img-fluid"></a></p>
-</div>
-<div class="quarto-layout-cell" style="flex-basis: 33.3%;justify-content: center;">
-<p><a href="10_examples_files/figure-html/cell-7-output-6.png" class="lightbox" data-gallery="quarto-lightbox-gallery-12"><img src="10_examples_files/figure-html/cell-7-output-6.png" class="img-fluid"></a></p>
-</div>
-<div class="quarto-layout-cell" style="flex-basis: 33.3%;justify-content: center;">
-<p><a href="10_examples_files/figure-html/cell-7-output-7.png" class="lightbox" data-gallery="quarto-lightbox-gallery-13"><img src="10_examples_files/figure-html/cell-7-output-7.png" class="img-fluid"></a></p>
-</div>
-</div>
-<div class="quarto-layout-row">
-<div class="quarto-layout-cell" style="flex-basis: 33.3%;justify-content: center;">
-<p><a href="10_examples_files/figure-html/cell-7-output-8.png" class="lightbox" data-gallery="quarto-lightbox-gallery-14"><img src="10_examples_files/figure-html/cell-7-output-8.png" class="img-fluid"></a></p>
-</div>
-<div class="quarto-layout-cell" style="flex-basis: 33.3%;justify-content: center;">
-<p><a href="10_examples_files/figure-html/cell-7-output-9.png" class="lightbox" data-gallery="quarto-lightbox-gallery-15"><img src="10_examples_files/figure-html/cell-7-output-9.png" class="img-fluid"></a></p>
-</div>
-<div class="quarto-layout-cell" style="flex-basis: 33.3%;justify-content: center;">
-<p><a href="10_examples_files/figure-html/cell-7-output-10.png" class="lightbox" data-gallery="quarto-lightbox-gallery-16"><img src="10_examples_files/figure-html/cell-7-output-10.png" class="img-fluid"></a></p>
+<p><a href="10_examples_files/figure-html/cell-9-output-4.png" class="lightbox" data-gallery="quarto-lightbox-gallery-9"><img src="10_examples_files/figure-html/cell-9-output-4.png" class="img-fluid"></a></p>
 </div>
 </div>
 <div class="quarto-layout-row">
 <div class="quarto-layout-cell" style="flex-basis: 33.3%;justify-content: center;">
-<p><a href="10_examples_files/figure-html/cell-7-output-11.png" class="lightbox" data-gallery="quarto-lightbox-gallery-17"><img src="10_examples_files/figure-html/cell-7-output-11.png" class="img-fluid"></a></p>
+<p><a href="10_examples_files/figure-html/cell-9-output-5.png" class="lightbox" data-gallery="quarto-lightbox-gallery-10"><img src="10_examples_files/figure-html/cell-9-output-5.png" class="img-fluid"></a></p>
+</div>
+</div>
+</div>
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>figs <span class="op">=</span> j_config.plot_candidates(num<span class="op">=</span><span class="dv">3</span>, add_plasma_params<span class="op">=</span><span class="va">True</span>, offset<span class="op">=</span>offset, plot_current_density<span class="op">=</span><span class="va">True</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>2024-03-02 16:53:51.076 | INFO     | discontinuitypy.datasets:plot_candidates:243 - Candidates indices: [90260 92835 92303]
+02-Mar-24 16:53:51: deriv_data was applied to: fgm_rot_tot_0-der
+02-Mar-24 16:53:51: deriv_data was applied to: fgm_rot_tot_0-der
+02-Mar-24 16:53:52: deriv_data was applied to: fgm_rot_tot_0-der</code></pre>
+</div>
+<div id="cell-12" class="cell column-screen quarto-layout-panel" data-layout-ncol="3" data-execution_count="39">
+<div class="quarto-layout-row">
+<div class="quarto-layout-cell" style="flex-basis: 33.3%;justify-content: center;">
+<p><a href="10_examples_files/figure-html/cell-10-output-2.png" class="lightbox" data-gallery="quarto-lightbox-gallery-11"><img src="10_examples_files/figure-html/cell-10-output-2.png" class="img-fluid"></a></p>
 </div>
 <div class="quarto-layout-cell" style="flex-basis: 33.3%;justify-content: center;">
-<p><a href="10_examples_files/figure-html/cell-7-output-12.png" class="lightbox" data-gallery="quarto-lightbox-gallery-18"><img src="10_examples_files/figure-html/cell-7-output-12.png" class="img-fluid"></a></p>
+<p><a href="10_examples_files/figure-html/cell-10-output-3.png" class="lightbox" data-gallery="quarto-lightbox-gallery-12"><img src="10_examples_files/figure-html/cell-10-output-3.png" class="img-fluid"></a></p>
 </div>
 <div class="quarto-layout-cell" style="flex-basis: 33.3%;justify-content: center;">
-<p><a href="10_examples_files/figure-html/cell-7-output-13.png" class="lightbox" data-gallery="quarto-lightbox-gallery-19"><img src="10_examples_files/figure-html/cell-7-output-13.png" class="img-fluid"></a></p>
+<p><a href="10_examples_files/figure-html/cell-10-output-4.png" class="lightbox" data-gallery="quarto-lightbox-gallery-13"><img src="10_examples_files/figure-html/cell-10-output-4.png" class="img-fluid"></a></p>
+</div>
+</div>
+</div>
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>offset  <span class="op">=</span> timedelta(seconds<span class="op">=</span><span class="dv">30</span>)</span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>figs <span class="op">=</span> j_config.plot_candidates(num<span class="op">=</span><span class="dv">15</span>, add_plasma_params<span class="op">=</span><span class="va">True</span>, offset<span class="op">=</span>offset)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>2024-03-02 16:53:24.688 | INFO     | discontinuitypy.datasets:plot_candidates:243 - Candidates indices: [92436 90663 92303 90640 92616 93261 93834 94014 94032 93294 92471 92343
+ 92972 93732 92478]</code></pre>
+</div>
+<div id="cell-13" class="cell column-screen quarto-layout-panel" data-layout-ncol="3" data-execution_count="35">
+<div class="quarto-layout-row">
+<div class="cell-output cell-output-error quarto-layout-cell" style="flex-basis: 33.3%;justify-content: flex-start;">
+<pre><code>KeyboardInterrupt: </code></pre>
+</div>
+<div class="quarto-layout-cell" style="flex-basis: 33.3%;justify-content: center;">
+<p><a href="10_examples_files/figure-html/cell-11-output-3.png" class="lightbox" data-gallery="quarto-lightbox-gallery-14"><img src="10_examples_files/figure-html/cell-11-output-3.png" class="img-fluid"></a></p>
+</div>
+<div class="quarto-layout-cell" style="flex-basis: 33.3%;justify-content: center;">
+<p><a href="10_examples_files/figure-html/cell-11-output-4.png" class="lightbox" data-gallery="quarto-lightbox-gallery-15"><img src="10_examples_files/figure-html/cell-11-output-4.png" class="img-fluid"></a></p>
 </div>
 </div>
 <div class="quarto-layout-row">
 <div class="quarto-layout-cell" style="flex-basis: 33.3%;justify-content: center;">
-<p><a href="10_examples_files/figure-html/cell-7-output-14.png" class="lightbox" data-gallery="quarto-lightbox-gallery-20"><img src="10_examples_files/figure-html/cell-7-output-14.png" class="img-fluid"></a></p>
+<p><a href="10_examples_files/figure-html/cell-11-output-5.png" class="lightbox" data-gallery="quarto-lightbox-gallery-16"><img src="10_examples_files/figure-html/cell-11-output-5.png" class="img-fluid"></a></p>
 </div>
 <div class="quarto-layout-cell" style="flex-basis: 33.3%;justify-content: center;">
-<p><a href="10_examples_files/figure-html/cell-7-output-15.png" class="lightbox" data-gallery="quarto-lightbox-gallery-21"><img src="10_examples_files/figure-html/cell-7-output-15.png" class="img-fluid"></a></p>
+<p><a href="10_examples_files/figure-html/cell-11-output-6.png" class="lightbox" data-gallery="quarto-lightbox-gallery-17"><img src="10_examples_files/figure-html/cell-11-output-6.png" class="img-fluid"></a></p>
 </div>
 <div class="quarto-layout-cell" style="flex-basis: 33.3%;justify-content: center;">
-<p><a href="10_examples_files/figure-html/cell-7-output-16.png" class="lightbox" data-gallery="quarto-lightbox-gallery-22"><img src="10_examples_files/figure-html/cell-7-output-16.png" class="img-fluid"></a></p>
+<p><a href="10_examples_files/figure-html/cell-11-output-7.png" class="lightbox" data-gallery="quarto-lightbox-gallery-18"><img src="10_examples_files/figure-html/cell-11-output-7.png" class="img-fluid"></a></p>
+</div>
+</div>
+<div class="quarto-layout-row">
+<div class="quarto-layout-cell" style="flex-basis: 33.3%;justify-content: center;">
+<p><a href="10_examples_files/figure-html/cell-11-output-8.png" class="lightbox" data-gallery="quarto-lightbox-gallery-19"><img src="10_examples_files/figure-html/cell-11-output-8.png" class="img-fluid"></a></p>
+</div>
+<div class="quarto-layout-cell" style="flex-basis: 33.3%;justify-content: center;">
+<p><a href="10_examples_files/figure-html/cell-11-output-9.png" class="lightbox" data-gallery="quarto-lightbox-gallery-20"><img src="10_examples_files/figure-html/cell-11-output-9.png" class="img-fluid"></a></p>
+</div>
+<div class="quarto-layout-cell" style="flex-basis: 33.3%;justify-content: center;">
+<p><a href="10_examples_files/figure-html/cell-11-output-10.png" class="lightbox" data-gallery="quarto-lightbox-gallery-21"><img src="10_examples_files/figure-html/cell-11-output-10.png" class="img-fluid"></a></p>
 </div>
 </div>
 </div>
 
 
+</section>
 </section>
 
 </main> <!-- /main -->
@@ -979,7 +1027,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 });
 </script>
 </div> <!-- /content -->
-<script>var lightboxQuarto = GLightbox({"selector":".lightbox","loop":false,"openEffect":"zoom","closeEffect":"zoom","descPosition":"bottom"});
+<script>var lightboxQuarto = GLightbox({"openEffect":"zoom","closeEffect":"zoom","loop":false,"descPosition":"bottom","selector":".lightbox"});
 window.onload = () => {
   lightboxQuarto.on('slide_before_load', (data) => {
     const { slideIndex, slideNode, slideConfig, player, trigger } = data;
