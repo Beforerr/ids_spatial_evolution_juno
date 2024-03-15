@@ -13,6 +13,10 @@ if (!requireNamespace("curry", quietly = TRUE)) {
   pak::pkg_install("curry")
 }
 
+if (!requireNamespace("egg", quietly = TRUE)) {
+  pak::pkg_install("egg")
+}
+
 library(dplyr)
 library(purrr)
 
@@ -20,6 +24,7 @@ library(ggplot2)
 library(ggdensity)
 library(ggpubr)
 library(patchwork)
+library(egg)
 library(see)
 
 library(glue)
@@ -28,10 +33,10 @@ library(gaussplotR)
 library(scales)
 
 # Save the plot, if filename is provided
-save_plot <- function(filename = NULL) {
+save_plot <- function(filename, ...) {
   if (!is.null(filename)) {
-    ggsave(filename = glue("../figures/{filename}.png"))
-    ggsave(filename = glue("../figures/{filename}.pdf"))
+    ggsave(filename = glue("../figures/{filename}.png"), ...)
+    ggsave(filename = glue("../figures/{filename}.pdf"), ...)
   }
 }
 
@@ -159,11 +164,18 @@ plot_binned_data <- function(
 }
 
 ## Common labels
-ylab_j_log <- expression(Log ~ J ~ (nA ~ m^-2))
-ylab_j_norm_log <- expression(Log ~ Normalized ~ J ~ (J[A]))
-ylab_l <- "Log Thickness (km)"
-ylab_l_norm <- expression(Log ~ Thickness ~ (d[i]))
+
+lab_j <- expression("Current Density " (nA ~ m^-2))
+lab_j_norm <- expression(Normalized ~ Current ~ Density ~ (J[A]))
+lab_l <- "Thickness (km)"
+lab_l_norm <- expression("Normalized Thickness " (d[i]))
 xlab_r <- "Radial Distance (AU)"
+
+
+lab_j_log <- expression(Log ~ J ~ (nA ~ m^-2))
+lab_j_norm_log <- expression(Log ~ Normalized ~ J ~ (J[A]))
+lab_l_log <- glue("Log {lab_l}")
+lab_l_norm_log <- expression(Log ~ Normalized ~ Thickness ~ (d[i]))
 
 ## Plotting function for quantity and normalized quantity
 
@@ -199,8 +211,8 @@ plot_q_and_qnorm_r_j0 <- partial2(
   plot_q_and_qnorm_r,
   y1 = "j0_k",
   y2 = "j0_k_norm",
-  ylab1 = ylab_j_log,
-  ylab2 = ylab_j_norm_log,
+  ylab1 = lab_j_log,
+  ylab2 = lab_j_norm_log,
   y_lim1 = c(0.01, 30),
   y_lim2 = c(0.002, 1)
 )
@@ -209,8 +221,8 @@ plot_q_and_qnorm_r_l <- partial2(
   plot_q_and_qnorm_r,
   y1 = "L_k",
   y2 = "L_k_norm",
-  ylab1 = ylab_l,
-  ylab2 = ylab_l_norm,
+  ylab1 = lab_l_log,
+  ylab2 = lab_l_norm_log,
   y_lim1 = c(500, 40000),
   y_lim2 = c(1, 200)
 )
@@ -269,7 +281,7 @@ plot_current_comparison <- function(
 
   y_col <- "j0_k_norm"
   y_lim_j0_norm <- c(0.002, 1)
-  ylab <- ylab_j_norm_log
+  ylab <- lab_j_norm_log
   p <- plot_binned_data(df1, x_col = x_col, y_col = y_col, x_bins = x_bins, y_bins = y_bins, y_lim = y_lim_j0_norm, y_log = TRUE, add_mode = add_mode)
   p2 <- p + labs(x = xlab_r, y = ylab)
 
@@ -306,7 +318,7 @@ plot_thickness_comparison <- function(
   y_col <- "L_k"
 
   y_lim <- y_lim_1
-  ylab <- ylab_l
+  ylab <- lab_l_log
   p <- plot_binned_data(df1, x_col = x_col, y_col = y_col, x_bins = x_bins, y_bins = y_bins, y_lim = y_lim, y_log = TRUE, add_mode = add_mode)
   p1 <- p + labs(x = NULL, y = ylab) + ggtitle(p1title)
 
@@ -315,7 +327,7 @@ plot_thickness_comparison <- function(
 
 
   y_lim <- y_lim_2
-  ylab <- ylab_l_norm
+  ylab <- lab_l_norm_log
   p <- plot_binned_data(df1, x_col = x_col, y_col = y_col, x_bins = x_bins, y_bins = y_bins, y_lim = y_lim, y_log = TRUE, add_mode = add_mode)
   p2 <- p + labs(x = x_lab_r, y = ylab)
 

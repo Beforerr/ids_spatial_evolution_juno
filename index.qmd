@@ -9,6 +9,57 @@ title: Solar wind discontinuities spatial evolution in the outer heliosphere
 
 ## Updates
 
+### 02/27/2024
+
+::: {.column-screen}
+::: {#fig-evolution-juno layout-nrow="1"}
+![Evolution of plamsa property using fitting method](figures/l_j_r_fit.png)
+
+![Evolution of plamsa property using derivative method](figures/l_j_r_der.png)
+
+From top to bottom is Juno observation in 1,2,3,4,5 AU
+:::
+:::
+
+### 02/26/2024
+
+::: {.column-screen layout-nrow="1"}
+{{< embed notebooks/06_corr_julia.ipynb#fig-l-comp >}}
+:::
+
+::: {.column-screen layout-nrow="1"}
+{{< embed notebooks/06_corr_julia.ipynb#fig-l-j-r-der >}}
+:::
+
+::: {.column-screen layout-nrow="1"}
+{{< embed notebooks/06_corr_julia.ipynb#fig-l-r-fit >}}
+
+{{< embed notebooks/06_corr_julia.ipynb#fig-l-r-der >}}
+:::
+
+
+
+
+### 02/25/2024
+
+::: {.column-screen layout-nrow="1"}
+{{< embed notebooks/05_sea.ipynb#fig-fit >}}
+
+{{< embed notebooks/05_sea.ipynb#fig-fit-params >}}
+:::
+
+
+
+### 02/22/2024
+
+::: {.column-screen layout-nrow="1"}
+![First Year](figures/sea/sea_juno_first_year_high.png)
+
+![Last Year](figures/sea/sea_juno_last_year_high.png)
+:::
+
+### 02/20/2024
+
 ### 02/19/2024
 
 {{< embed notebooks/04_properties.ipynb#fig-jno-8hz-tau-20-der >}}

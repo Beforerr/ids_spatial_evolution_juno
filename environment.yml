@@ -3,6 +3,7 @@ dependencies:
   - python<3.11
   - jupyter
 
+  - intake
   - polars
   - xarray
   # - ray-default

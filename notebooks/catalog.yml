@@ -1,0 +1,23 @@
+aliases:
+  JNO_MAG_8hz: JNO_MAG_8hz
+data:
+  b9b01356e7758d1f:
+    datatype: intake.readers.datatypes:Feather2
+    kwargs:
+      storage_options: null
+      url:
+      - ../data/02_intermediate/JNO_MAG_8hz/fgm_jno_l3_*_v01.arrow
+    metadata: {}
+    user_parameters: {}
+entries:
+  JNO_MAG_8hz:
+    kwargs:
+      args:
+      - '{data(b9b01356e7758d1f)}'
+    metadata: {}
+    output_instance: polars:LazyFrame
+    reader: intake.readers.readers:PolarsFeather
+    user_parameters: {}
+metadata: {}
+user_parameters: {}
+version: 2

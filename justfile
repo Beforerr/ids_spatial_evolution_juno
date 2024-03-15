@@ -23,9 +23,9 @@ setup-agu:
    quarto add quarto-journals/agu --no-prompt
 
 examples:
-   ipython notebooks/01_ids_example.ipynb 'notebooks/config_examples/examples_stereo.yml'
-   ipython notebooks/01_ids_example.ipynb 'notebooks/config_examples/examples_artemis.yml'
-   ipython notebooks/01_ids_example.ipynb 'notebooks/config_examples/examples_wind.yml'
+   ipython ids_example.py 'notebooks/config_examples/examples_stereo.yml'
+   ipython ids_example.py 'notebooks/config_examples/examples_artemis.yml'
+   ipython ids_example.py 'notebooks/config_examples/examples_wind.yml'
    # ipython notebooks/20_omni_overview.ipynb 'notebooks/omni.yml'
 
 download:

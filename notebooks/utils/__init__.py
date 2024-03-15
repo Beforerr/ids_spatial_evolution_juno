@@ -1,7 +1,12 @@
 import polars as pl
 from beforerr.polars import pl_norm
 
-PARAMETERS = ['j0_k', 'j0_k_norm',  'L_k', 'L_k_norm']
+data_dir = "../data"
+
+PARAMETERS = ['j0_k', 'j0_k_norm',  'L_k', 'L_k_norm']    
+
+def keep_good_fit(df: pl.DataFrame, rsquared = 0.95):
+    return df.filter(pl.col('fit.stat.rsquared') > rsquared)
 
 def load_events(
     name: str,
