@@ -9,6 +9,12 @@ title: Solar wind discontinuities spatial evolution in the outer heliosphere
 
 ## Updates
 
+### 03/15/2024
+
+![Discontinuities in log-log scale](figures/l_j_fit_xscale_log)
+
+![Same as above but with multiple time resolutions and time windows](figures/l_j_r_fit_xscale_log)
+
 ### 02/27/2024
 
 ::: {.column-screen}
@@ -24,17 +30,15 @@ From top to bottom is Juno observation in 1,2,3,4,5 AU
 ### 02/26/2024
 
 ::: {.column-screen layout-nrow="1"}
-{{< embed notebooks/06_corr_julia.ipynb#fig-l-comp >}}
+{{< embed notebooks/01_results_julia.ipynb#fig-l-comp >}}
 :::
 
 ::: {.column-screen layout-nrow="1"}
-{{< embed notebooks/06_corr_julia.ipynb#fig-l-j-r-der >}}
+{{< embed notebooks/01_results_julia.ipynb#fig-l-j-r-der >}}
 :::
 
 ::: {.column-screen layout-nrow="1"}
-{{< embed notebooks/06_corr_julia.ipynb#fig-l-r-fit >}}
-
-{{< embed notebooks/06_corr_julia.ipynb#fig-l-r-der >}}
+{{< embed notebooks/01_results_julia.ipynb#fig-l-r-fit >}}
 :::
 
 
@@ -43,9 +47,9 @@ From top to bottom is Juno observation in 1,2,3,4,5 AU
 ### 02/25/2024
 
 ::: {.column-screen layout-nrow="1"}
-{{< embed notebooks/05_sea.ipynb#fig-fit >}}
+{{< embed notebooks/archive/05_sea.ipynb#fig-fit >}}
 
-{{< embed notebooks/05_sea.ipynb#fig-fit-params >}}
+{{< embed notebooks/archive/05_sea.ipynb#fig-fit-params >}}
 :::
 
 
