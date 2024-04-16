@@ -15,6 +15,7 @@ function load(path::String)
             :j0_k = abs.(:j0_k),
             :j0_k_norm = abs.(:j0_k_norm),
         )
+        
     end
 
     # Iterate through each column in the DataFrame
@@ -26,6 +27,12 @@ function load(;tau = 60, ts = 1.00, name = "JNO", method = "fit", dir = "../data
     df = load(joinpath(dir, "events.$name.$method.$(ts_str)_tau_$(tau)s.arrow"))
     df.tau .= tau
     df.ts .= ts
+    
+    if method == "fit"
+        df = @chain df begin
+            filter(:"fit.stat.rsquared" => >(0.95), _)
+        end
+    end
     df
 end
 
