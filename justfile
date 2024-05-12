@@ -1,3 +1,6 @@
+default:
+   just --list
+
 update: update-overleaf clean update-repo render publish
 
 env-install:
