@@ -1,0 +1,21 @@
+---
+title: "Current Sheets in the Solar Wind: JUNO Observations in the Outer Heliosphere"
+subtitle: SPARTHB
+author:
+  - name: Zijin Zhang
+  - name: Anton V. Artemyev
+  - name: Vassilis Angelopoulos
+format:
+  html: default
+  pptx: default
+slide-number: true
+---
+
+<!-- 
+See [share notes](../../beforerr/docs/research/topics/swd/index.qmd) for
+- introduction
+- formation mechanisms
+-->
+
+
+# References

@@ -1,0 +1,162 @@
+## Updates
+
+### 03/15/2024
+
+![Discontinuities in log-log scale](figures/l_j_fit_xscale_log)
+
+![Same as above but with multiple time resolutions and time windows](figures/l_j_r_fit_xscale_log)
+
+### 02/27/2024
+
+::: {.column-screen}
+::: {#fig-evolution-juno layout-nrow="1"}
+![Evolution of plamsa property using fitting method](figures/l_j_r_fit.png)
+
+![Evolution of plamsa property using derivative method](figures/l_j_r_der.png)
+
+From top to bottom is Juno observation in 1,2,3,4,5 AU
+:::
+:::
+
+### 02/26/2024
+
+::: {.column-screen layout-nrow="1"}
+{{< embed notebooks/01_results_julia.ipynb#fig-l-comp >}}
+:::
+
+::: {.column-screen layout-nrow="1"}
+{{< embed notebooks/01_results_julia.ipynb#fig-l-j-r-der >}}
+:::
+
+::: {.column-screen layout-nrow="1"}
+{{< embed notebooks/01_results_julia.ipynb#fig-l-r-fit >}}
+:::
+
+
+
+
+### 02/25/2024
+
+::: {.column-screen layout-nrow="1"}
+{{< embed notebooks/archive/05_sea.ipynb#fig-fit >}}
+
+{{< embed notebooks/archive/05_sea.ipynb#fig-fit-params >}}
+:::
+
+
+
+### 02/22/2024
+
+::: {.column-screen layout-nrow="1"}
+![First Year](figures/sea/sea_juno_first_year_high.png)
+
+![Last Year](figures/sea/sea_juno_last_year_high.png)
+:::
+
+### 02/20/2024
+
+### 02/19/2024
+
+{{< embed notebooks/04_properties.ipynb#fig-jno-8hz-tau-20-der >}}
+
+### 02/18/2024
+
+![](figures/new/duration/duration_dist_ts_comparison)
+
+#### Thickness
+::: {.column-screen layout-nrow="1"}
+![](figures/new/thickness/thickness_k_dist)
+
+![](figures/new/thickness/thickness_k_dist-8hz)
+
+![](figures/new/thickness/thickness_k_dist-8hz-tau_20)
+:::
+
+
+#### Current Density
+
+::: {.column-screen layout-nrow="1"}
+![](figures/new/current/current_k_dist)
+
+![](figures/new/current/current_k_dist-8hz)
+
+![](figures/new/current/current_k_dist-8hz-tau_20)
+
+:::
+
+
+### 02/17/2024
+
+::: {.column-screen layout-nrow="1"}
+
+![](figures/new/duration/duration_dist)
+
+![](figures/new/thickness/thickness_k_fit_dist)
+
+![](figures/new/current/current_k_dist)
+:::
+
+
+::: {.column-screen layout-nrow="1"}
+
+![](figures/new/thickness/thickness_k_fit_r_dist)
+
+![](figures/new/thickness/thickness_k_fit_N1_r_dist)
+
+New Fit Width
+:::
+
+::: {.column-screen layout-ncol="4"}
+![](figures/new/current/current_k_r_dist)
+
+![](figures/new/current/current_k_N1_r_dist)
+
+![](figures/new/thickness/thickness_k_r_dist)
+
+![](figures/new/thickness/thickness_k_N1_r_dist)
+
+New
+:::
+
+::: {.column-screen layout-ncol="4"}
+
+![](figures/current/current_r_dist)
+
+![](figures/current/current_N1_r_dist)
+
+![](figures/thickness/thickness_k_r_dist)
+
+![](figures/thickness/thickness_k_N1_r_dist)
+
+Old
+:::
+
+
+::: {.column-screen layout-ncol="4"}
+
+![Wind](figures/ts_method/wind)
+
+![Juno](figures/ts_method/juno)
+
+![Derivative method](figures/ts_method/derivative)
+
+![Fit method](figures/ts_method/fit)
+
+
+![](figures/ts_method/wind_fit)
+
+![](figures/ts_method/all)
+
+:::
+
+
+
+
+
+<!-- ::: {.column-screen layout-nrow="1"}
+
+![Effect of the time resolution on the discontinuity properties](figures/ts_effect_fit_new)
+
+![Effect of the time resolution on the discontinuity properties](figures/ts_effect)
+
+::: -->

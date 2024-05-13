@@ -2,179 +2,49 @@
 title: Solar wind discontinuities spatial evolution in the outer heliosphere
 ---
 
-## Publications
+# Publications
 
 - manuscript please see [here](_manuscript/index.html)
 - AGU poster [here](presentations/AGU23_poster.qmd)
 
-## Updates
+# Introduction
 
-### 03/15/2024
+Juno Orbit
 
-![Discontinuities in log-log scale](figures/l_j_fit_xscale_log)
+- Five-year cruise to Jupiter from 2011 to 2016
+- One earth flyby in 2013
+- Nearly the same Heliographic latitude as Earth
 
-![Same as above but with multiple time resolutions and time windows](figures/l_j_r_fit_xscale_log)
+## Motivations
 
-### 02/27/2024
+Studying the radial distribution of occurrence rate, as well as the properties of solar wind discontinuities may help answer the following questions:
 
-::: {.column-screen}
-::: {#fig-evolution-juno layout-nrow="1"}
-![Evolution of plamsa property using fitting method](figures/l_j_r_fit.png)
+- How does the discontinuities change with the radial distance from the Sun?
 
-![Evolution of plamsa property using derivative method](figures/l_j_r_der.png)
+- How is solar wind discontinuities formed? What is the physical mechanisms?
 
-From top to bottom is Juno observation in 1,2,3,4,5 AU
-:::
-:::
+  - Generated at or near the sun?
 
-### 02/26/2024
+  - Locally generated in the interplanetary space by turbulence?
 
-::: {.column-screen layout-nrow="1"}
-{{< embed notebooks/01_results_julia.ipynb#fig-l-comp >}}
-:::
+Joint observations of JUNO & ARTEMIS & Other missions really provides a unique opportunity!!!
 
-::: {.column-screen layout-nrow="1"}
-{{< embed notebooks/01_results_julia.ipynb#fig-l-j-r-der >}}
-:::
+![](https://www.nasa.gov/wp-content/uploads/2023/03/575573main_Juno20110727-3-43_full.jpg)
 
-::: {.column-screen layout-nrow="1"}
-{{< embed notebooks/01_results_julia.ipynb#fig-l-r-fit >}}
-:::
+{{< video https://www.youtube.com/watch?v=sYp5p2oL51g title='Juno spacecraft trajectory animation' >}}
 
+To eliminate the effect of the solar wind structure, we use data from other missions (mainly at 1AU) to provide a way of normalization.
 
+# Results
 
 
-### 02/25/2024
+# Related works
 
-::: {.column-screen layout-nrow="1"}
-{{< embed notebooks/archive/05_sea.ipynb#fig-fit >}}
-
-{{< embed notebooks/archive/05_sea.ipynb#fig-fit-params >}}
-:::
-
-
-
-### 02/22/2024
-
-::: {.column-screen layout-nrow="1"}
-![First Year](figures/sea/sea_juno_first_year_high.png)
-
-![Last Year](figures/sea/sea_juno_last_year_high.png)
-:::
-
-### 02/20/2024
-
-### 02/19/2024
-
-{{< embed notebooks/04_properties.ipynb#fig-jno-8hz-tau-20-der >}}
-
-### 02/18/2024
-
-![](figures/new/duration/duration_dist_ts_comparison)
-
-#### Thickness
-::: {.column-screen layout-nrow="1"}
-![](figures/new/thickness/thickness_k_dist)
-
-![](figures/new/thickness/thickness_k_dist-8hz)
-
-![](figures/new/thickness/thickness_k_dist-8hz-tau_20)
-:::
-
-
-#### Current Density
-
-::: {.column-screen layout-nrow="1"}
-![](figures/new/current/current_k_dist)
-
-![](figures/new/current/current_k_dist-8hz)
-
-![](figures/new/current/current_k_dist-8hz-tau_20)
-
-:::
-
-
-### 02/17/2024
-
-::: {.column-screen layout-nrow="1"}
-
-![](figures/new/duration/duration_dist)
-
-![](figures/new/thickness/thickness_k_fit_dist)
-
-![](figures/new/current/current_k_dist)
-:::
-
-
-::: {.column-screen layout-nrow="1"}
-
-![](figures/new/thickness/thickness_k_fit_r_dist)
-
-![](figures/new/thickness/thickness_k_fit_N1_r_dist)
-
-New Fit Width
-:::
-
-::: {.column-screen layout-ncol="4"}
-![](figures/new/current/current_k_r_dist)
-
-![](figures/new/current/current_k_N1_r_dist)
-
-![](figures/new/thickness/thickness_k_r_dist)
-
-![](figures/new/thickness/thickness_k_N1_r_dist)
-
-New
-:::
-
-::: {.column-screen layout-ncol="4"}
-
-![](figures/current/current_r_dist)
-
-![](figures/current/current_N1_r_dist)
-
-![](figures/thickness/thickness_k_r_dist)
-
-![](figures/thickness/thickness_k_N1_r_dist)
-
-Old
-:::
-
-
-::: {.column-screen layout-ncol="4"}
-
-![Wind](figures/ts_method/wind)
-
-![Juno](figures/ts_method/juno)
-
-![Derivative method](figures/ts_method/derivative)
-
-![Fit method](figures/ts_method/fit)
-
-
-![](figures/ts_method/wind_fit)
-
-![](figures/ts_method/all)
-
-:::
-
-
-
-
-
-<!-- ::: {.column-screen layout-nrow="1"}
-
-![Effect of the time resolution on the discontinuity properties](figures/ts_effect_fit_new)
-
-![Effect of the time resolution on the discontinuity properties](figures/ts_effect)
-
-::: -->
-
-
-## Related works
-
--   @sodingRadialLatitudinalDependencies2001 studied the radial distribution of discontinuities in the solar wind between 0.3 and 19 AU during solar activity minimum.
--   @liuCharacteristicsInterplanetaryDiscontinuities2021 studied the spatial evolution of the discontinuities from 0.13-0.9 AU, using measurements from the Parker Solar Probe.
+- Radial distribution
+    -   @sodingRadialLatitudinalDependencies2001 studied the radial distribution of discontinuities in the solar wind between 0.3 and 19 AU during solar activity minimum.
+    -   @liuCharacteristicsInterplanetaryDiscontinuities2021 studied the spatial evolution of the discontinuities from 0.13-0.9 AU, using measurements from the Parker Solar Probe.
+- Properties
+    -   @vaskoKineticscaleCurrentSheets2022
 
 [Typical rate of occurrence is about 50 per day at 1AU]{.aside}
 
@@ -185,8 +55,6 @@ Old
 
 Spatial distribution of the discontinuities
 :::
-
-
 
 ::: {.content-visible when-format="html"}
 ::: {.callout-note collapse="false"}
