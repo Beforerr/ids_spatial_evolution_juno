@@ -17,8 +17,15 @@ See [share notes](../../beforerr/docs/research/topics/swd/index.qmd) for
 - formation mechanisms
 -->
 
-# Methods
 
-![](../figures/ts_method/wind_fit.png)
+## Motivation
 
-# References
+Studying the radial evolution of solar wind discontinuities from observations of PSP (0.1 AU – 1 AU) and JUNO (1AU – 5AU) with Earth-orbiting missions (ARTEMIS, Wind) during aligned intervals.
+
+## Methods
+
+![Time resolution effect](../figures/method/time_res_effect.png)
+
+![Tau effect](../figures/method/tau_effect.png)
+
+## References

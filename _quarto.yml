@@ -2,10 +2,10 @@ project:
   type: website
   preview:
     port: 4002
-  # render:
-    # - "*.qmd"
-    # - "*.qmd"
-    # - "!article.qmd"
+  render:
+    - "*.qmd"
+    - "*.ipynb"
+    - "!article.qmd"
 
 website:
   navbar:
@@ -34,6 +34,6 @@ format:
 
 bibliography:
   - files/bibexport.bib
-  - ../research.bib
+  - ../share/bibliography/research.bib
 
 wrap: preserve

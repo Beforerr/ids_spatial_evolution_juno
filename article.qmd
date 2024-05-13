@@ -75,7 +75,9 @@ Furthermore, an analysis of @fig-overview reveals the significance of the heliog
 
 The time resolution of the magnetic field and plasma data for Juno, Wind, ARTEMIS, STEREO is summarized in the table below.
 
+<!-- 
 {{< embed notes.ipynb#tbl-missions >}}
+ -->
 
 ## Model
 

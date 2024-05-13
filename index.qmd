@@ -48,6 +48,12 @@ To eliminate the effect of the solar wind structure, we use data from other miss
 
 ![](figures/l_j_fit_xscale_log.png)
 
+# Appendix
+
+![Time resolution effect](figures/method/time_res_effect.png)
+
+![Tau effect](figures/method/tau_effect.png)
+
 # Related works
 
 - Radial distribution
