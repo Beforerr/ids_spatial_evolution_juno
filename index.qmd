@@ -35,8 +35,18 @@ Joint observations of JUNO & ARTEMIS & Other missions really provides a unique o
 
 To eliminate the effect of the solar wind structure, we use data from other missions (mainly at 1AU) to provide a way of normalization.
 
+
+# Dataset, models, and methods
+
 # Results
 
+## Occurrence rate
+
+![](figures/ocr/ocr_time_cleaned)
+
+## Properties
+
+![](figures/l_j_fit_xscale_log.png)
 
 # Related works
 

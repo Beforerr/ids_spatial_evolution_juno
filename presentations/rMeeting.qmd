@@ -17,5 +17,8 @@ See [share notes](../../beforerr/docs/research/topics/swd/index.qmd) for
 - formation mechanisms
 -->
 
+# Methods
+
+![](../figures/ts_method/wind_fit.png)
 
 # References
