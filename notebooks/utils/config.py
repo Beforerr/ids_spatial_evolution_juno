@@ -7,6 +7,7 @@ from space_analysis.ds.meta import Meta, PlasmaMeta
 from discontinuitypy.datasets import IDsDataset
 from discontinuitypy.config import IDsConfig as IDsConfigBase
 from discontinuitypy.config import SpeasyIDsConfig as SpeasyIDsConfigBase
+from discontinuitypy.missions import WindMeta
 
 from .juno import get_mag_paths
 from math import ceil
@@ -26,7 +27,7 @@ def split_list(lst, n):
 def standardize_plasma_data(data: pl.LazyFrame, meta: PlasmaMeta):
     """
     Standardize plasma data columns across different datasets.
-    
+
     Notes: meta will be updated with the new column names
     """
 
@@ -36,17 +37,20 @@ def standardize_plasma_data(data: pl.LazyFrame, meta: PlasmaMeta):
     return data
 
 
+tau: timedelta = timedelta(seconds=60)
+timerange: list[datetime] = Field(["2011-08-25", "2016-06-30"], validate_default=True)
+
 class IDsConfig(IDsConfigBase):
     tau: timedelta = timedelta(seconds=60)
-    ts: timedelta = timedelta(seconds=1)
-    timerange: list[datetime] = Field(
-        ["2011-08-25", "2016-06-30"], validate_default=True
-    )
-    
+    # ts: timedelta = timedelta(seconds=1)
+    timerange: list[datetime] = timerange
+
     _data_dir = Path("../data/05_reporting")
 
     split: int = 8
 
+class SpeasyIDsConfig(IDsConfig, SpeasyIDsConfigBase):
+    pass
 
 class JunoConfig(IDsConfig):
     name: str = "JNO"
@@ -91,31 +95,25 @@ class JunoConfig(IDsConfig):
             ).update_candidates_with_plasma_data().events
 
 
-class SpeasyIDsConfig(IDsConfig, SpeasyIDsConfigBase):
-    # timerange: list[datetime] = Field(
-    #     ["2011-08-25", "2012-01-01"], validate_default=True
-    # )
+class WindConfig(WindMeta, SpeasyIDsConfig):
     pass
+    
 
-class WindConfig(SpeasyIDsConfig):
-    name: str = "Wind"
+    # mag_meta: Meta = Meta(
+    #     provider="archive/local",
+    #     dataset="WI_H4-RTN_MFI",
+    #     parameters=["BRTN"],
+    # )
 
-    ts: timedelta = timedelta(seconds=1 / 11)
-    mag_meta: Meta = Meta(
-        provider="archive/local",
-        dataset="WI_H4-RTN_MFI",
-        parameters=["BRTN"],
-    )
-
-    plasma_meta: PlasmaMeta = PlasmaMeta(
-        provider="archive/local",
-        dataset="WI_K0_SWE",
-        parameters=[
-            "Np",
-            "V_GSM",
-        ],
-        # TODO: is GSM close to RTN coordinates???
-    )
+    # plasma_meta: PlasmaMeta = PlasmaMeta(
+    #     provider="archive/local",
+    #     dataset="WI_K0_SWE",
+    #     parameters=[
+    #         "Np",
+    #         "V_GSM",
+    #     ],
+    #     # TODO: is GSM close to RTN coordinates???
+    # )
 
 
 class StereoConfig(IDsConfig):
