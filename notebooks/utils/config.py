@@ -8,6 +8,7 @@ from discontinuitypy.datasets import IDsDataset
 from discontinuitypy.config import IDsConfig as IDsConfigBase
 from discontinuitypy.config import SpeasyIDsConfig as SpeasyIDsConfigBase
 from discontinuitypy.missions import WindMeta
+from discontinuitypy.missions import wind_mag_h4_rtn_meta, wind_plasma_k0_swe_meta
 
 from .juno import get_mag_paths
 from math import ceil
@@ -40,17 +41,24 @@ def standardize_plasma_data(data: pl.LazyFrame, meta: PlasmaMeta):
 tau: timedelta = timedelta(seconds=60)
 timerange: list[datetime] = Field(["2011-08-25", "2016-06-30"], validate_default=True)
 
+
 class IDsConfig(IDsConfigBase):
     tau: timedelta = timedelta(seconds=60)
     # ts: timedelta = timedelta(seconds=1)
     timerange: list[datetime] = timerange
 
-    _data_dir = Path("../data/05_reporting")
+    split: int = 16
+    test: bool = False
 
-    split: int = 8
+    def model_post_init(self, __context):
+        if self.test:
+            self.timerange = [datetime(2012, 1, 1), datetime(2012, 1, 2)]
+        super().model_post_init(__context)
+
 
 class SpeasyIDsConfig(IDsConfig, SpeasyIDsConfigBase):
     pass
+
 
 class JunoConfig(IDsConfig):
     name: str = "JNO"
@@ -96,24 +104,10 @@ class JunoConfig(IDsConfig):
 
 
 class WindConfig(WindMeta, SpeasyIDsConfig):
-    pass
-    
-
-    # mag_meta: Meta = Meta(
-    #     provider="archive/local",
-    #     dataset="WI_H4-RTN_MFI",
-    #     parameters=["BRTN"],
-    # )
-
-    # plasma_meta: PlasmaMeta = PlasmaMeta(
-    #     provider="archive/local",
-    #     dataset="WI_K0_SWE",
-    #     parameters=[
-    #         "Np",
-    #         "V_GSM",
-    #     ],
-    #     # TODO: is GSM close to RTN coordinates???
-    # )
+    provider: str = "archive/local"
+    mag_meta: Meta = wind_mag_h4_rtn_meta
+    plasma_meta: PlasmaMeta = wind_plasma_k0_swe_meta
+    split: int = 32
 
 
 class StereoConfig(IDsConfig):
