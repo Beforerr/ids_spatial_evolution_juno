@@ -23,12 +23,14 @@ l_norm_map = :L_k_norm => l_norm_lab
 l_log_map = :L_k => log10 => L"Log %$l_lab"
 l_norm_log_map = :L_k_norm => log10 => L"Log %$l_norm_lab"
 
-
-current_map = :j0_k => j_lab
-current_norm_map = :j0_k_norm => j_norm_lab
-
-
 j_map = :j0_k => j_lab
 j_norm_map = :j0_k_norm => j_norm_lab
 j_log_map = :j0_k => log10 => L"Log %$j_lab"
 j_norm_log_map = :j0_k_norm => log10 => L"Log %$j_norm_lab"
+
+log_axis = (yscale=log10, xscale=log10)
+
+j_limit = (10^-1, 10^1)
+j_norm_limit = (10^-2, 2)
+
+datalimits_f = x -> quantile(x, [0.05, 0.97])

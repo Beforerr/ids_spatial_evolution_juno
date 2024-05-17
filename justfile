@@ -9,6 +9,9 @@ env-install:
 env-update:
    micromamba install --file environment.yml
 
+env-update-julia:
+   rsync ~/projects/share/src/Discontinuity.jl notebooks/utils/
+
 preview:
    quarto preview --no-render
 
