@@ -3,9 +3,13 @@ using Dates
 
 data_path = "$(@__DIR__)/../../data/05_reporting"
 
+function load(path::String)
+    DiscontinuityIO.load(path) |> process
+end
+
 function load(;tau = 60, ts = 1.00, name = "JNO", method = "fit", dir = data_path)
     ts_str = @sprintf "ts_%.2fs" ts
-    df = DiscontinuityIO.load(joinpath(dir, "events.$name.$method.$(ts_str)_tau_$(tau)s.arrow"))
+    df =load(joinpath(dir, "events.$name.$method.$(ts_str)_tau_$(tau)s.arrow"))
     df.tau .= tau
     df.ts .= ts
     
@@ -24,6 +28,15 @@ function load_tau(tau)
     println("Number of events: ", size(df, 1))
     df
 end
+
+function load_taus(taus)
+@chain begin
+    vcat(load_tau.(taus)...);
+    sort(:tau)
+    unique([:"t.d_start", :"t.d_end"]) # remove events that appear in multiple taus datasets
+end
+end
+
 
 function process(df)
     df_tmp = @transform(df,
