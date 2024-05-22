@@ -4,10 +4,9 @@ default:
 update: update-overleaf clean update-repo render publish
 
 env-install:
-   micromamba env create --file environment.yml
-
-env-update:
-   micromamba install --file environment.yml
+   pixi install
+   # conda env create --file environment.yml
+   # conda install --file environment.yml
 
 env-update-julia:
    rsync ~/projects/share/src/Discontinuity.jl notebooks/utils/
@@ -54,7 +53,6 @@ sync-overleaf:
    quarto render --profile man --to agu-pdf
    $HOME/Library/TinyTeX/texmf-dist/scripts/bibexport/bibexport.sh -o files/bibexport.bib --nosave article.aux
    rsync _manuscript/_tex/ overleaf/ -r
-
 
 publish-poster:
   Rscript -e 'pagedown::chrome_print("notebooks/manuscripts/.AGU23_poster.rmd")'

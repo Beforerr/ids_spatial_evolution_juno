@@ -14,6 +14,8 @@ _manuscript/
 .DS_Store
 /_*.local
 
+.pixi
+
 
 ##########################
 
