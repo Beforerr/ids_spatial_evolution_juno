@@ -26,10 +26,9 @@ code-links:
   - href: ../
     text: Website
   - repo
-  - href: https://app.tana.inc?nodeid=Kmdzbyj-36NM
-    text: Tana
   - href: https://www.overleaf.com/project/65b0a9c80a3616adf6e599e8
     text: Overleaf
+
 abstract: We present a study of the spatial evolution of solar wind discontinuities in the outer heliosphere using data from the Juno spacecraft during its cruise phase. We identify and analyze the properties of the discontinuities at different radial distances from the Sun. By differentiating the temporal effect (correlated with solar activity) and spatial variations (correlated with radial distance), we find that (1) the normalized occurrence rate of IDs drops with the radial distance from the Sun, following a $1/r$ law; (2) The thickness of IDs increases with the radial distance from the Sun, but after normalization to the ion inertial length, the thickness of IDs decreases; (3) The current intensity of IDs decreases with the radial distance from the Sun, but after normalization to the Alfven current, the current intensity of IDs increases.
 ---
 
@@ -50,10 +49,6 @@ The goal of our paper is to investigate, statistically, discontinuities at diffe
 First, the missions, instruments and data used are listed. Then, we brieﬂy describe the method used to identify the discontinuities and the model used to estimate the plasma state at Juno location due to the lack of plasma data during its cruise phase. Finally, we present the results of the spatial evolution of the discontinuities with respect to their characteristics (spatial scales and current density), and discuss the implications of our findings.
 
 ::: {#fig-overview}
-
-<!-- ![](figures/juno_orbit_white){#fig-orbit width=85%} -->
-
-<!-- ![](figures/juno-hg-loc_sunspot-number){#fig-hg-loc-sunspot} -->
 
 ![](figures/fig_overview)
 

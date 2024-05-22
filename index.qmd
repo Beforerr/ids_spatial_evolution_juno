@@ -1,5 +1,10 @@
 ---
 title: Solar wind discontinuities spatial evolution in the outer heliosphere
+code-links:
+  - href: zotero://select/library/collections/WS2YQQZB
+    text: Zotero
+  - href: https://app.tana.inc?nodeid=Kmdzbyj-36NM
+    text: Tana
 ---
 
 # Publications
