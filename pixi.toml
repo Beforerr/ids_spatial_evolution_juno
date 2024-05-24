@@ -20,5 +20,6 @@ scipy = "*"
 
 [pypi-dependencies]
 pyspedas = "*"
+great_tables = "*"
 discontinuitypy = { path = "../ids_finder", editable = true}
 Beforerr = { path = "../beforerr_dev", editable = true}

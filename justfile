@@ -5,8 +5,6 @@ update: update-overleaf clean update-repo render publish
 
 env-install:
    pixi install
-   # conda env create --file environment.yml
-   # conda install --file environment.yml
 
 env-update-julia:
    rsync ~/projects/share/src/Discontinuity.jl notebooks/utils/
@@ -44,6 +42,9 @@ clean:
 
 update-repo:
    git add .; git commit -am "update"; git push
+
+clone-overleaf:
+   git clone https://git@git.overleaf.com/65b0a9c80a3616adf6e599e8 overleaf
 
 update-overleaf: sync-overleaf
    cd overleaf; git add .; git commit -am "update"; git push

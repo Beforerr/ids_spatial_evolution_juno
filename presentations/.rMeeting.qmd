@@ -1,6 +1,5 @@
 ---
 title: "Current Sheets in the Solar Wind: JUNO Observations in the Outer Heliosphere"
-subtitle: SPARTHB
 author:
   - name: Zijin Zhang
   - name: Anton V. Artemyev

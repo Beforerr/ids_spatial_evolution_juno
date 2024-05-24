@@ -1,3 +1,8 @@
+---
+title: Notes
+jupyter: python3
+---
+
 ## Updates
 
 ### 03/15/2024
@@ -149,7 +154,20 @@ Old
 :::
 
 
+## Solar Wind Model
 
+Sadly, JUNO does not provide plasma data during the cruise phase, so to estimate the plasma state we will use MHD model.
+
+We are using [Michigan Solar WInd Model 2D (MSWIM2D)](http://csem.engin.umich.edu/MSWIM2D/), which models the solar wind propagation in 2D using the BATSRUS MHD solver. @keeblerMSWIM2DTwodimensionalOuter2022
+
+Some key points about the model
+
+-   Representing the solar wind in the ecliptic plane from 1 to 75 AU
+-   2D MHD model, using the BATSRUS MHD solver
+-   Inclusion of neutral hydrogen (important for the outer heliosphere)
+-   Inner boundary is filled by time-shifting in situ data from multiple spacecraft
+
+For model validation part, please see [JUNO Model Report](notebooks/20_model.ipynb).
 
 
 <!-- 
@@ -159,3 +177,95 @@ Old
 ![Effect of the time resolution on the discontinuity properties](figures/ts_effect)
 :::
 -->
+
+# TODOs
+
+Science part
+
+-   Analysis
+    -   [ ] Contribution of discontinuities to the power spectrum
+    -   [ ] Check Datagap
+    -   [ ] Check `ARTEMIS-B` data in different states (solar wind, magnetosheath, magnetotail, moon wake)
+    -   [ ] Distribution of \|B\| over radius
+    -   [ ] JUNO from 2012-09\~2012-10 lack of IDS and extreme large thickness
+    -   [ ] Wind data
+    -   [ ] Add error bar
+    -   [ ] Validate the effects of calibrate candidate duration
+    -   [ ] Validate model density with `Voyager`
+-   Identifaction
+    -   [ ] Ensemble forest?
+    -   [ ] Smoothing is important?
+    -   [ ] Check change point algorithm
+-   Visualize data gaps
+-   Features
+    -   [ ] Thickness in N direction
+    -   [ ] Use high resolution data for feature extraction
+-   Compare with other methods of identifying IDs
+    -   [ ] Verify with other methods of identifying IDs
+-   [x] Incorporate solar wind propagation model
+    -   [x] Verify with solar wind propagation model
+        -   [x] Coordinate transformation
+
+## Infos
+
+```{python}
+# | label: tbl-missions
+# | tbl-cap: Missions info
+import yaml
+import polars as pl
+from functools import reduce
+from great_tables import GT
+
+with open("data/info.yml", "r") as file:
+    data = yaml.safe_load(file)
+
+
+# Recursive function to find magnetometers
+def find_instrument(instruments, ins_type):
+    instrument = {}
+    for key, value in instruments.items():
+        if value.get("type") == ins_type:
+            instrument = value
+        elif "instruments" in value:
+            instrument = find_instrument(value["instruments"], ins_type)
+    return instrument
+
+
+def parse_yaml(data, info, ins_type=None):
+    rows = []
+
+    for mission, details in data["missions"].items():
+        if ins_type is None:
+            rows.append([mission, details.get(info)])
+            continue
+        instruments = details.get("instruments", {})
+        instrument = find_instrument(instruments, ins_type)
+        rows.append([mission, instrument.get(info)])
+
+    return pl.DataFrame(rows, schema=["Mission", info])
+
+
+# Define the merge function
+def merge_dfs(left: pl.DataFrame, right, on="Mission", how="outer_coalesce"):
+    return left.join(right, on=on, how=how)
+
+# Parse and display the table
+df_mag = parse_yaml(data, "time_resolutions", "magnetometer").rename(
+    {"time_resolutions": "δt(B)"}
+)
+df_plasma = parse_yaml(data, "time_resolutions", "plasma").rename(
+    {"time_resolutions": "δt(plasma)"}
+)
+df_r = parse_yaml(data, "radial_coverage")
+df_time = parse_yaml(data, "launch_date")
+df_link = parse_yaml(data, "website")
+
+df_list = [df_mag, df_plasma, df_r, df_time, df_link]  # Replace with your DataFrames
+
+df_merged = reduce(merge_dfs, df_list).with_columns(pl.col("website").list.join(", "))
+
+GT(df_merged.to_pandas()).fmt_markdown("website").cols_label(
+    radial_coverage="Radial coverage",
+    launch_date="Launch date",
+)
+```
