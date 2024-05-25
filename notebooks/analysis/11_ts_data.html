@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.4.547">
+<meta name="generator" content="quarto-1.5.33">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -33,7 +33,7 @@ div.sourceCode { overflow: auto; }
 }
 @media print {
 pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
 }
 pre.numberSource code
   { counter-reset: source-line 0; }
@@ -115,7 +115,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
       <div class="navbar-container container-fluid">
             <div id="quarto-search" class="" title="Search"></div>
-          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
   <span class="navbar-toggler-icon"></span>
 </button>
           <div class="collapse navbar-collapse" id="navbarCollapse">
@@ -129,7 +129,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span class="menu-text">Manuscript</span></a>
   </li>  
   <li class="nav-item dropdown ">
-    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-presentation" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-presentation" role="link" data-bs-toggle="dropdown" aria-expanded="false">
  <span class="menu-text">Presentation</span>
     </a>
     <ul class="dropdown-menu" aria-labelledby="nav-menu-presentation">    
@@ -145,18 +145,18 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   </li>
 </ul>
           </div> <!-- /navcollapse -->
-          <div class="quarto-navbar-tools">
+            <div class="quarto-navbar-tools">
     <a href="https://github.com/Beforerr/ids_spatial_evolution_juno" title="" class="quarto-navigation-tool px-1" aria-label=""><i class="bi bi-github"></i></a>
 </div>
       </div> <!-- /container-fluid -->
     </nav>
   <nav class="quarto-secondary-nav">
     <div class="container-fluid d-flex">
-      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
         <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../notebooks/00_overview.html">Notebooks</a></li><li class="breadcrumb-item"><a href="../../notebooks/analysis/00_base.html">Analysis</a></li><li class="breadcrumb-item"><a href="../../notebooks/analysis/11_ts_data.html">Time resolution effect (data)</a></li></ol></nav>
-        <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
     </div>
   </nav>
@@ -181,9 +181,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true">
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true">
  <span class="menu-text">Notebooks</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
@@ -202,14 +202,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../notebooks/04_properties.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">SWD Properties</span></a>
+  <a href="../../notebooks/10_examples.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Discontinuities examples</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../notebooks/10_examples.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Discontinuities examples</span></a>
+  <a href="../../notebooks/12_tau_analysis.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">tau effect</span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -221,14 +221,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../notebooks/30_data.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">30 Data</span></a>
+ <span class="menu-text">Different time windows</span></a>
   </div>
 </li>
           <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true">
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true">
  <span class="menu-text">Analysis</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
@@ -277,31 +277,25 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../notebooks/analysis/12_tau_analysis.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Justification for the tau</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
   <a href="../../notebooks/analysis/12_tau_data.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Justification for the tau</span></a>
+ <span class="menu-text">Justification for the tau (data)</span></a>
   </div>
 </li>
       </ul>
   </li>
           <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="false">
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="false">
  <span class="menu-text">Archive</span></a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="false" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="false" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
       <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth2 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../notebooks/archive/04_calc.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">04 Calc</span></a>
+  <a href="../../notebooks/archive/04_properties.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">SWD Properties</span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -316,7 +310,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <div class="sidebar-item-container"> 
             <a href="../../notebooks/missions/index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Missions</span></a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-expanded="false" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="false" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
@@ -331,7 +325,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <div class="sidebar-item-container"> 
             <a href="../../notebooks/missions/stereo/index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">IDs from STEREO</span></a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" aria-expanded="false" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" role="navigation" aria-expanded="false" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
@@ -348,7 +342,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <div class="sidebar-item-container"> 
             <a href="../../notebooks/missions/themis/index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">IDs from ARTHEMIS</span></a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" aria-expanded="false" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" role="navigation" aria-expanded="false" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
@@ -375,30 +369,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
           <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a href="../../notebooks/missions/wind/index.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Wind</span></a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-7" aria-expanded="false" aria-label="Toggle section">
+            <a href="../../notebooks/missions/juno/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">IDs from Juno</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-7" role="navigation" aria-expanded="false" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
       <ul id="quarto-sidebar-section-7" class="collapse list-unstyled sidebar-section depth3 ">  
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../notebooks/missions/wind/state.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Wind State data pipeline</span></a>
-  </div>
-</li>
-      </ul>
-  </li>
-          <li class="sidebar-item sidebar-item-section">
-      <div class="sidebar-item-container"> 
-            <a href="../../notebooks/missions/juno/index.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">IDs from Juno</span></a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-8" aria-expanded="false" aria-label="Toggle section">
-            <i class="bi bi-chevron-right ms-2"></i>
-          </a> 
-      </div>
-      <ul id="quarto-sidebar-section-8" class="collapse list-unstyled sidebar-section depth3 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../notebooks/missions/juno/state.html" class="sidebar-item-text sidebar-link">
@@ -413,13 +390,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-9" aria-expanded="true">
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-8" role="navigation" aria-expanded="true">
  <span class="menu-text">Presentations</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-9" aria-expanded="true" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-8" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-9" class="collapse list-unstyled sidebar-section depth1 show">  
+      <ul id="quarto-sidebar-section-8" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../presentations/AGU23_poster.html" class="sidebar-item-text sidebar-link">
@@ -466,112 +443,258 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <section id="process-wind-data" class="level2">
 <h2 class="anchored" data-anchor-id="process-wind-data">Process Wind data</h2>
-<div id="cell-2" class="cell" data-execution_count="2">
+<div id="cell-2" class="cell" data-execution_count="13">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="op">%</span>load_ext autoreload</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="op">%</span>autoreload <span class="dv">2</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
-<div id="cell-3" class="cell" data-execution_count="2">
+<div id="cell-3" class="cell" data-execution_count="14">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> space_analysis.utils.speasy <span class="im">import</span> Variables</span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> discontinuitypy.datasets <span class="im">import</span> IDsDataset</span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> discontinuitypy.utils.basic <span class="im">import</span> resample</span>
-<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> beforerr.polars <span class="im">import</span> pl_norm</span>
-<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> datetime <span class="im">import</span> timedelta</span>
-<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> space_analysis.plasma.formulary <span class="im">import</span> df_thermal_spd2temp</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> datetime <span class="im">import</span> timedelta</span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> discontinuitypy.missions <span class="im">import</span> wind_mag_h4_rtn_meta, wind_plasma_k0_swe_meta</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
-<div id="cell-4" class="cell">
+<div id="cell-4" class="cell" data-execution_count="15">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>ts <span class="op">=</span> timedelta(seconds<span class="op">=</span><span class="dv">1</span> <span class="op">/</span> <span class="dv">11</span>)</span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>tau <span class="op">=</span> timedelta(seconds<span class="op">=</span><span class="dv">60</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
-<div id="cell-5" class="cell" data-execution_count="4">
+<div id="cell-5" class="cell" data-execution_count="16">
 <details class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>timerange <span class="op">=</span> [<span class="st">'2016-01-01'</span>, <span class="st">'2016-06-29'</span>]</span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>wind_mag_vars <span class="op">=</span> Variables(</span>
-<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>    provider <span class="op">=</span> <span class="st">'archive/local'</span>,</span>
-<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>    dataset<span class="op">=</span><span class="st">"WI_H4-RTN_MFI"</span>,</span>
-<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>    parameters<span class="op">=</span>[<span class="st">"BRTN"</span>],</span>
-<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>    timerange<span class="op">=</span>timerange</span>
-<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a>wind_plasma_vars <span class="op">=</span> Variables(</span>
-<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a>    dataset<span class="op">=</span><span class="st">"WI_K0_SWE"</span>,</span>
-<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a>    parameters<span class="op">=</span>[<span class="st">"Np"</span>, <span class="st">"V_GSM"</span>, <span class="st">"THERMAL_SPD"</span>],</span>
-<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a>    timerange<span class="op">=</span>timerange,</span>
-<span id="cb4-13"><a href="#cb4-13" aria-hidden="true" tabindex="-1"></a>).retrieve_data()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>timerange <span class="op">=</span> [<span class="st">"2016-01-01"</span>, <span class="st">"2016-06-29"</span>]</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>provider <span class="op">=</span> <span class="st">"archive/local"</span></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>mag_meta <span class="op">=</span> wind_mag_h4_rtn_meta</span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>plasma_meta <span class="op">=</span> wind_plasma_k0_swe_meta</span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>wind_mag_vars <span class="op">=</span> Variables(</span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>    timerange<span class="op">=</span>timerange,</span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a>    <span class="op">**</span>mag_meta.model_dump(),</span>
+<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a>    provider<span class="op">=</span>provider,</span>
+<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a>wind_plasma_vars <span class="op">=</span> Variables(</span>
+<span id="cb4-13"><a href="#cb4-13" aria-hidden="true" tabindex="-1"></a>    timerange<span class="op">=</span>timerange,</span>
+<span id="cb4-14"><a href="#cb4-14" aria-hidden="true" tabindex="-1"></a>    <span class="op">**</span>plasma_meta.model_dump(),</span>
+<span id="cb4-15"><a href="#cb4-15" aria-hidden="true" tabindex="-1"></a>    provider<span class="op">=</span>provider,</span>
+<span id="cb4-16"><a href="#cb4-16" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
-<div id="cell-6" class="cell">
+<div id="cell-6" class="cell" data-execution_count="11">
 <details class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>wind_density_col <span class="op">=</span> wind_plasma_vars.data[<span class="dv">0</span>].columns[<span class="dv">0</span>]</span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>wind_vec_cols <span class="op">=</span> wind_plasma_vars.data[<span class="dv">1</span>].columns</span>
-<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>wind_temperature_col <span class="op">=</span> wind_plasma_vars.data[<span class="dv">2</span>].columns[<span class="dv">0</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>wind_mag_data <span class="op">=</span> wind_mag_vars.to_polars()</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>wind_plasma_data <span class="op">=</span> wind_plasma_vars.to_polars()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
-<div id="cell-7" class="cell" data-execution_count="8">
+<div id="cell-7" class="cell" data-execution_count="19">
 <details class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>wind_mag_data <span class="op">=</span> wind_mag_vars.to_polars()</span>
-<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>wind_plasma_data <span class="op">=</span> (</span>
-<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>    wind_plasma_vars.to_polars()</span>
-<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>    .with_columns(</span>
-<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a>        plasma_speed<span class="op">=</span>pl_norm(wind_vec_cols),</span>
-<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a>    )</span>
-<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a>    .pipe(df_thermal_spd2temp, wind_temperature_col)</span>
-<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a>    .rename(</span>
-<span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a>        {</span>
-<span id="cb6-11"><a href="#cb6-11" aria-hidden="true" tabindex="-1"></a>            wind_density_col: <span class="st">"plasma_density"</span>,</span>
-<span id="cb6-12"><a href="#cb6-12" aria-hidden="true" tabindex="-1"></a>        }</span>
-<span id="cb6-13"><a href="#cb6-13" aria-hidden="true" tabindex="-1"></a>    )</span>
-<span id="cb6-14"><a href="#cb6-14" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
-</div>
-<div id="cell-8" class="cell" data-execution_count="10">
-<details class="code-fold">
-<summary>Code</summary>
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co"># for freq in [11, 5 , 2, 1, 0.5]:</span></span>
-<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> freq <span class="kw">in</span> [<span class="dv">5</span>]:</span>
-<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>    ts <span class="op">=</span> timedelta(seconds<span class="op">=</span><span class="dv">1</span> <span class="op">/</span> freq)</span>
-<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>    wind_ids_dataset <span class="op">=</span> (</span>
-<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a>        IDsDataset(</span>
-<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a>            mag_data<span class="op">=</span>wind_mag_data.pipe(resample, every<span class="op">=</span>ts),</span>
-<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a>            plasma_data<span class="op">=</span>wind_plasma_data,</span>
-<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a>            tau<span class="op">=</span>tau,</span>
-<span id="cb7-10"><a href="#cb7-10" aria-hidden="true" tabindex="-1"></a>            ts<span class="op">=</span>ts,</span>
-<span id="cb7-11"><a href="#cb7-11" aria-hidden="true" tabindex="-1"></a>            vec_cols<span class="op">=</span>wind_vec_cols,</span>
-<span id="cb7-12"><a href="#cb7-12" aria-hidden="true" tabindex="-1"></a>            density_col<span class="op">=</span><span class="st">"plasma_density"</span>,</span>
-<span id="cb7-13"><a href="#cb7-13" aria-hidden="true" tabindex="-1"></a>            temperature_col<span class="op">=</span><span class="st">"plasma_temperature"</span>,</span>
-<span id="cb7-14"><a href="#cb7-14" aria-hidden="true" tabindex="-1"></a>        )</span>
-<span id="cb7-15"><a href="#cb7-15" aria-hidden="true" tabindex="-1"></a>        .find_events(return_best_fit<span class="op">=</span><span class="va">False</span>)</span>
-<span id="cb7-16"><a href="#cb7-16" aria-hidden="true" tabindex="-1"></a>        .update_candidates_with_plasma_data()</span>
-<span id="cb7-17"><a href="#cb7-17" aria-hidden="true" tabindex="-1"></a>        .export(<span class="ss">f"../data/05_reporting/events.Wind.ts_</span><span class="sc">{</span><span class="dv">1</span><span class="op">/</span>freq<span class="sc">:.2f}</span><span class="ss">s_tau_60s.arrow"</span>)</span>
-<span id="cb7-18"><a href="#cb7-18" aria-hidden="true" tabindex="-1"></a>    )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co"># for freq in [11, 5 , 2, 1, 0.5]:</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> freq <span class="kw">in</span> [<span class="dv">5</span>]:</span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>    ts <span class="op">=</span> timedelta(seconds<span class="op">=</span><span class="dv">1</span> <span class="op">/</span> freq)</span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>    wind_ids_dataset <span class="op">=</span> (</span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a>        IDsDataset(</span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a>            mag_data<span class="op">=</span>wind_mag_data.pipe(resample, every<span class="op">=</span>ts),</span>
+<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a>            plasma_data<span class="op">=</span>wind_plasma_data,</span>
+<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a>            tau<span class="op">=</span>tau,</span>
+<span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a>            ts<span class="op">=</span>ts,</span>
+<span id="cb6-11"><a href="#cb6-11" aria-hidden="true" tabindex="-1"></a>            mag_meta<span class="op">=</span>mag_meta,</span>
+<span id="cb6-12"><a href="#cb6-12" aria-hidden="true" tabindex="-1"></a>            plasma_meta<span class="op">=</span>plasma_meta,</span>
+<span id="cb6-13"><a href="#cb6-13" aria-hidden="true" tabindex="-1"></a>        )</span>
+<span id="cb6-14"><a href="#cb6-14" aria-hidden="true" tabindex="-1"></a>        .find_events(return_best_fit<span class="op">=</span><span class="va">False</span>)</span>
+<span id="cb6-15"><a href="#cb6-15" aria-hidden="true" tabindex="-1"></a>        .update_events()</span>
+<span id="cb6-16"><a href="#cb6-16" aria-hidden="true" tabindex="-1"></a>        .export(<span class="ss">f"data/ts_effect/events.Wind.ts_</span><span class="sc">{</span><span class="dv">1</span><span class="op">/</span>freq<span class="sc">:.2f}</span><span class="ss">s_tau_60s.arrow"</span>)</span>
+<span id="cb6-17"><a href="#cb6-17" aria-hidden="true" tabindex="-1"></a>    )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-stderr">
-<pre><code>08-Feb-24 13:47:14: UserWarning: Distributing &lt;class 'pandas.core.frame.DataFrame'&gt; object. This may take some time.
+<pre><code>15-May-24 18:09:44: UserWarning: Ray execution environment not yet initialized. Initializing...
+To remove this warning, run the following python code before doing dataframe operations:
+
+    import ray
+    ray.init()
+
+
+2024-05-15 18:09:46,850 INFO worker.py:1724 -- Started a local Ray instance.
+15-May-24 18:09:48: UserWarning: Distributing &lt;class 'pandas.core.frame.DataFrame'&gt; object. This may take some time.
 </code></pre>
 </div>
 <div class="cell-output cell-output-display">
 <script type="application/vnd.jupyter.widget-view+json">
-{"model_id":"53e4b99e0a0846ad9bec053a04d4efea","version_major":2,"version_minor":0,"quarto_mimetype":"application/vnd.jupyter.widget-view+json"}
+{"model_id":"7fdb2dbb773f4ba4a4ebab911615c551","version_major":2,"version_minor":0,"quarto_mimetype":"application/vnd.jupyter.widget-view+json"}
 </script>
 </div>
 <div class="cell-output cell-output-display">
 <script type="application/vnd.jupyter.widget-view+json">
-{"model_id":"1714dee96d394ec2ae1f3e9315b7613a","version_major":2,"version_minor":0,"quarto_mimetype":"application/vnd.jupyter.widget-view+json"}
+{"model_id":"bc96184bfe0a4f25b59b164a3754502a","version_major":2,"version_minor":0,"quarto_mimetype":"application/vnd.jupyter.widget-view+json"}
 </script>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>(_deploy_ray_func pid=78514) 15-May-24 18:09:56: RuntimeWarning: overflow encountered in exp
+(_deploy_ray_func pid=78514) 
+(_deploy_ray_func pid=78514) 15-May-24 18:09:57: RuntimeWarning: overflow encountered in exp
+(_deploy_ray_func pid=78514) 
+(_deploy_ray_func pid=78514) 15-May-24 18:10:02: RuntimeWarning: overflow encountered in exp [repeated 11x across cluster] (Ray deduplicates logs by default. Set RAY_DEDUP_LOGS=0 to disable log deduplication, or see https://docs.ray.io/en/master/ray-observability/ray-logging.html#log-deduplication for more options.)
+(_deploy_ray_func pid=78514)  [repeated 11x across cluster]
+(_deploy_ray_func pid=78514) 15-May-24 18:10:07: RuntimeWarning: overflow encountered in exp [repeated 10x across cluster]
+(_deploy_ray_func pid=78514)  [repeated 10x across cluster]
+(_deploy_ray_func pid=78517) 15-May-24 18:10:13: RuntimeWarning: overflow encountered in exp [repeated 5x across cluster]
+(_deploy_ray_func pid=78517)  [repeated 5x across cluster]</code></pre>
+</div>
+<div class="cell-output cell-output-error">
+<div class="ansi-escaped-output">
+<pre><span class="ansi-red-fg">---------------------------------------------------------------------------</span>
+<span class="ansi-red-fg">ValueError</span>                                Traceback (most recent call last)
+Cell <span class="ansi-green-fg">In[19], line 15</span>
+<span class="ansi-green-fg ansi-bold">      2</span> <span style="font-weight:bold;color:rgb(0,135,0)">for</span> freq <span style="font-weight:bold;color:rgb(175,0,255)">in</span> [<span style="color:rgb(98,98,98)">5</span>]:
+<span class="ansi-green-fg ansi-bold">      3</span>     ts <span style="color:rgb(98,98,98)">=</span> timedelta(seconds<span style="color:rgb(98,98,98)">=</span><span style="color:rgb(98,98,98)">1</span> <span style="color:rgb(98,98,98)">/</span> freq)
+<span class="ansi-green-fg ansi-bold">      5</span>     wind_ids_dataset <span style="color:rgb(98,98,98)">=</span> (
+<span class="ansi-green-fg ansi-bold">      6</span>         <span class="ansi-yellow-bg">IDsDataset</span><span class="ansi-yellow-bg">(</span>
+<span class="ansi-green-fg ansi-bold">      7</span> <span class="ansi-yellow-bg">            </span><span class="ansi-yellow-bg">mag_data</span><span style="color:rgb(98,98,98)" class="ansi-yellow-bg">=</span><span class="ansi-yellow-bg">wind_mag_data</span><span style="color:rgb(98,98,98)" class="ansi-yellow-bg">.</span><span class="ansi-yellow-bg">pipe</span><span class="ansi-yellow-bg">(</span><span class="ansi-yellow-bg">resample</span><span class="ansi-yellow-bg">,</span><span class="ansi-yellow-bg"> </span><span class="ansi-yellow-bg">every</span><span style="color:rgb(98,98,98)" class="ansi-yellow-bg">=</span><span class="ansi-yellow-bg">ts</span><span class="ansi-yellow-bg">)</span><span class="ansi-yellow-bg">,</span>
+<span class="ansi-green-fg ansi-bold">      8</span> <span class="ansi-yellow-bg">            </span><span class="ansi-yellow-bg">plasma_data</span><span style="color:rgb(98,98,98)" class="ansi-yellow-bg">=</span><span class="ansi-yellow-bg">wind_plasma_data</span><span class="ansi-yellow-bg">,</span>
+<span class="ansi-green-fg ansi-bold">      9</span> <span class="ansi-yellow-bg">            </span><span class="ansi-yellow-bg">tau</span><span style="color:rgb(98,98,98)" class="ansi-yellow-bg">=</span><span class="ansi-yellow-bg">tau</span><span class="ansi-yellow-bg">,</span>
+<span class="ansi-green-fg ansi-bold">     10</span> <span class="ansi-yellow-bg">            </span><span class="ansi-yellow-bg">ts</span><span style="color:rgb(98,98,98)" class="ansi-yellow-bg">=</span><span class="ansi-yellow-bg">ts</span><span class="ansi-yellow-bg">,</span>
+<span class="ansi-green-fg ansi-bold">     11</span> <span class="ansi-yellow-bg">            </span><span class="ansi-yellow-bg">mag_meta</span><span style="color:rgb(98,98,98)" class="ansi-yellow-bg">=</span><span class="ansi-yellow-bg">mag_meta</span><span class="ansi-yellow-bg">,</span>
+<span class="ansi-green-fg ansi-bold">     12</span> <span class="ansi-yellow-bg">            </span><span class="ansi-yellow-bg">plasma_meta</span><span style="color:rgb(98,98,98)" class="ansi-yellow-bg">=</span><span class="ansi-yellow-bg">plasma_meta</span><span class="ansi-yellow-bg">,</span>
+<span class="ansi-green-fg ansi-bold">     13</span> <span class="ansi-yellow-bg">        </span><span class="ansi-yellow-bg">)</span>
+<span class="ansi-green-fg ansi-bold">     14</span> <span class="ansi-yellow-bg">        </span><span style="color:rgb(98,98,98)" class="ansi-yellow-bg">.</span><span class="ansi-yellow-bg">find_events</span><span class="ansi-yellow-bg">(</span><span class="ansi-yellow-bg">return_best_fit</span><span style="color:rgb(98,98,98)" class="ansi-yellow-bg">=</span><span style="font-weight:bold;color:rgb(0,135,0)" class="ansi-yellow-bg">False</span><span class="ansi-yellow-bg">)</span>
+<span class="ansi-green-fg">---&gt; 15</span> <span class="ansi-yellow-bg">        </span><span style="color:rgb(98,98,98)" class="ansi-yellow-bg">.</span><span class="ansi-yellow-bg">update_events</span><span class="ansi-yellow-bg">(</span><span class="ansi-yellow-bg">)</span>
+<span class="ansi-green-fg ansi-bold">     16</span>         <span style="color:rgb(98,98,98)">.</span>export(<span style="color:rgb(175,0,0)">f</span><span style="color:rgb(175,0,0)">"</span><span style="color:rgb(175,0,0)">data/ts_effect/events.Wind.ts_</span><span style="font-weight:bold;color:rgb(175,95,135)">{</span><span style="color:rgb(98,98,98)">1</span><span style="color:rgb(98,98,98)">/</span>freq<span style="font-weight:bold;color:rgb(175,95,135)">:</span><span style="color:rgb(175,0,0)">.2f</span><span style="font-weight:bold;color:rgb(175,95,135)">}</span><span style="color:rgb(175,0,0)">s_tau_60s.arrow</span><span style="color:rgb(175,0,0)">"</span>)
+<span class="ansi-green-fg ansi-bold">     17</span>     )
+
+File <span class="ansi-green-fg">~/micromamba/envs/psp_conjunction/lib/python3.11/site-packages/discontinuitypy/datasets.py:134</span>, in <span class="ansi-cyan-fg">IDsDataset.update_events</span><span class="ansi-blue-fg">(self, **kwargs)</span>
+<span class="ansi-green-fg ansi-bold">    133</span> <span style="font-weight:bold;color:rgb(0,135,0)">def</span> <span style="color:rgb(0,0,255)">update_events</span>(<span style="color:rgb(0,135,0)">self</span>, <span style="color:rgb(98,98,98)">*</span><span style="color:rgb(98,98,98)">*</span>kwargs):
+<span class="ansi-green-fg">--&gt; 134</span>     <span style="font-weight:bold;color:rgb(0,135,0)">return</span> <span style="color:rgb(0,135,0)" class="ansi-yellow-bg">self</span><span style="color:rgb(98,98,98)" class="ansi-yellow-bg">.</span><span class="ansi-yellow-bg">update_events_with_plasma_data</span><span class="ansi-yellow-bg">(</span>
+<span class="ansi-green-fg ansi-bold">    135</span> <span class="ansi-yellow-bg">        </span><span style="color:rgb(98,98,98)" class="ansi-yellow-bg">*</span><span style="color:rgb(98,98,98)" class="ansi-yellow-bg">*</span><span class="ansi-yellow-bg">kwargs</span>
+<span class="ansi-green-fg ansi-bold">    136</span> <span class="ansi-yellow-bg">    </span><span class="ansi-yellow-bg">)</span><span style="color:rgb(98,98,98)">.</span>update_events_with_temp_data(<span style="color:rgb(98,98,98)">*</span><span style="color:rgb(98,98,98)">*</span>kwargs)
+
+File <span class="ansi-green-fg">~/micromamba/envs/psp_conjunction/lib/python3.11/site-packages/discontinuitypy/datasets.py:148</span>, in <span class="ansi-cyan-fg">IDsDataset.update_events_with_plasma_data</span><span class="ansi-blue-fg">(self, **kwargs)</span>
+<span class="ansi-green-fg ansi-bold">    140</span> <span style="font-weight:bold;color:rgb(0,135,0)">if</span> <span style="color:rgb(0,135,0)">self</span><span style="color:rgb(98,98,98)">.</span>plasma_data <span style="font-weight:bold;color:rgb(175,0,255)">is</span> <span style="font-weight:bold;color:rgb(175,0,255)">not</span> <span style="font-weight:bold;color:rgb(0,135,0)">None</span>:
+<span class="ansi-green-fg ansi-bold">    141</span>     df_combined <span style="color:rgb(98,98,98)">=</span> combine_features(
+<span class="ansi-green-fg ansi-bold">    142</span>         <span style="color:rgb(0,135,0)">self</span><span style="color:rgb(98,98,98)">.</span>events,
+<span class="ansi-green-fg ansi-bold">    143</span>         <span style="color:rgb(0,135,0)">self</span><span style="color:rgb(98,98,98)">.</span>plasma_data<span style="color:rgb(98,98,98)">.</span>collect(),
+<span class="ansi-green-fg ansi-bold">    144</span>         plasma_meta<span style="color:rgb(98,98,98)">=</span><span style="color:rgb(0,135,0)">self</span><span style="color:rgb(98,98,98)">.</span>plasma_meta,
+<span class="ansi-green-fg ansi-bold">    145</span>         <span style="color:rgb(98,98,98)">*</span><span style="color:rgb(98,98,98)">*</span>kwargs,
+<span class="ansi-green-fg ansi-bold">    146</span>     )
+<span class="ansi-green-fg">--&gt; 148</span>     <span style="color:rgb(0,135,0)">self</span><span style="color:rgb(98,98,98)">.</span>events <span style="color:rgb(98,98,98)">=</span> <span class="ansi-yellow-bg">calc_combined_features</span><span class="ansi-yellow-bg">(</span>
+<span class="ansi-green-fg ansi-bold">    149</span> <span class="ansi-yellow-bg">        </span><span class="ansi-yellow-bg">df_combined</span><span class="ansi-yellow-bg">,</span>
+<span class="ansi-green-fg ansi-bold">    150</span> <span class="ansi-yellow-bg">        </span><span class="ansi-yellow-bg">plasma_meta</span><span style="color:rgb(98,98,98)" class="ansi-yellow-bg">=</span><span style="color:rgb(0,135,0)" class="ansi-yellow-bg">self</span><span style="color:rgb(98,98,98)" class="ansi-yellow-bg">.</span><span class="ansi-yellow-bg">plasma_meta</span><span class="ansi-yellow-bg">,</span>
+<span class="ansi-green-fg ansi-bold">    151</span> <span class="ansi-yellow-bg">        </span><span style="color:rgb(98,98,98)" class="ansi-yellow-bg">*</span><span style="color:rgb(98,98,98)" class="ansi-yellow-bg">*</span><span class="ansi-yellow-bg">kwargs</span><span class="ansi-yellow-bg">,</span>
+<span class="ansi-green-fg ansi-bold">    152</span> <span class="ansi-yellow-bg">    </span><span class="ansi-yellow-bg">)</span>
+<span class="ansi-green-fg ansi-bold">    153</span> <span style="font-weight:bold;color:rgb(0,135,0)">else</span>:
+<span class="ansi-green-fg ansi-bold">    154</span>     logger<span style="color:rgb(98,98,98)">.</span>info(<span style="color:rgb(175,0,0)">"</span><span style="color:rgb(175,0,0)">Plasma data is not available.</span><span style="color:rgb(175,0,0)">"</span>)
+
+File <span class="ansi-green-fg">~/micromamba/envs/psp_conjunction/lib/python3.11/site-packages/discontinuitypy/integration.py:285</span>, in <span class="ansi-cyan-fg">calc_combined_features</span><span class="ansi-blue-fg">(df, b_cols, detail, normal_cols, Vl_cols, Vn_cols, thickness_cols, current_cols, plasma_meta, **kwargs)</span>
+<span class="ansi-green-fg ansi-bold">    281</span> vec_cols <span style="color:rgb(98,98,98)">=</span> plasma_meta<span style="color:rgb(98,98,98)">.</span>velocity_cols
+<span class="ansi-green-fg ansi-bold">    282</span> density_col <span style="color:rgb(98,98,98)">=</span> plasma_meta<span style="color:rgb(98,98,98)">.</span>density_col
+<span class="ansi-green-fg ansi-bold">    284</span> result <span style="color:rgb(98,98,98)">=</span> (
+<span class="ansi-green-fg">--&gt; 285</span>     <span class="ansi-yellow-bg">result</span><span style="color:rgb(98,98,98)" class="ansi-yellow-bg">.</span><span class="ansi-yellow-bg">pipe</span><span class="ansi-yellow-bg">(</span><span class="ansi-yellow-bg">vector_project_pl</span><span class="ansi-yellow-bg">,</span><span class="ansi-yellow-bg"> </span><span class="ansi-yellow-bg">vec_cols</span><span class="ansi-yellow-bg">,</span><span class="ansi-yellow-bg"> </span><span class="ansi-yellow-bg">Vl_cols</span><span class="ansi-yellow-bg">,</span><span class="ansi-yellow-bg"> </span><span class="ansi-yellow-bg">name</span><span style="color:rgb(98,98,98)" class="ansi-yellow-bg">=</span><span style="color:rgb(175,0,0)" class="ansi-yellow-bg">"</span><span style="color:rgb(175,0,0)" class="ansi-yellow-bg">v_l</span><span style="color:rgb(175,0,0)" class="ansi-yellow-bg">"</span><span class="ansi-yellow-bg">)</span>
+<span class="ansi-green-fg ansi-bold">    286</span>     <span style="color:rgb(98,98,98)">.</span>pipe(vector_project_pl, vec_cols, Vn_cols, name<span style="color:rgb(98,98,98)">=</span><span style="color:rgb(175,0,0)">"</span><span style="color:rgb(175,0,0)">v_n</span><span style="color:rgb(175,0,0)">"</span>)
+<span class="ansi-green-fg ansi-bold">    287</span>     <span style="color:rgb(98,98,98)">.</span>pipe(vector_project_pl, vec_cols, normal_cols, name<span style="color:rgb(98,98,98)">=</span><span style="color:rgb(175,0,0)">"</span><span style="color:rgb(175,0,0)">v_k</span><span style="color:rgb(175,0,0)">"</span>)
+<span class="ansi-green-fg ansi-bold">    288</span>     <span style="color:rgb(98,98,98)">.</span>with_columns(
+<span class="ansi-green-fg ansi-bold">    289</span>         pl<span style="color:rgb(98,98,98)">.</span>col(<span style="color:rgb(175,0,0)">"</span><span style="color:rgb(175,0,0)">v_n</span><span style="color:rgb(175,0,0)">"</span>)<span style="color:rgb(98,98,98)">.</span>abs(),
+<span class="ansi-green-fg ansi-bold">    290</span>         pl<span style="color:rgb(98,98,98)">.</span>col(<span style="color:rgb(175,0,0)">"</span><span style="color:rgb(175,0,0)">v_k</span><span style="color:rgb(175,0,0)">"</span>)<span style="color:rgb(98,98,98)">.</span>abs(),
+<span class="ansi-green-fg ansi-bold">    291</span>         <span style="font-style:italic;color:rgb(95,135,135)"># v_mn=(pl.col("plasma_speed") ** 2 - pl.col("v_l") ** 2).sqrt(),</span>
+<span class="ansi-green-fg ansi-bold">    292</span>     )
+<span class="ansi-green-fg ansi-bold">    293</span>     <span style="color:rgb(98,98,98)">.</span>with_columns(
+<span class="ansi-green-fg ansi-bold">    294</span>         L_k<span style="color:rgb(98,98,98)">=</span>pl<span style="color:rgb(98,98,98)">.</span>col(<span style="color:rgb(175,0,0)">"</span><span style="color:rgb(175,0,0)">v_k</span><span style="color:rgb(175,0,0)">"</span>) <span style="color:rgb(98,98,98)">*</span> pl<span style="color:rgb(98,98,98)">.</span>col(<span style="color:rgb(175,0,0)">"</span><span style="color:rgb(175,0,0)">duration</span><span style="color:rgb(175,0,0)">"</span>),
+<span class="ansi-green-fg ansi-bold">    295</span>         j0_k<span style="color:rgb(98,98,98)">=</span>pl<span style="color:rgb(98,98,98)">.</span>col(<span style="color:rgb(175,0,0)">"</span><span style="color:rgb(175,0,0)">d_star</span><span style="color:rgb(175,0,0)">"</span>)
+<span class="ansi-green-fg ansi-bold">    296</span>         <span style="color:rgb(98,98,98)">/</span> pl<span style="color:rgb(98,98,98)">.</span>col(
+<span class="ansi-green-fg ansi-bold">    297</span>             <span style="color:rgb(175,0,0)">"</span><span style="color:rgb(175,0,0)">v_k</span><span style="color:rgb(175,0,0)">"</span>
+<span class="ansi-green-fg ansi-bold">    298</span>         ),  <span style="font-style:italic;color:rgb(95,135,135)"># TODO: d_star corresponding to dB/dt, which direction is not exactly perpendicular to the k direction</span>
+<span class="ansi-green-fg ansi-bold">    299</span>         <span style="font-style:italic;color:rgb(95,135,135)"># NOTE: n direction is not properly determined for MVA analysis</span>
+<span class="ansi-green-fg ansi-bold">    300</span>         <span style="font-style:italic;color:rgb(95,135,135)"># j0_mn=pl.col("d_star") / pl.col("v_mn"),</span>
+<span class="ansi-green-fg ansi-bold">    301</span>         <span style="font-style:italic;color:rgb(95,135,135)"># L_n=pl.col("v_n") * pl.col("duration"),</span>
+<span class="ansi-green-fg ansi-bold">    302</span>         <span style="font-style:italic;color:rgb(95,135,135)"># L_mn=pl.col("v_mn") * pl.col("duration"),</span>
+<span class="ansi-green-fg ansi-bold">    303</span>         <span style="font-style:italic;color:rgb(95,135,135)"># NOTE: the duration is not properly determined for `max distance` method</span>
+<span class="ansi-green-fg ansi-bold">    304</span>         <span style="font-style:italic;color:rgb(95,135,135)"># L_k=pl.col("v_k") * pl.col("duration"),</span>
+<span class="ansi-green-fg ansi-bold">    305</span>     )
+<span class="ansi-green-fg ansi-bold">    306</span>     <span style="color:rgb(98,98,98)">.</span>pipe(compute_inertial_length)
+<span class="ansi-green-fg ansi-bold">    307</span>     <span style="color:rgb(98,98,98)">.</span>pipe(compute_Alfven_speed, n<span style="color:rgb(98,98,98)">=</span>density_col, B<span style="color:rgb(98,98,98)">=</span><span style="color:rgb(175,0,0)">"</span><span style="color:rgb(175,0,0)">b_mag</span><span style="color:rgb(175,0,0)">"</span>)
+<span class="ansi-green-fg ansi-bold">    308</span>     <span style="color:rgb(98,98,98)">.</span>pipe(compute_Alfven_current)
+<span class="ansi-green-fg ansi-bold">    309</span>     <span style="color:rgb(98,98,98)">.</span>with_columns(
+<span class="ansi-green-fg ansi-bold">    310</span>         cs<span style="color:rgb(98,98,98)">.</span>by_name(current_cols) <span style="color:rgb(98,98,98)">*</span> J_FACTOR<span style="color:rgb(98,98,98)">.</span>value,
+<span class="ansi-green-fg ansi-bold">    311</span>     )
+<span class="ansi-green-fg ansi-bold">    312</span>     <span style="color:rgb(98,98,98)">.</span>with_columns(
+<span class="ansi-green-fg ansi-bold">    313</span>         (cs<span style="color:rgb(98,98,98)">.</span>by_name(thickness_cols) <span style="color:rgb(98,98,98)">/</span> length_norm)<span style="color:rgb(98,98,98)">.</span>name<span style="color:rgb(98,98,98)">.</span>suffix(<span style="color:rgb(175,0,0)">"</span><span style="color:rgb(175,0,0)">_norm</span><span style="color:rgb(175,0,0)">"</span>),
+<span class="ansi-green-fg ansi-bold">    314</span>         (cs<span style="color:rgb(98,98,98)">.</span>by_name(current_cols) <span style="color:rgb(98,98,98)">/</span> current_norm)<span style="color:rgb(98,98,98)">.</span>name<span style="color:rgb(98,98,98)">.</span>suffix(<span style="color:rgb(175,0,0)">"</span><span style="color:rgb(175,0,0)">_norm</span><span style="color:rgb(175,0,0)">"</span>),
+<span class="ansi-green-fg ansi-bold">    315</span>         (cs<span style="color:rgb(98,98,98)">.</span>by_name(b_cols) <span style="color:rgb(98,98,98)">/</span> b_norm)<span style="color:rgb(98,98,98)">.</span>name<span style="color:rgb(98,98,98)">.</span>suffix(<span style="color:rgb(175,0,0)">"</span><span style="color:rgb(175,0,0)">_norm</span><span style="color:rgb(175,0,0)">"</span>),
+<span class="ansi-green-fg ansi-bold">    316</span>     )
+<span class="ansi-green-fg ansi-bold">    317</span> )
+<span class="ansi-green-fg ansi-bold">    319</span> <span style="font-weight:bold;color:rgb(0,135,0)">if</span> detail:
+<span class="ansi-green-fg ansi-bold">    320</span>     result <span style="color:rgb(98,98,98)">=</span> (
+<span class="ansi-green-fg ansi-bold">    321</span>         result<span style="color:rgb(98,98,98)">.</span>pipe(
+<span class="ansi-green-fg ansi-bold">    322</span>             vector_project_pl,
+<span class="ansi-green-fg">   (...)</span>
+<span class="ansi-green-fg ansi-bold">    335</span>         <span style="color:rgb(98,98,98)">.</span>pipe(calc_plasma_parameter_change, plasma_meta<span style="color:rgb(98,98,98)">=</span>plasma_meta)
+<span class="ansi-green-fg ansi-bold">    336</span>     )
+
+File <span class="ansi-green-fg">~/micromamba/envs/psp_conjunction/lib/python3.11/site-packages/polars/dataframe/frame.py:5249</span>, in <span class="ansi-cyan-fg">DataFrame.pipe</span><span class="ansi-blue-fg">(self, function, *args, **kwargs)</span>
+<span class="ansi-green-fg ansi-bold">   5184</span> <span style="font-weight:bold;color:rgb(0,135,0)">def</span> <span style="color:rgb(0,0,255)">pipe</span>(
+<span class="ansi-green-fg ansi-bold">   5185</span>     <span style="color:rgb(0,135,0)">self</span>,
+<span class="ansi-green-fg ansi-bold">   5186</span>     function: Callable[Concatenate[DataFrame, P], T],
+<span class="ansi-green-fg ansi-bold">   5187</span>     <span style="color:rgb(98,98,98)">*</span>args: P<span style="color:rgb(98,98,98)">.</span>args,
+<span class="ansi-green-fg ansi-bold">   5188</span>     <span style="color:rgb(98,98,98)">*</span><span style="color:rgb(98,98,98)">*</span>kwargs: P<span style="color:rgb(98,98,98)">.</span>kwargs,
+<span class="ansi-green-fg ansi-bold">   5189</span> ) <span style="color:rgb(98,98,98)">-</span><span style="color:rgb(98,98,98)">&gt;</span> T:
+<span class="ansi-green-fg ansi-bold">   5190</span> <span style="color:rgb(188,188,188)">    </span><span style="font-style:italic;color:rgb(175,0,0)">"""</span>
+<span class="ansi-green-fg ansi-bold">   5191</span> <span style="font-style:italic;color:rgb(175,0,0)">    Offers a structured way to apply a sequence of user-defined functions (UDFs).</span>
+<span class="ansi-green-fg ansi-bold">   5192</span> 
+<span class="ansi-green-fg">   (...)</span>
+<span class="ansi-green-fg ansi-bold">   5247</span> <span style="font-style:italic;color:rgb(175,0,0)">    └─────┴─────┘</span>
+<span class="ansi-green-fg ansi-bold">   5248</span> <span style="font-style:italic;color:rgb(175,0,0)">    """</span>
+<span class="ansi-green-fg">-&gt; 5249</span>     <span style="font-weight:bold;color:rgb(0,135,0)">return</span> <span class="ansi-yellow-bg">function</span><span class="ansi-yellow-bg">(</span><span style="color:rgb(0,135,0)" class="ansi-yellow-bg">self</span><span class="ansi-yellow-bg">,</span><span class="ansi-yellow-bg"> </span><span style="color:rgb(98,98,98)" class="ansi-yellow-bg">*</span><span class="ansi-yellow-bg">args</span><span class="ansi-yellow-bg">,</span><span class="ansi-yellow-bg"> </span><span style="color:rgb(98,98,98)" class="ansi-yellow-bg">*</span><span style="color:rgb(98,98,98)" class="ansi-yellow-bg">*</span><span class="ansi-yellow-bg">kwargs</span><span class="ansi-yellow-bg">)</span>
+
+File <span class="ansi-green-fg">~/micromamba/envs/psp_conjunction/lib/python3.11/site-packages/discontinuitypy/integration.py:128</span>, in <span class="ansi-cyan-fg">vector_project_pl</span><span class="ansi-blue-fg">(df, v1_cols, v2_cols, name)</span>
+<span class="ansi-green-fg ansi-bold">    127</span> <span style="font-weight:bold;color:rgb(0,135,0)">def</span> <span style="color:rgb(0,0,255)">vector_project_pl</span>(df: pl<span style="color:rgb(98,98,98)">.</span>DataFrame, v1_cols, v2_cols, name<span style="color:rgb(98,98,98)">=</span><span style="font-weight:bold;color:rgb(0,135,0)">None</span>):
+<span class="ansi-green-fg">--&gt; 128</span>     v1 <span style="color:rgb(98,98,98)">=</span> <span class="ansi-yellow-bg">df2ts</span><span class="ansi-yellow-bg">(</span><span class="ansi-yellow-bg">df</span><span class="ansi-yellow-bg">,</span><span class="ansi-yellow-bg"> </span><span class="ansi-yellow-bg">v1_cols</span><span class="ansi-yellow-bg">)</span><span style="color:rgb(98,98,98)" class="ansi-yellow-bg">.</span><span class="ansi-yellow-bg">assign_coords</span><span class="ansi-yellow-bg">(</span><span class="ansi-yellow-bg">v_dim</span><span style="color:rgb(98,98,98)" class="ansi-yellow-bg">=</span><span class="ansi-yellow-bg">[</span><span style="color:rgb(175,0,0)" class="ansi-yellow-bg">"</span><span style="color:rgb(175,0,0)" class="ansi-yellow-bg">x</span><span style="color:rgb(175,0,0)" class="ansi-yellow-bg">"</span><span class="ansi-yellow-bg">,</span><span class="ansi-yellow-bg"> </span><span style="color:rgb(175,0,0)" class="ansi-yellow-bg">"</span><span style="color:rgb(175,0,0)" class="ansi-yellow-bg">y</span><span style="color:rgb(175,0,0)" class="ansi-yellow-bg">"</span><span class="ansi-yellow-bg">,</span><span class="ansi-yellow-bg"> </span><span style="color:rgb(175,0,0)" class="ansi-yellow-bg">"</span><span style="color:rgb(175,0,0)" class="ansi-yellow-bg">z</span><span style="color:rgb(175,0,0)" class="ansi-yellow-bg">"</span><span class="ansi-yellow-bg">]</span><span class="ansi-yellow-bg">)</span>
+<span class="ansi-green-fg ansi-bold">    129</span>     v2 <span style="color:rgb(98,98,98)">=</span> df2ts(df, v2_cols)<span style="color:rgb(98,98,98)">.</span>assign_coords(v_dim<span style="color:rgb(98,98,98)">=</span>[<span style="color:rgb(175,0,0)">"</span><span style="color:rgb(175,0,0)">x</span><span style="color:rgb(175,0,0)">"</span>, <span style="color:rgb(175,0,0)">"</span><span style="color:rgb(175,0,0)">y</span><span style="color:rgb(175,0,0)">"</span>, <span style="color:rgb(175,0,0)">"</span><span style="color:rgb(175,0,0)">z</span><span style="color:rgb(175,0,0)">"</span>])
+<span class="ansi-green-fg ansi-bold">    130</span>     result <span style="color:rgb(98,98,98)">=</span> vector_project(v1, v2, dim<span style="color:rgb(98,98,98)">=</span><span style="color:rgb(175,0,0)">"</span><span style="color:rgb(175,0,0)">v_dim</span><span style="color:rgb(175,0,0)">"</span>)
+
+File <span class="ansi-green-fg">~/micromamba/envs/psp_conjunction/lib/python3.11/site-packages/xarray/core/common.py:621</span>, in <span class="ansi-cyan-fg">DataWithCoords.assign_coords</span><span class="ansi-blue-fg">(self, coords, **coords_kwargs)</span>
+<span class="ansi-green-fg ansi-bold">    618</span> <span style="font-weight:bold;color:rgb(0,135,0)">else</span>:
+<span class="ansi-green-fg ansi-bold">    619</span>     results <span style="color:rgb(98,98,98)">=</span> <span style="color:rgb(0,135,0)">self</span><span style="color:rgb(98,98,98)">.</span>_calc_assign_results(coords_combined)
+<span class="ansi-green-fg">--&gt; 621</span> <span class="ansi-yellow-bg">data</span><span style="color:rgb(98,98,98)" class="ansi-yellow-bg">.</span><span class="ansi-yellow-bg">coords</span><span style="color:rgb(98,98,98)" class="ansi-yellow-bg">.</span><span class="ansi-yellow-bg">update</span><span class="ansi-yellow-bg">(</span><span class="ansi-yellow-bg">results</span><span class="ansi-yellow-bg">)</span>
+<span class="ansi-green-fg ansi-bold">    622</span> <span style="font-weight:bold;color:rgb(0,135,0)">return</span> data
+
+File <span class="ansi-green-fg">~/micromamba/envs/psp_conjunction/lib/python3.11/site-packages/xarray/core/coordinates.py:566</span>, in <span class="ansi-cyan-fg">Coordinates.update</span><span class="ansi-blue-fg">(self, other)</span>
+<span class="ansi-green-fg ansi-bold">    560</span> <span style="font-style:italic;color:rgb(95,135,135)"># special case for PandasMultiIndex: updating only its dimension coordinate</span>
+<span class="ansi-green-fg ansi-bold">    561</span> <span style="font-style:italic;color:rgb(95,135,135)"># is still allowed but depreciated.</span>
+<span class="ansi-green-fg ansi-bold">    562</span> <span style="font-style:italic;color:rgb(95,135,135)"># It is the only case where we need to actually drop coordinates here (multi-index levels)</span>
+<span class="ansi-green-fg ansi-bold">    563</span> <span style="font-style:italic;color:rgb(95,135,135)"># TODO: remove when removing PandasMultiIndex's dimension coordinate.</span>
+<span class="ansi-green-fg ansi-bold">    564</span> <span style="color:rgb(0,135,0)">self</span><span style="color:rgb(98,98,98)">.</span>_drop_coords(<span style="color:rgb(0,135,0)">self</span><span style="color:rgb(98,98,98)">.</span>_names <span style="color:rgb(98,98,98)">-</span> coords_to_align<span style="color:rgb(98,98,98)">.</span>_names)
+<span class="ansi-green-fg">--&gt; 566</span> <span style="color:rgb(0,135,0)" class="ansi-yellow-bg">self</span><span style="color:rgb(98,98,98)" class="ansi-yellow-bg">.</span><span class="ansi-yellow-bg">_update_coords</span><span class="ansi-yellow-bg">(</span><span class="ansi-yellow-bg">coords</span><span class="ansi-yellow-bg">,</span><span class="ansi-yellow-bg"> </span><span class="ansi-yellow-bg">indexes</span><span class="ansi-yellow-bg">)</span>
+
+File <span class="ansi-green-fg">~/micromamba/envs/psp_conjunction/lib/python3.11/site-packages/xarray/core/coordinates.py:842</span>, in <span class="ansi-cyan-fg">DataArrayCoordinates._update_coords</span><span class="ansi-blue-fg">(self, coords, indexes)</span>
+<span class="ansi-green-fg ansi-bold">    840</span> coords_plus_data <span style="color:rgb(98,98,98)">=</span> coords<span style="color:rgb(98,98,98)">.</span>copy()
+<span class="ansi-green-fg ansi-bold">    841</span> coords_plus_data[_THIS_ARRAY] <span style="color:rgb(98,98,98)">=</span> <span style="color:rgb(0,135,0)">self</span><span style="color:rgb(98,98,98)">.</span>_data<span style="color:rgb(98,98,98)">.</span>variable
+<span class="ansi-green-fg">--&gt; 842</span> dims <span style="color:rgb(98,98,98)">=</span> <span class="ansi-yellow-bg">calculate_dimensions</span><span class="ansi-yellow-bg">(</span><span class="ansi-yellow-bg">coords_plus_data</span><span class="ansi-yellow-bg">)</span>
+<span class="ansi-green-fg ansi-bold">    843</span> <span style="font-weight:bold;color:rgb(0,135,0)">if</span> <span style="font-weight:bold;color:rgb(175,0,255)">not</span> <span style="color:rgb(0,135,0)">set</span>(dims) <span style="color:rgb(98,98,98)">&lt;</span><span style="color:rgb(98,98,98)">=</span> <span style="color:rgb(0,135,0)">set</span>(<span style="color:rgb(0,135,0)">self</span><span style="color:rgb(98,98,98)">.</span>dims):
+<span class="ansi-green-fg ansi-bold">    844</span>     <span style="font-weight:bold;color:rgb(0,135,0)">raise</span> <span style="font-weight:bold;color:rgb(215,95,95)">ValueError</span>(
+<span class="ansi-green-fg ansi-bold">    845</span>         <span style="color:rgb(175,0,0)">"</span><span style="color:rgb(175,0,0)">cannot add coordinates with new dimensions to a DataArray</span><span style="color:rgb(175,0,0)">"</span>
+<span class="ansi-green-fg ansi-bold">    846</span>     )
+
+File <span class="ansi-green-fg">~/micromamba/envs/psp_conjunction/lib/python3.11/site-packages/xarray/core/variable.py:3008</span>, in <span class="ansi-cyan-fg">calculate_dimensions</span><span class="ansi-blue-fg">(variables)</span>
+<span class="ansi-green-fg ansi-bold">   3006</span>             last_used[dim] <span style="color:rgb(98,98,98)">=</span> k
+<span class="ansi-green-fg ansi-bold">   3007</span>         <span style="font-weight:bold;color:rgb(0,135,0)">elif</span> dims[dim] <span style="color:rgb(98,98,98)">!=</span> size:
+<span class="ansi-green-fg">-&gt; 3008</span>             <span style="font-weight:bold;color:rgb(0,135,0)">raise</span> <span style="font-weight:bold;color:rgb(215,95,95)">ValueError</span>(
+<span class="ansi-green-fg ansi-bold">   3009</span>                 <span style="color:rgb(175,0,0)">f</span><span style="color:rgb(175,0,0)">"</span><span style="color:rgb(175,0,0)">conflicting sizes for dimension </span><span style="font-weight:bold;color:rgb(175,95,135)">{</span>dim<span style="font-weight:bold;color:rgb(175,95,135)">!r}</span><span style="color:rgb(175,0,0)">: </span><span style="color:rgb(175,0,0)">"</span>
+<span class="ansi-green-fg ansi-bold">   3010</span>                 <span style="color:rgb(175,0,0)">f</span><span style="color:rgb(175,0,0)">"</span><span style="color:rgb(175,0,0)">length </span><span style="font-weight:bold;color:rgb(175,95,135)">{</span>size<span style="font-weight:bold;color:rgb(175,95,135)">}</span><span style="color:rgb(175,0,0)"> on </span><span style="font-weight:bold;color:rgb(175,95,135)">{</span>k<span style="font-weight:bold;color:rgb(175,95,135)">!r}</span><span style="color:rgb(175,0,0)"> and length </span><span style="font-weight:bold;color:rgb(175,95,135)">{</span>dims[dim]<span style="font-weight:bold;color:rgb(175,95,135)">}</span><span style="color:rgb(175,0,0)"> on </span><span style="font-weight:bold;color:rgb(175,95,135)">{</span>last_used<span style="font-weight:bold;color:rgb(175,95,135)">!r}</span><span style="color:rgb(175,0,0)">"</span>
+<span class="ansi-green-fg ansi-bold">   3011</span>             )
+<span class="ansi-green-fg ansi-bold">   3012</span> <span style="font-weight:bold;color:rgb(0,135,0)">return</span> dims
+
+<span class="ansi-red-fg">ValueError</span>: conflicting sizes for dimension 'v_dim': length 50 on &lt;this-array&gt; and length 3 on {'time': 'time', 'v_dim': 'v_dim'}</pre>
+</div>
 </div>
 </div>
 
@@ -614,18 +737,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     }
     return false;
   }
-  const clipboard = new window.ClipboardJS('.code-copy-button', {
-    text: function(trigger) {
-      const codeEl = trigger.previousElementSibling.cloneNode(true);
-      for (const childEl of codeEl.children) {
-        if (isCodeAnnotation(childEl)) {
-          childEl.remove();
-        }
-      }
-      return codeEl.innerText;
-    }
-  });
-  clipboard.on('success', function(e) {
+  const onCopySuccess = function(e) {
     // button target
     const button = e.trigger;
     // don't keep focus
@@ -657,7 +769,47 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     }, 1000);
     // clear code selection
     e.clearSelection();
+  }
+  const getTextToCopy = function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+    text: getTextToCopy
   });
+  clipboard.on('success', onCopySuccess);
+  if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+    // For code content inside modals, clipBoardJS needs to be initialized with a container option
+    // TODO: Check when it could be a function (https://github.com/zenorocha/clipboard.js/issues/860)
+    const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+      text: getTextToCopy,
+      container: window.document.getElementById('quarto-embedded-source-code-modal')
+    });
+    clipboardModal.on('success', onCopySuccess);
+  }
+    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+    var mailtoRegex = new RegExp(/^mailto:/);
+      var filterRegex = new RegExp('/' + window.location.host + '/');
+    var isInternal = (href) => {
+        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+    }
+    // Inspect non-navigation links and adorn them if external
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+    for (var i=0; i<links.length; i++) {
+      const link = links[i];
+      if (!isInternal(link.href)) {
+        // undo the damage that might have been done by quarto-nav.js in the case of
+        // links that we want to consider external
+        if (link.dataset.originalHref !== undefined) {
+          link.href = link.dataset.originalHref;
+        }
+      }
+    }
   function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
     const config = {
       allowHTML: true,
@@ -692,7 +844,11 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       try { href = new URL(href).hash; } catch {}
       const id = href.replace(/^#\/?/, "");
       const note = window.document.getElementById(id);
-      return note.innerHTML;
+      if (note) {
+        return note.innerHTML;
+      } else {
+        return "";
+      }
     });
   }
   const xrefs = window.document.querySelectorAll('a.quarto-xref');

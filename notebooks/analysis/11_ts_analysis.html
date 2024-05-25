@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.4.547">
+<meta name="generator" content="quarto-1.5.33">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -33,7 +33,7 @@ div.sourceCode { overflow: auto; }
 }
 @media print {
 pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
 }
 pre.numberSource code
   { counter-reset: source-line 0; }
@@ -117,7 +117,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
       <div class="navbar-container container-fluid">
             <div id="quarto-search" class="" title="Search"></div>
-          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
   <span class="navbar-toggler-icon"></span>
 </button>
           <div class="collapse navbar-collapse" id="navbarCollapse">
@@ -131,7 +131,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span class="menu-text">Manuscript</span></a>
   </li>  
   <li class="nav-item dropdown ">
-    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-presentation" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-presentation" role="link" data-bs-toggle="dropdown" aria-expanded="false">
  <span class="menu-text">Presentation</span>
     </a>
     <ul class="dropdown-menu" aria-labelledby="nav-menu-presentation">    
@@ -147,18 +147,18 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   </li>
 </ul>
           </div> <!-- /navcollapse -->
-          <div class="quarto-navbar-tools">
+            <div class="quarto-navbar-tools">
     <a href="https://github.com/Beforerr/ids_spatial_evolution_juno" title="" class="quarto-navigation-tool px-1" aria-label=""><i class="bi bi-github"></i></a>
 </div>
       </div> <!-- /container-fluid -->
     </nav>
   <nav class="quarto-secondary-nav">
     <div class="container-fluid d-flex">
-      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
         <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../notebooks/00_overview.html">Notebooks</a></li><li class="breadcrumb-item"><a href="../../notebooks/analysis/00_base.html">Analysis</a></li><li class="breadcrumb-item"><a href="../../notebooks/analysis/11_ts_analysis.html">Time resolution effect Analysis</a></li></ol></nav>
-        <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
     </div>
   </nav>
@@ -183,9 +183,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true">
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true">
  <span class="menu-text">Notebooks</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
@@ -204,14 +204,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../notebooks/04_properties.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">SWD Properties</span></a>
+  <a href="../../notebooks/10_examples.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Discontinuities examples</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../notebooks/10_examples.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Discontinuities examples</span></a>
+  <a href="../../notebooks/12_tau_analysis.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">tau effect</span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -223,14 +223,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../notebooks/30_data.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">30 Data</span></a>
+ <span class="menu-text">Different time windows</span></a>
   </div>
 </li>
           <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true">
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true">
  <span class="menu-text">Analysis</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
@@ -279,31 +279,25 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../notebooks/analysis/12_tau_analysis.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Justification for the tau</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
   <a href="../../notebooks/analysis/12_tau_data.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Justification for the tau</span></a>
+ <span class="menu-text">Justification for the tau (data)</span></a>
   </div>
 </li>
       </ul>
   </li>
           <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="false">
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="false">
  <span class="menu-text">Archive</span></a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="false" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="false" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
       <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth2 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../notebooks/archive/04_calc.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">04 Calc</span></a>
+  <a href="../../notebooks/archive/04_properties.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">SWD Properties</span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -318,7 +312,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <div class="sidebar-item-container"> 
             <a href="../../notebooks/missions/index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Missions</span></a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-expanded="false" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="false" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
@@ -333,7 +327,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <div class="sidebar-item-container"> 
             <a href="../../notebooks/missions/stereo/index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">IDs from STEREO</span></a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" aria-expanded="false" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" role="navigation" aria-expanded="false" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
@@ -350,7 +344,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <div class="sidebar-item-container"> 
             <a href="../../notebooks/missions/themis/index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">IDs from ARTHEMIS</span></a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" aria-expanded="false" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" role="navigation" aria-expanded="false" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
@@ -377,30 +371,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
           <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a href="../../notebooks/missions/wind/index.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Wind</span></a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-7" aria-expanded="false" aria-label="Toggle section">
+            <a href="../../notebooks/missions/juno/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">IDs from Juno</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-7" role="navigation" aria-expanded="false" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
       <ul id="quarto-sidebar-section-7" class="collapse list-unstyled sidebar-section depth3 ">  
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../notebooks/missions/wind/state.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Wind State data pipeline</span></a>
-  </div>
-</li>
-      </ul>
-  </li>
-          <li class="sidebar-item sidebar-item-section">
-      <div class="sidebar-item-container"> 
-            <a href="../../notebooks/missions/juno/index.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">IDs from Juno</span></a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-8" aria-expanded="false" aria-label="Toggle section">
-            <i class="bi bi-chevron-right ms-2"></i>
-          </a> 
-      </div>
-      <ul id="quarto-sidebar-section-8" class="collapse list-unstyled sidebar-section depth3 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../notebooks/missions/juno/state.html" class="sidebar-item-text sidebar-link">
@@ -415,13 +392,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-9" aria-expanded="true">
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-8" role="navigation" aria-expanded="true">
  <span class="menu-text">Presentations</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-9" aria-expanded="true" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-8" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-9" class="collapse list-unstyled sidebar-section depth1 show">  
+      <ul id="quarto-sidebar-section-8" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../presentations/AGU23_poster.html" class="sidebar-item-text sidebar-link">
@@ -435,7 +412,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </nav>
 <div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
         
     </div>
 <!-- main -->
@@ -534,76 +511,154 @@ R[write to console]: The following object is masked from ‘package:purrr’:
 <span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a>).with_columns(pl.col(<span class="st">'count'</span>).cast(pl.UInt32)).lazy()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-error">
-<pre><code>ColumnNotFoundError: count
+<div class="ansi-escaped-output">
+<pre><span class="ansi-red-fg">---------------------------------------------------------------------------</span>
+<span class="ansi-red-fg">ColumnNotFoundError</span>                       Traceback (most recent call last)
+Cell <span class="ansi-green-fg">In[11], line 8</span>
+<span class="ansi-green-fg ansi-bold">      1</span> parameters <span style="color:rgb(98,98,98)">=</span> [<span style="color:rgb(175,0,0)">'</span><span style="color:rgb(175,0,0)">j0_k</span><span style="color:rgb(175,0,0)">'</span>, <span style="color:rgb(175,0,0)">'</span><span style="color:rgb(175,0,0)">j0_k_norm</span><span style="color:rgb(175,0,0)">'</span>, <span style="color:rgb(175,0,0)">'</span><span style="color:rgb(175,0,0)">L_k</span><span style="color:rgb(175,0,0)">'</span>, <span style="color:rgb(175,0,0)">'</span><span style="color:rgb(175,0,0)">L_k_norm</span><span style="color:rgb(175,0,0)">'</span>]
+<span class="ansi-green-fg ansi-bold">      3</span> juno_fit <span style="color:rgb(98,98,98)">=</span> <span class="ansi-yellow-bg">pl</span><span style="color:rgb(98,98,98)" class="ansi-yellow-bg">.</span><span class="ansi-yellow-bg">read_ipc</span><span class="ansi-yellow-bg">(</span><span style="color:rgb(175,0,0)" class="ansi-yellow-bg">f</span><span style="color:rgb(175,0,0)" class="ansi-yellow-bg">"</span><span style="font-weight:bold;color:rgb(175,95,135)" class="ansi-yellow-bg">{</span><span class="ansi-yellow-bg">data_dir</span><span style="font-weight:bold;color:rgb(175,95,135)" class="ansi-yellow-bg">}</span><span style="color:rgb(175,0,0)" class="ansi-yellow-bg">/05_reporting/events.JNO.fit.ts_</span><span style="font-weight:bold;color:rgb(175,95,135)" class="ansi-yellow-bg">{</span><span class="ansi-yellow-bg">ts</span><span style="font-weight:bold;color:rgb(175,95,135)" class="ansi-yellow-bg">:</span><span style="color:rgb(175,0,0)" class="ansi-yellow-bg">.2f</span><span style="font-weight:bold;color:rgb(175,95,135)" class="ansi-yellow-bg">}</span><span style="color:rgb(175,0,0)" class="ansi-yellow-bg">s_tau_</span><span style="font-weight:bold;color:rgb(175,95,135)" class="ansi-yellow-bg">{</span><span class="ansi-yellow-bg">tau</span><span style="font-weight:bold;color:rgb(175,95,135)" class="ansi-yellow-bg">}</span><span style="color:rgb(175,0,0)" class="ansi-yellow-bg">s.arrow</span><span style="color:rgb(175,0,0)" class="ansi-yellow-bg">"</span><span class="ansi-yellow-bg">)</span><span style="color:rgb(98,98,98)" class="ansi-yellow-bg">.</span><span class="ansi-yellow-bg">with_columns</span><span class="ansi-yellow-bg">(</span>
+<span class="ansi-green-fg ansi-bold">      4</span> <span class="ansi-yellow-bg">    </span><span class="ansi-yellow-bg">pl</span><span style="color:rgb(98,98,98)" class="ansi-yellow-bg">.</span><span class="ansi-yellow-bg">col</span><span class="ansi-yellow-bg">(</span><span class="ansi-yellow-bg">parameters</span><span class="ansi-yellow-bg">)</span><span style="color:rgb(98,98,98)" class="ansi-yellow-bg">.</span><span class="ansi-yellow-bg">abs</span><span class="ansi-yellow-bg">(</span><span class="ansi-yellow-bg">)</span><span class="ansi-yellow-bg">,</span>
+<span class="ansi-green-fg ansi-bold">      5</span> <span class="ansi-yellow-bg">)</span><span style="color:rgb(98,98,98)" class="ansi-yellow-bg">.</span><span class="ansi-yellow-bg">with_columns</span><span class="ansi-yellow-bg">(</span><span class="ansi-yellow-bg">cs</span><span style="color:rgb(98,98,98)" class="ansi-yellow-bg">.</span><span class="ansi-yellow-bg">numeric</span><span class="ansi-yellow-bg">(</span><span class="ansi-yellow-bg">)</span><span style="color:rgb(98,98,98)" class="ansi-yellow-bg">.</span><span class="ansi-yellow-bg">cast</span><span class="ansi-yellow-bg">(</span><span class="ansi-yellow-bg">pl</span><span style="color:rgb(98,98,98)" class="ansi-yellow-bg">.</span><span class="ansi-yellow-bg">Float64</span><span class="ansi-yellow-bg">)</span><span class="ansi-yellow-bg">)</span><span style="color:rgb(98,98,98)" class="ansi-yellow-bg">.</span><span class="ansi-yellow-bg">drop_nulls</span><span class="ansi-yellow-bg">(</span><span class="ansi-yellow-bg">)</span><span style="color:rgb(98,98,98)" class="ansi-yellow-bg">.</span><span class="ansi-yellow-bg">filter</span><span class="ansi-yellow-bg">(</span>
+<span class="ansi-green-fg ansi-bold">      6</span> <span class="ansi-yellow-bg">    </span><span class="ansi-yellow-bg">pl</span><span style="color:rgb(98,98,98)" class="ansi-yellow-bg">.</span><span class="ansi-yellow-bg">col</span><span class="ansi-yellow-bg">(</span><span style="color:rgb(175,0,0)" class="ansi-yellow-bg">"</span><span style="color:rgb(175,0,0)" class="ansi-yellow-bg">d_star</span><span style="color:rgb(175,0,0)" class="ansi-yellow-bg">"</span><span class="ansi-yellow-bg">)</span><span class="ansi-yellow-bg"> </span><span style="color:rgb(98,98,98)" class="ansi-yellow-bg">&lt;</span><span class="ansi-yellow-bg"> </span><span style="color:rgb(98,98,98)" class="ansi-yellow-bg">100</span><span class="ansi-yellow-bg">,</span><span class="ansi-yellow-bg">  </span><span style="font-style:italic;color:rgb(95,135,135)" class="ansi-yellow-bg"># exclude extreme values</span>
+<span class="ansi-green-fg ansi-bold">      7</span> <span class="ansi-yellow-bg">    </span><span class="ansi-yellow-bg">pl</span><span style="color:rgb(98,98,98)" class="ansi-yellow-bg">.</span><span class="ansi-yellow-bg">col</span><span class="ansi-yellow-bg">(</span><span style="color:rgb(175,0,0)" class="ansi-yellow-bg">'</span><span style="color:rgb(175,0,0)" class="ansi-yellow-bg">j0_k</span><span style="color:rgb(175,0,0)" class="ansi-yellow-bg">'</span><span class="ansi-yellow-bg">)</span><span class="ansi-yellow-bg"> </span><span style="color:rgb(98,98,98)" class="ansi-yellow-bg">&lt;</span><span class="ansi-yellow-bg"> </span><span style="color:rgb(98,98,98)" class="ansi-yellow-bg">100</span>
+<span class="ansi-green-fg">----&gt; 8</span> <span class="ansi-yellow-bg">)</span><span style="color:rgb(98,98,98)" class="ansi-yellow-bg">.</span><span class="ansi-yellow-bg">with_columns</span><span class="ansi-yellow-bg">(</span><span class="ansi-yellow-bg">pl</span><span style="color:rgb(98,98,98)" class="ansi-yellow-bg">.</span><span class="ansi-yellow-bg">col</span><span class="ansi-yellow-bg">(</span><span style="color:rgb(175,0,0)" class="ansi-yellow-bg">'</span><span style="color:rgb(175,0,0)" class="ansi-yellow-bg">count</span><span style="color:rgb(175,0,0)" class="ansi-yellow-bg">'</span><span class="ansi-yellow-bg">)</span><span style="color:rgb(98,98,98)" class="ansi-yellow-bg">.</span><span class="ansi-yellow-bg">cast</span><span class="ansi-yellow-bg">(</span><span class="ansi-yellow-bg">pl</span><span style="color:rgb(98,98,98)" class="ansi-yellow-bg">.</span><span class="ansi-yellow-bg">UInt32</span><span class="ansi-yellow-bg">)</span><span class="ansi-yellow-bg">)</span><span style="color:rgb(98,98,98)">.</span>lazy()
+
+File <span class="ansi-green-fg">~/micromamba/envs/juno/lib/python3.10/site-packages/polars/dataframe/frame.py:8315</span>, in <span class="ansi-cyan-fg">DataFrame.with_columns</span><span class="ansi-blue-fg">(self, *exprs, **named_exprs)</span>
+<span class="ansi-green-fg ansi-bold">   8169</span> <span style="font-weight:bold;color:rgb(0,135,0)">def</span> <span style="color:rgb(0,0,255)">with_columns</span>(
+<span class="ansi-green-fg ansi-bold">   8170</span>     <span style="color:rgb(0,135,0)">self</span>,
+<span class="ansi-green-fg ansi-bold">   8171</span>     <span style="color:rgb(98,98,98)">*</span>exprs: IntoExpr <span style="color:rgb(98,98,98)">|</span> Iterable[IntoExpr],
+<span class="ansi-green-fg ansi-bold">   8172</span>     <span style="color:rgb(98,98,98)">*</span><span style="color:rgb(98,98,98)">*</span>named_exprs: IntoExpr,
+<span class="ansi-green-fg ansi-bold">   8173</span> ) <span style="color:rgb(98,98,98)">-</span><span style="color:rgb(98,98,98)">&gt;</span> DataFrame:
+<span class="ansi-green-fg ansi-bold">   8174</span> <span style="color:rgb(188,188,188)">    </span><span style="font-style:italic;color:rgb(175,0,0)">"""</span>
+<span class="ansi-green-fg ansi-bold">   8175</span> <span style="font-style:italic;color:rgb(175,0,0)">    Add columns to this DataFrame.</span>
+<span class="ansi-green-fg ansi-bold">   8176</span> 
+<span class="ansi-green-fg">   (...)</span>
+<span class="ansi-green-fg ansi-bold">   8313</span> <span style="font-style:italic;color:rgb(175,0,0)">    └─────┴──────┴─────────────┘</span>
+<span class="ansi-green-fg ansi-bold">   8314</span> <span style="font-style:italic;color:rgb(175,0,0)">    """</span>
+<span class="ansi-green-fg">-&gt; 8315</span>     <span style="font-weight:bold;color:rgb(0,135,0)">return</span> <span style="color:rgb(0,135,0)" class="ansi-yellow-bg">self</span><span style="color:rgb(98,98,98)" class="ansi-yellow-bg">.</span><span class="ansi-yellow-bg">lazy</span><span class="ansi-yellow-bg">(</span><span class="ansi-yellow-bg">)</span><span style="color:rgb(98,98,98)" class="ansi-yellow-bg">.</span><span class="ansi-yellow-bg">with_columns</span><span class="ansi-yellow-bg">(</span><span style="color:rgb(98,98,98)" class="ansi-yellow-bg">*</span><span class="ansi-yellow-bg">exprs</span><span class="ansi-yellow-bg">,</span><span class="ansi-yellow-bg"> </span><span style="color:rgb(98,98,98)" class="ansi-yellow-bg">*</span><span style="color:rgb(98,98,98)" class="ansi-yellow-bg">*</span><span class="ansi-yellow-bg">named_exprs</span><span class="ansi-yellow-bg">)</span><span style="color:rgb(98,98,98)" class="ansi-yellow-bg">.</span><span class="ansi-yellow-bg">collect</span><span class="ansi-yellow-bg">(</span><span class="ansi-yellow-bg">_eager</span><span style="color:rgb(98,98,98)" class="ansi-yellow-bg">=</span><span style="font-weight:bold;color:rgb(0,135,0)" class="ansi-yellow-bg">True</span><span class="ansi-yellow-bg">)</span>
+
+File <span class="ansi-green-fg">~/micromamba/envs/juno/lib/python3.10/site-packages/polars/lazyframe/frame.py:1940</span>, in <span class="ansi-cyan-fg">LazyFrame.collect</span><span class="ansi-blue-fg">(self, type_coercion, predicate_pushdown, projection_pushdown, simplify_expression, slice_pushdown, comm_subplan_elim, comm_subexpr_elim, no_optimization, streaming, background, _eager)</span>
+<span class="ansi-green-fg ansi-bold">   1937</span> <span style="font-weight:bold;color:rgb(0,135,0)">if</span> background:
+<span class="ansi-green-fg ansi-bold">   1938</span>     <span style="font-weight:bold;color:rgb(0,135,0)">return</span> InProcessQuery(ldf<span style="color:rgb(98,98,98)">.</span>collect_concurrently())
+<span class="ansi-green-fg">-&gt; 1940</span> <span style="font-weight:bold;color:rgb(0,135,0)">return</span> wrap_df(<span class="ansi-yellow-bg">ldf</span><span style="color:rgb(98,98,98)" class="ansi-yellow-bg">.</span><span class="ansi-yellow-bg">collect</span><span class="ansi-yellow-bg">(</span><span class="ansi-yellow-bg">)</span>)
+
+<span class="ansi-red-fg">ColumnNotFoundError</span>: count
 
 Error originated just after this operation:
-DF ["time", "tstart", "tstop", "t.d_end"]; PROJECT */92 COLUMNS; SELECTION: "None"</code></pre>
+DF ["time", "tstart", "tstop", "t.d_end"]; PROJECT */92 COLUMNS; SELECTION: "None"</pre>
+</div>
 </div>
 </div>
 <div id="cell-5" class="cell" data-execution_count="12">
 <details class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>parameters <span class="op">=</span> [<span class="st">'j0'</span>, <span class="st">'j0_norm'</span>, <span class="st">'j0_k'</span>, <span class="st">'j0_k_norm'</span>, <span class="st">'L_mn'</span>, <span class="st">'L_k'</span>, <span class="st">'L_mn_norm'</span>, <span class="st">'L_k_norm'</span>]</span>
-<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>wind_fit <span class="op">=</span> pl.read_ipc(<span class="ss">f"</span><span class="sc">{</span>data_dir<span class="sc">}</span><span class="ss">/05_reporting/events.Wind.ts_</span><span class="sc">{</span>ts<span class="sc">}</span><span class="ss">s_tau_</span><span class="sc">{</span>tau<span class="sc">}</span><span class="ss">s.arrow"</span>).with_columns(</span>
-<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>    pl.col(parameters).<span class="bu">abs</span>(),</span>
-<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>).with_columns(cs.numeric().cast(pl.Float64)).drop_nulls().<span class="bu">filter</span>(</span>
-<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a>    pl.col(<span class="st">"d_star"</span>) <span class="op">&lt;</span> <span class="dv">100</span>,  <span class="co"># exclude extreme values</span></span>
-<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a>    pl.col(<span class="st">'j0'</span>) <span class="op">&lt;</span> <span class="dv">100</span></span>
-<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a>).with_columns(pl.col(<span class="st">'count'</span>).cast(pl.UInt32)).lazy()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>parameters <span class="op">=</span> [<span class="st">'j0'</span>, <span class="st">'j0_norm'</span>, <span class="st">'j0_k'</span>, <span class="st">'j0_k_norm'</span>, <span class="st">'L_mn'</span>, <span class="st">'L_k'</span>, <span class="st">'L_mn_norm'</span>, <span class="st">'L_k_norm'</span>]</span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>wind_fit <span class="op">=</span> pl.read_ipc(<span class="ss">f"</span><span class="sc">{</span>data_dir<span class="sc">}</span><span class="ss">/05_reporting/events.Wind.ts_</span><span class="sc">{</span>ts<span class="sc">}</span><span class="ss">s_tau_</span><span class="sc">{</span>tau<span class="sc">}</span><span class="ss">s.arrow"</span>).with_columns(</span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>    pl.col(parameters).<span class="bu">abs</span>(),</span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>).with_columns(cs.numeric().cast(pl.Float64)).drop_nulls().<span class="bu">filter</span>(</span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a>    pl.col(<span class="st">"d_star"</span>) <span class="op">&lt;</span> <span class="dv">100</span>,  <span class="co"># exclude extreme values</span></span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a>    pl.col(<span class="st">'j0'</span>) <span class="op">&lt;</span> <span class="dv">100</span></span>
+<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a>).with_columns(pl.col(<span class="st">'count'</span>).cast(pl.UInt32)).lazy()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-error">
-<pre><code>FileNotFoundError: No such file or directory (os error 2): ../data/05_reporting/events.Wind.ts_1.0s_tau_60s.arrow</code></pre>
+<div class="ansi-escaped-output">
+<pre><span class="ansi-red-fg">---------------------------------------------------------------------------</span>
+<span class="ansi-red-fg">FileNotFoundError</span>                         Traceback (most recent call last)
+<span class="ansi-green-fg">/var/folders/tg/rfd0nr_970s3mv1fspgvkkxm0000gn/T/ipykernel_31903/3242119788.py</span> in <span class="ansi-cyan-fg">?</span><span class="ansi-blue-fg">()</span>
+<span class="ansi-green-fg ansi-bold">      1</span> parameters <span class="ansi-blue-fg">=</span> <span class="ansi-blue-fg">[</span><span class="ansi-blue-fg">'j0'</span><span class="ansi-blue-fg">,</span> <span class="ansi-blue-fg">'j0_norm'</span><span class="ansi-blue-fg">,</span> <span class="ansi-blue-fg">'j0_k'</span><span class="ansi-blue-fg">,</span> <span class="ansi-blue-fg">'j0_k_norm'</span><span class="ansi-blue-fg">,</span> <span class="ansi-blue-fg">'L_mn'</span><span class="ansi-blue-fg">,</span> <span class="ansi-blue-fg">'L_k'</span><span class="ansi-blue-fg">,</span> <span class="ansi-blue-fg">'L_mn_norm'</span><span class="ansi-blue-fg">,</span> <span class="ansi-blue-fg">'L_k_norm'</span><span class="ansi-blue-fg">]</span>
+<span class="ansi-green-fg ansi-bold">      2</span> 
+<span class="ansi-green-fg">----&gt; 3</span><span class="ansi-red-fg"> wind_fit = pl.read_ipc(f"{data_dir}/05_reporting/events.Wind.ts_{ts}s_tau_{tau}s.arrow").with_columns(
+</span><span class="ansi-green-fg ansi-bold">      4</span>     pl<span class="ansi-blue-fg">.</span>col<span class="ansi-blue-fg">(</span>parameters<span class="ansi-blue-fg">)</span><span class="ansi-blue-fg">.</span>abs<span class="ansi-blue-fg">(</span><span class="ansi-blue-fg">)</span><span class="ansi-blue-fg">,</span>
+<span class="ansi-green-fg ansi-bold">      5</span> <span class="ansi-blue-fg">)</span><span class="ansi-blue-fg">.</span>with_columns<span class="ansi-blue-fg">(</span>cs<span class="ansi-blue-fg">.</span>numeric<span class="ansi-blue-fg">(</span><span class="ansi-blue-fg">)</span><span class="ansi-blue-fg">.</span>cast<span class="ansi-blue-fg">(</span>pl<span class="ansi-blue-fg">.</span>Float64<span class="ansi-blue-fg">)</span><span class="ansi-blue-fg">)</span><span class="ansi-blue-fg">.</span>drop_nulls<span class="ansi-blue-fg">(</span><span class="ansi-blue-fg">)</span><span class="ansi-blue-fg">.</span>filter<span class="ansi-blue-fg">(</span>
+<span class="ansi-green-fg ansi-bold">      6</span>     pl<span class="ansi-blue-fg">.</span>col<span class="ansi-blue-fg">(</span><span class="ansi-blue-fg">"d_star"</span><span class="ansi-blue-fg">)</span> <span class="ansi-blue-fg">&lt;</span> <span class="ansi-cyan-fg">100</span><span class="ansi-blue-fg">,</span>  <span class="ansi-red-fg"># exclude extreme values</span>
+
+<span class="ansi-green-fg">~/micromamba/envs/juno/lib/python3.10/site-packages/polars/utils/deprecation.py</span> in <span class="ansi-cyan-fg">?</span><span class="ansi-blue-fg">(*args, **kwargs)</span>
+<span class="ansi-green-fg ansi-bold">    132</span>         <span class="ansi-green-fg">def</span> wrapper<span class="ansi-blue-fg">(</span><span class="ansi-blue-fg">*</span>args<span class="ansi-blue-fg">:</span> P<span class="ansi-blue-fg">.</span>args<span class="ansi-blue-fg">,</span> <span class="ansi-blue-fg">**</span>kwargs<span class="ansi-blue-fg">:</span> P<span class="ansi-blue-fg">.</span>kwargs<span class="ansi-blue-fg">)</span> <span class="ansi-blue-fg">-&gt;</span> T<span class="ansi-blue-fg">:</span>
+<span class="ansi-green-fg ansi-bold">    133</span>             _rename_keyword_argument(
+<span class="ansi-green-fg ansi-bold">    134</span>                 old_name<span class="ansi-blue-fg">,</span> new_name<span class="ansi-blue-fg">,</span> kwargs<span class="ansi-blue-fg">,</span> function<span class="ansi-blue-fg">.</span>__name__<span class="ansi-blue-fg">,</span> version
+<span class="ansi-green-fg ansi-bold">    135</span>             )
+<span class="ansi-green-fg">--&gt; 136</span><span class="ansi-red-fg">             </span><span class="ansi-green-fg">return</span> function<span class="ansi-blue-fg">(</span><span class="ansi-blue-fg">*</span>args<span class="ansi-blue-fg">,</span> <span class="ansi-blue-fg">**</span>kwargs<span class="ansi-blue-fg">)</span>
+
+<span class="ansi-green-fg">~/micromamba/envs/juno/lib/python3.10/site-packages/polars/utils/deprecation.py</span> in <span class="ansi-cyan-fg">?</span><span class="ansi-blue-fg">(*args, **kwargs)</span>
+<span class="ansi-green-fg ansi-bold">    132</span>         <span class="ansi-green-fg">def</span> wrapper<span class="ansi-blue-fg">(</span><span class="ansi-blue-fg">*</span>args<span class="ansi-blue-fg">:</span> P<span class="ansi-blue-fg">.</span>args<span class="ansi-blue-fg">,</span> <span class="ansi-blue-fg">**</span>kwargs<span class="ansi-blue-fg">:</span> P<span class="ansi-blue-fg">.</span>kwargs<span class="ansi-blue-fg">)</span> <span class="ansi-blue-fg">-&gt;</span> T<span class="ansi-blue-fg">:</span>
+<span class="ansi-green-fg ansi-bold">    133</span>             _rename_keyword_argument(
+<span class="ansi-green-fg ansi-bold">    134</span>                 old_name<span class="ansi-blue-fg">,</span> new_name<span class="ansi-blue-fg">,</span> kwargs<span class="ansi-blue-fg">,</span> function<span class="ansi-blue-fg">.</span>__name__<span class="ansi-blue-fg">,</span> version
+<span class="ansi-green-fg ansi-bold">    135</span>             )
+<span class="ansi-green-fg">--&gt; 136</span><span class="ansi-red-fg">             </span><span class="ansi-green-fg">return</span> function<span class="ansi-blue-fg">(</span><span class="ansi-blue-fg">*</span>args<span class="ansi-blue-fg">,</span> <span class="ansi-blue-fg">**</span>kwargs<span class="ansi-blue-fg">)</span>
+
+<span class="ansi-green-fg">~/micromamba/envs/juno/lib/python3.10/site-packages/polars/io/ipc/functions.py</span> in <span class="ansi-cyan-fg">?</span><span class="ansi-blue-fg">(source, columns, n_rows, use_pyarrow, memory_map, storage_options, row_index_name, row_index_offset, rechunk)</span>
+<span class="ansi-green-fg ansi-bold">     99</span>             <span class="ansi-green-fg">if</span> n_rows <span class="ansi-green-fg">is</span> <span class="ansi-green-fg">not</span> <span class="ansi-green-fg">None</span><span class="ansi-blue-fg">:</span>
+<span class="ansi-green-fg ansi-bold">    100</span>                 df <span class="ansi-blue-fg">=</span> df<span class="ansi-blue-fg">.</span>slice<span class="ansi-blue-fg">(</span><span class="ansi-cyan-fg">0</span><span class="ansi-blue-fg">,</span> n_rows<span class="ansi-blue-fg">)</span>
+<span class="ansi-green-fg ansi-bold">    101</span>             <span class="ansi-green-fg">return</span> df
+<span class="ansi-green-fg ansi-bold">    102</span> 
+<span class="ansi-green-fg">--&gt; 103</span><span class="ansi-red-fg">         return pl.DataFrame._read_ipc(
+</span><span class="ansi-green-fg ansi-bold">    104</span>             data<span class="ansi-blue-fg">,</span>
+<span class="ansi-green-fg ansi-bold">    105</span>             columns<span class="ansi-blue-fg">=</span>columns<span class="ansi-blue-fg">,</span>
+<span class="ansi-green-fg ansi-bold">    106</span>             n_rows<span class="ansi-blue-fg">=</span>n_rows<span class="ansi-blue-fg">,</span>
+
+<span class="ansi-green-fg">~/micromamba/envs/juno/lib/python3.10/site-packages/polars/dataframe/frame.py</span> in <span class="ansi-cyan-fg">?</span><span class="ansi-blue-fg">(cls, source, columns, n_rows, row_index_name, row_index_offset, rechunk, memory_map)</span>
+<span class="ansi-green-fg ansi-bold">    964</span>             <span class="ansi-green-fg">return</span> cls<span class="ansi-blue-fg">.</span>_from_pydf<span class="ansi-blue-fg">(</span>df<span class="ansi-blue-fg">.</span>_df<span class="ansi-blue-fg">)</span>
+<span class="ansi-green-fg ansi-bold">    965</span> 
+<span class="ansi-green-fg ansi-bold">    966</span>         projection<span class="ansi-blue-fg">,</span> columns <span class="ansi-blue-fg">=</span> handle_projection_columns<span class="ansi-blue-fg">(</span>columns<span class="ansi-blue-fg">)</span>
+<span class="ansi-green-fg ansi-bold">    967</span>         self <span class="ansi-blue-fg">=</span> cls<span class="ansi-blue-fg">.</span>__new__<span class="ansi-blue-fg">(</span>cls<span class="ansi-blue-fg">)</span>
+<span class="ansi-green-fg">--&gt; 968</span><span class="ansi-red-fg">         self._df = PyDataFrame.read_ipc(
+</span><span class="ansi-green-fg ansi-bold">    969</span>             source<span class="ansi-blue-fg">,</span>
+<span class="ansi-green-fg ansi-bold">    970</span>             columns<span class="ansi-blue-fg">,</span>
+<span class="ansi-green-fg ansi-bold">    971</span>             projection<span class="ansi-blue-fg">,</span>
+
+<span class="ansi-red-fg">FileNotFoundError</span>: No such file or directory (os error 2): ../data/05_reporting/events.Wind.ts_1.0s_tau_60s.arrow</pre>
+</div>
 </div>
 </div>
 <div id="cell-6" class="cell" data-execution_count="13">
 <details class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> load_events(name: <span class="bu">str</span>, ts: <span class="bu">float</span>, tau: <span class="bu">float</span>, method <span class="op">=</span><span class="st">'derivative'</span>) <span class="op">-&gt;</span> pl.DataFrame:</span>
-<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> method <span class="op">==</span> <span class="st">'derivative'</span>:</span>
-<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>        <span class="bu">format</span> <span class="op">=</span> <span class="st">'parquet'</span></span>
-<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>        filepath <span class="op">=</span> <span class="ss">f"</span><span class="sc">{</span>data_dir<span class="sc">}</span><span class="ss">/08_reporting/events/l1/</span><span class="sc">{</span>name<span class="sc">}</span><span class="ss">_ts_</span><span class="sc">{</span>ts<span class="sc">}</span><span class="ss">s_tau_</span><span class="sc">{</span>tau<span class="sc">}</span><span class="ss">s.</span><span class="sc">{</span><span class="bu">format</span><span class="sc">}</span><span class="ss">"</span></span>
-<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a>        df <span class="op">=</span> pl.scan_parquet(filepath)</span>
-<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a>    <span class="cf">elif</span> method <span class="op">==</span> <span class="st">'fit'</span>:</span>
-<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a>        <span class="bu">format</span> <span class="op">=</span> <span class="st">'arrow'</span></span>
-<span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a>        filepath <span class="op">=</span> <span class="ss">f"</span><span class="sc">{</span>data_dir<span class="sc">}</span><span class="ss">/05_reporting/events.</span><span class="sc">{</span>name<span class="sc">}</span><span class="ss">.ts_</span><span class="sc">{</span>ts<span class="sc">:.2f}</span><span class="ss">s_tau_</span><span class="sc">{</span>tau<span class="sc">}</span><span class="ss">s.</span><span class="sc">{</span><span class="bu">format</span><span class="sc">}</span><span class="ss">"</span></span>
-<span id="cb9-9"><a href="#cb9-9" aria-hidden="true" tabindex="-1"></a>        df <span class="op">=</span> pl.read_ipc(filepath).lazy()</span>
-<span id="cb9-10"><a href="#cb9-10" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> df.with_columns(</span>
-<span id="cb9-11"><a href="#cb9-11" aria-hidden="true" tabindex="-1"></a>        pl.col(parameters).<span class="bu">abs</span>(),</span>
-<span id="cb9-12"><a href="#cb9-12" aria-hidden="true" tabindex="-1"></a>        sat <span class="op">=</span> pl.lit(name),</span>
-<span id="cb9-13"><a href="#cb9-13" aria-hidden="true" tabindex="-1"></a>        ts <span class="op">=</span> pl.lit(<span class="ss">f'</span><span class="sc">{</span>ts<span class="sc">}</span><span class="ss">s'</span>),</span>
-<span id="cb9-14"><a href="#cb9-14" aria-hidden="true" tabindex="-1"></a>        method <span class="op">=</span> pl.lit(method),</span>
-<span id="cb9-15"><a href="#cb9-15" aria-hidden="true" tabindex="-1"></a>        ts_method <span class="op">=</span> pl.lit(<span class="ss">f'</span><span class="sc">{</span>ts<span class="sc">}</span><span class="ss">s </span><span class="sc">{</span>method<span class="sc">}</span><span class="ss">'</span>),</span>
-<span id="cb9-16"><a href="#cb9-16" aria-hidden="true" tabindex="-1"></a>        label <span class="op">=</span> pl.lit(<span class="ss">f'</span><span class="sc">{</span>name<span class="sc">}</span><span class="ss"> </span><span class="sc">{</span>ts<span class="sc">}</span><span class="ss">s </span><span class="sc">{</span>method<span class="sc">}</span><span class="ss">'</span>)</span>
-<span id="cb9-17"><a href="#cb9-17" aria-hidden="true" tabindex="-1"></a>    ).with_columns(cs.numeric().cast(pl.Float64))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> load_events(name: <span class="bu">str</span>, ts: <span class="bu">float</span>, tau: <span class="bu">float</span>, method <span class="op">=</span><span class="st">'derivative'</span>) <span class="op">-&gt;</span> pl.DataFrame:</span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> method <span class="op">==</span> <span class="st">'derivative'</span>:</span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>        <span class="bu">format</span> <span class="op">=</span> <span class="st">'parquet'</span></span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>        filepath <span class="op">=</span> <span class="ss">f"</span><span class="sc">{</span>data_dir<span class="sc">}</span><span class="ss">/08_reporting/events/l1/</span><span class="sc">{</span>name<span class="sc">}</span><span class="ss">_ts_</span><span class="sc">{</span>ts<span class="sc">}</span><span class="ss">s_tau_</span><span class="sc">{</span>tau<span class="sc">}</span><span class="ss">s.</span><span class="sc">{</span><span class="bu">format</span><span class="sc">}</span><span class="ss">"</span></span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>        df <span class="op">=</span> pl.scan_parquet(filepath)</span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a>    <span class="cf">elif</span> method <span class="op">==</span> <span class="st">'fit'</span>:</span>
+<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a>        <span class="bu">format</span> <span class="op">=</span> <span class="st">'arrow'</span></span>
+<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a>        filepath <span class="op">=</span> <span class="ss">f"</span><span class="sc">{</span>data_dir<span class="sc">}</span><span class="ss">/05_reporting/events.</span><span class="sc">{</span>name<span class="sc">}</span><span class="ss">.ts_</span><span class="sc">{</span>ts<span class="sc">:.2f}</span><span class="ss">s_tau_</span><span class="sc">{</span>tau<span class="sc">}</span><span class="ss">s.</span><span class="sc">{</span><span class="bu">format</span><span class="sc">}</span><span class="ss">"</span></span>
+<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a>        df <span class="op">=</span> pl.read_ipc(filepath).lazy()</span>
+<span id="cb7-10"><a href="#cb7-10" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> df.with_columns(</span>
+<span id="cb7-11"><a href="#cb7-11" aria-hidden="true" tabindex="-1"></a>        pl.col(parameters).<span class="bu">abs</span>(),</span>
+<span id="cb7-12"><a href="#cb7-12" aria-hidden="true" tabindex="-1"></a>        sat <span class="op">=</span> pl.lit(name),</span>
+<span id="cb7-13"><a href="#cb7-13" aria-hidden="true" tabindex="-1"></a>        ts <span class="op">=</span> pl.lit(<span class="ss">f'</span><span class="sc">{</span>ts<span class="sc">}</span><span class="ss">s'</span>),</span>
+<span id="cb7-14"><a href="#cb7-14" aria-hidden="true" tabindex="-1"></a>        method <span class="op">=</span> pl.lit(method),</span>
+<span id="cb7-15"><a href="#cb7-15" aria-hidden="true" tabindex="-1"></a>        ts_method <span class="op">=</span> pl.lit(<span class="ss">f'</span><span class="sc">{</span>ts<span class="sc">}</span><span class="ss">s </span><span class="sc">{</span>method<span class="sc">}</span><span class="ss">'</span>),</span>
+<span id="cb7-16"><a href="#cb7-16" aria-hidden="true" tabindex="-1"></a>        label <span class="op">=</span> pl.lit(<span class="ss">f'</span><span class="sc">{</span>name<span class="sc">}</span><span class="ss"> </span><span class="sc">{</span>ts<span class="sc">}</span><span class="ss">s </span><span class="sc">{</span>method<span class="sc">}</span><span class="ss">'</span>)</span>
+<span id="cb7-17"><a href="#cb7-17" aria-hidden="true" tabindex="-1"></a>    ).with_columns(cs.numeric().cast(pl.Float64))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
 <div id="cell-7" class="cell" data-execution_count="14">
 <details class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>wind_ts_009_all <span class="op">=</span> load_events(<span class="st">'Wind'</span>, <span class="fl">0.09</span>, <span class="dv">60</span>)</span>
-<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>wind_ts_01_all <span class="op">=</span> load_events(<span class="st">'Wind'</span>, <span class="fl">0.1</span>, <span class="dv">60</span>)</span>
-<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>wind_ts_02_all <span class="op">=</span> load_events(<span class="st">'Wind'</span>, <span class="fl">0.2</span>, <span class="dv">60</span>)</span>
-<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a>wind_ts_05_all <span class="op">=</span> load_events(<span class="st">'Wind'</span>, <span class="fl">0.5</span>, <span class="dv">60</span>)</span>
-<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a>wind_ts_1_all <span class="op">=</span> load_events(<span class="st">'Wind'</span>, <span class="dv">1</span>, <span class="dv">60</span>)</span>
-<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a>juno_ts_1_all <span class="op">=</span> load_events(<span class="st">'JNO'</span>, <span class="dv">1</span>, <span class="dv">60</span>)</span>
-<span id="cb10-8"><a href="#cb10-8" aria-hidden="true" tabindex="-1"></a>juno_ts_1_fit <span class="op">=</span> load_events(<span class="st">'JNO'</span>, <span class="dv">1</span>, <span class="dv">60</span>, method<span class="op">=</span><span class="st">'fit'</span>)</span>
-<span id="cb10-9"><a href="#cb10-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-10"><a href="#cb10-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-11"><a href="#cb10-11" aria-hidden="true" tabindex="-1"></a>wind_ts_01_fit <span class="op">=</span> load_events(<span class="st">'Wind'</span>, <span class="fl">0.09</span>, <span class="dv">60</span>, method<span class="op">=</span><span class="st">'fit'</span>)</span>
-<span id="cb10-12"><a href="#cb10-12" aria-hidden="true" tabindex="-1"></a>wind_ts_02_fit <span class="op">=</span> load_events(<span class="st">'Wind'</span>, <span class="fl">0.2</span>, <span class="dv">60</span>, method<span class="op">=</span><span class="st">'fit'</span>)</span>
-<span id="cb10-13"><a href="#cb10-13" aria-hidden="true" tabindex="-1"></a>wind_ts_05_fit <span class="op">=</span> load_events(<span class="st">'Wind'</span>, <span class="fl">0.5</span>, <span class="dv">60</span>, method<span class="op">=</span><span class="st">'fit'</span>)</span>
-<span id="cb10-14"><a href="#cb10-14" aria-hidden="true" tabindex="-1"></a>wind_ts_1_fit <span class="op">=</span> load_events(<span class="st">'Wind'</span>, <span class="dv">1</span>, <span class="dv">60</span>, method<span class="op">=</span><span class="st">'fit'</span>)</span>
-<span id="cb10-15"><a href="#cb10-15" aria-hidden="true" tabindex="-1"></a>wind_ts_2_fit <span class="op">=</span> load_events(<span class="st">'Wind'</span>, <span class="dv">2</span>, <span class="dv">60</span>, method<span class="op">=</span><span class="st">'fit'</span>)</span>
-<span id="cb10-16"><a href="#cb10-16" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-17"><a href="#cb10-17" aria-hidden="true" tabindex="-1"></a>wind_fit_dfs <span class="op">=</span> [wind_ts_01_fit, wind_ts_02_fit, wind_ts_05_fit, wind_ts_1_fit, wind_ts_2_fit]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>wind_ts_009_all <span class="op">=</span> load_events(<span class="st">'Wind'</span>, <span class="fl">0.09</span>, <span class="dv">60</span>)</span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>wind_ts_01_all <span class="op">=</span> load_events(<span class="st">'Wind'</span>, <span class="fl">0.1</span>, <span class="dv">60</span>)</span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>wind_ts_02_all <span class="op">=</span> load_events(<span class="st">'Wind'</span>, <span class="fl">0.2</span>, <span class="dv">60</span>)</span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>wind_ts_05_all <span class="op">=</span> load_events(<span class="st">'Wind'</span>, <span class="fl">0.5</span>, <span class="dv">60</span>)</span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a>wind_ts_1_all <span class="op">=</span> load_events(<span class="st">'Wind'</span>, <span class="dv">1</span>, <span class="dv">60</span>)</span>
+<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a>juno_ts_1_all <span class="op">=</span> load_events(<span class="st">'JNO'</span>, <span class="dv">1</span>, <span class="dv">60</span>)</span>
+<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a>juno_ts_1_fit <span class="op">=</span> load_events(<span class="st">'JNO'</span>, <span class="dv">1</span>, <span class="dv">60</span>, method<span class="op">=</span><span class="st">'fit'</span>)</span>
+<span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-10"><a href="#cb8-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-11"><a href="#cb8-11" aria-hidden="true" tabindex="-1"></a>wind_ts_01_fit <span class="op">=</span> load_events(<span class="st">'Wind'</span>, <span class="fl">0.09</span>, <span class="dv">60</span>, method<span class="op">=</span><span class="st">'fit'</span>)</span>
+<span id="cb8-12"><a href="#cb8-12" aria-hidden="true" tabindex="-1"></a>wind_ts_02_fit <span class="op">=</span> load_events(<span class="st">'Wind'</span>, <span class="fl">0.2</span>, <span class="dv">60</span>, method<span class="op">=</span><span class="st">'fit'</span>)</span>
+<span id="cb8-13"><a href="#cb8-13" aria-hidden="true" tabindex="-1"></a>wind_ts_05_fit <span class="op">=</span> load_events(<span class="st">'Wind'</span>, <span class="fl">0.5</span>, <span class="dv">60</span>, method<span class="op">=</span><span class="st">'fit'</span>)</span>
+<span id="cb8-14"><a href="#cb8-14" aria-hidden="true" tabindex="-1"></a>wind_ts_1_fit <span class="op">=</span> load_events(<span class="st">'Wind'</span>, <span class="dv">1</span>, <span class="dv">60</span>, method<span class="op">=</span><span class="st">'fit'</span>)</span>
+<span id="cb8-15"><a href="#cb8-15" aria-hidden="true" tabindex="-1"></a>wind_ts_2_fit <span class="op">=</span> load_events(<span class="st">'Wind'</span>, <span class="dv">2</span>, <span class="dv">60</span>, method<span class="op">=</span><span class="st">'fit'</span>)</span>
+<span id="cb8-16"><a href="#cb8-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-17"><a href="#cb8-17" aria-hidden="true" tabindex="-1"></a>wind_fit_dfs <span class="op">=</span> [wind_ts_01_fit, wind_ts_02_fit, wind_ts_05_fit, wind_ts_1_fit, wind_ts_2_fit]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
 <div id="cell-8" class="cell" data-execution_count="16">
 <details class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>wind_ts_01_fit</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>wind_ts_01_fit</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-display" data-execution_count="16">
 <i>naive plan: (run <b>LazyFrame.explain(optimized=True)</b> to see the optimized plan)</i>
@@ -614,80 +669,80 @@ DF ["time", "tstart", "tstop", "t.d_end"]; PROJECT */92 COLUMNS; SELECTION: "Non
 <div id="cell-9" class="cell" data-execution_count="25">
 <details class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>time_filter <span class="op">=</span> pl.col(<span class="st">'time'</span>).dt.year()<span class="op">==</span><span class="dv">2016</span></span>
-<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>dfs <span class="op">=</span> [juno_ts_1_all, wind_ts_1_all, juno_ts_1_fit, wind_ts_009_all, wind_ts_01_all, wind_ts_02_all, wind_ts_05_all] <span class="op">+</span> wind_fit_dfs</span>
-<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> pl.concat([_.<span class="bu">filter</span>(time_filter) <span class="cf">for</span> _ <span class="kw">in</span> dfs], how<span class="op">=</span><span class="st">'diagonal'</span>).collect()</span>
-<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a><span class="op">%</span>R <span class="op">-</span>i df <span class="op">-</span>c conv_pl</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>time_filter <span class="op">=</span> pl.col(<span class="st">'time'</span>).dt.year()<span class="op">==</span><span class="dv">2016</span></span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>dfs <span class="op">=</span> [juno_ts_1_all, wind_ts_1_all, juno_ts_1_fit, wind_ts_009_all, wind_ts_01_all, wind_ts_02_all, wind_ts_05_all] <span class="op">+</span> wind_fit_dfs</span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> pl.concat([_.<span class="bu">filter</span>(time_filter) <span class="cf">for</span> _ <span class="kw">in</span> dfs], how<span class="op">=</span><span class="st">'diagonal'</span>).collect()</span>
+<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a><span class="op">%</span>R <span class="op">-</span>i df <span class="op">-</span>c conv_pl</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
 <div id="cell-10" class="cell" data-execution_count="26">
 <details class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="op">%%</span>R</span>
-<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>filename <span class="op">&lt;-</span> <span class="st">"ts_effect"</span></span>
-<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>filename <span class="op">&lt;-</span> <span class="st">"ts_effect_new"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="op">%%</span>R</span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>filename <span class="op">&lt;-</span> <span class="st">"ts_effect"</span></span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>filename <span class="op">&lt;-</span> <span class="st">"ts_effect_new"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
 <div id="cell-11" class="cell" data-execution_count="80">
 <details class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="op">%%</span>R</span>
-<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a><span class="co"># sort color with 'JUNO 1s' first</span></span>
-<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>plot_ts_effect <span class="op">&lt;-</span> function(df, labels<span class="op">=</span>NULL, color <span class="op">=</span><span class="st">"label"</span>, L_mn_norm_lim <span class="op">=</span> c(<span class="dv">0</span>,<span class="dv">60</span>), j_norm_lim <span class="op">=</span> c(<span class="dv">0</span>,<span class="fl">0.8</span>), legend_title <span class="op">=</span> NULL) {</span>
-<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a>  <span class="co"># if labels is not null, select df with labels and reorder labels</span></span>
-<span id="cb14-6"><a href="#cb14-6" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> (<span class="op">!</span><span class="kw">is</span>.null(labels)){</span>
-<span id="cb14-7"><a href="#cb14-7" aria-hidden="true" tabindex="-1"></a>    df <span class="op">&lt;-</span> df <span class="op">%&gt;%</span></span>
-<span id="cb14-8"><a href="#cb14-8" aria-hidden="true" tabindex="-1"></a>      <span class="bu">filter</span>(label <span class="op">%</span><span class="kw">in</span><span class="op">%</span> labels) <span class="op">%&gt;%</span></span>
-<span id="cb14-9"><a href="#cb14-9" aria-hidden="true" tabindex="-1"></a>      mutate(label <span class="op">=</span> factor(label, levels <span class="op">=</span> labels))</span>
-<span id="cb14-10"><a href="#cb14-10" aria-hidden="true" tabindex="-1"></a>  }</span>
-<span id="cb14-11"><a href="#cb14-11" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb14-12"><a href="#cb14-12" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb14-13"><a href="#cb14-13" aria-hidden="true" tabindex="-1"></a>  add <span class="op">&lt;-</span> <span class="st">"mean"</span> <span class="co"># this seems to be computed before the limits are set</span></span>
-<span id="cb14-14"><a href="#cb14-14" aria-hidden="true" tabindex="-1"></a>  add <span class="op">&lt;-</span> NULL</span>
-<span id="cb14-15"><a href="#cb14-15" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb14-16"><a href="#cb14-16" aria-hidden="true" tabindex="-1"></a>  common_custom <span class="op">&lt;-</span> scale_color_okabeito(palette <span class="op">=</span> <span class="st">"black_first"</span>)</span>
-<span id="cb14-17"><a href="#cb14-17" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb14-18"><a href="#cb14-18" aria-hidden="true" tabindex="-1"></a>  x <span class="op">&lt;-</span> <span class="st">"L_mn"</span></span>
-<span id="cb14-19"><a href="#cb14-19" aria-hidden="true" tabindex="-1"></a>  x_lim <span class="op">&lt;-</span> c(<span class="dv">0</span>,<span class="dv">7500</span>)</span>
-<span id="cb14-20"><a href="#cb14-20" aria-hidden="true" tabindex="-1"></a>  p1 <span class="op">&lt;-</span> ggdensity(df, x <span class="op">=</span> x, color <span class="op">=</span> color, add <span class="op">=</span> add, alpha <span class="op">=</span> <span class="dv">0</span>) <span class="op">+</span> xlim(x_lim) <span class="op">+</span> common_custom</span>
-<span id="cb14-21"><a href="#cb14-21" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb14-22"><a href="#cb14-22" aria-hidden="true" tabindex="-1"></a>  x <span class="op">&lt;-</span> <span class="st">"L_mn_norm"</span></span>
-<span id="cb14-23"><a href="#cb14-23" aria-hidden="true" tabindex="-1"></a>  x_lab <span class="op">&lt;-</span> expression(paste(<span class="st">"Normalized Thickness ("</span>, d[i], <span class="st">")"</span>))</span>
-<span id="cb14-24"><a href="#cb14-24" aria-hidden="true" tabindex="-1"></a>  p2 <span class="op">&lt;-</span> ggdensity(df, x <span class="op">=</span> x, color <span class="op">=</span> color, add <span class="op">=</span> add, alpha <span class="op">=</span> <span class="dv">0</span>) <span class="op">+</span> xlim(L_mn_norm_lim) <span class="op">+</span> common_custom <span class="op">+</span> labs(x<span class="op">=</span>x_lab)</span>
-<span id="cb14-25"><a href="#cb14-25" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb14-26"><a href="#cb14-26" aria-hidden="true" tabindex="-1"></a>  x <span class="op">&lt;-</span> <span class="st">"j0"</span></span>
-<span id="cb14-27"><a href="#cb14-27" aria-hidden="true" tabindex="-1"></a>  x_lim <span class="op">&lt;-</span> c(<span class="dv">0</span>,<span class="dv">20</span>)</span>
-<span id="cb14-28"><a href="#cb14-28" aria-hidden="true" tabindex="-1"></a>  p3 <span class="op">&lt;-</span> ggdensity(df, x <span class="op">=</span> x, color <span class="op">=</span> color, add <span class="op">=</span> add, alpha <span class="op">=</span> <span class="dv">0</span>) <span class="op">+</span> xlim(x_lim) <span class="op">+</span> common_custom</span>
-<span id="cb14-29"><a href="#cb14-29" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb14-30"><a href="#cb14-30" aria-hidden="true" tabindex="-1"></a>  x <span class="op">&lt;-</span> <span class="st">"j0_norm"</span></span>
-<span id="cb14-31"><a href="#cb14-31" aria-hidden="true" tabindex="-1"></a>  x_lab <span class="op">&lt;-</span> expression(paste(<span class="st">"Normalized Current Intensity ("</span>, J[A], <span class="st">")"</span>))</span>
-<span id="cb14-32"><a href="#cb14-32" aria-hidden="true" tabindex="-1"></a>  p4 <span class="op">&lt;-</span> ggdensity(df, x <span class="op">=</span> x, color <span class="op">=</span> color, add <span class="op">=</span> add, alpha <span class="op">=</span> <span class="dv">0</span>) <span class="op">+</span> xlim(j_norm_lim) <span class="op">+</span> common_custom <span class="op">+</span> labs(x<span class="op">=</span>x_lab)</span>
-<span id="cb14-33"><a href="#cb14-33" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb14-34"><a href="#cb14-34" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb14-35"><a href="#cb14-35" aria-hidden="true" tabindex="-1"></a>  output <span class="op">&lt;-</span> <span class="bu">list</span>(p2, p4)</span>
-<span id="cb14-36"><a href="#cb14-36" aria-hidden="true" tabindex="-1"></a>  <span class="co"># change the legend title for each plot</span></span>
-<span id="cb14-37"><a href="#cb14-37" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> (<span class="op">!</span><span class="kw">is</span>.null(legend_title)){</span>
-<span id="cb14-38"><a href="#cb14-38" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> (i <span class="kw">in</span> <span class="dv">1</span>:length(output)){</span>
-<span id="cb14-39"><a href="#cb14-39" aria-hidden="true" tabindex="-1"></a>      output[[i]] <span class="op">&lt;-</span> ggpar(output[[i]], legend.title <span class="op">=</span> legend_title)</span>
-<span id="cb14-40"><a href="#cb14-40" aria-hidden="true" tabindex="-1"></a>    }</span>
-<span id="cb14-41"><a href="#cb14-41" aria-hidden="true" tabindex="-1"></a>  }</span>
-<span id="cb14-42"><a href="#cb14-42" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb14-43"><a href="#cb14-43" aria-hidden="true" tabindex="-1"></a>  purrr::<span class="bu">reduce</span>(output, `<span class="op">+</span>`) <span class="op">+</span> plot_layout(guides <span class="op">=</span> <span class="st">'collect'</span>, nrow<span class="op">=</span><span class="dv">2</span>) <span class="op">&amp;</span></span>
-<span id="cb14-44"><a href="#cb14-44" aria-hidden="true" tabindex="-1"></a>    theme(legend.position<span class="op">=</span><span class="st">'top'</span>)</span>
-<span id="cb14-45"><a href="#cb14-45" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb14-46"><a href="#cb14-46" aria-hidden="true" tabindex="-1"></a></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="op">%%</span>R</span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a><span class="co"># sort color with 'JUNO 1s' first</span></span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>plot_ts_effect <span class="op">&lt;-</span> function(df, labels<span class="op">=</span>NULL, color <span class="op">=</span><span class="st">"label"</span>, L_mn_norm_lim <span class="op">=</span> c(<span class="dv">0</span>,<span class="dv">60</span>), j_norm_lim <span class="op">=</span> c(<span class="dv">0</span>,<span class="fl">0.8</span>), legend_title <span class="op">=</span> NULL) {</span>
+<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a>  <span class="co"># if labels is not null, select df with labels and reorder labels</span></span>
+<span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> (<span class="op">!</span><span class="kw">is</span>.null(labels)){</span>
+<span id="cb12-7"><a href="#cb12-7" aria-hidden="true" tabindex="-1"></a>    df <span class="op">&lt;-</span> df <span class="op">%&gt;%</span></span>
+<span id="cb12-8"><a href="#cb12-8" aria-hidden="true" tabindex="-1"></a>      <span class="bu">filter</span>(label <span class="op">%</span><span class="kw">in</span><span class="op">%</span> labels) <span class="op">%&gt;%</span></span>
+<span id="cb12-9"><a href="#cb12-9" aria-hidden="true" tabindex="-1"></a>      mutate(label <span class="op">=</span> factor(label, levels <span class="op">=</span> labels))</span>
+<span id="cb12-10"><a href="#cb12-10" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb12-11"><a href="#cb12-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-12"><a href="#cb12-12" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb12-13"><a href="#cb12-13" aria-hidden="true" tabindex="-1"></a>  add <span class="op">&lt;-</span> <span class="st">"mean"</span> <span class="co"># this seems to be computed before the limits are set</span></span>
+<span id="cb12-14"><a href="#cb12-14" aria-hidden="true" tabindex="-1"></a>  add <span class="op">&lt;-</span> NULL</span>
+<span id="cb12-15"><a href="#cb12-15" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb12-16"><a href="#cb12-16" aria-hidden="true" tabindex="-1"></a>  common_custom <span class="op">&lt;-</span> scale_color_okabeito(palette <span class="op">=</span> <span class="st">"black_first"</span>)</span>
+<span id="cb12-17"><a href="#cb12-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-18"><a href="#cb12-18" aria-hidden="true" tabindex="-1"></a>  x <span class="op">&lt;-</span> <span class="st">"L_mn"</span></span>
+<span id="cb12-19"><a href="#cb12-19" aria-hidden="true" tabindex="-1"></a>  x_lim <span class="op">&lt;-</span> c(<span class="dv">0</span>,<span class="dv">7500</span>)</span>
+<span id="cb12-20"><a href="#cb12-20" aria-hidden="true" tabindex="-1"></a>  p1 <span class="op">&lt;-</span> ggdensity(df, x <span class="op">=</span> x, color <span class="op">=</span> color, add <span class="op">=</span> add, alpha <span class="op">=</span> <span class="dv">0</span>) <span class="op">+</span> xlim(x_lim) <span class="op">+</span> common_custom</span>
+<span id="cb12-21"><a href="#cb12-21" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-22"><a href="#cb12-22" aria-hidden="true" tabindex="-1"></a>  x <span class="op">&lt;-</span> <span class="st">"L_mn_norm"</span></span>
+<span id="cb12-23"><a href="#cb12-23" aria-hidden="true" tabindex="-1"></a>  x_lab <span class="op">&lt;-</span> expression(paste(<span class="st">"Normalized Thickness ("</span>, d[i], <span class="st">")"</span>))</span>
+<span id="cb12-24"><a href="#cb12-24" aria-hidden="true" tabindex="-1"></a>  p2 <span class="op">&lt;-</span> ggdensity(df, x <span class="op">=</span> x, color <span class="op">=</span> color, add <span class="op">=</span> add, alpha <span class="op">=</span> <span class="dv">0</span>) <span class="op">+</span> xlim(L_mn_norm_lim) <span class="op">+</span> common_custom <span class="op">+</span> labs(x<span class="op">=</span>x_lab)</span>
+<span id="cb12-25"><a href="#cb12-25" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-26"><a href="#cb12-26" aria-hidden="true" tabindex="-1"></a>  x <span class="op">&lt;-</span> <span class="st">"j0"</span></span>
+<span id="cb12-27"><a href="#cb12-27" aria-hidden="true" tabindex="-1"></a>  x_lim <span class="op">&lt;-</span> c(<span class="dv">0</span>,<span class="dv">20</span>)</span>
+<span id="cb12-28"><a href="#cb12-28" aria-hidden="true" tabindex="-1"></a>  p3 <span class="op">&lt;-</span> ggdensity(df, x <span class="op">=</span> x, color <span class="op">=</span> color, add <span class="op">=</span> add, alpha <span class="op">=</span> <span class="dv">0</span>) <span class="op">+</span> xlim(x_lim) <span class="op">+</span> common_custom</span>
+<span id="cb12-29"><a href="#cb12-29" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-30"><a href="#cb12-30" aria-hidden="true" tabindex="-1"></a>  x <span class="op">&lt;-</span> <span class="st">"j0_norm"</span></span>
+<span id="cb12-31"><a href="#cb12-31" aria-hidden="true" tabindex="-1"></a>  x_lab <span class="op">&lt;-</span> expression(paste(<span class="st">"Normalized Current Intensity ("</span>, J[A], <span class="st">")"</span>))</span>
+<span id="cb12-32"><a href="#cb12-32" aria-hidden="true" tabindex="-1"></a>  p4 <span class="op">&lt;-</span> ggdensity(df, x <span class="op">=</span> x, color <span class="op">=</span> color, add <span class="op">=</span> add, alpha <span class="op">=</span> <span class="dv">0</span>) <span class="op">+</span> xlim(j_norm_lim) <span class="op">+</span> common_custom <span class="op">+</span> labs(x<span class="op">=</span>x_lab)</span>
+<span id="cb12-33"><a href="#cb12-33" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-34"><a href="#cb12-34" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-35"><a href="#cb12-35" aria-hidden="true" tabindex="-1"></a>  output <span class="op">&lt;-</span> <span class="bu">list</span>(p2, p4)</span>
+<span id="cb12-36"><a href="#cb12-36" aria-hidden="true" tabindex="-1"></a>  <span class="co"># change the legend title for each plot</span></span>
+<span id="cb12-37"><a href="#cb12-37" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> (<span class="op">!</span><span class="kw">is</span>.null(legend_title)){</span>
+<span id="cb12-38"><a href="#cb12-38" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> (i <span class="kw">in</span> <span class="dv">1</span>:length(output)){</span>
+<span id="cb12-39"><a href="#cb12-39" aria-hidden="true" tabindex="-1"></a>      output[[i]] <span class="op">&lt;-</span> ggpar(output[[i]], legend.title <span class="op">=</span> legend_title)</span>
+<span id="cb12-40"><a href="#cb12-40" aria-hidden="true" tabindex="-1"></a>    }</span>
+<span id="cb12-41"><a href="#cb12-41" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb12-42"><a href="#cb12-42" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-43"><a href="#cb12-43" aria-hidden="true" tabindex="-1"></a>  purrr::<span class="bu">reduce</span>(output, `<span class="op">+</span>`) <span class="op">+</span> plot_layout(guides <span class="op">=</span> <span class="st">'collect'</span>, nrow<span class="op">=</span><span class="dv">2</span>) <span class="op">&amp;</span></span>
+<span id="cb12-44"><a href="#cb12-44" aria-hidden="true" tabindex="-1"></a>    theme(legend.position<span class="op">=</span><span class="st">'top'</span>)</span>
+<span id="cb12-45"><a href="#cb12-45" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb12-46"><a href="#cb12-46" aria-hidden="true" tabindex="-1"></a></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
 <div id="cell-12" class="cell" data-execution_count="20">
 <details class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="op">%%</span>R</span>
-<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>filename <span class="op">&lt;-</span> <span class="st">"ts_method/all"</span></span>
-<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>p <span class="op">&lt;-</span> plot_ts_effect(df)</span>
-<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a>save_plot(filename)</span>
-<span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a>p</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="op">%%</span>R</span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>filename <span class="op">&lt;-</span> <span class="st">"ts_method/all"</span></span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>p <span class="op">&lt;-</span> plot_ts_effect(df)</span>
+<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a>save_plot(filename)</span>
+<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a>p</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-stderr">
 <pre><code>R[write to console]: In addition: 
@@ -711,23 +766,23 @@ R[write to console]: 3: Removed 719 rows containing non-finite values (`stat_den
 <div id="cell-13" class="cell" data-execution_count="44">
 <details class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="op">%%</span>R</span>
-<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a><span class="co"># filter df with sat = 'Wind'</span></span>
-<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a>p1 <span class="op">&lt;-</span> df <span class="op">%&gt;%</span></span>
-<span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a>  <span class="bu">filter</span>(sat <span class="op">==</span> <span class="st">'Wind'</span>) <span class="op">%&gt;%</span></span>
-<span id="cb17-5"><a href="#cb17-5" aria-hidden="true" tabindex="-1"></a>    plot_ts_effect(color <span class="op">=</span> <span class="st">"ts_method"</span>)</span>
-<span id="cb17-6"><a href="#cb17-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb17-7"><a href="#cb17-7" aria-hidden="true" tabindex="-1"></a>filename <span class="op">&lt;-</span> <span class="st">"ts_method/wind"</span></span>
-<span id="cb17-8"><a href="#cb17-8" aria-hidden="true" tabindex="-1"></a>save_plot(filename)</span>
-<span id="cb17-9"><a href="#cb17-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb17-10"><a href="#cb17-10" aria-hidden="true" tabindex="-1"></a>p2 <span class="op">&lt;-</span> df <span class="op">%&gt;%</span></span>
-<span id="cb17-11"><a href="#cb17-11" aria-hidden="true" tabindex="-1"></a>  <span class="bu">filter</span>(sat <span class="op">==</span> <span class="st">'JNO'</span>) <span class="op">%&gt;%</span></span>
-<span id="cb17-12"><a href="#cb17-12" aria-hidden="true" tabindex="-1"></a>    plot_ts_effect(color <span class="op">=</span> <span class="st">"ts_method"</span>)</span>
-<span id="cb17-13"><a href="#cb17-13" aria-hidden="true" tabindex="-1"></a>    </span>
-<span id="cb17-14"><a href="#cb17-14" aria-hidden="true" tabindex="-1"></a>filename <span class="op">&lt;-</span> <span class="st">"ts_method/juno"</span></span>
-<span id="cb17-15"><a href="#cb17-15" aria-hidden="true" tabindex="-1"></a>save_plot(filename)</span>
-<span id="cb17-16"><a href="#cb17-16" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb17-17"><a href="#cb17-17" aria-hidden="true" tabindex="-1"></a>p1 <span class="op">|</span> p2</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="op">%%</span>R</span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a><span class="co"># filter df with sat = 'Wind'</span></span>
+<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>p1 <span class="op">&lt;-</span> df <span class="op">%&gt;%</span></span>
+<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a>  <span class="bu">filter</span>(sat <span class="op">==</span> <span class="st">'Wind'</span>) <span class="op">%&gt;%</span></span>
+<span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a>    plot_ts_effect(color <span class="op">=</span> <span class="st">"ts_method"</span>)</span>
+<span id="cb15-6"><a href="#cb15-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-7"><a href="#cb15-7" aria-hidden="true" tabindex="-1"></a>filename <span class="op">&lt;-</span> <span class="st">"ts_method/wind"</span></span>
+<span id="cb15-8"><a href="#cb15-8" aria-hidden="true" tabindex="-1"></a>save_plot(filename)</span>
+<span id="cb15-9"><a href="#cb15-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-10"><a href="#cb15-10" aria-hidden="true" tabindex="-1"></a>p2 <span class="op">&lt;-</span> df <span class="op">%&gt;%</span></span>
+<span id="cb15-11"><a href="#cb15-11" aria-hidden="true" tabindex="-1"></a>  <span class="bu">filter</span>(sat <span class="op">==</span> <span class="st">'JNO'</span>) <span class="op">%&gt;%</span></span>
+<span id="cb15-12"><a href="#cb15-12" aria-hidden="true" tabindex="-1"></a>    plot_ts_effect(color <span class="op">=</span> <span class="st">"ts_method"</span>)</span>
+<span id="cb15-13"><a href="#cb15-13" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb15-14"><a href="#cb15-14" aria-hidden="true" tabindex="-1"></a>filename <span class="op">&lt;-</span> <span class="st">"ts_method/juno"</span></span>
+<span id="cb15-15"><a href="#cb15-15" aria-hidden="true" tabindex="-1"></a>save_plot(filename)</span>
+<span id="cb15-16"><a href="#cb15-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-17"><a href="#cb15-17" aria-hidden="true" tabindex="-1"></a>p1 <span class="op">|</span> p2</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-stdout">
 <pre><code>Saving 6.67 x 6.67 in image
@@ -770,16 +825,16 @@ R[write to console]: 4: Removed 61 rows containing non-finite values (`stat_dens
 <div id="cell-14" class="cell" data-execution_count="82">
 <details class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="op">%%</span>R</span>
-<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a>p <span class="op">&lt;-</span> df <span class="op">%&gt;%</span></span>
-<span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a>  <span class="bu">filter</span>(method <span class="op">==</span> <span class="st">'fit'</span>, sat <span class="op">==</span> <span class="st">'Wind'</span>) <span class="op">%&gt;%</span></span>
-<span id="cb21-4"><a href="#cb21-4" aria-hidden="true" tabindex="-1"></a>    plot_ts_effect(color <span class="op">=</span> <span class="st">'ts'</span>, L_mn_norm_lim <span class="op">=</span> c(<span class="dv">0</span>,<span class="dv">300</span>), j_norm_lim <span class="op">=</span> c(<span class="dv">0</span>,<span class="fl">0.6</span>), legend_title <span class="op">=</span> <span class="st">"time resolution"</span>)</span>
-<span id="cb21-5"><a href="#cb21-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb21-6"><a href="#cb21-6" aria-hidden="true" tabindex="-1"></a>p <span class="op">&lt;-</span> p <span class="op">+</span> plot_annotation(title <span class="op">=</span> <span class="st">"Wind - Fit"</span>)</span>
-<span id="cb21-7"><a href="#cb21-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb21-8"><a href="#cb21-8" aria-hidden="true" tabindex="-1"></a>filename <span class="op">&lt;-</span> <span class="st">"ts_method/wind_fit"</span></span>
-<span id="cb21-9"><a href="#cb21-9" aria-hidden="true" tabindex="-1"></a>save_plot(filename)</span>
-<span id="cb21-10"><a href="#cb21-10" aria-hidden="true" tabindex="-1"></a>p</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="op">%%</span>R</span>
+<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>p <span class="op">&lt;-</span> df <span class="op">%&gt;%</span></span>
+<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a>  <span class="bu">filter</span>(method <span class="op">==</span> <span class="st">'fit'</span>, sat <span class="op">==</span> <span class="st">'Wind'</span>) <span class="op">%&gt;%</span></span>
+<span id="cb19-4"><a href="#cb19-4" aria-hidden="true" tabindex="-1"></a>    plot_ts_effect(color <span class="op">=</span> <span class="st">'ts'</span>, L_mn_norm_lim <span class="op">=</span> c(<span class="dv">0</span>,<span class="dv">300</span>), j_norm_lim <span class="op">=</span> c(<span class="dv">0</span>,<span class="fl">0.6</span>), legend_title <span class="op">=</span> <span class="st">"time resolution"</span>)</span>
+<span id="cb19-5"><a href="#cb19-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-6"><a href="#cb19-6" aria-hidden="true" tabindex="-1"></a>p <span class="op">&lt;-</span> p <span class="op">+</span> plot_annotation(title <span class="op">=</span> <span class="st">"Wind - Fit"</span>)</span>
+<span id="cb19-7"><a href="#cb19-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-8"><a href="#cb19-8" aria-hidden="true" tabindex="-1"></a>filename <span class="op">&lt;-</span> <span class="st">"method/time_res_effect"</span></span>
+<span id="cb19-9"><a href="#cb19-9" aria-hidden="true" tabindex="-1"></a>save_plot(filename)</span>
+<span id="cb19-10"><a href="#cb19-10" aria-hidden="true" tabindex="-1"></a>p</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-stdout">
 <pre><code>Saving 6.67 x 6.67 in image
@@ -812,24 +867,24 @@ R[write to console]: 2: Removed 3013 rows containing non-finite values (`stat_de
 <div id="cell-15" class="cell" data-execution_count="45">
 <details class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="op">%%</span>R</span>
-<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a>p1 <span class="op">&lt;-</span> df <span class="op">%&gt;%</span></span>
-<span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a>  <span class="bu">filter</span>(method <span class="op">==</span> <span class="st">'derivative'</span>) <span class="op">%&gt;%</span></span>
-<span id="cb25-4"><a href="#cb25-4" aria-hidden="true" tabindex="-1"></a>    plot_ts_effect</span>
-<span id="cb25-5"><a href="#cb25-5" aria-hidden="true" tabindex="-1"></a> </span>
-<span id="cb25-6"><a href="#cb25-6" aria-hidden="true" tabindex="-1"></a>filename <span class="op">&lt;-</span> <span class="st">"ts_method/derivative"</span></span>
-<span id="cb25-7"><a href="#cb25-7" aria-hidden="true" tabindex="-1"></a>save_plot(filename)</span>
-<span id="cb25-8"><a href="#cb25-8" aria-hidden="true" tabindex="-1"></a>p1</span>
-<span id="cb25-9"><a href="#cb25-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb25-10"><a href="#cb25-10" aria-hidden="true" tabindex="-1"></a>p2 <span class="op">&lt;-</span> df <span class="op">%&gt;%</span></span>
-<span id="cb25-11"><a href="#cb25-11" aria-hidden="true" tabindex="-1"></a>  <span class="bu">filter</span>(method <span class="op">==</span> <span class="st">'fit'</span>) <span class="op">%&gt;%</span></span>
-<span id="cb25-12"><a href="#cb25-12" aria-hidden="true" tabindex="-1"></a>    plot_ts_effect(L_mn_norm_lim <span class="op">=</span> c(<span class="dv">0</span>,<span class="dv">300</span>), j_norm_lim <span class="op">=</span> c(<span class="dv">0</span>,<span class="fl">0.6</span>))</span>
-<span id="cb25-13"><a href="#cb25-13" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb25-14"><a href="#cb25-14" aria-hidden="true" tabindex="-1"></a>filename <span class="op">&lt;-</span> <span class="st">"ts_method/fit"</span></span>
-<span id="cb25-15"><a href="#cb25-15" aria-hidden="true" tabindex="-1"></a>save_plot(filename)</span>
-<span id="cb25-16"><a href="#cb25-16" aria-hidden="true" tabindex="-1"></a>p2</span>
-<span id="cb25-17"><a href="#cb25-17" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb25-18"><a href="#cb25-18" aria-hidden="true" tabindex="-1"></a>p1 <span class="op">|</span> p2</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="op">%%</span>R</span>
+<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a>p1 <span class="op">&lt;-</span> df <span class="op">%&gt;%</span></span>
+<span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a>  <span class="bu">filter</span>(method <span class="op">==</span> <span class="st">'derivative'</span>) <span class="op">%&gt;%</span></span>
+<span id="cb23-4"><a href="#cb23-4" aria-hidden="true" tabindex="-1"></a>    plot_ts_effect</span>
+<span id="cb23-5"><a href="#cb23-5" aria-hidden="true" tabindex="-1"></a> </span>
+<span id="cb23-6"><a href="#cb23-6" aria-hidden="true" tabindex="-1"></a>filename <span class="op">&lt;-</span> <span class="st">"ts_method/derivative"</span></span>
+<span id="cb23-7"><a href="#cb23-7" aria-hidden="true" tabindex="-1"></a>save_plot(filename)</span>
+<span id="cb23-8"><a href="#cb23-8" aria-hidden="true" tabindex="-1"></a>p1</span>
+<span id="cb23-9"><a href="#cb23-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb23-10"><a href="#cb23-10" aria-hidden="true" tabindex="-1"></a>p2 <span class="op">&lt;-</span> df <span class="op">%&gt;%</span></span>
+<span id="cb23-11"><a href="#cb23-11" aria-hidden="true" tabindex="-1"></a>  <span class="bu">filter</span>(method <span class="op">==</span> <span class="st">'fit'</span>) <span class="op">%&gt;%</span></span>
+<span id="cb23-12"><a href="#cb23-12" aria-hidden="true" tabindex="-1"></a>    plot_ts_effect(L_mn_norm_lim <span class="op">=</span> c(<span class="dv">0</span>,<span class="dv">300</span>), j_norm_lim <span class="op">=</span> c(<span class="dv">0</span>,<span class="fl">0.6</span>))</span>
+<span id="cb23-13"><a href="#cb23-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb23-14"><a href="#cb23-14" aria-hidden="true" tabindex="-1"></a>filename <span class="op">&lt;-</span> <span class="st">"ts_method/fit"</span></span>
+<span id="cb23-15"><a href="#cb23-15" aria-hidden="true" tabindex="-1"></a>save_plot(filename)</span>
+<span id="cb23-16"><a href="#cb23-16" aria-hidden="true" tabindex="-1"></a>p2</span>
+<span id="cb23-17"><a href="#cb23-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb23-18"><a href="#cb23-18" aria-hidden="true" tabindex="-1"></a>p1 <span class="op">|</span> p2</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-stdout">
 <pre><code>Saving 6.67 x 6.67 in image
@@ -908,18 +963,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     }
     return false;
   }
-  const clipboard = new window.ClipboardJS('.code-copy-button', {
-    text: function(trigger) {
-      const codeEl = trigger.previousElementSibling.cloneNode(true);
-      for (const childEl of codeEl.children) {
-        if (isCodeAnnotation(childEl)) {
-          childEl.remove();
-        }
-      }
-      return codeEl.innerText;
-    }
-  });
-  clipboard.on('success', function(e) {
+  const onCopySuccess = function(e) {
     // button target
     const button = e.trigger;
     // don't keep focus
@@ -951,7 +995,47 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     }, 1000);
     // clear code selection
     e.clearSelection();
+  }
+  const getTextToCopy = function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+    text: getTextToCopy
   });
+  clipboard.on('success', onCopySuccess);
+  if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+    // For code content inside modals, clipBoardJS needs to be initialized with a container option
+    // TODO: Check when it could be a function (https://github.com/zenorocha/clipboard.js/issues/860)
+    const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+      text: getTextToCopy,
+      container: window.document.getElementById('quarto-embedded-source-code-modal')
+    });
+    clipboardModal.on('success', onCopySuccess);
+  }
+    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+    var mailtoRegex = new RegExp(/^mailto:/);
+      var filterRegex = new RegExp('/' + window.location.host + '/');
+    var isInternal = (href) => {
+        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+    }
+    // Inspect non-navigation links and adorn them if external
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+    for (var i=0; i<links.length; i++) {
+      const link = links[i];
+      if (!isInternal(link.href)) {
+        // undo the damage that might have been done by quarto-nav.js in the case of
+        // links that we want to consider external
+        if (link.dataset.originalHref !== undefined) {
+          link.href = link.dataset.originalHref;
+        }
+      }
+    }
   function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
     const config = {
       allowHTML: true,
@@ -986,7 +1070,11 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       try { href = new URL(href).hash; } catch {}
       const id = href.replace(/^#\/?/, "");
       const note = window.document.getElementById(id);
-      return note.innerHTML;
+      if (note) {
+        return note.innerHTML;
+      } else {
+        return "";
+      }
     });
   }
   const xrefs = window.document.querySelectorAll('a.quarto-xref');
@@ -1261,7 +1349,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 });
 </script>
 </div> <!-- /content -->
-<script>var lightboxQuarto = GLightbox({"selector":".lightbox","closeEffect":"zoom","descPosition":"bottom","openEffect":"zoom","loop":false});
+<script>var lightboxQuarto = GLightbox({"closeEffect":"zoom","descPosition":"bottom","loop":false,"openEffect":"zoom","selector":".lightbox"});
 window.onload = () => {
   lightboxQuarto.on('slide_before_load', (data) => {
     const { slideIndex, slideNode, slideConfig, player, trigger } = data;

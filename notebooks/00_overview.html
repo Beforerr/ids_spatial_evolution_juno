@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.4.547">
+<meta name="generator" content="quarto-1.5.33">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -34,7 +34,7 @@ div.sourceCode { overflow: auto; }
 }
 @media print {
 pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
 }
 pre.numberSource code
   { counter-reset: source-line 0; }
@@ -58,7 +58,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </style>
 
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg==" crossorigin="anonymous"></script><script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
 <script src="../site_libs/quarto-nav/headroom.min.js"></script>
 <script src="../site_libs/clipboard/clipboard.min.js"></script>
 <script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
@@ -104,10 +104,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     "search-label": "Search"
   }
 }</script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.6/require.min.js" integrity="sha512-c3Nl8+7g4LMSTdrm621y7kf9v3SDPnhxLNhcjFJbKECVnmZHTdo+IRO05sNLTH/D3vA6u1X32ehoLC7WFVdheg==" crossorigin="anonymous"></script>
-
-<script type="application/javascript">define('jquery', [],function() {return window.jQuery;})</script>
-<script src="https://unpkg.com/@jupyter-widgets/html-manager@*/dist/embed-amd.js" crossorigin="anonymous"></script>
 
 
 </head>
@@ -119,7 +115,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
       <div class="navbar-container container-fluid">
             <div id="quarto-search" class="" title="Search"></div>
-          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
   <span class="navbar-toggler-icon"></span>
 </button>
           <div class="collapse navbar-collapse" id="navbarCollapse">
@@ -133,10 +129,107 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span class="menu-text">Manuscript</span></a>
   </li>  
   <li class="nav-item dropdown ">
-    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-presentation" role="button" data-bs-toggle="dropdown" aria-expanded="false">
- <span class="menu-text">Presentation</span>
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-notebooks" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Notebooks</span>
     </a>
-    <ul class="dropdown-menu" aria-labelledby="nav-menu-presentation">    
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-notebooks">    
+        <li>
+    <a class="dropdown-item" href="../notebooks/00_overview.html">
+ <span class="dropdown-text">Overview</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../notebooks/01_results_julia.html">
+ <span class="dropdown-text">Results (Julia)</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../notebooks/10_examples.html">
+ <span class="dropdown-text">Discontinuities examples</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../notebooks/12_tau_analysis.html">
+ <span class="dropdown-text">tau effect</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../notebooks/20_model.html">
+ <span class="dropdown-text">Models</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../notebooks/30_data.html">
+ <span class="dropdown-text">Different time windows</span></a>
+  </li>  
+        <li><hr class="dropdown-divider"></li>
+        <li class="dropdown-header">Analysis</li>
+        <li>
+    <a class="dropdown-item" href="../notebooks/analysis/00_base.html">
+ <span class="dropdown-text">Loading all datasets from different sources</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../notebooks/analysis/01_occurence_rate.html">
+ <span class="dropdown-text">Occurence Rate</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../notebooks/analysis/02_orientation.html">
+ <span class="dropdown-text">Orientation</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../notebooks/analysis/03_map.html">
+ <span class="dropdown-text">Map of thickness and current intensity</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../notebooks/analysis/10_classification.html">
+ <span class="dropdown-text">ID classification</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../notebooks/analysis/11_ts_analysis.html">
+ <span class="dropdown-text">Time resolution effect Analysis</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../notebooks/analysis/11_ts_data.html">
+ <span class="dropdown-text">Time resolution effect (data)</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../notebooks/analysis/12_tau_data.html">
+ <span class="dropdown-text">Justification for the tau (data)</span></a>
+  </li>  
+        <li><hr class="dropdown-divider"></li>
+        <li class="dropdown-header">Archive</li>
+        <li>
+    <a class="dropdown-item" href="../notebooks/archive/04_properties.html">
+ <span class="dropdown-text">SWD Properties</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../notebooks/archive/05_sea.html">
+ <span class="dropdown-text">Superposed epoch analysis</span></a>
+  </li>  
+        <li><hr class="dropdown-divider"></li>
+        <li class="dropdown-header">Missions</li>
+        <li>
+    <a class="dropdown-item" href="../notebooks/missions/wind.html">
+ <span class="dropdown-text">IDs from Wind</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../notebooks/missions/stereo/state.html">
+ <span class="dropdown-text">IDs from STEREO</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../notebooks/missions/themis/mag.html">
+ <span class="dropdown-text">IDs from ARTHEMIS</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../notebooks/missions/omni/index.html">
+ <span class="dropdown-text">OMNI data</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../notebooks/missions/juno/state.html">
+ <span class="dropdown-text">IDs from Juno</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-presentations" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Presentations</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-presentations">    
         <li>
     <a class="dropdown-item" href="../presentations/AGU23_poster.html">
  <span class="dropdown-text">AGU23 Poster</span></a>
@@ -149,18 +242,18 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   </li>
 </ul>
           </div> <!-- /navcollapse -->
-          <div class="quarto-navbar-tools">
+            <div class="quarto-navbar-tools">
     <a href="https://github.com/Beforerr/ids_spatial_evolution_juno" title="" class="quarto-navigation-tool px-1" aria-label=""><i class="bi bi-github"></i></a>
 </div>
       </div> <!-- /container-fluid -->
     </nav>
   <nav class="quarto-secondary-nav">
     <div class="container-fluid d-flex">
-      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../notebooks/00_overview.html">Notebooks</a></li><li class="breadcrumb-item"><a href="../notebooks/00_overview.html">Overview</a></li></ol></nav>
-        <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../notebooks/00_overview.html">Overview</a></li></ol></nav>
+        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
     </div>
   </nav>
@@ -173,70 +266,49 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <ul class="list-unstyled mt-1">
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../article.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Solar wind discontinuities spatial evolution in the outer heliosphere</span></a>
-  </div>
-</li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../notes.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Notes</span></a>
-  </div>
-</li>
-        <li class="sidebar-item sidebar-item-section">
-      <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true">
- <span class="menu-text">Notebooks</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true" aria-label="Toggle section">
-            <i class="bi bi-chevron-right ms-2"></i>
-          </a> 
-      </div>
-      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
   <a href="../notebooks/00_overview.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text">Overview</span></a>
   </div>
 </li>
-          <li class="sidebar-item">
+        <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../notebooks/01_results_julia.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Results (Julia)</span></a>
   </div>
 </li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../notebooks/04_properties.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">SWD Properties</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
+        <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../notebooks/10_examples.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Discontinuities examples</span></a>
   </div>
 </li>
-          <li class="sidebar-item">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../notebooks/12_tau_analysis.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">tau effect</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../notebooks/20_model.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Models</span></a>
   </div>
 </li>
-          <li class="sidebar-item">
+        <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../notebooks/30_data.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">30 Data</span></a>
+ <span class="menu-text">Different time windows</span></a>
   </div>
 </li>
-          <li class="sidebar-item sidebar-item-section">
+        <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="false">
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true">
  <span class="menu-text">Analysis</span></a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="false" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth2 ">  
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../notebooks/analysis/00_base.html" class="sidebar-item-text sidebar-link">
@@ -281,31 +353,25 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../notebooks/analysis/12_tau_analysis.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Justification for the tau</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
   <a href="../notebooks/analysis/12_tau_data.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Justification for the tau</span></a>
+ <span class="menu-text">Justification for the tau (data)</span></a>
   </div>
 </li>
       </ul>
   </li>
-          <li class="sidebar-item sidebar-item-section">
+        <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="false">
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true">
  <span class="menu-text">Archive</span></a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="false" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth2 ">  
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../notebooks/archive/04_calc.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">04 Calc</span></a>
+  <a href="../notebooks/archive/04_properties.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">SWD Properties</span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -316,15 +382,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
       </ul>
   </li>
-          <li class="sidebar-item sidebar-item-section">
+        <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a href="../notebooks/missions/index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Missions</span></a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-expanded="false" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth2 ">  
+      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../notebooks/missions/wind.html" class="sidebar-item-text sidebar-link">
@@ -335,11 +401,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <div class="sidebar-item-container"> 
             <a href="../notebooks/missions/stereo/index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">IDs from STEREO</span></a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" aria-expanded="false" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="false" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth3 ">  
+      <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth2 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../notebooks/missions/stereo/state.html" class="sidebar-item-text sidebar-link">
@@ -352,11 +418,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <div class="sidebar-item-container"> 
             <a href="../notebooks/missions/themis/index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">IDs from ARTHEMIS</span></a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" aria-expanded="false" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" role="navigation" aria-expanded="false" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-6" class="collapse list-unstyled sidebar-section depth3 ">  
+      <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth2 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../notebooks/missions/themis/mag.html" class="sidebar-item-text sidebar-link">
@@ -379,30 +445,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
           <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a href="../notebooks/missions/wind/index.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Wind</span></a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-7" aria-expanded="false" aria-label="Toggle section">
-            <i class="bi bi-chevron-right ms-2"></i>
-          </a> 
-      </div>
-      <ul id="quarto-sidebar-section-7" class="collapse list-unstyled sidebar-section depth3 ">  
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../notebooks/missions/wind/state.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Wind State data pipeline</span></a>
-  </div>
-</li>
-      </ul>
-  </li>
-          <li class="sidebar-item sidebar-item-section">
-      <div class="sidebar-item-container"> 
             <a href="../notebooks/missions/juno/index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">IDs from Juno</span></a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-8" aria-expanded="false" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" role="navigation" aria-expanded="false" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-8" class="collapse list-unstyled sidebar-section depth3 ">  
+      <ul id="quarto-sidebar-section-6" class="collapse list-unstyled sidebar-section depth2 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../notebooks/missions/juno/state.html" class="sidebar-item-text sidebar-link">
@@ -411,25 +460,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
       </ul>
   </li>
-      </ul>
-  </li>
-      </ul>
-  </li>
-        <li class="sidebar-item sidebar-item-section">
-      <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-9" aria-expanded="true">
- <span class="menu-text">Presentations</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-9" aria-expanded="true" aria-label="Toggle section">
-            <i class="bi bi-chevron-right ms-2"></i>
-          </a> 
-      </div>
-      <ul id="quarto-sidebar-section-9" class="collapse list-unstyled sidebar-section depth1 show">  
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../presentations/AGU23_poster.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Solar wind discontinuities spatial evolution and energetic ion scattering</span></a>
-  </div>
-</li>
       </ul>
   </li>
     </ul>
@@ -452,7 +482,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../notebooks/00_overview.html">Notebooks</a></li><li class="breadcrumb-item"><a href="../notebooks/00_overview.html">Overview</a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
 <h1 class="title">Overview</h1>
 </div>
@@ -480,48 +510,68 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <blockquote class="blockquote">
 <p>We suggest as minimum short-format credit : “Source: WDC-SILSO, Royal Observatory of Belgium, Brussels”. or “Sunspot data from the World Data Center SILSO, Royal Observatory of Belgium, Brussels”.</p>
 </blockquote>
-<div id="cell-1" class="cell" data-execution_count="1">
+<div id="cell-1" class="cell" data-execution_count="4">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> scienceplots</span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> space_analysis.utils.cdas <span class="im">import</span> Variables</span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> space_analysis.plot.basic <span class="im">import</span> savefig</span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
-<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> polars <span class="im">as</span> pl</span>
-<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> matplotlib.pyplot <span class="im">import</span> Axes</span>
-<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>plt.rc(<span class="st">"savefig"</span>, dpi<span class="op">=</span><span class="dv">300</span>)</span>
-<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>plt.rc(<span class="st">'figure.subplot'</span>, wspace <span class="op">=</span> <span class="dv">0</span>, hspace <span class="op">=</span> <span class="dv">0</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> beforerr.matplotlib <span class="im">import</span> unify_axes_fontsize</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
-<div id="cell-2" class="cell" data-execution_count="4">
+<div id="cell-2" class="cell" data-execution_count="2">
 <details class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>timerange <span class="op">=</span> [<span class="st">"2011-08-01"</span>, <span class="st">"2016-07-01"</span>]</span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>fname <span class="op">=</span> <span class="st">"juno-hg-loc_sunspot-number"</span></span>
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> scienceplots</span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>datasets <span class="op">=</span> [<span class="st">'JUNO_HELIO1DAY_POSITION'</span>, <span class="st">'EARTH_HELIO1DAY_POSITION'</span>, <span class="st">'STA_HELIO1DAY_POSITION'</span>]</span>
-<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>names <span class="op">=</span> [<span class="st">'JUNO'</span>, <span class="st">'EARTH'</span>, <span class="st">'STA'</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> space_analysis.utils.cdas <span class="im">import</span> Variables</span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> space_analysis.plot.basic <span class="im">import</span> savefig</span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> polars <span class="im">as</span> pl</span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> matplotlib.pyplot <span class="im">import</span> Axes</span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a>plt.rc(<span class="st">"savefig"</span>, dpi<span class="op">=</span><span class="dv">300</span>)</span>
+<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a>plt.rc(<span class="st">'figure.subplot'</span>, wspace <span class="op">=</span> <span class="dv">0</span>, hspace <span class="op">=</span> <span class="dv">0</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-error">
+<div class="ansi-escaped-output">
+<pre><span class="ansi-red-fg">---------------------------------------------------------------------------</span>
+<span class="ansi-red-fg">ModuleNotFoundError</span>                       Traceback (most recent call last)
+Input <span class="ansi-green-fg">In [2]</span>, in <span class="ansi-cyan-fg">&lt;cell line: 2&gt;</span><span class="ansi-blue-fg">()</span>
+<span class="ansi-green-fg ansi-bold">      1</span> <span style="font-weight:bold;color:rgb(0,135,0)">import</span> <span style="font-weight:bold;color:rgb(0,0,255)">matplotlib</span><span style="font-weight:bold;color:rgb(0,0,255)">.</span><span style="font-weight:bold;color:rgb(0,0,255)">pyplot</span> <span style="font-weight:bold;color:rgb(0,135,0)">as</span> <span style="font-weight:bold;color:rgb(0,0,255)">plt</span>
+<span class="ansi-green-fg">----&gt; 2</span> <span style="font-weight:bold;color:rgb(0,135,0)">import</span> <span style="font-weight:bold;color:rgb(0,0,255)">scienceplots</span>
+<span class="ansi-green-fg ansi-bold">      4</span> <span style="font-weight:bold;color:rgb(0,135,0)">from</span> <span style="font-weight:bold;color:rgb(0,0,255)">space_analysis</span><span style="font-weight:bold;color:rgb(0,0,255)">.</span><span style="font-weight:bold;color:rgb(0,0,255)">utils</span><span style="font-weight:bold;color:rgb(0,0,255)">.</span><span style="font-weight:bold;color:rgb(0,0,255)">cdas</span> <span style="font-weight:bold;color:rgb(0,135,0)">import</span> Variables
+<span class="ansi-green-fg ansi-bold">      5</span> <span style="font-weight:bold;color:rgb(0,135,0)">from</span> <span style="font-weight:bold;color:rgb(0,0,255)">space_analysis</span><span style="font-weight:bold;color:rgb(0,0,255)">.</span><span style="font-weight:bold;color:rgb(0,0,255)">plot</span><span style="font-weight:bold;color:rgb(0,0,255)">.</span><span style="font-weight:bold;color:rgb(0,0,255)">basic</span> <span style="font-weight:bold;color:rgb(0,135,0)">import</span> savefig
+
+<span class="ansi-red-fg">ModuleNotFoundError</span>: No module named 'scienceplots'</pre>
+</div>
+</div>
+</div>
+<div id="cell-3" class="cell" data-execution_count="4">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>timerange <span class="op">=</span> [<span class="st">"2011-08-01"</span>, <span class="st">"2016-07-01"</span>]</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>fname <span class="op">=</span> <span class="st">"juno-hg-loc_sunspot-number"</span></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>datasets <span class="op">=</span> [<span class="st">'JUNO_HELIO1DAY_POSITION'</span>, <span class="st">'EARTH_HELIO1DAY_POSITION'</span>, <span class="st">'STA_HELIO1DAY_POSITION'</span>]</span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>names <span class="op">=</span> [<span class="st">'JUNO'</span>, <span class="st">'EARTH'</span>, <span class="st">'STA'</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
 <section id="plotting-juno-and-other-mission-location" class="level2">
 <h2 class="anchored" data-anchor-id="plotting-juno-and-other-mission-location">Plotting Juno and other mission location</h2>
-<div id="cell-4" class="cell" data-execution_count="5">
+<div id="cell-5" class="cell" data-execution_count="5">
 <details class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>dfs <span class="op">=</span> []</span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> dataset, name <span class="kw">in</span> <span class="bu">zip</span>(datasets, names):</span>
-<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>    ds_variables <span class="op">=</span> Variables(</span>
-<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>        dataset<span class="op">=</span>dataset,</span>
-<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>        timerange<span class="op">=</span>timerange,</span>
-<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>    )</span>
-<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>    df <span class="op">=</span> ds_variables.to_pandas()</span>
-<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a>    df <span class="op">=</span> df.rename(columns<span class="op">=</span>{c: <span class="ss">f"</span><span class="sc">{</span>name<span class="sc">}</span><span class="ss">_</span><span class="sc">{</span>c<span class="sc">}</span><span class="ss">"</span> <span class="cf">for</span> c <span class="kw">in</span> df.columns})</span>
-<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a>    dfs.append(df)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>dfs <span class="op">=</span> []</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> dataset, name <span class="kw">in</span> <span class="bu">zip</span>(datasets, names):</span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>    ds_variables <span class="op">=</span> Variables(</span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>        dataset<span class="op">=</span>dataset,</span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>        timerange<span class="op">=</span>timerange,</span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>    )</span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a>    df <span class="op">=</span> ds_variables.to_pandas()</span>
+<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a>    df <span class="op">=</span> df.rename(columns<span class="op">=</span>{c: <span class="ss">f"</span><span class="sc">{</span>name<span class="sc">}</span><span class="ss">_</span><span class="sc">{</span>c<span class="sc">}</span><span class="ss">"</span> <span class="cf">for</span> c <span class="kw">in</span> df.columns})</span>
+<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a>    dfs.append(df)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-stderr">
 <pre><code>2024-02-08 23:52:27.545 | INFO     | space_analysis.utils.cdas:get_dataset_variables:25 - RAD_AU
@@ -547,95 +597,46 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 2024-02-08 23:52:29.035 | INFO     | space_analysis.utils.cdas:get_dataset_variables:25 - HGI_LON</code></pre>
 </div>
 </div>
-<div id="cell-5" class="cell" data-execution_count="6">
+<div id="cell-6" class="cell" data-execution_count="6">
 <details class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>df_concated <span class="op">=</span> pd.concat(dfs, axis<span class="op">=</span><span class="dv">1</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>df_concated <span class="op">=</span> pd.concat(dfs, axis<span class="op">=</span><span class="dv">1</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
-<div id="cell-6" class="cell" data-execution_count="7">
+<div id="cell-7" class="cell" data-execution_count="7">
 <details class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> pl.DataFrame(df_concated.reset_index()).with_columns(</span>
-<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>    JUNO_EARTH_HGI_LON_diff <span class="op">=</span> (pl.col(<span class="st">"JUNO_HGI_LON"</span>) <span class="op">-</span> pl.col(<span class="st">"EARTH_HGI_LON"</span>)).<span class="bu">abs</span>(),</span>
-<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>    JUNO_STA_HGI_LON_diff <span class="op">=</span> (pl.col(<span class="st">"JUNO_HGI_LON"</span>) <span class="op">-</span> pl.col(<span class="st">"STA_HGI_LON"</span>)).<span class="bu">abs</span>(),</span>
-<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>    JUNO_EARTH_HG_LON_diff <span class="op">=</span> (pl.col(<span class="st">"JUNO_HG_LON"</span>) <span class="op">-</span> pl.col(<span class="st">"EARTH_HG_LON"</span>)).<span class="bu">abs</span>(),</span>
-<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>    JUNO_STA_HG_LON_diff <span class="op">=</span> (pl.col(<span class="st">"JUNO_HG_LON"</span>) <span class="op">-</span> pl.col(<span class="st">"STA_HG_LON"</span>)).<span class="bu">abs</span>(),</span>
-<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a>).with_columns(</span>
-<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a>    JUNO_EARTH_HG_LON_diff <span class="op">=</span> pl.when(pl.col(<span class="st">"JUNO_EARTH_HG_LON_diff"</span>)<span class="op">&gt;</span><span class="dv">180</span>).then(<span class="dv">360</span><span class="op">-</span>pl.col(<span class="st">"JUNO_EARTH_HG_LON_diff"</span>)).otherwise(pl.col(<span class="st">"JUNO_EARTH_HG_LON_diff"</span>)),</span>
-<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a>    JUNO_STA_HG_LON_diff <span class="op">=</span> pl.when(pl.col(<span class="st">"JUNO_STA_HG_LON_diff"</span>)<span class="op">&gt;</span><span class="dv">180</span>).then(<span class="dv">360</span><span class="op">-</span>pl.col(<span class="st">"JUNO_STA_HG_LON_diff"</span>)).otherwise(pl.col(<span class="st">"JUNO_STA_HG_LON_diff"</span>)),</span>
-<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> pl.DataFrame(df_concated.reset_index()).with_columns(</span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>    JUNO_EARTH_HGI_LON_diff <span class="op">=</span> (pl.col(<span class="st">"JUNO_HGI_LON"</span>) <span class="op">-</span> pl.col(<span class="st">"EARTH_HGI_LON"</span>)).<span class="bu">abs</span>(),</span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>    JUNO_STA_HGI_LON_diff <span class="op">=</span> (pl.col(<span class="st">"JUNO_HGI_LON"</span>) <span class="op">-</span> pl.col(<span class="st">"STA_HGI_LON"</span>)).<span class="bu">abs</span>(),</span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>    JUNO_EARTH_HG_LON_diff <span class="op">=</span> (pl.col(<span class="st">"JUNO_HG_LON"</span>) <span class="op">-</span> pl.col(<span class="st">"EARTH_HG_LON"</span>)).<span class="bu">abs</span>(),</span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>    JUNO_STA_HG_LON_diff <span class="op">=</span> (pl.col(<span class="st">"JUNO_HG_LON"</span>) <span class="op">-</span> pl.col(<span class="st">"STA_HG_LON"</span>)).<span class="bu">abs</span>(),</span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a>).with_columns(</span>
+<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a>    JUNO_EARTH_HG_LON_diff <span class="op">=</span> pl.when(pl.col(<span class="st">"JUNO_EARTH_HG_LON_diff"</span>)<span class="op">&gt;</span><span class="dv">180</span>).then(<span class="dv">360</span><span class="op">-</span>pl.col(<span class="st">"JUNO_EARTH_HG_LON_diff"</span>)).otherwise(pl.col(<span class="st">"JUNO_EARTH_HG_LON_diff"</span>)),</span>
+<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a>    JUNO_STA_HG_LON_diff <span class="op">=</span> pl.when(pl.col(<span class="st">"JUNO_STA_HG_LON_diff"</span>)<span class="op">&gt;</span><span class="dv">180</span>).then(<span class="dv">360</span><span class="op">-</span>pl.col(<span class="st">"JUNO_STA_HG_LON_diff"</span>)).otherwise(pl.col(<span class="st">"JUNO_STA_HG_LON_diff"</span>)),</span>
+<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
-<div id="cell-7" class="cell" data-execution_count="83">
+<div id="cell-8" class="cell" data-execution_count="83">
 <details class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> plot_lon_diff(df,ax: Axes):</span>
-<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>    ax.plot(df[<span class="st">"Epoch"</span>], df[<span class="st">"JUNO_EARTH_HG_LON_diff"</span>], label<span class="op">=</span><span class="st">"Earth"</span>)</span>
-<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>    ax.plot(df[<span class="st">"Epoch"</span>], df[<span class="st">"JUNO_STA_HG_LON_diff"</span>], label<span class="op">=</span><span class="st">"STA"</span>)</span>
-<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>    ax.set_ylabel(<span class="st">"HG Longitude</span><span class="ch">\n</span><span class="st">Difference</span><span class="ch">\n</span><span class="st">[deg]"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> plot_lon_diff(df,ax: Axes):</span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>    ax.plot(df[<span class="st">"Epoch"</span>], df[<span class="st">"JUNO_EARTH_HG_LON_diff"</span>], label<span class="op">=</span><span class="st">"Earth"</span>)</span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>    ax.plot(df[<span class="st">"Epoch"</span>], df[<span class="st">"JUNO_STA_HG_LON_diff"</span>], label<span class="op">=</span><span class="st">"STA"</span>)</span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>    ax.set_ylabel(<span class="st">"HG Longitude</span><span class="ch">\n</span><span class="st">Difference</span><span class="ch">\n</span><span class="st">[deg]"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
 </section>
 <section id="plotting-a-solar-cycle-index" class="level2">
 <h2 class="anchored" data-anchor-id="plotting-a-solar-cycle-index">Plotting a solar cycle index</h2>
 <p>https://docs.sunpy.org/en/stable/generated/gallery/plotting/solar_cycle_example.html</p>
-<div id="cell-9" class="cell" data-execution_count="9">
+<div id="cell-10" class="cell">
 <details class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="op">%</span>pip install <span class="st">"sunpy[net, timeseries]"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="op">%</span>pip install <span class="st">"sunpy[net, timeseries]"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
-<div class="cell-output cell-output-stdout">
-<pre><code>Requirement already satisfied: sunpy[net,timeseries] in /Users/zijin/micromamba/envs/cool_planet/lib/python3.10/site-packages (5.1.1)
-Requirement already satisfied: astropy!=5.1.0,&gt;=5.0.6 in /Users/zijin/micromamba/envs/cool_planet/lib/python3.10/site-packages (from sunpy[net,timeseries]) (6.0.0)
-Requirement already satisfied: numpy&gt;=1.21.0 in /Users/zijin/micromamba/envs/cool_planet/lib/python3.10/site-packages (from sunpy[net,timeseries]) (1.26.3)
-Requirement already satisfied: packaging&gt;=19.0 in /Users/zijin/micromamba/envs/cool_planet/lib/python3.10/site-packages (from sunpy[net,timeseries]) (23.2)
-Requirement already satisfied: parfive&gt;=2.0.0 in /Users/zijin/micromamba/envs/cool_planet/lib/python3.10/site-packages (from parfive[ftp]&gt;=2.0.0-&gt;sunpy[net,timeseries]) (2.0.2)
-Requirement already satisfied: cdflib!=0.4.0,!=1.0.0,&gt;=0.3.20 in /Users/zijin/micromamba/envs/cool_planet/lib/python3.10/site-packages (from sunpy[net,timeseries]) (0.4.9)
-Requirement already satisfied: h5netcdf&gt;=0.11 in /Users/zijin/micromamba/envs/cool_planet/lib/python3.10/site-packages (from sunpy[net,timeseries]) (1.3.0)
-Requirement already satisfied: h5py&gt;=3.1.0 in /Users/zijin/micromamba/envs/cool_planet/lib/python3.10/site-packages (from sunpy[net,timeseries]) (3.10.0)
-Requirement already satisfied: matplotlib&gt;=3.5.0 in /Users/zijin/micromamba/envs/cool_planet/lib/python3.10/site-packages (from sunpy[net,timeseries]) (3.8.2)
-Requirement already satisfied: pandas&gt;=1.2.0 in /Users/zijin/micromamba/envs/cool_planet/lib/python3.10/site-packages (from sunpy[net,timeseries]) (2.1.4)
-Requirement already satisfied: beautifulsoup4&gt;=4.8.0 in /Users/zijin/micromamba/envs/cool_planet/lib/python3.10/site-packages (from sunpy[net,timeseries]) (4.12.3)
-Requirement already satisfied: drms&lt;0.7.0,&gt;=0.6.1 in /Users/zijin/micromamba/envs/cool_planet/lib/python3.10/site-packages (from sunpy[net,timeseries]) (0.6.4)
-Requirement already satisfied: python-dateutil&gt;=2.8.0 in /Users/zijin/micromamba/envs/cool_planet/lib/python3.10/site-packages (from sunpy[net,timeseries]) (2.8.2)
-Requirement already satisfied: tqdm&gt;=4.32.1 in /Users/zijin/micromamba/envs/cool_planet/lib/python3.10/site-packages (from sunpy[net,timeseries]) (4.66.1)
-Requirement already satisfied: zeep&gt;=3.4.0 in /Users/zijin/micromamba/envs/cool_planet/lib/python3.10/site-packages (from sunpy[net,timeseries]) (4.2.1)
-Requirement already satisfied: pyerfa&gt;=2.0 in /Users/zijin/micromamba/envs/cool_planet/lib/python3.10/site-packages (from astropy!=5.1.0,&gt;=5.0.6-&gt;sunpy[net,timeseries]) (2.0.1.1)
-Requirement already satisfied: astropy-iers-data&gt;=0.2023.10.30.0.29.53 in /Users/zijin/micromamba/envs/cool_planet/lib/python3.10/site-packages (from astropy!=5.1.0,&gt;=5.0.6-&gt;sunpy[net,timeseries]) (0.2024.1.29.0.30.37)
-Requirement already satisfied: PyYAML&gt;=3.13 in /Users/zijin/micromamba/envs/cool_planet/lib/python3.10/site-packages (from astropy!=5.1.0,&gt;=5.0.6-&gt;sunpy[net,timeseries]) (6.0.1)
-Requirement already satisfied: soupsieve&gt;1.2 in /Users/zijin/micromamba/envs/cool_planet/lib/python3.10/site-packages (from beautifulsoup4&gt;=4.8.0-&gt;sunpy[net,timeseries]) (2.5)
-Requirement already satisfied: contourpy&gt;=1.0.1 in /Users/zijin/micromamba/envs/cool_planet/lib/python3.10/site-packages (from matplotlib&gt;=3.5.0-&gt;sunpy[net,timeseries]) (1.2.0)
-Requirement already satisfied: cycler&gt;=0.10 in /Users/zijin/micromamba/envs/cool_planet/lib/python3.10/site-packages (from matplotlib&gt;=3.5.0-&gt;sunpy[net,timeseries]) (0.12.1)
-Requirement already satisfied: fonttools&gt;=4.22.0 in /Users/zijin/micromamba/envs/cool_planet/lib/python3.10/site-packages (from matplotlib&gt;=3.5.0-&gt;sunpy[net,timeseries]) (4.47.2)
-Requirement already satisfied: kiwisolver&gt;=1.3.1 in /Users/zijin/micromamba/envs/cool_planet/lib/python3.10/site-packages (from matplotlib&gt;=3.5.0-&gt;sunpy[net,timeseries]) (1.4.5)
-Requirement already satisfied: pillow&gt;=8 in /Users/zijin/micromamba/envs/cool_planet/lib/python3.10/site-packages (from matplotlib&gt;=3.5.0-&gt;sunpy[net,timeseries]) (10.2.0)
-Requirement already satisfied: pyparsing&gt;=2.3.1 in /Users/zijin/micromamba/envs/cool_planet/lib/python3.10/site-packages (from matplotlib&gt;=3.5.0-&gt;sunpy[net,timeseries]) (3.1.1)
-Requirement already satisfied: pytz&gt;=2020.1 in /Users/zijin/micromamba/envs/cool_planet/lib/python3.10/site-packages (from pandas&gt;=1.2.0-&gt;sunpy[net,timeseries]) (2023.4)
-Requirement already satisfied: tzdata&gt;=2022.1 in /Users/zijin/micromamba/envs/cool_planet/lib/python3.10/site-packages (from pandas&gt;=1.2.0-&gt;sunpy[net,timeseries]) (2023.4)
-Requirement already satisfied: aiohttp in /Users/zijin/micromamba/envs/cool_planet/lib/python3.10/site-packages (from parfive&gt;=2.0.0-&gt;parfive[ftp]&gt;=2.0.0-&gt;sunpy[net,timeseries]) (3.9.3)
-Requirement already satisfied: aioftp&gt;=0.17.1 in /Users/zijin/micromamba/envs/cool_planet/lib/python3.10/site-packages (from parfive[ftp]&gt;=2.0.0-&gt;sunpy[net,timeseries]) (0.22.3)
-Requirement already satisfied: six&gt;=1.5 in /Users/zijin/micromamba/envs/cool_planet/lib/python3.10/site-packages (from python-dateutil&gt;=2.8.0-&gt;sunpy[net,timeseries]) (1.16.0)
-Requirement already satisfied: attrs&gt;=17.2.0 in /Users/zijin/micromamba/envs/cool_planet/lib/python3.10/site-packages (from zeep&gt;=3.4.0-&gt;sunpy[net,timeseries]) (23.2.0)
-Requirement already satisfied: isodate&gt;=0.5.4 in /Users/zijin/micromamba/envs/cool_planet/lib/python3.10/site-packages (from zeep&gt;=3.4.0-&gt;sunpy[net,timeseries]) (0.6.1)
-Requirement already satisfied: lxml&gt;=4.6.0 in /Users/zijin/micromamba/envs/cool_planet/lib/python3.10/site-packages (from zeep&gt;=3.4.0-&gt;sunpy[net,timeseries]) (5.1.0)
-Requirement already satisfied: platformdirs&gt;=1.4.0 in /Users/zijin/micromamba/envs/cool_planet/lib/python3.10/site-packages (from zeep&gt;=3.4.0-&gt;sunpy[net,timeseries]) (4.1.0)
-Requirement already satisfied: requests&gt;=2.7.0 in /Users/zijin/micromamba/envs/cool_planet/lib/python3.10/site-packages (from zeep&gt;=3.4.0-&gt;sunpy[net,timeseries]) (2.31.0)
-Requirement already satisfied: requests-toolbelt&gt;=0.7.1 in /Users/zijin/micromamba/envs/cool_planet/lib/python3.10/site-packages (from zeep&gt;=3.4.0-&gt;sunpy[net,timeseries]) (1.0.0)
-Requirement already satisfied: requests-file&gt;=1.5.1 in /Users/zijin/micromamba/envs/cool_planet/lib/python3.10/site-packages (from zeep&gt;=3.4.0-&gt;sunpy[net,timeseries]) (2.0.0)
-Requirement already satisfied: charset-normalizer&lt;4,&gt;=2 in /Users/zijin/micromamba/envs/cool_planet/lib/python3.10/site-packages (from requests&gt;=2.7.0-&gt;zeep&gt;=3.4.0-&gt;sunpy[net,timeseries]) (3.3.2)
-Requirement already satisfied: idna&lt;4,&gt;=2.5 in /Users/zijin/micromamba/envs/cool_planet/lib/python3.10/site-packages (from requests&gt;=2.7.0-&gt;zeep&gt;=3.4.0-&gt;sunpy[net,timeseries]) (3.6)
-Requirement already satisfied: urllib3&lt;3,&gt;=1.21.1 in /Users/zijin/micromamba/envs/cool_planet/lib/python3.10/site-packages (from requests&gt;=2.7.0-&gt;zeep&gt;=3.4.0-&gt;sunpy[net,timeseries]) (2.1.0)
-Requirement already satisfied: certifi&gt;=2017.4.17 in /Users/zijin/micromamba/envs/cool_planet/lib/python3.10/site-packages (from requests&gt;=2.7.0-&gt;zeep&gt;=3.4.0-&gt;sunpy[net,timeseries]) (2023.11.17)
-Requirement already satisfied: aiosignal&gt;=1.1.2 in /Users/zijin/micromamba/envs/cool_planet/lib/python3.10/site-packages (from aiohttp-&gt;parfive&gt;=2.0.0-&gt;parfive[ftp]&gt;=2.0.0-&gt;sunpy[net,timeseries]) (1.3.1)
-Requirement already satisfied: frozenlist&gt;=1.1.1 in /Users/zijin/micromamba/envs/cool_planet/lib/python3.10/site-packages (from aiohttp-&gt;parfive&gt;=2.0.0-&gt;parfive[ftp]&gt;=2.0.0-&gt;sunpy[net,timeseries]) (1.4.1)
-Requirement already satisfied: multidict&lt;7.0,&gt;=4.5 in /Users/zijin/micromamba/envs/cool_planet/lib/python3.10/site-packages (from aiohttp-&gt;parfive&gt;=2.0.0-&gt;parfive[ftp]&gt;=2.0.0-&gt;sunpy[net,timeseries]) (6.0.4)
-Requirement already satisfied: yarl&lt;2.0,&gt;=1.0 in /Users/zijin/micromamba/envs/cool_planet/lib/python3.10/site-packages (from aiohttp-&gt;parfive&gt;=2.0.0-&gt;parfive[ftp]&gt;=2.0.0-&gt;sunpy[net,timeseries]) (1.9.4)
-Requirement already satisfied: async-timeout&lt;5.0,&gt;=4.0 in /Users/zijin/micromamba/envs/cool_planet/lib/python3.10/site-packages (from aiohttp-&gt;parfive&gt;=2.0.0-&gt;parfive[ftp]&gt;=2.0.0-&gt;sunpy[net,timeseries]) (4.0.3)
-Note: you may need to restart the kernel to use updated packages.</code></pre>
 </div>
-</div>
-<div id="cell-10" class="cell" data-execution_count="10">
+<div id="cell-11" class="cell" data-execution_count="10">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> astropy.time <span class="im">import</span> Time</span>
@@ -657,7 +658,7 @@ radio flux, and geomagnetic index. They also provide predictions for how the
 sunspot number and radio flux will evolve. Predicted values are based on the
 consensus of the Solar Cycle 24 Prediction Panel.</p>
 <p>We will first search for and then download the data.</p>
-<div id="cell-12" class="cell" data-execution_count="11">
+<div id="cell-13" class="cell">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>time_range <span class="op">=</span> TimeRange(timerange)</span>
@@ -666,84 +667,54 @@ consensus of the Solar Cycle 24 Prediction Panel.</p>
 <span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a>noaa <span class="op">=</span> ts.TimeSeries(f_noaa_indices, source<span class="op">=</span><span class="st">'noaaindices'</span>).truncate(time_range)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
-<div class="cell-output cell-output-stderr">
-<pre><code>08-Feb-24 23:52:33: /Users/zijin/micromamba/envs/cool_planet/lib/python3.10/site-packages/ipywidgets/widgets/widget.py:528: DeprecationWarning: The `ipykernel.comm.Comm` class has been deprecated. Please use the `comm` module instead.For creating comms, use the function `from comm import create_comm`.
-  self.comm = Comm(**args)
-
-08-Feb-24 23:52:34: /Users/zijin/micromamba/envs/cool_planet/lib/python3.10/site-packages/erfa/core.py:154: ErfaWarning: ERFA function "dtf2d" yielded 1 of "dubious year (Note 6)"
-  warnings.warn('ERFA function "{}" yielded {}'.format(func_name, wmsg),
-
-08-Feb-24 23:52:34: /Users/zijin/micromamba/envs/cool_planet/lib/python3.10/asyncio/base_events.py:688: ResourceWarning: unclosed event loop &lt;_UnixSelectorEventLoop running=False closed=False debug=False&gt;
-  _warn(f"unclosed event loop {self!r}", ResourceWarning, source=self)
-
-Exception ignored in: &lt;function BaseEventLoop.__del__ at 0x101c9b7f0&gt;
-Traceback (most recent call last):
-  File "/Users/zijin/micromamba/envs/cool_planet/lib/python3.10/asyncio/base_events.py", line 690, in __del__
-    self.close()
-  File "/Users/zijin/micromamba/envs/cool_planet/lib/python3.10/asyncio/unix_events.py", line 71, in close
-    self.remove_signal_handler(sig)
-  File "/Users/zijin/micromamba/envs/cool_planet/lib/python3.10/asyncio/unix_events.py", line 160, in remove_signal_handler
-    signal.signal(sig, handler)
-  File "/Users/zijin/micromamba/envs/cool_planet/lib/python3.10/signal.py", line 56, in signal
-    handler = _signal.signal(_enum_to_int(signalnum), _enum_to_int(handler))
-ValueError: signal only works in main thread of the main interpreter
-08-Feb-24 23:52:34: /Users/zijin/micromamba/envs/cool_planet/lib/python3.10/asyncio/selector_events.py:710: ResourceWarning: unclosed transport &lt;_SelectorSocketTransport fd=87&gt;
-  _warn(f"unclosed transport {self!r}", ResourceWarning, source=self)
-</code></pre>
-</div>
-<div class="cell-output cell-output-display">
-<script type="application/vnd.jupyter.widget-view+json">
-{"model_id":"f2ce640a9629469ab44a4cc8ac22c233","version_major":2,"version_minor":0,"quarto_mimetype":"application/vnd.jupyter.widget-view+json"}
-</script>
-</div>
 </div>
 <p>We then load them into individual <code>~sunpy.timeseries.TimeSeries</code> objects.</p>
 <p>Finally, we plot both <code>noaa</code> and <code>noaa_predict</code> for the sunspot number.
 In this case we use the S.I.D.C. Brussels International Sunspot Number (RI).
 The predictions provide both a high and low values, which we plot below as
 ranges.</p>
-<div id="cell-15" class="cell" data-execution_count="84">
+<div id="cell-16" class="cell" data-execution_count="84">
 <details class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> plot_sunspot_number(noaa_indices_ts, ax):</span>
-<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>    </span>
-<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a>    time : Time <span class="op">=</span> noaa_indices_ts.time</span>
-<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a>    time <span class="op">=</span> time.to_datetime()</span>
-<span id="cb14-6"><a href="#cb14-6" aria-hidden="true" tabindex="-1"></a>    </span>
-<span id="cb14-7"><a href="#cb14-7" aria-hidden="true" tabindex="-1"></a>    ax.scatter(time, noaa_indices_ts.quantity(<span class="st">'sunspot RI'</span>))</span>
-<span id="cb14-8"><a href="#cb14-8" aria-hidden="true" tabindex="-1"></a>    ax.plot(time, noaa_indices_ts.quantity(<span class="st">'sunspot RI'</span>), label<span class="op">=</span><span class="st">'Monthly'</span>)</span>
-<span id="cb14-9"><a href="#cb14-9" aria-hidden="true" tabindex="-1"></a>    ax.plot(</span>
-<span id="cb14-10"><a href="#cb14-10" aria-hidden="true" tabindex="-1"></a>        time, noaa_indices_ts.quantity(<span class="st">'sunspot RI smooth'</span>), label<span class="op">=</span><span class="st">'Smoothed'</span></span>
-<span id="cb14-11"><a href="#cb14-11" aria-hidden="true" tabindex="-1"></a>    )</span>
-<span id="cb14-12"><a href="#cb14-12" aria-hidden="true" tabindex="-1"></a>    </span>
-<span id="cb14-13"><a href="#cb14-13" aria-hidden="true" tabindex="-1"></a>    ax.set_ylim(bottom<span class="op">=</span><span class="dv">0</span>)</span>
-<span id="cb14-14"><a href="#cb14-14" aria-hidden="true" tabindex="-1"></a>    ax.set_ylabel(<span class="st">'Sunspot</span><span class="ch">\n</span><span class="st">Number</span><span class="ch">\n</span><span class="st">[#]'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> plot_sunspot_number(noaa_indices_ts, ax):</span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a>    time : Time <span class="op">=</span> noaa_indices_ts.time</span>
+<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a>    time <span class="op">=</span> time.to_datetime()</span>
+<span id="cb13-6"><a href="#cb13-6" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb13-7"><a href="#cb13-7" aria-hidden="true" tabindex="-1"></a>    ax.scatter(time, noaa_indices_ts.quantity(<span class="st">'sunspot RI'</span>))</span>
+<span id="cb13-8"><a href="#cb13-8" aria-hidden="true" tabindex="-1"></a>    ax.plot(time, noaa_indices_ts.quantity(<span class="st">'sunspot RI'</span>), label<span class="op">=</span><span class="st">'Monthly'</span>)</span>
+<span id="cb13-9"><a href="#cb13-9" aria-hidden="true" tabindex="-1"></a>    ax.plot(</span>
+<span id="cb13-10"><a href="#cb13-10" aria-hidden="true" tabindex="-1"></a>        time, noaa_indices_ts.quantity(<span class="st">'sunspot RI smooth'</span>), label<span class="op">=</span><span class="st">'Smoothed'</span></span>
+<span id="cb13-11"><a href="#cb13-11" aria-hidden="true" tabindex="-1"></a>    )</span>
+<span id="cb13-12"><a href="#cb13-12" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb13-13"><a href="#cb13-13" aria-hidden="true" tabindex="-1"></a>    ax.set_ylim(bottom<span class="op">=</span><span class="dv">0</span>)</span>
+<span id="cb13-14"><a href="#cb13-14" aria-hidden="true" tabindex="-1"></a>    ax.set_ylabel(<span class="st">'Sunspot</span><span class="ch">\n</span><span class="st">Number</span><span class="ch">\n</span><span class="st">[#]'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
 </section>
 <section id="plotting-omni-and-stereo-plasma-data" class="level2">
 <h2 class="anchored" data-anchor-id="plotting-omni-and-stereo-plasma-data">Plotting OMNI and STEREO plasma data</h2>
-<div id="cell-17" class="cell" data-execution_count="1">
+<div id="cell-18" class="cell" data-execution_count="1">
 <details class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> sys</span>
-<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> yaml</span>
-<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> space_analysis.ds.tplot <span class="im">import</span> Config, export, process_panel, plot</span>
-<span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb15-6"><a href="#cb15-6" aria-hidden="true" tabindex="-1"></a>file_path <span class="op">=</span> <span class="st">'omni_stereo.yml'</span></span>
-<span id="cb15-7"><a href="#cb15-7" aria-hidden="true" tabindex="-1"></a>config <span class="op">=</span> yaml.load(<span class="bu">open</span>(file_path), Loader<span class="op">=</span>yaml.FullLoader)</span>
-<span id="cb15-8"><a href="#cb15-8" aria-hidden="true" tabindex="-1"></a>config <span class="op">=</span> Config(<span class="op">**</span>config)</span>
-<span id="cb15-9"><a href="#cb15-9" aria-hidden="true" tabindex="-1"></a>tvars2plot <span class="op">=</span> []</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> sys</span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> yaml</span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> space_analysis.ds.tplot <span class="im">import</span> Config, export, process_panel, plot</span>
+<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-6"><a href="#cb14-6" aria-hidden="true" tabindex="-1"></a>file_path <span class="op">=</span> <span class="st">'omni_stereo.yml'</span></span>
+<span id="cb14-7"><a href="#cb14-7" aria-hidden="true" tabindex="-1"></a>config <span class="op">=</span> yaml.load(<span class="bu">open</span>(file_path), Loader<span class="op">=</span>yaml.FullLoader)</span>
+<span id="cb14-8"><a href="#cb14-8" aria-hidden="true" tabindex="-1"></a>config <span class="op">=</span> Config(<span class="op">**</span>config)</span>
+<span id="cb14-9"><a href="#cb14-9" aria-hidden="true" tabindex="-1"></a>tvars2plot <span class="op">=</span> []</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
-<div id="cell-18" class="cell" data-execution_count="2">
+<div id="cell-19" class="cell" data-execution_count="2">
 <details class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> p_config <span class="kw">in</span> config.panels:</span>
-<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>    tvar2plot <span class="op">=</span> process_panel(p_config)</span>
-<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a>    tvars2plot.append(tvar2plot)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> p_config <span class="kw">in</span> config.panels:</span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>    tvar2plot <span class="op">=</span> process_panel(p_config)</span>
+<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>    tvars2plot.append(tvar2plot)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-stderr">
 <pre><code>08-Feb-24 23:52:12: Downloading remote index: https://spdf.gsfc.nasa.gov/pub/data/omni/omni_cdaweb/hourly/2011/
@@ -790,32 +761,32 @@ ranges.</p>
 2024-02-08 23:52:26.524 | DEBUG    | space_analysis.ds.tplot:process_panel:369 - Processed tvar: ['plasmaSpeed-avg']</code></pre>
 </div>
 </div>
-<div id="cell-19" class="cell" data-execution_count="20">
+<div id="cell-20" class="cell" data-execution_count="20">
 <details class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>fig, axes <span class="op">=</span> plot(tvars2plot, config)</span>
-<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>fig</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>fig, axes <span class="op">=</span> plot(tvars2plot, config)</span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>fig</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-display" data-execution_count="20">
 <div>
 <figure class="figure">
-<p><a href="00_overview_files/figure-html/cell-14-output-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-1"><img src="00_overview_files/figure-html/cell-14-output-1.png" class="img-fluid figure-img"></a></p>
+<p><a href="00_overview_files/figure-html/cell-15-output-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-1"><img src="00_overview_files/figure-html/cell-15-output-1.png" class="img-fluid figure-img"></a></p>
 </figure>
 </div>
 </div>
 </div>
-<div id="cell-20" class="cell" data-execution_count="24">
+<div id="cell-21" class="cell" data-execution_count="24">
 <details class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>fig, axes <span class="op">=</span> plt.subplots(nrows<span class="op">=</span><span class="dv">2</span>, ncols<span class="op">=</span><span class="dv">1</span>, sharex<span class="op">=</span><span class="va">True</span>, figsize<span class="op">=</span>(<span class="dv">10</span>, <span class="dv">6</span>))</span>
-<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a>plot_lon_diff(df, axes[<span class="dv">0</span>])</span>
-<span id="cb19-4"><a href="#cb19-4" aria-hidden="true" tabindex="-1"></a>plot_sunspot_number(noaa, axes[<span class="dv">1</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>fig, axes <span class="op">=</span> plt.subplots(nrows<span class="op">=</span><span class="dv">2</span>, ncols<span class="op">=</span><span class="dv">1</span>, sharex<span class="op">=</span><span class="va">True</span>, figsize<span class="op">=</span>(<span class="dv">10</span>, <span class="dv">6</span>))</span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a>plot_lon_diff(df, axes[<span class="dv">0</span>])</span>
+<span id="cb18-4"><a href="#cb18-4" aria-hidden="true" tabindex="-1"></a>plot_sunspot_number(noaa, axes[<span class="dv">1</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
-<p><a href="00_overview_files/figure-html/cell-15-output-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-2"><img src="00_overview_files/figure-html/cell-15-output-1.png" class="img-fluid figure-img"></a></p>
+<p><a href="00_overview_files/figure-html/cell-16-output-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-2"><img src="00_overview_files/figure-html/cell-16-output-1.png" class="img-fluid figure-img"></a></p>
 </figure>
 </div>
 </div>
@@ -823,40 +794,28 @@ ranges.</p>
 </section>
 <section id="overview-plot" class="level2">
 <h2 class="anchored" data-anchor-id="overview-plot">Overview plot</h2>
-<div id="cell-22" class="cell">
+<div id="cell-23" class="cell" data-execution_count="85">
 <details class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> unify_axes_fontsize(axes, fontsize<span class="op">=</span><span class="dv">8</span>):</span>
-<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> ax <span class="kw">in</span> axes:</span>
-<span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a>        <span class="cf">for</span> item <span class="kw">in</span> ([ax.title, ax.xaxis.label, ax.yaxis.label] <span class="op">+</span></span>
-<span id="cb20-4"><a href="#cb20-4" aria-hidden="true" tabindex="-1"></a>                    ax.get_xticklabels() <span class="op">+</span> ax.get_yticklabels()):</span>
-<span id="cb20-5"><a href="#cb20-5" aria-hidden="true" tabindex="-1"></a>            item.set_fontsize(fontsize)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
-</div>
-<div id="cell-fig-hg-sunspot" class="cell" data-execution_count="85">
-<details class="code-fold">
-<summary>Code</summary>
-<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="cf">with</span> plt.style.context([<span class="st">'science'</span>, <span class="st">'nature'</span>, <span class="st">'no-latex'</span>]):</span>
-<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a>    fig, axes <span class="op">=</span> plt.subplots(nrows<span class="op">=</span><span class="dv">6</span>, ncols<span class="op">=</span><span class="dv">1</span>, sharex<span class="op">=</span><span class="va">True</span>, figsize<span class="op">=</span>(<span class="fl">7.5</span>, <span class="fl">7.5</span>))</span>
-<span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb21-4"><a href="#cb21-4" aria-hidden="true" tabindex="-1"></a>    plot_lon_diff(df, axes[<span class="dv">0</span>])</span>
-<span id="cb21-5"><a href="#cb21-5" aria-hidden="true" tabindex="-1"></a>    plot_sunspot_number(noaa, axes[<span class="dv">1</span>])</span>
-<span id="cb21-6"><a href="#cb21-6" aria-hidden="true" tabindex="-1"></a>    plot(tvars2plot<span class="op">=</span>tvars2plot, fig<span class="op">=</span>fig, axes<span class="op">=</span>axes[<span class="dv">2</span>:], config<span class="op">=</span>config)</span>
-<span id="cb21-7"><a href="#cb21-7" aria-hidden="true" tabindex="-1"></a>    </span>
-<span id="cb21-8"><a href="#cb21-8" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> ax <span class="kw">in</span> axes:</span>
-<span id="cb21-9"><a href="#cb21-9" aria-hidden="true" tabindex="-1"></a>        legend <span class="op">=</span> ax.legend(handletextpad<span class="op">=</span><span class="dv">0</span>, handlelength<span class="op">=</span><span class="dv">0</span>)</span>
-<span id="cb21-10"><a href="#cb21-10" aria-hidden="true" tabindex="-1"></a>    </span>
-<span id="cb21-11"><a href="#cb21-11" aria-hidden="true" tabindex="-1"></a>        <span class="cf">for</span> line, text <span class="kw">in</span> <span class="bu">zip</span>(legend.get_lines(),legend.get_texts()):</span>
-<span id="cb21-12"><a href="#cb21-12" aria-hidden="true" tabindex="-1"></a>            text.set_color(line.get_color())</span>
-<span id="cb21-13"><a href="#cb21-13" aria-hidden="true" tabindex="-1"></a>    </span>
-<span id="cb21-14"><a href="#cb21-14" aria-hidden="true" tabindex="-1"></a>    unify_axes_fontsize(axes, fontsize<span class="op">=</span><span class="dv">8</span>)</span>
-<span id="cb21-15"><a href="#cb21-15" aria-hidden="true" tabindex="-1"></a>    <span class="co"># plt.subplots_adjust(wspace=0, hspace=0)</span></span>
-<span id="cb21-16"><a href="#cb21-16" aria-hidden="true" tabindex="-1"></a>    </span>
-<span id="cb21-17"><a href="#cb21-17" aria-hidden="true" tabindex="-1"></a>    savefig(fname)</span>
-<span id="cb21-18"><a href="#cb21-18" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb21-19"><a href="#cb21-19" aria-hidden="true" tabindex="-1"></a>fig</span>
-<span id="cb21-20"><a href="#cb21-20" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb21-21"><a href="#cb21-21" aria-hidden="true" tabindex="-1"></a>    </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="cf">with</span> plt.style.context([<span class="st">'science'</span>, <span class="st">'nature'</span>, <span class="st">'no-latex'</span>]):</span>
+<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>    fig, axes <span class="op">=</span> plt.subplots(nrows<span class="op">=</span><span class="dv">6</span>, ncols<span class="op">=</span><span class="dv">1</span>, sharex<span class="op">=</span><span class="va">True</span>, figsize<span class="op">=</span>(<span class="fl">7.5</span>, <span class="fl">7.5</span>))</span>
+<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-4"><a href="#cb19-4" aria-hidden="true" tabindex="-1"></a>    plot_lon_diff(df, axes[<span class="dv">0</span>])</span>
+<span id="cb19-5"><a href="#cb19-5" aria-hidden="true" tabindex="-1"></a>    plot_sunspot_number(noaa, axes[<span class="dv">1</span>])</span>
+<span id="cb19-6"><a href="#cb19-6" aria-hidden="true" tabindex="-1"></a>    plot(tvars2plot<span class="op">=</span>tvars2plot, fig<span class="op">=</span>fig, axes<span class="op">=</span>axes[<span class="dv">2</span>:], config<span class="op">=</span>config)</span>
+<span id="cb19-7"><a href="#cb19-7" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb19-8"><a href="#cb19-8" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> ax <span class="kw">in</span> axes:</span>
+<span id="cb19-9"><a href="#cb19-9" aria-hidden="true" tabindex="-1"></a>        legend <span class="op">=</span> ax.legend(handletextpad<span class="op">=</span><span class="dv">0</span>, handlelength<span class="op">=</span><span class="dv">0</span>)</span>
+<span id="cb19-10"><a href="#cb19-10" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb19-11"><a href="#cb19-11" aria-hidden="true" tabindex="-1"></a>        <span class="cf">for</span> line, text <span class="kw">in</span> <span class="bu">zip</span>(legend.get_lines(),legend.get_texts()):</span>
+<span id="cb19-12"><a href="#cb19-12" aria-hidden="true" tabindex="-1"></a>            text.set_color(line.get_color())</span>
+<span id="cb19-13"><a href="#cb19-13" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb19-14"><a href="#cb19-14" aria-hidden="true" tabindex="-1"></a>    unify_axes_fontsize(axes, fontsize<span class="op">=</span><span class="dv">8</span>)</span>
+<span id="cb19-15"><a href="#cb19-15" aria-hidden="true" tabindex="-1"></a>    <span class="co"># plt.subplots_adjust(wspace=0, hspace=0)</span></span>
+<span id="cb19-16"><a href="#cb19-16" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb19-17"><a href="#cb19-17" aria-hidden="true" tabindex="-1"></a>    savefig(fname)</span>
+<span id="cb19-18"><a href="#cb19-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-19"><a href="#cb19-19" aria-hidden="true" tabindex="-1"></a>fig</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-stderr">
 <pre><code>09-Feb-24 00:39:00: No artists with labels found to put in legend.  Note that artists whose label start with an underscore are ignored when legend() is called with no argument.
@@ -865,23 +824,15 @@ ranges.</p>
 09-Feb-24 00:39:00: No artists with labels found to put in legend.  Note that artists whose label start with an underscore are ignored when legend() is called with no argument.</code></pre>
 </div>
 <div class="cell-output cell-output-display" data-execution_count="85">
-<div id="fig-hg-sunspot" class="quarto-figure quarto-figure-center quarto-float anchored">
-<figure class="quarto-float quarto-float-fig figure">
-<div aria-describedby="fig-hg-sunspot-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<a href="00_overview_files/figure-html/fig-hg-sunspot-output-2.png" class="lightbox" data-glightbox="description: .lightbox-desc-3" data-gallery="quarto-lightbox-gallery-3"><img src="00_overview_files/figure-html/fig-hg-sunspot-output-2.png" id="fig-hg-sunspot" class="img-fluid figure-img"></a>
-</div>
-<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig quarto-uncaptioned" id="fig-hg-sunspot-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;1
-</figcaption>
+<div>
+<figure class="figure">
+<p><a href="00_overview_files/figure-html/cell-17-output-2.png" class="lightbox" data-gallery="quarto-lightbox-gallery-3"><img src="00_overview_files/figure-html/cell-17-output-2.png" class="img-fluid figure-img"></a></p>
 </figure>
 </div>
 </div>
 </div>
 
 
-<div class="hidden" aria-hidden="true">
-<span class="glightbox-desc lightbox-desc-3">Figure&nbsp;1: </span>
-</div>
 </section>
 
 </main> <!-- /main -->
@@ -920,18 +871,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     }
     return false;
   }
-  const clipboard = new window.ClipboardJS('.code-copy-button', {
-    text: function(trigger) {
-      const codeEl = trigger.previousElementSibling.cloneNode(true);
-      for (const childEl of codeEl.children) {
-        if (isCodeAnnotation(childEl)) {
-          childEl.remove();
-        }
-      }
-      return codeEl.innerText;
-    }
-  });
-  clipboard.on('success', function(e) {
+  const onCopySuccess = function(e) {
     // button target
     const button = e.trigger;
     // don't keep focus
@@ -963,7 +903,47 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     }, 1000);
     // clear code selection
     e.clearSelection();
+  }
+  const getTextToCopy = function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+    text: getTextToCopy
   });
+  clipboard.on('success', onCopySuccess);
+  if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+    // For code content inside modals, clipBoardJS needs to be initialized with a container option
+    // TODO: Check when it could be a function (https://github.com/zenorocha/clipboard.js/issues/860)
+    const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+      text: getTextToCopy,
+      container: window.document.getElementById('quarto-embedded-source-code-modal')
+    });
+    clipboardModal.on('success', onCopySuccess);
+  }
+    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+    var mailtoRegex = new RegExp(/^mailto:/);
+      var filterRegex = new RegExp('/' + window.location.host + '/');
+    var isInternal = (href) => {
+        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+    }
+    // Inspect non-navigation links and adorn them if external
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+    for (var i=0; i<links.length; i++) {
+      const link = links[i];
+      if (!isInternal(link.href)) {
+        // undo the damage that might have been done by quarto-nav.js in the case of
+        // links that we want to consider external
+        if (link.dataset.originalHref !== undefined) {
+          link.href = link.dataset.originalHref;
+        }
+      }
+    }
   function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
     const config = {
       allowHTML: true,
@@ -998,7 +978,11 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       try { href = new URL(href).hash; } catch {}
       const id = href.replace(/^#\/?/, "");
       const note = window.document.getElementById(id);
-      return note.innerHTML;
+      if (note) {
+        return note.innerHTML;
+      } else {
+        return "";
+      }
     });
   }
   const xrefs = window.document.querySelectorAll('a.quarto-xref');
@@ -1273,7 +1257,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 });
 </script>
 </div> <!-- /content -->
-<script>var lightboxQuarto = GLightbox({"closeEffect":"zoom","descPosition":"bottom","loop":false,"openEffect":"zoom","selector":".lightbox"});
+<script>var lightboxQuarto = GLightbox({"selector":".lightbox","loop":false,"descPosition":"bottom","closeEffect":"zoom","openEffect":"zoom"});
 window.onload = () => {
   lightboxQuarto.on('slide_before_load', (data) => {
     const { slideIndex, slideNode, slideConfig, player, trigger } = data;

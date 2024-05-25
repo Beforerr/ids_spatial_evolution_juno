@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.4.547">
+<meta name="generator" content="quarto-1.5.33">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -33,7 +33,7 @@ div.sourceCode { overflow: auto; }
 }
 @media print {
 pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
 }
 pre.numberSource code
   { counter-reset: source-line 0; }
@@ -114,7 +114,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
       <div class="navbar-container container-fluid">
             <div id="quarto-search" class="" title="Search"></div>
-          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
   <span class="navbar-toggler-icon"></span>
 </button>
           <div class="collapse navbar-collapse" id="navbarCollapse">
@@ -128,7 +128,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span class="menu-text">Manuscript</span></a>
   </li>  
   <li class="nav-item dropdown ">
-    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-presentation" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-presentation" role="link" data-bs-toggle="dropdown" aria-expanded="false">
  <span class="menu-text">Presentation</span>
     </a>
     <ul class="dropdown-menu" aria-labelledby="nav-menu-presentation">    
@@ -144,18 +144,18 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   </li>
 </ul>
           </div> <!-- /navcollapse -->
-          <div class="quarto-navbar-tools">
+            <div class="quarto-navbar-tools">
     <a href="https://github.com/Beforerr/ids_spatial_evolution_juno" title="" class="quarto-navigation-tool px-1" aria-label=""><i class="bi bi-github"></i></a>
 </div>
       </div> <!-- /container-fluid -->
     </nav>
   <nav class="quarto-secondary-nav">
     <div class="container-fluid d-flex">
-      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
         <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../../notebooks/00_overview.html">Notebooks</a></li><li class="breadcrumb-item"><a href="../../../notebooks/missions/index.html">Missions</a></li><li class="breadcrumb-item"><a href="../../../notebooks/missions/themis/index.html">IDs from ARTHEMIS</a></li><li class="breadcrumb-item"><a href="../../../notebooks/missions/themis/mag.html">THEMIS Magnetic field data pipeline</a></li></ol></nav>
-        <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
     </div>
   </nav>
@@ -180,9 +180,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true">
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true">
  <span class="menu-text">Notebooks</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
@@ -201,14 +201,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../../notebooks/04_properties.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">SWD Properties</span></a>
+  <a href="../../../notebooks/10_examples.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Discontinuities examples</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../../notebooks/10_examples.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Discontinuities examples</span></a>
+  <a href="../../../notebooks/12_tau_analysis.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">tau effect</span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -220,14 +220,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../../notebooks/30_data.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">30 Data</span></a>
+ <span class="menu-text">Different time windows</span></a>
   </div>
 </li>
           <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="false">
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="false">
  <span class="menu-text">Analysis</span></a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="false" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="false" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
@@ -276,31 +276,25 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../../notebooks/analysis/12_tau_analysis.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Justification for the tau</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
   <a href="../../../notebooks/analysis/12_tau_data.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Justification for the tau</span></a>
+ <span class="menu-text">Justification for the tau (data)</span></a>
   </div>
 </li>
       </ul>
   </li>
           <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="false">
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="false">
  <span class="menu-text">Archive</span></a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="false" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="false" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
       <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth2 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../../notebooks/archive/04_calc.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">04 Calc</span></a>
+  <a href="../../../notebooks/archive/04_properties.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">SWD Properties</span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -315,7 +309,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <div class="sidebar-item-container"> 
             <a href="../../../notebooks/missions/index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Missions</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-expanded="true" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
@@ -330,7 +324,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <div class="sidebar-item-container"> 
             <a href="../../../notebooks/missions/stereo/index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">IDs from STEREO</span></a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" aria-expanded="false" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" role="navigation" aria-expanded="false" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
@@ -347,7 +341,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <div class="sidebar-item-container"> 
             <a href="../../../notebooks/missions/themis/index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">IDs from ARTHEMIS</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" aria-expanded="true" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
@@ -374,30 +368,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
           <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a href="../../../notebooks/missions/wind/index.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Wind</span></a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-7" aria-expanded="false" aria-label="Toggle section">
+            <a href="../../../notebooks/missions/juno/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">IDs from Juno</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-7" role="navigation" aria-expanded="false" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
       <ul id="quarto-sidebar-section-7" class="collapse list-unstyled sidebar-section depth3 ">  
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../../notebooks/missions/wind/state.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Wind State data pipeline</span></a>
-  </div>
-</li>
-      </ul>
-  </li>
-          <li class="sidebar-item sidebar-item-section">
-      <div class="sidebar-item-container"> 
-            <a href="../../../notebooks/missions/juno/index.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">IDs from Juno</span></a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-8" aria-expanded="false" aria-label="Toggle section">
-            <i class="bi bi-chevron-right ms-2"></i>
-          </a> 
-      </div>
-      <ul id="quarto-sidebar-section-8" class="collapse list-unstyled sidebar-section depth3 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../../notebooks/missions/juno/state.html" class="sidebar-item-text sidebar-link">
@@ -412,13 +389,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-9" aria-expanded="true">
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-8" role="navigation" aria-expanded="true">
  <span class="menu-text">Presentations</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-9" aria-expanded="true" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-8" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-9" class="collapse list-unstyled sidebar-section depth1 show">  
+      <ul id="quarto-sidebar-section-8" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../../presentations/AGU23_poster.html" class="sidebar-item-text sidebar-link">
@@ -497,13 +474,283 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb2-16"><a href="#cb2-16" aria-hidden="true" tabindex="-1"></a>).retrieve_data()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-error">
-<pre><code>KeyboardInterrupt: </code></pre>
+<div class="ansi-escaped-output">
+<pre><span class="ansi-red-fg">---------------------------------------------------------------------------</span>
+<span class="ansi-red-fg">KeyboardInterrupt</span>                         Traceback (most recent call last)
+Cell <span class="ansi-green-fg">In[10], line 14</span>
+<span class="ansi-green-fg ansi-bold">      7</span> mag_dataset <span style="color:rgb(98,98,98)">=</span> <span style="color:rgb(175,0,0)">"</span><span style="color:rgb(175,0,0)">THB_L2_FGM</span><span style="color:rgb(175,0,0)">"</span>
+<span class="ansi-green-fg ansi-bold">      8</span> mag_parameters <span style="color:rgb(98,98,98)">=</span> [<span style="color:rgb(175,0,0)">"</span><span style="color:rgb(175,0,0)">thb_fgl_gse</span><span style="color:rgb(175,0,0)">"</span>]
+<span class="ansi-green-fg ansi-bold">     10</span> mag_vars <span style="color:rgb(98,98,98)">=</span> <span class="ansi-yellow-bg">Variables</span><span class="ansi-yellow-bg">(</span>
+<span class="ansi-green-fg ansi-bold">     11</span> <span class="ansi-yellow-bg">    </span><span class="ansi-yellow-bg">dataset</span><span style="color:rgb(98,98,98)" class="ansi-yellow-bg">=</span><span class="ansi-yellow-bg">mag_dataset</span><span class="ansi-yellow-bg">,</span>
+<span class="ansi-green-fg ansi-bold">     12</span> <span class="ansi-yellow-bg">    </span><span class="ansi-yellow-bg">parameters</span><span style="color:rgb(98,98,98)" class="ansi-yellow-bg">=</span><span class="ansi-yellow-bg">mag_parameters</span><span class="ansi-yellow-bg">,</span>
+<span class="ansi-green-fg ansi-bold">     13</span> <span class="ansi-yellow-bg">    </span><span class="ansi-yellow-bg">timerange</span><span style="color:rgb(98,98,98)" class="ansi-yellow-bg">=</span><span class="ansi-yellow-bg">timerange</span><span class="ansi-yellow-bg">,</span>
+<span class="ansi-green-fg">---&gt; 14</span> <span class="ansi-yellow-bg">)</span><span style="color:rgb(98,98,98)" class="ansi-yellow-bg">.</span><span class="ansi-yellow-bg">retrieve_data</span><span class="ansi-yellow-bg">(</span><span class="ansi-yellow-bg">)</span>
+<span class="ansi-green-fg ansi-bold">     16</span> plasma_dataset <span style="color:rgb(98,98,98)">=</span> <span style="color:rgb(175,0,0)">'</span><span style="color:rgb(175,0,0)">THB_L2_MOM</span><span style="color:rgb(175,0,0)">'</span>
+<span class="ansi-green-fg ansi-bold">     17</span> plasma_parameters <span style="color:rgb(98,98,98)">=</span> [<span style="color:rgb(175,0,0)">"</span><span style="color:rgb(175,0,0)">thb_peim_densityQ</span><span style="color:rgb(175,0,0)">"</span>, <span style="color:rgb(175,0,0)">"</span><span style="color:rgb(175,0,0)">thb_peim_velocity_gseQ</span><span style="color:rgb(175,0,0)">"</span>]
+
+File <span class="ansi-green-fg">~/micromamba/envs/psp_conjunction/lib/python3.11/site-packages/space_analysis/utils/speasy.py:84</span>, in <span class="ansi-cyan-fg">Variables.retrieve_data</span><span class="ansi-blue-fg">(self)</span>
+<span class="ansi-green-fg ansi-bold">     80</span>     <span style="color:rgb(0,135,0)">self</span><span style="color:rgb(98,98,98)">.</span>data <span style="color:rgb(98,98,98)">=</span> spz<span style="color:rgb(98,98,98)">.</span>get_data(
+<span class="ansi-green-fg ansi-bold">     81</span>         <span style="color:rgb(0,135,0)">self</span><span style="color:rgb(98,98,98)">.</span>products, <span style="color:rgb(0,135,0)">self</span><span style="color:rgb(98,98,98)">.</span>timerange
+<span class="ansi-green-fg ansi-bold">     82</span>     )
+<span class="ansi-green-fg ansi-bold">     83</span> <span style="font-weight:bold;color:rgb(0,135,0)">else</span>:
+<span class="ansi-green-fg">---&gt; 84</span>     <span style="color:rgb(0,135,0)">self</span><span style="color:rgb(98,98,98)">.</span>data <span style="color:rgb(98,98,98)">=</span> <span class="ansi-yellow-bg">spz</span><span style="color:rgb(98,98,98)" class="ansi-yellow-bg">.</span><span class="ansi-yellow-bg">get_data</span><span class="ansi-yellow-bg">(</span>
+<span class="ansi-green-fg ansi-bold">     85</span> <span class="ansi-yellow-bg">        </span><span style="color:rgb(0,135,0)" class="ansi-yellow-bg">self</span><span style="color:rgb(98,98,98)" class="ansi-yellow-bg">.</span><span class="ansi-yellow-bg">products</span><span class="ansi-yellow-bg">,</span><span class="ansi-yellow-bg"> </span><span style="color:rgb(0,135,0)" class="ansi-yellow-bg">self</span><span style="color:rgb(98,98,98)" class="ansi-yellow-bg">.</span><span class="ansi-yellow-bg">timerange</span><span class="ansi-yellow-bg">,</span><span class="ansi-yellow-bg"> </span><span class="ansi-yellow-bg">disable_proxy</span><span style="color:rgb(98,98,98)" class="ansi-yellow-bg">=</span><span style="color:rgb(0,135,0)" class="ansi-yellow-bg">self</span><span style="color:rgb(98,98,98)" class="ansi-yellow-bg">.</span><span class="ansi-yellow-bg">_disable_proxy</span>
+<span class="ansi-green-fg ansi-bold">     86</span> <span class="ansi-yellow-bg">    </span><span class="ansi-yellow-bg">)</span>
+<span class="ansi-green-fg ansi-bold">     87</span> <span style="font-weight:bold;color:rgb(0,135,0)">return</span> <span style="color:rgb(0,135,0)">self</span>
+
+File <span class="ansi-green-fg">~/micromamba/envs/psp_conjunction/lib/python3.11/site-packages/speasy/core/requests_scheduling/request_dispatch.py:316</span>, in <span class="ansi-cyan-fg">get_data</span><span class="ansi-blue-fg">(*args, **kwargs)</span>
+<span class="ansi-green-fg ansi-bold">    314</span> product <span style="color:rgb(98,98,98)">=</span> args[<span style="color:rgb(98,98,98)">0</span>]
+<span class="ansi-green-fg ansi-bold">    315</span> <span style="font-weight:bold;color:rgb(0,135,0)">if</span> is_collection(product) <span style="font-weight:bold;color:rgb(175,0,255)">and</span> <span style="font-weight:bold;color:rgb(175,0,255)">not</span> <span style="color:rgb(0,135,0)">isinstance</span>(product, SpeasyIndex):
+<span class="ansi-green-fg">--&gt; 316</span>     <span style="font-weight:bold;color:rgb(0,135,0)">return</span> <span style="color:rgb(0,135,0)" class="ansi-yellow-bg">list</span><span class="ansi-yellow-bg">(</span><span style="color:rgb(0,135,0)" class="ansi-yellow-bg">map</span><span class="ansi-yellow-bg">(</span><span style="font-weight:bold;color:rgb(0,135,0)" class="ansi-yellow-bg">lambda</span><span class="ansi-yellow-bg"> </span><span class="ansi-yellow-bg">p</span><span class="ansi-yellow-bg">:</span><span class="ansi-yellow-bg"> </span><span class="ansi-yellow-bg">get_data</span><span class="ansi-yellow-bg">(</span><span class="ansi-yellow-bg">p</span><span class="ansi-yellow-bg">,</span><span class="ansi-yellow-bg"> </span><span style="color:rgb(98,98,98)" class="ansi-yellow-bg">*</span><span class="ansi-yellow-bg">args</span><span class="ansi-yellow-bg">[</span><span style="color:rgb(98,98,98)" class="ansi-yellow-bg">1</span><span class="ansi-yellow-bg">:</span><span class="ansi-yellow-bg">]</span><span class="ansi-yellow-bg">,</span><span class="ansi-yellow-bg"> </span><span style="color:rgb(98,98,98)" class="ansi-yellow-bg">*</span><span style="color:rgb(98,98,98)" class="ansi-yellow-bg">*</span><span class="ansi-yellow-bg">kwargs</span><span class="ansi-yellow-bg">)</span><span class="ansi-yellow-bg">,</span><span class="ansi-yellow-bg"> </span><span class="ansi-yellow-bg">progress_bar</span><span class="ansi-yellow-bg">(</span><span class="ansi-yellow-bg">leave</span><span style="color:rgb(98,98,98)" class="ansi-yellow-bg">=</span><span style="font-weight:bold;color:rgb(0,135,0)" class="ansi-yellow-bg">True</span><span class="ansi-yellow-bg">,</span><span class="ansi-yellow-bg"> </span><span style="color:rgb(98,98,98)" class="ansi-yellow-bg">*</span><span style="color:rgb(98,98,98)" class="ansi-yellow-bg">*</span><span class="ansi-yellow-bg">kwargs</span><span class="ansi-yellow-bg">)</span><span class="ansi-yellow-bg">(</span><span class="ansi-yellow-bg">product</span><span class="ansi-yellow-bg">)</span><span class="ansi-yellow-bg">)</span><span class="ansi-yellow-bg">)</span>
+<span class="ansi-green-fg ansi-bold">    318</span> <span style="font-weight:bold;color:rgb(0,135,0)">if</span> <span style="color:rgb(0,135,0)">len</span>(args) <span style="color:rgb(98,98,98)">==</span> <span style="color:rgb(98,98,98)">1</span>:
+<span class="ansi-green-fg ansi-bold">    319</span>     <span style="font-weight:bold;color:rgb(0,135,0)">return</span> _get_catalog_or_timetable(<span style="color:rgb(98,98,98)">*</span>args, <span style="color:rgb(98,98,98)">*</span><span style="color:rgb(98,98,98)">*</span>kwargs)
+
+File <span class="ansi-green-fg">~/micromamba/envs/psp_conjunction/lib/python3.11/site-packages/speasy/core/requests_scheduling/request_dispatch.py:316</span>, in <span class="ansi-cyan-fg">get_data.&lt;locals&gt;.&lt;lambda&gt;</span><span class="ansi-blue-fg">(p)</span>
+<span class="ansi-green-fg ansi-bold">    314</span> product <span style="color:rgb(98,98,98)">=</span> args[<span style="color:rgb(98,98,98)">0</span>]
+<span class="ansi-green-fg ansi-bold">    315</span> <span style="font-weight:bold;color:rgb(0,135,0)">if</span> is_collection(product) <span style="font-weight:bold;color:rgb(175,0,255)">and</span> <span style="font-weight:bold;color:rgb(175,0,255)">not</span> <span style="color:rgb(0,135,0)">isinstance</span>(product, SpeasyIndex):
+<span class="ansi-green-fg">--&gt; 316</span>     <span style="font-weight:bold;color:rgb(0,135,0)">return</span> <span style="color:rgb(0,135,0)">list</span>(<span style="color:rgb(0,135,0)">map</span>(<span style="font-weight:bold;color:rgb(0,135,0)">lambda</span> p: <span class="ansi-yellow-bg">get_data</span><span class="ansi-yellow-bg">(</span><span class="ansi-yellow-bg">p</span><span class="ansi-yellow-bg">,</span><span class="ansi-yellow-bg"> </span><span style="color:rgb(98,98,98)" class="ansi-yellow-bg">*</span><span class="ansi-yellow-bg">args</span><span class="ansi-yellow-bg">[</span><span style="color:rgb(98,98,98)" class="ansi-yellow-bg">1</span><span class="ansi-yellow-bg">:</span><span class="ansi-yellow-bg">]</span><span class="ansi-yellow-bg">,</span><span class="ansi-yellow-bg"> </span><span style="color:rgb(98,98,98)" class="ansi-yellow-bg">*</span><span style="color:rgb(98,98,98)" class="ansi-yellow-bg">*</span><span class="ansi-yellow-bg">kwargs</span><span class="ansi-yellow-bg">)</span>, progress_bar(leave<span style="color:rgb(98,98,98)">=</span><span style="font-weight:bold;color:rgb(0,135,0)">True</span>, <span style="color:rgb(98,98,98)">*</span><span style="color:rgb(98,98,98)">*</span>kwargs)(product)))
+<span class="ansi-green-fg ansi-bold">    318</span> <span style="font-weight:bold;color:rgb(0,135,0)">if</span> <span style="color:rgb(0,135,0)">len</span>(args) <span style="color:rgb(98,98,98)">==</span> <span style="color:rgb(98,98,98)">1</span>:
+<span class="ansi-green-fg ansi-bold">    319</span>     <span style="font-weight:bold;color:rgb(0,135,0)">return</span> _get_catalog_or_timetable(<span style="color:rgb(98,98,98)">*</span>args, <span style="color:rgb(98,98,98)">*</span><span style="color:rgb(98,98,98)">*</span>kwargs)
+
+File <span class="ansi-green-fg">~/micromamba/envs/psp_conjunction/lib/python3.11/site-packages/speasy/core/requests_scheduling/request_dispatch.py:323</span>, in <span class="ansi-cyan-fg">get_data</span><span class="ansi-blue-fg">(*args, **kwargs)</span>
+<span class="ansi-green-fg ansi-bold">    321</span> t_range <span style="color:rgb(98,98,98)">=</span> args[<span style="color:rgb(98,98,98)">1</span>]
+<span class="ansi-green-fg ansi-bold">    322</span> <span style="font-weight:bold;color:rgb(0,135,0)">if</span> _is_dtrange(t_range):
+<span class="ansi-green-fg">--&gt; 323</span>     <span style="font-weight:bold;color:rgb(0,135,0)">return</span> <span class="ansi-yellow-bg">_get_timeserie1</span><span class="ansi-yellow-bg">(</span><span style="color:rgb(98,98,98)" class="ansi-yellow-bg">*</span><span class="ansi-yellow-bg">args</span><span class="ansi-yellow-bg">,</span><span class="ansi-yellow-bg"> </span><span style="color:rgb(98,98,98)" class="ansi-yellow-bg">*</span><span style="color:rgb(98,98,98)" class="ansi-yellow-bg">*</span><span class="ansi-yellow-bg">kwargs</span><span class="ansi-yellow-bg">)</span>
+<span class="ansi-green-fg ansi-bold">    324</span> <span style="font-weight:bold;color:rgb(0,135,0)">if</span> is_collection(t_range):
+<span class="ansi-green-fg ansi-bold">    325</span>     <span style="font-weight:bold;color:rgb(0,135,0)">return</span> <span style="color:rgb(0,135,0)">list</span>(
+<span class="ansi-green-fg ansi-bold">    326</span>         <span style="color:rgb(0,135,0)">map</span>(<span style="font-weight:bold;color:rgb(0,135,0)">lambda</span> r: get_data(product, r, <span style="color:rgb(98,98,98)">*</span>args[<span style="color:rgb(98,98,98)">2</span>:], <span style="color:rgb(98,98,98)">*</span><span style="color:rgb(98,98,98)">*</span>kwargs),
+<span class="ansi-green-fg ansi-bold">    327</span>             progress_bar(leave<span style="color:rgb(98,98,98)">=</span><span style="font-weight:bold;color:rgb(0,135,0)">False</span>, <span style="color:rgb(98,98,98)">*</span><span style="color:rgb(98,98,98)">*</span>kwargs)(t_range)))
+
+File <span class="ansi-green-fg">~/micromamba/envs/psp_conjunction/lib/python3.11/site-packages/speasy/core/requests_scheduling/request_dispatch.py:166</span>, in <span class="ansi-cyan-fg">_get_timeserie1</span><span class="ansi-blue-fg">(index, dtrange, **kwargs)</span>
+<span class="ansi-green-fg ansi-bold">    165</span> <span style="font-weight:bold;color:rgb(0,135,0)">def</span> <span style="color:rgb(0,0,255)">_get_timeserie1</span>(index, dtrange, <span style="color:rgb(98,98,98)">*</span><span style="color:rgb(98,98,98)">*</span>kwargs):
+<span class="ansi-green-fg">--&gt; 166</span>     <span style="font-weight:bold;color:rgb(0,135,0)">return</span> <span class="ansi-yellow-bg">_scalar_get_data</span><span class="ansi-yellow-bg">(</span><span class="ansi-yellow-bg">index</span><span class="ansi-yellow-bg">,</span><span class="ansi-yellow-bg"> </span><span class="ansi-yellow-bg">dtrange</span><span class="ansi-yellow-bg">[</span><span style="color:rgb(98,98,98)" class="ansi-yellow-bg">0</span><span class="ansi-yellow-bg">]</span><span class="ansi-yellow-bg">,</span><span class="ansi-yellow-bg"> </span><span class="ansi-yellow-bg">dtrange</span><span class="ansi-yellow-bg">[</span><span style="color:rgb(98,98,98)" class="ansi-yellow-bg">1</span><span class="ansi-yellow-bg">]</span><span class="ansi-yellow-bg">,</span><span class="ansi-yellow-bg"> </span><span style="color:rgb(98,98,98)" class="ansi-yellow-bg">*</span><span style="color:rgb(98,98,98)" class="ansi-yellow-bg">*</span><span class="ansi-yellow-bg">kwargs</span><span class="ansi-yellow-bg">)</span>
+
+File <span class="ansi-green-fg">~/micromamba/envs/psp_conjunction/lib/python3.11/site-packages/speasy/core/requests_scheduling/request_dispatch.py:157</span>, in <span class="ansi-cyan-fg">_scalar_get_data</span><span class="ansi-blue-fg">(index, *args, **kwargs)</span>
+<span class="ansi-green-fg ansi-bold">    155</span> provider_uid, product_uid <span style="color:rgb(98,98,98)">=</span> provider_and_product(index)
+<span class="ansi-green-fg ansi-bold">    156</span> <span style="font-weight:bold;color:rgb(0,135,0)">if</span> provider_uid <span style="font-weight:bold;color:rgb(175,0,255)">in</span> PROVIDERS:
+<span class="ansi-green-fg">--&gt; 157</span>     <span style="font-weight:bold;color:rgb(0,135,0)">return</span> <span class="ansi-yellow-bg">PROVIDERS</span><span class="ansi-yellow-bg">[</span><span class="ansi-yellow-bg">provider_uid</span><span class="ansi-yellow-bg">]</span><span style="color:rgb(98,98,98)" class="ansi-yellow-bg">.</span><span class="ansi-yellow-bg">get_data</span><span class="ansi-yellow-bg">(</span><span class="ansi-yellow-bg">product_uid</span><span class="ansi-yellow-bg">,</span><span class="ansi-yellow-bg"> </span><span style="color:rgb(98,98,98)" class="ansi-yellow-bg">*</span><span class="ansi-yellow-bg">args</span><span class="ansi-yellow-bg">,</span><span class="ansi-yellow-bg"> </span><span style="color:rgb(98,98,98)" class="ansi-yellow-bg">*</span><span style="color:rgb(98,98,98)" class="ansi-yellow-bg">*</span><span class="ansi-yellow-bg">kwargs</span><span class="ansi-yellow-bg">)</span>
+<span class="ansi-green-fg ansi-bold">    158</span> <span style="font-weight:bold;color:rgb(0,135,0)">raise</span> <span style="font-weight:bold;color:rgb(215,95,95)">ValueError</span>(<span style="color:rgb(175,0,0)">f</span><span style="color:rgb(175,0,0)">"</span><span style="color:rgb(175,0,0)">Can</span><span style="color:rgb(175,0,0)">'</span><span style="color:rgb(175,0,0)">t find a provider for </span><span style="font-weight:bold;color:rgb(175,95,135)">{</span>index<span style="font-weight:bold;color:rgb(175,95,135)">}</span><span style="color:rgb(175,0,0)">"</span>)
+
+File <span class="ansi-green-fg">~/micromamba/envs/psp_conjunction/lib/python3.11/site-packages/speasy/core/__init__.py:223</span>, in <span class="ansi-cyan-fg">AllowedKwargs.__call__.&lt;locals&gt;.wrapped</span><span class="ansi-blue-fg">(*args, **kwargs)</span>
+<span class="ansi-green-fg ansi-bold">    220</span> unexpected_args <span style="color:rgb(98,98,98)">=</span> <span style="color:rgb(0,135,0)">list</span>(
+<span class="ansi-green-fg ansi-bold">    221</span>     <span style="color:rgb(0,135,0)">filter</span>(<span style="font-weight:bold;color:rgb(0,135,0)">lambda</span> arg_name: arg_name <span style="font-weight:bold;color:rgb(175,0,255)">not</span> <span style="font-weight:bold;color:rgb(175,0,255)">in</span> <span style="color:rgb(0,135,0)">self</span><span style="color:rgb(98,98,98)">.</span>allowed_list, kwargs<span style="color:rgb(98,98,98)">.</span>keys()))
+<span class="ansi-green-fg ansi-bold">    222</span> <span style="font-weight:bold;color:rgb(0,135,0)">if</span> <span style="font-weight:bold;color:rgb(175,0,255)">not</span> unexpected_args:
+<span class="ansi-green-fg">--&gt; 223</span>     <span style="font-weight:bold;color:rgb(0,135,0)">return</span> <span class="ansi-yellow-bg">func</span><span class="ansi-yellow-bg">(</span><span style="color:rgb(98,98,98)" class="ansi-yellow-bg">*</span><span class="ansi-yellow-bg">args</span><span class="ansi-yellow-bg">,</span><span class="ansi-yellow-bg"> </span><span style="color:rgb(98,98,98)" class="ansi-yellow-bg">*</span><span style="color:rgb(98,98,98)" class="ansi-yellow-bg">*</span><span class="ansi-yellow-bg">kwargs</span><span class="ansi-yellow-bg">)</span>
+<span class="ansi-green-fg ansi-bold">    224</span> <span style="font-weight:bold;color:rgb(0,135,0)">raise</span> <span style="font-weight:bold;color:rgb(215,95,95)">TypeError</span>(
+<span class="ansi-green-fg ansi-bold">    225</span>     <span style="color:rgb(175,0,0)">f</span><span style="color:rgb(175,0,0)">"</span><span style="color:rgb(175,0,0)">Unexpected keyword argument </span><span style="font-weight:bold;color:rgb(175,95,135)">{</span>unexpected_args<span style="font-weight:bold;color:rgb(175,95,135)">}</span><span style="color:rgb(175,0,0)">, allowed keyword arguments are </span><span style="font-weight:bold;color:rgb(175,95,135)">{</span><span style="color:rgb(0,135,0)">self</span><span style="color:rgb(98,98,98)">.</span>allowed_list<span style="font-weight:bold;color:rgb(175,95,135)">}</span><span style="color:rgb(175,0,0)">"</span>)
+
+File <span class="ansi-green-fg">~/micromamba/envs/psp_conjunction/lib/python3.11/site-packages/speasy/core/dataprovider.py:30</span>, in <span class="ansi-cyan-fg">ParameterRangeCheck.__call__.&lt;locals&gt;.wrapped</span><span class="ansi-blue-fg">(wrapped_self, product, start_time, stop_time, **kwargs)</span>
+<span class="ansi-green-fg ansi-bold">     28</span>     log<span style="color:rgb(98,98,98)">.</span>warning(<span style="color:rgb(175,0,0)">f</span><span style="color:rgb(175,0,0)">"</span><span style="color:rgb(175,0,0)">You are requesting </span><span style="font-weight:bold;color:rgb(175,95,135)">{</span>product<span style="font-weight:bold;color:rgb(175,95,135)">}</span><span style="color:rgb(175,0,0)"> outside of its definition range </span><span style="font-weight:bold;color:rgb(175,95,135)">{</span>p_range<span style="font-weight:bold;color:rgb(175,95,135)">}</span><span style="color:rgb(175,0,0)">"</span>)
+<span class="ansi-green-fg ansi-bold">     29</span>     <span style="font-weight:bold;color:rgb(0,135,0)">return</span> <span style="font-weight:bold;color:rgb(0,135,0)">None</span>
+<span class="ansi-green-fg">---&gt; 30</span> <span style="font-weight:bold;color:rgb(0,135,0)">return</span> <span class="ansi-yellow-bg">get_data</span><span class="ansi-yellow-bg">(</span><span class="ansi-yellow-bg">wrapped_self</span><span class="ansi-yellow-bg">,</span><span class="ansi-yellow-bg"> </span><span class="ansi-yellow-bg">product</span><span style="color:rgb(98,98,98)" class="ansi-yellow-bg">=</span><span class="ansi-yellow-bg">product</span><span class="ansi-yellow-bg">,</span><span class="ansi-yellow-bg"> </span><span class="ansi-yellow-bg">start_time</span><span style="color:rgb(98,98,98)" class="ansi-yellow-bg">=</span><span class="ansi-yellow-bg">start_time</span><span class="ansi-yellow-bg">,</span><span class="ansi-yellow-bg"> </span><span class="ansi-yellow-bg">stop_time</span><span style="color:rgb(98,98,98)" class="ansi-yellow-bg">=</span><span class="ansi-yellow-bg">stop_time</span><span class="ansi-yellow-bg">,</span><span class="ansi-yellow-bg"> </span><span style="color:rgb(98,98,98)" class="ansi-yellow-bg">*</span><span style="color:rgb(98,98,98)" class="ansi-yellow-bg">*</span><span class="ansi-yellow-bg">kwargs</span><span class="ansi-yellow-bg">)</span>
+
+File <span class="ansi-green-fg">~/micromamba/envs/psp_conjunction/lib/python3.11/site-packages/speasy/core/cache/_providers_caches.py:247</span>, in <span class="ansi-cyan-fg">UnversionedProviderCache.__call__.&lt;locals&gt;.wrapped</span><span class="ansi-blue-fg">(wrapped_self, product, start_time, stop_time, **kwargs)</span>
+<span class="ansi-green-fg ansi-bold">    243</span> fragment_duration <span style="color:rgb(98,98,98)">=</span> timedelta(hours<span style="color:rgb(98,98,98)">=</span>fragment_hours)
+<span class="ansi-green-fg ansi-bold">    244</span> data_chunks, maybe_outdated_fragments, missing_fragments <span style="color:rgb(98,98,98)">=</span> <span style="color:rgb(0,135,0)">self</span><span style="color:rgb(98,98,98)">.</span>split_fragments(fragments, product,
+<span class="ansi-green-fg ansi-bold">    245</span>                                                                                 fragment_duration, <span style="color:rgb(98,98,98)">*</span><span style="color:rgb(98,98,98)">*</span>kwargs)
+<span class="ansi-green-fg ansi-bold">    246</span> data_chunks <span style="color:rgb(98,98,98)">+</span><span style="color:rgb(98,98,98)">=</span> \
+<span class="ansi-green-fg">--&gt; 247</span>     <span style="color:rgb(0,135,0)">list</span>(<span style="color:rgb(0,135,0)">filter</span>(<span style="font-weight:bold;color:rgb(0,135,0)">lambda</span> d: d <span style="font-weight:bold;color:rgb(175,0,255)">is</span> <span style="font-weight:bold;color:rgb(175,0,255)">not</span> <span style="font-weight:bold;color:rgb(0,135,0)">None</span>, <span class="ansi-yellow-bg">[</span>
+<span class="ansi-green-fg ansi-bold">    248</span> <span class="ansi-yellow-bg">        </span><span style="color:rgb(0,135,0)" class="ansi-yellow-bg">self</span><span style="color:rgb(98,98,98)" class="ansi-yellow-bg">.</span><span class="ansi-yellow-bg">_cache</span><span style="color:rgb(98,98,98)" class="ansi-yellow-bg">.</span><span class="ansi-yellow-bg">add_to_cache</span><span class="ansi-yellow-bg">(</span>
+<span class="ansi-green-fg ansi-bold">    249</span> <span class="ansi-yellow-bg">            </span><span class="ansi-yellow-bg">get_data</span><span class="ansi-yellow-bg">(</span>
+<span class="ansi-green-fg ansi-bold">    250</span> <span class="ansi-yellow-bg">                </span><span class="ansi-yellow-bg">wrapped_self</span><span class="ansi-yellow-bg">,</span><span class="ansi-yellow-bg"> </span><span class="ansi-yellow-bg">product</span><span style="color:rgb(98,98,98)" class="ansi-yellow-bg">=</span><span class="ansi-yellow-bg">product</span><span class="ansi-yellow-bg">,</span><span class="ansi-yellow-bg"> </span><span class="ansi-yellow-bg">start_time</span><span style="color:rgb(98,98,98)" class="ansi-yellow-bg">=</span><span class="ansi-yellow-bg">fragment_group</span><span class="ansi-yellow-bg">[</span><span style="color:rgb(98,98,98)" class="ansi-yellow-bg">0</span><span class="ansi-yellow-bg">]</span><span class="ansi-yellow-bg">,</span>
+<span class="ansi-green-fg ansi-bold">    251</span> <span class="ansi-yellow-bg">                </span><span class="ansi-yellow-bg">stop_time</span><span style="color:rgb(98,98,98)" class="ansi-yellow-bg">=</span><span class="ansi-yellow-bg">fragment_group</span><span class="ansi-yellow-bg">[</span><span style="color:rgb(98,98,98)" class="ansi-yellow-bg">-</span><span style="color:rgb(98,98,98)" class="ansi-yellow-bg">1</span><span class="ansi-yellow-bg">]</span><span class="ansi-yellow-bg"> </span><span style="color:rgb(98,98,98)" class="ansi-yellow-bg">+</span><span class="ansi-yellow-bg"> </span><span class="ansi-yellow-bg">fragment_duration</span><span class="ansi-yellow-bg">,</span><span class="ansi-yellow-bg"> </span><span style="color:rgb(98,98,98)" class="ansi-yellow-bg">*</span><span style="color:rgb(98,98,98)" class="ansi-yellow-bg">*</span><span class="ansi-yellow-bg">kwargs</span><span class="ansi-yellow-bg">)</span><span class="ansi-yellow-bg">,</span>
+<span class="ansi-green-fg ansi-bold">    252</span> <span class="ansi-yellow-bg">            </span><span class="ansi-yellow-bg">fragments</span><span style="color:rgb(98,98,98)" class="ansi-yellow-bg">=</span><span class="ansi-yellow-bg">fragment_group</span><span class="ansi-yellow-bg">,</span><span class="ansi-yellow-bg"> </span><span class="ansi-yellow-bg">product</span><span style="color:rgb(98,98,98)" class="ansi-yellow-bg">=</span><span class="ansi-yellow-bg">product</span><span class="ansi-yellow-bg">,</span><span class="ansi-yellow-bg"> </span><span class="ansi-yellow-bg">fragment_duration_hours</span><span style="color:rgb(98,98,98)" class="ansi-yellow-bg">=</span><span class="ansi-yellow-bg">fragment_hours</span><span class="ansi-yellow-bg">,</span>
+<span class="ansi-green-fg ansi-bold">    253</span> <span class="ansi-yellow-bg">            </span><span class="ansi-yellow-bg">version</span><span style="color:rgb(98,98,98)" class="ansi-yellow-bg">=</span><span class="ansi-yellow-bg">datetime</span><span style="color:rgb(98,98,98)" class="ansi-yellow-bg">.</span><span class="ansi-yellow-bg">utcnow</span><span class="ansi-yellow-bg">(</span><span class="ansi-yellow-bg">)</span><span class="ansi-yellow-bg">,</span><span class="ansi-yellow-bg"> </span><span style="color:rgb(98,98,98)" class="ansi-yellow-bg">*</span><span style="color:rgb(98,98,98)" class="ansi-yellow-bg">*</span><span class="ansi-yellow-bg">kwargs</span><span class="ansi-yellow-bg">)</span>
+<span class="ansi-green-fg ansi-bold">    254</span> <span class="ansi-yellow-bg">        </span><span style="font-weight:bold;color:rgb(0,135,0)" class="ansi-yellow-bg">for</span><span class="ansi-yellow-bg"> </span><span class="ansi-yellow-bg">fragment_group</span>
+<span class="ansi-green-fg ansi-bold">    255</span> <span class="ansi-yellow-bg">        </span><span style="font-weight:bold;color:rgb(175,0,255)" class="ansi-yellow-bg">in</span><span class="ansi-yellow-bg"> </span><span class="ansi-yellow-bg">progress_bar</span><span class="ansi-yellow-bg">(</span><span class="ansi-yellow-bg">leave</span><span style="color:rgb(98,98,98)" class="ansi-yellow-bg">=</span><span style="font-weight:bold;color:rgb(0,135,0)" class="ansi-yellow-bg">False</span><span class="ansi-yellow-bg">,</span><span class="ansi-yellow-bg"> </span><span class="ansi-yellow-bg">desc</span><span style="color:rgb(98,98,98)" class="ansi-yellow-bg">=</span><span style="color:rgb(175,0,0)" class="ansi-yellow-bg">"</span><span style="color:rgb(175,0,0)" class="ansi-yellow-bg">Downloading missing fragments from cache</span><span style="color:rgb(175,0,0)" class="ansi-yellow-bg">"</span><span class="ansi-yellow-bg">,</span><span class="ansi-yellow-bg"> </span><span style="color:rgb(98,98,98)" class="ansi-yellow-bg">*</span><span style="color:rgb(98,98,98)" class="ansi-yellow-bg">*</span><span class="ansi-yellow-bg">kwargs</span><span class="ansi-yellow-bg">)</span><span class="ansi-yellow-bg">(</span>
+<span class="ansi-green-fg ansi-bold">    256</span> <span class="ansi-yellow-bg">            </span><span class="ansi-yellow-bg">missing_fragments</span><span class="ansi-yellow-bg">)</span><span class="ansi-yellow-bg">]</span>))
+<span class="ansi-green-fg ansi-bold">    258</span> <span style="font-weight:bold;color:rgb(0,135,0)">for</span> group <span style="font-weight:bold;color:rgb(175,0,255)">in</span> progress_bar(leave<span style="color:rgb(98,98,98)">=</span><span style="font-weight:bold;color:rgb(0,135,0)">False</span>, desc<span style="color:rgb(98,98,98)">=</span><span style="color:rgb(175,0,0)">"</span><span style="color:rgb(175,0,0)">Checking if cache fragments are outdated</span><span style="color:rgb(175,0,0)">"</span>, <span style="color:rgb(98,98,98)">*</span><span style="color:rgb(98,98,98)">*</span>kwargs)(
+<span class="ansi-green-fg ansi-bold">    259</span>     maybe_outdated_fragments):
+<span class="ansi-green-fg ansi-bold">    260</span>     oldest <span style="color:rgb(98,98,98)">=</span> <span style="color:rgb(0,135,0)">max</span>(group, key<span style="color:rgb(98,98,98)">=</span><span style="font-weight:bold;color:rgb(0,135,0)">lambda</span> item: item[<span style="color:rgb(98,98,98)">1</span>]<span style="color:rgb(98,98,98)">.</span>version)[<span style="color:rgb(98,98,98)">1</span>]<span style="color:rgb(98,98,98)">.</span>version
+
+File <span class="ansi-green-fg">~/micromamba/envs/psp_conjunction/lib/python3.11/site-packages/speasy/core/cache/_providers_caches.py:249</span>, in <span class="ansi-cyan-fg">&lt;listcomp&gt;</span><span class="ansi-blue-fg">(.0)</span>
+<span class="ansi-green-fg ansi-bold">    243</span> fragment_duration <span style="color:rgb(98,98,98)">=</span> timedelta(hours<span style="color:rgb(98,98,98)">=</span>fragment_hours)
+<span class="ansi-green-fg ansi-bold">    244</span> data_chunks, maybe_outdated_fragments, missing_fragments <span style="color:rgb(98,98,98)">=</span> <span style="color:rgb(0,135,0)">self</span><span style="color:rgb(98,98,98)">.</span>split_fragments(fragments, product,
+<span class="ansi-green-fg ansi-bold">    245</span>                                                                                 fragment_duration, <span style="color:rgb(98,98,98)">*</span><span style="color:rgb(98,98,98)">*</span>kwargs)
+<span class="ansi-green-fg ansi-bold">    246</span> data_chunks <span style="color:rgb(98,98,98)">+</span><span style="color:rgb(98,98,98)">=</span> \
+<span class="ansi-green-fg ansi-bold">    247</span>     <span style="color:rgb(0,135,0)">list</span>(<span style="color:rgb(0,135,0)">filter</span>(<span style="font-weight:bold;color:rgb(0,135,0)">lambda</span> d: d <span style="font-weight:bold;color:rgb(175,0,255)">is</span> <span style="font-weight:bold;color:rgb(175,0,255)">not</span> <span style="font-weight:bold;color:rgb(0,135,0)">None</span>, [
+<span class="ansi-green-fg ansi-bold">    248</span>         <span style="color:rgb(0,135,0)">self</span><span style="color:rgb(98,98,98)">.</span>_cache<span style="color:rgb(98,98,98)">.</span>add_to_cache(
+<span class="ansi-green-fg">--&gt; 249</span>             <span class="ansi-yellow-bg">get_data</span><span class="ansi-yellow-bg">(</span>
+<span class="ansi-green-fg ansi-bold">    250</span> <span class="ansi-yellow-bg">                </span><span class="ansi-yellow-bg">wrapped_self</span><span class="ansi-yellow-bg">,</span><span class="ansi-yellow-bg"> </span><span class="ansi-yellow-bg">product</span><span style="color:rgb(98,98,98)" class="ansi-yellow-bg">=</span><span class="ansi-yellow-bg">product</span><span class="ansi-yellow-bg">,</span><span class="ansi-yellow-bg"> </span><span class="ansi-yellow-bg">start_time</span><span style="color:rgb(98,98,98)" class="ansi-yellow-bg">=</span><span class="ansi-yellow-bg">fragment_group</span><span class="ansi-yellow-bg">[</span><span style="color:rgb(98,98,98)" class="ansi-yellow-bg">0</span><span class="ansi-yellow-bg">]</span><span class="ansi-yellow-bg">,</span>
+<span class="ansi-green-fg ansi-bold">    251</span> <span class="ansi-yellow-bg">                </span><span class="ansi-yellow-bg">stop_time</span><span style="color:rgb(98,98,98)" class="ansi-yellow-bg">=</span><span class="ansi-yellow-bg">fragment_group</span><span class="ansi-yellow-bg">[</span><span style="color:rgb(98,98,98)" class="ansi-yellow-bg">-</span><span style="color:rgb(98,98,98)" class="ansi-yellow-bg">1</span><span class="ansi-yellow-bg">]</span><span class="ansi-yellow-bg"> </span><span style="color:rgb(98,98,98)" class="ansi-yellow-bg">+</span><span class="ansi-yellow-bg"> </span><span class="ansi-yellow-bg">fragment_duration</span><span class="ansi-yellow-bg">,</span><span class="ansi-yellow-bg"> </span><span style="color:rgb(98,98,98)" class="ansi-yellow-bg">*</span><span style="color:rgb(98,98,98)" class="ansi-yellow-bg">*</span><span class="ansi-yellow-bg">kwargs</span><span class="ansi-yellow-bg">)</span>,
+<span class="ansi-green-fg ansi-bold">    252</span>             fragments<span style="color:rgb(98,98,98)">=</span>fragment_group, product<span style="color:rgb(98,98,98)">=</span>product, fragment_duration_hours<span style="color:rgb(98,98,98)">=</span>fragment_hours,
+<span class="ansi-green-fg ansi-bold">    253</span>             version<span style="color:rgb(98,98,98)">=</span>datetime<span style="color:rgb(98,98,98)">.</span>utcnow(), <span style="color:rgb(98,98,98)">*</span><span style="color:rgb(98,98,98)">*</span>kwargs)
+<span class="ansi-green-fg ansi-bold">    254</span>         <span style="font-weight:bold;color:rgb(0,135,0)">for</span> fragment_group
+<span class="ansi-green-fg ansi-bold">    255</span>         <span style="font-weight:bold;color:rgb(175,0,255)">in</span> progress_bar(leave<span style="color:rgb(98,98,98)">=</span><span style="font-weight:bold;color:rgb(0,135,0)">False</span>, desc<span style="color:rgb(98,98,98)">=</span><span style="color:rgb(175,0,0)">"</span><span style="color:rgb(175,0,0)">Downloading missing fragments from cache</span><span style="color:rgb(175,0,0)">"</span>, <span style="color:rgb(98,98,98)">*</span><span style="color:rgb(98,98,98)">*</span>kwargs)(
+<span class="ansi-green-fg ansi-bold">    256</span>             missing_fragments)]))
+<span class="ansi-green-fg ansi-bold">    258</span> <span style="font-weight:bold;color:rgb(0,135,0)">for</span> group <span style="font-weight:bold;color:rgb(175,0,255)">in</span> progress_bar(leave<span style="color:rgb(98,98,98)">=</span><span style="font-weight:bold;color:rgb(0,135,0)">False</span>, desc<span style="color:rgb(98,98,98)">=</span><span style="color:rgb(175,0,0)">"</span><span style="color:rgb(175,0,0)">Checking if cache fragments are outdated</span><span style="color:rgb(175,0,0)">"</span>, <span style="color:rgb(98,98,98)">*</span><span style="color:rgb(98,98,98)">*</span>kwargs)(
+<span class="ansi-green-fg ansi-bold">    259</span>     maybe_outdated_fragments):
+<span class="ansi-green-fg ansi-bold">    260</span>     oldest <span style="color:rgb(98,98,98)">=</span> <span style="color:rgb(0,135,0)">max</span>(group, key<span style="color:rgb(98,98,98)">=</span><span style="font-weight:bold;color:rgb(0,135,0)">lambda</span> item: item[<span style="color:rgb(98,98,98)">1</span>]<span style="color:rgb(98,98,98)">.</span>version)[<span style="color:rgb(98,98,98)">1</span>]<span style="color:rgb(98,98,98)">.</span>version
+
+File <span class="ansi-green-fg">~/micromamba/envs/psp_conjunction/lib/python3.11/site-packages/speasy/core/requests_scheduling/split_large_requests.py:25</span>, in <span class="ansi-cyan-fg">SplitLargeRequests.__call__.&lt;locals&gt;.wrapped</span><span class="ansi-blue-fg">(wrapped_self, product, start_time, stop_time, **kwargs)</span>
+<span class="ansi-green-fg ansi-bold">     22</span> <span style="font-weight:bold;color:rgb(0,135,0)">else</span>:
+<span class="ansi-green-fg ansi-bold">     23</span>     fragments <span style="color:rgb(98,98,98)">=</span> <span style="color:rgb(0,135,0)">range</span><span style="color:rgb(98,98,98)">.</span>split(max_range_per_request)
+<span class="ansi-green-fg ansi-bold">     24</span>     <span style="font-weight:bold;color:rgb(0,135,0)">return</span> var_merge(
+<span class="ansi-green-fg">---&gt; 25</span>         <span class="ansi-yellow-bg">[</span><span class="ansi-yellow-bg">get_data</span><span class="ansi-yellow-bg">(</span><span class="ansi-yellow-bg">wrapped_self</span><span class="ansi-yellow-bg">,</span><span class="ansi-yellow-bg"> </span><span class="ansi-yellow-bg">product</span><span style="color:rgb(98,98,98)" class="ansi-yellow-bg">=</span><span class="ansi-yellow-bg">product</span><span class="ansi-yellow-bg">,</span><span class="ansi-yellow-bg"> </span><span class="ansi-yellow-bg">start_time</span><span style="color:rgb(98,98,98)" class="ansi-yellow-bg">=</span><span class="ansi-yellow-bg">r</span><span style="color:rgb(98,98,98)" class="ansi-yellow-bg">.</span><span class="ansi-yellow-bg">start_time</span><span class="ansi-yellow-bg">,</span><span class="ansi-yellow-bg"> </span><span class="ansi-yellow-bg">stop_time</span><span style="color:rgb(98,98,98)" class="ansi-yellow-bg">=</span><span class="ansi-yellow-bg">r</span><span style="color:rgb(98,98,98)" class="ansi-yellow-bg">.</span><span class="ansi-yellow-bg">stop_time</span><span class="ansi-yellow-bg">,</span><span class="ansi-yellow-bg"> </span><span style="color:rgb(98,98,98)" class="ansi-yellow-bg">*</span><span style="color:rgb(98,98,98)" class="ansi-yellow-bg">*</span><span class="ansi-yellow-bg">kwargs</span><span class="ansi-yellow-bg">)</span>
+<span class="ansi-green-fg ansi-bold">     26</span> <span class="ansi-yellow-bg">         </span><span style="font-weight:bold;color:rgb(0,135,0)" class="ansi-yellow-bg">for</span><span class="ansi-yellow-bg"> </span><span class="ansi-yellow-bg">r</span><span class="ansi-yellow-bg"> </span><span style="font-weight:bold;color:rgb(175,0,255)" class="ansi-yellow-bg">in</span><span class="ansi-yellow-bg"> </span><span class="ansi-yellow-bg">fragments</span><span class="ansi-yellow-bg">]</span>)
+
+File <span class="ansi-green-fg">~/micromamba/envs/psp_conjunction/lib/python3.11/site-packages/speasy/core/requests_scheduling/split_large_requests.py:25</span>, in <span class="ansi-cyan-fg">&lt;listcomp&gt;</span><span class="ansi-blue-fg">(.0)</span>
+<span class="ansi-green-fg ansi-bold">     22</span> <span style="font-weight:bold;color:rgb(0,135,0)">else</span>:
+<span class="ansi-green-fg ansi-bold">     23</span>     fragments <span style="color:rgb(98,98,98)">=</span> <span style="color:rgb(0,135,0)">range</span><span style="color:rgb(98,98,98)">.</span>split(max_range_per_request)
+<span class="ansi-green-fg ansi-bold">     24</span>     <span style="font-weight:bold;color:rgb(0,135,0)">return</span> var_merge(
+<span class="ansi-green-fg">---&gt; 25</span>         [<span class="ansi-yellow-bg">get_data</span><span class="ansi-yellow-bg">(</span><span class="ansi-yellow-bg">wrapped_self</span><span class="ansi-yellow-bg">,</span><span class="ansi-yellow-bg"> </span><span class="ansi-yellow-bg">product</span><span style="color:rgb(98,98,98)" class="ansi-yellow-bg">=</span><span class="ansi-yellow-bg">product</span><span class="ansi-yellow-bg">,</span><span class="ansi-yellow-bg"> </span><span class="ansi-yellow-bg">start_time</span><span style="color:rgb(98,98,98)" class="ansi-yellow-bg">=</span><span class="ansi-yellow-bg">r</span><span style="color:rgb(98,98,98)" class="ansi-yellow-bg">.</span><span class="ansi-yellow-bg">start_time</span><span class="ansi-yellow-bg">,</span><span class="ansi-yellow-bg"> </span><span class="ansi-yellow-bg">stop_time</span><span style="color:rgb(98,98,98)" class="ansi-yellow-bg">=</span><span class="ansi-yellow-bg">r</span><span style="color:rgb(98,98,98)" class="ansi-yellow-bg">.</span><span class="ansi-yellow-bg">stop_time</span><span class="ansi-yellow-bg">,</span><span class="ansi-yellow-bg"> </span><span style="color:rgb(98,98,98)" class="ansi-yellow-bg">*</span><span style="color:rgb(98,98,98)" class="ansi-yellow-bg">*</span><span class="ansi-yellow-bg">kwargs</span><span class="ansi-yellow-bg">)</span>
+<span class="ansi-green-fg ansi-bold">     26</span>          <span style="font-weight:bold;color:rgb(0,135,0)">for</span> r <span style="font-weight:bold;color:rgb(175,0,255)">in</span> fragments])
+
+File <span class="ansi-green-fg">~/micromamba/envs/psp_conjunction/lib/python3.11/site-packages/speasy/core/proxy/__init__.py:129</span>, in <span class="ansi-cyan-fg">Proxyfiable.__call__.&lt;locals&gt;.wrapped</span><span class="ansi-blue-fg">(*args, **kwargs)</span>
+<span class="ansi-green-fg ansi-bold">    127</span>     <span style="font-weight:bold;color:rgb(0,135,0)">except</span>:  <span style="font-style:italic;color:rgb(95,135,135)"># lgtm [py/catch-base-exception]</span>
+<span class="ansi-green-fg ansi-bold">    128</span>         log<span style="color:rgb(98,98,98)">.</span>error(<span style="color:rgb(175,0,0)">f</span><span style="color:rgb(175,0,0)">"</span><span style="color:rgb(175,0,0)">Can</span><span style="color:rgb(175,0,0)">'</span><span style="color:rgb(175,0,0)">t get data from proxy server </span><span style="font-weight:bold;color:rgb(175,95,135)">{</span>proxy_cfg<span style="color:rgb(98,98,98)">.</span>url()<span style="font-weight:bold;color:rgb(175,95,135)">}</span><span style="color:rgb(175,0,0)">"</span>)
+<span class="ansi-green-fg">--&gt; 129</span> <span style="font-weight:bold;color:rgb(0,135,0)">return</span> <span class="ansi-yellow-bg">func</span><span class="ansi-yellow-bg">(</span><span style="color:rgb(98,98,98)" class="ansi-yellow-bg">*</span><span class="ansi-yellow-bg">args</span><span class="ansi-yellow-bg">,</span><span class="ansi-yellow-bg"> </span><span style="color:rgb(98,98,98)" class="ansi-yellow-bg">*</span><span style="color:rgb(98,98,98)" class="ansi-yellow-bg">*</span><span class="ansi-yellow-bg">kwargs</span><span class="ansi-yellow-bg">)</span>
+
+File <span class="ansi-green-fg">~/micromamba/envs/psp_conjunction/lib/python3.11/site-packages/speasy/webservices/cda/__init__.py:173</span>, in <span class="ansi-cyan-fg">CDA_Webservice.get_data</span><span class="ansi-blue-fg">(self, product, start_time, stop_time, if_newer_than, extra_http_headers)</span>
+<span class="ansi-green-fg ansi-bold">    164</span> <span style="color:rgb(175,0,255)">@AllowedKwargs</span>(
+<span class="ansi-green-fg ansi-bold">    165</span>     PROXY_ALLOWED_KWARGS <span style="color:rgb(98,98,98)">+</span> CACHE_ALLOWED_KWARGS <span style="color:rgb(98,98,98)">+</span> GET_DATA_ALLOWED_KWARGS <span style="color:rgb(98,98,98)">+</span> [<span style="color:rgb(175,0,0)">'</span><span style="color:rgb(175,0,0)">if_newer_than</span><span style="color:rgb(175,0,0)">'</span>])
+<span class="ansi-green-fg ansi-bold">    166</span> <span style="color:rgb(175,0,255)">@ParameterRangeCheck</span>()
+<span class="ansi-green-fg">   (...)</span>
+<span class="ansi-green-fg ansi-bold">    170</span> <span style="font-weight:bold;color:rgb(0,135,0)">def</span> <span style="color:rgb(0,0,255)">get_data</span>(<span style="color:rgb(0,135,0)">self</span>, product, start_time: datetime, stop_time: datetime, if_newer_than: datetime <span style="font-weight:bold;color:rgb(175,0,255)">or</span> <span style="font-weight:bold;color:rgb(0,135,0)">None</span> <span style="color:rgb(98,98,98)">=</span> <span style="font-weight:bold;color:rgb(0,135,0)">None</span>,
+<span class="ansi-green-fg ansi-bold">    171</span>              extra_http_headers: Dict <span style="font-weight:bold;color:rgb(175,0,255)">or</span> <span style="font-weight:bold;color:rgb(0,135,0)">None</span> <span style="color:rgb(98,98,98)">=</span> <span style="font-weight:bold;color:rgb(0,135,0)">None</span>):
+<span class="ansi-green-fg ansi-bold">    172</span>     dataset, variable <span style="color:rgb(98,98,98)">=</span> <span style="color:rgb(0,135,0)">self</span><span style="color:rgb(98,98,98)">.</span>_to_dataset_and_variable(product)
+<span class="ansi-green-fg">--&gt; 173</span>     <span style="font-weight:bold;color:rgb(0,135,0)">return</span> <span style="color:rgb(0,135,0)" class="ansi-yellow-bg">self</span><span style="color:rgb(98,98,98)" class="ansi-yellow-bg">.</span><span class="ansi-yellow-bg">_dl_variable</span><span class="ansi-yellow-bg">(</span><span class="ansi-yellow-bg">start_time</span><span style="color:rgb(98,98,98)" class="ansi-yellow-bg">=</span><span class="ansi-yellow-bg">start_time</span><span class="ansi-yellow-bg">,</span><span class="ansi-yellow-bg"> </span><span class="ansi-yellow-bg">stop_time</span><span style="color:rgb(98,98,98)" class="ansi-yellow-bg">=</span><span class="ansi-yellow-bg">stop_time</span><span class="ansi-yellow-bg">,</span><span class="ansi-yellow-bg"> </span><span class="ansi-yellow-bg">dataset</span><span style="color:rgb(98,98,98)" class="ansi-yellow-bg">=</span><span class="ansi-yellow-bg">dataset</span><span class="ansi-yellow-bg">,</span>
+<span class="ansi-green-fg ansi-bold">    174</span> <span class="ansi-yellow-bg">                             </span><span class="ansi-yellow-bg">variable</span><span style="color:rgb(98,98,98)" class="ansi-yellow-bg">=</span><span class="ansi-yellow-bg">variable</span><span class="ansi-yellow-bg">,</span><span class="ansi-yellow-bg"> </span><span class="ansi-yellow-bg">if_newer_than</span><span style="color:rgb(98,98,98)" class="ansi-yellow-bg">=</span><span class="ansi-yellow-bg">if_newer_than</span><span class="ansi-yellow-bg">,</span><span class="ansi-yellow-bg"> </span><span class="ansi-yellow-bg">extra_http_headers</span><span style="color:rgb(98,98,98)" class="ansi-yellow-bg">=</span><span class="ansi-yellow-bg">extra_http_headers</span><span class="ansi-yellow-bg">)</span>
+
+File <span class="ansi-green-fg">~/micromamba/envs/psp_conjunction/lib/python3.11/site-packages/speasy/webservices/cda/__init__.py:155</span>, in <span class="ansi-cyan-fg">CDA_Webservice._dl_variable</span><span class="ansi-blue-fg">(self, dataset, variable, start_time, stop_time, if_newer_than, extra_http_headers)</span>
+<span class="ansi-green-fg ansi-bold">    153</span> log<span style="color:rgb(98,98,98)">.</span>debug(resp<span style="color:rgb(98,98,98)">.</span>url)
+<span class="ansi-green-fg ansi-bold">    154</span> <span style="font-weight:bold;color:rgb(0,135,0)">if</span> resp<span style="color:rgb(98,98,98)">.</span>status_code <span style="color:rgb(98,98,98)">==</span> <span style="color:rgb(98,98,98)">200</span> <span style="font-weight:bold;color:rgb(175,0,255)">and</span> <span style="color:rgb(175,0,0)">'</span><span style="color:rgb(175,0,0)">FileDescription</span><span style="color:rgb(175,0,0)">'</span> <span style="font-weight:bold;color:rgb(175,0,255)">in</span> resp<span style="color:rgb(98,98,98)">.</span>json():
+<span class="ansi-green-fg">--&gt; 155</span>     <span style="font-weight:bold;color:rgb(0,135,0)">return</span> <span class="ansi-yellow-bg">cdf</span><span style="color:rgb(98,98,98)" class="ansi-yellow-bg">.</span><span class="ansi-yellow-bg">load_variable</span><span class="ansi-yellow-bg">(</span><span class="ansi-yellow-bg">file</span><span style="color:rgb(98,98,98)" class="ansi-yellow-bg">=</span><span class="ansi-yellow-bg">resp</span><span style="color:rgb(98,98,98)" class="ansi-yellow-bg">.</span><span class="ansi-yellow-bg">json</span><span class="ansi-yellow-bg">(</span><span class="ansi-yellow-bg">)</span><span class="ansi-yellow-bg">[</span><span style="color:rgb(175,0,0)" class="ansi-yellow-bg">'</span><span style="color:rgb(175,0,0)" class="ansi-yellow-bg">FileDescription</span><span style="color:rgb(175,0,0)" class="ansi-yellow-bg">'</span><span class="ansi-yellow-bg">]</span><span class="ansi-yellow-bg">[</span><span style="color:rgb(98,98,98)" class="ansi-yellow-bg">0</span><span class="ansi-yellow-bg">]</span><span class="ansi-yellow-bg">[</span><span style="color:rgb(175,0,0)" class="ansi-yellow-bg">'</span><span style="color:rgb(175,0,0)" class="ansi-yellow-bg">Name</span><span style="color:rgb(175,0,0)" class="ansi-yellow-bg">'</span><span class="ansi-yellow-bg">]</span><span class="ansi-yellow-bg">,</span><span class="ansi-yellow-bg"> </span><span class="ansi-yellow-bg">variable</span><span style="color:rgb(98,98,98)" class="ansi-yellow-bg">=</span><span class="ansi-yellow-bg">variable</span><span class="ansi-yellow-bg">)</span>
+<span class="ansi-green-fg ansi-bold">    156</span> <span style="font-weight:bold;color:rgb(0,135,0)">elif</span> <span style="font-weight:bold;color:rgb(175,0,255)">not</span> resp<span style="color:rgb(98,98,98)">.</span>ok:
+<span class="ansi-green-fg ansi-bold">    157</span>     <span style="font-weight:bold;color:rgb(0,135,0)">if</span> resp<span style="color:rgb(98,98,98)">.</span>status_code <span style="color:rgb(98,98,98)">==</span> <span style="color:rgb(98,98,98)">404</span> <span style="font-weight:bold;color:rgb(175,0,255)">and</span> <span style="color:rgb(175,0,0)">"</span><span style="color:rgb(175,0,0)">No data available</span><span style="color:rgb(175,0,0)">"</span> <span style="font-weight:bold;color:rgb(175,0,255)">in</span> resp<span style="color:rgb(98,98,98)">.</span>json()<span style="color:rgb(98,98,98)">.</span>get(<span style="color:rgb(175,0,0)">'</span><span style="color:rgb(175,0,0)">Message</span><span style="color:rgb(175,0,0)">'</span>, [<span style="color:rgb(175,0,0)">"</span><span style="color:rgb(175,0,0)">"</span>])[<span style="color:rgb(98,98,98)">0</span>]:
+
+File <span class="ansi-green-fg">~/micromamba/envs/psp_conjunction/lib/python3.11/site-packages/speasy/core/cdf/__init__.py:77</span>, in <span class="ansi-cyan-fg">load_variable</span><span class="ansi-blue-fg">(variable, file, cache_remote_files)</span>
+<span class="ansi-green-fg ansi-bold">     74</span>     <span style="font-weight:bold;color:rgb(0,135,0)">if</span> is_local_file(file):
+<span class="ansi-green-fg ansi-bold">     75</span>         <span style="font-weight:bold;color:rgb(0,135,0)">return</span> _load_variable(variable<span style="color:rgb(98,98,98)">=</span>variable, file<span style="color:rgb(98,98,98)">=</span>urlparse(url<span style="color:rgb(98,98,98)">=</span>file)<span style="color:rgb(98,98,98)">.</span>path)
+<span class="ansi-green-fg ansi-bold">     76</span>     <span style="font-weight:bold;color:rgb(0,135,0)">return</span> _load_variable(variable<span style="color:rgb(98,98,98)">=</span>variable,
+<span class="ansi-green-fg">---&gt; 77</span>                           buffer<span style="color:rgb(98,98,98)">=</span><span class="ansi-yellow-bg">any_loc_open</span><span class="ansi-yellow-bg">(</span><span class="ansi-yellow-bg">file</span><span class="ansi-yellow-bg">,</span><span class="ansi-yellow-bg"> </span><span class="ansi-yellow-bg">mode</span><span style="color:rgb(98,98,98)" class="ansi-yellow-bg">=</span><span style="color:rgb(175,0,0)" class="ansi-yellow-bg">'</span><span style="color:rgb(175,0,0)" class="ansi-yellow-bg">rb</span><span style="color:rgb(175,0,0)" class="ansi-yellow-bg">'</span><span class="ansi-yellow-bg">,</span><span class="ansi-yellow-bg"> </span><span class="ansi-yellow-bg">cache_remote_files</span><span style="color:rgb(98,98,98)" class="ansi-yellow-bg">=</span><span class="ansi-yellow-bg">cache_remote_files</span><span class="ansi-yellow-bg">)</span><span style="color:rgb(98,98,98)">.</span>read())
+<span class="ansi-green-fg ansi-bold">     78</span> <span style="font-weight:bold;color:rgb(0,135,0)">if</span> <span style="color:rgb(0,135,0)">type</span>(file) <span style="font-weight:bold;color:rgb(175,0,255)">is</span> <span style="color:rgb(0,135,0)">bytes</span>:
+<span class="ansi-green-fg ansi-bold">     79</span>     <span style="font-weight:bold;color:rgb(0,135,0)">return</span> _load_variable(variable<span style="color:rgb(98,98,98)">=</span>variable, buffer<span style="color:rgb(98,98,98)">=</span><span style="color:rgb(0,135,0)">bytes</span>)
+
+File <span class="ansi-green-fg">~/micromamba/envs/psp_conjunction/lib/python3.11/site-packages/speasy/core/any_files.py:102</span>, in <span class="ansi-cyan-fg">any_loc_open</span><span class="ansi-blue-fg">(url, timeout, headers, mode, cache_remote_files)</span>
+<span class="ansi-green-fg ansi-bold">    100</span> <span style="font-weight:bold;color:rgb(0,135,0)">else</span>:
+<span class="ansi-green-fg ansi-bold">    101</span>     <span style="font-weight:bold;color:rgb(0,135,0)">if</span> cache_remote_files:
+<span class="ansi-green-fg">--&gt; 102</span>         last_modified <span style="color:rgb(98,98,98)">=</span> <span class="ansi-yellow-bg">http</span><span style="color:rgb(98,98,98)" class="ansi-yellow-bg">.</span><span class="ansi-yellow-bg">head</span><span class="ansi-yellow-bg">(</span><span class="ansi-yellow-bg">url</span><span class="ansi-yellow-bg">)</span><span style="color:rgb(98,98,98)">.</span>getheader(<span style="color:rgb(175,0,0)">'</span><span style="color:rgb(175,0,0)">last-modified</span><span style="color:rgb(175,0,0)">'</span>, <span style="color:rgb(0,135,0)">str</span>(datetime<span style="color:rgb(98,98,98)">.</span>now()))
+<span class="ansi-green-fg ansi-bold">    103</span>         cache_item: Optional[CacheItem] <span style="color:rgb(98,98,98)">=</span> get_item(url)
+<span class="ansi-green-fg ansi-bold">    104</span>         <span style="font-weight:bold;color:rgb(0,135,0)">if</span> cache_item <span style="font-weight:bold;color:rgb(175,0,255)">is</span> <span style="font-weight:bold;color:rgb(0,135,0)">None</span> <span style="font-weight:bold;color:rgb(175,0,255)">or</span> last_modified <span style="color:rgb(98,98,98)">!=</span> cache_item<span style="color:rgb(98,98,98)">.</span>version:
+
+File <span class="ansi-green-fg">~/micromamba/envs/psp_conjunction/lib/python3.11/site-packages/speasy/core/http.py:93</span>, in <span class="ansi-cyan-fg">_HttpVerb.__call__</span><span class="ansi-blue-fg">(self, url, headers, params, timeout)</span>
+<span class="ansi-green-fg ansi-bold">     91</span> headers <span style="color:rgb(98,98,98)">=</span> headers <span style="font-weight:bold;color:rgb(175,0,255)">or</span> {}
+<span class="ansi-green-fg ansi-bold">     92</span> headers[<span style="color:rgb(175,0,0)">'</span><span style="color:rgb(175,0,0)">User-Agent</span><span style="color:rgb(175,0,0)">'</span>] <span style="color:rgb(98,98,98)">=</span> USER_AGENT
+<span class="ansi-green-fg">---&gt; 93</span> <span style="font-weight:bold;color:rgb(0,135,0)">return</span> Response(<span style="color:rgb(0,135,0)" class="ansi-yellow-bg">self</span><span style="color:rgb(98,98,98)" class="ansi-yellow-bg">.</span><span class="ansi-yellow-bg">_verb</span><span class="ansi-yellow-bg">(</span><span class="ansi-yellow-bg">url</span><span style="color:rgb(98,98,98)" class="ansi-yellow-bg">=</span><span class="ansi-yellow-bg">url</span><span class="ansi-yellow-bg">,</span><span class="ansi-yellow-bg"> </span><span class="ansi-yellow-bg">headers</span><span style="color:rgb(98,98,98)" class="ansi-yellow-bg">=</span><span class="ansi-yellow-bg">headers</span><span class="ansi-yellow-bg">,</span><span class="ansi-yellow-bg"> </span><span class="ansi-yellow-bg">fields</span><span style="color:rgb(98,98,98)" class="ansi-yellow-bg">=</span><span class="ansi-yellow-bg">params</span><span class="ansi-yellow-bg">,</span><span class="ansi-yellow-bg"> </span><span class="ansi-yellow-bg">timeout</span><span style="color:rgb(98,98,98)" class="ansi-yellow-bg">=</span><span class="ansi-yellow-bg">timeout</span><span class="ansi-yellow-bg">)</span>)
+
+File <span class="ansi-green-fg">~/micromamba/envs/psp_conjunction/lib/python3.11/site-packages/urllib3/_request_methods.py:110</span>, in <span class="ansi-cyan-fg">RequestMethods.request</span><span class="ansi-blue-fg">(self, method, url, body, fields, headers, json, **urlopen_kw)</span>
+<span class="ansi-green-fg ansi-bold">    107</span>     urlopen_kw[<span style="color:rgb(175,0,0)">"</span><span style="color:rgb(175,0,0)">body</span><span style="color:rgb(175,0,0)">"</span>] <span style="color:rgb(98,98,98)">=</span> body
+<span class="ansi-green-fg ansi-bold">    109</span> <span style="font-weight:bold;color:rgb(0,135,0)">if</span> method <span style="font-weight:bold;color:rgb(175,0,255)">in</span> <span style="color:rgb(0,135,0)">self</span><span style="color:rgb(98,98,98)">.</span>_encode_url_methods:
+<span class="ansi-green-fg">--&gt; 110</span>     <span style="font-weight:bold;color:rgb(0,135,0)">return</span> <span style="color:rgb(0,135,0)" class="ansi-yellow-bg">self</span><span style="color:rgb(98,98,98)" class="ansi-yellow-bg">.</span><span class="ansi-yellow-bg">request_encode_url</span><span class="ansi-yellow-bg">(</span>
+<span class="ansi-green-fg ansi-bold">    111</span> <span class="ansi-yellow-bg">        </span><span class="ansi-yellow-bg">method</span><span class="ansi-yellow-bg">,</span>
+<span class="ansi-green-fg ansi-bold">    112</span> <span class="ansi-yellow-bg">        </span><span class="ansi-yellow-bg">url</span><span class="ansi-yellow-bg">,</span>
+<span class="ansi-green-fg ansi-bold">    113</span> <span class="ansi-yellow-bg">        </span><span class="ansi-yellow-bg">fields</span><span style="color:rgb(98,98,98)" class="ansi-yellow-bg">=</span><span class="ansi-yellow-bg">fields</span><span class="ansi-yellow-bg">,</span><span class="ansi-yellow-bg">  </span><span style="font-style:italic;color:rgb(95,135,135)" class="ansi-yellow-bg"># type: ignore[arg-type]</span>
+<span class="ansi-green-fg ansi-bold">    114</span> <span class="ansi-yellow-bg">        </span><span class="ansi-yellow-bg">headers</span><span style="color:rgb(98,98,98)" class="ansi-yellow-bg">=</span><span class="ansi-yellow-bg">headers</span><span class="ansi-yellow-bg">,</span>
+<span class="ansi-green-fg ansi-bold">    115</span> <span class="ansi-yellow-bg">        </span><span style="color:rgb(98,98,98)" class="ansi-yellow-bg">*</span><span style="color:rgb(98,98,98)" class="ansi-yellow-bg">*</span><span class="ansi-yellow-bg">urlopen_kw</span><span class="ansi-yellow-bg">,</span>
+<span class="ansi-green-fg ansi-bold">    116</span> <span class="ansi-yellow-bg">    </span><span class="ansi-yellow-bg">)</span>
+<span class="ansi-green-fg ansi-bold">    117</span> <span style="font-weight:bold;color:rgb(0,135,0)">else</span>:
+<span class="ansi-green-fg ansi-bold">    118</span>     <span style="font-weight:bold;color:rgb(0,135,0)">return</span> <span style="color:rgb(0,135,0)">self</span><span style="color:rgb(98,98,98)">.</span>request_encode_body(
+<span class="ansi-green-fg ansi-bold">    119</span>         method, url, fields<span style="color:rgb(98,98,98)">=</span>fields, headers<span style="color:rgb(98,98,98)">=</span>headers, <span style="color:rgb(98,98,98)">*</span><span style="color:rgb(98,98,98)">*</span>urlopen_kw
+<span class="ansi-green-fg ansi-bold">    120</span>     )
+
+File <span class="ansi-green-fg">~/micromamba/envs/psp_conjunction/lib/python3.11/site-packages/urllib3/_request_methods.py:143</span>, in <span class="ansi-cyan-fg">RequestMethods.request_encode_url</span><span class="ansi-blue-fg">(self, method, url, fields, headers, **urlopen_kw)</span>
+<span class="ansi-green-fg ansi-bold">    140</span> <span style="font-weight:bold;color:rgb(0,135,0)">if</span> fields:
+<span class="ansi-green-fg ansi-bold">    141</span>     url <span style="color:rgb(98,98,98)">+</span><span style="color:rgb(98,98,98)">=</span> <span style="color:rgb(175,0,0)">"</span><span style="color:rgb(175,0,0)">?</span><span style="color:rgb(175,0,0)">"</span> <span style="color:rgb(98,98,98)">+</span> urlencode(fields)
+<span class="ansi-green-fg">--&gt; 143</span> <span style="font-weight:bold;color:rgb(0,135,0)">return</span> <span style="color:rgb(0,135,0)" class="ansi-yellow-bg">self</span><span style="color:rgb(98,98,98)" class="ansi-yellow-bg">.</span><span class="ansi-yellow-bg">urlopen</span><span class="ansi-yellow-bg">(</span><span class="ansi-yellow-bg">method</span><span class="ansi-yellow-bg">,</span><span class="ansi-yellow-bg"> </span><span class="ansi-yellow-bg">url</span><span class="ansi-yellow-bg">,</span><span class="ansi-yellow-bg"> </span><span style="color:rgb(98,98,98)" class="ansi-yellow-bg">*</span><span style="color:rgb(98,98,98)" class="ansi-yellow-bg">*</span><span class="ansi-yellow-bg">extra_kw</span><span class="ansi-yellow-bg">)</span>
+
+File <span class="ansi-green-fg">~/micromamba/envs/psp_conjunction/lib/python3.11/site-packages/urllib3/poolmanager.py:444</span>, in <span class="ansi-cyan-fg">PoolManager.urlopen</span><span class="ansi-blue-fg">(self, method, url, redirect, **kw)</span>
+<span class="ansi-green-fg ansi-bold">    442</span>     response <span style="color:rgb(98,98,98)">=</span> conn<span style="color:rgb(98,98,98)">.</span>urlopen(method, url, <span style="color:rgb(98,98,98)">*</span><span style="color:rgb(98,98,98)">*</span>kw)
+<span class="ansi-green-fg ansi-bold">    443</span> <span style="font-weight:bold;color:rgb(0,135,0)">else</span>:
+<span class="ansi-green-fg">--&gt; 444</span>     response <span style="color:rgb(98,98,98)">=</span> <span class="ansi-yellow-bg">conn</span><span style="color:rgb(98,98,98)" class="ansi-yellow-bg">.</span><span class="ansi-yellow-bg">urlopen</span><span class="ansi-yellow-bg">(</span><span class="ansi-yellow-bg">method</span><span class="ansi-yellow-bg">,</span><span class="ansi-yellow-bg"> </span><span class="ansi-yellow-bg">u</span><span style="color:rgb(98,98,98)" class="ansi-yellow-bg">.</span><span class="ansi-yellow-bg">request_uri</span><span class="ansi-yellow-bg">,</span><span class="ansi-yellow-bg"> </span><span style="color:rgb(98,98,98)" class="ansi-yellow-bg">*</span><span style="color:rgb(98,98,98)" class="ansi-yellow-bg">*</span><span class="ansi-yellow-bg">kw</span><span class="ansi-yellow-bg">)</span>
+<span class="ansi-green-fg ansi-bold">    446</span> redirect_location <span style="color:rgb(98,98,98)">=</span> redirect <span style="font-weight:bold;color:rgb(175,0,255)">and</span> response<span style="color:rgb(98,98,98)">.</span>get_redirect_location()
+<span class="ansi-green-fg ansi-bold">    447</span> <span style="font-weight:bold;color:rgb(0,135,0)">if</span> <span style="font-weight:bold;color:rgb(175,0,255)">not</span> redirect_location:
+
+File <span class="ansi-green-fg">~/micromamba/envs/psp_conjunction/lib/python3.11/site-packages/urllib3/connectionpool.py:790</span>, in <span class="ansi-cyan-fg">HTTPConnectionPool.urlopen</span><span class="ansi-blue-fg">(self, method, url, body, headers, retries, redirect, assert_same_host, timeout, pool_timeout, release_conn, chunked, body_pos, preload_content, decode_content, **response_kw)</span>
+<span class="ansi-green-fg ansi-bold">    787</span> response_conn <span style="color:rgb(98,98,98)">=</span> conn <span style="font-weight:bold;color:rgb(0,135,0)">if</span> <span style="font-weight:bold;color:rgb(175,0,255)">not</span> release_conn <span style="font-weight:bold;color:rgb(0,135,0)">else</span> <span style="font-weight:bold;color:rgb(0,135,0)">None</span>
+<span class="ansi-green-fg ansi-bold">    789</span> <span style="font-style:italic;color:rgb(95,135,135)"># Make the request on the HTTPConnection object</span>
+<span class="ansi-green-fg">--&gt; 790</span> response <span style="color:rgb(98,98,98)">=</span> <span style="color:rgb(0,135,0)" class="ansi-yellow-bg">self</span><span style="color:rgb(98,98,98)" class="ansi-yellow-bg">.</span><span class="ansi-yellow-bg">_make_request</span><span class="ansi-yellow-bg">(</span>
+<span class="ansi-green-fg ansi-bold">    791</span> <span class="ansi-yellow-bg">    </span><span class="ansi-yellow-bg">conn</span><span class="ansi-yellow-bg">,</span>
+<span class="ansi-green-fg ansi-bold">    792</span> <span class="ansi-yellow-bg">    </span><span class="ansi-yellow-bg">method</span><span class="ansi-yellow-bg">,</span>
+<span class="ansi-green-fg ansi-bold">    793</span> <span class="ansi-yellow-bg">    </span><span class="ansi-yellow-bg">url</span><span class="ansi-yellow-bg">,</span>
+<span class="ansi-green-fg ansi-bold">    794</span> <span class="ansi-yellow-bg">    </span><span class="ansi-yellow-bg">timeout</span><span style="color:rgb(98,98,98)" class="ansi-yellow-bg">=</span><span class="ansi-yellow-bg">timeout_obj</span><span class="ansi-yellow-bg">,</span>
+<span class="ansi-green-fg ansi-bold">    795</span> <span class="ansi-yellow-bg">    </span><span class="ansi-yellow-bg">body</span><span style="color:rgb(98,98,98)" class="ansi-yellow-bg">=</span><span class="ansi-yellow-bg">body</span><span class="ansi-yellow-bg">,</span>
+<span class="ansi-green-fg ansi-bold">    796</span> <span class="ansi-yellow-bg">    </span><span class="ansi-yellow-bg">headers</span><span style="color:rgb(98,98,98)" class="ansi-yellow-bg">=</span><span class="ansi-yellow-bg">headers</span><span class="ansi-yellow-bg">,</span>
+<span class="ansi-green-fg ansi-bold">    797</span> <span class="ansi-yellow-bg">    </span><span class="ansi-yellow-bg">chunked</span><span style="color:rgb(98,98,98)" class="ansi-yellow-bg">=</span><span class="ansi-yellow-bg">chunked</span><span class="ansi-yellow-bg">,</span>
+<span class="ansi-green-fg ansi-bold">    798</span> <span class="ansi-yellow-bg">    </span><span class="ansi-yellow-bg">retries</span><span style="color:rgb(98,98,98)" class="ansi-yellow-bg">=</span><span class="ansi-yellow-bg">retries</span><span class="ansi-yellow-bg">,</span>
+<span class="ansi-green-fg ansi-bold">    799</span> <span class="ansi-yellow-bg">    </span><span class="ansi-yellow-bg">response_conn</span><span style="color:rgb(98,98,98)" class="ansi-yellow-bg">=</span><span class="ansi-yellow-bg">response_conn</span><span class="ansi-yellow-bg">,</span>
+<span class="ansi-green-fg ansi-bold">    800</span> <span class="ansi-yellow-bg">    </span><span class="ansi-yellow-bg">preload_content</span><span style="color:rgb(98,98,98)" class="ansi-yellow-bg">=</span><span class="ansi-yellow-bg">preload_content</span><span class="ansi-yellow-bg">,</span>
+<span class="ansi-green-fg ansi-bold">    801</span> <span class="ansi-yellow-bg">    </span><span class="ansi-yellow-bg">decode_content</span><span style="color:rgb(98,98,98)" class="ansi-yellow-bg">=</span><span class="ansi-yellow-bg">decode_content</span><span class="ansi-yellow-bg">,</span>
+<span class="ansi-green-fg ansi-bold">    802</span> <span class="ansi-yellow-bg">    </span><span style="color:rgb(98,98,98)" class="ansi-yellow-bg">*</span><span style="color:rgb(98,98,98)" class="ansi-yellow-bg">*</span><span class="ansi-yellow-bg">response_kw</span><span class="ansi-yellow-bg">,</span>
+<span class="ansi-green-fg ansi-bold">    803</span> <span class="ansi-yellow-bg">)</span>
+<span class="ansi-green-fg ansi-bold">    805</span> <span style="font-style:italic;color:rgb(95,135,135)"># Everything went great!</span>
+<span class="ansi-green-fg ansi-bold">    806</span> clean_exit <span style="color:rgb(98,98,98)">=</span> <span style="font-weight:bold;color:rgb(0,135,0)">True</span>
+
+File <span class="ansi-green-fg">~/micromamba/envs/psp_conjunction/lib/python3.11/site-packages/urllib3/connectionpool.py:536</span>, in <span class="ansi-cyan-fg">HTTPConnectionPool._make_request</span><span class="ansi-blue-fg">(self, conn, method, url, body, headers, retries, timeout, chunked, response_conn, preload_content, decode_content, enforce_content_length)</span>
+<span class="ansi-green-fg ansi-bold">    534</span> <span style="font-style:italic;color:rgb(95,135,135)"># Receive the response from the server</span>
+<span class="ansi-green-fg ansi-bold">    535</span> <span style="font-weight:bold;color:rgb(0,135,0)">try</span>:
+<span class="ansi-green-fg">--&gt; 536</span>     response <span style="color:rgb(98,98,98)">=</span> <span class="ansi-yellow-bg">conn</span><span style="color:rgb(98,98,98)" class="ansi-yellow-bg">.</span><span class="ansi-yellow-bg">getresponse</span><span class="ansi-yellow-bg">(</span><span class="ansi-yellow-bg">)</span>
+<span class="ansi-green-fg ansi-bold">    537</span> <span style="font-weight:bold;color:rgb(0,135,0)">except</span> (BaseSSLError, <span style="font-weight:bold;color:rgb(215,95,95)">OSError</span>) <span style="font-weight:bold;color:rgb(0,135,0)">as</span> e:
+<span class="ansi-green-fg ansi-bold">    538</span>     <span style="color:rgb(0,135,0)">self</span><span style="color:rgb(98,98,98)">.</span>_raise_timeout(err<span style="color:rgb(98,98,98)">=</span>e, url<span style="color:rgb(98,98,98)">=</span>url, timeout_value<span style="color:rgb(98,98,98)">=</span>read_timeout)
+
+File <span class="ansi-green-fg">~/micromamba/envs/psp_conjunction/lib/python3.11/site-packages/urllib3/connection.py:461</span>, in <span class="ansi-cyan-fg">HTTPConnection.getresponse</span><span class="ansi-blue-fg">(self)</span>
+<span class="ansi-green-fg ansi-bold">    458</span> <span style="font-weight:bold;color:rgb(0,135,0)">from</span> <span style="font-weight:bold;color:rgb(0,0,255)">.</span><span style="font-weight:bold;color:rgb(0,0,255)">response</span> <span style="font-weight:bold;color:rgb(0,135,0)">import</span> HTTPResponse
+<span class="ansi-green-fg ansi-bold">    460</span> <span style="font-style:italic;color:rgb(95,135,135)"># Get the response from http.client.HTTPConnection</span>
+<span class="ansi-green-fg">--&gt; 461</span> httplib_response <span style="color:rgb(98,98,98)">=</span> <span style="color:rgb(0,135,0)" class="ansi-yellow-bg">super</span><span class="ansi-yellow-bg">(</span><span class="ansi-yellow-bg">)</span><span style="color:rgb(98,98,98)" class="ansi-yellow-bg">.</span><span class="ansi-yellow-bg">getresponse</span><span class="ansi-yellow-bg">(</span><span class="ansi-yellow-bg">)</span>
+<span class="ansi-green-fg ansi-bold">    463</span> <span style="font-weight:bold;color:rgb(0,135,0)">try</span>:
+<span class="ansi-green-fg ansi-bold">    464</span>     assert_header_parsing(httplib_response<span style="color:rgb(98,98,98)">.</span>msg)
+
+File <span class="ansi-green-fg">~/micromamba/envs/psp_conjunction/lib/python3.11/http/client.py:1386</span>, in <span class="ansi-cyan-fg">HTTPConnection.getresponse</span><span class="ansi-blue-fg">(self)</span>
+<span class="ansi-green-fg ansi-bold">   1384</span> <span style="font-weight:bold;color:rgb(0,135,0)">try</span>:
+<span class="ansi-green-fg ansi-bold">   1385</span>     <span style="font-weight:bold;color:rgb(0,135,0)">try</span>:
+<span class="ansi-green-fg">-&gt; 1386</span>         <span class="ansi-yellow-bg">response</span><span style="color:rgb(98,98,98)" class="ansi-yellow-bg">.</span><span class="ansi-yellow-bg">begin</span><span class="ansi-yellow-bg">(</span><span class="ansi-yellow-bg">)</span>
+<span class="ansi-green-fg ansi-bold">   1387</span>     <span style="font-weight:bold;color:rgb(0,135,0)">except</span> <span style="font-weight:bold;color:rgb(215,95,95)">ConnectionError</span>:
+<span class="ansi-green-fg ansi-bold">   1388</span>         <span style="color:rgb(0,135,0)">self</span><span style="color:rgb(98,98,98)">.</span>close()
+
+File <span class="ansi-green-fg">~/micromamba/envs/psp_conjunction/lib/python3.11/http/client.py:325</span>, in <span class="ansi-cyan-fg">HTTPResponse.begin</span><span class="ansi-blue-fg">(self)</span>
+<span class="ansi-green-fg ansi-bold">    323</span> <span style="font-style:italic;color:rgb(95,135,135)"># read until we get a non-100 response</span>
+<span class="ansi-green-fg ansi-bold">    324</span> <span style="font-weight:bold;color:rgb(0,135,0)">while</span> <span style="font-weight:bold;color:rgb(0,135,0)">True</span>:
+<span class="ansi-green-fg">--&gt; 325</span>     version, status, reason <span style="color:rgb(98,98,98)">=</span> <span style="color:rgb(0,135,0)" class="ansi-yellow-bg">self</span><span style="color:rgb(98,98,98)" class="ansi-yellow-bg">.</span><span class="ansi-yellow-bg">_read_status</span><span class="ansi-yellow-bg">(</span><span class="ansi-yellow-bg">)</span>
+<span class="ansi-green-fg ansi-bold">    326</span>     <span style="font-weight:bold;color:rgb(0,135,0)">if</span> status <span style="color:rgb(98,98,98)">!=</span> CONTINUE:
+<span class="ansi-green-fg ansi-bold">    327</span>         <span style="font-weight:bold;color:rgb(0,135,0)">break</span>
+
+File <span class="ansi-green-fg">~/micromamba/envs/psp_conjunction/lib/python3.11/http/client.py:286</span>, in <span class="ansi-cyan-fg">HTTPResponse._read_status</span><span class="ansi-blue-fg">(self)</span>
+<span class="ansi-green-fg ansi-bold">    285</span> <span style="font-weight:bold;color:rgb(0,135,0)">def</span> <span style="color:rgb(0,0,255)">_read_status</span>(<span style="color:rgb(0,135,0)">self</span>):
+<span class="ansi-green-fg">--&gt; 286</span>     line <span style="color:rgb(98,98,98)">=</span> <span style="color:rgb(0,135,0)">str</span>(<span style="color:rgb(0,135,0)">self</span><span style="color:rgb(98,98,98)">.</span>fp<span style="color:rgb(98,98,98)">.</span>readline(_MAXLINE <span style="color:rgb(98,98,98)">+</span> <span style="color:rgb(98,98,98)">1</span>), <span style="color:rgb(175,0,0)">"</span><span style="color:rgb(175,0,0)">iso-8859-1</span><span style="color:rgb(175,0,0)">"</span>)
+<span class="ansi-green-fg ansi-bold">    287</span>     <span style="font-weight:bold;color:rgb(0,135,0)">if</span> <span style="color:rgb(0,135,0)">len</span>(line) <span style="color:rgb(98,98,98)">&gt;</span> _MAXLINE:
+<span class="ansi-green-fg ansi-bold">    288</span>         <span style="font-weight:bold;color:rgb(0,135,0)">raise</span> LineTooLong(<span style="color:rgb(175,0,0)">"</span><span style="color:rgb(175,0,0)">status line</span><span style="color:rgb(175,0,0)">"</span>)
+
+File <span class="ansi-green-fg">~/micromamba/envs/psp_conjunction/lib/python3.11/socket.py:706</span>, in <span class="ansi-cyan-fg">SocketIO.readinto</span><span class="ansi-blue-fg">(self, b)</span>
+<span class="ansi-green-fg ansi-bold">    704</span> <span style="font-weight:bold;color:rgb(0,135,0)">while</span> <span style="font-weight:bold;color:rgb(0,135,0)">True</span>:
+<span class="ansi-green-fg ansi-bold">    705</span>     <span style="font-weight:bold;color:rgb(0,135,0)">try</span>:
+<span class="ansi-green-fg">--&gt; 706</span>         <span style="font-weight:bold;color:rgb(0,135,0)">return</span> <span style="color:rgb(0,135,0)" class="ansi-yellow-bg">self</span><span style="color:rgb(98,98,98)" class="ansi-yellow-bg">.</span><span class="ansi-yellow-bg">_sock</span><span style="color:rgb(98,98,98)" class="ansi-yellow-bg">.</span><span class="ansi-yellow-bg">recv_into</span><span class="ansi-yellow-bg">(</span><span class="ansi-yellow-bg">b</span><span class="ansi-yellow-bg">)</span>
+<span class="ansi-green-fg ansi-bold">    707</span>     <span style="font-weight:bold;color:rgb(0,135,0)">except</span> timeout:
+<span class="ansi-green-fg ansi-bold">    708</span>         <span style="color:rgb(0,135,0)">self</span><span style="color:rgb(98,98,98)">.</span>_timeout_occurred <span style="color:rgb(98,98,98)">=</span> <span style="font-weight:bold;color:rgb(0,135,0)">True</span>
+
+File <span class="ansi-green-fg">~/micromamba/envs/psp_conjunction/lib/python3.11/ssl.py:1315</span>, in <span class="ansi-cyan-fg">SSLSocket.recv_into</span><span class="ansi-blue-fg">(self, buffer, nbytes, flags)</span>
+<span class="ansi-green-fg ansi-bold">   1311</span>     <span style="font-weight:bold;color:rgb(0,135,0)">if</span> flags <span style="color:rgb(98,98,98)">!=</span> <span style="color:rgb(98,98,98)">0</span>:
+<span class="ansi-green-fg ansi-bold">   1312</span>         <span style="font-weight:bold;color:rgb(0,135,0)">raise</span> <span style="font-weight:bold;color:rgb(215,95,95)">ValueError</span>(
+<span class="ansi-green-fg ansi-bold">   1313</span>           <span style="color:rgb(175,0,0)">"</span><span style="color:rgb(175,0,0)">non-zero flags not allowed in calls to recv_into() on </span><span style="font-weight:bold;color:rgb(175,95,135)">%s</span><span style="color:rgb(175,0,0)">"</span> <span style="color:rgb(98,98,98)">%</span>
+<span class="ansi-green-fg ansi-bold">   1314</span>           <span style="color:rgb(0,135,0)">self</span><span style="color:rgb(98,98,98)">.</span><span style="color:rgb(0,0,135)">__class__</span>)
+<span class="ansi-green-fg">-&gt; 1315</span>     <span style="font-weight:bold;color:rgb(0,135,0)">return</span> <span style="color:rgb(0,135,0)" class="ansi-yellow-bg">self</span><span style="color:rgb(98,98,98)" class="ansi-yellow-bg">.</span><span class="ansi-yellow-bg">read</span><span class="ansi-yellow-bg">(</span><span class="ansi-yellow-bg">nbytes</span><span class="ansi-yellow-bg">,</span><span class="ansi-yellow-bg"> </span><span class="ansi-yellow-bg">buffer</span><span class="ansi-yellow-bg">)</span>
+<span class="ansi-green-fg ansi-bold">   1316</span> <span style="font-weight:bold;color:rgb(0,135,0)">else</span>:
+<span class="ansi-green-fg ansi-bold">   1317</span>     <span style="font-weight:bold;color:rgb(0,135,0)">return</span> <span style="color:rgb(0,135,0)">super</span>()<span style="color:rgb(98,98,98)">.</span>recv_into(buffer, nbytes, flags)
+
+File <span class="ansi-green-fg">~/micromamba/envs/psp_conjunction/lib/python3.11/ssl.py:1167</span>, in <span class="ansi-cyan-fg">SSLSocket.read</span><span class="ansi-blue-fg">(self, len, buffer)</span>
+<span class="ansi-green-fg ansi-bold">   1165</span> <span style="font-weight:bold;color:rgb(0,135,0)">try</span>:
+<span class="ansi-green-fg ansi-bold">   1166</span>     <span style="font-weight:bold;color:rgb(0,135,0)">if</span> buffer <span style="font-weight:bold;color:rgb(175,0,255)">is</span> <span style="font-weight:bold;color:rgb(175,0,255)">not</span> <span style="font-weight:bold;color:rgb(0,135,0)">None</span>:
+<span class="ansi-green-fg">-&gt; 1167</span>         <span style="font-weight:bold;color:rgb(0,135,0)">return</span> <span style="color:rgb(0,135,0)" class="ansi-yellow-bg">self</span><span style="color:rgb(98,98,98)" class="ansi-yellow-bg">.</span><span class="ansi-yellow-bg">_sslobj</span><span style="color:rgb(98,98,98)" class="ansi-yellow-bg">.</span><span class="ansi-yellow-bg">read</span><span class="ansi-yellow-bg">(</span><span style="color:rgb(0,135,0)" class="ansi-yellow-bg">len</span><span class="ansi-yellow-bg">,</span><span class="ansi-yellow-bg"> </span><span class="ansi-yellow-bg">buffer</span><span class="ansi-yellow-bg">)</span>
+<span class="ansi-green-fg ansi-bold">   1168</span>     <span style="font-weight:bold;color:rgb(0,135,0)">else</span>:
+<span class="ansi-green-fg ansi-bold">   1169</span>         <span style="font-weight:bold;color:rgb(0,135,0)">return</span> <span style="color:rgb(0,135,0)">self</span><span style="color:rgb(98,98,98)">.</span>_sslobj<span style="color:rgb(98,98,98)">.</span>read(<span style="color:rgb(0,135,0)">len</span>)
+
+<span class="ansi-red-fg">KeyboardInterrupt</span>: </pre>
+</div>
 </div>
 </div>
 <div id="cell-4" class="cell" data-execution_count="7">
 <details class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>mag_vars.to_polars()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>mag_vars.to_polars()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-display" data-execution_count="7">
 <i>naive plan: (run <b>LazyFrame.explain(optimized=True)</b> to see the optimized plan)</i>
@@ -514,27 +761,27 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>::: {#cell-5 .cell 0=‘e’ 1=‘x’ 2=‘p’ 3=‘o’ 4=‘r’ 5=‘t’}</p>
 <details class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> preprocess_data(</span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>    raw_data: pl.LazyFrame,</span>
-<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>    datatype: <span class="bu">str</span> <span class="op">=</span> <span class="va">None</span>,</span>
-<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>) <span class="op">-&gt;</span> pl.LazyFrame:</span>
-<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>    <span class="co">"""</span></span>
-<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a><span class="co">    Preprocess the raw dataset (only minor transformations)</span></span>
-<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a><span class="co">    - Applying naming conventions for columns</span></span>
-<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a><span class="co">    - Dropping duplicate time</span></span>
-<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a><span class="co">    - Changing storing format to `parquet`</span></span>
-<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-12"><a href="#cb5-12" aria-hidden="true" tabindex="-1"></a><span class="co">    """</span></span>
-<span id="cb5-13"><a href="#cb5-13" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-14"><a href="#cb5-14" aria-hidden="true" tabindex="-1"></a>    datatype <span class="op">=</span> datatype.upper()</span>
-<span id="cb5-15"><a href="#cb5-15" aria-hidden="true" tabindex="-1"></a>    name_mapping <span class="op">=</span> {</span>
-<span id="cb5-16"><a href="#cb5-16" aria-hidden="true" tabindex="-1"></a>        <span class="ss">f"Bx </span><span class="sc">{</span>datatype<span class="sc">}</span><span class="ss">-D"</span>: <span class="st">"B_x"</span>,</span>
-<span id="cb5-17"><a href="#cb5-17" aria-hidden="true" tabindex="-1"></a>        <span class="ss">f"By </span><span class="sc">{</span>datatype<span class="sc">}</span><span class="ss">-D"</span>: <span class="st">"B_y"</span>,</span>
-<span id="cb5-18"><a href="#cb5-18" aria-hidden="true" tabindex="-1"></a>        <span class="ss">f"Bz </span><span class="sc">{</span>datatype<span class="sc">}</span><span class="ss">-D"</span>: <span class="st">"B_z"</span>,</span>
-<span id="cb5-19"><a href="#cb5-19" aria-hidden="true" tabindex="-1"></a>    }</span>
-<span id="cb5-20"><a href="#cb5-20" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-21"><a href="#cb5-21" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> raw_data.sort(<span class="st">"time"</span>).unique(<span class="st">"time"</span>).rename(name_mapping)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> preprocess_data(</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>    raw_data: pl.LazyFrame,</span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>    datatype: <span class="bu">str</span> <span class="op">=</span> <span class="va">None</span>,</span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>) <span class="op">-&gt;</span> pl.LazyFrame:</span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>    <span class="co">"""</span></span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a><span class="co">    Preprocess the raw dataset (only minor transformations)</span></span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a><span class="co">    - Applying naming conventions for columns</span></span>
+<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a><span class="co">    - Dropping duplicate time</span></span>
+<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a><span class="co">    - Changing storing format to `parquet`</span></span>
+<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a><span class="co">    """</span></span>
+<span id="cb4-13"><a href="#cb4-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-14"><a href="#cb4-14" aria-hidden="true" tabindex="-1"></a>    datatype <span class="op">=</span> datatype.upper()</span>
+<span id="cb4-15"><a href="#cb4-15" aria-hidden="true" tabindex="-1"></a>    name_mapping <span class="op">=</span> {</span>
+<span id="cb4-16"><a href="#cb4-16" aria-hidden="true" tabindex="-1"></a>        <span class="ss">f"Bx </span><span class="sc">{</span>datatype<span class="sc">}</span><span class="ss">-D"</span>: <span class="st">"B_x"</span>,</span>
+<span id="cb4-17"><a href="#cb4-17" aria-hidden="true" tabindex="-1"></a>        <span class="ss">f"By </span><span class="sc">{</span>datatype<span class="sc">}</span><span class="ss">-D"</span>: <span class="st">"B_y"</span>,</span>
+<span id="cb4-18"><a href="#cb4-18" aria-hidden="true" tabindex="-1"></a>        <span class="ss">f"Bz </span><span class="sc">{</span>datatype<span class="sc">}</span><span class="ss">-D"</span>: <span class="st">"B_z"</span>,</span>
+<span id="cb4-19"><a href="#cb4-19" aria-hidden="true" tabindex="-1"></a>    }</span>
+<span id="cb4-20"><a href="#cb4-20" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-21"><a href="#cb4-21" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> raw_data.sort(<span class="st">"time"</span>).unique(<span class="st">"time"</span>).rename(name_mapping)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <p>:::</p>
 
@@ -577,18 +824,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     }
     return false;
   }
-  const clipboard = new window.ClipboardJS('.code-copy-button', {
-    text: function(trigger) {
-      const codeEl = trigger.previousElementSibling.cloneNode(true);
-      for (const childEl of codeEl.children) {
-        if (isCodeAnnotation(childEl)) {
-          childEl.remove();
-        }
-      }
-      return codeEl.innerText;
-    }
-  });
-  clipboard.on('success', function(e) {
+  const onCopySuccess = function(e) {
     // button target
     const button = e.trigger;
     // don't keep focus
@@ -620,7 +856,47 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     }, 1000);
     // clear code selection
     e.clearSelection();
+  }
+  const getTextToCopy = function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+    text: getTextToCopy
   });
+  clipboard.on('success', onCopySuccess);
+  if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+    // For code content inside modals, clipBoardJS needs to be initialized with a container option
+    // TODO: Check when it could be a function (https://github.com/zenorocha/clipboard.js/issues/860)
+    const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+      text: getTextToCopy,
+      container: window.document.getElementById('quarto-embedded-source-code-modal')
+    });
+    clipboardModal.on('success', onCopySuccess);
+  }
+    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+    var mailtoRegex = new RegExp(/^mailto:/);
+      var filterRegex = new RegExp('/' + window.location.host + '/');
+    var isInternal = (href) => {
+        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+    }
+    // Inspect non-navigation links and adorn them if external
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+    for (var i=0; i<links.length; i++) {
+      const link = links[i];
+      if (!isInternal(link.href)) {
+        // undo the damage that might have been done by quarto-nav.js in the case of
+        // links that we want to consider external
+        if (link.dataset.originalHref !== undefined) {
+          link.href = link.dataset.originalHref;
+        }
+      }
+    }
   function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
     const config = {
       allowHTML: true,
@@ -655,7 +931,11 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       try { href = new URL(href).hash; } catch {}
       const id = href.replace(/^#\/?/, "");
       const note = window.document.getElementById(id);
-      return note.innerHTML;
+      if (note) {
+        return note.innerHTML;
+      } else {
+        return "";
+      }
     });
   }
   const xrefs = window.document.querySelectorAll('a.quarto-xref');
