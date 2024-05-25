@@ -28,7 +28,6 @@ code-links:
   - repo
   - href: https://www.overleaf.com/project/65b0a9c80a3616adf6e599e8
     text: Overleaf
-
 abstract: We present a study of the spatial evolution of solar wind discontinuities in the outer heliosphere using data from the Juno spacecraft during its cruise phase. We identify and analyze the properties of the discontinuities at different radial distances from the Sun. By differentiating the temporal effect (correlated with solar activity) and spatial variations (correlated with radial distance), we find that (1) the normalized occurrence rate of IDs drops with the radial distance from the Sun, following a $1/r$ law; (2) The thickness of IDs increases with the radial distance from the Sun, but after normalization to the ion inertial length, the thickness of IDs decreases; (3) The current intensity of IDs decreases with the radial distance from the Sun, but after normalization to the Alfven current, the current intensity of IDs increases.
 ---
 
@@ -70,9 +69,6 @@ Furthermore, an analysis of @fig-overview reveals the significance of the heliog
 
 The time resolution of the magnetic field and plasma data for Juno, Wind, ARTEMIS, STEREO is summarized in the table below.
 
-<!-- 
-{{< embed notes.ipynb#tbl-missions >}}
- -->
 
 ## Model
 
@@ -94,12 +90,12 @@ We use Liu's [@liuMagneticDiscontinuitiesSolar2022] method to identify discontin
 Because the discontinuities may have different spatial scale at different radial distances from the Sun, we repeat the search procedure with time lags $T = 10, 20, 30, 40, 50, 60$ s, and combine the identified ID events together to establish the event list.
 Discontinuities with spatial scales larger than $60$ s are not considered in this study, however it could be argued that they are not significant in the outer heliosphere if they follow the trend with decreasing number of IDs with increasing spatial scale. @fig-ljFit also indicates that the spatial scale of IDs does not vary significantly with the radial distance from the Sun.
 
-More than $10^5$ IDs are identified in the solar wind data from Juno.
-Then for each discontinuity identified, we calculate the distance matrix of the time series sequence (distance between each pair of magnetic field vectors) to determine the leading edge and trailing edge of the discontinuity. After that, we use the minimum or maximum variance analysis (MVA) analysis [@sonnerupMinimumMaximumVariance1998; @sonnerupMagnetopauseStructureAttitude1967] to get the main (most varying) magnetic field component, $B_l$, and medium variation component, $B_m$. The maxium variance direction is then fitted by a step-like functions to extract the parameters to properly describe the discontinuity (we used logistic function here). Then we combine the magnetic field data and plasma data to obtain the thickness and the current density of the discontinuity.
+TODO:
+More than ? IDs are identified in the solar wind data from Juno, with ? IDs identified in 5 AU. Then for each discontinuity identified, we calculate the distance matrix of the time series sequence (distance between each pair of magnetic field vectors) to determine the leading edge and trailing edge of the discontinuity. After that, we use the minimum or maximum variance analysis (MVA) analysis [@sonnerupMinimumMaximumVariance1998; @sonnerupMagnetopauseStructureAttitude1967] to get the main (most varying) magnetic field component, $B_l$, and medium variation component, $B_m$. The maxium variance direction is then fitted by a step-like functions to extract the parameters to properly describe the discontinuity (we used logistic function here). Then we combine the magnetic field data and plasma data to obtain the thickness and the current density of the discontinuity.
 
 $$
 B(t; A, \mu, \sigma, {\mathrm{form=logistic}}) = A \left[1 - \frac{1}{1 + e^{\alpha}} \right]
-$$
+$${#eq-fit}
 
 where $\alpha = (t - \mu)/{\sigma}$.
 
@@ -115,19 +111,13 @@ where $\alpha = (t - \mu)/{\sigma}$.
 
 <!-- The basic approach of this proposal is to use solar wind measurements at 1AU (STEREO, ARTEMIS, WIND) to compare with Juno and PSP measurements and distinguish effects of solar wind temporal variations and effects of spatial (with the radial distance from the Sun) variations of discontinuity occurrence rate and characteristics. The example of such comparison for the occurrence rate is shown in @fig-rate, where we plot number of discontinuities measured per day by different spacecraft missions (for the same temporal resolution of magnetic field data and the same criteria of discontinuity determination). The radial distance of Juno for 2011-2015 is shown in @fig-model, and the number of discontinuities measured by Juno per day coincides with the discontinuity number measured by STEREO, WIND, and ARTEMIS, when Juno is around $1$ AU. This number (occurrence rate) decreases with distance (with time after $\sim 2013$), as Juno moves from $1$ AU to $5$ AU. We will use the similar comparison for discontinuity characteristics and occurrence rate derived for PSP and Juno.  -->
 
-![](figures/l_j_fit)
-
-![](figures/l_j_fit_xscale_log.png){#fig-ljFit}
-
-
 ## Occurrence rate
 
-The occurrence rate of IDs is investigated with regards of the radial distance from the Sun. 
+The occurrence rate of IDs is investigated with regards of the radial distance from the Sun for Juno, ARTEMIS, STEREO, and Wind. Number of discontinuities measured per day by different spacecraft missions (for the same temporal resolution of magnetic field data and the same criteria of discontinuity determination) is shown in @fig-rate. Because data is not continuously available and ARTEMIS spacecrafts will only be exposed in the solar wind for a relative short time during its orbits around the Moon (the Moon would be in the magnetosphere for a long time as it orbits the earth), the occurrence rate (numbder of IDs per day) is corrected with respect to data gap and the time the mission spent in the pristine solar wind. 
+The occurrence rate of IDs observed by Juno is consistent with the occurrence rate observed by 1AU missions, when Juno is around $1$ AU. This number (occurrence rate) decreases with distance as Juno moves from $1$ AU to $5$ AU (corresponding to time after $\sim 2013$, the radial distance of Juno for 2011-2015 is shown in @fig-model)
 
-Note the quantity of IDs per day is corrected with respect to data gap and the time the mission spent in the pristine solar wind. 
-ARTEMIS spacecrafts will only be exposed in the solar wind for a relative short time during its orbits around the Moon and the Moon would be in the magnetosphere for a long time as it orbits the earth. (The data is obtained from OMNIWEB, link: [omniweb.gsfc.nasa.gov/ftpbrowser/themis_b_sw.txt](https://omniweb.gsfc.nasa.gov/ftpbrowser/themis_b_sw.txt))
-
-The rate of occurrence depends linearly on the solar wind velocity [@sodingRadialLatitudinalDependencies2001], however the plasma velocity data in Juno mission is not available during its cruise phase. Therefore, we do not normalize the occurrence rate with respect to the solar wind speed. This influence of the solar wind speed on the occurrence rate might be mitigated by the fact all the spacecrafts are in the ecliptic plane, and the solar wind speed is not expected to change significantly with the radial distance from the Sun beyond $1$ AU. So the decrease of the occurrence rate with the radial distance from the Sun is expected to be a real effect of the radial distance from the Sun.
+The rate of occurrence depends linearly on the solar wind velocity [@sodingRadialLatitudinalDependencies2001], however the plasma velocity data in Juno mission is not available during its cruise phase. Therefore, we do not normalize the occurrence rate with respect to the solar wind speed. This influence of the solar wind speed on the occurrence rate might be mitigated by the fact all the spacecrafts are in the ecliptic plane, and the solar wind speed is not expected to change significantly with the radial distance from the Sun beyond $1$ AU. We normalize the occurrence rate from Juno to the occurrence rate from 1AU missions to account for the effect of solar wind structures on the occurrence rate. 
+The normalized occurrence rate is shown in panel (b) of @fig-rate. The occurrence rate of IDs drops with the radial distance from the Sun, following $1/r$ law. So the decrease of the occurrence rate with increasing radial distance from the Sun is expected to be a real effect of the radial distance from the Sun and this confirms the former results [@sodingRadialLatitudinalDependencies2001].
 
 ::: {#fig-rate layout-nrow="1"}
 
@@ -138,30 +128,7 @@ The rate of occurrence depends linearly on the solar wind velocity [@sodingRadia
 The number of discontinuities measured by Juno per day coincides with the discontinuity number measured by STEREO, WIND, and ARTEMIS, when Juno is around $1$ AU. This number (occurrence rate) decreases with distance (with time after $\sim 2013$), as Juno moves from $1$ AU to $5$ AU. We will use the similar comparison for discontinuity characteristics and occurrence rate derived for PSP and Juno. The radial distance of Juno for 2011-2016 is shown in @fig-model.
 :::
 
-## Thickness
-
-The thickness $d$ of a discontinuity is determined by
-
-$$
-d = (v \cdot n) \Delta T
-$$
-
-with $v = v_{sw} - v_{s/c} + U$ , where $\Delta T$ is the transition time (a factor of the $sigma$ used in fitting) , $v_{sw}$ is the solar wind velocity. The velocity of the spacecraft $v_{s/c}$ and the propagation speed of the discontinuities $U$ are negligible in our case.
-
-In @vaskoKineticscaleCurrentSheets2022 paper, CS thickness is estimated by the formula $d = \frac{\Delta B_l}{2 \mu_0 < J_m> }$. Because of @eq-j, $d = \frac{\Delta B_l}{2 \mu_0 < J_m> } = \frac{\Delta B_l V_n }{2 <\frac{d B_m}{ d t} >}$
-
-
-The transition time $\Delta T$ is determined in one second resolution data for all our missions to reduce the system error. (Note that highest time resolution of the data is not needed for the transition time determination by fitting method, see discussion in the appendix).
-
-::: {#fig-thickness layout-nrow="1"}
-![](figures/new/thickness/thickness_k_fit_r_dist)
-
-![](figures/new/thickness/thickness_k_fit_N1_r_dist)
-
-**a,** Thickness of IDs as a function of the radial distance from the Sun. **b,** Thickness of IDs normalized to the ion inertial length as a function of the radial distance from the Sun. 
-:::
-
-## Current density
+## Current density and thickness
 
 The peak current density $J_m$ of a discontinuity is determined by 
 
@@ -169,8 +136,72 @@ $$
 J_m = - \frac{1}{\mu_0 V_n} \frac{d B_m}{d t},
 $$ {#eq-j}
 
-where $\mu_0$ is the vacuum permeability and $V_n$ is the normal component of the proton flow velocity.
+where $\mu_0$ is the vacuum permeability and $V_n$ is the normal component of the proton flow velocity. For fitting method, the derivative of the magnetic field could be estimated as $d B_m / d t = A / 4 σ$. This estimate is more robust than the direct calculation of the derivative of the magnetic field, because the fitting method is less sensitive to the noise in the data and the time resolution of the data (see discussion in the appendix).
 
+The thickness $d$ of a discontinuity is determined by
+
+$$
+d = (v \cdot n) \Delta T
+$$
+
+with $v = v_{sw} - v_{s/c} + U$ , where $\Delta T$ is the transition time (a fixed factor of the $\sigma$ used in fitting) , $v_{sw}$ is the solar wind velocity. The velocity of the spacecraft $v_{s/c}$ and the propagation speed of the discontinuities $U$ are negligible in our case.
+
+To understand the relationship between the discontinuity and the local plasma, we normalize the thickness of the discontinuity by the initial ion length and the current density by the Alfven current density $J_A = e N_p V_A$ (corresponding to the drift between protons and electrons of local Alfén speed $V_A$). Figure @junoDistribution presents the statistical distribution of the (un)normalized thickness and current density of IDs grouped by the radial distance from the Sun collected by Juno. 
+Panel (a,b) shows that the thickness increases with radial distance. However, after normalization, the thickness slightly decreases, with the most probable value around 4-2 $d_i$. With increasing radial distance, larger fraction of IDs have thickness less than 1 $d_i$, becombing sub-proton scale structures.  Panel (c,d) shows that the current density decreases with increasing radial distance. However, after normalization, it slightly increases, with the most probable value around 0.05-0.15 $J_A$. It should be noted that for the normalized thickness and current density, the change is not significant compared to the spread of the distribution.
+
+The distribution of the thickness and current density of IDs observed by 1AU satellites (Wind, ARTEMIS and STEREO-A) during the five year of Juno cruise phase are shown in @fig-windDistribution. The distribution are grouped by the year of observation. Panel (a,b) shows that both the thickness and normalized thickness distribution of IDs remains almost constant with the year of observation. Most of the discontinuities have thickness around 350-3500 km, with the most probable value around 1000 km. Panel (c,d) shows that the current density slightly increases with the year of observation, with the most probable value around 5 $nA m^{-2}$, in consistence with previous studies [@vaskoKineticscaleCurrentSheets2022]. However, after normalization, the current density distribution remains identical across the five years. The change in the current density could be explained by the change in the solar wind properties with the solar cycle, as shown in @fig-swParameters. Density and magnetic field asscoiated with the discontinuities increases with the solar cycle approaching the solar minimum, which could lead to the increase of the current density of the discontinuities with fixed normalized current density.
+
+::: {#fig-ljFit}
+![](figures/juno_distribution_r){#fig-ljFit}
+
+![](figures/l_j_fit_xscale_log)
+
+Distribution of various properties of IDs observed by Juno grouped by the radial distance from the Sun. Panel (a) thickness, (b) normalized thickness, (c) current density, (d) normalized current density.
+:::
+
+::: {#fig-windDistribution}
+![](figures/wind_distribution_time)
+
+Distribution of various properties of IDs observed by 1AU satellites (Wind, ARTEMIS and STEREO-A) grouped by the year of observation. Panel (a) thickness, (b) normalized thickness, (c) current density, (d) normalized current density.
+:::
+
+::: {#fig-swParameters}
+![](figures/sw_paramters_time)
+
+Solar wind parameters associated with the IDs observed by 1AU satellites (Wind, ARTEMIS and STEREO-A) grouped by the year of observation. Panel (a) solar wind density, (b) magnetic field, (c) fitted magnetic field $A$ in @eq-fit.
+:::
+
+# Discussion
+
+## Dependences of occurrence rate
+
+@marianiStatisticalStudyMagnetohydrodynamic1983
+@marianiVariationsOccurrenceRate1973
+
+TODO: 
+
+# Conclusion
+
+We have collected 5 years of solar wind discontinuities from JUNO, ARTEMIS and STEREO. The results can be summarized as follows:
+
+1. The normalized occurrence rate of IDs drops with the radial distance from the Sun, following $1/r$ law.
+2. The thickness of IDs increases with the radial distance from the Sun, but after normalization to ion inertial length, the thickness of IDs slightly decreases. The thickness distribution of IDs remains almost constant with the year of observation.
+3. The current density of IDs decrease with the radial distance from the Sun, but after normalization to the Alfven current , the current density of IDs slightly increases. The current density distribution of IDs slightly increases with the year of observation, but after normalization, the current density distribution remains identical across the five years.
+
+# Acknowledgements
+
+Sunspot data from the World Data Center SILSO, Royal Observatory of Belgium, Brussels. ARTEMIS solar wind time interval data from the OMNI database. ARTEMIS solar wind time interval data from OMNIWEB, link: [omniweb.gsfc.nasa.gov/ftpbrowser/themis_b_sw.txt](https://omniweb.gsfc.nasa.gov/ftpbrowser/themis_b_sw.txt).
+
+# Appendix
+
+## Effect of the time resolution on the discontinuity properties
+
+The transition time $\Delta T$ is determined in one second resolution data for all our missions to reduce the system error. (Note that highest time resolution of the data is not needed for the transition time determination by fitting method).
+
+![Effect of the time resolution on the discontinuity properties](figures/ts_effect){#fig-tsEffect}
+
+
+# Archived Figures
 
 ::: {#fig-current layout-nrow="1"}
 ![](figures/new/current/current_k_r_dist)
@@ -180,33 +211,17 @@ where $\mu_0$ is the vacuum permeability and $V_n$ is the normal component of th
 **a,** Current density of IDs as a function of the radial distance from the Sun. **b,** Current density of IDs normalized to the Alfven current as a function of the radial distance from the Sun.
 :::
 
+::: {#fig-thickness layout-nrow="1"}
+![](figures/new/thickness/thickness_k_fit_r_dist)
 
-# Summary and discussion
+![](figures/new/thickness/thickness_k_fit_N1_r_dist)
 
-We have collected 5 years of solar wind discontinuities from JUNO, ARTEMIS and STEREO.
-
-## Occurrence rate
-The normalized occurrence rate of IDs drops with the radial distance from the Sun, following $1/r$ law.
-
-## Thickness
-
-The thickness of IDs increases with the radial distance from the Sun, but after normalization to ion inertial length, the thickness of IDs decreases.
-
-## Current density
-
-The current density of IDs decrease with the radial distance from the Sun, but after normalization to the Alfven current , the current density of IDs increases.
-
+**a,** Thickness of IDs as a function of the radial distance from the Sun. **b,** Thickness of IDs normalized to the ion inertial length as a function of the radial distance from the Sun. 
+:::
 
 ![](figures/l_j_fit_taus)
 
 ![](figures/l_j_fit_taus_xscale_log)
-
-
-# Acknowledgements
-
-Sunspot data from the World Data Center SILSO, Royal Observatory of Belgium, Brussels. ARTEMIS solar wind time interval data from the OMNI database. 
-
-# List of Figures
 
 ::: {.column-screen-inset layout-nrow="1"}
 ![](figures/thickness/thickness_k_dist)
@@ -223,8 +238,3 @@ Sunspot data from the World Data Center SILSO, Royal Observatory of Belgium, Bru
 ![](figures/current/current_k_N1_dist)
 
 :::
-
-# Appendix
-
-
-![Effect of the time resolution on the discontinuity properties](figures/ts_effect){#fig-tsEffect}

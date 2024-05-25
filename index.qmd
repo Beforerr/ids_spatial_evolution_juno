@@ -5,6 +5,7 @@ code-links:
     text: Zotero
   - href: https://app.tana.inc?nodeid=Kmdzbyj-36NM
     text: Tana
+draft: true
 ---
 
 # Publications

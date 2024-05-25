@@ -1,7 +1,7 @@
 default:
    just --list
 
-update: update-overleaf clean update-repo render publish
+update: update-overleaf clean update-repo publish
 
 env-install:
    pixi install
@@ -14,9 +14,6 @@ preview:
 
 render-manuscripts:
    quarto render --profile man --to html
-
-render: render-manuscripts
-   quarto render --profile web
    cp -r _manuscript _site/
 
 publish:
@@ -50,9 +47,10 @@ update-overleaf: sync-overleaf
    cd overleaf; git add .; git commit -am "update"; git push
 
 sync-overleaf:
+   # tlmgr install bibexport
    touch files/bibexport.bib
    quarto render --profile man --to agu-pdf
-   $HOME/Library/TinyTeX/texmf-dist/scripts/bibexport/bibexport.sh -o files/bibexport.bib --nosave article.aux
+   bibexport -o files/bibexport.bib --nosave article.aux   
    rsync _manuscript/_tex/ overleaf/ -r
 
 publish-poster:

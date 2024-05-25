@@ -1,10 +1,10 @@
 project:
   type: manuscript
   render: 
-    - "!*.qmd"
+    - "article.qmd"
 
 manuscript:
-  article: article.qmd # Current can not be put in a subdirectory
+  article: article.qmd
 
 format:
   html:
