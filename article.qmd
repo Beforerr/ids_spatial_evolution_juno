@@ -14,9 +14,6 @@ author:
   - name: Vassilis Angelopoulos
     orcid: 0000-0001-7024-1561
     affiliation: University of California, Los Angeles
-  - name: Shi Chen
-    orcid: 0000-0002-2582-7085
-    affiliation: University of California, Los Angeles
 affiliations:
   - id: ucla
     name: University of California, Los Angeles
@@ -176,6 +173,7 @@ Solar wind parameters associated with the IDs observed by 1AU satellites (Wind, 
 ## Dependences of occurrence rate
 
 @marianiStatisticalStudyMagnetohydrodynamic1983
+@tsurutaniInterplanetaryDiscontinuitiesTemporal1979
 @marianiVariationsOccurrenceRate1973
 
 TODO: 
@@ -186,7 +184,7 @@ We have collected 5 years of solar wind discontinuities from JUNO, ARTEMIS and S
 
 1. The normalized occurrence rate of IDs drops with the radial distance from the Sun, following $1/r$ law.
 2. The thickness of IDs increases with the radial distance from the Sun, but after normalization to ion inertial length, the thickness of IDs slightly decreases. The thickness distribution of IDs remains almost constant with the year of observation.
-3. The current density of IDs decrease with the radial distance from the Sun, but after normalization to the Alfven current , the current density of IDs slightly increases. The current density distribution of IDs slightly increases with the year of observation, but after normalization, the current density distribution remains identical across the five years.
+3. The current density of IDs decrease with the radial distance from the Sun, but after normalization to the Alfven current , the current density of IDs slightly increases. The current density distribution of IDs slightly increases with the year of observation, but after normalization, the current density distribution remains identical across the five years, thus no effect of the long-term (i.e. solar cycle) temporal variations.
 
 # Acknowledgements
 

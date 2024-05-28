@@ -22,4 +22,4 @@ scipy = "*"
 pyspedas = "*"
 great_tables = "*"
 discontinuitypy = { path = "../ids_finder", editable = true}
-Beforerr = { path = "../beforerr_dev", editable = true}
+beforerr = { path = "../beforerr_dev", editable = true}

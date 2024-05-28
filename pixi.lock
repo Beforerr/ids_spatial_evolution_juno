@@ -187,7 +187,7 @@ environments:
       - pypi: https://files.pythonhosted.org/packages/76/ac/a7305707cb852b7e16ff80eaf5692309bde30e2b1100a1fcacdc8f731d97/aiosignal-1.3.1-py3-none-any.whl
       - pypi: https://files.pythonhosted.org/packages/ef/f1/801f002b0bd849e764aed90446887f92075125860ca75201338c09d73985/asteval-0.9.33-py3-none-any.whl
       - pypi: https://files.pythonhosted.org/packages/8f/cc/9f585205158d5eb2bb53abec4e9bcacd9d912738d7544ea452e0bf0d60df/astropy-6.1.0-cp310-cp310-macosx_11_0_arm64.whl
-      - pypi: https://files.pythonhosted.org/packages/05/f4/cde0feff4a2cf234bb51c0c9650248c43d80634f46edd0f4dcb8a36f5cac/astropy_iers_data-0.2024.5.20.0.29.40-py3-none-any.whl
+      - pypi: https://files.pythonhosted.org/packages/a2/38/978b0af67f3d3e078f735480a1ed250fe0382a8312cd3e9739b458c7c102/astropy_iers_data-0.2024.5.27.0.30.8-py3-none-any.whl
       - pypi: https://files.pythonhosted.org/packages/b5/64/79c3aef1a7e55cfc985d16832f86316ca1847819bca8ae9206ff2b9a6a08/birch-0.0.35-py3-none-any.whl
       - pypi: https://files.pythonhosted.org/packages/4e/b7/e6bef0e4be7bea6336f36859517bb1dc6a4f64c78ff7ccc1381a00c294e7/cdasws-1.7.47-py3-none-any.whl
       - pypi: https://files.pythonhosted.org/packages/76/3d/4b2bf1000474022f8015a9457cd36d66c1594ab2c81faf1c17c01e05d8ab/cdflib-1.3.1-py3-none-any.whl
@@ -198,10 +198,10 @@ environments:
       - pypi: https://files.pythonhosted.org/packages/e7/05/c19819d5e3d95294a6f5947fb9b9629efb316b96de511b418c53d245aae6/cycler-0.12.1-py3-none-any.whl
       - pypi: https://files.pythonhosted.org/packages/b4/69/9e3da3a87058d43e5b9f0f668f69da591b8b0c2763b3afbfea084582ea57/decore-0.0.1.tar.gz
       - pypi: https://files.pythonhosted.org/packages/c9/7a/cef76fd8438a42f96db64ddaa85280485a9c395e7df3db8158cfec1eee34/dill-0.3.8-py3-none-any.whl
-      - pypi: https://files.pythonhosted.org/packages/c3/75/424bf498118a6f7784233bea274b48c00207373690947f4e6ede4ef24ec8/fastcore-1.5.38-py3-none-any.whl
+      - pypi: https://files.pythonhosted.org/packages/52/29/1eefae78398506cc5a862301b1ebdea1c047bb3546964792570302564265/fastcore-1.5.41-py3-none-any.whl
       - pypi: https://files.pythonhosted.org/packages/41/24/0b023b6537dfc9bae2c779353998e3e99ac7dfff4222fc6126650e93c3f3/filelock-3.14.0-py3-none-any.whl
       - pypi: https://files.pythonhosted.org/packages/13/e1/dd5ef0c3bc02f515d84b34b74aa66cd36301b7726e63377f2e7499e393f0/flox-0.9.7-py3-none-any.whl
-      - pypi: https://files.pythonhosted.org/packages/d0/eb/5c3f056a487f0d4609c029d3d7b03c1b9bb662dfb2dab3d968be9e8ea877/fonttools-4.52.1-cp310-cp310-macosx_11_0_arm64.whl
+      - pypi: https://files.pythonhosted.org/packages/80/84/eaf8cb173e2ec21ab93431cc77c1568181b4a909d495b200252df6127959/fonttools-4.52.4-cp310-cp310-macosx_11_0_arm64.whl
       - pypi: https://files.pythonhosted.org/packages/ae/83/bcdaa437a9bd693ba658a0310f8cdccff26bd78e45fccf8e49897904a5cd/frozenlist-1.4.1-cp310-cp310-macosx_11_0_arm64.whl
       - pypi: https://files.pythonhosted.org/packages/da/71/ae30dadffc90b9006d77af76b393cb9dfbfc9629f339fc1574a1c52e6806/future-1.0.0-py3-none-any.whl
       - pypi: https://files.pythonhosted.org/packages/21/9f/84ed23d4199b6d72edb40c8011feca528a47326f7282057cb1353e17dfec/geopack-1.0.10-py3-none-any.whl
@@ -472,9 +472,9 @@ packages:
   requires_python: '>=3.10'
 - kind: pypi
   name: astropy-iers-data
-  version: 0.2024.5.20.0.29.40
-  url: https://files.pythonhosted.org/packages/05/f4/cde0feff4a2cf234bb51c0c9650248c43d80634f46edd0f4dcb8a36f5cac/astropy_iers_data-0.2024.5.20.0.29.40-py3-none-any.whl
-  sha256: 8e0d91d8449f3e4c3c61354f7457629806fa2340ed144c08ab64ef424ede1d30
+  version: 0.2024.5.27.0.30.8
+  url: https://files.pythonhosted.org/packages/a2/38/978b0af67f3d3e078f735480a1ed250fe0382a8312cd3e9739b458c7c102/astropy_iers_data-0.2024.5.27.0.30.8-py3-none-any.whl
+  sha256: 839f473b8ac6f395c5e060d6df95f3b5d83b271a76391d6e87b496dd73423436
   requires_dist:
   - pytest ; extra == 'docs'
   - pytest ; extra == 'test'
@@ -575,8 +575,9 @@ packages:
   name: beforerr
   version: 0.1.0
   path: ../beforerr_dev
-  sha256: e4c38c07759823d738ab9c849d64311c6504be798d0fcd9ddf57112777f4b2da
+  sha256: f4361bfb8a2d6ae04aba3aaddadd87dfb6bb2af008e83c46d5466c2c30163060
   requires_dist:
+  - loguru
   - rpy2 ; extra == 'r'
   - rpy2-arrow ; extra == 'r'
   requires_python: '>=3.10'
@@ -1064,9 +1065,9 @@ packages:
   timestamp: 1698580072627
 - kind: pypi
   name: fastcore
-  version: 1.5.38
-  url: https://files.pythonhosted.org/packages/c3/75/424bf498118a6f7784233bea274b48c00207373690947f4e6ede4ef24ec8/fastcore-1.5.38-py3-none-any.whl
-  sha256: 327f011613c986e7f627f63d1d9993c8d6de116c586df94d85806fbfbe45e52a
+  version: 1.5.41
+  url: https://files.pythonhosted.org/packages/52/29/1eefae78398506cc5a862301b1ebdea1c047bb3546964792570302564265/fastcore-1.5.41-py3-none-any.whl
+  sha256: 9cd05cd07e32077004004e1105213249ad3a8e113e7dd599b9648fe46a27d75b
   requires_dist:
   - packaging
   - numpy ; extra == 'dev'
@@ -1116,9 +1117,9 @@ packages:
   requires_python: '>=3.9'
 - kind: pypi
   name: fonttools
-  version: 4.52.1
-  url: https://files.pythonhosted.org/packages/d0/eb/5c3f056a487f0d4609c029d3d7b03c1b9bb662dfb2dab3d968be9e8ea877/fonttools-4.52.1-cp310-cp310-macosx_11_0_arm64.whl
-  sha256: f0a5bff35738f8f6607c4303561ee1d1e5f64d5b14cf3c472d3030566c82e763
+  version: 4.52.4
+  url: https://files.pythonhosted.org/packages/80/84/eaf8cb173e2ec21ab93431cc77c1568181b4a909d495b200252df6127959/fonttools-4.52.4-cp310-cp310-macosx_11_0_arm64.whl
+  sha256: 5ecb88318ff249bd2a715e7aec36774ce7ae3441128007ef72a39a60601f4a8f
   requires_dist:
   - fs<3,>=2.2.0 ; extra == 'all'
   - lxml>=4.0 ; extra == 'all'

@@ -1,3 +1,6 @@
+import 'files/quarto.just'
+import 'files/overleaf.just'
+
 default:
    just --list
 
@@ -8,19 +11,6 @@ env-install:
 
 env-update-julia:
    rsync ~/projects/share/src/Discontinuity.jl notebooks/utils/
-
-preview:
-   quarto preview --no-render
-
-render-manuscripts:
-   quarto render --profile man --to html
-   cp -r _manuscript _site/
-
-publish:
-   quarto publish gh-pages --no-render --no-prompt
-
-setup-agu:
-   quarto add quarto-journals/agu --no-prompt
 
 examples:
    ipython ids_example.py 'notebooks/config_examples/examples_stereo.yml'
@@ -34,24 +24,10 @@ download:
    wget https://raw.githubusercontent.com/Beforerr/finesst_solar_wind_discontinuities/main/figures/orbits/juno_orbit_white.png -O figures/juno_orbit_white.png
 
 clean:
-   rm article.{log,bbl,blg,aux} trackchanges.sty agujournal2019.cls
    find . -name '.DS_Store' -type f -delete
 
 update-repo:
    git add .; git commit -am "update"; git push
-
-clone-overleaf:
-   git clone https://git@git.overleaf.com/65b0a9c80a3616adf6e599e8 overleaf
-
-update-overleaf: sync-overleaf
-   cd overleaf; git add .; git commit -am "update"; git push
-
-sync-overleaf:
-   # tlmgr install bibexport
-   touch files/bibexport.bib
-   quarto render --profile man --to agu-pdf
-   bibexport -o files/bibexport.bib --nosave article.aux   
-   rsync _manuscript/_tex/ overleaf/ -r
 
 publish-poster:
   Rscript -e 'pagedown::chrome_print("notebooks/manuscripts/.AGU23_poster.rmd")'
