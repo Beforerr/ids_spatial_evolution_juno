@@ -12,7 +12,6 @@ from discontinuitypy.missions import wind_mag_h4_rtn_meta, wind_plasma_k0_swe_me
 
 from .juno import get_mag_paths
 from math import ceil
-from pathlib import Path
 
 
 def _split_list(lst, n):

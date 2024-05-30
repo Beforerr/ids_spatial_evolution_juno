@@ -21,5 +21,6 @@ scipy = "*"
 [pypi-dependencies]
 pyspedas = "*"
 great_tables = "*"
+beforerr = "*"
 discontinuitypy = { path = "../ids_finder", editable = true}
-beforerr = { path = "../beforerr_dev", editable = true}
+space_analysis = { path = "../space-analysis.py", editable = true}
