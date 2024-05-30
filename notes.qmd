@@ -183,6 +183,7 @@ For model validation part, please see [JUNO Model Report](notebooks/20_model.ipy
 Science part
 
 -   Analysis
+    -   [ ] Re-calculate the occurrence rate of IDs
     -   [ ] Contribution of discontinuities to the power spectrum
     -   [ ] Check Datagap
     -   [ ] Check `ARTEMIS-B` data in different states (solar wind, magnetosheath, magnetotail, moon wake)
