@@ -1,16 +1,10 @@
 using Printf
-using Dates
 using Discontinuity
-
 data_path = datadir("05_reporting")
-
-function load(path)
-    Discontinuity.load(path) |> process!
-end
 
 function load(; tau=60, ts=1.00, name="JNO", method="fit", dir=data_path)
     ts_str = @sprintf "ts_%.2fs" ts
-    df = load(joinpath(dir, "events.$name.$method.$(ts_str)_tau_$(tau)s.arrow"))
+    df = Discontinuity.load(joinpath(dir, "events.$name.$method.$(ts_str)_tau_$(tau)s.arrow"))
     df.tau .= tau
     df.ts .= ts
     df
@@ -30,21 +24,6 @@ function load_taus(taus)
         unique([:"t.d_start", :"t.d_end"]) # remove events that appear in multiple taus datasets
     end
 end
-
-
-function process!(df)
-    df_tmp = @transform(df,
-        :year = year.(:time) |> categorical
-    )
-
-    # if 'radial_distance' is in the dataframe, round it
-    if "radial_distance" in names(df_tmp)
-        @transform!(df_tmp, :r = string.(round.(Int, :radial_distance)))
-    end
-
-    return df_tmp
-end
-
 
 function test_load()
     j_events_low_fit = load()
