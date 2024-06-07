@@ -15,7 +15,7 @@ function plot_duration(plt;
     datalimits_f = x -> quantile(x, [0.02, 0.98]),
     axis = (; yscale=log10),
     facet = (; linkxaxes=:none, linkyaxes=:none),
-    legend = NamedTuple()
+    legend = (; position=:top, titleposition=:left)
 )
     plt *= mapping(:duration) * (visual(Lines))
     specs = plt * density(; datalimits=datalimits_f) 

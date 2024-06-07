@@ -1,27 +1,34 @@
 using Printf
 using Discontinuity
+import Discontinuity: load
 data_path = datadir("05_reporting")
 
-function load(; tau=60, ts=1.00, name="JNO", method="fit", dir=data_path)
+function Discontinuity.load(;tau=60, ts=1.00, name="JNO", method="fit", dir=data_path)
     ts_str = @sprintf "ts_%.2fs" ts
     df = Discontinuity.load(joinpath(dir, "events.$name.$method.$(ts_str)_tau_$(tau)s.arrow"))
     df.tau .= tau
     df.ts .= ts
-    df
+    return df
 end
 
 function load_tau(tau)
     df = load(tau=tau)
     df.label .= "$tau s"
     println("Number of events: ", size(df, 1))
-    df
+    return df
 end
 
-function load_taus(taus)
+"""
+## Note
+
+This will remove events that appear in multiple taus datasets. 
+However, this may not remove all "duplicates" that may have little duration differences, since "t.d_start", :"t.d_end" are determined by the maximum distance, and they may vary across different taus for one "event".
+"""
+function load_taus(taus; unique_f = ["t.d_start", "t.d_end"])
     @chain begin
         vcat(load_tau.(taus)...)
         sort(:tau)
-        unique([:"t.d_start", :"t.d_end"]) # remove events that appear in multiple taus datasets
+        unique(unique_f)
     end
 end
 

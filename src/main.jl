@@ -1,7 +1,6 @@
 using DrWatson
 @quickactivate
 
-using Discontinuity
 using AlgebraOfGraphics,
     CairoMakie
 using DataFrames,
