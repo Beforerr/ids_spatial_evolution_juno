@@ -1,10 +1,12 @@
 [project]
 name = "juno"
 version = "0.1.0"
-description = "Add a short description here"
-authors = [{name = "Beforerr", email = "zzj956959688@gmail.com"}]
+description = "Utilities for working with Juno data"
+authors = [{ name = "Beforerr", email = "zzj956959688@gmail.com" }]
 requires-python = ">= 3.10, < 3.12"
-dependencies = []
+dependencies = [
+    "speasy",
+]
 
 [build-system]
 requires = ["setuptools"]
@@ -20,15 +22,11 @@ intake = "*"
 polars = "*"
 xarray = "*"
 pydantic = "*"
-pytables = "*"
 scipy = "*"
 
 [tool.pixi.pypi-dependencies]
 juno = { path = ".", editable = true }
-pyspedas = "*"
 great_tables = "*"
 beforerr = "*"
-discontinuitypy = { path = "../ids_finder", editable = true}
-space_analysis = { path = "../space-analysis.py", editable = true}
-
-[tool.pixi.tasks]
+discontinuitypy = { path = "../discontinuitypy", editable = true }
+space_analysis = { path = "../../src/space-analysis.py", editable = true }

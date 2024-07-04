@@ -3,12 +3,10 @@ import polars as pl
 
 from datetime import timedelta, datetime
 
-from space_analysis.ds.meta import Meta, PlasmaMeta
+from space_analysis.meta import MagDataset, PlasmaDataset
 from discontinuitypy.datasets import IDsDataset
 from discontinuitypy.config import IDsConfig as IDsConfigBase
 from discontinuitypy.config import SpeasyIDsConfig as SpeasyIDsConfigBase
-from discontinuitypy.missions import WindMeta
-from discontinuitypy.missions import wind_mag_h4_rtn_meta, wind_plasma_k0_swe_meta
 
 from .juno import get_mag_paths
 from math import ceil
@@ -24,7 +22,7 @@ def split_list(lst, n):
     return list(_split_list(lst, n))
 
 
-def standardize_plasma_data(data: pl.LazyFrame, meta: PlasmaMeta):
+def standardize_plasma_data(data: pl.LazyFrame, meta: PlasmaDataset):
     """
     Standardize plasma data columns across different datasets.
 
@@ -62,7 +60,7 @@ class SpeasyIDsConfig(IDsConfig, SpeasyIDsConfigBase):
 class JunoConfig(IDsConfig):
     name: str = "JNO"
 
-    plasma_meta: PlasmaMeta = PlasmaMeta(
+    plasma_meta: PlasmaDataset = PlasmaDataset(
         density_col="plasma_density", velocity_cols=["v_x", "v_y", "v_z"]
     )
 
@@ -102,23 +100,23 @@ class JunoConfig(IDsConfig):
             ).update_candidates_with_plasma_data().events
 
 
-class WindConfig(WindMeta, SpeasyIDsConfig):
-    provider: str = "archive/local"
-    mag_meta: Meta = wind_mag_h4_rtn_meta
-    plasma_meta: PlasmaMeta = wind_plasma_k0_swe_meta
-    split: int = 32
+# class WindConfig(WindMeta, SpeasyIDsConfig):
+#     provider: str = "archive/local"
+#     mag_meta: MagDataset = wind_mag_h4_rtn_meta
+#     plasma_meta: PlasmaDataset = wind_plasma_k0_swe_meta
+#     split: int = 32
 
 
 class StereoConfig(IDsConfig):
 
     ts: timedelta = timedelta(seconds=1)
 
-    mag_meta: Meta = Meta(
+    mag_meta: MagDataset = MagDataset(
         dataset="STA_L1_MAG_RTN",
         parameters=["BFIELD"],
     )
 
-    plasma_meta: PlasmaMeta = PlasmaMeta(
+    plasma_meta: PlasmaDataset = PlasmaDataset(
         dataset="STA_L2_PLA_1DMAX_1MIN",
         parameters=[
             "proton_number_density",
@@ -130,19 +128,15 @@ class StereoConfig(IDsConfig):
 
 class THEMISConfig(IDsConfig):
 
-    mag_meta: Meta = Meta(
+    mag_meta: MagDataset = MagDataset(
         dataset="THB_L2_FGM",
         parameters=["thb_fgl_gse"],
     )
 
-    plasma_meta: PlasmaMeta = PlasmaMeta(
+    plasma_meta: PlasmaDataset = PlasmaDataset(
         dataset="THB_L2_MOM",
         parameters=[
             "thb_peim_densityQ",
             "thb_peim_velocity_gseQ",
         ],
     )
-
-
-# j_config = JunoConfig().load()
-# w_config = WindConfig().load()
