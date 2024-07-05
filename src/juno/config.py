@@ -3,6 +3,7 @@ import polars as pl
 
 from datetime import timedelta, datetime
 
+from beforerr.project import datadir
 from space_analysis.meta import MagDataset, PlasmaDataset
 from discontinuitypy.datasets import IDsDataset
 from discontinuitypy.config import IDsConfig as IDsConfigBase
@@ -20,19 +21,6 @@ def _split_list(lst, n):
 
 def split_list(lst, n):
     return list(_split_list(lst, n))
-
-
-def standardize_plasma_data(data: pl.LazyFrame, meta: PlasmaDataset):
-    """
-    Standardize plasma data columns across different datasets.
-
-    Notes: meta will be updated with the new column names
-    """
-
-    if meta.density_col:
-        data = data.rename({meta.density_col: "plasma_density"})
-        meta.density_col = "plasma_density"
-    return data
 
 
 tau: timedelta = timedelta(seconds=60)
@@ -57,18 +45,24 @@ class SpeasyIDsConfig(IDsConfig, SpeasyIDsConfigBase):
     pass
 
 
-class JunoConfig(IDsConfig):
-    name: str = "JNO"
-
-    plasma_meta: PlasmaDataset = PlasmaDataset(
+def create_juno_config(name="JNO"):
+    plasma_df_path = datadir() / "03_primary/JNO_STATE_ts_3600s.parquet"
+    plasma_data = pl.scan_parquet(plasma_df_path).sort("time")
+    plasma_meta = PlasmaDataset(
         density_col="plasma_density", velocity_cols=["v_x", "v_y", "v_z"]
     )
 
+    return IDsConfig(
+        name=name,
+        plasma_data=plasma_data,
+        plasma_meta=plasma_meta,
+    )
+
+
+class JunoConfig(IDsConfig):
     _sparse_num = 10
-    _plasma_df_path = "../data/03_primary/JNO_STATE_ts_3600s.parquet"
 
     def model_post_init(self, __context):
-        self.plasma_data = pl.scan_parquet(self._plasma_df_path).sort("time")
         self.data = self.mag_df
 
     @property
@@ -88,16 +82,21 @@ class JunoConfig(IDsConfig):
 
     def _get_and_process_data(self, **kwargs):
         for mag_df in self.mag_dfs:
-            yield IDsDataset(
-                mag_data=mag_df,
-                plasma_data=self.plasma_data,
-                plasma_meta=self.plasma_meta,
-                tau=self.tau,
-                ts=self.ts,
-                method=self.method,
-            ).find_events(
-                return_best_fit=False, sparse_num=self._sparse_num, **kwargs
-            ).update_candidates_with_plasma_data().events
+            yield (
+                IDsDataset(
+                    mag_data=mag_df,
+                    plasma_data=self.plasma_data,
+                    plasma_meta=self.plasma_meta,
+                    tau=self.tau,
+                    ts=self.ts,
+                    method=self.method,
+                )
+                .find_events(
+                    return_best_fit=False, sparse_num=self._sparse_num, **kwargs
+                )
+                .update_candidates_with_plasma_data()
+                .events
+            )
 
 
 # class WindConfig(WindMeta, SpeasyIDsConfig):
@@ -108,7 +107,6 @@ class JunoConfig(IDsConfig):
 
 
 class StereoConfig(IDsConfig):
-
     ts: timedelta = timedelta(seconds=1)
 
     mag_meta: MagDataset = MagDataset(
@@ -127,7 +125,6 @@ class StereoConfig(IDsConfig):
 
 
 class THEMISConfig(IDsConfig):
-
     mag_meta: MagDataset = MagDataset(
         dataset="THB_L2_FGM",
         parameters=["thb_fgl_gse"],

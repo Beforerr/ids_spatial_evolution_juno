@@ -1,4 +1,4 @@
-# from space_analysis.missions.juno.fgm import download_data
+from space_analysis.missions.juno.fgm import download_data
 from discontinuitypy.utils.basic import resample
 from pipe import select
 from fastcore.utils import mkdir
@@ -13,7 +13,7 @@ from datetime import timedelta
 def preprocess(
     fp,
     every=timedelta(seconds=0.125),
-    dir_path=f"{datadir()}/02_intermediate/JNO_MAG_8hz",
+    dir_path=datadir() / "02_intermediate/JNO_MAG_8hz",
     update=False,
 ):
     fname = fp.split("/")[-1]
