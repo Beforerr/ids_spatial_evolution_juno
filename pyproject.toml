@@ -27,7 +27,7 @@ scipy = "*"
 [tool.pixi.pypi-dependencies]
 juno = { path = ".", editable = true }
 great_tables = "*"
-beforerr = "*"
+beforerr = { path = "../../src/beforerr_dev", editable = true }
 pooch = "*"
 pdr = "*"
 discontinuitypy = { path = "../discontinuitypy", editable = true }
