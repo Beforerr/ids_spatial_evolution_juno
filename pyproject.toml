@@ -28,5 +28,7 @@ scipy = "*"
 juno = { path = ".", editable = true }
 great_tables = "*"
 beforerr = "*"
+pooch = "*"
+pdr = "*"
 discontinuitypy = { path = "../discontinuitypy", editable = true }
 space_analysis = { path = "../../src/space-analysis.py", editable = true }

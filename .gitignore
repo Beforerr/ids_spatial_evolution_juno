@@ -14,8 +14,9 @@ _manuscript/
 .DS_Store
 /_*.local
 
+# pixi environments
 .pixi
-
+pixi.lock
 
 ##########################
 
@@ -24,8 +25,5 @@ __pycache__/
 *.py[cod]
 *$py.class
 
-.vscode# pixi environments
-.pixi
-*.egg-info
-
 .vscode
+*.egg-info
