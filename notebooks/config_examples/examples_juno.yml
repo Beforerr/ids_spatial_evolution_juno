@@ -1,9 +1,0 @@
-panels:
-- satellite: "JUNO"
-  instrument: "FIELDS"
-  start: "2020-01-28T16:35:27"
-  end: "2020-01-28T16:35:30"
-  datatype: "mag_rtn"
-  tplot:
-    tvar: "figures/examples/psp_fld_l2_mag_RTN"
-    trans: "mva"

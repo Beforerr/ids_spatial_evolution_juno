@@ -6,10 +6,13 @@ import yaml
 
 from space_analysis.ds.tplot import Config, export, process_panel
 
+from importlib.util import find_spec
 import matplotlib.pyplot as plt
-import scienceplots
 
-plt.style.use(["science", "nature", "notebook"])
+if find_spec("scienceplots"):
+    import scienceplots as scienceplots
+    plt.style.use(["science", "nature", "notebook"])
+
 plt.rc("savefig", dpi=300)
 plt.rc('figure.subplot', wspace = 0, hspace = 0)
 

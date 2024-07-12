@@ -23,12 +23,14 @@ polars = "*"
 xarray = "*"
 pydantic = "*"
 scipy = "*"
+netcdf4 = "*"   # for `pyspedas`
 
 [tool.pixi.pypi-dependencies]
 juno = { path = ".", editable = true }
 great_tables = "*"
+scienceplots = "*"
 beforerr = { path = "../../src/beforerr_dev", editable = true }
 pooch = "*"
 pdr = "*"
-discontinuitypy = { path = "../discontinuitypy", editable = true }
+discontinuitypy = { path = "../discontinuitypy", editable = true, extras = ["plot"] }
 space_analysis = { path = "../../src/space-analysis.py", editable = true }
