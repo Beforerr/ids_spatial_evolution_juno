@@ -8,6 +8,7 @@ update: update-overleaf clean update-repo publish
 
 env-install:
    pixi install
+   julia --project -e 'using Pkg; Pkg.instantiate()'
 
 env-update-julia:
    rsync ~/projects/share/src/Discontinuity.jl notebooks/utils/

@@ -2,7 +2,7 @@
 
 julia_version = "1.10.3"
 manifest_format = "2.0"
-project_hash = "d78826b0fc911ba8a222b6be545f6ed93fa518a9"
+project_hash = "dfca87366fc236ff5785a6af76d2afc39f450dbc"
 
 [[deps.AbstractFFTs]]
 deps = ["LinearAlgebra"]
@@ -87,6 +87,12 @@ version = "0.4.7"
 
 [[deps.Base64]]
 uuid = "2a0f44e3-6c83-55bd-87e4-b1978d98bd5f"
+
+[[deps.Beforerr]]
+deps = ["AlgebraOfGraphics", "Makie"]
+path = "/Users/zijin/.julia/dev/Beforerr"
+uuid = "49aed396-608e-4c3f-b6d6-a749216c9ea7"
+version = "0.1.0"
 
 [[deps.BitIntegers]]
 deps = ["Random"]
@@ -304,7 +310,7 @@ uuid = "85a47980-9c8c-11e8-2b9f-f7ca1fa99fb4"
 version = "0.3.29"
 
 [[deps.Discontinuity]]
-deps = ["AlgebraOfGraphics", "Arrow", "CairoMakie", "DataFrames", "DataFramesMeta", "LaTeXStrings", "beforerr"]
+deps = ["AlgebraOfGraphics", "Arrow", "DataFrames", "DataFramesMeta", "FileIO", "LaTeXStrings", "Makie"]
 path = "/Users/zijin/.julia/dev/Discontinuity"
 uuid = "b54b658d-ecbf-47cc-8c7f-673f5d2a4b30"
 version = "1.0.0-DEV"
@@ -1554,12 +1560,6 @@ deps = ["Artifacts", "JLLWrappers", "Libdl"]
 git-tree-sha1 = "e678132f07ddb5bfa46857f0d7620fb9be675d3b"
 uuid = "3161d3a3-bdf6-5164-811a-617609db77b4"
 version = "1.5.6+0"
-
-[[deps.beforerr]]
-deps = ["AlgebraOfGraphics", "CairoMakie"]
-path = "/Users/zijin/.julia/dev/beforerr"
-uuid = "49aed396-608e-4c3f-b6d6-a749216c9ea7"
-version = "1.0.0-DEV"
 
 [[deps.isoband_jll]]
 deps = ["Artifacts", "JLLWrappers", "Libdl", "Pkg"]
