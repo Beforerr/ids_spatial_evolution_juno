@@ -64,7 +64,7 @@ The solar wind plasma state, as evidenced by the sunspot number (referenced in @
 
 Further analysis of @fig-overview highlights the significance of the heliographic longitudinal difference between the Juno mission and Earth as well as the STEREO-A mission. Specifically, when there is a substantial longitudinal difference between Juno and Earth, the difference between Juno and STEREO-A tends to be minimal, and vice versa. This longitudinal discrepancy between Earth and STEREO-A ensures comprehensive coverage of the plasma en route to Juno.
 
-The time resolution of the magnetic field and plasma data for Juno, Wind, ARTEMIS, STEREO is summarized in the table below.
+Datasets collected from missions such as STEREO, ARTEMIS, and WIND will complement observations from Juno, offering a broader contextual perspective on heliospheric conditions and enabling a multi-point analysis of discontinuity properties [@velliUnderstandingOriginsHeliosphere2020]. The table below summarizes the time resolution of magnetic field and plasma data for PSP, Juno, Wind, ARTEMIS, and STEREO. 
 
 | Mission             | δt(B)    | δt(plasma) |
 |---------------------|----------|------------|
@@ -73,11 +73,7 @@ The time resolution of the magnetic field and plasma data for Juno, Wind, ARTEMI
 | WIND                | 11 Hz    | 1 Hz       |
 | STEREO              | 8 Hz     | 1 min      |
 
-## Model
-
-June measurements do not include plasma characteristics, and to estimate discontinuity spatial scale (thicknesses) we will use solar wind speed obtained from the model of solar wind propagation. The hourly solar wind model data from the Two-Dimensional Outer Heliosphere Solar Wind Modeling (MSWIM2D) [@keeblerMSWIM2DTwodimensionalOuter2022] will be employed to determine the ion bulk velocity $v$ and plasma density $n$ at the location of the Juno mission. Utilizing the BATSRUS MHD solver, this model is capable of simulating the propagation of the solar wind from 1 to 75 astronomical units (AU) in the ecliptic plane, effectively encompassing the region of interest for our study. @fig-model shows comparison of magnetic field magnitudes obtained from MSWIM2D and measured by Juno.
-
-The model time resolution is hourly. After averaging Juno data to the same time resolution, we see that the model data is consistent with the Juno magnetic field data.
+However, since Juno does not provide direct plasma measurements, we will estimate the spatial scale (thickness) of discontinuities using solar wind speed derived from solar wind propagation models. Specifically, we will employ the Two-Dimensional Outer Heliosphere Solar Wind Modeling (MSWIM2D) [@keeblerMSWIM2DTwodimensionalOuter2022] to determine the ion bulk velocity ($v$) and plasma density ($n$) at Juno’s location. This model, which utilizes the BATSRUS MHD solver, simulates the propagation of solar wind from 1 to 75 astronomical units (AU) in the ecliptic plane, effectively covering the region pertinent to our study. The MSWIM2D model provides output data with an hourly time resolution as shown in @fig-model. The comparison of magnetic field magnitudes from MSWIM2D with those measured by Juno, after averaging to the same time resolution, reveals a strong correlation, confirming the model’s reliability.
 
 ::: {#fig-model}
 
@@ -94,7 +90,7 @@ Because the discontinuities may have different spatial scale at different radial
 Discontinuities with spatial scales larger than $60$ s are not considered in this study, however it could be argued that they are not significant in the outer heliosphere if they follow the trend with decreasing number of IDs with increasing spatial scale. @fig-ljFit also indicates that the spatial scale of IDs does not vary significantly with the radial distance from the Sun.
 
 TODO:
-More than ? IDs are identified in the solar wind data from Juno, with ? IDs identified in 5 AU. Then for each discontinuity identified, we calculate the distance matrix of the time series sequence (distance between each pair of magnetic field vectors) to determine the leading edge and trailing edge of the discontinuity. After that, we use the minimum or maximum variance analysis (MVA) analysis [@sonnerupMinimumMaximumVariance1998; @sonnerupMagnetopauseStructureAttitude1967] to get the main (most varying) magnetic field component, $B_l$, and medium variation component, $B_m$. The maxium variance direction is then fitted by a step-like functions to extract the parameters to properly describe the discontinuity (we used logistic function here). Then we combine the magnetic field data and plasma data to obtain the thickness and the current density of the discontinuity.
+More than ? IDs are identified in the solar wind data from Juno, with ? IDs identified in 5 AU. Then for each discontinuity identified, we calculate the distance matrix of the time series sequence (distance between each pair of magnetic field vectors) to determine the leading edge and trailing edge of the discontinuity. After that, we use the minimum or maximum variance analysis (MVA) analysis [@sonnerupMinimumMaximumVariance1998; @sonnerupMagnetopauseStructureAttitude1967] to get the main (most varying) magnetic field component, $B_l$, and medium variation component, $B_m$. The maximum variance direction is then fitted by a step-like functions to extract the parameters to properly describe the discontinuity (we used logistic function here). Then we combine the magnetic field data and plasma data to obtain the thickness and the current density of the discontinuity.
 
 $$
 B(t; A, \mu, \sigma, {\mathrm{form=logistic}}) = A \left[1 - \frac{1}{1 + e^{\alpha}} \right]
