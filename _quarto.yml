@@ -10,6 +10,8 @@ website:
         href: index.qmd
       - text: "Manuscript"
         href: _manuscript/index.html
+      - text: "Notes"
+        href: notes.qmd
       - sidebar:notebooks
       - text: "Presentations"
         menu: 

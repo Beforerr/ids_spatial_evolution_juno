@@ -42,13 +42,13 @@ Rapid variations in interplanetary magnetic fields, commonly recognized as solar
 
 The goal of our paper is to investigate, statistically, discontinuities at different radial distance in the outer heliosphere to obtain a understanding of their formation and evolution. Our methodology involves integrating Juno measurements [@connerneyJunoMagneticField2017] between $1$ and $5$ AU with those at $1$ AU to distinguish temporal effect and spatial variations by examining the discontinuity characteristics at two radial distances simultaneously.
 
-First, the missions, instruments and data used are listed. Then, we brieﬂy describe the method used to identify the discontinuities and the model used to estimate the plasma state at Juno location due to the lack of plasma data during its cruise phase. Finally, we present the results of the spatial evolution of the discontinuities with respect to their characteristics (spatial scales and current density), and discuss the implications of our findings.
+First, the missions, instruments and data used are listed. Then, we briefly describe the method used to identify the discontinuities and the model used to estimate the plasma state at Juno location due to the lack of plasma data during its cruise phase. Finally, we present the results of the spatial evolution of the discontinuities with respect to their characteristics (spatial scales and current density), and discuss the implications of our findings.
 
 ::: {#fig-overview}
 
 ![](figures/fig_overview)
 
-Overview. **a,** Juno orbit during its cruise phase (2011-206). **b,** Difference of heliographic longitude of Juno and 1-AU missions. **c,** monthly and smoothed sunspot number. **d-g,** Near-Earth (OMNI) and STEREO-A solar wind plasma density and speed.
+Overview. **a,** Juno orbit during its cruise phase (2011-2016). **b,** Difference of heliographic longitude of Juno and 1-AU missions. **c,** monthly and smoothed sunspot number. **d-g,** Near-Earth (OMNI) and STEREO-A solar wind plasma density and speed.
 
 :::
 
@@ -62,10 +62,16 @@ In this study we use datasets of four missions measuring solar wind magnetic fie
 
 The solar wind plasma state, as evidenced by the sunspot number (referenced in @fig-overview), plays a crucial role in understanding the dynamics of discontinuities. During the initial phase of the JUNO mission, the sunspot number reached its peak, indicating a period of heightened solar activity. However, by the end of the mission's cruise phase, there was a significant decline in solar activity. This variation underscores the importance of calibrating the discontinuity properties in relation to solar activity levels to account for temporal fluctuations.
 
-Furthermore, an analysis of @fig-overview reveals the significance of the heliographic longitudinal difference between the Juno mission and Near-Earth missions (such as Wind and ARTEMIS) as well as STEREO-A missions. This longitudinal discrepancy ensures comprehensive coverage of the plasma en route to Juno. Specifically, when there is a substantial longitudinal difference between Juno and Earth, the difference between Juno and STEREO-A tends to be minimal, and vice versa. This relationship facilitates an extensive observation network for the plasma traveling towards Juno.
+Further analysis of @fig-overview highlights the significance of the heliographic longitudinal difference between the Juno mission and Earth as well as the STEREO-A mission. Specifically, when there is a substantial longitudinal difference between Juno and Earth, the difference between Juno and STEREO-A tends to be minimal, and vice versa. This longitudinal discrepancy between Earth and STEREO-A ensures comprehensive coverage of the plasma en route to Juno.
 
 The time resolution of the magnetic field and plasma data for Juno, Wind, ARTEMIS, STEREO is summarized in the table below.
 
+| Mission             | δt(B)    | δt(plasma) |
+|---------------------|----------|------------|
+| Juno                | 1 Hz     | 1 hour     |
+| ARTEMIS             | 5 Hz     | 0.25 Hz    |
+| WIND                | 11 Hz    | 1 Hz       |
+| STEREO              | 8 Hz     | 1 min      |
 
 ## Model
 
@@ -197,42 +203,3 @@ Sunspot data from the World Data Center SILSO, Royal Observatory of Belgium, Bru
 The transition time $\Delta T$ is determined in one second resolution data for all our missions to reduce the system error. (Note that highest time resolution of the data is not needed for the transition time determination by fitting method).
 
 ![Effect of the time resolution on the discontinuity properties](figures/ts_effect){#fig-tsEffect}
-
-
-# Archived Figures
-
-::: {#fig-current layout-nrow="1"}
-![](figures/new/current/current_k_r_dist)
-
-![](figures/new/current/current_k_N1_r_dist)
-
-**a,** Current density of IDs as a function of the radial distance from the Sun. **b,** Current density of IDs normalized to the Alfven current as a function of the radial distance from the Sun.
-:::
-
-::: {#fig-thickness layout-nrow="1"}
-![](figures/new/thickness/thickness_k_fit_r_dist)
-
-![](figures/new/thickness/thickness_k_fit_N1_r_dist)
-
-**a,** Thickness of IDs as a function of the radial distance from the Sun. **b,** Thickness of IDs normalized to the ion inertial length as a function of the radial distance from the Sun. 
-:::
-
-![](figures/l_j_fit_taus)
-
-![](figures/l_j_fit_taus_xscale_log)
-
-::: {.column-screen-inset layout-nrow="1"}
-![](figures/thickness/thickness_k_dist)
-
-![](figures/thickness/thickness_k_N1_dist)
-
-![](figures/thickness/thickness_k_N1_r_dist)
-:::
-
-::: {.column-screen-inset layout-nrow="1"}
-
-![](figures/current/current_k_dist)
-
-![](figures/current/current_k_N1_dist)
-
-:::

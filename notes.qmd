@@ -3,7 +3,7 @@ title: Notes
 jupyter: python3
 ---
 
-## Updates
+# Updates
 
 ### 03/15/2024
 
@@ -207,66 +207,40 @@ Science part
     -   [x] Verify with solar wind propagation model
         -   [x] Coordinate transformation
 
-## Infos
+# Archived Figures
 
-```{python}
-# | label: tbl-missions
-# | tbl-cap: Missions info
-import yaml
-import polars as pl
-from functools import reduce
-from great_tables import GT
+::: {#fig-current layout-nrow="1"}
+![](figures/new/current/current_k_r_dist)
 
-with open("data/info.yml", "r") as file:
-    data = yaml.safe_load(file)
+![](figures/new/current/current_k_N1_r_dist)
 
+**a,** Current density of IDs as a function of the radial distance from the Sun. **b,** Current density of IDs normalized to the Alfven current as a function of the radial distance from the Sun.
+:::
 
-# Recursive function to find magnetometers
-def find_instrument(instruments, ins_type):
-    instrument = {}
-    for key, value in instruments.items():
-        if value.get("type") == ins_type:
-            instrument = value
-        elif "instruments" in value:
-            instrument = find_instrument(value["instruments"], ins_type)
-    return instrument
+::: {#fig-thickness layout-nrow="1"}
+![](figures/new/thickness/thickness_k_fit_r_dist)
 
+![](figures/new/thickness/thickness_k_fit_N1_r_dist)
 
-def parse_yaml(data, info, ins_type=None):
-    rows = []
+**a,** Thickness of IDs as a function of the radial distance from the Sun. **b,** Thickness of IDs normalized to the ion inertial length as a function of the radial distance from the Sun. 
+:::
 
-    for mission, details in data["missions"].items():
-        if ins_type is None:
-            rows.append([mission, details.get(info)])
-            continue
-        instruments = details.get("instruments", {})
-        instrument = find_instrument(instruments, ins_type)
-        rows.append([mission, instrument.get(info)])
+![](figures/l_j_fit_taus)
 
-    return pl.DataFrame(rows, schema=["Mission", info])
+![](figures/l_j_fit_taus_xscale_log)
 
+::: {.column-screen-inset layout-nrow="1"}
+![](figures/thickness/thickness_k_dist)
 
-# Define the merge function
-def merge_dfs(left: pl.DataFrame, right, on="Mission", how="outer_coalesce"):
-    return left.join(right, on=on, how=how)
+![](figures/thickness/thickness_k_N1_dist)
 
-# Parse and display the table
-df_mag = parse_yaml(data, "time_resolutions", "magnetometer").rename(
-    {"time_resolutions": "δt(B)"}
-)
-df_plasma = parse_yaml(data, "time_resolutions", "plasma").rename(
-    {"time_resolutions": "δt(plasma)"}
-)
-df_r = parse_yaml(data, "radial_coverage")
-df_time = parse_yaml(data, "launch_date")
-df_link = parse_yaml(data, "website")
+![](figures/thickness/thickness_k_N1_r_dist)
+:::
 
-df_list = [df_mag, df_plasma, df_r, df_time, df_link]  # Replace with your DataFrames
+::: {.column-screen-inset layout-nrow="1"}
 
-df_merged = reduce(merge_dfs, df_list).with_columns(pl.col("website").list.join(", "))
+![](figures/current/current_k_dist)
 
-GT(df_merged.to_pandas()).fmt_markdown("website").cols_label(
-    radial_coverage="Radial coverage",
-    launch_date="Launch date",
-)
-```
+![](figures/current/current_k_N1_dist)
+
+:::
