@@ -1,6 +1,5 @@
 ---
 title: Notes
-jupyter: python3
 ---
 
 # Updates

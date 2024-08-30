@@ -6,9 +6,10 @@ default:
 
 update: update-overleaf clean update-repo publish
 
-env-install:
+ensure-env:
    pixi install
-   julia --project -e 'using Pkg; Pkg.instantiate()'
+   julia --project -e 'using Pkg; Pkg.develop(["Discontinuity", "Beforerr"]); Pkg.instantiate()'
+   quarto add quarto-journals/agu --no-prompt
 
 env-update-julia:
    rsync ~/projects/share/src/Discontinuity.jl notebooks/utils/
