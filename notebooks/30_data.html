@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.5.33">
+<meta name="generator" content="quarto-1.4.547">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -33,7 +33,7 @@ div.sourceCode { overflow: auto; }
 }
 @media print {
 pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
 }
 pre.numberSource code
   { counter-reset: source-line 0; }
@@ -57,7 +57,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </style>
 
 
-<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg==" crossorigin="anonymous"></script><script src="../site_libs/quarto-nav/quarto-nav.js"></script>
 <script src="../site_libs/quarto-nav/headroom.min.js"></script>
 <script src="../site_libs/clipboard/clipboard.min.js"></script>
 <script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
@@ -100,6 +100,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     "search-label": "Search"
   }
 }</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.6/require.min.js" integrity="sha512-c3Nl8+7g4LMSTdrm621y7kf9v3SDPnhxLNhcjFJbKECVnmZHTdo+IRO05sNLTH/D3vA6u1X32ehoLC7WFVdheg==" crossorigin="anonymous"></script>
+
+<script type="application/javascript">define('jquery', [],function() {return window.jQuery;})</script>
+<script src="https://unpkg.com/@jupyter-widgets/html-manager@*/dist/embed-amd.js" crossorigin="anonymous"></script>
 
 
 </head>
@@ -111,7 +115,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
       <div class="navbar-container container-fluid">
             <div id="quarto-search" class="" title="Search"></div>
-          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
   <span class="navbar-toggler-icon"></span>
 </button>
           <div class="collapse navbar-collapse" id="navbarCollapse">
@@ -125,7 +129,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span class="menu-text">Manuscript</span></a>
   </li>  
   <li class="nav-item dropdown ">
-    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-presentation" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-presentation" role="button" data-bs-toggle="dropdown" aria-expanded="false">
  <span class="menu-text">Presentation</span>
     </a>
     <ul class="dropdown-menu" aria-labelledby="nav-menu-presentation">    
@@ -141,18 +145,18 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   </li>
 </ul>
           </div> <!-- /navcollapse -->
-            <div class="quarto-navbar-tools">
+          <div class="quarto-navbar-tools">
     <a href="https://github.com/Beforerr/ids_spatial_evolution_juno" title="" class="quarto-navigation-tool px-1" aria-label=""><i class="bi bi-github"></i></a>
 </div>
       </div> <!-- /container-fluid -->
     </nav>
   <nav class="quarto-secondary-nav">
     <div class="container-fluid d-flex">
-      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
         <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../notebooks/00_overview.html">Notebooks</a></li><li class="breadcrumb-item"><a href="../notebooks/30_data.html">Different time windows</a></li></ol></nav>
-        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
     </div>
   </nav>
@@ -177,9 +181,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true">
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true">
  <span class="menu-text">Notebooks</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
@@ -198,14 +202,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../notebooks/10_examples.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Discontinuities examples</span></a>
+  <a href="../notebooks/04_properties.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">SWD Properties</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../notebooks/12_tau_analysis.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">tau effect</span></a>
+  <a href="../notebooks/10_examples.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Discontinuities examples</span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -222,9 +226,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
           <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="false">
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="false">
  <span class="menu-text">Analysis</span></a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="false" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="false" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
@@ -273,25 +277,31 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
+  <a href="../notebooks/analysis/12_tau_analysis.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Justification for the tau</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
   <a href="../notebooks/analysis/12_tau_data.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Justification for the tau (data)</span></a>
+ <span class="menu-text">Justification for the tau</span></a>
   </div>
 </li>
       </ul>
   </li>
           <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="false">
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="false">
  <span class="menu-text">Archive</span></a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="false" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="false" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
       <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth2 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../notebooks/archive/04_properties.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">SWD Properties</span></a>
+  <a href="../notebooks/archive/04_calc.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">04 Calc</span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -306,7 +316,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <div class="sidebar-item-container"> 
             <a href="../notebooks/missions/index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Missions</span></a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="false" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-expanded="false" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
@@ -321,7 +331,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <div class="sidebar-item-container"> 
             <a href="../notebooks/missions/stereo/index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">IDs from STEREO</span></a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" role="navigation" aria-expanded="false" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" aria-expanded="false" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
@@ -338,7 +348,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <div class="sidebar-item-container"> 
             <a href="../notebooks/missions/themis/index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">IDs from ARTHEMIS</span></a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" role="navigation" aria-expanded="false" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" aria-expanded="false" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
@@ -365,13 +375,30 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
           <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a href="../notebooks/missions/juno/index.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">IDs from Juno</span></a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-7" role="navigation" aria-expanded="false" aria-label="Toggle section">
+            <a href="../notebooks/missions/wind/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Wind</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-7" aria-expanded="false" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
       <ul id="quarto-sidebar-section-7" class="collapse list-unstyled sidebar-section depth3 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../notebooks/missions/wind/state.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Wind State data pipeline</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+          <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a href="../notebooks/missions/juno/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">IDs from Juno</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-8" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-8" class="collapse list-unstyled sidebar-section depth3 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../notebooks/missions/juno/state.html" class="sidebar-item-text sidebar-link">
@@ -386,13 +413,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-8" role="navigation" aria-expanded="true">
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-9" aria-expanded="true">
  <span class="menu-text">Presentations</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-8" role="navigation" aria-expanded="true" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-9" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-8" class="collapse list-unstyled sidebar-section depth1 show">  
+      <ul id="quarto-sidebar-section-9" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../presentations/AGU23_poster.html" class="sidebar-item-text sidebar-link">
@@ -406,8 +433,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </nav>
 <div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
-        
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#different-time-windows" id="toc-different-time-windows" class="nav-link active" data-scroll-target="#different-time-windows">Different time windows</a></li>
+  </ul>
+</nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
@@ -431,81 +464,365 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
-<div id="cell-1" class="cell" data-execution_count="1">
+<div id="cell-0" class="cell" data-execution_count="1">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="op">%</span>load_ext autoreload</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="op">%</span>autoreload <span class="dv">2</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
-<p>::: {#cell-2 .cell 0=‘h’ 1=‘i’ 2=‘d’ 3=‘e’ execution_count=2}</p>
+<p>::: {#cell-1 .cell 0=‘h’ 1=‘i’ 2=‘d’ 3=‘e’ execution_count=3}</p>
 <details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> utils.config <span class="im">import</span> JunoConfig, WindConfig</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <p>:::</p>
-<div id="cell-3" class="cell" data-execution_count="3">
+<div id="cell-2" class="cell" data-execution_count="4">
 <details class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>wind_conf <span class="op">=</span> WindConfig()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>WindConfig().split</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
+<div class="cell-output cell-output-display" data-execution_count="4">
+<pre><code>8</code></pre>
 </div>
-<div id="cell-4" class="cell" data-execution_count="10">
+</div>
+<section id="different-time-windows" class="level2">
+<h2 class="anchored" data-anchor-id="different-time-windows">Different time windows</h2>
+<div id="cell-4" class="cell" data-execution_count="8">
 <details class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>confs <span class="op">=</span> [wind_conf]</span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> conf <span class="kw">in</span> confs:</span>
-<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>    conf.load()</span>
-<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> conf.events.is_empty():</span>
-<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(<span class="st">'No events found'</span>)</span>
-<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>        conf.get_and_process_data().export()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>taus <span class="op">=</span> <span class="bu">range</span>(<span class="dv">60</span>, <span class="dv">10</span>, <span class="op">-</span><span class="dv">10</span>)</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>taus <span class="op">=</span> <span class="bu">range</span>(<span class="dv">50</span>, <span class="dv">20</span>, <span class="op">-</span><span class="dv">10</span>)</span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> tau <span class="kw">in</span> taus:</span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>    JunoConfig(tau<span class="op">=</span>tau).get_and_process_data().export()</span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a><span class="co"># JunoConfig(tau=20).get_and_process_data().export()</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-stderr">
-<pre><code>2024-05-15 18:08:15.819 | INFO     | discontinuitypy.config:load:69 - Loading data from data/events.Wind.fit.ts_0.09s_tau_60s.arrow</code></pre>
+<pre><code>17-Mar-24 17:07:56: UserWarning: Distributing &lt;class 'pandas.core.frame.DataFrame'&gt; object. This may take some time.
+
+17-Mar-24 17:08:26: UserWarning: Distributing &lt;class 'pandas.core.frame.DataFrame'&gt; object. This may take some time.
+
+17-Mar-24 17:08:45: UserWarning: Distributing &lt;class 'pandas.core.frame.DataFrame'&gt; object. This may take some time.
+
+17-Mar-24 17:09:06: UserWarning: Distributing &lt;class 'pandas.core.frame.DataFrame'&gt; object. This may take some time.
+
+17-Mar-24 17:09:30: UserWarning: Distributing &lt;class 'pandas.core.frame.DataFrame'&gt; object. This may take some time.
+
+17-Mar-24 17:09:42: UserWarning: Distributing &lt;class 'pandas.core.frame.DataFrame'&gt; object. This may take some time.
+
+17-Mar-24 17:09:51: UserWarning: Distributing &lt;class 'pandas.core.frame.DataFrame'&gt; object. This may take some time.
+
+17-Mar-24 17:09:59: UserWarning: Distributing &lt;class 'pandas.core.frame.DataFrame'&gt; object. This may take some time.
+
+2024-03-17 17:10:04.070 | INFO     | discontinuitypy.datasets:write:40 - Dataframe written to ../data/05_reporting/events.JNO.fit.ts_1.00s_tau_50s.arrow
+17-Mar-24 17:10:08: UserWarning: Distributing &lt;class 'pandas.core.frame.DataFrame'&gt; object. This may take some time.
+
+17-Mar-24 17:10:36: UserWarning: Distributing &lt;class 'pandas.core.frame.DataFrame'&gt; object. This may take some time.
+
+17-Mar-24 17:10:54: UserWarning: Distributing &lt;class 'pandas.core.frame.DataFrame'&gt; object. This may take some time.
+
+17-Mar-24 17:11:16: UserWarning: Distributing &lt;class 'pandas.core.frame.DataFrame'&gt; object. This may take some time.
+
+17-Mar-24 17:11:40: UserWarning: Distributing &lt;class 'pandas.core.frame.DataFrame'&gt; object. This may take some time.
+
+17-Mar-24 17:11:53: UserWarning: Distributing &lt;class 'pandas.core.frame.DataFrame'&gt; object. This may take some time.
+
+17-Mar-24 17:12:02: UserWarning: Distributing &lt;class 'pandas.core.frame.DataFrame'&gt; object. This may take some time.
+
+17-Mar-24 17:12:10: UserWarning: Distributing &lt;class 'pandas.core.frame.DataFrame'&gt; object. This may take some time.
+
+2024-03-17 17:12:14.035 | INFO     | discontinuitypy.datasets:write:40 - Dataframe written to ../data/05_reporting/events.JNO.fit.ts_1.00s_tau_40s.arrow
+17-Mar-24 17:12:18: UserWarning: Distributing &lt;class 'pandas.core.frame.DataFrame'&gt; object. This may take some time.
+
+17-Mar-24 17:12:51: UserWarning: Distributing &lt;class 'pandas.core.frame.DataFrame'&gt; object. This may take some time.
+
+17-Mar-24 17:13:11: UserWarning: Distributing &lt;class 'pandas.core.frame.DataFrame'&gt; object. This may take some time.
+
+17-Mar-24 17:13:36: UserWarning: Distributing &lt;class 'pandas.core.frame.DataFrame'&gt; object. This may take some time.
+
+17-Mar-24 17:14:05: UserWarning: Distributing &lt;class 'pandas.core.frame.DataFrame'&gt; object. This may take some time.
+
+17-Mar-24 17:14:20: UserWarning: Distributing &lt;class 'pandas.core.frame.DataFrame'&gt; object. This may take some time.
+
+17-Mar-24 17:14:30: UserWarning: Distributing &lt;class 'pandas.core.frame.DataFrame'&gt; object. This may take some time.
+
+17-Mar-24 17:14:38: UserWarning: Distributing &lt;class 'pandas.core.frame.DataFrame'&gt; object. This may take some time.
+
+2024-03-17 17:14:43.652 | INFO     | discontinuitypy.datasets:write:40 - Dataframe written to ../data/05_reporting/events.JNO.fit.ts_1.00s_tau_30s.arrow</code></pre>
+</div>
+<div class="cell-output cell-output-display">
+<script type="application/vnd.jupyter.widget-view+json">
+{"model_id":"d8c7aa4cca8d45b98716836dfbc2f682","version_major":2,"version_minor":0,"quarto_mimetype":"application/vnd.jupyter.widget-view+json"}
+</script>
+</div>
+<div class="cell-output cell-output-display">
+<script type="application/vnd.jupyter.widget-view+json">
+{"model_id":"eae427b2183b4187ad3b8a9f4c275f94","version_major":2,"version_minor":0,"quarto_mimetype":"application/vnd.jupyter.widget-view+json"}
+</script>
+</div>
+<div class="cell-output cell-output-display">
+<script type="application/vnd.jupyter.widget-view+json">
+{"model_id":"39ff827e3f6d40ab911cc18c4b8896e2","version_major":2,"version_minor":0,"quarto_mimetype":"application/vnd.jupyter.widget-view+json"}
+</script>
+</div>
+<div class="cell-output cell-output-display">
+<script type="application/vnd.jupyter.widget-view+json">
+{"model_id":"b9160946fee74f84963f18bbbe75501d","version_major":2,"version_minor":0,"quarto_mimetype":"application/vnd.jupyter.widget-view+json"}
+</script>
+</div>
+<div class="cell-output cell-output-display">
+<script type="application/vnd.jupyter.widget-view+json">
+{"model_id":"04d2fa1916dd4fa0a48ec3c71a15c30c","version_major":2,"version_minor":0,"quarto_mimetype":"application/vnd.jupyter.widget-view+json"}
+</script>
+</div>
+<div class="cell-output cell-output-display">
+<script type="application/vnd.jupyter.widget-view+json">
+{"model_id":"90c81759da3e4d728e53382a5eb0a09f","version_major":2,"version_minor":0,"quarto_mimetype":"application/vnd.jupyter.widget-view+json"}
+</script>
+</div>
+<div class="cell-output cell-output-display">
+<script type="application/vnd.jupyter.widget-view+json">
+{"model_id":"7d7b9db9e0da48e9804a2f6e69692eb6","version_major":2,"version_minor":0,"quarto_mimetype":"application/vnd.jupyter.widget-view+json"}
+</script>
+</div>
+<div class="cell-output cell-output-display">
+<script type="application/vnd.jupyter.widget-view+json">
+{"model_id":"737db237a07b4542a54c6d6782eb30b8","version_major":2,"version_minor":0,"quarto_mimetype":"application/vnd.jupyter.widget-view+json"}
+</script>
+</div>
+<div class="cell-output cell-output-display">
+<script type="application/vnd.jupyter.widget-view+json">
+{"model_id":"afc26151870c4fa9ba8ac55de4493c4c","version_major":2,"version_minor":0,"quarto_mimetype":"application/vnd.jupyter.widget-view+json"}
+</script>
+</div>
+<div class="cell-output cell-output-display">
+<script type="application/vnd.jupyter.widget-view+json">
+{"model_id":"8905ba9c32d0426db2570a987f387e29","version_major":2,"version_minor":0,"quarto_mimetype":"application/vnd.jupyter.widget-view+json"}
+</script>
+</div>
+<div class="cell-output cell-output-display">
+<script type="application/vnd.jupyter.widget-view+json">
+{"model_id":"6cdfc55e48e248399e38073b4835b862","version_major":2,"version_minor":0,"quarto_mimetype":"application/vnd.jupyter.widget-view+json"}
+</script>
+</div>
+<div class="cell-output cell-output-display">
+<script type="application/vnd.jupyter.widget-view+json">
+{"model_id":"2962b7cd83fd461c875ece6e20177178","version_major":2,"version_minor":0,"quarto_mimetype":"application/vnd.jupyter.widget-view+json"}
+</script>
+</div>
+<div class="cell-output cell-output-display">
+<script type="application/vnd.jupyter.widget-view+json">
+{"model_id":"5e0422e56d64451d87cfe9e5f0ff4e77","version_major":2,"version_minor":0,"quarto_mimetype":"application/vnd.jupyter.widget-view+json"}
+</script>
+</div>
+<div class="cell-output cell-output-display">
+<script type="application/vnd.jupyter.widget-view+json">
+{"model_id":"b2de52fcb0414cf5bbc40cda1a52e478","version_major":2,"version_minor":0,"quarto_mimetype":"application/vnd.jupyter.widget-view+json"}
+</script>
+</div>
+<div class="cell-output cell-output-display">
+<script type="application/vnd.jupyter.widget-view+json">
+{"model_id":"7cbd4f0db7b54ad7b2b08653bf1b2354","version_major":2,"version_minor":0,"quarto_mimetype":"application/vnd.jupyter.widget-view+json"}
+</script>
+</div>
+<div class="cell-output cell-output-display">
+<script type="application/vnd.jupyter.widget-view+json">
+{"model_id":"c5e1365799bf4358919f41c4ef22faa4","version_major":2,"version_minor":0,"quarto_mimetype":"application/vnd.jupyter.widget-view+json"}
+</script>
+</div>
+<div class="cell-output cell-output-display">
+<script type="application/vnd.jupyter.widget-view+json">
+{"model_id":"710c4e49ab8a46f1a1bc8c237fd4df94","version_major":2,"version_minor":0,"quarto_mimetype":"application/vnd.jupyter.widget-view+json"}
+</script>
+</div>
+<div class="cell-output cell-output-display">
+<script type="application/vnd.jupyter.widget-view+json">
+{"model_id":"b9174923929441fca87bc189b36a2c3b","version_major":2,"version_minor":0,"quarto_mimetype":"application/vnd.jupyter.widget-view+json"}
+</script>
+</div>
+<div class="cell-output cell-output-display">
+<script type="application/vnd.jupyter.widget-view+json">
+{"model_id":"3116c63c65f0477f8c0f36632c80356d","version_major":2,"version_minor":0,"quarto_mimetype":"application/vnd.jupyter.widget-view+json"}
+</script>
+</div>
+<div class="cell-output cell-output-display">
+<script type="application/vnd.jupyter.widget-view+json">
+{"model_id":"20af5ffae30c4d9593083ae110ab874f","version_major":2,"version_minor":0,"quarto_mimetype":"application/vnd.jupyter.widget-view+json"}
+</script>
+</div>
+<div class="cell-output cell-output-display">
+<script type="application/vnd.jupyter.widget-view+json">
+{"model_id":"668e66a8bd624e2a8a6ca78d4ded3d67","version_major":2,"version_minor":0,"quarto_mimetype":"application/vnd.jupyter.widget-view+json"}
+</script>
+</div>
+<div class="cell-output cell-output-display">
+<script type="application/vnd.jupyter.widget-view+json">
+{"model_id":"65d2229d2fdd45c594268922727d9b97","version_major":2,"version_minor":0,"quarto_mimetype":"application/vnd.jupyter.widget-view+json"}
+</script>
+</div>
+<div class="cell-output cell-output-display">
+<script type="application/vnd.jupyter.widget-view+json">
+{"model_id":"409bd0459e2e4c49902e544a49df36a3","version_major":2,"version_minor":0,"quarto_mimetype":"application/vnd.jupyter.widget-view+json"}
+</script>
+</div>
+<div class="cell-output cell-output-display">
+<script type="application/vnd.jupyter.widget-view+json">
+{"model_id":"ca3ed9011aef49f48d3b0348be4ca0e9","version_major":2,"version_minor":0,"quarto_mimetype":"application/vnd.jupyter.widget-view+json"}
+</script>
+</div>
+<div class="cell-output cell-output-display">
+<script type="application/vnd.jupyter.widget-view+json">
+{"model_id":"678ebe1fdfa04d2ba37bd9e42e070581","version_major":2,"version_minor":0,"quarto_mimetype":"application/vnd.jupyter.widget-view+json"}
+</script>
 </div>
 </div>
-<div id="cell-6" class="cell">
-<details class="code-fold">
-<summary>Code</summary>
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>taus <span class="op">=</span> <span class="bu">range</span>(<span class="dv">60</span>, <span class="dv">10</span>, <span class="op">-</span><span class="dv">10</span>)</span>
-<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> tau <span class="kw">in</span> taus:</span>
-<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>    JunoConfig(tau<span class="op">=</span>tau).get_and_process_data().export()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
-</div>
-<div id="cell-7" class="cell">
+<div id="cell-5" class="cell">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>JunoConfig().get_and_process_data().export()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
-<div id="cell-8" class="cell">
+<div id="cell-6" class="cell" data-execution_count="5">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>JunoConfig(ts<span class="op">=</span><span class="fl">0.125</span>, method<span class="op">=</span><span class="st">'derivative'</span>).get_and_process_data().export()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stderr">
+<pre><code>04-Mar-24 15:39:42: UserWarning: Ray execution environment not yet initialized. Initializing...
+To remove this warning, run the following python code before doing dataframe operations:
+
+    import ray
+    ray.init()
+
+
+2024-03-04 15:39:44,466 INFO worker.py:1724 -- Started a local Ray instance.
+04-Mar-24 15:39:45: UserWarning: Distributing &lt;class 'pandas.core.frame.DataFrame'&gt; object. This may take some time.
+
+04-Mar-24 15:40:00: UserWarning: Distributing &lt;class 'pandas.core.frame.DataFrame'&gt; object. This may take some time.
+
+04-Mar-24 15:41:02: UserWarning: Distributing &lt;class 'pandas.core.frame.DataFrame'&gt; object. This may take some time.
+
+04-Mar-24 15:41:07: RuntimeWarning: invalid value encountered in divide
+
+04-Mar-24 15:41:47: UserWarning: Distributing &lt;class 'pandas.core.frame.DataFrame'&gt; object. This may take some time.
+
+04-Mar-24 15:42:09: UserWarning: Distributing &lt;class 'pandas.core.frame.DataFrame'&gt; object. This may take some time.
+
+04-Mar-24 15:42:12: RuntimeWarning: invalid value encountered in divide
+
+04-Mar-24 15:42:48: UserWarning: Distributing &lt;class 'pandas.core.frame.DataFrame'&gt; object. This may take some time.
+
+04-Mar-24 15:42:49: RuntimeWarning: invalid value encountered in divide
+
+04-Mar-24 15:43:05: UserWarning: Distributing &lt;class 'pandas.core.frame.DataFrame'&gt; object. This may take some time.
+
+04-Mar-24 15:43:43: UserWarning: Distributing &lt;class 'pandas.core.frame.DataFrame'&gt; object. This may take some time.
+
+2024-03-04 15:43:44.779 | INFO     | discontinuitypy.datasets:write:40 - Dataframe written to ../data/05_reporting/events.JNO.derivative.ts_0.12s_tau_60s.arrow</code></pre>
+</div>
+<div class="cell-output cell-output-display">
+<script type="application/vnd.jupyter.widget-view+json">
+{"model_id":"a5a6c989303c4e838f6d4b6dc49671ca","version_major":2,"version_minor":0,"quarto_mimetype":"application/vnd.jupyter.widget-view+json"}
+</script>
+</div>
+<div class="cell-output cell-output-display">
+<script type="application/vnd.jupyter.widget-view+json">
+{"model_id":"8e545b89832c4383b7f88c39f1b4e692","version_major":2,"version_minor":0,"quarto_mimetype":"application/vnd.jupyter.widget-view+json"}
+</script>
+</div>
+<div class="cell-output cell-output-display">
+<script type="application/vnd.jupyter.widget-view+json">
+{"model_id":"8963d6bf0fce498cbe11bfac4f302820","version_major":2,"version_minor":0,"quarto_mimetype":"application/vnd.jupyter.widget-view+json"}
+</script>
+</div>
+<div class="cell-output cell-output-display">
+<script type="application/vnd.jupyter.widget-view+json">
+{"model_id":"fc1f6983693e4eeaa38740ebe7d72db7","version_major":2,"version_minor":0,"quarto_mimetype":"application/vnd.jupyter.widget-view+json"}
+</script>
+</div>
+<div class="cell-output cell-output-display">
+<script type="application/vnd.jupyter.widget-view+json">
+{"model_id":"ffbe850d4af241dca00819b6be052d7b","version_major":2,"version_minor":0,"quarto_mimetype":"application/vnd.jupyter.widget-view+json"}
+</script>
+</div>
+<div class="cell-output cell-output-display">
+<script type="application/vnd.jupyter.widget-view+json">
+{"model_id":"8174cea6cb9a44e5bc65811dc75f2a2e","version_major":2,"version_minor":0,"quarto_mimetype":"application/vnd.jupyter.widget-view+json"}
+</script>
+</div>
+<div class="cell-output cell-output-display">
+<script type="application/vnd.jupyter.widget-view+json">
+{"model_id":"448d995dcb254741869ce59788f4ee2f","version_major":2,"version_minor":0,"quarto_mimetype":"application/vnd.jupyter.widget-view+json"}
+</script>
+</div>
+<div class="cell-output cell-output-display">
+<script type="application/vnd.jupyter.widget-view+json">
+{"model_id":"48aa6ece2cb5435082e405efd4a0f8aa","version_major":2,"version_minor":0,"quarto_mimetype":"application/vnd.jupyter.widget-view+json"}
+</script>
+</div>
+<div class="cell-output cell-output-display">
+<script type="application/vnd.jupyter.widget-view+json">
+{"model_id":"b5a55441bc484536ba70befbe7c61c7b","version_major":2,"version_minor":0,"quarto_mimetype":"application/vnd.jupyter.widget-view+json"}
+</script>
+</div>
+<div class="cell-output cell-output-display" data-execution_count="5">
+<pre><code>JunoConfig(name='JNO', data=&lt;LazyFrame [4 cols, {"time": Datetime(time_unit='us', time_zone=None) … "BZ SE": Float64}] at 0x29AD20050&gt;, ts=datetime.timedelta(microseconds=125000), tau=datetime.timedelta(seconds=60), events=shape: (94_095, 90)
+┌─────────────┬────────────┬─────┬──────────┬───┬────────────┬───────────┬────────────┬────────────┐
+│ time        ┆ index_diff ┆ len ┆ std      ┆ … ┆ v.ion.chan ┆ B.change  ┆ v.Alfven.c ┆ v.Alfven.c │
+│ ---         ┆ ---        ┆ --- ┆ ---      ┆   ┆ ge.l       ┆ ---       ┆ hange      ┆ hange.l    │
+│ datetime[ns ┆ f64        ┆ u32 ┆ f64      ┆   ┆ ---        ┆ f64       ┆ ---        ┆ ---        │
+│ ]           ┆            ┆     ┆          ┆   ┆ f64        ┆           ┆ f64        ┆ f64        │
+╞═════════════╪════════════╪═════╪══════════╪═══╪════════════╪═══════════╪════════════╪════════════╡
+│ 2011-08-25  ┆ 1.285665   ┆ 480 ┆ 2.59288  ┆ … ┆ NaN        ┆ -0.027436 ┆ NaN        ┆ NaN        │
+│ 15:25:30    ┆            ┆     ┆          ┆   ┆            ┆           ┆            ┆            │
+│ 2011-08-25  ┆ 1.367783   ┆ 480 ┆ 2.393473 ┆ … ┆ NaN        ┆ 0.063919  ┆ NaN        ┆ NaN        │
+│ 15:33:00    ┆            ┆     ┆          ┆   ┆            ┆           ┆            ┆            │
+│ 2011-08-25  ┆ 1.732598   ┆ 480 ┆ 2.20969  ┆ … ┆ NaN        ┆ 0.063919  ┆ NaN        ┆ NaN        │
+│ 15:33:30    ┆            ┆     ┆          ┆   ┆            ┆           ┆            ┆            │
+│ 2011-08-25  ┆ 1.367783   ┆ 480 ┆ 2.393473 ┆ … ┆ NaN        ┆ 0.063919  ┆ NaN        ┆ NaN        │
+│ 15:33:00    ┆            ┆     ┆          ┆   ┆            ┆           ┆            ┆            │
+│ 2011-08-25  ┆ 1.732598   ┆ 480 ┆ 2.20969  ┆ … ┆ NaN        ┆ 0.063919  ┆ NaN        ┆ NaN        │
+│ 15:33:30    ┆            ┆     ┆          ┆   ┆            ┆           ┆            ┆            │
+│ …           ┆ …          ┆ …   ┆ …        ┆ … ┆ …          ┆ …         ┆ …          ┆ …          │
+│ 2016-06-29  ┆ 1.157213   ┆ 480 ┆ 2.515025 ┆ … ┆ -0.000003  ┆ 0.876779  ┆ 110.19698  ┆ 96.402675  │
+│ 21:32:00    ┆            ┆     ┆          ┆   ┆            ┆           ┆            ┆            │
+│ 2016-06-29  ┆ 0.503273   ┆ 480 ┆ 2.069719 ┆ … ┆ 0.000279   ┆ 0.23649   ┆ 29.420787  ┆ -44.259203 │
+│ 23:32:30    ┆            ┆     ┆          ┆   ┆            ┆           ┆            ┆            │
+│ 2016-06-29  ┆ 0.419015   ┆ 480 ┆ 1.268489 ┆ … ┆ NaN        ┆ 0.332181  ┆ NaN        ┆ NaN        │
+│ 23:34:30    ┆            ┆     ┆          ┆   ┆            ┆           ┆            ┆            │
+│ 2016-06-29  ┆ 1.162055   ┆ 480 ┆ 2.828158 ┆ … ┆ NaN        ┆ 0.494918  ┆ NaN        ┆ NaN        │
+│ 23:38:00    ┆            ┆     ┆          ┆   ┆            ┆           ┆            ┆            │
+│ 2016-06-29  ┆ 0.419085   ┆ 480 ┆ 1.253931 ┆ … ┆ -0.000551  ┆ 0.097244  ┆ 12.077924  ┆ 110.593502 │
+│ 23:50:30    ┆            ┆     ┆          ┆   ┆            ┆           ┆            ┆            │
+└─────────────┴────────────┴─────┴──────────┴───┴────────────┴───────────┴────────────┴────────────┘, method='derivative', mag_meta=Meta(dataset=None, parameters=None), bcols=None, plasma_data=&lt;LazyFrame [14 cols, {"radial_distance": Float64 … "B_background_z": Float64}] at 0x2C17DCE50&gt;, plasma_meta=PlasmaMeta(dataset=None, parameters=None, density_col='plasma_density', velocity_cols=['v_x', 'v_y', 'v_z'], speed_col=None, temperature_col=None), ion_temp_data=None, ion_temp_meta=TempMeta(dataset=None, parameters=None, para_col=None, perp_cols=None), e_temp_data=None, e_temp_meta=TempMeta(dataset=None, parameters=None, para_col=None, perp_cols=None), timerange=[datetime.datetime(2011, 8, 25, 0, 0, tzinfo=TzInfo(UTC)), datetime.datetime(2016, 6, 30, 0, 0, tzinfo=TzInfo(UTC))], split=8, fmt='arrow')</code></pre>
+</div>
+</div>
+<div id="cell-7" class="cell" data-execution_count="6">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>JunoConfig(ts<span class="op">=</span><span class="fl">0.125</span>, method<span class="op">=</span><span class="st">'derivative'</span>).path</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-display" data-execution_count="6">
+<pre><code>Path('../data/05_reporting/events.JNO.derivative.ts_0.12s_tau_60s.arrow')</code></pre>
+</div>
+</div>
+<div id="cell-8" class="cell">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>JunoConfig(ts<span class="op">=</span><span class="fl">0.125</span>).get_and_process_data().export()</span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>JunoConfig(method<span class="op">=</span><span class="st">'derivative'</span>).get_and_process_data().export()</span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>JunoConfig(ts<span class="op">=</span><span class="fl">0.125</span>, method<span class="op">=</span><span class="st">'derivative'</span>).get_and_process_data().export()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
 <div id="cell-9" class="cell">
 <details class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>JunoConfig(ts<span class="op">=</span><span class="fl">0.125</span>, method<span class="op">=</span><span class="st">'derivative'</span>).path</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
-</div>
-<div id="cell-10" class="cell">
-<details class="code-fold">
-<summary>Code</summary>
-<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>JunoConfig(ts<span class="op">=</span><span class="fl">0.125</span>).get_and_process_data().export()</span>
-<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>JunoConfig(method<span class="op">=</span><span class="st">'derivative'</span>).get_and_process_data().export()</span>
-<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>JunoConfig(ts<span class="op">=</span><span class="fl">0.125</span>, method<span class="op">=</span><span class="st">'derivative'</span>).get_and_process_data().export()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
-</div>
-<div id="cell-11" class="cell">
-<details class="code-fold">
-<summary>Code</summary>
-<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>WindConfig().get_and_process_data()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>WindConfig().get_and_process_data()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
 
 
+</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
@@ -543,7 +860,18 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     }
     return false;
   }
-  const onCopySuccess = function(e) {
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    text: function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+  });
+  clipboard.on('success', function(e) {
     // button target
     const button = e.trigger;
     // don't keep focus
@@ -575,47 +903,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     }, 1000);
     // clear code selection
     e.clearSelection();
-  }
-  const getTextToCopy = function(trigger) {
-      const codeEl = trigger.previousElementSibling.cloneNode(true);
-      for (const childEl of codeEl.children) {
-        if (isCodeAnnotation(childEl)) {
-          childEl.remove();
-        }
-      }
-      return codeEl.innerText;
-  }
-  const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
-    text: getTextToCopy
   });
-  clipboard.on('success', onCopySuccess);
-  if (window.document.getElementById('quarto-embedded-source-code-modal')) {
-    // For code content inside modals, clipBoardJS needs to be initialized with a container option
-    // TODO: Check when it could be a function (https://github.com/zenorocha/clipboard.js/issues/860)
-    const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
-      text: getTextToCopy,
-      container: window.document.getElementById('quarto-embedded-source-code-modal')
-    });
-    clipboardModal.on('success', onCopySuccess);
-  }
-    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
-    var mailtoRegex = new RegExp(/^mailto:/);
-      var filterRegex = new RegExp('/' + window.location.host + '/');
-    var isInternal = (href) => {
-        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
-    }
-    // Inspect non-navigation links and adorn them if external
- 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
-    for (var i=0; i<links.length; i++) {
-      const link = links[i];
-      if (!isInternal(link.href)) {
-        // undo the damage that might have been done by quarto-nav.js in the case of
-        // links that we want to consider external
-        if (link.dataset.originalHref !== undefined) {
-          link.href = link.dataset.originalHref;
-        }
-      }
-    }
   function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
     const config = {
       allowHTML: true,
@@ -650,11 +938,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       try { href = new URL(href).hash; } catch {}
       const id = href.replace(/^#\/?/, "");
       const note = window.document.getElementById(id);
-      if (note) {
-        return note.innerHTML;
-      } else {
-        return "";
-      }
+      return note.innerHTML;
     });
   }
   const xrefs = window.document.querySelectorAll('a.quarto-xref');

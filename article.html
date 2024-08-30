@@ -2,14 +2,13 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.5.33">
+<meta name="generator" content="quarto-1.5.37">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Zijin Zhang">
 <meta name="author" content="Anton V. Artemyev">
 <meta name="author" content="Vassilis Angelopoulos">
-<meta name="author" content="Shi Chen">
 
 <title>Solar wind discontinuities spatial evolution in the outer heliosphere</title>
 <style>
@@ -142,6 +141,10 @@ window.Quarto = {
     <a class="nav-link" href="./_manuscript/index.html"> 
 <span class="menu-text">Manuscript</span></a>
   </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="./notes.html"> 
+<span class="menu-text">Notes</span></a>
+  </li>  
   <li class="nav-item dropdown ">
     <a class="nav-link dropdown-toggle" href="#" id="nav-menu-notebooks" role="link" data-bs-toggle="dropdown" aria-expanded="false">
  <span class="menu-text">Notebooks</span>
@@ -156,7 +159,23 @@ window.Quarto = {
  <span class="dropdown-text">Results (Julia)</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="./notebooks/10_examples.html">
+    <a class="dropdown-item" href="./notebooks/02_occurence_rate.html">
+ <span class="dropdown-text">Occurence Rate</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="./notebooks/10_data.html">
+ <span class="dropdown-text">Different time windows</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="./notebooks/100_results_Alvenicity.html">
+ <span class="dropdown-text">100 Results Alvenicity</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="./notebooks/101_results_dist.html">
+ <span class="dropdown-text">101 Results Dist</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="./notebooks/11_examples.html">
  <span class="dropdown-text">Discontinuities examples</span></a>
   </li>  
         <li>
@@ -166,10 +185,6 @@ window.Quarto = {
         <li>
     <a class="dropdown-item" href="./notebooks/20_model.html">
  <span class="dropdown-text">Models</span></a>
-  </li>  
-        <li>
-    <a class="dropdown-item" href="./notebooks/30_data.html">
- <span class="dropdown-text">Different time windows</span></a>
   </li>  
         <li><hr class="dropdown-divider"></li>
         <li class="dropdown-header">Analysis</li>
@@ -276,7 +291,6 @@ window.Quarto = {
   <li><a href="#dataset-models-and-methods" id="toc-dataset-models-and-methods" class="nav-link" data-scroll-target="#dataset-models-and-methods">Dataset, models, and methods</a>
   <ul class="collapse">
   <li><a href="#dataset" id="toc-dataset" class="nav-link" data-scroll-target="#dataset">Dataset</a></li>
-  <li><a href="#model" id="toc-model" class="nav-link" data-scroll-target="#model">Model</a></li>
   <li><a href="#methods" id="toc-methods" class="nav-link" data-scroll-target="#methods">Methods</a></li>
   </ul></li>
   <li><a href="#results" id="toc-results" class="nav-link" data-scroll-target="#results">Results</a>
@@ -294,12 +308,11 @@ window.Quarto = {
   <ul class="collapse">
   <li><a href="#effect-of-the-time-resolution-on-the-discontinuity-properties" id="toc-effect-of-the-time-resolution-on-the-discontinuity-properties" class="nav-link" data-scroll-target="#effect-of-the-time-resolution-on-the-discontinuity-properties">Effect of the time resolution on the discontinuity properties</a></li>
   </ul></li>
-  <li><a href="#archived-figures" id="toc-archived-figures" class="nav-link" data-scroll-target="#archived-figures">Archived Figures</a></li>
   </ul>
 <div class="quarto-code-links"><h2>Code Links</h2><ul><li><a href="../"><i class="bi bi-link-45deg"></i>Website</a></li><li><a href="https://github.com/Beforerr/ids_spatial_evolution_juno/" target="_blank"><i class="bi bi-github"></i>GitHub Repo</a></li><li><a href="https://www.overleaf.com/project/65b0a9c80a3616adf6e599e8"><i class="bi bi-link-45deg"></i>Overleaf</a></li></ul></div></nav>
     </div>
 <!-- main -->
-<main class="content page-columns page-full" id="quarto-document-content">
+<main class="content" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
@@ -329,14 +342,6 @@ window.Quarto = {
       </div>
     <div class="quarto-title-meta-contents">
     <p class="author">Vassilis Angelopoulos <a href="https://orcid.org/0000-0001-7024-1561" class="quarto-title-author-orcid"> <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAA2ZpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMC1jMDYwIDYxLjEzNDc3NywgMjAxMC8wMi8xMi0xNzozMjowMCAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wTU09Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9tbS8iIHhtbG5zOnN0UmVmPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvc1R5cGUvUmVzb3VyY2VSZWYjIiB4bWxuczp4bXA9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC8iIHhtcE1NOk9yaWdpbmFsRG9jdW1lbnRJRD0ieG1wLmRpZDo1N0NEMjA4MDI1MjA2ODExOTk0QzkzNTEzRjZEQTg1NyIgeG1wTU06RG9jdW1lbnRJRD0ieG1wLmRpZDozM0NDOEJGNEZGNTcxMUUxODdBOEVCODg2RjdCQ0QwOSIgeG1wTU06SW5zdGFuY2VJRD0ieG1wLmlpZDozM0NDOEJGM0ZGNTcxMUUxODdBOEVCODg2RjdCQ0QwOSIgeG1wOkNyZWF0b3JUb29sPSJBZG9iZSBQaG90b3Nob3AgQ1M1IE1hY2ludG9zaCI+IDx4bXBNTTpEZXJpdmVkRnJvbSBzdFJlZjppbnN0YW5jZUlEPSJ4bXAuaWlkOkZDN0YxMTc0MDcyMDY4MTE5NUZFRDc5MUM2MUUwNEREIiBzdFJlZjpkb2N1bWVudElEPSJ4bXAuZGlkOjU3Q0QyMDgwMjUyMDY4MTE5OTRDOTM1MTNGNkRBODU3Ii8+IDwvcmRmOkRlc2NyaXB0aW9uPiA8L3JkZjpSREY+IDwveDp4bXBtZXRhPiA8P3hwYWNrZXQgZW5kPSJyIj8+84NovQAAAR1JREFUeNpiZEADy85ZJgCpeCB2QJM6AMQLo4yOL0AWZETSqACk1gOxAQN+cAGIA4EGPQBxmJA0nwdpjjQ8xqArmczw5tMHXAaALDgP1QMxAGqzAAPxQACqh4ER6uf5MBlkm0X4EGayMfMw/Pr7Bd2gRBZogMFBrv01hisv5jLsv9nLAPIOMnjy8RDDyYctyAbFM2EJbRQw+aAWw/LzVgx7b+cwCHKqMhjJFCBLOzAR6+lXX84xnHjYyqAo5IUizkRCwIENQQckGSDGY4TVgAPEaraQr2a4/24bSuoExcJCfAEJihXkWDj3ZAKy9EJGaEo8T0QSxkjSwORsCAuDQCD+QILmD1A9kECEZgxDaEZhICIzGcIyEyOl2RkgwAAhkmC+eAm0TAAAAABJRU5ErkJggg=="></a></p>
-  </div>
-  <div class="quarto-title-meta-contents">
-        <p class="affiliation">
-            University of California, Los Angeles
-          </p>
-      </div>
-    <div class="quarto-title-meta-contents">
-    <p class="author">Shi Chen <a href="https://orcid.org/0000-0002-2582-7085" class="quarto-title-author-orcid"> <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAA2ZpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMC1jMDYwIDYxLjEzNDc3NywgMjAxMC8wMi8xMi0xNzozMjowMCAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wTU09Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9tbS8iIHhtbG5zOnN0UmVmPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvc1R5cGUvUmVzb3VyY2VSZWYjIiB4bWxuczp4bXA9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC8iIHhtcE1NOk9yaWdpbmFsRG9jdW1lbnRJRD0ieG1wLmRpZDo1N0NEMjA4MDI1MjA2ODExOTk0QzkzNTEzRjZEQTg1NyIgeG1wTU06RG9jdW1lbnRJRD0ieG1wLmRpZDozM0NDOEJGNEZGNTcxMUUxODdBOEVCODg2RjdCQ0QwOSIgeG1wTU06SW5zdGFuY2VJRD0ieG1wLmlpZDozM0NDOEJGM0ZGNTcxMUUxODdBOEVCODg2RjdCQ0QwOSIgeG1wOkNyZWF0b3JUb29sPSJBZG9iZSBQaG90b3Nob3AgQ1M1IE1hY2ludG9zaCI+IDx4bXBNTTpEZXJpdmVkRnJvbSBzdFJlZjppbnN0YW5jZUlEPSJ4bXAuaWlkOkZDN0YxMTc0MDcyMDY4MTE5NUZFRDc5MUM2MUUwNEREIiBzdFJlZjpkb2N1bWVudElEPSJ4bXAuZGlkOjU3Q0QyMDgwMjUyMDY4MTE5OTRDOTM1MTNGNkRBODU3Ii8+IDwvcmRmOkRlc2NyaXB0aW9uPiA8L3JkZjpSREY+IDwveDp4bXBtZXRhPiA8P3hwYWNrZXQgZW5kPSJyIj8+84NovQAAAR1JREFUeNpiZEADy85ZJgCpeCB2QJM6AMQLo4yOL0AWZETSqACk1gOxAQN+cAGIA4EGPQBxmJA0nwdpjjQ8xqArmczw5tMHXAaALDgP1QMxAGqzAAPxQACqh4ER6uf5MBlkm0X4EGayMfMw/Pr7Bd2gRBZogMFBrv01hisv5jLsv9nLAPIOMnjy8RDDyYctyAbFM2EJbRQw+aAWw/LzVgx7b+cwCHKqMhjJFCBLOzAR6+lXX84xnHjYyqAo5IUizkRCwIENQQckGSDGY4TVgAPEaraQr2a4/24bSuoExcJCfAEJihXkWDj3ZAKy9EJGaEo8T0QSxkjSwORsCAuDQCD+QILmD1A9kECEZgxDaEZhICIzGcIyEyOl2RkgwAAhkmC+eAm0TAAAAABJRU5ErkJggg=="></a></p>
   </div>
   <div class="quarto-title-meta-contents">
         <p class="affiliation">
@@ -373,16 +378,16 @@ window.Quarto = {
 </section>
 <section id="introduction" class="level1">
 <h1>Introduction</h1>
-<p>Rapid variations in interplanetary magnetic fields, commonly recognized as solar wind magnetic discontinuities <span class="citation" data-cites="colburnDiscontinuitiesSolarWind1966">(<a href="#ref-colburnDiscontinuitiesSolarWind1966" role="doc-biblioref">Colburn and Sonett 1966</a>)</span>, embody localized transient rotations or jumps of the magnetic field. Considered important for efficient plasma heating, they carry the most intense currents found in the solar wind and obserrved throughout the heliosphere from inner heliosphere <span class="citation" data-cites="liuCategorizingMHDDiscontinuities2022">(<a href="#ref-liuCategorizingMHDDiscontinuities2022" role="doc-biblioref">Liu, Fu, Cao, Yu, et al. 2022</a>)</span> to the heliosheath <span class="citation" data-cites="burlagaCurrentSheetsHeliosheath2011">(<a href="#ref-burlagaCurrentSheetsHeliosheath2011" role="doc-biblioref">Burlaga and Ness 2011</a>)</span>. Theoretical models <span class="citation" data-cites="lerchePropagationMagneticDisturbances1975 medvedevDissipativeDynamicsCollisionless1997">(<a href="#ref-lerchePropagationMagneticDisturbances1975" role="doc-biblioref">Lerche 1975</a>; <a href="#ref-medvedevDissipativeDynamicsCollisionless1997" role="doc-biblioref">Medvedev et al. 1997</a>)</span> and MHD simulations <span class="citation" data-cites="grecoIntermittentMHDStructures2008 grecoStatisticalAnalysisDiscontinuities2009 yangFormationRotationalDiscontinuities2015">(<a href="#ref-grecoIntermittentMHDStructures2008" role="doc-biblioref">Greco et al. 2008</a>, <a href="#ref-grecoStatisticalAnalysisDiscontinuities2009" role="doc-biblioref">2009</a>; <a href="#ref-yangFormationRotationalDiscontinuities2015" role="doc-biblioref">Yang et al. 2015</a>)</span> suggest that the formation and destruction of discontinuities are closely related to the nonlinear dynamics of Alfvén waves and/or Alfvénic turbuluence. These nonlinear processes can create significant isolated disturbances to the otherwise adiabatic evolution of the solar wind flow (?Reference?) and host many processes, including magnetic reconnection (?Reference?) and Fermi acceleration of particles <span class="citation" data-cites="wentzelMotionMagneticDiscontinuities1964">(<a href="#ref-wentzelMotionMagneticDiscontinuities1964" role="doc-biblioref">Wentzel 1964</a>)</span>. Moreover, they contribute significantly to the magnetic fluctuation spectra <span class="citation" data-cites="borovskyContributionStrongDiscontinuities2010">(<a href="#ref-borovskyContributionStrongDiscontinuities2010" role="doc-biblioref">Borovsky 2010</a>)</span> and can affect space weather <span class="citation" data-cites="tsurutaniReviewInterplanetaryDiscontinuities2011">(<a href="#ref-tsurutaniReviewInterplanetaryDiscontinuities2011" role="doc-biblioref">Tsurutani et al. 2011</a>)</span>. Therefore, the study of the spatial evolution of solar wind discontinuities is important for understanding the dynamics of the solar wind and test the local generation mechanism of discontinuities. However, previous study of solar wind discontinuities evolution <span class="citation" data-cites="sodingRadialLatitudinalDependencies2001">(<a href="#ref-sodingRadialLatitudinalDependencies2001" role="doc-biblioref">Söding et al. 2001</a>)</span> in the outer heliosphere were rarely in conjunction with measurements closer to the Sun. Moreover, the intervals in their study spread over multiple solar cycles though they are selected during solar activity minimum. Thus it is presently unclear whether their frequency and properties are the result of solar variability or due to the natural evolution of the discontinuities during their propagation and interaction with the ambient solar wind.</p>
+<p>Rapid variations in interplanetary magnetic fields, commonly recognized as solar wind magnetic discontinuities <span class="citation" data-cites="colburnDiscontinuitiesSolarWind1966">(<a href="#ref-colburnDiscontinuitiesSolarWind1966" role="doc-biblioref">Colburn and Sonett 1966</a>)</span>, embody localized transient rotations or jumps of the magnetic field. Considered important for efficient plasma heating, they carry the most intense currents found in the solar wind and obserrved throughout the heliosphere from inner heliosphere <span class="citation" data-cites="liuCategorizingMHDDiscontinuities2022">(<a href="#ref-liuCategorizingMHDDiscontinuities2022" role="doc-biblioref">Liu, Fu, Cao, Yu, et al. 2022</a>)</span> to the heliosheath <span class="citation" data-cites="burlagaCurrentSheetsHeliosheath2011">(<a href="#ref-burlagaCurrentSheetsHeliosheath2011" role="doc-biblioref">Burlaga and Ness 2011</a>)</span>. Theoretical models <span class="citation" data-cites="lerchePropagationMagneticDisturbances1975 medvedevDissipativeDynamicsCollisionless1997">(<a href="#ref-lerchePropagationMagneticDisturbances1975" role="doc-biblioref">Lerche 1975</a>; <a href="#ref-medvedevDissipativeDynamicsCollisionless1997" role="doc-biblioref">Medvedev et al. 1997</a>)</span> and MHD simulations <span class="citation" data-cites="grecoIntermittentMHDStructures2008 grecoStatisticalAnalysisDiscontinuities2009 yangFormationRotationalDiscontinuities2015">(<a href="#ref-grecoIntermittentMHDStructures2008" role="doc-biblioref">Greco et al. 2008</a>, <a href="#ref-grecoStatisticalAnalysisDiscontinuities2009" role="doc-biblioref">2009</a>; <a href="#ref-yangFormationRotationalDiscontinuities2015" role="doc-biblioref">Yang et al. 2015</a>)</span> suggest that the formation and destruction of discontinuities are closely related to the nonlinear dynamics of Alfvén waves and/or Alfvénic turbuluence. These nonlinear processes can create significant isolated disturbances to the otherwise adiabatic evolution of the solar wind flow (?Reference?) and host many processes, including magnetic reconnection (?Reference?) and Fermi acceleration of particles <span class="citation" data-cites="wentzelMotionMagneticDiscontinuities1964">(<a href="#ref-wentzelMotionMagneticDiscontinuities1964" role="doc-biblioref">Wentzel 1964</a>)</span>. Moreover, they contribute significantly to the magnetic fluctuation spectra <span class="citation" data-cites="borovskyContributionStrongDiscontinuities2010">(<a href="#ref-borovskyContributionStrongDiscontinuities2010" role="doc-biblioref">Borovsky 2010</a>)</span> and can affect space weather <span class="citation" data-cites="tsurutaniReviewInterplanetaryDiscontinuities2011">(<a href="#ref-tsurutaniReviewInterplanetaryDiscontinuities2011" role="doc-biblioref">B. T. Tsurutani et al. 2011</a>)</span>. Therefore, the study of the spatial evolution of solar wind discontinuities is important for understanding the dynamics of the solar wind and test the local generation mechanism of discontinuities. However, previous study of solar wind discontinuities evolution <span class="citation" data-cites="sodingRadialLatitudinalDependencies2001">(<a href="#ref-sodingRadialLatitudinalDependencies2001" role="doc-biblioref">Söding et al. 2001</a>)</span> in the outer heliosphere were rarely in conjunction with measurements closer to the Sun. Moreover, the intervals in their study spread over multiple solar cycles though they are selected during solar activity minimum. Thus it is presently unclear whether their frequency and properties are the result of solar variability or due to the natural evolution of the discontinuities during their propagation and interaction with the ambient solar wind.</p>
 <p>The goal of our paper is to investigate, statistically, discontinuities at different radial distance in the outer heliosphere to obtain a understanding of their formation and evolution. Our methodology involves integrating Juno measurements <span class="citation" data-cites="connerneyJunoMagneticField2017">(<a href="#ref-connerneyJunoMagneticField2017" role="doc-biblioref">Connerney et al. 2017</a>)</span> between <span class="math inline">\(1\)</span> and <span class="math inline">\(5\)</span> AU with those at <span class="math inline">\(1\)</span> AU to distinguish temporal effect and spatial variations by examining the discontinuity characteristics at two radial distances simultaneously.</p>
-<p>First, the missions, instruments and data used are listed. Then, we brieﬂy describe the method used to identify the discontinuities and the model used to estimate the plasma state at Juno location due to the lack of plasma data during its cruise phase. Finally, we present the results of the spatial evolution of the discontinuities with respect to their characteristics (spatial scales and current density), and discuss the implications of our findings.</p>
+<p>First, the missions, instruments and data used are listed. Then, we briefly describe the method used to identify the discontinuities and the model used to estimate the plasma state at Juno location due to the lack of plasma data during its cruise phase. Finally, we present the results of the spatial evolution of the discontinuities with respect to their characteristics (spatial scales and current density), and discuss the implications of our findings.</p>
 <div id="fig-overview" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-overview-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<a href="figures/fig_overview.png" class="lightbox" data-gallery="quarto-lightbox-gallery-1" title="Figure&nbsp;1: Overview. a, Juno orbit during its cruise phase (2011-206). b, Difference of heliographic longitude of Juno and 1-AU missions. c, monthly and smoothed sunspot number. d-g, Near-Earth (OMNI) and STEREO-A solar wind plasma density and speed."><img src="figures/fig_overview.png" class="img-fluid figure-img"></a>
+<a href="figures/fig_overview.png" class="lightbox" data-gallery="quarto-lightbox-gallery-1" title="Figure&nbsp;1: Overview. a, Juno orbit during its cruise phase (2011-2016). b, Difference of heliographic longitude of Juno and 1-AU missions. c, monthly and smoothed sunspot number. d-g, Near-Earth (OMNI) and STEREO-A solar wind plasma density and speed."><img src="figures/fig_overview.png" class="img-fluid figure-img"></a>
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-overview-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;1: Overview. <strong>a,</strong> Juno orbit during its cruise phase (2011-206). <strong>b,</strong> Difference of heliographic longitude of Juno and 1-AU missions. <strong>c,</strong> monthly and smoothed sunspot number. <strong>d-g,</strong> Near-Earth (OMNI) and STEREO-A solar wind plasma density and speed.
+Figure&nbsp;1: Overview. <strong>a,</strong> Juno orbit during its cruise phase (2011-2016). <strong>b,</strong> Difference of heliographic longitude of Juno and 1-AU missions. <strong>c,</strong> monthly and smoothed sunspot number. <strong>d-g,</strong> Near-Earth (OMNI) and STEREO-A solar wind plasma density and speed.
 </figcaption>
 </figure>
 </div>
@@ -394,13 +399,40 @@ Figure&nbsp;1: Overview. <strong>a,</strong> Juno orbit during its cruise phase 
 <p>In this study we use datasets of four missions measuring solar wind magnetic field and plasma. Synergistic observations of these missions should advance our understanding of the solar wind discontinuities, their radial distribution and evolution <span class="citation" data-cites="velliUnderstandingOriginsHeliosphere2020">(<a href="#ref-velliUnderstandingOriginsHeliosphere2020" role="doc-biblioref">Velli et al. 2020</a>)</span>.</p>
 <!-- ![Near-Earth's and STEREO-A solar wind plasma data during JUNO cruise phase](figures/omni_overview){#fig-overview} -->
 <p>The solar wind plasma state, as evidenced by the sunspot number (referenced in <a href="#fig-overview" class="quarto-xref">Figure&nbsp;1</a>), plays a crucial role in understanding the dynamics of discontinuities. During the initial phase of the JUNO mission, the sunspot number reached its peak, indicating a period of heightened solar activity. However, by the end of the mission’s cruise phase, there was a significant decline in solar activity. This variation underscores the importance of calibrating the discontinuity properties in relation to solar activity levels to account for temporal fluctuations.</p>
-<p>Furthermore, an analysis of <a href="#fig-overview" class="quarto-xref">Figure&nbsp;1</a> reveals the significance of the heliographic longitudinal difference between the Juno mission and Near-Earth missions (such as Wind and ARTEMIS) as well as STEREO-A missions. This longitudinal discrepancy ensures comprehensive coverage of the plasma en route to Juno. Specifically, when there is a substantial longitudinal difference between Juno and Earth, the difference between Juno and STEREO-A tends to be minimal, and vice versa. This relationship facilitates an extensive observation network for the plasma traveling towards Juno.</p>
-<p>The time resolution of the magnetic field and plasma data for Juno, Wind, ARTEMIS, STEREO is summarized in the table below.</p>
-</section>
-<section id="model" class="level2">
-<h2 class="anchored" data-anchor-id="model">Model</h2>
-<p>June measurements do not include plasma characteristics, and to estimate discontinuity spatial scale (thicknesses) we will use solar wind speed obtained from the model of solar wind propagation. The hourly solar wind model data from the Two-Dimensional Outer Heliosphere Solar Wind Modeling (MSWIM2D) <span class="citation" data-cites="keeblerMSWIM2DTwodimensionalOuter2022">(<a href="#ref-keeblerMSWIM2DTwodimensionalOuter2022" role="doc-biblioref">Keebler et al. 2022</a>)</span> will be employed to determine the ion bulk velocity <span class="math inline">\(v\)</span> and plasma density <span class="math inline">\(n\)</span> at the location of the Juno mission. Utilizing the BATSRUS MHD solver, this model is capable of simulating the propagation of the solar wind from 1 to 75 astronomical units (AU) in the ecliptic plane, effectively encompassing the region of interest for our study. <a href="#fig-model" class="quarto-xref">Figure&nbsp;2</a> shows comparison of magnetic field magnitudes obtained from MSWIM2D and measured by Juno.</p>
-<p>The model time resolution is hourly. After averaging Juno data to the same time resolution, we see that the model data is consistent with the Juno magnetic field data.</p>
+<p>Further analysis of <a href="#fig-overview" class="quarto-xref">Figure&nbsp;1</a> highlights the significance of the heliographic longitudinal difference between the Juno mission and Earth as well as the STEREO-A mission. Specifically, when there is a substantial longitudinal difference between Juno and Earth, the difference between Juno and STEREO-A tends to be minimal, and vice versa. This longitudinal discrepancy between Earth and STEREO-A ensures comprehensive coverage of the plasma en route to Juno.</p>
+<p>Datasets collected from missions such as STEREO, ARTEMIS, and WIND will complement observations from Juno, offering a broader contextual perspective on heliospheric conditions and enabling a multi-point analysis of discontinuity properties <span class="citation" data-cites="velliUnderstandingOriginsHeliosphere2020">(<a href="#ref-velliUnderstandingOriginsHeliosphere2020" role="doc-biblioref">Velli et al. 2020</a>)</span>. The table below summarizes the time resolution of magnetic field and plasma data for PSP, Juno, Wind, ARTEMIS, and STEREO.</p>
+<table class="table">
+<thead>
+<tr class="header">
+<th>Mission</th>
+<th>δt(B)</th>
+<th>δt(plasma)</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Juno</td>
+<td>1 Hz</td>
+<td>1 hour</td>
+</tr>
+<tr class="even">
+<td>ARTEMIS</td>
+<td>5 Hz</td>
+<td>0.25 Hz</td>
+</tr>
+<tr class="odd">
+<td>WIND</td>
+<td>11 Hz</td>
+<td>1 Hz</td>
+</tr>
+<tr class="even">
+<td>STEREO</td>
+<td>8 Hz</td>
+<td>1 min</td>
+</tr>
+</tbody>
+</table>
+<p>However, since Juno does not provide direct plasma measurements, we will estimate the spatial scale (thickness) of discontinuities using solar wind speed derived from solar wind propagation models. Specifically, we will employ the Two-Dimensional Outer Heliosphere Solar Wind Modeling (MSWIM2D) <span class="citation" data-cites="keeblerMSWIM2DTwodimensionalOuter2022">(<a href="#ref-keeblerMSWIM2DTwodimensionalOuter2022" role="doc-biblioref">Keebler et al. 2022</a>)</span> to determine the ion bulk velocity (<span class="math inline">\(v\)</span>) and plasma density (<span class="math inline">\(n\)</span>) at Juno’s location. This model, which utilizes the BATSRUS MHD solver, simulates the propagation of solar wind from 1 to 75 astronomical units (AU) in the ecliptic plane, effectively covering the region pertinent to our study. The MSWIM2D model provides output data with an hourly time resolution as shown in <a href="#fig-model" class="quarto-xref">Figure&nbsp;2</a>. The comparison of magnetic field magnitudes from MSWIM2D with those measured by Juno, after averaging to the same time resolution, reveals a strong correlation, confirming the model’s reliability.</p>
 <div id="fig-model" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-model-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
@@ -418,7 +450,7 @@ Figure&nbsp;2: <strong>a,</strong> Magnetic field magnitude from MSWIM2D and Jun
 <p>Because the discontinuities may have different spatial scale at different radial distances from the Sun, we repeat the search procedure with time lags <span class="math inline">\(T = 10, 20, 30, 40, 50, 60\)</span> s, and combine the identified ID events together to establish the event list.
 Discontinuities with spatial scales larger than <span class="math inline">\(60\)</span> s are not considered in this study, however it could be argued that they are not significant in the outer heliosphere if they follow the trend with decreasing number of IDs with increasing spatial scale. <a href="#fig-ljFit" class="quarto-xref">Figure&nbsp;5</a> also indicates that the spatial scale of IDs does not vary significantly with the radial distance from the Sun.</p>
 <p>TODO:
-More than ? IDs are identified in the solar wind data from Juno, with ? IDs identified in 5 AU. Then for each discontinuity identified, we calculate the distance matrix of the time series sequence (distance between each pair of magnetic field vectors) to determine the leading edge and trailing edge of the discontinuity. After that, we use the minimum or maximum variance analysis (MVA) analysis <span class="citation" data-cites="sonnerupMinimumMaximumVariance1998 sonnerupMagnetopauseStructureAttitude1967">(<a href="#ref-sonnerupMinimumMaximumVariance1998" role="doc-biblioref">Bengt U. Ö. Sonnerup and Scheible 1998</a>; <a href="#ref-sonnerupMagnetopauseStructureAttitude1967" role="doc-biblioref">B. U. Ö. Sonnerup and Cahill Jr. 1967</a>)</span> to get the main (most varying) magnetic field component, <span class="math inline">\(B_l\)</span>, and medium variation component, <span class="math inline">\(B_m\)</span>. The maxium variance direction is then fitted by a step-like functions to extract the parameters to properly describe the discontinuity (we used logistic function here). Then we combine the magnetic field data and plasma data to obtain the thickness and the current density of the discontinuity.</p>
+More than ? IDs are identified in the solar wind data from Juno, with ? IDs identified in 5 AU. Then for each discontinuity identified, we calculate the distance matrix of the time series sequence (distance between each pair of magnetic field vectors) to determine the leading edge and trailing edge of the discontinuity. After that, we use the minimum or maximum variance analysis (MVA) analysis <span class="citation" data-cites="sonnerupMinimumMaximumVariance1998 sonnerupMagnetopauseStructureAttitude1967">(<a href="#ref-sonnerupMinimumMaximumVariance1998" role="doc-biblioref">Bengt U. Ö. Sonnerup and Scheible 1998</a>; <a href="#ref-sonnerupMagnetopauseStructureAttitude1967" role="doc-biblioref">B. U. Ö. Sonnerup and Cahill Jr. 1967</a>)</span> to get the main (most varying) magnetic field component, <span class="math inline">\(B_l\)</span>, and medium variation component, <span class="math inline">\(B_m\)</span>. The maximum variance direction is then fitted by a step-like functions to extract the parameters to properly describe the discontinuity (we used logistic function here). Then we combine the magnetic field data and plasma data to obtain the thickness and the current density of the discontinuity.</p>
 <p><span id="eq-fit"><span class="math display">\[
 B(t; A, \mu, \sigma, {\mathrm{form=logistic}}) = A \left[1 - \frac{1}{1 + e^{\alpha}} \right]
 \tag{1}\]</span></span></p>
@@ -526,6 +558,7 @@ Figure&nbsp;7: Solar wind parameters associated with the IDs observed by 1AU sat
 <section id="dependences-of-occurrence-rate" class="level2">
 <h2 class="anchored" data-anchor-id="dependences-of-occurrence-rate">Dependences of occurrence rate</h2>
 <p><span class="citation" data-cites="marianiStatisticalStudyMagnetohydrodynamic1983">Mariani, Bavassano, and Villante (<a href="#ref-marianiStatisticalStudyMagnetohydrodynamic1983" role="doc-biblioref">1983</a>)</span>
+<span class="citation" data-cites="tsurutaniInterplanetaryDiscontinuitiesTemporal1979">Bruce T. Tsurutani and Smith (<a href="#ref-tsurutaniInterplanetaryDiscontinuitiesTemporal1979" role="doc-biblioref">1979</a>)</span>
 <span class="citation" data-cites="marianiVariationsOccurrenceRate1973">Mariani et al. (<a href="#ref-marianiVariationsOccurrenceRate1973" role="doc-biblioref">1973</a>)</span></p>
 <p>TODO:</p>
 </section>
@@ -536,7 +569,7 @@ Figure&nbsp;7: Solar wind parameters associated with the IDs observed by 1AU sat
 <ol type="1">
 <li>The normalized occurrence rate of IDs drops with the radial distance from the Sun, following <span class="math inline">\(1/r\)</span> law.</li>
 <li>The thickness of IDs increases with the radial distance from the Sun, but after normalization to ion inertial length, the thickness of IDs slightly decreases. The thickness distribution of IDs remains almost constant with the year of observation.</li>
-<li>The current density of IDs decrease with the radial distance from the Sun, but after normalization to the Alfven current , the current density of IDs slightly increases. The current density distribution of IDs slightly increases with the year of observation, but after normalization, the current density distribution remains identical across the five years.</li>
+<li>The current density of IDs decrease with the radial distance from the Sun, but after normalization to the Alfven current , the current density of IDs slightly increases. The current density distribution of IDs slightly increases with the year of observation, but after normalization, the current density distribution remains identical across the five years, thus no effect of the long-term (i.e.&nbsp;solar cycle) temporal variations.</li>
 </ol>
 </section>
 <section id="acknowledgements" class="level1">
@@ -558,78 +591,10 @@ Figure&nbsp;8: Effect of the time resolution on the discontinuity properties
 </figcaption>
 </figure>
 </div>
+
+
+
 </section>
-</section>
-<section id="archived-figures" class="level1 page-columns page-full">
-<h1>Archived Figures</h1>
-<div id="fig-current" class="quarto-layout-panel">
-<figure class="quarto-float quarto-float-fig figure">
-<div aria-describedby="fig-current-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<div class="quarto-layout-row">
-<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
-<p><a href="figures/new/current/current_k_r_dist.png" class="lightbox" data-gallery="quarto-lightbox-gallery-11" title="Figure&nbsp;9: a, Current density of IDs as a function of the radial distance from the Sun. b, Current density of IDs normalized to the Alfven current as a function of the radial distance from the Sun."><img src="figures/new/current/current_k_r_dist.png" class="img-fluid figure-img"></a></p>
-</div>
-<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
-<p><a href="figures/new/current/current_k_N1_r_dist.png" class="lightbox" data-gallery="quarto-lightbox-gallery-12" title="Figure&nbsp;9: a, Current density of IDs as a function of the radial distance from the Sun. b, Current density of IDs normalized to the Alfven current as a function of the radial distance from the Sun."><img src="figures/new/current/current_k_N1_r_dist.png" class="img-fluid figure-img"></a></p>
-</div>
-</div>
-</div>
-<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-current-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;9: <strong>a,</strong> Current density of IDs as a function of the radial distance from the Sun. <strong>b,</strong> Current density of IDs normalized to the Alfven current as a function of the radial distance from the Sun.
-</figcaption>
-</figure>
-</div>
-<div id="fig-thickness" class="quarto-layout-panel">
-<figure class="quarto-float quarto-float-fig figure">
-<div aria-describedby="fig-thickness-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<div class="quarto-layout-row">
-<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
-<p><a href="figures/new/thickness/thickness_k_fit_r_dist.png" class="lightbox" data-gallery="quarto-lightbox-gallery-13" title="Figure&nbsp;10: a, Thickness of IDs as a function of the radial distance from the Sun. b, Thickness of IDs normalized to the ion inertial length as a function of the radial distance from the Sun."><img src="figures/new/thickness/thickness_k_fit_r_dist.png" class="img-fluid figure-img"></a></p>
-</div>
-<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
-<p><a href="figures/new/thickness/thickness_k_fit_N1_r_dist.png" class="lightbox" data-gallery="quarto-lightbox-gallery-14" title="Figure&nbsp;10: a, Thickness of IDs as a function of the radial distance from the Sun. b, Thickness of IDs normalized to the ion inertial length as a function of the radial distance from the Sun."><img src="figures/new/thickness/thickness_k_fit_N1_r_dist.png" class="img-fluid figure-img"></a></p>
-</div>
-</div>
-</div>
-<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-thickness-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;10: <strong>a,</strong> Thickness of IDs as a function of the radial distance from the Sun. <strong>b,</strong> Thickness of IDs normalized to the ion inertial length as a function of the radial distance from the Sun.
-</figcaption>
-</figure>
-</div>
-<p><a href="figures/l_j_fit_taus.png" class="lightbox" data-gallery="quarto-lightbox-gallery-15"><img src="figures/l_j_fit_taus.png" class="img-fluid"></a></p>
-<p><a href="figures/l_j_fit_taus_xscale_log.png" class="lightbox" data-gallery="quarto-lightbox-gallery-16"><img src="figures/l_j_fit_taus_xscale_log.png" class="img-fluid"></a></p>
-<div>
-
-</div>
-<div class="column-screen-inset quarto-layout-panel" data-layout-nrow="1">
-<div class="quarto-layout-row">
-<div class="quarto-layout-cell" style="flex-basis: 33.3%;justify-content: center;">
-<p><a href="figures/thickness/thickness_k_dist.png" class="lightbox" data-gallery="quarto-lightbox-gallery-17"><img src="figures/thickness/thickness_k_dist.png" class="img-fluid"></a></p>
-</div>
-<div class="quarto-layout-cell" style="flex-basis: 33.3%;justify-content: center;">
-<p><a href="figures/thickness/thickness_k_N1_dist.png" class="lightbox" data-gallery="quarto-lightbox-gallery-18"><img src="figures/thickness/thickness_k_N1_dist.png" class="img-fluid"></a></p>
-</div>
-<div class="quarto-layout-cell" style="flex-basis: 33.3%;justify-content: center;">
-<p><a href="figures/thickness/thickness_k_N1_r_dist.png" class="lightbox" data-gallery="quarto-lightbox-gallery-19"><img src="figures/thickness/thickness_k_N1_r_dist.png" class="img-fluid"></a></p>
-</div>
-</div>
-</div>
-<div>
-
-</div>
-<div class="column-screen-inset quarto-layout-panel" data-layout-nrow="1">
-<div class="quarto-layout-row">
-<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
-<p><a href="figures/current/current_k_dist.png" class="lightbox" data-gallery="quarto-lightbox-gallery-20"><img src="figures/current/current_k_dist.png" class="img-fluid"></a></p>
-</div>
-<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
-<p><a href="figures/current/current_k_N1_dist.png" class="lightbox" data-gallery="quarto-lightbox-gallery-21"><img src="figures/current/current_k_N1_dist.png" class="img-fluid"></a></p>
-</div>
-</div>
-</div>
-
-
-
 </section>
 
 <div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" role="doc-bibliography" id="quarto-bibliography"><h2 class="anchored quarto-appendix-heading">References</h2><div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list">
@@ -683,6 +648,9 @@ Sonnerup, Bengt U. Ö., and Maureen Scheible. 1998. <span>“Minimum and Maximum
 </div>
 <div id="ref-tsurutaniReviewInterplanetaryDiscontinuities2011" class="csl-entry" role="listitem">
 Tsurutani, B. T., G. S. Lakhina, O. P. Verkhoglyadova, W. D. Gonzalez, E. Echer, and F. L. Guarnieri. 2011. <span>“A Review of Interplanetary Discontinuities and Their Geomagnetic Effects.”</span> <em>Journal of Atmospheric and Solar-Terrestrial Physics</em> 73 (1): 5–19. <a href="https://doi.org/10.1016/j.jastp.2010.04.001">https://doi.org/10.1016/j.jastp.2010.04.001</a>.
+</div>
+<div id="ref-tsurutaniInterplanetaryDiscontinuitiesTemporal1979" class="csl-entry" role="listitem">
+Tsurutani, Bruce T., and Edward J. Smith. 1979. <span>“Interplanetary Discontinuities: Temporal Variations and the Radial Gradient from 1 to 8.5 <span>AU</span>.”</span> <em>Journal of Geophysical Research: Space Physics</em> 84 (A6): 2773–87. <a href="https://doi.org/10.1029/JA084iA06p02773">https://doi.org/10.1029/JA084iA06p02773</a>.
 </div>
 <div id="ref-vaskoKineticscaleCurrentSheets2022" class="csl-entry" role="listitem">
 Vasko, I. Y., K. Alimov, T. Phan, S. D. Bale, F. S. Mozer, and A. V. Artemyev. 2022. <span>“Kinetic-Scale Current Sheets in the Solar Wind at 1 Au: Scale-Dependent Properties and Critical Current Density.”</span> <em>Astrophysical Journal Letters</em> 926 (2): L19. <a href="https://doi.org/10.3847/2041-8213/ac4fc4">https://doi.org/10.3847/2041-8213/ac4fc4</a>.
@@ -1118,7 +1086,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 });
 </script>
 </div> <!-- /content -->
-<script>var lightboxQuarto = GLightbox({"closeEffect":"zoom","selector":".lightbox","descPosition":"bottom","loop":false,"openEffect":"zoom"});
+<script>var lightboxQuarto = GLightbox({"closeEffect":"zoom","loop":false,"descPosition":"bottom","openEffect":"zoom","selector":".lightbox"});
 window.onload = () => {
   lightboxQuarto.on('slide_before_load', (data) => {
     const { slideIndex, slideNode, slideConfig, player, trigger } = data;

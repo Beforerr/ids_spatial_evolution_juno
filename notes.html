@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.5.33">
+<meta name="generator" content="quarto-1.5.37">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -19,40 +19,6 @@ ul.task-list li input[type="checkbox"] {
   width: 0.8em;
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
-}
-/* CSS for syntax highlighting */
-pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { line-height: 1.25; }
-pre > code.sourceCode > span:empty { height: 1.2em; }
-.sourceCode { overflow: visible; }
-code.sourceCode > span { color: inherit; text-decoration: inherit; }
-div.sourceCode { margin: 1em 0; }
-pre.sourceCode { margin: 0; }
-@media screen {
-div.sourceCode { overflow: auto; }
-}
-@media print {
-pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
-}
-pre.numberSource code
-  { counter-reset: source-line 0; }
-pre.numberSource code > span
-  { position: relative; left: -4em; counter-increment: source-line; }
-pre.numberSource code > span > a:first-child::before
-  { content: counter(source-line);
-    position: relative; left: -1em; text-align: right; vertical-align: baseline;
-    border: none; display: inline-block;
-    -webkit-touch-callout: none; -webkit-user-select: none;
-    -khtml-user-select: none; -moz-user-select: none;
-    -ms-user-select: none; user-select: none;
-    padding: 0 4px; width: 4em;
-  }
-pre.numberSource { margin-left: 3em;  padding-left: 4px; }
-div.sourceCode
-  {   }
-@media screen {
-pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
 /* CSS for citations */
 div.csl-bib-body { }
@@ -77,7 +43,7 @@ div.csl-indent {
 }</style>
 
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg==" crossorigin="anonymous"></script><script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg==" crossorigin="anonymous"></script><script src="site_libs/quarto-nav/quarto-nav.js"></script>
 <script src="site_libs/quarto-nav/headroom.min.js"></script>
 <script src="site_libs/clipboard/clipboard.min.js"></script>
 <script src="site_libs/quarto-search/autocomplete.umd.js"></script>
@@ -126,14 +92,11 @@ div.csl-indent {
 <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.6/require.min.js" integrity="sha512-c3Nl8+7g4LMSTdrm621y7kf9v3SDPnhxLNhcjFJbKECVnmZHTdo+IRO05sNLTH/D3vA6u1X32ehoLC7WFVdheg==" crossorigin="anonymous"></script>
 
 <script type="application/javascript">define('jquery', [],function() {return window.jQuery;})</script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.6/require.min.js" integrity="sha512-c3Nl8+7g4LMSTdrm621y7kf9v3SDPnhxLNhcjFJbKECVnmZHTdo+IRO05sNLTH/D3vA6u1X32ehoLC7WFVdheg==" crossorigin="anonymous"></script>
-
-<script type="application/javascript">define('jquery', [],function() {return window.jQuery;})</script>
 
 
 </head>
 
-<body class="nav-sidebar floating nav-fixed">
+<body class="nav-fixed">
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
@@ -146,18 +109,127 @@ div.csl-indent {
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
   <li class="nav-item">
-    <a class="nav-link" href="./index.html"> 
-<span class="menu-text">Home</span></a>
-  </li>  
-  <li class="nav-item">
     <a class="nav-link" href="./_manuscript/index.html"> 
 <span class="menu-text">Manuscript</span></a>
   </li>  
+  <li class="nav-item">
+    <a class="nav-link active" href="./notes.html" aria-current="page"> 
+<span class="menu-text">Notes</span></a>
+  </li>  
   <li class="nav-item dropdown ">
-    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-presentation" role="link" data-bs-toggle="dropdown" aria-expanded="false">
- <span class="menu-text">Presentation</span>
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-notebooks" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Notebooks</span>
     </a>
-    <ul class="dropdown-menu" aria-labelledby="nav-menu-presentation">    
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-notebooks">    
+        <li>
+    <a class="dropdown-item" href="./notebooks/00_overview.html">
+ <span class="dropdown-text">Overview</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="./notebooks/01_results_julia.html">
+ <span class="dropdown-text">Results (Julia)</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="./notebooks/02_occurence_rate.html">
+ <span class="dropdown-text">Occurence Rate</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="./notebooks/10_data.html">
+ <span class="dropdown-text">Different time windows</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="./notebooks/100_results_Alvenicity.html">
+ <span class="dropdown-text">100 Results Alvenicity</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="./notebooks/101_results_dist.html">
+ <span class="dropdown-text">101 Results Dist</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="./notebooks/11_examples.html">
+ <span class="dropdown-text">Discontinuities examples</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="./notebooks/12_tau_analysis.html">
+ <span class="dropdown-text">tau effect</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="./notebooks/20_model.html">
+ <span class="dropdown-text">Models</span></a>
+  </li>  
+        <li><hr class="dropdown-divider"></li>
+        <li class="dropdown-header">Analysis</li>
+        <li>
+    <a class="dropdown-item" href="./notebooks/analysis/00_base.html">
+ <span class="dropdown-text">Loading all datasets from different sources</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="./notebooks/analysis/01_occurence_rate.html">
+ <span class="dropdown-text">Occurence Rate</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="./notebooks/analysis/02_orientation.html">
+ <span class="dropdown-text">Orientation</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="./notebooks/analysis/03_map.html">
+ <span class="dropdown-text">Map of thickness and current intensity</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="./notebooks/analysis/10_classification.html">
+ <span class="dropdown-text">ID classification</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="./notebooks/analysis/11_ts_analysis.html">
+ <span class="dropdown-text">Time resolution effect Analysis</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="./notebooks/analysis/11_ts_data.html">
+ <span class="dropdown-text">Time resolution effect (data)</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="./notebooks/analysis/12_tau_data.html">
+ <span class="dropdown-text">Justification for the tau (data)</span></a>
+  </li>  
+        <li><hr class="dropdown-divider"></li>
+        <li class="dropdown-header">Archive</li>
+        <li>
+    <a class="dropdown-item" href="./notebooks/archive/04_properties.html">
+ <span class="dropdown-text">SWD Properties</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="./notebooks/archive/05_sea.html">
+ <span class="dropdown-text">Superposed epoch analysis</span></a>
+  </li>  
+        <li><hr class="dropdown-divider"></li>
+        <li class="dropdown-header">Missions</li>
+        <li>
+    <a class="dropdown-item" href="./notebooks/missions/wind.html">
+ <span class="dropdown-text">IDs from Wind</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="./notebooks/missions/stereo/state.html">
+ <span class="dropdown-text">IDs from STEREO</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="./notebooks/missions/themis/mag.html">
+ <span class="dropdown-text">IDs from ARTHEMIS</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="./notebooks/missions/omni/index.html">
+ <span class="dropdown-text">OMNI data</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="./notebooks/missions/juno/state.html">
+ <span class="dropdown-text">IDs from Juno</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-presentations" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Presentations</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-presentations">    
         <li>
     <a class="dropdown-item" href="./presentations/AGU23_poster.html">
  <span class="dropdown-text">AGU23 Poster</span></a>
@@ -175,265 +247,10 @@ div.csl-indent {
 </div>
       </div> <!-- /container-fluid -->
     </nav>
-  <nav class="quarto-secondary-nav">
-    <div class="container-fluid d-flex">
-      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
-        <i class="bi bi-layout-text-sidebar-reverse"></i>
-      </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./notes.html">Notes</a></li></ol></nav>
-        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
-        </a>
-    </div>
-  </nav>
 </header>
 <!-- content -->
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
-  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
-    <div class="sidebar-menu-container"> 
-    <ul class="list-unstyled mt-1">
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./article.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Solar wind discontinuities spatial evolution in the outer heliosphere</span></a>
-  </div>
-</li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./notes.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text">Notes</span></a>
-  </div>
-</li>
-        <li class="sidebar-item sidebar-item-section">
-      <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true">
- <span class="menu-text">Notebooks</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true" aria-label="Toggle section">
-            <i class="bi bi-chevron-right ms-2"></i>
-          </a> 
-      </div>
-      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./notebooks/00_overview.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Overview</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./notebooks/01_results_julia.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Results (Julia)</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./notebooks/10_examples.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Discontinuities examples</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./notebooks/12_tau_analysis.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">tau effect</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./notebooks/20_model.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Models</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./notebooks/30_data.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Different time windows</span></a>
-  </div>
-</li>
-          <li class="sidebar-item sidebar-item-section">
-      <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="false">
- <span class="menu-text">Analysis</span></a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="false" aria-label="Toggle section">
-            <i class="bi bi-chevron-right ms-2"></i>
-          </a> 
-      </div>
-      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth2 ">  
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./notebooks/analysis/00_base.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Loading all datasets from different sources</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./notebooks/analysis/01_occurence_rate.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Occurence Rate</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./notebooks/analysis/02_orientation.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Orientation</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./notebooks/analysis/03_map.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Map of thickness and current intensity</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./notebooks/analysis/10_classification.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">ID classification</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./notebooks/analysis/11_ts_analysis.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Time resolution effect Analysis</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./notebooks/analysis/11_ts_data.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Time resolution effect (data)</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./notebooks/analysis/12_tau_data.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Justification for the tau (data)</span></a>
-  </div>
-</li>
-      </ul>
-  </li>
-          <li class="sidebar-item sidebar-item-section">
-      <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="false">
- <span class="menu-text">Archive</span></a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="false" aria-label="Toggle section">
-            <i class="bi bi-chevron-right ms-2"></i>
-          </a> 
-      </div>
-      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth2 ">  
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./notebooks/archive/04_properties.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">SWD Properties</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./notebooks/archive/05_sea.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Superposed epoch analysis</span></a>
-  </div>
-</li>
-      </ul>
-  </li>
-          <li class="sidebar-item sidebar-item-section">
-      <div class="sidebar-item-container"> 
-            <a href="./notebooks/missions/index.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Missions</span></a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="false" aria-label="Toggle section">
-            <i class="bi bi-chevron-right ms-2"></i>
-          </a> 
-      </div>
-      <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth2 ">  
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./notebooks/missions/wind.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">IDs from Wind</span></a>
-  </div>
-</li>
-          <li class="sidebar-item sidebar-item-section">
-      <div class="sidebar-item-container"> 
-            <a href="./notebooks/missions/stereo/index.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">IDs from STEREO</span></a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" role="navigation" aria-expanded="false" aria-label="Toggle section">
-            <i class="bi bi-chevron-right ms-2"></i>
-          </a> 
-      </div>
-      <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth3 ">  
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./notebooks/missions/stereo/state.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">STEREO State data pipeline</span></a>
-  </div>
-</li>
-      </ul>
-  </li>
-          <li class="sidebar-item sidebar-item-section">
-      <div class="sidebar-item-container"> 
-            <a href="./notebooks/missions/themis/index.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">IDs from ARTHEMIS</span></a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" role="navigation" aria-expanded="false" aria-label="Toggle section">
-            <i class="bi bi-chevron-right ms-2"></i>
-          </a> 
-      </div>
-      <ul id="quarto-sidebar-section-6" class="collapse list-unstyled sidebar-section depth3 ">  
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./notebooks/missions/themis/mag.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">THEMIS Magnetic field data pipeline</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./notebooks/missions/themis/state.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">THEMIS State data pipeline</span></a>
-  </div>
-</li>
-      </ul>
-  </li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./notebooks/missions/omni/index.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">OMNI data</span></a>
-  </div>
-</li>
-          <li class="sidebar-item sidebar-item-section">
-      <div class="sidebar-item-container"> 
-            <a href="./notebooks/missions/juno/index.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">IDs from Juno</span></a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-7" role="navigation" aria-expanded="false" aria-label="Toggle section">
-            <i class="bi bi-chevron-right ms-2"></i>
-          </a> 
-      </div>
-      <ul id="quarto-sidebar-section-7" class="collapse list-unstyled sidebar-section depth3 ">  
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./notebooks/missions/juno/state.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">JUNO State data pipeline</span></a>
-  </div>
-</li>
-      </ul>
-  </li>
-      </ul>
-  </li>
-      </ul>
-  </li>
-        <li class="sidebar-item sidebar-item-section">
-      <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-8" role="navigation" aria-expanded="true">
- <span class="menu-text">Presentations</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-8" role="navigation" aria-expanded="true" aria-label="Toggle section">
-            <i class="bi bi-chevron-right ms-2"></i>
-          </a> 
-      </div>
-      <ul id="quarto-sidebar-section-8" class="collapse list-unstyled sidebar-section depth1 show">  
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./presentations/AGU23_poster.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Solar wind discontinuities spatial evolution and energetic ion scattering</span></a>
-  </div>
-</li>
-      </ul>
-  </li>
-    </ul>
-    </div>
-</nav>
-<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
         <nav id="TOC" role="doc-toc" class="toc-active">
@@ -449,12 +266,10 @@ div.csl-indent {
   <li><a href="#section-4" id="toc-section-4" class="nav-link" data-scroll-target="#section-4">02/19/2024</a></li>
   <li><a href="#section-5" id="toc-section-5" class="nav-link" data-scroll-target="#section-5">02/18/2024</a></li>
   <li><a href="#section-6" id="toc-section-6" class="nav-link" data-scroll-target="#section-6">02/17/2024</a></li>
-  </ul></li>
   <li><a href="#solar-wind-model" id="toc-solar-wind-model" class="nav-link" data-scroll-target="#solar-wind-model">Solar Wind Model</a></li>
-  <li><a href="#todos" id="toc-todos" class="nav-link" data-scroll-target="#todos">TODOs</a>
-  <ul class="collapse">
-  <li><a href="#infos" id="toc-infos" class="nav-link" data-scroll-target="#infos">Infos</a></li>
   </ul></li>
+  <li><a href="#todos" id="toc-todos" class="nav-link" data-scroll-target="#todos">TODOs</a></li>
+  <li><a href="#archived-figures" id="toc-archived-figures" class="nav-link" data-scroll-target="#archived-figures">Archived Figures</a></li>
   </ul>
 </nav>
     </div>
@@ -480,8 +295,8 @@ div.csl-indent {
 </header>
 
 
-<section id="updates" class="level2 page-columns page-full">
-<h2 class="anchored" data-anchor-id="updates">Updates</h2>
+<section id="updates" class="level1 page-columns page-full">
+<h1>Updates</h1>
 <section id="section" class="level3">
 <h3 class="anchored" data-anchor-id="section">03/15/2024</h3>
 <div class="quarto-figure quarto-figure-center">
@@ -863,7 +678,6 @@ Figure&nbsp;1: From top to bottom is Juno observation in 1,2,3,4,5 AU
 </div>
 </div>
 </section>
-</section>
 <section id="solar-wind-model" class="level2">
 <h2 class="anchored" data-anchor-id="solar-wind-model">Solar Wind Model</h2>
 <p>Sadly, JUNO does not provide plasma data during the cruise phase, so to estimate the plasma state we will use MHD model.</p>
@@ -884,12 +698,14 @@ Figure&nbsp;1: From top to bottom is Juno observation in 1,2,3,4,5 AU
 :::
 -->
 </section>
+</section>
 <section id="todos" class="level1">
 <h1>TODOs</h1>
 <p>Science part</p>
 <ul>
 <li>Analysis
 <ul class="task-list">
+<li><label><input type="checkbox">Re-calculate the occurrence rate of IDs</label></li>
 <li><label><input type="checkbox">Contribution of discontinuities to the power spectrum</label></li>
 <li><label><input type="checkbox">Check Datagap</label></li>
 <li><label><input type="checkbox">Check <code>ARTEMIS-B</code> data in different states (solar wind, magnetosheath, magnetotail, moon wake)</label></li>
@@ -924,201 +740,77 @@ Figure&nbsp;1: From top to bottom is Juno observation in 1,2,3,4,5 AU
 </ul></li>
 </ul></li>
 </ul>
-<section id="infos" class="level2">
-<h2 class="anchored" data-anchor-id="infos">Infos</h2>
-<div class="cell" data-execution_count="1">
-<details class="code-fold">
-<summary>Code</summary>
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> yaml</span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> polars <span class="im">as</span> pl</span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> functools <span class="im">import</span> <span class="bu">reduce</span></span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> great_tables <span class="im">import</span> GT</span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="cf">with</span> <span class="bu">open</span>(<span class="st">"data/info.yml"</span>, <span class="st">"r"</span>) <span class="im">as</span> <span class="bu">file</span>:</span>
-<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>    data <span class="op">=</span> yaml.safe_load(<span class="bu">file</span>)</span>
-<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a><span class="co"># Recursive function to find magnetometers</span></span>
-<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> find_instrument(instruments, ins_type):</span>
-<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>    instrument <span class="op">=</span> {}</span>
-<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> key, value <span class="kw">in</span> instruments.items():</span>
-<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> value.get(<span class="st">"type"</span>) <span class="op">==</span> ins_type:</span>
-<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a>            instrument <span class="op">=</span> value</span>
-<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a>        <span class="cf">elif</span> <span class="st">"instruments"</span> <span class="kw">in</span> value:</span>
-<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a>            instrument <span class="op">=</span> find_instrument(value[<span class="st">"instruments"</span>], ins_type)</span>
-<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> instrument</span>
-<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> parse_yaml(data, info, ins_type<span class="op">=</span><span class="va">None</span>):</span>
-<span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a>    rows <span class="op">=</span> []</span>
-<span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-24"><a href="#cb1-24" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> mission, details <span class="kw">in</span> data[<span class="st">"missions"</span>].items():</span>
-<span id="cb1-25"><a href="#cb1-25" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> ins_type <span class="kw">is</span> <span class="va">None</span>:</span>
-<span id="cb1-26"><a href="#cb1-26" aria-hidden="true" tabindex="-1"></a>            rows.append([mission, details.get(info)])</span>
-<span id="cb1-27"><a href="#cb1-27" aria-hidden="true" tabindex="-1"></a>            <span class="cf">continue</span></span>
-<span id="cb1-28"><a href="#cb1-28" aria-hidden="true" tabindex="-1"></a>        instruments <span class="op">=</span> details.get(<span class="st">"instruments"</span>, {})</span>
-<span id="cb1-29"><a href="#cb1-29" aria-hidden="true" tabindex="-1"></a>        instrument <span class="op">=</span> find_instrument(instruments, ins_type)</span>
-<span id="cb1-30"><a href="#cb1-30" aria-hidden="true" tabindex="-1"></a>        rows.append([mission, instrument.get(info)])</span>
-<span id="cb1-31"><a href="#cb1-31" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-32"><a href="#cb1-32" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> pl.DataFrame(rows, schema<span class="op">=</span>[<span class="st">"Mission"</span>, info])</span>
-<span id="cb1-33"><a href="#cb1-33" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-34"><a href="#cb1-34" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-35"><a href="#cb1-35" aria-hidden="true" tabindex="-1"></a><span class="co"># Define the merge function</span></span>
-<span id="cb1-36"><a href="#cb1-36" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> merge_dfs(left: pl.DataFrame, right, on<span class="op">=</span><span class="st">"Mission"</span>, how<span class="op">=</span><span class="st">"outer_coalesce"</span>):</span>
-<span id="cb1-37"><a href="#cb1-37" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> left.join(right, on<span class="op">=</span>on, how<span class="op">=</span>how)</span>
-<span id="cb1-38"><a href="#cb1-38" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-39"><a href="#cb1-39" aria-hidden="true" tabindex="-1"></a><span class="co"># Parse and display the table</span></span>
-<span id="cb1-40"><a href="#cb1-40" aria-hidden="true" tabindex="-1"></a>df_mag <span class="op">=</span> parse_yaml(data, <span class="st">"time_resolutions"</span>, <span class="st">"magnetometer"</span>).rename(</span>
-<span id="cb1-41"><a href="#cb1-41" aria-hidden="true" tabindex="-1"></a>    {<span class="st">"time_resolutions"</span>: <span class="st">"δt(B)"</span>}</span>
-<span id="cb1-42"><a href="#cb1-42" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb1-43"><a href="#cb1-43" aria-hidden="true" tabindex="-1"></a>df_plasma <span class="op">=</span> parse_yaml(data, <span class="st">"time_resolutions"</span>, <span class="st">"plasma"</span>).rename(</span>
-<span id="cb1-44"><a href="#cb1-44" aria-hidden="true" tabindex="-1"></a>    {<span class="st">"time_resolutions"</span>: <span class="st">"δt(plasma)"</span>}</span>
-<span id="cb1-45"><a href="#cb1-45" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb1-46"><a href="#cb1-46" aria-hidden="true" tabindex="-1"></a>df_r <span class="op">=</span> parse_yaml(data, <span class="st">"radial_coverage"</span>)</span>
-<span id="cb1-47"><a href="#cb1-47" aria-hidden="true" tabindex="-1"></a>df_time <span class="op">=</span> parse_yaml(data, <span class="st">"launch_date"</span>)</span>
-<span id="cb1-48"><a href="#cb1-48" aria-hidden="true" tabindex="-1"></a>df_link <span class="op">=</span> parse_yaml(data, <span class="st">"website"</span>)</span>
-<span id="cb1-49"><a href="#cb1-49" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-50"><a href="#cb1-50" aria-hidden="true" tabindex="-1"></a>df_list <span class="op">=</span> [df_mag, df_plasma, df_r, df_time, df_link]  <span class="co"># Replace with your DataFrames</span></span>
-<span id="cb1-51"><a href="#cb1-51" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-52"><a href="#cb1-52" aria-hidden="true" tabindex="-1"></a>df_merged <span class="op">=</span> <span class="bu">reduce</span>(merge_dfs, df_list).with_columns(pl.col(<span class="st">"website"</span>).<span class="bu">list</span>.join(<span class="st">", "</span>))</span>
-<span id="cb1-53"><a href="#cb1-53" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-54"><a href="#cb1-54" aria-hidden="true" tabindex="-1"></a>GT(df_merged.to_pandas()).fmt_markdown(<span class="st">"website"</span>).cols_label(</span>
-<span id="cb1-55"><a href="#cb1-55" aria-hidden="true" tabindex="-1"></a>    radial_coverage<span class="op">=</span><span class="st">"Radial coverage"</span>,</span>
-<span id="cb1-56"><a href="#cb1-56" aria-hidden="true" tabindex="-1"></a>    launch_date<span class="op">=</span><span class="st">"Launch date"</span>,</span>
-<span id="cb1-57"><a href="#cb1-57" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
-<div id="tbl-missions" class="cell quarto-float quarto-figure quarto-figure-center anchored" data-execution_count="1">
-<figure class="quarto-float quarto-float-tbl figure">
-<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-missions-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Table&nbsp;1: Missions info
+</section>
+<section id="archived-figures" class="level1 page-columns page-full">
+<h1>Archived Figures</h1>
+<div id="fig-current" class="quarto-layout-panel">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-current-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<div class="quarto-layout-row">
+<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
+<p><a href="figures/new/current/current_k_r_dist.png" class="lightbox" data-gallery="quarto-lightbox-gallery-33" title="Figure&nbsp;2: a, Current density of IDs as a function of the radial distance from the Sun. b, Current density of IDs normalized to the Alfven current as a function of the radial distance from the Sun."><img src="figures/new/current/current_k_r_dist.png" class="img-fluid figure-img"></a></p>
+</div>
+<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
+<p><a href="figures/new/current/current_k_N1_r_dist.png" class="lightbox" data-gallery="quarto-lightbox-gallery-34" title="Figure&nbsp;2: a, Current density of IDs as a function of the radial distance from the Sun. b, Current density of IDs normalized to the Alfven current as a function of the radial distance from the Sun."><img src="figures/new/current/current_k_N1_r_dist.png" class="img-fluid figure-img"></a></p>
+</div>
+</div>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-current-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;2: <strong>a,</strong> Current density of IDs as a function of the radial distance from the Sun. <strong>b,</strong> Current density of IDs normalized to the Alfven current as a function of the radial distance from the Sun.
 </figcaption>
-<div aria-describedby="tbl-missions-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<div class="cell-output cell-output-display" data-execution_count="1">
-<div>
-<div id="uthwmdgrwh" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>
-#uthwmdgrwh table {
-          font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Helvetica Neue', 'Fira Sans', 'Droid Sans', Arial, sans-serif;
-          -webkit-font-smoothing: antialiased;
-          -moz-osx-font-smoothing: grayscale;
-        }
-
-#uthwmdgrwh thead, tbody, tfoot, tr, td, th { border-style: none; }
- tr { background-color: transparent; }
-#uthwmdgrwh p { margin: 0; padding: 0; }
- #uthwmdgrwh .gt_table { display: table; border-collapse: collapse; line-height: normal; margin-left: auto; margin-right: auto; color: #333333; font-size: 16px; font-weight: normal; font-style: normal; background-color: #FFFFFF; width: auto; border-top-style: solid; border-top-width: 2px; border-top-color: #A8A8A8; border-right-style: none; border-right-width: 2px; border-right-color: #D3D3D3; border-bottom-style: solid; border-bottom-width: 2px; border-bottom-color: #A8A8A8; border-left-style: none; border-left-width: 2px; border-left-color: #D3D3D3; }
- #uthwmdgrwh .gt_caption { padding-top: 4px; padding-bottom: 4px; }
- #uthwmdgrwh .gt_title { color: #333333; font-size: 125%; font-weight: initial; padding-top: 4px; padding-bottom: 4px; padding-left: 5px; padding-right: 5px; border-bottom-color: #FFFFFF; border-bottom-width: 0; }
- #uthwmdgrwh .gt_subtitle { color: #333333; font-size: 85%; font-weight: initial; padding-top: 3px; padding-bottom: 5px; padding-left: 5px; padding-right: 5px; border-top-color: #FFFFFF; border-top-width: 0; }
- #uthwmdgrwh .gt_heading { background-color: #FFFFFF; text-align: center; border-bottom-color: #FFFFFF; border-left-style: none; border-left-width: 1px; border-left-color: #D3D3D3; border-right-style: none; border-right-width: 1px; border-right-color: #D3D3D3; }
- #uthwmdgrwh .gt_bottom_border { border-bottom-style: solid; border-bottom-width: 2px; border-bottom-color: #D3D3D3; }
- #uthwmdgrwh .gt_col_headings { border-top-style: solid; border-top-width: 2px; border-top-color: #D3D3D3; border-bottom-style: solid; border-bottom-width: 2px; border-bottom-color: #D3D3D3; border-left-style: none; border-left-width: 1px; border-left-color: #D3D3D3; border-right-style: none; border-right-width: 1px; border-right-color: #D3D3D3; }
- #uthwmdgrwh .gt_col_heading { color: #333333; background-color: #FFFFFF; font-size: 100%; font-weight: normal; text-transform: inherit; border-left-style: none; border-left-width: 1px; border-left-color: #D3D3D3; border-right-style: none; border-right-width: 1px; border-right-color: #D3D3D3; vertical-align: bottom; padding-top: 5px; padding-bottom: 5px; padding-left: 5px; padding-right: 5px; overflow-x: hidden; }
- #uthwmdgrwh .gt_column_spanner_outer { color: #333333; background-color: #FFFFFF; font-size: 100%; font-weight: normal; text-transform: inherit; padding-top: 0; padding-bottom: 0; padding-left: 4px; padding-right: 4px; }
- #uthwmdgrwh .gt_column_spanner_outer:first-child { padding-left: 0; }
- #uthwmdgrwh .gt_column_spanner_outer:last-child { padding-right: 0; }
- #uthwmdgrwh .gt_column_spanner { border-bottom-style: solid; border-bottom-width: 2px; border-bottom-color: #D3D3D3; vertical-align: bottom; padding-top: 5px; padding-bottom: 5px; overflow-x: hidden; display: inline-block; width: 100%; }
- #uthwmdgrwh .gt_spanner_row { border-bottom-style: hidden; }
- #uthwmdgrwh .gt_group_heading { padding-top: 8px; padding-bottom: 8px; padding-left: 5px; padding-right: 5px; color: #333333; background-color: #FFFFFF; font-size: 100%; font-weight: initial; text-transform: inherit; border-top-style: solid; border-top-width: 2px; border-top-color: #D3D3D3; border-bottom-style: solid; border-bottom-width: 2px; border-bottom-color: #D3D3D3; border-left-style: none; border-left-width: 1px; border-left-color: #D3D3D3; border-right-style: none; border-right-width: 1px; border-right-color: #D3D3D3; vertical-align: middle; text-align: left; }
- #uthwmdgrwh .gt_empty_group_heading { padding: 0.5px; color: #333333; background-color: #FFFFFF; font-size: 100%; font-weight: initial; border-top-style: solid; border-top-width: 2px; border-top-color: #D3D3D3; border-bottom-style: solid; border-bottom-width: 2px; border-bottom-color: #D3D3D3; vertical-align: middle; }
- #uthwmdgrwh .gt_from_md> :first-child { margin-top: 0; }
- #uthwmdgrwh .gt_from_md> :last-child { margin-bottom: 0; }
- #uthwmdgrwh .gt_row { padding-top: 8px; padding-bottom: 8px; padding-left: 5px; padding-right: 5px; margin: 10px; border-top-style: solid; border-top-width: 1px; border-top-color: #D3D3D3; border-left-style: none; border-left-width: 1px; border-left-color: #D3D3D3; border-right-style: none; border-right-width: 1px; border-right-color: #D3D3D3; vertical-align: middle; overflow-x: hidden; }
- #uthwmdgrwh .gt_stub { color: #333333; background-color: #FFFFFF; font-size: 100%; font-weight: initial; text-transform: inherit; border-right-style: solid; border-right-width: 2px; border-right-color: #D3D3D3; padding-left: 5px; padding-right: 5px; }
- #uthwmdgrwh .gt_stub_row_group { color: #333333; background-color: #FFFFFF; font-size: 100%; font-weight: initial; text-transform: inherit; border-right-style: solid; border-right-width: 2px; border-right-color: #D3D3D3; padding-left: 5px; padding-right: 5px; vertical-align: top; }
- #uthwmdgrwh .gt_row_group_first td { border-top-width: 2px; }
- #uthwmdgrwh .gt_row_group_first th { border-top-width: 2px; }
- #uthwmdgrwh .gt_table_body { border-top-style: solid; border-top-width: 2px; border-top-color: #D3D3D3; border-bottom-style: solid; border-bottom-width: 2px; border-bottom-color: #D3D3D3; }
- #uthwmdgrwh .gt_sourcenotes { color: #333333; background-color: #FFFFFF; border-bottom-style: none; border-bottom-width: 2px; border-bottom-color: #D3D3D3; border-left-style: none; border-left-width: 2px; border-left-color: #D3D3D3; border-right-style: none; border-right-width: 2px; border-right-color: #D3D3D3; }
- #uthwmdgrwh .gt_sourcenote { font-size: 90%; padding-top: 4px; padding-bottom: 4px; padding-left: 5px; padding-right: 5px; text-align: left; }
- #uthwmdgrwh .gt_left { text-align: left; }
- #uthwmdgrwh .gt_center { text-align: center; }
- #uthwmdgrwh .gt_right { text-align: right; font-variant-numeric: tabular-nums; }
- #uthwmdgrwh .gt_font_normal { font-weight: normal; }
- #uthwmdgrwh .gt_font_bold { font-weight: bold; }
- #uthwmdgrwh .gt_font_italic { font-style: italic; }
- #uthwmdgrwh .gt_super { font-size: 65%; }
- #uthwmdgrwh .gt_footnote_marks { font-size: 75%; vertical-align: 0.4em; position: initial; }
- #uthwmdgrwh .gt_asterisk { font-size: 100%; vertical-align: 0; }
- 
-</style>
-
-<table class="gt_table do-not-create-environment cell table table-sm table-striped small" data-quarto-postprocess="true" data-quarto-disable-processing="false" data-quarto-bootstrap="false">
-<tbody>
-<tr class="odd gt_col_headings">
-<td id="Mission" class="gt_col_heading gt_columns_bottom_border gt_left" data-quarto-table-cell-role="th" scope="col">Mission</td>
-<td id="δt(B)" class="gt_col_heading gt_columns_bottom_border gt_left" data-quarto-table-cell-role="th" scope="col">δt(B)</td>
-<td id="δt(plasma)" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">δt(plasma)</td>
-<td id="Radial coverage" class="gt_col_heading gt_columns_bottom_border gt_left" data-quarto-table-cell-role="th" scope="col">Radial coverage</td>
-<td id="Launch date" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">Launch date</td>
-<td id="website" class="gt_col_heading gt_columns_bottom_border gt_left" data-quarto-table-cell-role="th" scope="col">website</td>
-</tr>
-</tbody>
-<tbody class="gt_table_body">
-<tr class="odd">
-<td class="gt_row gt_left">Juno</td>
-<td class="gt_row gt_left">1 Hz</td>
-<td class="gt_row gt_right"><na></na></td>
-<td class="gt_row gt_left">1 - 5.5 AU</td>
-<td class="gt_row gt_right">2011-08-05</td>
-<td class="gt_row gt_left"><a href="https://science.nasa.gov/mission/juno">NASA</a></td>
-</tr>
-<tr class="even">
-<td class="gt_row gt_left">ARTEMIS</td>
-<td class="gt_row gt_left">5 Hz, ...</td>
-<td class="gt_row gt_right"><na></na></td>
-<td class="gt_row gt_left"><na></na></td>
-<td class="gt_row gt_right">2007-02-17</td>
-<td class="gt_row gt_left"><na></na></td>
-</tr>
-<tr class="odd">
-<td class="gt_row gt_left">STEREO-A</td>
-<td class="gt_row gt_left">8 Hz</td>
-<td class="gt_row gt_right"><na></na></td>
-<td class="gt_row gt_left"><na></na></td>
-<td class="gt_row gt_right">2006-10-26</td>
-<td class="gt_row gt_left"><na></na></td>
-</tr>
-<tr class="even">
-<td class="gt_row gt_left">WIND</td>
-<td class="gt_row gt_left">11 Hz</td>
-<td class="gt_row gt_right"><na></na></td>
-<td class="gt_row gt_left"><na></na></td>
-<td class="gt_row gt_right">1994-11-01</td>
-<td class="gt_row gt_left"><a href="https://science.nasa.gov/mission/wind/">NASA</a></td>
-</tr>
-<tr class="odd">
-<td class="gt_row gt_left">Solar Orbiter</td>
-<td class="gt_row gt_left"><na></na></td>
-<td class="gt_row gt_right"><na></na></td>
-<td class="gt_row gt_left">0.28 - 0.9 AU</td>
-<td class="gt_row gt_right">2020-02-10</td>
-<td class="gt_row gt_left"><a href="https://sci.esa.int/web/solar-orbiter">ESA</a></td>
-</tr>
-<tr class="even">
-<td class="gt_row gt_left">Parker Solar Probe</td>
-<td class="gt_row gt_left"><na></na></td>
-<td class="gt_row gt_right"><na></na></td>
-<td class="gt_row gt_left">0.05 - 1 AU</td>
-<td class="gt_row gt_right">2018-08-12</td>
-<td class="gt_row gt_left"><a href="https://science.nasa.gov/mission/parker-solar-probe">NASA</a></td>
-</tr>
-</tbody>
-</table>
-
-
-</div>
-        
-</div>
-</div>
-</div>
 </figure>
 </div>
+<div id="fig-thickness" class="quarto-layout-panel">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-thickness-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<div class="quarto-layout-row">
+<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
+<p><a href="figures/new/thickness/thickness_k_fit_r_dist.png" class="lightbox" data-gallery="quarto-lightbox-gallery-35" title="Figure&nbsp;3: a, Thickness of IDs as a function of the radial distance from the Sun. b, Thickness of IDs normalized to the ion inertial length as a function of the radial distance from the Sun."><img src="figures/new/thickness/thickness_k_fit_r_dist.png" class="img-fluid figure-img"></a></p>
+</div>
+<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
+<p><a href="figures/new/thickness/thickness_k_fit_N1_r_dist.png" class="lightbox" data-gallery="quarto-lightbox-gallery-36" title="Figure&nbsp;3: a, Thickness of IDs as a function of the radial distance from the Sun. b, Thickness of IDs normalized to the ion inertial length as a function of the radial distance from the Sun."><img src="figures/new/thickness/thickness_k_fit_N1_r_dist.png" class="img-fluid figure-img"></a></p>
+</div>
+</div>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-thickness-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;3: <strong>a,</strong> Thickness of IDs as a function of the radial distance from the Sun. <strong>b,</strong> Thickness of IDs normalized to the ion inertial length as a function of the radial distance from the Sun.
+</figcaption>
+</figure>
+</div>
+<p><a href="figures/l_j_fit_taus.png" class="lightbox" data-gallery="quarto-lightbox-gallery-37"><img src="figures/l_j_fit_taus.png" class="img-fluid"></a></p>
+<p><a href="figures/l_j_fit_taus_xscale_log.png" class="lightbox" data-gallery="quarto-lightbox-gallery-38"><img src="figures/l_j_fit_taus_xscale_log.png" class="img-fluid"></a></p>
+<div>
+
+</div>
+<div class="column-screen-inset quarto-layout-panel" data-layout-nrow="1">
+<div class="quarto-layout-row">
+<div class="quarto-layout-cell" style="flex-basis: 33.3%;justify-content: center;">
+<p><a href="figures/thickness/thickness_k_dist.png" class="lightbox" data-gallery="quarto-lightbox-gallery-39"><img src="figures/thickness/thickness_k_dist.png" class="img-fluid"></a></p>
+</div>
+<div class="quarto-layout-cell" style="flex-basis: 33.3%;justify-content: center;">
+<p><a href="figures/thickness/thickness_k_N1_dist.png" class="lightbox" data-gallery="quarto-lightbox-gallery-40"><img src="figures/thickness/thickness_k_N1_dist.png" class="img-fluid"></a></p>
+</div>
+<div class="quarto-layout-cell" style="flex-basis: 33.3%;justify-content: center;">
+<p><a href="figures/thickness/thickness_k_N1_r_dist.png" class="lightbox" data-gallery="quarto-lightbox-gallery-41"><img src="figures/thickness/thickness_k_N1_r_dist.png" class="img-fluid"></a></p>
+</div>
+</div>
+</div>
+<div>
+
+</div>
+<div class="column-screen-inset quarto-layout-panel" data-layout-nrow="1">
+<div class="quarto-layout-row">
+<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
+<p><a href="figures/current/current_k_dist.png" class="lightbox" data-gallery="quarto-lightbox-gallery-42"><img src="figures/current/current_k_dist.png" class="img-fluid"></a></p>
+</div>
+<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
+<p><a href="figures/current/current_k_N1_dist.png" class="lightbox" data-gallery="quarto-lightbox-gallery-43"><img src="figures/current/current_k_N1_dist.png" class="img-fluid"></a></p>
+</div>
+</div>
 </div>
 
 
 
-</section>
 </section>
 
 <div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" role="doc-bibliography" id="quarto-bibliography"><h2 class="anchored quarto-appendix-heading">References</h2><div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list">
@@ -1547,7 +1239,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 });
 </script>
 </div> <!-- /content -->
-<script>var lightboxQuarto = GLightbox({"openEffect":"zoom","selector":".lightbox","closeEffect":"zoom","descPosition":"bottom","loop":false});
+<script>var lightboxQuarto = GLightbox({"openEffect":"zoom","closeEffect":"zoom","loop":false,"selector":".lightbox","descPosition":"bottom"});
 window.onload = () => {
   lightboxQuarto.on('slide_before_load', (data) => {
     const { slideIndex, slideNode, slideConfig, player, trigger } = data;

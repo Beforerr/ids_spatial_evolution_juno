@@ -1,0 +1,1680 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.5.37">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>Discontinuities examples</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg==" crossorigin="anonymous"></script><script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<script src="../site_libs/quarto-html/quarto.js"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script src="../site_libs/quarto-contrib/glightbox/glightbox.min.js"></script>
+<link href="../site_libs/quarto-contrib/glightbox/glightbox.min.css" rel="stylesheet">
+<link href="../site_libs/quarto-contrib/glightbox/lightbox.css" rel="stylesheet">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.6/require.min.js" integrity="sha512-c3Nl8+7g4LMSTdrm621y7kf9v3SDPnhxLNhcjFJbKECVnmZHTdo+IRO05sNLTH/D3vA6u1X32ehoLC7WFVdheg==" crossorigin="anonymous"></script>
+
+<script type="application/javascript">define('jquery', [],function() {return window.jQuery;})</script>
+
+
+</head>
+
+<body class="nav-sidebar floating nav-fixed">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../_manuscript/index.html"> 
+<span class="menu-text">Manuscript</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../notes.html"> 
+<span class="menu-text">Notes</span></a>
+  </li>  
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-notebooks" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Notebooks</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-notebooks">    
+        <li>
+    <a class="dropdown-item" href="../notebooks/00_overview.html">
+ <span class="dropdown-text">Overview</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../notebooks/01_results_julia.html">
+ <span class="dropdown-text">Results (Julia)</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../notebooks/02_occurence_rate.html">
+ <span class="dropdown-text">Occurence Rate</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../notebooks/10_data.html">
+ <span class="dropdown-text">Different time windows</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../notebooks/100_results_Alvenicity.html">
+ <span class="dropdown-text">100 Results Alvenicity</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../notebooks/101_results_dist.html">
+ <span class="dropdown-text">101 Results Dist</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../notebooks/11_examples.html">
+ <span class="dropdown-text">Discontinuities examples</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../notebooks/12_tau_analysis.html">
+ <span class="dropdown-text">tau effect</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../notebooks/20_model.html">
+ <span class="dropdown-text">Models</span></a>
+  </li>  
+        <li><hr class="dropdown-divider"></li>
+        <li class="dropdown-header">Analysis</li>
+        <li>
+    <a class="dropdown-item" href="../notebooks/analysis/00_base.html">
+ <span class="dropdown-text">Loading all datasets from different sources</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../notebooks/analysis/01_occurence_rate.html">
+ <span class="dropdown-text">Occurence Rate</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../notebooks/analysis/02_orientation.html">
+ <span class="dropdown-text">Orientation</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../notebooks/analysis/03_map.html">
+ <span class="dropdown-text">Map of thickness and current intensity</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../notebooks/analysis/10_classification.html">
+ <span class="dropdown-text">ID classification</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../notebooks/analysis/11_ts_analysis.html">
+ <span class="dropdown-text">Time resolution effect Analysis</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../notebooks/analysis/11_ts_data.html">
+ <span class="dropdown-text">Time resolution effect (data)</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../notebooks/analysis/12_tau_data.html">
+ <span class="dropdown-text">Justification for the tau (data)</span></a>
+  </li>  
+        <li><hr class="dropdown-divider"></li>
+        <li class="dropdown-header">Archive</li>
+        <li>
+    <a class="dropdown-item" href="../notebooks/archive/04_properties.html">
+ <span class="dropdown-text">SWD Properties</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../notebooks/archive/05_sea.html">
+ <span class="dropdown-text">Superposed epoch analysis</span></a>
+  </li>  
+        <li><hr class="dropdown-divider"></li>
+        <li class="dropdown-header">Missions</li>
+        <li>
+    <a class="dropdown-item" href="../notebooks/missions/wind.html">
+ <span class="dropdown-text">IDs from Wind</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../notebooks/missions/stereo/state.html">
+ <span class="dropdown-text">IDs from STEREO</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../notebooks/missions/themis/mag.html">
+ <span class="dropdown-text">IDs from ARTHEMIS</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../notebooks/missions/omni/index.html">
+ <span class="dropdown-text">OMNI data</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../notebooks/missions/juno/state.html">
+ <span class="dropdown-text">IDs from Juno</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-presentations" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Presentations</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-presentations">    
+        <li>
+    <a class="dropdown-item" href="../presentations/AGU23_poster.html">
+ <span class="dropdown-text">AGU23 Poster</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../presentations/SPARTHRB_Zijin_202310.pptx">
+ <span class="dropdown-text">SPARTHRB 2023 Fall</span></a>
+  </li>  
+    </ul>
+  </li>
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+    <a href="https://github.com/Beforerr/ids_spatial_evolution_juno" title="" class="quarto-navigation-tool px-1" aria-label=""><i class="bi bi-github"></i></a>
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../notebooks/11_examples.html">Discontinuities examples</a></li></ol></nav>
+        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../notebooks/00_overview.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Overview</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../notebooks/01_results_julia.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Results (Julia)</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../notebooks/02_occurence_rate.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Occurence Rate</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../notebooks/10_data.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Different time windows</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../notebooks/100_results_Alvenicity.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">100 Results Alvenicity</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../notebooks/101_results_dist.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">101 Results Dist</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../notebooks/11_examples.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text">Discontinuities examples</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../notebooks/12_tau_analysis.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">tau effect</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../notebooks/20_model.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Models</span></a>
+  </div>
+</li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true">
+ <span class="menu-text">Analysis</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../notebooks/analysis/00_base.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Loading all datasets from different sources</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../notebooks/analysis/01_occurence_rate.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Occurence Rate</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../notebooks/analysis/02_orientation.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Orientation</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../notebooks/analysis/03_map.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Map of thickness and current intensity</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../notebooks/analysis/10_classification.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">ID classification</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../notebooks/analysis/11_ts_analysis.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Time resolution effect Analysis</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../notebooks/analysis/11_ts_data.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Time resolution effect (data)</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../notebooks/analysis/12_tau_data.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Justification for the tau (data)</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true">
+ <span class="menu-text">Archive</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../notebooks/archive/04_properties.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">SWD Properties</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../notebooks/archive/05_sea.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Superposed epoch analysis</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a href="../notebooks/missions/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Missions</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../notebooks/missions/wind.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">IDs from Wind</span></a>
+  </div>
+</li>
+          <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a href="../notebooks/missions/stereo/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">IDs from STEREO</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth2 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../notebooks/missions/stereo/state.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">STEREO State data pipeline</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+          <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a href="../notebooks/missions/themis/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">IDs from ARTHEMIS</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" role="navigation" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth2 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../notebooks/missions/themis/mag.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">THEMIS Magnetic field data pipeline</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../notebooks/missions/themis/state.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">THEMIS State data pipeline</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../notebooks/missions/omni/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">OMNI data</span></a>
+  </div>
+</li>
+          <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a href="../notebooks/missions/juno/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">IDs from Juno</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" role="navigation" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-6" class="collapse list-unstyled sidebar-section depth2 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../notebooks/missions/juno/state.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">JUNO State data pipeline</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+      </ul>
+  </li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#discontinuities-in-different-au-from-juno" id="toc-discontinuities-in-different-au-from-juno" class="nav-link active" data-scroll-target="#discontinuities-in-different-au-from-juno">Discontinuities in different AU from Juno</a></li>
+  <li><a href="#strong-current-density-in-5au" id="toc-strong-current-density-in-5au" class="nav-link" data-scroll-target="#strong-current-density-in-5au">Strong current density in 5AU</a>
+  <ul class="collapse">
+  <li><a href="#strong-current-density-in-5au-from-derivative-method" id="toc-strong-current-density-in-5au-from-derivative-method" class="nav-link" data-scroll-target="#strong-current-density-in-5au-from-derivative-method">Strong current density in 5AU from derivative method</a></li>
+  <li><a href="#fitting" id="toc-fitting" class="nav-link" data-scroll-target="#fitting">Fitting</a></li>
+  <li><a href="#derivative" id="toc-derivative" class="nav-link" data-scroll-target="#derivative">Derivative</a></li>
+  </ul></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content page-columns page-full" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Discontinuities examples</h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<div id="cell-2" class="cell" data-execution_count="41">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="co">#| echo: false</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="co">#| output: false</span></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> juno.config <span class="im">import</span> JunoConfig</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> polars <span class="im">as</span> pl</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> datetime <span class="im">import</span> timedelta</span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> discontinuitypy.utils.plot <span class="im">import</span> plot_candidates</span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> beforerr.project <span class="im">import</span> plotsdir</span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> beforerr.matplotlib <span class="im">import</span> hide_fig_legend, hide_y_axes_label</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+<section id="discontinuities-in-different-au-from-juno" class="level2">
+<h2 class="anchored" data-anchor-id="discontinuities-in-different-au-from-juno">Discontinuities in different AU from Juno</h2>
+<p>::: {#cell-4 .cell 0=‘e’ 1=‘x’ 2=‘p’ 3=‘o’ 4=‘r’ 5=‘t’ execution_count=9}</p>
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> importlib.util <span class="im">import</span> find_spec</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> find_spec(<span class="st">"scienceplots"</span>):</span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>    <span class="im">import</span> scienceplots <span class="im">as</span> scienceplots</span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>    plt.style.use([<span class="st">"science"</span>, <span class="st">"nature"</span>, <span class="st">"notebook"</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<p>:::</p>
+<div id="cell-5" class="cell" data-execution_count="10">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>j_config <span class="op">=</span> JunoConfig().find_events()</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>events <span class="op">=</span> j_config.events.with_columns(pl.col(<span class="st">"radial_distance"</span>).<span class="bu">round</span>())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-display" data-execution_count="10">
+<div><style>
+.dataframe > thead > tr,
+.dataframe > tbody > tr {
+  text-align: right;
+  white-space: pre-wrap;
+}
+</style>
+<small>shape: (1, 92)</small>
+<table class="dataframe table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th">time</th>
+<th data-quarto-table-cell-role="th">tstart</th>
+<th data-quarto-table-cell-role="th">tstop</th>
+<th data-quarto-table-cell-role="th">t.d_end</th>
+<th data-quarto-table-cell-role="th">t.d_start</th>
+<th data-quarto-table-cell-role="th">t.d_time</th>
+<th data-quarto-table-cell-role="th">index_diff</th>
+<th data-quarto-table-cell-role="th">len</th>
+<th data-quarto-table-cell-role="th">std</th>
+<th data-quarto-table-cell-role="th">std_prev</th>
+<th data-quarto-table-cell-role="th">std_next</th>
+<th data-quarto-table-cell-role="th">index_std</th>
+<th data-quarto-table-cell-role="th">index_fluctuation</th>
+<th data-quarto-table-cell-role="th">B.after</th>
+<th data-quarto-table-cell-role="th">B.before</th>
+<th data-quarto-table-cell-role="th">b_mag</th>
+<th data-quarto-table-cell-role="th">b_n</th>
+<th data-quarto-table-cell-role="th">bn_over_b</th>
+<th data-quarto-table-cell-role="th">d_star</th>
+<th data-quarto-table-cell-role="th">db_mag</th>
+<th data-quarto-table-cell-role="th">db_over_b</th>
+<th data-quarto-table-cell-role="th">db_over_b_max</th>
+<th data-quarto-table-cell-role="th">fit.stat.chisqr</th>
+<th data-quarto-table-cell-role="th">fit.stat.rsquared</th>
+<th data-quarto-table-cell-role="th">fit.vars.amplitude</th>
+<th data-quarto-table-cell-role="th">fit.vars.c</th>
+<th data-quarto-table-cell-role="th">fit.vars.sigma</th>
+<th data-quarto-table-cell-role="th">rotation_angle</th>
+<th data-quarto-table-cell-role="th">dB_x</th>
+<th data-quarto-table-cell-role="th">dB_y</th>
+<th data-quarto-table-cell-role="th">dB_z</th>
+<th data-quarto-table-cell-role="th">dB_lmn_x</th>
+<th data-quarto-table-cell-role="th">dB_lmn_y</th>
+<th data-quarto-table-cell-role="th">dB_lmn_z</th>
+<th data-quarto-table-cell-role="th">k_x</th>
+<th data-quarto-table-cell-role="th">k_y</th>
+<th data-quarto-table-cell-role="th">k_z</th>
+<th data-quarto-table-cell-role="th">…</th>
+<th data-quarto-table-cell-role="th">B_background_y</th>
+<th data-quarto-table-cell-role="th">B_background_z</th>
+<th data-quarto-table-cell-role="th">n.before</th>
+<th data-quarto-table-cell-role="th">v_x_before</th>
+<th data-quarto-table-cell-role="th">v_y_before</th>
+<th data-quarto-table-cell-role="th">v_z_before</th>
+<th data-quarto-table-cell-role="th">n.after</th>
+<th data-quarto-table-cell-role="th">v_x_after</th>
+<th data-quarto-table-cell-role="th">v_y_after</th>
+<th data-quarto-table-cell-role="th">v_z_after</th>
+<th data-quarto-table-cell-role="th">v_l</th>
+<th data-quarto-table-cell-role="th">v_n</th>
+<th data-quarto-table-cell-role="th">v_k</th>
+<th data-quarto-table-cell-role="th">L_k</th>
+<th data-quarto-table-cell-role="th">j0_k</th>
+<th data-quarto-table-cell-role="th">ion_inertial_length</th>
+<th data-quarto-table-cell-role="th">Alfven_speed</th>
+<th data-quarto-table-cell-role="th">j_Alfven</th>
+<th data-quarto-table-cell-role="th">L_k_norm</th>
+<th data-quarto-table-cell-role="th">j0_k_norm</th>
+<th data-quarto-table-cell-role="th">v.ion.before.l</th>
+<th data-quarto-table-cell-role="th">v.ion.after.l</th>
+<th data-quarto-table-cell-role="th">B.vec.before.l</th>
+<th data-quarto-table-cell-role="th">B.vec.before.m</th>
+<th data-quarto-table-cell-role="th">B.vec.before.n</th>
+<th data-quarto-table-cell-role="th">B.vec.after.l</th>
+<th data-quarto-table-cell-role="th">B.vec.after.m</th>
+<th data-quarto-table-cell-role="th">B.vec.after.n</th>
+<th data-quarto-table-cell-role="th">v.Alfven.before</th>
+<th data-quarto-table-cell-role="th">v.Alfven.after</th>
+<th data-quarto-table-cell-role="th">v.Alfven.before.l</th>
+<th data-quarto-table-cell-role="th">v.Alfven.after.l</th>
+<th data-quarto-table-cell-role="th">n.change</th>
+<th data-quarto-table-cell-role="th">v.ion.change.l</th>
+<th data-quarto-table-cell-role="th">B.change</th>
+<th data-quarto-table-cell-role="th">v.Alfven.change</th>
+<th data-quarto-table-cell-role="th">v.Alfven.change.l</th>
+</tr>
+<tr class="odd">
+<th>datetime[ns]</th>
+<th>datetime[ns]</th>
+<th>datetime[ns]</th>
+<th>datetime[ns]</th>
+<th>datetime[ns]</th>
+<th>datetime[ns]</th>
+<th>f64</th>
+<th>u32</th>
+<th>f64</th>
+<th>f64</th>
+<th>f64</th>
+<th>f64</th>
+<th>f64</th>
+<th>f64</th>
+<th>f64</th>
+<th>f64</th>
+<th>f64</th>
+<th>f64</th>
+<th>f64</th>
+<th>f64</th>
+<th>f64</th>
+<th>f64</th>
+<th>f64</th>
+<th>f64</th>
+<th>f64</th>
+<th>f64</th>
+<th>f64</th>
+<th>f64</th>
+<th>f64</th>
+<th>f64</th>
+<th>f64</th>
+<th>f64</th>
+<th>f64</th>
+<th>f64</th>
+<th>f64</th>
+<th>f64</th>
+<th>f64</th>
+<th>…</th>
+<th>f64</th>
+<th>f64</th>
+<th>f64</th>
+<th>f64</th>
+<th>f64</th>
+<th>f64</th>
+<th>f64</th>
+<th>f64</th>
+<th>f64</th>
+<th>f64</th>
+<th>f64</th>
+<th>f64</th>
+<th>f64</th>
+<th>f64</th>
+<th>f64</th>
+<th>f64</th>
+<th>f64</th>
+<th>f64</th>
+<th>f64</th>
+<th>f64</th>
+<th>f64</th>
+<th>f64</th>
+<th>f64</th>
+<th>f64</th>
+<th>f64</th>
+<th>f64</th>
+<th>f64</th>
+<th>f64</th>
+<th>f64</th>
+<th>f64</th>
+<th>f64</th>
+<th>f64</th>
+<th>f64</th>
+<th>f64</th>
+<th>f64</th>
+<th>f64</th>
+<th>f64</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>2011-08-25 15:25:30</td>
+<td>2011-08-25 15:25:00</td>
+<td>2011-08-25 15:26:00</td>
+<td>2011-08-25 15:25:44.503</td>
+<td>2011-08-25 15:25:13.503</td>
+<td>2011-08-25 15:25:31.189079012</td>
+<td>1.28895</td>
+<td>60</td>
+<td>2.59028</td>
+<td>0.892715</td>
+<td>0.907528</td>
+<td>2.854216</td>
+<td>1.245153</td>
+<td>3.41785</td>
+<td>3.179654</td>
+<td>3.247682</td>
+<td>-0.698155</td>
+<td>-0.21497</td>
+<td>1.037873</td>
+<td>0.238196</td>
+<td>0.073343</td>
+<td>0.128613</td>
+<td>0.418534</td>
+<td>0.997957</td>
+<td>5.609134</td>
+<td>-2.6382</td>
+<td>1.351113</td>
+<td>128.296648</td>
+<td>-5.15</td>
+<td>2.05</td>
+<td>2.13</td>
+<td>-5.913075</td>
+<td>0.192051</td>
+<td>-0.510453</td>
+<td>0.491886</td>
+<td>0.705298</td>
+<td>0.510493</td>
+<td>…</td>
+<td>2.057567</td>
+<td>1.459172</td>
+<td>null</td>
+<td>null</td>
+<td>null</td>
+<td>null</td>
+<td>null</td>
+<td>null</td>
+<td>null</td>
+<td>null</td>
+<td>-396.585303</td>
+<td>169.76004</td>
+<td>200.265667</td>
+<td>541.162948</td>
+<td>4.124088</td>
+<td>134.823335</td>
+<td>41.927135</td>
+<td>19.165405</td>
+<td>4.013867</td>
+<td>0.215184</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>-2.826809</td>
+<td>-1.260165</td>
+<td>-0.728927</td>
+<td>3.086266</td>
+<td>-1.452216</td>
+<td>-0.218474</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>null</td>
+<td>NaN</td>
+<td>0.238196</td>
+<td>NaN</td>
+<td>NaN</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+<div id="cell-6" class="cell" data-execution_count="42">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>predicate <span class="op">=</span> [</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>    pl.col(<span class="st">"index_diff"</span>) <span class="op">&gt;</span> <span class="dv">1</span>,</span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>    pl.col(<span class="st">"db_over_b_max"</span>) <span class="op">&lt;</span> <span class="fl">0.3</span>,</span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>]</span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>rs <span class="op">=</span> [<span class="dv">1</span>, <span class="dv">3</span>, <span class="dv">5</span>]</span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>figure_opts <span class="op">=</span> {</span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a>    <span class="st">"figwidth"</span>: <span class="fl">3.3</span>,</span>
+<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a>    <span class="st">"figheight"</span>: <span class="dv">3</span>,</span>
+<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a>fmt <span class="op">=</span> <span class="st">"svg"</span></span>
+<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-13"><a href="#cb4-13" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> r <span class="kw">in</span> rs:</span>
+<span id="cb4-14"><a href="#cb4-14" aria-hidden="true" tabindex="-1"></a>    temp_predicate <span class="op">=</span> predicate <span class="op">+</span> [pl.col(<span class="st">"radial_distance"</span>).<span class="bu">round</span>() <span class="op">==</span> r]</span>
+<span id="cb4-15"><a href="#cb4-15" aria-hidden="true" tabindex="-1"></a>    fig, ax <span class="op">=</span> plot_candidates(</span>
+<span id="cb4-16"><a href="#cb4-16" aria-hidden="true" tabindex="-1"></a>        j_config,</span>
+<span id="cb4-17"><a href="#cb4-17" aria-hidden="true" tabindex="-1"></a>        predicate<span class="op">=</span>temp_predicate,</span>
+<span id="cb4-18"><a href="#cb4-18" aria-hidden="true" tabindex="-1"></a>        num<span class="op">=</span><span class="dv">1</span>,</span>
+<span id="cb4-19"><a href="#cb4-19" aria-hidden="true" tabindex="-1"></a>        random<span class="op">=</span><span class="va">False</span>,</span>
+<span id="cb4-20"><a href="#cb4-20" aria-hidden="true" tabindex="-1"></a>        add_ids_properties<span class="op">=</span><span class="va">False</span>,</span>
+<span id="cb4-21"><a href="#cb4-21" aria-hidden="true" tabindex="-1"></a>        add_timebars<span class="op">=</span><span class="va">False</span>,</span>
+<span id="cb4-22"><a href="#cb4-22" aria-hidden="true" tabindex="-1"></a>    )[<span class="dv">0</span>]</span>
+<span id="cb4-23"><a href="#cb4-23" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb4-24"><a href="#cb4-24" aria-hidden="true" tabindex="-1"></a>    path <span class="op">=</span> plotsdir() <span class="op">/</span> <span class="st">"examples"</span> <span class="op">/</span> <span class="ss">f"juno_id_example_r=</span><span class="sc">{</span>r<span class="sc">}</span><span class="ss">.</span><span class="sc">{</span>fmt<span class="sc">}</span><span class="ss">"</span></span>
+<span id="cb4-25"><a href="#cb4-25" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb4-26"><a href="#cb4-26" aria-hidden="true" tabindex="-1"></a>    hide_fig_legend(fig)</span>
+<span id="cb4-27"><a href="#cb4-27" aria-hidden="true" tabindex="-1"></a>    hide_y_axes_label(ax)</span>
+<span id="cb4-28"><a href="#cb4-28" aria-hidden="true" tabindex="-1"></a>    fig.<span class="bu">set</span>(<span class="op">**</span>figure_opts)</span>
+<span id="cb4-29"><a href="#cb4-29" aria-hidden="true" tabindex="-1"></a>    fig.savefig(path)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stderr">
+<pre><code>2024-07-12 12:09:11.502 | INFO     | discontinuitypy.utils.plot:plot_candidates:265 - Candidates indices: [0]
+12-Jul-24 12:09:12: UserWarning: Converting non-nanosecond precision datetime values to nanosecond precision. This behavior can eventually be relaxed in xarray, as it is an artifact from pandas which is now beginning to support non-nanosecond precision values. This warning is caused by passing non-nanosecond np.datetime64 or np.timedelta64 values to the DataArray or Variable constructor; it can be silenced by converting the values to nanosecond precision ahead of time.
+
+2024-07-12 12:09:12.312 | INFO     | discontinuitypy.utils.plot:plot_candidates:265 - Candidates indices: [66480]
+12-Jul-24 12:09:12: UserWarning: Converting non-nanosecond precision datetime values to nanosecond precision. This behavior can eventually be relaxed in xarray, as it is an artifact from pandas which is now beginning to support non-nanosecond precision values. This warning is caused by passing non-nanosecond np.datetime64 or np.timedelta64 values to the DataArray or Variable constructor; it can be silenced by converting the values to nanosecond precision ahead of time.
+
+2024-07-12 12:09:12.867 | INFO     | discontinuitypy.utils.plot:plot_candidates:265 - Candidates indices: [78081]
+12-Jul-24 12:09:13: UserWarning: Converting non-nanosecond precision datetime values to nanosecond precision. This behavior can eventually be relaxed in xarray, as it is an artifact from pandas which is now beginning to support non-nanosecond precision values. This warning is caused by passing non-nanosecond np.datetime64 or np.timedelta64 values to the DataArray or Variable constructor; it can be silenced by converting the values to nanosecond precision ahead of time.
+</code></pre>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><a href="11_examples_files/figure-html/cell-6-output-2.png" class="lightbox" data-gallery="quarto-lightbox-gallery-1"><img src="11_examples_files/figure-html/cell-6-output-2.png" class="img-fluid figure-img"></a></p>
+</figure>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><a href="11_examples_files/figure-html/cell-6-output-3.png" class="lightbox" data-gallery="quarto-lightbox-gallery-2"><img src="11_examples_files/figure-html/cell-6-output-3.png" class="img-fluid figure-img"></a></p>
+</figure>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><a href="11_examples_files/figure-html/cell-6-output-4.png" class="lightbox" data-gallery="quarto-lightbox-gallery-3"><img src="11_examples_files/figure-html/cell-6-output-4.png" class="img-fluid figure-img"></a></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="strong-current-density-in-5au" class="level1 page-columns page-full">
+<h1>Strong current density in 5AU</h1>
+<section id="strong-current-density-in-5au-from-derivative-method" class="level2 page-columns page-full">
+<h2 class="anchored" data-anchor-id="strong-current-density-in-5au-from-derivative-method">Strong current density in 5AU from derivative method</h2>
+<p>Large derivative current density but small when using fitting</p>
+<div id="cell-9" class="cell" data-execution_count="65">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>j_config <span class="op">=</span> JunoConfig(ts<span class="op">=</span><span class="fl">0.125</span>)</span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>j_fit_config <span class="op">=</span> JunoConfig(ts<span class="op">=</span><span class="fl">0.125</span>).load()</span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>j_der_config <span class="op">=</span> JunoConfig(ts<span class="op">=</span><span class="fl">0.125</span>, method<span class="op">=</span><span class="st">'derivative'</span>).load()</span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(</span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a>    <span class="bu">len</span>(j_fit_config.events),</span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a>    <span class="bu">len</span>(j_der_config.events)</span>
+<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a>j_config.events <span class="op">=</span> j_fit_config.events.join(j_der_config.events, on<span class="op">=</span><span class="st">'time'</span>).with_row_index()</span>
+<span id="cb6-11"><a href="#cb6-11" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="bu">len</span>(j_config.events))</span>
+<span id="cb6-12"><a href="#cb6-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-13"><a href="#cb6-13" aria-hidden="true" tabindex="-1"></a>j_config.events <span class="op">=</span> j_config.events.<span class="bu">filter</span>(</span>
+<span id="cb6-14"><a href="#cb6-14" aria-hidden="true" tabindex="-1"></a>    pl.col(<span class="st">"radial_distance"</span>) <span class="op">&gt;</span> <span class="dv">5</span>,</span>
+<span id="cb6-15"><a href="#cb6-15" aria-hidden="true" tabindex="-1"></a>    pl.col(<span class="st">"j0_k_right"</span>) <span class="op">&gt;</span> <span class="dv">3</span></span>
+<span id="cb6-16"><a href="#cb6-16" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb6-17"><a href="#cb6-17" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="bu">len</span>(j_config.events))</span>
+<span id="cb6-18"><a href="#cb6-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-19"><a href="#cb6-19" aria-hidden="true" tabindex="-1"></a><span class="co"># j_fit_config.events.join(j_der_config.events, on='time')</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>72656 94095
+156532
+1168</code></pre>
+</div>
+</div>
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>indices <span class="op">=</span> [<span class="dv">153101</span>, <span class="dv">156356</span>, <span class="dv">156046</span>]</span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>offset <span class="op">=</span> timedelta(seconds<span class="op">=</span><span class="dv">0</span>)</span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>figs <span class="op">=</span> j_config.plot_candidates(</span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>    indices<span class="op">=</span>indices,</span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a>    offset<span class="op">=</span>offset,</span>
+<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a>    add_plasma_params<span class="op">=</span><span class="va">True</span>,</span>
+<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a>    plot_current_density<span class="op">=</span><span class="va">True</span>,</span>
+<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a>    plot_fit_data<span class="op">=</span><span class="va">True</span>,</span>
+<span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stderr">
+<pre><code>04-Mar-24 15:57:37: deriv_data was applied to: fgm_rot_tot_0-der
+04-Mar-24 15:57:37: deriv_data was applied to: fgm_rot_tot_0-der
+04-Mar-24 15:57:38: deriv_data was applied to: fgm_rot_tot_0-der</code></pre>
+</div>
+<div id="cell-10" class="cell column-screen quarto-layout-panel" data-layout-ncol="3" data-execution_count="78">
+<div class="quarto-layout-row">
+<div class="quarto-layout-cell" style="flex-basis: 33.3%;justify-content: center;">
+<p><a href="11_examples_files/figure-html/cell-8-output-2.png" class="lightbox" data-gallery="quarto-lightbox-gallery-4"><img src="11_examples_files/figure-html/cell-8-output-2.png" class="img-fluid"></a></p>
+</div>
+<div class="quarto-layout-cell" style="flex-basis: 33.3%;justify-content: center;">
+<p><a href="11_examples_files/figure-html/cell-8-output-3.png" class="lightbox" data-gallery="quarto-lightbox-gallery-5"><img src="11_examples_files/figure-html/cell-8-output-3.png" class="img-fluid"></a></p>
+</div>
+<div class="quarto-layout-cell" style="flex-basis: 33.3%;justify-content: center;">
+<p><a href="11_examples_files/figure-html/cell-8-output-4.png" class="lightbox" data-gallery="quarto-lightbox-gallery-6"><img src="11_examples_files/figure-html/cell-8-output-4.png" class="img-fluid"></a></p>
+</div>
+</div>
+</div>
+<section id="random-picking" class="level4 page-columns page-full">
+<h4 class="anchored" data-anchor-id="random-picking">Random picking</h4>
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>offset <span class="op">=</span> timedelta(seconds<span class="op">=</span><span class="dv">0</span>)</span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>figs <span class="op">=</span> j_config.plot_candidates(</span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>    num<span class="op">=</span><span class="dv">3</span>,</span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a>    add_plasma_params<span class="op">=</span><span class="va">True</span>,</span>
+<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a>    offset<span class="op">=</span>offset,</span>
+<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a>    plot_fit_data<span class="op">=</span><span class="va">True</span>,</span>
+<span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a>    plot_current_density<span class="op">=</span><span class="va">True</span>,</span>
+<span id="cb10-8"><a href="#cb10-8" aria-hidden="true" tabindex="-1"></a>    start_col <span class="op">=</span> <span class="st">"tstart"</span>,</span>
+<span id="cb10-9"><a href="#cb10-9" aria-hidden="true" tabindex="-1"></a>    end_col <span class="op">=</span> <span class="st">"tstop"</span></span>
+<span id="cb10-10"><a href="#cb10-10" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stderr">
+<pre><code>2024-03-04 15:57:07.447 | INFO     | discontinuitypy.datasets:plot_candidates:245 - Candidates indices: [156049 156046 154208]
+04-Mar-24 15:57:07: deriv_data was applied to: fgm_rot_tot_0-der
+04-Mar-24 15:57:08: deriv_data was applied to: fgm_rot_tot_0-der
+04-Mar-24 15:57:08: deriv_data was applied to: fgm_rot_tot_0-der</code></pre>
+</div>
+<div id="cell-12" class="cell column-screen quarto-layout-panel" data-layout-ncol="3" data-execution_count="77">
+<div class="quarto-layout-row">
+<div class="quarto-layout-cell" style="flex-basis: 33.3%;justify-content: center;">
+<p><a href="11_examples_files/figure-html/cell-9-output-2.png" class="lightbox" data-gallery="quarto-lightbox-gallery-7"><img src="11_examples_files/figure-html/cell-9-output-2.png" class="img-fluid"></a></p>
+</div>
+<div class="quarto-layout-cell" style="flex-basis: 33.3%;justify-content: center;">
+<p><a href="11_examples_files/figure-html/cell-9-output-3.png" class="lightbox" data-gallery="quarto-lightbox-gallery-8"><img src="11_examples_files/figure-html/cell-9-output-3.png" class="img-fluid"></a></p>
+</div>
+<div class="quarto-layout-cell" style="flex-basis: 33.3%;justify-content: center;">
+<p><a href="11_examples_files/figure-html/cell-9-output-4.png" class="lightbox" data-gallery="quarto-lightbox-gallery-9"><img src="11_examples_files/figure-html/cell-9-output-4.png" class="img-fluid"></a></p>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="fitting" class="level2 page-columns page-full">
+<h2 class="anchored" data-anchor-id="fitting">Fitting</h2>
+<div id="cell-14" class="cell" data-execution_count="4">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>j_config <span class="op">=</span> JunoConfig(ts<span class="op">=</span><span class="fl">0.125</span>).load()</span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>j_config.events <span class="op">=</span> j_config.events.with_row_index().<span class="bu">filter</span>(</span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>    pl.col(<span class="st">"radial_distance"</span>) <span class="op">&gt;</span> <span class="dv">5</span>,</span>
+<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a>    <span class="co"># pl.col("j0_k") &gt; 2</span></span>
+<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>indices <span class="op">=</span> [<span class="dv">72643</span>, <span class="dv">72280</span>, <span class="dv">69537</span>]</span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>offset <span class="op">=</span> timedelta(seconds<span class="op">=</span><span class="dv">2</span>)</span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>figs <span class="op">=</span> j_config.plot_candidates(</span>
+<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a>    indices<span class="op">=</span>indices,</span>
+<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a>    offset<span class="op">=</span>offset,</span>
+<span id="cb13-6"><a href="#cb13-6" aria-hidden="true" tabindex="-1"></a>    add_plasma_params<span class="op">=</span><span class="va">True</span>,</span>
+<span id="cb13-7"><a href="#cb13-7" aria-hidden="true" tabindex="-1"></a>    plot_current_density<span class="op">=</span><span class="va">True</span>,</span>
+<span id="cb13-8"><a href="#cb13-8" aria-hidden="true" tabindex="-1"></a>    plot_fit_data<span class="op">=</span><span class="va">True</span>,</span>
+<span id="cb13-9"><a href="#cb13-9" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stderr">
+<pre><code>04-Mar-24 12:01:19: PydanticDeprecatedSince20: Support for class-based `config` is deprecated, use ConfigDict instead. Deprecated in Pydantic V2.0 to be removed in V3.0. See Pydantic V2 Migration Guide at https://errors.pydantic.dev/2.6/migration/
+
+04-Mar-24 12:01:24: deriv_data was applied to: fgm_rot_tot_0-der
+04-Mar-24 12:01:25: deriv_data was applied to: fgm_rot_tot_0-der
+04-Mar-24 12:01:25: deriv_data was applied to: fgm_rot_tot_0-der</code></pre>
+</div>
+<div id="cell-15" class="cell column-screen quarto-layout-panel" data-layout-ncol="3" data-execution_count="48">
+<div class="quarto-layout-row">
+<div class="quarto-layout-cell" style="flex-basis: 33.3%;justify-content: center;">
+<p><a href="11_examples_files/figure-html/cell-11-output-2.png" class="lightbox" data-gallery="quarto-lightbox-gallery-10"><img src="11_examples_files/figure-html/cell-11-output-2.png" class="img-fluid"></a></p>
+</div>
+<div class="quarto-layout-cell" style="flex-basis: 33.3%;justify-content: center;">
+<p><a href="11_examples_files/figure-html/cell-11-output-3.png" class="lightbox" data-gallery="quarto-lightbox-gallery-11"><img src="11_examples_files/figure-html/cell-11-output-3.png" class="img-fluid"></a></p>
+</div>
+<div class="quarto-layout-cell" style="flex-basis: 33.3%;justify-content: center;">
+<p><a href="11_examples_files/figure-html/cell-11-output-4.png" class="lightbox" data-gallery="quarto-lightbox-gallery-12"><img src="11_examples_files/figure-html/cell-11-output-4.png" class="img-fluid"></a></p>
+</div>
+</div>
+</div>
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>offset <span class="op">=</span> timedelta(seconds<span class="op">=</span><span class="dv">2</span>)</span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>figs <span class="op">=</span> j_config.plot_candidates(</span>
+<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>    num<span class="op">=</span><span class="dv">3</span>,</span>
+<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a>    add_plasma_params<span class="op">=</span><span class="va">True</span>,</span>
+<span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a>    offset<span class="op">=</span>offset,</span>
+<span id="cb15-6"><a href="#cb15-6" aria-hidden="true" tabindex="-1"></a>    plot_fit_data<span class="op">=</span><span class="va">True</span>,</span>
+<span id="cb15-7"><a href="#cb15-7" aria-hidden="true" tabindex="-1"></a>    plot_current_density<span class="op">=</span><span class="va">True</span>,</span>
+<span id="cb15-8"><a href="#cb15-8" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stderr">
+<pre><code>2024-03-04 14:41:02.337 | INFO     | discontinuitypy.datasets:plot_candidates:243 - Candidates indices: [71263 71875 71222]
+04-Mar-24 14:41:02: deriv_data was applied to: fgm_rot_tot_0-der
+04-Mar-24 14:41:03: deriv_data was applied to: fgm_rot_tot_0-der
+04-Mar-24 14:41:03: deriv_data was applied to: fgm_rot_tot_0-der</code></pre>
+</div>
+<div id="cell-16" class="cell column-screen quarto-layout-panel" data-layout-ncol="3" data-execution_count="12">
+<div class="quarto-layout-row">
+<div class="quarto-layout-cell" style="flex-basis: 33.3%;justify-content: center;">
+<p><a href="11_examples_files/figure-html/cell-12-output-2.png" class="lightbox" data-gallery="quarto-lightbox-gallery-13"><img src="11_examples_files/figure-html/cell-12-output-2.png" class="img-fluid"></a></p>
+</div>
+<div class="quarto-layout-cell" style="flex-basis: 33.3%;justify-content: center;">
+<p><a href="11_examples_files/figure-html/cell-12-output-3.png" class="lightbox" data-gallery="quarto-lightbox-gallery-14"><img src="11_examples_files/figure-html/cell-12-output-3.png" class="img-fluid"></a></p>
+</div>
+<div class="quarto-layout-cell" style="flex-basis: 33.3%;justify-content: center;">
+<p><a href="11_examples_files/figure-html/cell-12-output-4.png" class="lightbox" data-gallery="quarto-lightbox-gallery-15"><img src="11_examples_files/figure-html/cell-12-output-4.png" class="img-fluid"></a></p>
+</div>
+</div>
+</div>
+</section>
+<section id="derivative" class="level2 page-columns page-full">
+<h2 class="anchored" data-anchor-id="derivative">Derivative</h2>
+<div id="cell-18" class="cell" data-execution_count="21">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>j_config <span class="op">=</span> JunoConfig(ts<span class="op">=</span><span class="fl">0.125</span>, method<span class="op">=</span><span class="st">'derivative'</span>).load()</span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>j_config.events <span class="op">=</span> j_config.events.with_row_index().<span class="bu">filter</span>(</span>
+<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a>    pl.col(<span class="st">"radial_distance"</span>) <span class="op">&gt;</span> <span class="dv">5</span>,</span>
+<span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a>    pl.col(<span class="st">"j0_k"</span>) <span class="op">&gt;</span> <span class="dv">4</span></span>
+<span id="cb17-5"><a href="#cb17-5" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stderr">
+<pre><code>02-Mar-24 16:24:50: PydanticDeprecatedSince20: Support for class-based `config` is deprecated, use ConfigDict instead. Deprecated in Pydantic V2.0 to be removed in V3.0. See Pydantic V2 Migration Guide at https://errors.pydantic.dev/2.6/migration/
+</code></pre>
+</div>
+</div>
+<div id="cell-19" class="cell" data-execution_count="37">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>offset  <span class="op">=</span> timedelta(seconds<span class="op">=</span><span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>indices<span class="op">=</span>[<span class="dv">91384</span>, <span class="dv">93825</span>, <span class="dv">93618</span>, <span class="dv">92389</span>]</span>
+<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a>figs <span class="op">=</span> j_config.plot_candidates(indices<span class="op">=</span>indices, add_plasma_params<span class="op">=</span><span class="va">True</span>, offset<span class="op">=</span>offset, plot_current_density<span class="op">=</span><span class="va">True</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stderr">
+<pre><code>02-Mar-24 16:52:58: deriv_data was applied to: fgm_rot_tot_0-der
+02-Mar-24 16:52:58: deriv_data was applied to: fgm_rot_tot_0-der
+02-Mar-24 16:52:58: deriv_data was applied to: fgm_rot_tot_0-der
+02-Mar-24 16:52:59: deriv_data was applied to: fgm_rot_tot_0-der</code></pre>
+</div>
+<div id="cell-20" class="cell column-screen quarto-layout-panel" data-layout-ncol="3" data-execution_count="33">
+<div class="quarto-layout-row">
+<div class="quarto-layout-cell" style="flex-basis: 33.3%;justify-content: center;">
+<p><a href="11_examples_files/figure-html/cell-15-output-2.png" class="lightbox" data-gallery="quarto-lightbox-gallery-16"><img src="11_examples_files/figure-html/cell-15-output-2.png" class="img-fluid"></a></p>
+</div>
+<div class="quarto-layout-cell" style="flex-basis: 33.3%;justify-content: center;">
+<p><a href="11_examples_files/figure-html/cell-15-output-3.png" class="lightbox" data-gallery="quarto-lightbox-gallery-17"><img src="11_examples_files/figure-html/cell-15-output-3.png" class="img-fluid"></a></p>
+</div>
+<div class="quarto-layout-cell" style="flex-basis: 33.3%;justify-content: center;">
+<p><a href="11_examples_files/figure-html/cell-15-output-4.png" class="lightbox" data-gallery="quarto-lightbox-gallery-18"><img src="11_examples_files/figure-html/cell-15-output-4.png" class="img-fluid"></a></p>
+</div>
+</div>
+<div class="quarto-layout-row">
+<div class="quarto-layout-cell" style="flex-basis: 33.3%;justify-content: center;">
+<p><a href="11_examples_files/figure-html/cell-15-output-5.png" class="lightbox" data-gallery="quarto-lightbox-gallery-19"><img src="11_examples_files/figure-html/cell-15-output-5.png" class="img-fluid"></a></p>
+</div>
+</div>
+</div>
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a>figs <span class="op">=</span> j_config.plot_candidates(num<span class="op">=</span><span class="dv">3</span>, add_plasma_params<span class="op">=</span><span class="va">True</span>, offset<span class="op">=</span>offset, plot_current_density<span class="op">=</span><span class="va">True</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stderr">
+<pre><code>2024-03-02 16:53:51.076 | INFO     | discontinuitypy.datasets:plot_candidates:243 - Candidates indices: [90260 92835 92303]
+02-Mar-24 16:53:51: deriv_data was applied to: fgm_rot_tot_0-der
+02-Mar-24 16:53:51: deriv_data was applied to: fgm_rot_tot_0-der
+02-Mar-24 16:53:52: deriv_data was applied to: fgm_rot_tot_0-der</code></pre>
+</div>
+<div id="cell-21" class="cell column-screen quarto-layout-panel" data-layout-ncol="3" data-execution_count="39">
+<div class="quarto-layout-row">
+<div class="quarto-layout-cell" style="flex-basis: 33.3%;justify-content: center;">
+<p><a href="11_examples_files/figure-html/cell-16-output-2.png" class="lightbox" data-gallery="quarto-lightbox-gallery-20"><img src="11_examples_files/figure-html/cell-16-output-2.png" class="img-fluid"></a></p>
+</div>
+<div class="quarto-layout-cell" style="flex-basis: 33.3%;justify-content: center;">
+<p><a href="11_examples_files/figure-html/cell-16-output-3.png" class="lightbox" data-gallery="quarto-lightbox-gallery-21"><img src="11_examples_files/figure-html/cell-16-output-3.png" class="img-fluid"></a></p>
+</div>
+<div class="quarto-layout-cell" style="flex-basis: 33.3%;justify-content: center;">
+<p><a href="11_examples_files/figure-html/cell-16-output-4.png" class="lightbox" data-gallery="quarto-lightbox-gallery-22"><img src="11_examples_files/figure-html/cell-16-output-4.png" class="img-fluid"></a></p>
+</div>
+</div>
+</div>
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a>offset  <span class="op">=</span> timedelta(seconds<span class="op">=</span><span class="dv">30</span>)</span>
+<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a>figs <span class="op">=</span> j_config.plot_candidates(num<span class="op">=</span><span class="dv">15</span>, add_plasma_params<span class="op">=</span><span class="va">True</span>, offset<span class="op">=</span>offset)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stderr">
+<pre><code>2024-03-02 16:53:24.688 | INFO     | discontinuitypy.datasets:plot_candidates:243 - Candidates indices: [92436 90663 92303 90640 92616 93261 93834 94014 94032 93294 92471 92343
+ 92972 93732 92478]</code></pre>
+</div>
+<div id="cell-22" class="cell column-screen quarto-layout-panel" data-layout-ncol="3" data-execution_count="35">
+<div class="quarto-layout-row">
+<div class="cell-output cell-output-error quarto-layout-cell" style="flex-basis: 33.3%;justify-content: flex-start;">
+<div class="ansi-escaped-output">
+<pre><span class="ansi-red-fg">---------------------------------------------------------------------------</span>
+<span class="ansi-red-fg">KeyboardInterrupt</span>                         Traceback (most recent call last)
+Cell <span class="ansi-green-fg">In[35], line 4</span>
+<span class="ansi-green-fg ansi-bold">      1</span> <span style="font-style:italic;color:rgb(95,135,135)">#| layout-ncol: 3</span>
+<span class="ansi-green-fg ansi-bold">      2</span> <span style="font-style:italic;color:rgb(95,135,135)">#| column: screen</span>
+<span class="ansi-green-fg ansi-bold">      3</span> offset  <span style="color:rgb(98,98,98)">=</span> timedelta(seconds<span style="color:rgb(98,98,98)">=</span><span style="color:rgb(98,98,98)">30</span>)
+<span class="ansi-green-fg">----&gt; 4</span> figs <span style="color:rgb(98,98,98)">=</span> <span class="ansi-yellow-bg">j_config</span><span style="color:rgb(98,98,98)" class="ansi-yellow-bg">.</span><span class="ansi-yellow-bg">plot_candidates</span><span class="ansi-yellow-bg">(</span><span class="ansi-yellow-bg">num</span><span style="color:rgb(98,98,98)" class="ansi-yellow-bg">=</span><span style="color:rgb(98,98,98)" class="ansi-yellow-bg">15</span><span class="ansi-yellow-bg">,</span><span class="ansi-yellow-bg"> </span><span class="ansi-yellow-bg">add_plasma_params</span><span style="color:rgb(98,98,98)" class="ansi-yellow-bg">=</span><span style="font-weight:bold;color:rgb(0,135,0)" class="ansi-yellow-bg">True</span><span class="ansi-yellow-bg">,</span><span class="ansi-yellow-bg"> </span><span class="ansi-yellow-bg">offset</span><span style="color:rgb(98,98,98)" class="ansi-yellow-bg">=</span><span class="ansi-yellow-bg">offset</span><span class="ansi-yellow-bg">)</span>
+
+File <span class="ansi-green-fg">~/micromamba/envs/psp_conjunction/lib/python3.11/site-packages/discontinuitypy/datasets.py:245</span>, in <span class="ansi-cyan-fg">IDsDataset.plot_candidates</span><span class="ansi-blue-fg">(self, indices, num, random, predicate, **kwargs)</span>
+<span class="ansi-green-fg ansi-bold">    242</span>         indices <span style="color:rgb(98,98,98)">=</span> indices<span style="color:rgb(98,98,98)">.</span>head(num)<span style="color:rgb(98,98,98)">.</span>to_numpy()
+<span class="ansi-green-fg ansi-bold">    243</span>     logger<span style="color:rgb(98,98,98)">.</span>info(<span style="color:rgb(175,0,0)">f</span><span style="color:rgb(175,0,0)">"</span><span style="color:rgb(175,0,0)">Candidates indices: </span><span style="font-weight:bold;color:rgb(175,95,135)">{</span>indices<span style="font-weight:bold;color:rgb(175,95,135)">}</span><span style="color:rgb(175,0,0)">"</span>)
+<span class="ansi-green-fg">--&gt; 245</span> <span style="font-weight:bold;color:rgb(0,135,0)">return</span> <span class="ansi-yellow-bg">[</span><span style="color:rgb(0,135,0)" class="ansi-yellow-bg">self</span><span style="color:rgb(98,98,98)" class="ansi-yellow-bg">.</span><span class="ansi-yellow-bg">plot_candidate</span><span class="ansi-yellow-bg">(</span><span class="ansi-yellow-bg">index</span><span style="color:rgb(98,98,98)" class="ansi-yellow-bg">=</span><span class="ansi-yellow-bg">i</span><span class="ansi-yellow-bg">,</span><span class="ansi-yellow-bg"> </span><span style="color:rgb(98,98,98)" class="ansi-yellow-bg">*</span><span style="color:rgb(98,98,98)" class="ansi-yellow-bg">*</span><span class="ansi-yellow-bg">kwargs</span><span class="ansi-yellow-bg">)</span><span class="ansi-yellow-bg"> </span><span style="font-weight:bold;color:rgb(0,135,0)" class="ansi-yellow-bg">for</span><span class="ansi-yellow-bg"> </span><span class="ansi-yellow-bg">i</span><span class="ansi-yellow-bg"> </span><span style="font-weight:bold;color:rgb(175,0,255)" class="ansi-yellow-bg">in</span><span class="ansi-yellow-bg"> </span><span class="ansi-yellow-bg">indices</span><span class="ansi-yellow-bg">]</span>
+
+File <span class="ansi-green-fg">~/micromamba/envs/psp_conjunction/lib/python3.11/site-packages/discontinuitypy/datasets.py:245</span>, in <span class="ansi-cyan-fg">&lt;listcomp&gt;</span><span class="ansi-blue-fg">(.0)</span>
+<span class="ansi-green-fg ansi-bold">    242</span>         indices <span style="color:rgb(98,98,98)">=</span> indices<span style="color:rgb(98,98,98)">.</span>head(num)<span style="color:rgb(98,98,98)">.</span>to_numpy()
+<span class="ansi-green-fg ansi-bold">    243</span>     logger<span style="color:rgb(98,98,98)">.</span>info(<span style="color:rgb(175,0,0)">f</span><span style="color:rgb(175,0,0)">"</span><span style="color:rgb(175,0,0)">Candidates indices: </span><span style="font-weight:bold;color:rgb(175,95,135)">{</span>indices<span style="font-weight:bold;color:rgb(175,95,135)">}</span><span style="color:rgb(175,0,0)">"</span>)
+<span class="ansi-green-fg">--&gt; 245</span> <span style="font-weight:bold;color:rgb(0,135,0)">return</span> [<span style="color:rgb(0,135,0)" class="ansi-yellow-bg">self</span><span style="color:rgb(98,98,98)" class="ansi-yellow-bg">.</span><span class="ansi-yellow-bg">plot_candidate</span><span class="ansi-yellow-bg">(</span><span class="ansi-yellow-bg">index</span><span style="color:rgb(98,98,98)" class="ansi-yellow-bg">=</span><span class="ansi-yellow-bg">i</span><span class="ansi-yellow-bg">,</span><span class="ansi-yellow-bg"> </span><span style="color:rgb(98,98,98)" class="ansi-yellow-bg">*</span><span style="color:rgb(98,98,98)" class="ansi-yellow-bg">*</span><span class="ansi-yellow-bg">kwargs</span><span class="ansi-yellow-bg">)</span> <span style="font-weight:bold;color:rgb(0,135,0)">for</span> i <span style="font-weight:bold;color:rgb(175,0,255)">in</span> indices]
+
+File <span class="ansi-green-fg">~/micromamba/envs/psp_conjunction/lib/python3.11/site-packages/discontinuitypy/datasets.py:224</span>, in <span class="ansi-cyan-fg">IDsDataset.plot_candidate</span><span class="ansi-blue-fg">(self, event, index, **kwargs)</span>
+<span class="ansi-green-fg ansi-bold">    222</span> <span style="font-weight:bold;color:rgb(0,135,0)">if</span> event <span style="font-weight:bold;color:rgb(175,0,255)">is</span> <span style="font-weight:bold;color:rgb(0,135,0)">None</span>:
+<span class="ansi-green-fg ansi-bold">    223</span>     event <span style="color:rgb(98,98,98)">=</span> <span style="color:rgb(0,135,0)">self</span><span style="color:rgb(98,98,98)">.</span>get_event(index)
+<span class="ansi-green-fg">--&gt; 224</span> data <span style="color:rgb(98,98,98)">=</span> <span style="color:rgb(0,135,0)" class="ansi-yellow-bg">self</span><span style="color:rgb(98,98,98)" class="ansi-yellow-bg">.</span><span class="ansi-yellow-bg">get_event_data</span><span class="ansi-yellow-bg">(</span><span class="ansi-yellow-bg">event</span><span class="ansi-yellow-bg">,</span><span class="ansi-yellow-bg"> </span><span style="color:rgb(98,98,98)" class="ansi-yellow-bg">*</span><span style="color:rgb(98,98,98)" class="ansi-yellow-bg">*</span><span class="ansi-yellow-bg">kwargs</span><span class="ansi-yellow-bg">)</span>
+<span class="ansi-green-fg ansi-bold">    226</span> <span style="font-weight:bold;color:rgb(0,135,0)">return</span> _plot_candidate(event, data, <span style="color:rgb(98,98,98)">*</span><span style="color:rgb(98,98,98)">*</span>kwargs)
+
+File <span class="ansi-green-fg">~/micromamba/envs/psp_conjunction/lib/python3.11/site-packages/discontinuitypy/datasets.py:100</span>, in <span class="ansi-cyan-fg">IdsEvents.get_event_data</span><span class="ansi-blue-fg">(self, event, offset, **kwargs)</span>
+<span class="ansi-green-fg ansi-bold">     97</span> end <span style="color:rgb(98,98,98)">=</span> event[<span style="color:rgb(175,0,0)">"</span><span style="color:rgb(175,0,0)">t.d_end</span><span style="color:rgb(175,0,0)">"</span>] <span style="color:rgb(98,98,98)">+</span> offset
+<span class="ansi-green-fg ansi-bold">     99</span> _data <span style="color:rgb(98,98,98)">=</span> <span style="color:rgb(0,135,0)">self</span><span style="color:rgb(98,98,98)">.</span>data<span style="color:rgb(98,98,98)">.</span>filter(pl<span style="color:rgb(98,98,98)">.</span>col(<span style="color:rgb(175,0,0)">"</span><span style="color:rgb(175,0,0)">time</span><span style="color:rgb(175,0,0)">"</span>)<span style="color:rgb(98,98,98)">.</span>is_between(start, end))
+<span class="ansi-green-fg">--&gt; 100</span> <span style="font-weight:bold;color:rgb(0,135,0)">return</span> <span class="ansi-yellow-bg">df2ts</span><span class="ansi-yellow-bg">(</span><span class="ansi-yellow-bg">_data</span><span class="ansi-yellow-bg">,</span><span class="ansi-yellow-bg"> </span><span style="color:rgb(0,135,0)" class="ansi-yellow-bg">self</span><span style="color:rgb(98,98,98)" class="ansi-yellow-bg">.</span><span class="ansi-yellow-bg">bcols</span><span class="ansi-yellow-bg">)</span>
+
+File <span class="ansi-green-fg">~/micromamba/envs/psp_conjunction/lib/python3.11/site-packages/discontinuitypy/utils/basic.py:292</span>, in <span class="ansi-cyan-fg">df2ts</span><span class="ansi-blue-fg">(df, cols, time_col, attrs, name)</span>
+<span class="ansi-green-fg ansi-bold">    289</span>         cols <span style="color:rgb(98,98,98)">=</span> df<span style="color:rgb(98,98,98)">.</span>columns<span style="color:rgb(98,98,98)">.</span>tolist()
+<span class="ansi-green-fg ansi-bold">    291</span> <span style="font-weight:bold;color:rgb(0,135,0)">if</span> <span style="color:rgb(0,135,0)">isinstance</span>(df, pl<span style="color:rgb(98,98,98)">.</span>LazyFrame):
+<span class="ansi-green-fg">--&gt; 292</span>     df <span style="color:rgb(98,98,98)">=</span> <span class="ansi-yellow-bg">df</span><span style="color:rgb(98,98,98)" class="ansi-yellow-bg">.</span><span class="ansi-yellow-bg">collect</span><span class="ansi-yellow-bg">(</span><span class="ansi-yellow-bg">)</span>
+<span class="ansi-green-fg ansi-bold">    294</span> <span style="font-style:italic;color:rgb(95,135,135)"># Prepare data</span>
+<span class="ansi-green-fg ansi-bold">    295</span> data <span style="color:rgb(98,98,98)">=</span> df[cols]<span style="color:rgb(98,98,98)">.</span>to_numpy()
+
+File <span class="ansi-green-fg">~/micromamba/envs/psp_conjunction/lib/python3.11/site-packages/polars/lazyframe/frame.py:1940</span>, in <span class="ansi-cyan-fg">LazyFrame.collect</span><span class="ansi-blue-fg">(self, type_coercion, predicate_pushdown, projection_pushdown, simplify_expression, slice_pushdown, comm_subplan_elim, comm_subexpr_elim, no_optimization, streaming, background, _eager)</span>
+<span class="ansi-green-fg ansi-bold">   1937</span> <span style="font-weight:bold;color:rgb(0,135,0)">if</span> background:
+<span class="ansi-green-fg ansi-bold">   1938</span>     <span style="font-weight:bold;color:rgb(0,135,0)">return</span> InProcessQuery(ldf<span style="color:rgb(98,98,98)">.</span>collect_concurrently())
+<span class="ansi-green-fg">-&gt; 1940</span> <span style="font-weight:bold;color:rgb(0,135,0)">return</span> wrap_df(ldf<span style="color:rgb(98,98,98)">.</span>collect())
+
+<span class="ansi-red-fg">KeyboardInterrupt</span>: </pre>
+</div>
+</div>
+<div class="quarto-layout-cell" style="flex-basis: 33.3%;justify-content: center;">
+<p><a href="11_examples_files/figure-html/cell-17-output-3.png" class="lightbox" data-gallery="quarto-lightbox-gallery-23"><img src="11_examples_files/figure-html/cell-17-output-3.png" class="img-fluid"></a></p>
+</div>
+<div class="quarto-layout-cell" style="flex-basis: 33.3%;justify-content: center;">
+<p><a href="11_examples_files/figure-html/cell-17-output-4.png" class="lightbox" data-gallery="quarto-lightbox-gallery-24"><img src="11_examples_files/figure-html/cell-17-output-4.png" class="img-fluid"></a></p>
+</div>
+</div>
+<div class="quarto-layout-row">
+<div class="quarto-layout-cell" style="flex-basis: 33.3%;justify-content: center;">
+<p><a href="11_examples_files/figure-html/cell-17-output-5.png" class="lightbox" data-gallery="quarto-lightbox-gallery-25"><img src="11_examples_files/figure-html/cell-17-output-5.png" class="img-fluid"></a></p>
+</div>
+<div class="quarto-layout-cell" style="flex-basis: 33.3%;justify-content: center;">
+<p><a href="11_examples_files/figure-html/cell-17-output-6.png" class="lightbox" data-gallery="quarto-lightbox-gallery-26"><img src="11_examples_files/figure-html/cell-17-output-6.png" class="img-fluid"></a></p>
+</div>
+<div class="quarto-layout-cell" style="flex-basis: 33.3%;justify-content: center;">
+<p><a href="11_examples_files/figure-html/cell-17-output-7.png" class="lightbox" data-gallery="quarto-lightbox-gallery-27"><img src="11_examples_files/figure-html/cell-17-output-7.png" class="img-fluid"></a></p>
+</div>
+</div>
+<div class="quarto-layout-row">
+<div class="quarto-layout-cell" style="flex-basis: 33.3%;justify-content: center;">
+<p><a href="11_examples_files/figure-html/cell-17-output-8.png" class="lightbox" data-gallery="quarto-lightbox-gallery-28"><img src="11_examples_files/figure-html/cell-17-output-8.png" class="img-fluid"></a></p>
+</div>
+<div class="quarto-layout-cell" style="flex-basis: 33.3%;justify-content: center;">
+<p><a href="11_examples_files/figure-html/cell-17-output-9.png" class="lightbox" data-gallery="quarto-lightbox-gallery-29"><img src="11_examples_files/figure-html/cell-17-output-9.png" class="img-fluid"></a></p>
+</div>
+<div class="quarto-layout-cell" style="flex-basis: 33.3%;justify-content: center;">
+<p><a href="11_examples_files/figure-html/cell-17-output-10.png" class="lightbox" data-gallery="quarto-lightbox-gallery-30"><img src="11_examples_files/figure-html/cell-17-output-10.png" class="img-fluid"></a></p>
+</div>
+</div>
+</div>
+
+
+</section>
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const onCopySuccess = function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  }
+  const getTextToCopy = function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+    text: getTextToCopy
+  });
+  clipboard.on('success', onCopySuccess);
+  if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+    // For code content inside modals, clipBoardJS needs to be initialized with a container option
+    // TODO: Check when it could be a function (https://github.com/zenorocha/clipboard.js/issues/860)
+    const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+      text: getTextToCopy,
+      container: window.document.getElementById('quarto-embedded-source-code-modal')
+    });
+    clipboardModal.on('success', onCopySuccess);
+  }
+    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+    var mailtoRegex = new RegExp(/^mailto:/);
+      var filterRegex = new RegExp('/' + window.location.host + '/');
+    var isInternal = (href) => {
+        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+    }
+    // Inspect non-navigation links and adorn them if external
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+    for (var i=0; i<links.length; i++) {
+      const link = links[i];
+      if (!isInternal(link.href)) {
+        // undo the damage that might have been done by quarto-nav.js in the case of
+        // links that we want to consider external
+        if (link.dataset.originalHref !== undefined) {
+          link.href = link.dataset.originalHref;
+        }
+      }
+    }
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+    const config = {
+      allowHTML: true,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start',
+    };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      if (note) {
+        return note.innerHTML;
+      } else {
+        return "";
+      }
+    });
+  }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
+        return container.innerHTML
+      } else {
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      // TODO in 1.5, we should make sure this works without a callout special case
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
+      }
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            div.style.left = 0;
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+</div> <!-- /content -->
+<script>var lightboxQuarto = GLightbox({"selector":".lightbox","loop":false,"closeEffect":"zoom","openEffect":"zoom","descPosition":"bottom"});
+window.onload = () => {
+  lightboxQuarto.on('slide_before_load', (data) => {
+    const { slideIndex, slideNode, slideConfig, player, trigger } = data;
+    const href = trigger.getAttribute('href');
+    if (href !== null) {
+      const imgEl = window.document.querySelector(`a[href="${href}"] img`);
+      if (imgEl !== null) {
+        const srcAttr = imgEl.getAttribute("src");
+        if (srcAttr && srcAttr.startsWith("data:")) {
+          slideConfig.href = srcAttr;
+        }
+      }
+    } 
+  });
+
+  lightboxQuarto.on('slide_after_load', (data) => {
+    const { slideIndex, slideNode, slideConfig, player, trigger } = data;
+    if (window.Quarto?.typesetMath) {
+      window.Quarto.typesetMath(slideNode);
+    }
+  });
+
+};
+          </script>
+
+
+
+
+</body></html>

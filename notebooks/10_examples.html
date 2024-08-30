@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.5.33">
+<meta name="generator" content="quarto-1.4.547">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -33,7 +33,7 @@ div.sourceCode { overflow: auto; }
 }
 @media print {
 pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
 }
 pre.numberSource code
   { counter-reset: source-line 0; }
@@ -114,7 +114,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
       <div class="navbar-container container-fluid">
             <div id="quarto-search" class="" title="Search"></div>
-          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
   <span class="navbar-toggler-icon"></span>
 </button>
           <div class="collapse navbar-collapse" id="navbarCollapse">
@@ -128,38 +128,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span class="menu-text">Manuscript</span></a>
   </li>  
   <li class="nav-item dropdown ">
-    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-notebooks" role="link" data-bs-toggle="dropdown" aria-expanded="false">
- <span class="menu-text">notebooks</span>
-    </a>
-    <ul class="dropdown-menu" aria-labelledby="nav-menu-notebooks">    
-        <li>
-    <a class="dropdown-item" href="../notebooks/00_overview.html">
- <span class="dropdown-text">Overview</span></a>
-  </li>  
-        <li>
-    <a class="dropdown-item" href="../notebooks/01_results_julia.html">
- <span class="dropdown-text">Results (Julia)</span></a>
-  </li>  
-        <li>
-    <a class="dropdown-item" href="../notebooks/10_examples.html">
- <span class="dropdown-text">Discontinuities examples</span></a>
-  </li>  
-        <li>
-    <a class="dropdown-item" href="../notebooks/12_tau_analysis.html">
- <span class="dropdown-text">tau effect</span></a>
-  </li>  
-        <li>
-    <a class="dropdown-item" href="../notebooks/20_model.html">
- <span class="dropdown-text">Models</span></a>
-  </li>  
-        <li>
-    <a class="dropdown-item" href="../notebooks/30_data.html">
- <span class="dropdown-text">Different time windows</span></a>
-  </li>  
-    </ul>
-  </li>
-  <li class="nav-item dropdown ">
-    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-presentation" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-presentation" role="button" data-bs-toggle="dropdown" aria-expanded="false">
  <span class="menu-text">Presentation</span>
     </a>
     <ul class="dropdown-menu" aria-labelledby="nav-menu-presentation">    
@@ -175,18 +144,18 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   </li>
 </ul>
           </div> <!-- /navcollapse -->
-            <div class="quarto-navbar-tools">
+          <div class="quarto-navbar-tools">
     <a href="https://github.com/Beforerr/ids_spatial_evolution_juno" title="" class="quarto-navigation-tool px-1" aria-label=""><i class="bi bi-github"></i></a>
 </div>
       </div> <!-- /container-fluid -->
     </nav>
   <nav class="quarto-secondary-nav">
     <div class="container-fluid d-flex">
-      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../notebooks/10_examples.html">Discontinuities examples</a></li></ol></nav>
-        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../notebooks/00_overview.html">Notebooks</a></li><li class="breadcrumb-item"><a href="../notebooks/10_examples.html">Discontinuities examples</a></li></ol></nav>
+        <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
     </div>
   </nav>
@@ -199,40 +168,265 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <ul class="list-unstyled mt-1">
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
+  <a href="../article.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Solar wind discontinuities spatial evolution in the outer heliosphere</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../notes.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Notes</span></a>
+  </div>
+</li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true">
+ <span class="menu-text">Notebooks</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
   <a href="../notebooks/00_overview.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Overview</span></a>
   </div>
 </li>
-        <li class="sidebar-item">
+          <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../notebooks/01_results_julia.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Results (Julia)</span></a>
   </div>
 </li>
-        <li class="sidebar-item">
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../notebooks/04_properties.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">SWD Properties</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../notebooks/10_examples.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text">Discontinuities examples</span></a>
   </div>
 </li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../notebooks/12_tau_analysis.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">tau effect</span></a>
-  </div>
-</li>
-        <li class="sidebar-item">
+          <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../notebooks/20_model.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Models</span></a>
   </div>
 </li>
-        <li class="sidebar-item">
+          <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../notebooks/30_data.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Different time windows</span></a>
+ <span class="menu-text">30 Data</span></a>
   </div>
 </li>
+          <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="false">
+ <span class="menu-text">Analysis</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth2 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../notebooks/analysis/00_base.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Loading all datasets from different sources</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../notebooks/analysis/01_occurence_rate.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Occurence Rate</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../notebooks/analysis/02_orientation.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Orientation</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../notebooks/analysis/03_map.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Map of thickness and current intensity</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../notebooks/analysis/10_classification.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">ID classification</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../notebooks/analysis/11_ts_analysis.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Time resolution effect Analysis</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../notebooks/analysis/11_ts_data.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Time resolution effect (data)</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../notebooks/analysis/12_tau_analysis.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Justification for the tau</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../notebooks/analysis/12_tau_data.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Justification for the tau</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+          <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="false">
+ <span class="menu-text">Archive</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth2 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../notebooks/archive/04_calc.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">04 Calc</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../notebooks/archive/05_sea.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Superposed epoch analysis</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+          <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a href="../notebooks/missions/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Missions</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth2 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../notebooks/missions/wind.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">IDs from Wind</span></a>
+  </div>
+</li>
+          <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a href="../notebooks/missions/stereo/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">IDs from STEREO</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth3 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../notebooks/missions/stereo/state.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">STEREO State data pipeline</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+          <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a href="../notebooks/missions/themis/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">IDs from ARTHEMIS</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-6" class="collapse list-unstyled sidebar-section depth3 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../notebooks/missions/themis/mag.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">THEMIS Magnetic field data pipeline</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../notebooks/missions/themis/state.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">THEMIS State data pipeline</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../notebooks/missions/omni/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">OMNI data</span></a>
+  </div>
+</li>
+          <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a href="../notebooks/missions/wind/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Wind</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-7" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-7" class="collapse list-unstyled sidebar-section depth3 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../notebooks/missions/wind/state.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Wind State data pipeline</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+          <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a href="../notebooks/missions/juno/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">IDs from Juno</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-8" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-8" class="collapse list-unstyled sidebar-section depth3 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../notebooks/missions/juno/state.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">JUNO State data pipeline</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+      </ul>
+  </li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-9" aria-expanded="true">
+ <span class="menu-text">Presentations</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-9" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-9" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../presentations/AGU23_poster.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Solar wind discontinuities spatial evolution and energetic ion scattering</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
     </ul>
     </div>
 </nav>
@@ -255,7 +449,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <!-- main -->
 <main class="content page-columns page-full" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default">
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../notebooks/00_overview.html">Notebooks</a></li><li class="breadcrumb-item"><a href="../notebooks/10_examples.html">Discontinuities examples</a></li></ol></nav>
 <div class="quarto-title">
 <h1 class="title">Discontinuities examples</h1>
 </div>
@@ -308,8 +502,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 1168</code></pre>
 </div>
 </div>
-<details class="code-fold">
-<summary>Code</summary>
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>indices <span class="op">=</span> [<span class="dv">153101</span>, <span class="dv">156356</span>, <span class="dv">156046</span>]</span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>offset <span class="op">=</span> timedelta(seconds<span class="op">=</span><span class="dv">0</span>)</span>
 <span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>figs <span class="op">=</span> j_config.plot_candidates(</span>
@@ -319,20 +511,24 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>    plot_current_density<span class="op">=</span><span class="va">True</span>,</span>
 <span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>    plot_fit_data<span class="op">=</span><span class="va">True</span>,</span>
 <span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
 <div class="cell-output cell-output-stderr">
 <pre><code>04-Mar-24 15:57:37: deriv_data was applied to: fgm_rot_tot_0-der
 04-Mar-24 15:57:37: deriv_data was applied to: fgm_rot_tot_0-der
 04-Mar-24 15:57:38: deriv_data was applied to: fgm_rot_tot_0-der</code></pre>
 </div>
-<div id="cell-6" class="cell column-screen quarto-layout-panel" data-layout-ncol="3" data-execution_count="78">
+<div id="cell-6" class="cell column-screen quarto-layout-panel" data-execution_count="78" data-layout-ncol="3">
 <div class="quarto-layout-row">
+<details class="code-fold">
+<summary>Code</summary>
+</details>
 <div class="quarto-layout-cell" style="flex-basis: 33.3%;justify-content: center;">
 <p><a href="10_examples_files/figure-html/cell-5-output-2.png" class="lightbox" data-gallery="quarto-lightbox-gallery-1"><img src="10_examples_files/figure-html/cell-5-output-2.png" class="img-fluid"></a></p>
 </div>
 <div class="quarto-layout-cell" style="flex-basis: 33.3%;justify-content: center;">
 <p><a href="10_examples_files/figure-html/cell-5-output-3.png" class="lightbox" data-gallery="quarto-lightbox-gallery-2"><img src="10_examples_files/figure-html/cell-5-output-3.png" class="img-fluid"></a></p>
 </div>
+</div>
+<div class="quarto-layout-row">
 <div class="quarto-layout-cell" style="flex-basis: 33.3%;justify-content: center;">
 <p><a href="10_examples_files/figure-html/cell-5-output-4.png" class="lightbox" data-gallery="quarto-lightbox-gallery-3"><img src="10_examples_files/figure-html/cell-5-output-4.png" class="img-fluid"></a></p>
 </div>
@@ -340,8 +536,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 <section id="random-picking" class="level4 page-columns page-full">
 <h4 class="anchored" data-anchor-id="random-picking">Random picking</h4>
-<details class="code-fold">
-<summary>Code</summary>
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>offset <span class="op">=</span> timedelta(seconds<span class="op">=</span><span class="dv">0</span>)</span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>figs <span class="op">=</span> j_config.plot_candidates(</span>
 <span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>    num<span class="op">=</span><span class="dv">3</span>,</span>
@@ -352,21 +546,25 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a>    start_col <span class="op">=</span> <span class="st">"tstart"</span>,</span>
 <span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a>    end_col <span class="op">=</span> <span class="st">"tstop"</span></span>
 <span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
 <div class="cell-output cell-output-stderr">
 <pre><code>2024-03-04 15:57:07.447 | INFO     | discontinuitypy.datasets:plot_candidates:245 - Candidates indices: [156049 156046 154208]
 04-Mar-24 15:57:07: deriv_data was applied to: fgm_rot_tot_0-der
 04-Mar-24 15:57:08: deriv_data was applied to: fgm_rot_tot_0-der
 04-Mar-24 15:57:08: deriv_data was applied to: fgm_rot_tot_0-der</code></pre>
 </div>
-<div id="cell-8" class="cell column-screen quarto-layout-panel" data-layout-ncol="3" data-execution_count="77">
+<div id="cell-8" class="cell column-screen quarto-layout-panel" data-execution_count="77" data-layout-ncol="3">
 <div class="quarto-layout-row">
+<details class="code-fold">
+<summary>Code</summary>
+</details>
 <div class="quarto-layout-cell" style="flex-basis: 33.3%;justify-content: center;">
 <p><a href="10_examples_files/figure-html/cell-6-output-2.png" class="lightbox" data-gallery="quarto-lightbox-gallery-4"><img src="10_examples_files/figure-html/cell-6-output-2.png" class="img-fluid"></a></p>
 </div>
 <div class="quarto-layout-cell" style="flex-basis: 33.3%;justify-content: center;">
 <p><a href="10_examples_files/figure-html/cell-6-output-3.png" class="lightbox" data-gallery="quarto-lightbox-gallery-5"><img src="10_examples_files/figure-html/cell-6-output-3.png" class="img-fluid"></a></p>
 </div>
+</div>
+<div class="quarto-layout-row">
 <div class="quarto-layout-cell" style="flex-basis: 33.3%;justify-content: center;">
 <p><a href="10_examples_files/figure-html/cell-6-output-4.png" class="lightbox" data-gallery="quarto-lightbox-gallery-6"><img src="10_examples_files/figure-html/cell-6-output-4.png" class="img-fluid"></a></p>
 </div>
@@ -386,8 +584,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
-<details class="code-fold">
-<summary>Code</summary>
 <div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>indices <span class="op">=</span> [<span class="dv">72643</span>, <span class="dv">72280</span>, <span class="dv">69537</span>]</span>
 <span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>offset <span class="op">=</span> timedelta(seconds<span class="op">=</span><span class="dv">2</span>)</span>
 <span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>figs <span class="op">=</span> j_config.plot_candidates(</span>
@@ -397,7 +593,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a>    plot_current_density<span class="op">=</span><span class="va">True</span>,</span>
 <span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a>    plot_fit_data<span class="op">=</span><span class="va">True</span>,</span>
 <span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
 <div class="cell-output cell-output-stderr">
 <pre><code>04-Mar-24 12:01:19: PydanticDeprecatedSince20: Support for class-based `config` is deprecated, use ConfigDict instead. Deprecated in Pydantic V2.0 to be removed in V3.0. See Pydantic V2 Migration Guide at https://errors.pydantic.dev/2.6/migration/
 
@@ -405,21 +600,24 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 04-Mar-24 12:01:25: deriv_data was applied to: fgm_rot_tot_0-der
 04-Mar-24 12:01:25: deriv_data was applied to: fgm_rot_tot_0-der</code></pre>
 </div>
-<div id="cell-11" class="cell column-screen quarto-layout-panel" data-layout-ncol="3" data-execution_count="48">
+<div id="cell-11" class="cell column-screen quarto-layout-panel" data-execution_count="48" data-layout-ncol="3">
 <div class="quarto-layout-row">
+<details class="code-fold">
+<summary>Code</summary>
+</details>
 <div class="quarto-layout-cell" style="flex-basis: 33.3%;justify-content: center;">
 <p><a href="10_examples_files/figure-html/cell-8-output-2.png" class="lightbox" data-gallery="quarto-lightbox-gallery-7"><img src="10_examples_files/figure-html/cell-8-output-2.png" class="img-fluid"></a></p>
 </div>
 <div class="quarto-layout-cell" style="flex-basis: 33.3%;justify-content: center;">
 <p><a href="10_examples_files/figure-html/cell-8-output-3.png" class="lightbox" data-gallery="quarto-lightbox-gallery-8"><img src="10_examples_files/figure-html/cell-8-output-3.png" class="img-fluid"></a></p>
 </div>
+</div>
+<div class="quarto-layout-row">
 <div class="quarto-layout-cell" style="flex-basis: 33.3%;justify-content: center;">
 <p><a href="10_examples_files/figure-html/cell-8-output-4.png" class="lightbox" data-gallery="quarto-lightbox-gallery-9"><img src="10_examples_files/figure-html/cell-8-output-4.png" class="img-fluid"></a></p>
 </div>
 </div>
 </div>
-<details class="code-fold">
-<summary>Code</summary>
 <div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>offset <span class="op">=</span> timedelta(seconds<span class="op">=</span><span class="dv">2</span>)</span>
 <span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>figs <span class="op">=</span> j_config.plot_candidates(</span>
 <span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>    num<span class="op">=</span><span class="dv">3</span>,</span>
@@ -428,21 +626,25 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a>    plot_fit_data<span class="op">=</span><span class="va">True</span>,</span>
 <span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a>    plot_current_density<span class="op">=</span><span class="va">True</span>,</span>
 <span id="cb10-8"><a href="#cb10-8" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
 <div class="cell-output cell-output-stderr">
 <pre><code>2024-03-04 14:41:02.337 | INFO     | discontinuitypy.datasets:plot_candidates:243 - Candidates indices: [71263 71875 71222]
 04-Mar-24 14:41:02: deriv_data was applied to: fgm_rot_tot_0-der
 04-Mar-24 14:41:03: deriv_data was applied to: fgm_rot_tot_0-der
 04-Mar-24 14:41:03: deriv_data was applied to: fgm_rot_tot_0-der</code></pre>
 </div>
-<div id="cell-12" class="cell column-screen quarto-layout-panel" data-layout-ncol="3" data-execution_count="12">
+<div id="cell-12" class="cell column-screen quarto-layout-panel" data-execution_count="12" data-layout-ncol="3">
 <div class="quarto-layout-row">
+<details class="code-fold">
+<summary>Code</summary>
+</details>
 <div class="quarto-layout-cell" style="flex-basis: 33.3%;justify-content: center;">
 <p><a href="10_examples_files/figure-html/cell-9-output-2.png" class="lightbox" data-gallery="quarto-lightbox-gallery-10"><img src="10_examples_files/figure-html/cell-9-output-2.png" class="img-fluid"></a></p>
 </div>
 <div class="quarto-layout-cell" style="flex-basis: 33.3%;justify-content: center;">
 <p><a href="10_examples_files/figure-html/cell-9-output-3.png" class="lightbox" data-gallery="quarto-lightbox-gallery-11"><img src="10_examples_files/figure-html/cell-9-output-3.png" class="img-fluid"></a></p>
 </div>
+</div>
+<div class="quarto-layout-row">
 <div class="quarto-layout-cell" style="flex-basis: 33.3%;justify-content: center;">
 <p><a href="10_examples_files/figure-html/cell-9-output-4.png" class="lightbox" data-gallery="quarto-lightbox-gallery-12"><img src="10_examples_files/figure-html/cell-9-output-4.png" class="img-fluid"></a></p>
 </div>
@@ -471,140 +673,101 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="sourceCode cell-code" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>offset  <span class="op">=</span> timedelta(seconds<span class="op">=</span><span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
-<details class="code-fold">
-<summary>Code</summary>
 <div class="sourceCode cell-code" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>indices<span class="op">=</span>[<span class="dv">91384</span>, <span class="dv">93825</span>, <span class="dv">93618</span>, <span class="dv">92389</span>]</span>
 <span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>figs <span class="op">=</span> j_config.plot_candidates(indices<span class="op">=</span>indices, add_plasma_params<span class="op">=</span><span class="va">True</span>, offset<span class="op">=</span>offset, plot_current_density<span class="op">=</span><span class="va">True</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
 <div class="cell-output cell-output-stderr">
 <pre><code>02-Mar-24 16:52:58: deriv_data was applied to: fgm_rot_tot_0-der
 02-Mar-24 16:52:58: deriv_data was applied to: fgm_rot_tot_0-der
 02-Mar-24 16:52:58: deriv_data was applied to: fgm_rot_tot_0-der
 02-Mar-24 16:52:59: deriv_data was applied to: fgm_rot_tot_0-der</code></pre>
 </div>
-<div id="cell-16" class="cell column-screen quarto-layout-panel" data-layout-ncol="3" data-execution_count="33">
+<div id="cell-16" class="cell column-screen quarto-layout-panel" data-execution_count="33" data-layout-ncol="3">
 <div class="quarto-layout-row">
+<details class="code-fold">
+<summary>Code</summary>
+</details>
 <div class="quarto-layout-cell" style="flex-basis: 33.3%;justify-content: center;">
 <p><a href="10_examples_files/figure-html/cell-12-output-2.png" class="lightbox" data-gallery="quarto-lightbox-gallery-13"><img src="10_examples_files/figure-html/cell-12-output-2.png" class="img-fluid"></a></p>
 </div>
 <div class="quarto-layout-cell" style="flex-basis: 33.3%;justify-content: center;">
 <p><a href="10_examples_files/figure-html/cell-12-output-3.png" class="lightbox" data-gallery="quarto-lightbox-gallery-14"><img src="10_examples_files/figure-html/cell-12-output-3.png" class="img-fluid"></a></p>
 </div>
+</div>
+<div class="quarto-layout-row">
 <div class="quarto-layout-cell" style="flex-basis: 33.3%;justify-content: center;">
 <p><a href="10_examples_files/figure-html/cell-12-output-4.png" class="lightbox" data-gallery="quarto-lightbox-gallery-15"><img src="10_examples_files/figure-html/cell-12-output-4.png" class="img-fluid"></a></p>
 </div>
-</div>
-<div class="quarto-layout-row">
 <div class="quarto-layout-cell" style="flex-basis: 33.3%;justify-content: center;">
 <p><a href="10_examples_files/figure-html/cell-12-output-5.png" class="lightbox" data-gallery="quarto-lightbox-gallery-16"><img src="10_examples_files/figure-html/cell-12-output-5.png" class="img-fluid"></a></p>
 </div>
 </div>
 </div>
-<details class="code-fold">
-<summary>Code</summary>
 <div class="sourceCode cell-code" id="cb17"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>figs <span class="op">=</span> j_config.plot_candidates(num<span class="op">=</span><span class="dv">3</span>, add_plasma_params<span class="op">=</span><span class="va">True</span>, offset<span class="op">=</span>offset, plot_current_density<span class="op">=</span><span class="va">True</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
 <div class="cell-output cell-output-stderr">
 <pre><code>2024-03-02 16:53:51.076 | INFO     | discontinuitypy.datasets:plot_candidates:243 - Candidates indices: [90260 92835 92303]
 02-Mar-24 16:53:51: deriv_data was applied to: fgm_rot_tot_0-der
 02-Mar-24 16:53:51: deriv_data was applied to: fgm_rot_tot_0-der
 02-Mar-24 16:53:52: deriv_data was applied to: fgm_rot_tot_0-der</code></pre>
 </div>
-<div id="cell-17" class="cell column-screen quarto-layout-panel" data-layout-ncol="3" data-execution_count="39">
+<div id="cell-17" class="cell column-screen quarto-layout-panel" data-execution_count="39" data-layout-ncol="3">
 <div class="quarto-layout-row">
+<details class="code-fold">
+<summary>Code</summary>
+</details>
 <div class="quarto-layout-cell" style="flex-basis: 33.3%;justify-content: center;">
 <p><a href="10_examples_files/figure-html/cell-13-output-2.png" class="lightbox" data-gallery="quarto-lightbox-gallery-17"><img src="10_examples_files/figure-html/cell-13-output-2.png" class="img-fluid"></a></p>
 </div>
 <div class="quarto-layout-cell" style="flex-basis: 33.3%;justify-content: center;">
 <p><a href="10_examples_files/figure-html/cell-13-output-3.png" class="lightbox" data-gallery="quarto-lightbox-gallery-18"><img src="10_examples_files/figure-html/cell-13-output-3.png" class="img-fluid"></a></p>
 </div>
+</div>
+<div class="quarto-layout-row">
 <div class="quarto-layout-cell" style="flex-basis: 33.3%;justify-content: center;">
 <p><a href="10_examples_files/figure-html/cell-13-output-4.png" class="lightbox" data-gallery="quarto-lightbox-gallery-19"><img src="10_examples_files/figure-html/cell-13-output-4.png" class="img-fluid"></a></p>
 </div>
 </div>
 </div>
-<details class="code-fold">
-<summary>Code</summary>
 <div class="sourceCode cell-code" id="cb19"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>offset  <span class="op">=</span> timedelta(seconds<span class="op">=</span><span class="dv">30</span>)</span>
 <span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>figs <span class="op">=</span> j_config.plot_candidates(num<span class="op">=</span><span class="dv">15</span>, add_plasma_params<span class="op">=</span><span class="va">True</span>, offset<span class="op">=</span>offset)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
 <div class="cell-output cell-output-stderr">
 <pre><code>2024-03-02 16:53:24.688 | INFO     | discontinuitypy.datasets:plot_candidates:243 - Candidates indices: [92436 90663 92303 90640 92616 93261 93834 94014 94032 93294 92471 92343
  92972 93732 92478]</code></pre>
 </div>
-<div id="cell-18" class="cell column-screen quarto-layout-panel" data-layout-ncol="3" data-execution_count="35">
+<div id="cell-18" class="cell column-screen quarto-layout-panel" data-execution_count="35" data-layout-ncol="3">
 <div class="quarto-layout-row">
+<details class="code-fold">
+<summary>Code</summary>
+</details>
 <div class="cell-output cell-output-error quarto-layout-cell" style="flex-basis: 33.3%;justify-content: flex-start;">
-<div class="ansi-escaped-output">
-<pre><span class="ansi-red-fg">---------------------------------------------------------------------------</span>
-<span class="ansi-red-fg">KeyboardInterrupt</span>                         Traceback (most recent call last)
-Cell <span class="ansi-green-fg">In[35], line 4</span>
-<span class="ansi-green-fg ansi-bold">      1</span> <span style="font-style:italic;color:rgb(95,135,135)">#| layout-ncol: 3</span>
-<span class="ansi-green-fg ansi-bold">      2</span> <span style="font-style:italic;color:rgb(95,135,135)">#| column: screen</span>
-<span class="ansi-green-fg ansi-bold">      3</span> offset  <span style="color:rgb(98,98,98)">=</span> timedelta(seconds<span style="color:rgb(98,98,98)">=</span><span style="color:rgb(98,98,98)">30</span>)
-<span class="ansi-green-fg">----&gt; 4</span> figs <span style="color:rgb(98,98,98)">=</span> <span class="ansi-yellow-bg">j_config</span><span style="color:rgb(98,98,98)" class="ansi-yellow-bg">.</span><span class="ansi-yellow-bg">plot_candidates</span><span class="ansi-yellow-bg">(</span><span class="ansi-yellow-bg">num</span><span style="color:rgb(98,98,98)" class="ansi-yellow-bg">=</span><span style="color:rgb(98,98,98)" class="ansi-yellow-bg">15</span><span class="ansi-yellow-bg">,</span><span class="ansi-yellow-bg"> </span><span class="ansi-yellow-bg">add_plasma_params</span><span style="color:rgb(98,98,98)" class="ansi-yellow-bg">=</span><span style="font-weight:bold;color:rgb(0,135,0)" class="ansi-yellow-bg">True</span><span class="ansi-yellow-bg">,</span><span class="ansi-yellow-bg"> </span><span class="ansi-yellow-bg">offset</span><span style="color:rgb(98,98,98)" class="ansi-yellow-bg">=</span><span class="ansi-yellow-bg">offset</span><span class="ansi-yellow-bg">)</span>
-
-File <span class="ansi-green-fg">~/micromamba/envs/psp_conjunction/lib/python3.11/site-packages/discontinuitypy/datasets.py:245</span>, in <span class="ansi-cyan-fg">IDsDataset.plot_candidates</span><span class="ansi-blue-fg">(self, indices, num, random, predicate, **kwargs)</span>
-<span class="ansi-green-fg ansi-bold">    242</span>         indices <span style="color:rgb(98,98,98)">=</span> indices<span style="color:rgb(98,98,98)">.</span>head(num)<span style="color:rgb(98,98,98)">.</span>to_numpy()
-<span class="ansi-green-fg ansi-bold">    243</span>     logger<span style="color:rgb(98,98,98)">.</span>info(<span style="color:rgb(175,0,0)">f</span><span style="color:rgb(175,0,0)">"</span><span style="color:rgb(175,0,0)">Candidates indices: </span><span style="font-weight:bold;color:rgb(175,95,135)">{</span>indices<span style="font-weight:bold;color:rgb(175,95,135)">}</span><span style="color:rgb(175,0,0)">"</span>)
-<span class="ansi-green-fg">--&gt; 245</span> <span style="font-weight:bold;color:rgb(0,135,0)">return</span> <span class="ansi-yellow-bg">[</span><span style="color:rgb(0,135,0)" class="ansi-yellow-bg">self</span><span style="color:rgb(98,98,98)" class="ansi-yellow-bg">.</span><span class="ansi-yellow-bg">plot_candidate</span><span class="ansi-yellow-bg">(</span><span class="ansi-yellow-bg">index</span><span style="color:rgb(98,98,98)" class="ansi-yellow-bg">=</span><span class="ansi-yellow-bg">i</span><span class="ansi-yellow-bg">,</span><span class="ansi-yellow-bg"> </span><span style="color:rgb(98,98,98)" class="ansi-yellow-bg">*</span><span style="color:rgb(98,98,98)" class="ansi-yellow-bg">*</span><span class="ansi-yellow-bg">kwargs</span><span class="ansi-yellow-bg">)</span><span class="ansi-yellow-bg"> </span><span style="font-weight:bold;color:rgb(0,135,0)" class="ansi-yellow-bg">for</span><span class="ansi-yellow-bg"> </span><span class="ansi-yellow-bg">i</span><span class="ansi-yellow-bg"> </span><span style="font-weight:bold;color:rgb(175,0,255)" class="ansi-yellow-bg">in</span><span class="ansi-yellow-bg"> </span><span class="ansi-yellow-bg">indices</span><span class="ansi-yellow-bg">]</span>
-
-File <span class="ansi-green-fg">~/micromamba/envs/psp_conjunction/lib/python3.11/site-packages/discontinuitypy/datasets.py:245</span>, in <span class="ansi-cyan-fg">&lt;listcomp&gt;</span><span class="ansi-blue-fg">(.0)</span>
-<span class="ansi-green-fg ansi-bold">    242</span>         indices <span style="color:rgb(98,98,98)">=</span> indices<span style="color:rgb(98,98,98)">.</span>head(num)<span style="color:rgb(98,98,98)">.</span>to_numpy()
-<span class="ansi-green-fg ansi-bold">    243</span>     logger<span style="color:rgb(98,98,98)">.</span>info(<span style="color:rgb(175,0,0)">f</span><span style="color:rgb(175,0,0)">"</span><span style="color:rgb(175,0,0)">Candidates indices: </span><span style="font-weight:bold;color:rgb(175,95,135)">{</span>indices<span style="font-weight:bold;color:rgb(175,95,135)">}</span><span style="color:rgb(175,0,0)">"</span>)
-<span class="ansi-green-fg">--&gt; 245</span> <span style="font-weight:bold;color:rgb(0,135,0)">return</span> [<span style="color:rgb(0,135,0)" class="ansi-yellow-bg">self</span><span style="color:rgb(98,98,98)" class="ansi-yellow-bg">.</span><span class="ansi-yellow-bg">plot_candidate</span><span class="ansi-yellow-bg">(</span><span class="ansi-yellow-bg">index</span><span style="color:rgb(98,98,98)" class="ansi-yellow-bg">=</span><span class="ansi-yellow-bg">i</span><span class="ansi-yellow-bg">,</span><span class="ansi-yellow-bg"> </span><span style="color:rgb(98,98,98)" class="ansi-yellow-bg">*</span><span style="color:rgb(98,98,98)" class="ansi-yellow-bg">*</span><span class="ansi-yellow-bg">kwargs</span><span class="ansi-yellow-bg">)</span> <span style="font-weight:bold;color:rgb(0,135,0)">for</span> i <span style="font-weight:bold;color:rgb(175,0,255)">in</span> indices]
-
-File <span class="ansi-green-fg">~/micromamba/envs/psp_conjunction/lib/python3.11/site-packages/discontinuitypy/datasets.py:224</span>, in <span class="ansi-cyan-fg">IDsDataset.plot_candidate</span><span class="ansi-blue-fg">(self, event, index, **kwargs)</span>
-<span class="ansi-green-fg ansi-bold">    222</span> <span style="font-weight:bold;color:rgb(0,135,0)">if</span> event <span style="font-weight:bold;color:rgb(175,0,255)">is</span> <span style="font-weight:bold;color:rgb(0,135,0)">None</span>:
-<span class="ansi-green-fg ansi-bold">    223</span>     event <span style="color:rgb(98,98,98)">=</span> <span style="color:rgb(0,135,0)">self</span><span style="color:rgb(98,98,98)">.</span>get_event(index)
-<span class="ansi-green-fg">--&gt; 224</span> data <span style="color:rgb(98,98,98)">=</span> <span style="color:rgb(0,135,0)" class="ansi-yellow-bg">self</span><span style="color:rgb(98,98,98)" class="ansi-yellow-bg">.</span><span class="ansi-yellow-bg">get_event_data</span><span class="ansi-yellow-bg">(</span><span class="ansi-yellow-bg">event</span><span class="ansi-yellow-bg">,</span><span class="ansi-yellow-bg"> </span><span style="color:rgb(98,98,98)" class="ansi-yellow-bg">*</span><span style="color:rgb(98,98,98)" class="ansi-yellow-bg">*</span><span class="ansi-yellow-bg">kwargs</span><span class="ansi-yellow-bg">)</span>
-<span class="ansi-green-fg ansi-bold">    226</span> <span style="font-weight:bold;color:rgb(0,135,0)">return</span> _plot_candidate(event, data, <span style="color:rgb(98,98,98)">*</span><span style="color:rgb(98,98,98)">*</span>kwargs)
-
-File <span class="ansi-green-fg">~/micromamba/envs/psp_conjunction/lib/python3.11/site-packages/discontinuitypy/datasets.py:100</span>, in <span class="ansi-cyan-fg">IdsEvents.get_event_data</span><span class="ansi-blue-fg">(self, event, offset, **kwargs)</span>
-<span class="ansi-green-fg ansi-bold">     97</span> end <span style="color:rgb(98,98,98)">=</span> event[<span style="color:rgb(175,0,0)">"</span><span style="color:rgb(175,0,0)">t.d_end</span><span style="color:rgb(175,0,0)">"</span>] <span style="color:rgb(98,98,98)">+</span> offset
-<span class="ansi-green-fg ansi-bold">     99</span> _data <span style="color:rgb(98,98,98)">=</span> <span style="color:rgb(0,135,0)">self</span><span style="color:rgb(98,98,98)">.</span>data<span style="color:rgb(98,98,98)">.</span>filter(pl<span style="color:rgb(98,98,98)">.</span>col(<span style="color:rgb(175,0,0)">"</span><span style="color:rgb(175,0,0)">time</span><span style="color:rgb(175,0,0)">"</span>)<span style="color:rgb(98,98,98)">.</span>is_between(start, end))
-<span class="ansi-green-fg">--&gt; 100</span> <span style="font-weight:bold;color:rgb(0,135,0)">return</span> <span class="ansi-yellow-bg">df2ts</span><span class="ansi-yellow-bg">(</span><span class="ansi-yellow-bg">_data</span><span class="ansi-yellow-bg">,</span><span class="ansi-yellow-bg"> </span><span style="color:rgb(0,135,0)" class="ansi-yellow-bg">self</span><span style="color:rgb(98,98,98)" class="ansi-yellow-bg">.</span><span class="ansi-yellow-bg">bcols</span><span class="ansi-yellow-bg">)</span>
-
-File <span class="ansi-green-fg">~/micromamba/envs/psp_conjunction/lib/python3.11/site-packages/discontinuitypy/utils/basic.py:292</span>, in <span class="ansi-cyan-fg">df2ts</span><span class="ansi-blue-fg">(df, cols, time_col, attrs, name)</span>
-<span class="ansi-green-fg ansi-bold">    289</span>         cols <span style="color:rgb(98,98,98)">=</span> df<span style="color:rgb(98,98,98)">.</span>columns<span style="color:rgb(98,98,98)">.</span>tolist()
-<span class="ansi-green-fg ansi-bold">    291</span> <span style="font-weight:bold;color:rgb(0,135,0)">if</span> <span style="color:rgb(0,135,0)">isinstance</span>(df, pl<span style="color:rgb(98,98,98)">.</span>LazyFrame):
-<span class="ansi-green-fg">--&gt; 292</span>     df <span style="color:rgb(98,98,98)">=</span> <span class="ansi-yellow-bg">df</span><span style="color:rgb(98,98,98)" class="ansi-yellow-bg">.</span><span class="ansi-yellow-bg">collect</span><span class="ansi-yellow-bg">(</span><span class="ansi-yellow-bg">)</span>
-<span class="ansi-green-fg ansi-bold">    294</span> <span style="font-style:italic;color:rgb(95,135,135)"># Prepare data</span>
-<span class="ansi-green-fg ansi-bold">    295</span> data <span style="color:rgb(98,98,98)">=</span> df[cols]<span style="color:rgb(98,98,98)">.</span>to_numpy()
-
-File <span class="ansi-green-fg">~/micromamba/envs/psp_conjunction/lib/python3.11/site-packages/polars/lazyframe/frame.py:1940</span>, in <span class="ansi-cyan-fg">LazyFrame.collect</span><span class="ansi-blue-fg">(self, type_coercion, predicate_pushdown, projection_pushdown, simplify_expression, slice_pushdown, comm_subplan_elim, comm_subexpr_elim, no_optimization, streaming, background, _eager)</span>
-<span class="ansi-green-fg ansi-bold">   1937</span> <span style="font-weight:bold;color:rgb(0,135,0)">if</span> background:
-<span class="ansi-green-fg ansi-bold">   1938</span>     <span style="font-weight:bold;color:rgb(0,135,0)">return</span> InProcessQuery(ldf<span style="color:rgb(98,98,98)">.</span>collect_concurrently())
-<span class="ansi-green-fg">-&gt; 1940</span> <span style="font-weight:bold;color:rgb(0,135,0)">return</span> wrap_df(ldf<span style="color:rgb(98,98,98)">.</span>collect())
-
-<span class="ansi-red-fg">KeyboardInterrupt</span>: </pre>
-</div>
+<pre><code>KeyboardInterrupt: </code></pre>
 </div>
 <div class="quarto-layout-cell" style="flex-basis: 33.3%;justify-content: center;">
 <p><a href="10_examples_files/figure-html/cell-14-output-3.png" class="lightbox" data-gallery="quarto-lightbox-gallery-20"><img src="10_examples_files/figure-html/cell-14-output-3.png" class="img-fluid"></a></p>
 </div>
+</div>
+<div class="quarto-layout-row">
 <div class="quarto-layout-cell" style="flex-basis: 33.3%;justify-content: center;">
 <p><a href="10_examples_files/figure-html/cell-14-output-4.png" class="lightbox" data-gallery="quarto-lightbox-gallery-21"><img src="10_examples_files/figure-html/cell-14-output-4.png" class="img-fluid"></a></p>
 </div>
-</div>
-<div class="quarto-layout-row">
 <div class="quarto-layout-cell" style="flex-basis: 33.3%;justify-content: center;">
 <p><a href="10_examples_files/figure-html/cell-14-output-5.png" class="lightbox" data-gallery="quarto-lightbox-gallery-22"><img src="10_examples_files/figure-html/cell-14-output-5.png" class="img-fluid"></a></p>
 </div>
 <div class="quarto-layout-cell" style="flex-basis: 33.3%;justify-content: center;">
 <p><a href="10_examples_files/figure-html/cell-14-output-6.png" class="lightbox" data-gallery="quarto-lightbox-gallery-23"><img src="10_examples_files/figure-html/cell-14-output-6.png" class="img-fluid"></a></p>
 </div>
+</div>
+<div class="quarto-layout-row">
 <div class="quarto-layout-cell" style="flex-basis: 33.3%;justify-content: center;">
 <p><a href="10_examples_files/figure-html/cell-14-output-7.png" class="lightbox" data-gallery="quarto-lightbox-gallery-24"><img src="10_examples_files/figure-html/cell-14-output-7.png" class="img-fluid"></a></p>
 </div>
-</div>
-<div class="quarto-layout-row">
 <div class="quarto-layout-cell" style="flex-basis: 33.3%;justify-content: center;">
 <p><a href="10_examples_files/figure-html/cell-14-output-8.png" class="lightbox" data-gallery="quarto-lightbox-gallery-25"><img src="10_examples_files/figure-html/cell-14-output-8.png" class="img-fluid"></a></p>
 </div>
 <div class="quarto-layout-cell" style="flex-basis: 33.3%;justify-content: center;">
 <p><a href="10_examples_files/figure-html/cell-14-output-9.png" class="lightbox" data-gallery="quarto-lightbox-gallery-26"><img src="10_examples_files/figure-html/cell-14-output-9.png" class="img-fluid"></a></p>
 </div>
+</div>
+<div class="quarto-layout-row">
 <div class="quarto-layout-cell" style="flex-basis: 33.3%;justify-content: center;">
 <p><a href="10_examples_files/figure-html/cell-14-output-10.png" class="lightbox" data-gallery="quarto-lightbox-gallery-27"><img src="10_examples_files/figure-html/cell-14-output-10.png" class="img-fluid"></a></p>
 </div>
@@ -651,7 +814,18 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     }
     return false;
   }
-  const onCopySuccess = function(e) {
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    text: function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+  });
+  clipboard.on('success', function(e) {
     // button target
     const button = e.trigger;
     // don't keep focus
@@ -683,47 +857,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     }, 1000);
     // clear code selection
     e.clearSelection();
-  }
-  const getTextToCopy = function(trigger) {
-      const codeEl = trigger.previousElementSibling.cloneNode(true);
-      for (const childEl of codeEl.children) {
-        if (isCodeAnnotation(childEl)) {
-          childEl.remove();
-        }
-      }
-      return codeEl.innerText;
-  }
-  const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
-    text: getTextToCopy
   });
-  clipboard.on('success', onCopySuccess);
-  if (window.document.getElementById('quarto-embedded-source-code-modal')) {
-    // For code content inside modals, clipBoardJS needs to be initialized with a container option
-    // TODO: Check when it could be a function (https://github.com/zenorocha/clipboard.js/issues/860)
-    const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
-      text: getTextToCopy,
-      container: window.document.getElementById('quarto-embedded-source-code-modal')
-    });
-    clipboardModal.on('success', onCopySuccess);
-  }
-    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
-    var mailtoRegex = new RegExp(/^mailto:/);
-      var filterRegex = new RegExp('/' + window.location.host + '/');
-    var isInternal = (href) => {
-        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
-    }
-    // Inspect non-navigation links and adorn them if external
- 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
-    for (var i=0; i<links.length; i++) {
-      const link = links[i];
-      if (!isInternal(link.href)) {
-        // undo the damage that might have been done by quarto-nav.js in the case of
-        // links that we want to consider external
-        if (link.dataset.originalHref !== undefined) {
-          link.href = link.dataset.originalHref;
-        }
-      }
-    }
   function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
     const config = {
       allowHTML: true,
@@ -758,11 +892,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       try { href = new URL(href).hash; } catch {}
       const id = href.replace(/^#\/?/, "");
       const note = window.document.getElementById(id);
-      if (note) {
-        return note.innerHTML;
-      } else {
-        return "";
-      }
+      return note.innerHTML;
     });
   }
   const xrefs = window.document.querySelectorAll('a.quarto-xref');
@@ -1037,7 +1167,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 });
 </script>
 </div> <!-- /content -->
-<script>var lightboxQuarto = GLightbox({"selector":".lightbox","loop":false,"closeEffect":"zoom","descPosition":"bottom","openEffect":"zoom"});
+<script>var lightboxQuarto = GLightbox({"closeEffect":"zoom","loop":false,"descPosition":"bottom","openEffect":"zoom","selector":".lightbox"});
 window.onload = () => {
   lightboxQuarto.on('slide_before_load', (data) => {
     const { slideIndex, slideNode, slideConfig, player, trigger } = data;
