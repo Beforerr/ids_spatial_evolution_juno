@@ -1541,9 +1541,37 @@
     "href": "notebooks/101_results_dist.html",
     "title": "",
     "section": "",
-    "text": "Check the minimal time interval to cover the distribution of solar wind discontinuity properties.\n\n\nCode\nusing DrWatson\n@quickactivate\ninclude(srcdir(\"main.jl\"))\nusing Dates\n\n\n\n\nCode\nwind_df = load(datadir(\"events.Wind.fit.ts_0.09s_tau_60s.arrow\"));\n\n\n\n\nCode\nyear_map = :time =&gt; nonnumeric ∘ year =&gt; \"Year\"\nmonth_map = :time =&gt; nonnumeric ∘ month  =&gt; \"Month\"\nweek_map = :time =&gt; nonnumeric ∘ week =&gt; \"Week\";\n\n\n\n\nCode\n# Subset the data\ndf = wind_df;\ndf_s1 = subset(df, :time =&gt; t -&gt; year.(t) .== 2013);\ndf_s2 = subset(df_s1, :time =&gt; t -&gt; month.(t) .&lt; 3);\n\n\n\n\nCode\ntemp_plot(x; kwargs...) = plot_dist(x; datalimits=datalimits_f, axis=(), kwargs...)\n\nplots = temp_plot.([\n    data(df) * mapping(color=year_map),\n    data(df_s1) * mapping(color=month_map),\n    data(df_s2) * mapping(color=week_map)\n])\n\ndisplay.(plots);",
+    "text": "Check the minimal time interval to cover the distribution of solar wind discontinuity properties.\n\n\nCode\nusing DrWatson\n@quickactivate\ninclude(srcdir(\"main.jl\"))\nusing Dates\n\n\n\n\nCode\nwind_df = load(datadir(\"events.Wind.fit.ts_0.09s_tau_60s.arrow\"));\n\n\n\n\nCode\nyear_map = :time =&gt; nonnumeric ∘ year =&gt; \"Year\"\nmonth_map = :time =&gt; nonnumeric ∘ month  =&gt; \"Month\"\nweek_map = :time =&gt; nonnumeric ∘ week =&gt; \"Week\";\n\n\n\n\nCode\n# Subset the data\ndf = wind_df;\ndf_s1 = subset(df, :time =&gt; t -&gt; year.(t) .== 2013);\ndf_s2 = subset(df_s1, :time =&gt; t -&gt; month.(t) .&lt; 3);\n\n\n\nCode\ntemp_plot(x; kwargs...) = plot_dist(x; datalimits=datalimits_f, axis=(), kwargs...)\n\nplots = temp_plot.([\n    data(df) * mapping(color=year_map),\n    data(df_s1) * mapping(color=month_map),\n    data(df_s2) * mapping(color=week_map)\n])\n\ndisplay.(plots);",
     "crumbs": [
       "101 Results Dist"
     ]
+  },
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "Solar wind discontinuities spatial evolution in the outer heliosphere",
+    "section": "",
+    "text": "manuscript please see here\nAGU poster here"
+  },
+  {
+    "objectID": "index.html#motivations",
+    "href": "index.html#motivations",
+    "title": "Solar wind discontinuities spatial evolution in the outer heliosphere",
+    "section": "Motivations",
+    "text": "Motivations\nStudying the radial distribution of occurrence rate, as well as the properties of solar wind discontinuities may help answer the following questions:\n\nHow does the discontinuities change with the radial distance from the Sun?\nHow is solar wind discontinuities formed? What is the physical mechanisms?\n\nGenerated at or near the sun?\nLocally generated in the interplanetary space by turbulence?\n\n\nJoint observations of JUNO & ARTEMIS & Other missions really provides a unique opportunity!!!\n\n\nTo eliminate the effect of the solar wind structure, we use data from other missions (mainly at 1AU) to provide a way of normalization."
+  },
+  {
+    "objectID": "index.html#occurrence-rate",
+    "href": "index.html#occurrence-rate",
+    "title": "Solar wind discontinuities spatial evolution in the outer heliosphere",
+    "section": "Occurrence rate",
+    "text": "Occurrence rate"
+  },
+  {
+    "objectID": "index.html#properties",
+    "href": "index.html#properties",
+    "title": "Solar wind discontinuities spatial evolution in the outer heliosphere",
+    "section": "Properties",
+    "text": "Properties"
   }
 ]
