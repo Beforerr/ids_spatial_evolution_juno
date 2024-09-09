@@ -2,6 +2,10 @@
 title: Notes
 ---
 
+# Data
+
+`events_method=fit_name=JNO_tau=0:01:00_ts=0:00:01.arrow` and `events.JNO.fit.ts_1.00s_tau_60s.arrow` are the same data for backward compatibility.
+
 # Updates
 
 ### 03/15/2024

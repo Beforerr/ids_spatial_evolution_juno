@@ -8,7 +8,7 @@ update: update-overleaf clean update-repo publish
 
 ensure-env:
    pixi install
-   julia --project -e 'using Pkg; Pkg.develop(["Discontinuity", "Beforerr"]); Pkg.instantiate()'
+   julia --project -e 'using Pkg; Pkg.develop(["Discontinuity", "Beforerr", "PlasmaFormulary"]); Pkg.instantiate()'
    quarto add quarto-journals/agu --no-prompt
 
 env-update-julia:

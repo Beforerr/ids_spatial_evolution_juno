@@ -36,7 +36,6 @@ class Config(BaseModel):
     model_config = ConfigDict(arbitrary_types_allowed=True, extra="allow")
 
     tau: timedelta = DEFAULT_TAU
-    ts: timedelta = DEFAULT_TS
     timerange: list[datetime] = DEFAULT_TIMERANGE
 
     data_dir: Path = datadir() / "05_reporting"
@@ -48,6 +47,7 @@ class Config(BaseModel):
 class JunoConfig(Config, IDsDataset):
     _sparse_num = 10
     name: str = "JNO"
+    ts: timedelta = DEFAULT_TS
     plasma_data: pl.DataFrame = pl.scan_parquet(JNO_PLASMA_DF_PATH).sort("time")
     plasma_meta: PlasmaDataset = PlasmaDataset(
         density_col="plasma_density", velocity_cols=["v_x", "v_y", "v_z"]
