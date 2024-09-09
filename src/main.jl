@@ -20,7 +20,7 @@ include("io.jl")
 include("plot.jl")
 
 figure_dir = projectdir("figures")
-easy_save(fname) = Beforerr.easy_save(fname; dir=figure_dir)
+easy_save(fname, fig) = Beforerr.easy_save(fname, fig; formats=[:svg], dir=figure_dir)
 
 datalimits_f = x -> quantile(x, [0.02, 0.98])
 

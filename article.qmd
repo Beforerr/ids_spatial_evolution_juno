@@ -105,7 +105,7 @@ where $\alpha = (t - \mu)/{\sigma}$.
 - Then the minimum variance analysis is applied to each ID event to obtain the boundary normal (LMN) coordinate and extract IDs' features. -->
 
 
-![Examples of IDs from ARTEMIS, STEREO, and Wind](figures/fig_examples){#fig-examples}
+![Examples of IDs from Juno, ARTEMIS, STEREO, and Wind](figures/fig_examples){#fig-examples}
 
 # Results
 
