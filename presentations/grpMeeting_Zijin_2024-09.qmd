@@ -1,0 +1,100 @@
+---
+title: "Spatial Evolution of Solar Wind Discontinuities in the Outer Heliosphere: JUNO and 1AU-missions Observations"
+author:
+  - name: Zijin Zhang
+  - name: Anton V. Artemyev
+  - name: Vassilis Angelopoulos
+format:
+  html: default
+  pptx: default
+---
+
+## Introduction
+
+![Examples of IDs from ARTEMIS, STEREO, and Wind](../figures/fig_examples.png){#fig-examples}
+
+## Motivation
+
+**How do solar wind discontinuities evolve over radial distances from the Sun?**
+
+Juno during its five-year cruise phase (2011-2016) to Jupiter provides a unique opportunity!
+
+=> **What are the physical mechanisms behind their formation and evolution?**
+
+<!-- However, previous study of solar wind discontinuities evolution [@sodingRadialLatitudinalDependencies2001] in the outer heliosphere were rarely in conjunction with measurements closer to the Sun. Moreover, the intervals in their study spread over multiple solar cycles though they are selected during solar activity minimum. Thus it is presently unclear whether their frequency and properties are the result of solar variability or due to the natural evolution of the discontinuities during their propagation and interaction with the ambient solar wind. -->
+
+## Overview
+
+::: {#fig-overview}
+
+![](../figures/fig_overview.png)
+
+Overview. **a,** Juno's orbit during its cruise phase (2011-2016). **b,** Difference in heliographic longitude between Juno and 1-AU missions. **c,** monthly and smoothed sunspot numbers. **d-g,** solar wind plasma density and speed from Near-Earth (OMNI) and STEREO-A missions.
+
+:::
+
+<!-- During the initial phase of the JUNO mission, the sunspot number reached its peak, indicating a period of heightened solar activity. However, by the end of the mission's cruise phase, there was a significant decline in solar activity. This variation underscores the importance of calibrating the discontinuity properties in relation to solar activity levels to account for temporal fluctuations. -->
+
+## Temporal variations of SWDs
+
+::: {#fig-windDistribution}
+![](../figures/wind_distribution_time.png)
+
+Distribution of various properties of IDs observed by Wind mission grouped by the year of observation. Panel (a) thickness, (b) normalized thickness, (c) current density, (d) normalized current density.
+:::
+
+::: {#fig-swParameters}
+![](../figures/sw_paramters_time.png)
+
+Solar wind parameters associated with the IDs observed by 1AU satellites (Wind, ARTEMIS and STEREO-A) grouped by the year of observation. Panel (a) solar wind density, (b) magnetic field, (c) fitted magnetic field $A$ in @eq-fit.
+:::
+
+## Dataset
+
+| Mission             | δt(B)    | δt(plasma) |
+|---------------------|----------|------------|
+| Juno                | 1 Hz     | 1 hour     |
+| ARTEMIS             | 5 Hz     | 0.25 Hz    |
+| WIND                | 11 Hz    | 1 Hz       |
+| STEREO              | 8 Hz     | 1 min      |
+
+$$
+B(t; A, \mu, \sigma, {\mathrm{form=logistic}}) = A \left[1 - \frac{1}{1 + e^{\alpha}} \right]
+$${#eq-fit}
+
+<!-- However, since Juno does not provide direct plasma measurements, we will estimate the spatial scale (thickness) of discontinuities using solar wind speed derived from solar wind propagation models. Specifically, we will employ the Two-Dimensional Outer Heliosphere Solar Wind Modeling (MSWIM2D) [@keeblerMSWIM2DTwodimensionalOuter2022] to determine the ion bulk velocity ($v$) and plasma density ($n$) at Juno’s location. This model, which utilizes the BATSRUS MHD solver, simulates the propagation of solar wind from 1 to 75 astronomical units (AU) in the ecliptic plane, effectively covering the region pertinent to our study. The MSWIM2D model provides output data with an hourly time resolution as shown in @fig-model. The comparison of magnetic field magnitudes from MSWIM2D with those measured by Juno, after averaging to the same time resolution, reveals a strong correlation, confirming the model’s reliability. -->
+
+::: {#fig-model}
+
+![](../figures/model/juno_model_validation_full.png)
+
+**a,** Magnetic field magnitude from MSWIM2D and Juno. **b-c,** Plasma speed and density from MSWIM2D model. **d,** Juno radial distance from the Sun.
+:::
+
+## Results - Occurrence rate
+
+::: {#fig-rate}
+
+![](../figures/ocr/ocr_time_cleaned.png)
+
+The number of discontinuities measured by Juno per day coincides with the discontinuity number measured by STEREO, WIND, and ARTEMIS, when Juno is around $1$ AU. This number (occurrence rate) decreases with distance (with time after $\sim 2013$), as Juno moves from $1$ AU to $5$ AU. We will use the similar comparison for discontinuity characteristics and occurrence rate derived for PSP and Juno. The radial distance of Juno for 2011-2016 is shown in @fig-model.
+:::
+
+## Results - Current density and thickness
+
+::: {#fig-ljFit}
+
+![](../figures/l_j_fit_xscale_log.png)
+
+Distribution of various properties of IDs observed by Juno grouped by the radial distance from the Sun. Panel (a) thickness, (b) normalized thickness, (c) current density, (d) normalized current density.
+:::
+
+## Conclusion
+
+- The normalized occurrence rate of interplanetary discontinuities (IDs) decreases with radial distance from the Sun, following a $1/r$ relationship.
+
+- The thickness of IDs increases with radial distance, but when normalized to the ion inertial length, the thickness decreases.
+
+- The current density of IDs decreases with radial distance, but when normalized to the Alfvén current, the current density of IDs increases.
+
+- The distribution of the normalized thickness and current density of IDs remain constant over time at 1 AU on a yearly scale.

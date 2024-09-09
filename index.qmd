@@ -54,6 +54,17 @@ To eliminate the effect of the solar wind structure, we use data from other miss
 
 ![](figures/l_j_fit_xscale_log.png)
 
+
+# Conclusion
+
+- The normalized occurrence rate of interplanetary discontinuities (IDs) decreases with radial distance from the Sun, following a $1/r$ relationship.
+
+- The thickness of IDs increases with radial distance, but when normalized to the ion inertial length, the thickness decreases.
+
+- The current density of IDs decreases with radial distance, but when normalized to the Alfvén current, the current density of IDs increases.
+
+- The distribution of the normalized thickness and current density of IDs remain constant over time at 1 AU on a yearly scale.
+
 # Appendix
 
 ![Time resolution effect](figures/method/time_res_effect.png)

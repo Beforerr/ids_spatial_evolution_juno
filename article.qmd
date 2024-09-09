@@ -1,5 +1,5 @@
 ---
-title: Solar wind discontinuities spatial evolution in the outer heliosphere
+title: Spatial evolution of solar wind discontinuities in the outer heliosphere
 author:
   - name: Zijin Zhang
     email: zijin@ucla.edu
@@ -25,7 +25,7 @@ code-links:
   - repo
   - href: https://www.overleaf.com/project/65b0a9c80a3616adf6e599e8
     text: Overleaf
-abstract: We present a study of the spatial evolution of solar wind discontinuities in the outer heliosphere using data from the Juno spacecraft during its cruise phase. We identify and analyze the properties of the discontinuities at different radial distances from the Sun. By differentiating the temporal effect (correlated with solar activity) and spatial variations (correlated with radial distance), we find that (1) the normalized occurrence rate of IDs drops with the radial distance from the Sun, following a $1/r$ law; (2) The thickness of IDs increases with the radial distance from the Sun, but after normalization to the ion inertial length, the thickness of IDs decreases; (3) The current intensity of IDs decreases with the radial distance from the Sun, but after normalization to the Alfven current, the current intensity of IDs increases.
+abstract: We present a study of the spatial evolution of solar wind discontinuities in the outer heliosphere using data from the Juno spacecraft during its cruise phase. We identify and analyze the properties of the discontinuities at different radial distances from the Sun. By differentiating the temporal effect (correlated with solar activity) and spatial variations (correlated with radial distance), we find that (1) the normalized occurrence rate of interplanetary discontinuities (IDs) decreases with radial distance from the Sun, following a $1/r$ relationship; (2) The thickness of IDs increases with radial distance, but when normalized to the ion inertial length, the thickness decreases; (3) The current density of IDs decreases with radial distance, but when normalized to the Alfvén current, the current density of IDs increases; (4) The distribution of the normalized thickness and current density of IDs remain constant over time at 1 AU on a yearly scale.
 ---
 
 # Plain Language Summary
@@ -38,7 +38,8 @@ abstract: We present a study of the spatial evolution of solar wind discontinuit
 
 # Introduction
 
-Rapid variations in interplanetary magnetic fields, commonly recognized as solar wind magnetic discontinuities [@colburnDiscontinuitiesSolarWind1966], embody localized transient rotations or jumps of the magnetic field. Considered important for efficient plasma heating, they carry the most intense currents found in the solar wind and obserrved throughout the heliosphere from inner heliosphere [@liuCategorizingMHDDiscontinuities2022] to the heliosheath [@burlagaCurrentSheetsHeliosheath2011]. Theoretical models [@lerchePropagationMagneticDisturbances1975; @medvedevDissipativeDynamicsCollisionless1997] and MHD simulations [@grecoIntermittentMHDStructures2008; @grecoStatisticalAnalysisDiscontinuities2009; @yangFormationRotationalDiscontinuities2015] suggest that the formation and destruction of discontinuities are closely related to the nonlinear dynamics of Alfvén waves and/or Alfvénic turbuluence. These nonlinear processes can create significant isolated disturbances to the otherwise adiabatic evolution of the solar wind flow (?Reference?) and host many processes, including magnetic reconnection (?Reference?) and Fermi acceleration of particles [@wentzelMotionMagneticDiscontinuities1964]. Moreover, they contribute significantly to the magnetic fluctuation spectra [@borovskyContributionStrongDiscontinuities2010] and can affect space weather [@tsurutaniReviewInterplanetaryDiscontinuities2011]. Therefore, the study of the spatial evolution of solar wind discontinuities is important for understanding the dynamics of the solar wind and test the local generation mechanism of discontinuities. However, previous study of solar wind discontinuities evolution [@sodingRadialLatitudinalDependencies2001] in the outer heliosphere were rarely in conjunction with measurements closer to the Sun. Moreover, the intervals in their study spread over multiple solar cycles though they are selected during solar activity minimum. Thus it is presently unclear whether their frequency and properties are the result of solar variability or due to the natural evolution of the discontinuities during their propagation and interaction with the ambient solar wind.
+Rapid variations in interplanetary magnetic fields, commonly recognized as solar wind magnetic discontinuities [@colburnDiscontinuitiesSolarWind1966], embody localized transient rotations or jumps of the magnetic field. Considered important for efficient plasma heating, they carry the most intense currents found in the solar wind and obserrved throughout the heliosphere from inner heliosphere [@liuCategorizingMHDDiscontinuities2022] to the heliosheath [@burlagaCurrentSheetsHeliosheath2011]. Theoretical models [@lerchePropagationMagneticDisturbances1975; @medvedevDissipativeDynamicsCollisionless1997] and MHD simulations [@grecoIntermittentMHDStructures2008; @grecoStatisticalAnalysisDiscontinuities2009; @yangFormationRotationalDiscontinuities2015] suggest that the formation and destruction of discontinuities are closely related to the nonlinear dynamics of Alfvén waves and/or Alfvénic turbuluence. These nonlinear processes can create significant isolated disturbances to the otherwise adiabatic evolution of the solar wind flow (?Reference?) and host many processes, including magnetic reconnection (?Reference?) and Fermi acceleration of particles [@wentzelMotionMagneticDiscontinuities1964]. Moreover, they contribute significantly to the magnetic fluctuation spectra [@borovskyContributionStrongDiscontinuities2010] and can affect space weather [@tsurutaniReviewInterplanetaryDiscontinuities2011]. Therefore, the study of the spatial evolution of solar wind discontinuities is important for understanding the dynamics of the solar wind and test the local generation mechanism of discontinuities. 
+However, previous study of solar wind discontinuities evolution [@sodingRadialLatitudinalDependencies2001] in the outer heliosphere were rarely in conjunction with measurements closer to the Sun. Moreover, the intervals in their study spread over multiple solar cycles though they are selected during solar activity minimum. Thus it is presently unclear whether their frequency and properties are the result of solar variability or due to the natural evolution of the discontinuities during their propagation and interaction with the ambient solar wind.
 
 The goal of our paper is to investigate, statistically, discontinuities at different radial distance in the outer heliosphere to obtain a understanding of their formation and evolution. Our methodology involves integrating Juno measurements [@connerneyJunoMagneticField2017] between $1$ and $5$ AU with those at $1$ AU to distinguish temporal effect and spatial variations by examining the discontinuity characteristics at two radial distances simultaneously.
 
@@ -48,7 +49,7 @@ First, the missions, instruments and data used are listed. Then, we briefly desc
 
 ![](figures/fig_overview)
 
-Overview. **a,** Juno orbit during its cruise phase (2011-2016). **b,** Difference of heliographic longitude of Juno and 1-AU missions. **c,** monthly and smoothed sunspot number. **d-g,** Near-Earth (OMNI) and STEREO-A solar wind plasma density and speed.
+Overview. **a,** Juno's orbit during its cruise phase (2011-2016). **b,** Difference in heliographic longitude between Juno and 1-AU missions. **c,** monthly and smoothed sunspot numbers. **d-g,** solar wind plasma density and speed from Near-Earth (OMNI) and STEREO-A missions.
 
 :::
 
@@ -177,6 +178,10 @@ Solar wind parameters associated with the IDs observed by 1AU satellites (Wind, 
 @marianiStatisticalStudyMagnetohydrodynamic1983
 @tsurutaniInterplanetaryDiscontinuitiesTemporal1979
 @marianiVariationsOccurrenceRate1973
+
+TODO: how is the occurrence rate related to the formation mechanism?
+
+## Spatial variations of discontinuity properties
 
 TODO: 
 

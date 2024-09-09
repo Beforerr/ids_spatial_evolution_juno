@@ -14,6 +14,10 @@ ensure-env:
 env-update-julia:
    rsync ~/projects/share/src/Discontinuity.jl notebooks/utils/
 
+render:
+   quarto render presentations/grpMeeting_Zijin_2024-09.qmd --to pptx
+   cp _site/presentations/grpMeeting_Zijin_2024-09.pptx presentations/_grpMeeting_Zijin_2024-09.pptx
+
 examples:
    ipython ids_example.py 'notebooks/config_examples/examples_stereo.yml'
    ipython ids_example.py 'notebooks/config_examples/examples_artemis.yml'
