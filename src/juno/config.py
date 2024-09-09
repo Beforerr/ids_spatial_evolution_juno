@@ -97,7 +97,7 @@ class WindConfig(Config, WindConfigBase, SpeasyIDsConfig):
 
 
 class StereoConfig(Config, StereoConfigBase, SpeasyIDsConfig):
-    ts: timedelta = timedelta(seconds=1)
+    pass
 
 
 class THEMISConfig(ThemisConfigBase, SpeasyIDsConfig):
