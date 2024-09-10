@@ -14,6 +14,7 @@ import Beforerr: easy_save
 using LaTeXStrings
 using Discontinuity
 using Discontinuity.DefaultMapping
+using Unitful
 
 set_aog_theme!()
 
