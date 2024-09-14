@@ -6,10 +6,16 @@ default:
 
 update: update-overleaf clean update-repo publish
 
-ensure-env:
+ensure-env: install-julia-deps
    pixi install
-   julia --project -e 'using Pkg; Pkg.develop(["Discontinuity", "Beforerr", "PlasmaFormulary"]); Pkg.instantiate()'
    quarto add quarto-journals/agu --no-prompt
+
+install-julia-deps:
+   #!/usr/bin/env julia --project
+   using Pkg;
+   Pkg.develop(url="https://github.com/Beforerr/PlasmaFormulary.jl");
+   Pkg.develop(["Discontinuity", "Beforerr"]);
+   Pkg.instantiate();
 
 env-update-julia:
    rsync ~/projects/share/src/Discontinuity.jl notebooks/utils/
