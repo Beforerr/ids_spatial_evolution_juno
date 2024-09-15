@@ -9,6 +9,8 @@ update: update-overleaf clean update-repo publish
 ensure-env: install-julia-deps
    pixi install
    quarto add quarto-journals/agu --no-prompt
+   git lfs install
+   git lfs track "*.arrow"
 
 install-julia-deps:
    #!/usr/bin/env julia --project

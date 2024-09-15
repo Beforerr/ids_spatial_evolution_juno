@@ -4,7 +4,9 @@ title: Notes
 
 # Data
 
-`events_method=fit_name=JNO_tau=0:01:00_ts=0:00:01.arrow` and `events.JNO.fit.ts_1.00s_tau_60s.arrow` are the same data for backward compatibility.
+`updated_events_JNO_method=fit_tau=0:01:00_ts=0:00:01.arrow` and `events.JNO.fit.ts_1.00s_tau_60s.arrow` are the same data for backward compatibility.
+
+`updated_events_Wind_tr=20110825-20160630_method=fit_tau=0:01:00_ts=0:00:00.090909.arrow` and `events.Wind.fit.ts_0.09s_tau_60s.arrow`
 
 # Updates
 
