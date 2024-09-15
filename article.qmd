@@ -25,6 +25,8 @@ code-links:
   - repo
   - href: https://www.overleaf.com/project/65b0a9c80a3616adf6e599e8
     text: Overleaf
+  - text: Roam Research
+    href: https://roamresearch.com/#/app/zijin/page/1Q5Q5Q5Q5
 abstract: We present a study of the spatial evolution of solar wind discontinuities in the outer heliosphere using data from the Juno spacecraft during its cruise phase. We identify and analyze the properties of the discontinuities at different radial distances from the Sun. By differentiating the temporal effect (correlated with solar activity) and spatial variations (correlated with radial distance), we find that (1) the normalized occurrence rate of interplanetary discontinuities (IDs) decreases with radial distance from the Sun, following a $1/r$ relationship; (2) The thickness of IDs increases with radial distance, but when normalized to the ion inertial length, the thickness decreases; (3) The current density of IDs decreases with radial distance, but when normalized to the Alfvén current, the current density of IDs increases; (4) The distribution of the normalized thickness and current density of IDs remain constant over time at 1 AU on a yearly scale.
 ---
 
@@ -44,6 +46,11 @@ However, previous study of solar wind discontinuities evolution [@sodingRadialLa
 The goal of our paper is to investigate, statistically, discontinuities at different radial distance in the outer heliosphere to obtain a understanding of their formation and evolution. Our methodology involves integrating Juno measurements [@connerneyJunoMagneticField2017] between $1$ and $5$ AU with those at $1$ AU to distinguish temporal effect and spatial variations by examining the discontinuity characteristics at two radial distances simultaneously.
 
 First, the missions, instruments and data used are listed. Then, we briefly describe the method used to identify the discontinuities and the model used to estimate the plasma state at Juno location due to the lack of plasma data during its cruise phase. Finally, we present the results of the spatial evolution of the discontinuities with respect to their characteristics (spatial scales and current density), and discuss the implications of our findings.
+
+<!-- 
+References::
+  - @sodingRadialLatitudinalDependencies2001
+-->
 
 ::: {#fig-overview}
 
@@ -173,17 +180,19 @@ Solar wind parameters associated with the IDs observed by 1AU satellites (Wind, 
 
 # Discussion
 
-## Dependences of occurrence rate
-
-@marianiStatisticalStudyMagnetohydrodynamic1983
-@tsurutaniInterplanetaryDiscontinuitiesTemporal1979
-@marianiVariationsOccurrenceRate1973
-
-TODO: how is the occurrence rate related to the formation mechanism?
-
 ## Spatial variations of discontinuity properties
 
 TODO: 
+
+## Dependences of occurrence rate
+
+@sodingRadialLatitudinalDependencies2001
+@leppingMagneticFieldDirectional1986
+@marianiStatisticalStudyMagnetohydrodynamic1983
+@marianiVariationsOccurrenceRate1973
+@tsurutaniInterplanetaryDiscontinuitiesTemporal1979
+
+TODO: how is the occurrence rate related to the formation mechanism?
 
 # Conclusion
 
