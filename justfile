@@ -15,12 +15,17 @@ ensure-env: install-julia-deps
 install-julia-deps:
    #!/usr/bin/env julia --project
    using Pkg;
+   Pkg.develop(url="https://github.com/Beforerr/beforerr.jl");
+   Pkg.develop(url="https://github.com/Beforerr/Discontinuity.jl");
    Pkg.develop(url="https://github.com/Beforerr/PlasmaFormulary.jl");
-   Pkg.develop(["Discontinuity", "Beforerr"]);
    Pkg.instantiate();
 
 env-update-julia:
    rsync ~/projects/share/src/Discontinuity.jl notebooks/utils/
+
+exec-scripts:
+   python scripts/data.py
+   julia --project scripts/plot.jl
 
 render:
    quarto render presentations/grpMeeting_Zijin_2024-09.qmd --to pptx
