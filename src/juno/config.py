@@ -7,11 +7,10 @@ from pathlib import Path
 
 from beforerr.project import datadir
 from space_analysis.meta import PlasmaDataset
-from discontinuitypy.datasets import IDsDataset
-from discontinuitypy.config import SpeasyIDsConfig
+from discontinuitypy.config import SpeasyIDsConfig, IDsConfig
 from discontinuitypy.mission import WindConfigBase, ThemisConfigBase, StereoConfigBase
 
-from .juno import get_mag_paths
+from .juno import get_mag_data
 from math import ceil
 
 
@@ -44,50 +43,24 @@ class Config(BaseModel):
     test: bool = False
 
 
-class JunoConfig(Config, IDsDataset):
-    _sparse_num = 10
+class JunoConfig(Config, IDsConfig):
     name: str = "JNO"
     ts: timedelta = DEFAULT_TS
     plasma_data: pl.DataFrame = pl.scan_parquet(JNO_PLASMA_DF_PATH).sort("time")
     plasma_meta: PlasmaDataset = PlasmaDataset(
-        density_col="plasma_density", velocity_cols=["v_x", "v_y", "v_z"]
+        density_col="plasma_density",
+        velocity_cols=["v_x", "v_y", "v_z"],
+        temperature_col="plasma_temperature",
     )
 
-    def model_post_init(self, __context):
+    def get_data(self):
         self.data = self.mag_df
 
     @property
     def mag_df(self):
         """Magnetic field data in a single dataframe"""
-        return pl.scan_ipc(self.mag_paths).sort("time").unique("time")
-
-    @property
-    def mag_dfs(self):
-        s_paths = split_list(self.mag_paths, self.split)
-        return [pl.scan_ipc(paths).sort("time").unique("time") for paths in s_paths]
-
-    @property
-    def mag_paths(self):
         freq = 1 / self.ts.total_seconds()
-        return get_mag_paths(self.timerange, freq)
-
-    def _get_and_process_data(self, **kwargs):
-        for mag_df in self.mag_dfs:
-            yield (
-                IDsDataset(
-                    mag_data=mag_df,
-                    plasma_data=self.plasma_data,
-                    plasma_meta=self.plasma_meta,
-                    tau=self.tau,
-                    ts=self.ts,
-                    method=self.method,
-                )
-                .find_events(
-                    return_best_fit=False, sparse_num=self._sparse_num, **kwargs
-                )
-                .update_candidates_with_plasma_data()
-                .events
-            )
+        return get_mag_data(self.timerange, freq)
 
 
 class WindConfig(Config, WindConfigBase, SpeasyIDsConfig):

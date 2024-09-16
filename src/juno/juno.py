@@ -46,3 +46,11 @@ def get_mag_paths(
     end = timerange[1].replace(tzinfo=None)
     # filter by timerange
     return [file for file, date in zip(files, dates) if date >= start and date <= end]
+
+
+def get_mag_data(
+    timerange: list[datetime],
+    freq: float,
+):
+    paths = get_mag_paths(timerange, freq)
+    return pl.scan_ipc(paths).sort("time").unique("time")
