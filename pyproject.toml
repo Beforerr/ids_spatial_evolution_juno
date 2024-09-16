@@ -3,9 +3,10 @@ name = "juno"
 version = "0.1.0"
 description = "Utilities for working with Juno data"
 authors = [{ name = "Beforerr", email = "zzj956959688@gmail.com" }]
-requires-python = ">= 3.10, < 3.12"
+requires-python = ">= 3.10"
 dependencies = [
     "speasy",
+    "sunpy"
 ]
 
 [build-system]
@@ -17,8 +18,9 @@ channels = ["conda-forge"]
 platforms = ["osx-arm64"]
 
 [tool.pixi.dependencies]
-jupyter = "*"
+ipykernel = "*"
 intake = "*"
+numba = "*"
 polars = "*"
 xarray = "*"
 pydantic = "*"
