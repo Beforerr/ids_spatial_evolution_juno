@@ -15,7 +15,7 @@ website:
       - sidebar:notebooks
       - text: "Presentations"
         menu: 
-          - href: presentations/grpMeeting_Zijin_2024-09-08.qmd
+          - href: presentations/grpMeeting_Zijin_2024-09.qmd
             text: Group Meeting 2024 Sep 8
           - href: presentations/AGU23_poster.qmd
             text: AGU23 Poster
