@@ -10,6 +10,9 @@ r_lab = L"Radial Distance ($AU$)"
 r_map = :radial_distance => nonnumeric ∘ round_c  => r_lab
 tau_map = :tau => nonnumeric => "τ (s)"
 year_map = :time => nonnumeric ∘ year  => "Year"
+month_map = :time => nonnumeric ∘ month  => "Month"
+week_map = :time => nonnumeric ∘ week => "Week";
+beta_map = :β => log10 => L"Log Plasma Beta $\beta$"
 
 function plot_duration(plt; 
     datalimits_f = x -> quantile(x, [0.02, 0.98]),
