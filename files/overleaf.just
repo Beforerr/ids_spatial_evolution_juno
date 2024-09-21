@@ -1,4 +1,4 @@
-overleaf_repo := "https://git@git.overleaf.com/65b0a9c80a3616adf6e599e8"
+overleaf_repo := x'https://git@git.overleaf.com/$OVERLEAF_ID'
 
 clone-overleaf:
   git clone {{overleaf_repo}} overleaf
@@ -6,14 +6,15 @@ clone-overleaf:
 update-overleaf: sync-overleaf
   cd overleaf; git add .; git commit -am "update"; git push
 
-sync-overleaf:
-  # tlmgr install bibexport
+sync-overleaf: tex-render tex-clean
+
+tex-render:
+  #!/usr/bin/env bash
   touch files/bibexport.bib
-  quarto render --profile man --to agu-pdf
-  bibexport -o files/bibexport.bib --nosave article.aux   
+  quarto render --profile man --to $OVERLEAF_FMT
   rsync _manuscript/_tex/ overleaf/ -r
-  just clean-man
 
 [private]
-clean-man:
-  rm article.{log,bbl,blg,aux} trackchanges.sty *.cls
+tex-clean:
+  -rm article.{aux,bbl,blg,log,tex}
+  -rm trackchanges.sty *.cls
