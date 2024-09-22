@@ -12,7 +12,7 @@ tex-render:
   #!/usr/bin/env bash
   touch files/bibexport.bib
   quarto render --profile man --to $OVERLEAF_FMT
-  rsync _manuscript/_tex/ overleaf/ -r
+  rsync _manuscript/_tex/ overleaf/ -rcL
 
 [private]
 tex-clean:
