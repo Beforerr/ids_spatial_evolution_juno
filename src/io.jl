@@ -1,30 +1,57 @@
 using Printf
 using Discontinuity
-import Discontinuity: load
+using Discontinuity: load
+include("trans.jl")
 data_path = datadir("05_reporting")
 
-function Discontinuity.load(;tau=60, ts=1.00, name="JNO", method="fit", dir=data_path)
+function Discontinuity.load(path, name_cols::Pair{Symbol}...)
+    df = load(path)
+    insertcols!(df, name_cols...)
+    return df
+end
+
+function Discontinuity.load(; tau=60, ts=1.00, name="JNO", method="fit", dir=data_path)
     ts_str = @sprintf "ts_%.2fs" ts
-    df = Discontinuity.load(joinpath(dir, "events.$name.$method.$(ts_str)_tau_$(tau)s.arrow"))
+    df = load(joinpath(dir, "events.$name.$method.$(ts_str)_tau_$(tau)s.arrow"))
     df.tau .= tau
     df.ts .= ts
     return df
 end
 
 function load_tau(tau)
-    df = load(tau=tau)
+    df = Discontinuity.load(; tau=tau)
     df.label .= "$tau s"
     println("Number of events: ", size(df, 1))
     return df
 end
 
+WIND_PATH = "updated_events_Wind_tr=20110825-20160630_method=fit_tau=0:01:00_ts=0:00:00.090909.arrow"
+JNO_PATH = "updated_events_JNO_tr=20110825-20160630_method=fit_tau=0:01:00_ts=0:00:01.arrow"
+
+post_process!(df) = df |> calc_rotation_angle! |> Discontinuity.unitize! |> Discontinuity.calc_beta!
+
+function load_wind(; path=WIND_PATH)
+    df = load(datadir(path), :dataset => "Wind")
+    rename!(df, ["VX (GSE)", "VY (GSE)", "VZ (GSE)"] .=> ["v_x", "v_y", "v_z"])
+    Discontinuity.unitize!(df, "SW Vth", u"km/s")
+    Discontinuity.calc_T!(df, "SW Vth")
+    return df |> post_process!
+end
+
+function load_jno(; path=JNO_PATH)
+    df = load(datadir(path), :dataset => "Juno") 
+    rename!(df, :radial_distance => :r)
+    Discontinuity.unitize!(df, "T", u"K")
+    return df |> post_process!
+end
+
 """
-## Note
+# Notes
 
 This will remove events that appear in multiple taus datasets. 
 However, this may not remove all "duplicates" that may have little duration differences, since "t.d_start", :"t.d_end" are determined by the maximum distance, and they may vary across different taus for one "event".
 """
-function load_taus(taus; unique_f = ["t.d_start", "t.d_end"])
+function load_taus(taus; unique_f=["t.d_start", "t.d_end"])
     @chain begin
         vcat(load_tau.(taus)...)
         sort(:tau)
