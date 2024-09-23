@@ -1,5 +1,6 @@
 [deps]
 AlgebraOfGraphics = "cbdf2221-f076-402e-a563-3d30da359d67"
+Associations = "614afb3a-e278-4863-8805-9959372b9ec2"
 Beforerr = "49aed396-608e-4c3f-b6d6-a749216c9ea7"
 CairoMakie = "13f3f980-e62b-5c42-98c6-ff1f3baf88f0"
 CategoricalArrays = "324d7699-5711-5eae-9e2f-1d82baa6b597"
