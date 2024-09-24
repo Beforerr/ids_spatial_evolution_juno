@@ -6,7 +6,8 @@ authors = [{ name = "Beforerr", email = "zzj956959688@gmail.com" }]
 requires-python = ">= 3.10"
 dependencies = [
     "speasy",
-    "sunpy"
+    "sunpy",
+    "discontinuitypy",
 ]
 
 [build-system]
@@ -29,10 +30,8 @@ netcdf4 = "*"   # for `pyspedas`
 
 [tool.pixi.pypi-dependencies]
 juno = { path = ".", editable = true }
-great_tables = "*"
 scienceplots = "*"
-beforerr = { path = "../../src/beforerr_dev", editable = true }
 pooch = "*"
-pdr = "*"
+beforerr = { path = "../../src/beforerr_dev", editable = true }
 discontinuitypy = { path = "../discontinuitypy", editable = true, extras = ["plot"] }
 space_analysis = { path = "../../src/space-analysis.py", editable = true }
