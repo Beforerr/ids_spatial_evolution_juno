@@ -173,13 +173,13 @@ Distribution of various properties of IDs observed by Juno grouped by the radial
 :::
 
 ::: {#fig-windDistribution}
-![](figures/wind_distribution_time)
+![](figures/wind_distribution_time.svg)
 
 Distribution of various properties of IDs observed by 1AU satellites (Wind, ARTEMIS and STEREO-A) grouped by the year of observation. Panel (a) thickness, (b) normalized thickness, (c) current density, (d) normalized current density.
 :::
 
 ::: {#fig-swParameters}
-![](figures/sw_paramters_time)
+![](figures/sw_paramters_time.svg)
 
 Solar wind parameters associated with the IDs observed by 1AU satellites (Wind, ARTEMIS and STEREO-A) grouped by the year of observation. Panel (a) solar wind density, (b) magnetic field, (c) fitted magnetic field $A$ in @eq-fit.
 :::
