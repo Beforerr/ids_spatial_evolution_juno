@@ -10,6 +10,19 @@ title: Notes
 
 # Updates
 
+### 09/23/2024
+
+::: {.column-page}
+::: {#fig-ocr-v layout-nrow="1"}
+
+![Wind](figures/ocr/ocr_wind_daily_v.svg)
+
+![](images/söding2001_fig4.png)
+
+Distribution of daily averages of DD per day over v with the fit of an linear function.
+:::
+:::
+
 ### 03/15/2024
 
 ![Discontinuities in log-log scale](figures/l_j_fit_xscale_log)
@@ -189,7 +202,10 @@ Science part
 
 -   Analysis
     -   [ ] Re-calculate the occurrence rate of IDs
-    -   [ ] Contribution of discontinuities to the power spectrum
+    -   [x] Distribution of $δB/B$ over radius (related to the alfvenicity, identification standard about neighboring fluctuations)
+    -   [x] $\theta_{n,v}$ distribution
+    -   [ ] Correlation between plasma beta and thickness / current density
+
     -   [ ] Check Datagap
     -   [ ] Check `ARTEMIS-B` data in different states (solar wind, magnetosheath, magnetotail, moon wake)
     -   [ ] Distribution of \|B\| over radius
@@ -197,7 +213,9 @@ Science part
     -   [ ] Wind data
     -   [ ] Add error bar
     -   [ ] Validate the effects of calibrate candidate duration
-    -   [ ] Validate model density with `Voyager`
+
+    -   ~~Contribution of discontinuities to the power spectrum~~
+    -   ~~Validate model density with `Voyager`~~
 -   Identifaction
     -   [ ] Ensemble forest?
     -   [ ] Smoothing is important?
