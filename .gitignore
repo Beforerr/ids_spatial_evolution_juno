@@ -16,7 +16,6 @@ _manuscript/
 
 # pixi environments
 .pixi
-pixi.lock
 
 ##########################
 

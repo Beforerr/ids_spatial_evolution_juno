@@ -6,8 +6,8 @@ default:
 
 update: update-overleaf clean update-repo publish
 
-ensure-env: install-julia-deps
-    pixi install
+ensure-env: install-julia-deps clone-overleaf
+    pixi install --frozen
     quarto add quarto-journals/agu --no-prompt
     git lfs install
     git lfs track "*.arrow"
