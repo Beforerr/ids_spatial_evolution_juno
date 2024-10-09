@@ -25,8 +25,6 @@ code-links:
   - repo
   - href: https://www.overleaf.com/project/65b0a9c80a3616adf6e599e8
     text: Overleaf
-  - text: Roam Research
-    href: https://roamresearch.com/#/app/zijin/page/1Q5Q5Q5Q5
 abstract: We present a study of the spatial evolution of solar wind discontinuities in the outer heliosphere using data from the Juno spacecraft during its cruise phase. We identify and analyze the properties of the discontinuities at different radial distances from the Sun. By differentiating the temporal effect (correlated with solar activity) and spatial variations (correlated with radial distance), we find that (1) the normalized occurrence rate of interplanetary discontinuities (IDs) decreases with radial distance from the Sun, following a $1/r$ relationship; (2) The thickness of IDs increases with radial distance, but when normalized to the ion inertial length, the thickness decreases; (3) The current density of IDs decreases with radial distance, but when normalized to the Alfvén current, the current density of IDs increases; (4) The distribution of the normalized thickness and current density of IDs remain constant over time at 1 AU on a yearly scale.
 ---
 
