@@ -14,3 +14,8 @@ FHist = "68837c9b-b678-4cd5-9925-8a54edc8f695"
 LaTeXStrings = "b964fa9f-0449-5b57-a5c2-d3ea65f4040f"
 PlasmaFormulary = "d26ff896-aba2-4e70-a0a6-448627456efe"
 Unitful = "1986cc42-f94f-5a68-af5c-568840ba703d"
+
+[sources]
+Beforerr = {url = "https://github.com/Beforerr/beforerr.jl"}
+PlasmaFormulary = {url = "https://github.com/Beforerr/PlasmaFormulary.jl"}
+Discontinuity = {url = "https://github.com/Beforerr/Discontinuity.jl"}

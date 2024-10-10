@@ -1,28 +1,20 @@
 import 'files/quarto.just'
 import 'files/overleaf.just'
+import? 'files/languages.just'
 
 default:
     just --list
 
 update: update-overleaf clean update-repo publish
 
-ensure-env: install-julia-deps clone-overleaf
-    pixi install --frozen
+ensure-env: install-deps clone-overleaf
     quarto add quarto-journals/agu --no-prompt
     git lfs install
     git lfs track "*.arrow"
 
-install-julia-deps:
-    #!/usr/bin/env -S julia --project
-    using Pkg;
-    Beforerr = PackageSpec(url="https://github.com/Beforerr/beforerr.jl");
-    PlasmaFormulary = PackageSpec(url="https://github.com/Beforerr/PlasmaFormulary.jl");
-    Discontinuity = PackageSpec(url="https://github.com/Beforerr/Discontinuity.jl");
-    Pkg.develop([Beforerr, PlasmaFormulary, Discontinuity]);
-    Pkg.instantiate();
-
-env-update-julia:
-    rsync ~/projects/share/src/Discontinuity.jl notebooks/utils/
+install-deps:
+    pixi install --frozen
+    julia --project -e 'using Pkg; Pkg.update();'
 
 exec-scripts:
     python scripts/data.py
