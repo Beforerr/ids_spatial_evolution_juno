@@ -28,10 +28,31 @@ end
 WIND_PATH = "updated_events_Wind_tr=20110825-20160630_method=fit_tau=0:01:00_ts=0:00:00.090909.arrow"
 JNO_PATH = "updated_events_JNO_tr=20110825-20160630_method=fit_tau=0:01:00_ts=0:00:01.arrow"
 
-post_process!(df) = df |> calc_rotation_angle! |> Discontinuity.unitize! |> Discontinuity.calc_beta!
+post_process!(df) = df |> calc_rotation_angle! |> Discontinuity.unitize! |> Discontinuity.calc_beta! |> assign_accuracy!
+
+function backwards_comp!(df)
+    @rtransform!(df, 
+        :"B.vec.before" = [:"B.vec.before.l", :"B.vec.before.m", :"B.vec.before.n"],
+        :"B.vec.after" = [:"B.vec.after.l", :"B.vec.after.m", :"B.vec.after.n"],
+    )
+end
+
+# the MVAB method can achieve acceptable accuracy when either |B|/|B| > 0.05 or ω > 60°. @liuFailuresMinimumVariance2023
+function assign_accuracy!(df)
+    @transform!(df, 
+        :accuracy = (:rotation_angle .> 60) .| (:db_over_b .> 0.05)
+    )
+end
+
+function filter_low_accuracy(df)
+    @chain df begin
+        filter(:accuracy => ==(true), _)
+    end
+end
+
 
 function load_wind(; path=WIND_PATH)
-    df = load(datadir(path), :dataset => "Wind")
+    df = load(datadir(path), :dataset => "Wind") |> backwards_comp! |> process!
     rename!(df, ["VX (GSE)", "VY (GSE)", "VZ (GSE)"] .=> ["v_x", "v_y", "v_z"])
     Discontinuity.unitize!(df, "SW Vth", u"km/s")
     Discontinuity.calc_T!(df, "SW Vth")
@@ -39,7 +60,7 @@ function load_wind(; path=WIND_PATH)
 end
 
 function load_jno(; path=JNO_PATH)
-    df = load(datadir(path), :dataset => "Juno") 
+    df = load(datadir(path), :dataset => "Juno") |> process!
     rename!(df, :radial_distance => :r)
     Discontinuity.unitize!(df, "T", u"K")
     return df |> post_process!
