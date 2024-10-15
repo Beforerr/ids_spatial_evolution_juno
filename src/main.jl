@@ -17,6 +17,8 @@ using Discontinuity.DefaultMapping
 using Unitful
 
 set_aog_theme!()
+theme = (;colormap = Reverse(:tokyo))
+update_theme!(; theme...)
 
 include("io.jl")
 include("plot.jl")
@@ -28,3 +30,6 @@ datalimits_f = x -> quantile(x, [0.02, 0.98])
 
 import Base.log10
 log10(x::Unitful.Quantity) = log10(ustrip(x))
+
+dfplot(layer, args...; axis = (;), kwargs...) = draw(layer * mapping(args...; kwargs...); axis)
+dfplot(df::AbstractDataFrame, args...; axis = (;), kwargs...) = draw(data(df) * mapping(args...; kwargs...); axis)

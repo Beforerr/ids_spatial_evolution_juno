@@ -66,6 +66,11 @@ function load_jno(; path=JNO_PATH)
     return df |> post_process!
 end
 
+function Discontinuity.load(sym::Symbol = :wind; kw...)
+    func = sym == :wind ? load_wind : load_jno
+    func(;kw...)
+end
+
 """
 # Notes
 
