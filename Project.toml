@@ -11,11 +11,12 @@ Discontinuity = "b54b658d-ecbf-47cc-8c7f-673f5d2a4b30"
 Distributions = "31c24e10-a181-5473-b8eb-7969acd0382f"
 DrWatson = "634d3b9d-ee7a-5ddf-bec9-22491ea816e1"
 FHist = "68837c9b-b678-4cd5-9925-8a54edc8f695"
+GLMakie = "e9467ef8-e4e7-5192-8a1a-b1aee30e663a"
 LaTeXStrings = "b964fa9f-0449-5b57-a5c2-d3ea65f4040f"
 PlasmaFormulary = "d26ff896-aba2-4e70-a0a6-448627456efe"
 Unitful = "1986cc42-f94f-5a68-af5c-568840ba703d"
 
 [sources]
 Beforerr = {url = "https://github.com/Beforerr/beforerr.jl"}
-PlasmaFormulary = {url = "https://github.com/Beforerr/PlasmaFormulary.jl"}
 Discontinuity = {url = "https://github.com/Beforerr/Discontinuity.jl"}
+PlasmaFormulary = {url = "https://github.com/Beforerr/PlasmaFormulary.jl"}
