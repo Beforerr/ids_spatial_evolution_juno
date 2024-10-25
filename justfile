@@ -25,9 +25,9 @@ render:
     cp _site/presentations/grpMeeting_Zijin_2024-09.pptx presentations/_grpMeeting_Zijin_2024-09.pptx
 
 examples:
-    ipython ids_example.py 'notebooks/config_examples/examples_stereo.yml'
-    ipython ids_example.py 'notebooks/config_examples/examples_artemis.yml'
-    ipython ids_example.py 'notebooks/config_examples/examples_wind.yml'
+    ipython notebooks/ids_example.py 'notebooks/config_examples/examples_stereo.yml'
+    ipython notebooks/ids_example.py 'notebooks/config_examples/examples_artemis.yml'
+    ipython notebooks/ids_example.py 'notebooks/config_examples/examples_wind.yml'
     # ipython notebooks/20_omni_overview.ipynb 'notebooks/omni.yml'
 
 download:

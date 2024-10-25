@@ -4,7 +4,7 @@
 import sys
 import yaml
 
-from space_analysis.ds.tplot import Config, export, process_panel
+from space_analysis.ds.tplot.plot import Config, export, process_panel
 
 from importlib.util import find_spec
 import matplotlib.pyplot as plt
