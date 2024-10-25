@@ -28,8 +28,10 @@ easy_save(fname, fig) = Beforerr.easy_save(fname, fig; formats=[:svg], dir=figur
 
 datalimits_f = x -> quantile(x, [0.02, 0.98])
 
-import Base.log10
-log10(x::Unitful.Quantity) = log10(ustrip(x))
+foreach([:log10, :log2, :log]) do f
+    @eval import Base: $f
+    @eval $f(x::Unitful.Quantity) = $f(ustrip(x))
+end
 
 dfplot(layer, args...; axis = (;), kwargs...) = draw(layer * mapping(args...; kwargs...); axis)
 dfplot(df::AbstractDataFrame, args...; axis = (;), kwargs...) = draw(data(df) * mapping(args...; kwargs...); axis)

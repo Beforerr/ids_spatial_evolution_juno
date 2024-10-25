@@ -7,7 +7,7 @@ function v_norm!(df::AbstractDataFrame)
     @chain df begin
         @transform!(
             :Ω = ion_gyrofrequency.(:"B.mean"),
-            :θ = acosd.(:bn_over_b)
+            :θ = acosd.(abs.(:bn_over_b))
         )
         @transform!(:v0 = :L_k .* :Ω)
     end
