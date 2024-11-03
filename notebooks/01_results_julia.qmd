@@ -1,0 +1,41 @@
+---
+title: Results (Julia)
+---
+
+```{julia}
+using DrWatson
+using Discontinuity
+@quickactivate
+include("../src/main.jl");
+M = var_mapping()
+```
+
+```{julia}
+wind_df = load_wind();
+jno_df = load_jno();
+```
+
+## Check the discontinuities properties with time and radial distance
+
+```{julia}
+maps1 = [M.l_log M.l_norm_log; M.j_log M.j_norm_log]
+maps2 = [M.density_log M.B_log; beta_map M.bm0_log];
+```
+
+```{julia}
+temp_plot(layer::Layer) = m -> plot_dist(layer, m; datalimits=datalimits_f)
+temp_plot(df::DataFrame; color=year_map) = temp_plot(data(df) * mapping(color=color))
+
+fs = temp_plot(wind_df).([maps1, maps2])
+fnames = ["wind_distribution_time", "wind_sw_paramters"]
+easy_save.(fnames, fs) .|> display;
+```
+
+```{julia}
+let df = jno_df # let df = j_events_taus
+    fs = temp_plot(df; color=r_map).([maps1, maps2])
+    fnames = ["juno_distribution_r", "juno_sw_paramters"]
+    easy_save.(fnames, fs)
+    display.(fs)
+end;
+```
