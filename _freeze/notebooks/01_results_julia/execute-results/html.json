@@ -1,0 +1,12 @@
+{
+  "hash": "23cd50493cf5e9a84ce8bdfc1987db47",
+  "result": {
+    "engine": "jupyter",
+    "markdown": "---\ntitle: Results (Julia)\n---\n\n```{julia}\nusing DrWatson\nusing Discontinuity\n@quickactivate\ninclude(\"../src/main.jl\");\nM = var_mapping()\n```\n\n```{julia}\nwind_df = load_wind();\njno_df = load_jno();\n```\n\n\n\n\n## Check the discontinuities properties with time and radial distance\n\n\n\n\n```{julia}\nmaps1 = [M.l_log M.l_norm_log; M.j_log M.j_norm_log]\nmaps2 = [M.density_log M.B_log; beta_map M.bm0_log];\n```\n\n```{julia}\ntemp_plot(layer::Layer) = m -> plot_dist(layer, m; datalimits=datalimits_f)\ntemp_plot(df::DataFrame; color=year_map) = temp_plot(data(df) * mapping(color=color))\n\nlet df = wind_df, fnames = [\"wind_distribution_time\", \"wind_sw_paramters\"]\n    fs = temp_plot(df).([maps1, maps2])\n    easy_save.(fnames, fs)\n    display.(fs)\nend\n```\n\n```{julia}\n# let df = j_events_taus\nlet df = jno_df, color = r_map, fnames = [\"juno_distribution_r\", \"juno_sw_paramters\"]\n    fs = temp_plot(df; color).([maps1, maps2])\n    easy_save.(fnames, fs)\n    display.(fs)\nend\n```\n\n",
+    "supporting": [
+      "01_results_julia_files"
+    ],
+    "filters": [],
+    "includes": {}
+  }
+}

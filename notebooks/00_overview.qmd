@@ -1,0 +1,168 @@
+---
+title: Overview
+description: Juno Orbits and Sunspot Numbers
+jupyter: python3
+---
+
+```{python}
+import matplotlib.pyplot as plt
+from beforerr.matplotlib import unify_axes_fontsize, sync_legend_colors, set_linewidth, hide_legend_lines
+```
+
+```{python}
+import pandas as pd
+import polars as pl
+import scienceplots as scienceplots
+from matplotlib.pyplot import Axes
+from space_analysis.plot.basic import savefig
+from space_analysis.utils.cdas import Variables
+
+plt.rc("savefig", dpi=300)
+plt.rc('figure.subplot', wspace = 0, hspace = 0)
+```
+
+```{python}
+timerange = ["2011-08-01", "2016-07-01"]
+fname = "juno-hg-loc_sunspot-number"
+
+datasets = ['JUNO_HELIO1DAY_POSITION', 'EARTH_HELIO1DAY_POSITION', 'STA_HELIO1DAY_POSITION']
+names = ['JUNO', 'EARTH', 'STA']
+```
+
+## Plotting Juno and other mission location
+
+```{python}
+dfs = []
+
+for dataset, name in zip(datasets, names):
+    ds_variables = Variables(
+        dataset=dataset,
+        timerange=timerange,
+    )
+    df = ds_variables.to_pandas()
+    df = df.rename(columns={c: f"{name}_{c}" for c in df.columns})
+    dfs.append(df)
+```
+
+```{python}
+df_concated = pd.concat(dfs, axis=1)
+```
+
+```{python}
+df = pl.DataFrame(df_concated.reset_index()).with_columns(
+    JUNO_EARTH_HGI_LON_diff = (pl.col("JUNO_HGI_LON") - pl.col("EARTH_HGI_LON")).abs(),
+    JUNO_STA_HGI_LON_diff = (pl.col("JUNO_HGI_LON") - pl.col("STA_HGI_LON")).abs(),
+    JUNO_EARTH_HG_LON_diff = (pl.col("JUNO_HG_LON") - pl.col("EARTH_HG_LON")).abs(),
+    JUNO_STA_HG_LON_diff = (pl.col("JUNO_HG_LON") - pl.col("STA_HG_LON")).abs(),
+).with_columns(
+    JUNO_EARTH_HG_LON_diff = pl.when(pl.col("JUNO_EARTH_HG_LON_diff")>180).then(360-pl.col("JUNO_EARTH_HG_LON_diff")).otherwise(pl.col("JUNO_EARTH_HG_LON_diff")),
+    JUNO_STA_HG_LON_diff = pl.when(pl.col("JUNO_STA_HG_LON_diff")>180).then(360-pl.col("JUNO_STA_HG_LON_diff")).otherwise(pl.col("JUNO_STA_HG_LON_diff")),
+)
+```
+
+```{python}
+def plot_lon_diff(df,ax: Axes):
+    ax.plot(df["Epoch"], df["JUNO_EARTH_HG_LON_diff"], label="Earth")
+    ax.plot(df["Epoch"], df["JUNO_STA_HG_LON_diff"], label="STA")
+    ax.set_ylabel("HG Longitude\nDifference\n[deg]")
+```
+
+## Plotting a solar cycle index
+
+https://docs.sunpy.org/en/stable/generated/gallery/plotting/solar_cycle_example.html
+
+```{python}
+import sunpy.timeseries as ts
+from astropy.time import Time
+from sunpy.net import Fido
+from sunpy.net import attrs as a
+from sunpy.time import TimeRange
+```
+
+The U.S. Dept. of Commerce, NOAA, Space Weather Prediction Center (SWPC) provides recent solar cycle indices which includes different sunspot numbers, radio flux, and geomagnetic index. They also provide predictions for how the sunspot number and radio flux will evolve. Predicted values are based on the consensus of the Solar Cycle 24 Prediction Panel.
+
+We will first search for and then download the data.
+
+
+```{python}
+time_range = TimeRange(timerange)
+result = Fido.search(a.Time(time_range), a.Instrument('noaa-indices'))
+f_noaa_indices = Fido.fetch(result)
+
+noaa = ts.TimeSeries(f_noaa_indices, source='noaaindices').truncate(time_range)
+```
+
+We then load them into individual `~sunpy.timeseries.TimeSeries` objects.
+
+
+Finally, we plot both ``noaa`` and ``noaa_predict`` for the sunspot number. In this case we use the S.I.D.C. Brussels International Sunspot Number (RI). The predictions provide both a high and low values, which we plot below as ranges.
+
+
+```{python}
+def plot_sunspot_number(noaa_indices_ts, ax):
+    
+    time : Time = noaa_indices_ts.time
+    time = time.to_datetime()
+    
+    ax.scatter(time, noaa_indices_ts.quantity('sunspot RI'))
+    ax.plot(time, noaa_indices_ts.quantity('sunspot RI'), label='Monthly')
+    ax.plot(
+        time, noaa_indices_ts.quantity('sunspot RI smooth'), label='Smoothed'
+    )
+    
+    ax.set_ylim(bottom=0)
+    ax.set_ylabel('Sunspot\nNumber\n[#]')
+```
+
+```{python}
+fig, axes = plt.subplots(nrows=2, ncols=1, sharex=True, figsize=(10, 6))
+
+plot_lon_diff(df, axes[0])
+plot_sunspot_number(noaa, axes[1])
+```
+
+## Plotting OMNI and STEREO plasma data
+
+```{python}
+import yaml
+from space_analysis.ds.tplot.plot import Config, plot, process_panel
+
+file_path = 'omni_stereo.yml'
+config = yaml.load(open(file_path), Loader=yaml.FullLoader)
+config = Config(**config)
+tvars2plot = []
+```
+
+```{python}
+for p_config in config.panels:
+    tvar2plot = process_panel(p_config)
+    tvars2plot.append(tvar2plot)
+```
+
+```{python}
+fig, axes = plot(tvars2plot, config)
+```
+
+## Overview plot
+
+```{python}
+with plt.style.context(['science', 'nature', 'no-latex']):
+    figsize=(3.5, 6)
+    fig, axes = plt.subplots(nrows=6, ncols=1, sharex=True, figsize=figsize)
+
+    plot_lon_diff(df, axes[0])
+    plot_sunspot_number(noaa, axes[1])
+    plot(tvars2plot=tvars2plot, fig=fig, axes=axes[2:], config=config)
+    
+    for ax in axes:
+        if ax.get_legend_handles_labels()[0]:
+            legend = ax.legend(handletextpad=0, handlelength=0)
+        
+    set_linewidth(0.8)
+    sync_legend_colors()
+    hide_legend_lines()
+    unify_axes_fontsize(fontsize='large')
+    # savefig(fname)
+```
+
+![](../figures/juno-hg-loc_sunspot-number.png)

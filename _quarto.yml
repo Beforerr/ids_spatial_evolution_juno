@@ -29,6 +29,9 @@ website:
       title: Notebooks
       contents: "notebooks/**"
 
+execute:
+  freeze: auto  # re-render only when source changes
+
 format:
   html: 
     lightbox: auto
