@@ -17,14 +17,11 @@ using Discontinuity.DefaultMapping
 using Unitful
 
 set_aog_theme!()
-theme = (;colormap = Reverse(:tokyo))
-update_theme!(; theme...)
+theme = Theme(;colormap = Reverse(:tokyo), figure_padding=2)
+update_theme!(theme)
 
 include("io.jl")
 include("plot.jl")
-
-figure_dir = projectdir("figures")
-easy_save(fname, fig) = Beforerr.easy_save(fname, fig; formats=[:svg], dir=figure_dir)
 
 datalimits_f = x -> quantile(x, [0.02, 0.98])
 

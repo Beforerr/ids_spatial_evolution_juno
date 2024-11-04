@@ -26,16 +26,18 @@ maps2 = [M.density_log M.B_log; beta_map M.bm0_log];
 temp_plot(layer::Layer) = m -> plot_dist(layer, m; datalimits=datalimits_f)
 temp_plot(df::DataFrame; color=year_map) = temp_plot(data(df) * mapping(color=color))
 
-fs = temp_plot(wind_df).([maps1, maps2])
-fnames = ["wind_distribution_time", "wind_sw_paramters"]
-easy_save.(fnames, fs) .|> display;
+let df = wind_df, fnames = ["wind_distribution_time", "wind_sw_paramters"]
+    fs = temp_plot(df).([maps1, maps2])
+    easy_save.(fnames, fs)
+    display.(fs)
+end
 ```
 
 ```{julia}
-let df = jno_df # let df = j_events_taus
-    fs = temp_plot(df; color=r_map).([maps1, maps2])
-    fnames = ["juno_distribution_r", "juno_sw_paramters"]
+# let df = j_events_taus
+let df = jno_df, color = r_map, fnames = ["juno_distribution_r", "juno_sw_paramters"]
+    fs = temp_plot(df; color).([maps1, maps2])
     easy_save.(fnames, fs)
     display.(fs)
-end;
+end
 ```
