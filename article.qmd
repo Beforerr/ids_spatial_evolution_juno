@@ -102,13 +102,13 @@ Because the discontinuities may have different spatial scale at different radial
 Discontinuities with spatial scales larger than $60$ s are not considered in this study, however it could be argued that they are not significant in the outer heliosphere if they follow the trend with decreasing number of IDs with increasing spatial scale. @fig-ljFit also indicates that the spatial scale of IDs does not vary significantly with the radial distance from the Sun.
 
 TODO:
-More than ? IDs are identified in the solar wind data from Juno, with ? IDs identified in 5 AU. Then for each discontinuity identified, we calculate the distance matrix of the time series sequence (distance between each pair of magnetic field vectors) to determine the leading edge and trailing edge of the discontinuity. After that, we use the minimum or maximum variance analysis (MVA) analysis [@sonnerupMinimumMaximumVariance1998; @sonnerupMagnetopauseStructureAttitude1967] to get the main (most varying) magnetic field component, $B_l$, and medium variation component, $B_m$. The maximum variance direction is then fitted by a step-like functions to extract the parameters to properly describe the discontinuity (we used logistic function here). Then we combine the magnetic field data and plasma data to obtain the thickness and the current density of the discontinuity.
+More than ? IDs are identified in the solar wind data from Juno, with ? IDs identified in 5 AU. Then for each discontinuity identified, we calculate the distance matrix of the time series sequence (distance between each pair of magnetic field vectors) to determine the leading edge and trailing edge of the discontinuity. After that, we use the minimum or maximum variance analysis (MVA) analysis [@sonnerupMinimumMaximumVariance1998; @sonnerupMagnetopauseStructureAttitude1967] to get the main (most varying) magnetic field component, $B_l$, and medium variation component, $B_m$. The maximum variance direction is then fitted by a hyperbolic tangent functions to extract the parameters to properly describe the discontinuity @eq-fit. Then we combine the magnetic field data and plasma data to obtain the thickness and the current density of the discontinuity.
 
 $$
-B(t; A, \mu, \sigma, {\mathrm{form=logistic}}) = A \left[1 - \frac{1}{1 + e^{\alpha}} \right]
+B_m(t) = B_{m0} \tanh\left(\frac{t - t_0}{\Delta T}\right) + c
 $${#eq-fit}
 
-where $\alpha = (t - \mu)/{\sigma}$.
+where $B_{m0}$ is the amplitude of the magnetic field change in the maximum variance direction, $t_0$ is the time of discontinuity, $\Delta T$ is the transition time, and $c$ is the offset of the magnetic field change (in the case of an ideal discontinuity with perfect rotational symmetry, $c$ should theoretically be zero. However, in the context of data processing, incorporating $c$ can enhance the fitting accuracy).
 
 @fig-examples shows several examples of solar wind discontinuities detected by different spacecraft.
 
@@ -147,7 +147,7 @@ $$
 J_m = - \frac{1}{\mu_0 V_n} \frac{d B_m}{d t},
 $$ {#eq-j}
 
-where $\mu_0$ is the vacuum permeability and $V_n$ is the normal component of the proton flow velocity. For fitting method, the derivative of the magnetic field could be estimated as $d B_m / d t = A / 4 σ$. This estimate is more robust than the direct calculation of the derivative of the magnetic field, because the fitting method is less sensitive to the noise in the data and the time resolution of the data (see discussion in the appendix).
+where $\mu_0$ is the vacuum permeability and $V_n$ is the normal component of the proton flow velocity. For fitting method, the derivative of the magnetic field could be estimated as $d B_m / d t = B_{m0} / \Delta T$. This estimate is more robust than the direct calculation of the derivative of the magnetic field, because the fitting method is less sensitive to the noise in the data and the time resolution of the data (see discussion in the appendix).
 
 The thickness $d$ of a discontinuity is determined by
 
@@ -171,13 +171,13 @@ Distribution of various properties of IDs observed by Juno grouped by the radial
 :::
 
 ::: {#fig-windDistribution}
-![](figures/wind_distribution_time.svg)
+![](figures/wind_distribution_time)
 
 Distribution of various properties of IDs observed by 1AU satellites (Wind, ARTEMIS and STEREO-A) grouped by the year of observation. Panel (a) thickness, (b) normalized thickness, (c) current density, (d) normalized current density.
 :::
 
 ::: {#fig-swParameters}
-![](figures/sw_paramters_time.svg)
+![](figures/wind_sw_paramters)
 
 Solar wind parameters associated with the IDs observed by 1AU satellites (Wind, ARTEMIS and STEREO-A) grouped by the year of observation. Panel (a) solar wind density, (b) magnetic field, (c) fitted magnetic field $A$ in @eq-fit.
 :::
@@ -198,7 +198,7 @@ If the majority of distant discontinuities are generated locally, and assuming t
 
 Alternatively, we consider the hypothesis that the majority of discontinuities are generated close to the Sun. If we assume that discontinuities are one-dimensional, infinitely extended structures, then without annihilation, all discontinuities passing through one location would also pass through other radial distances. However, a more realistic assumption is that discontinuities are three-dimensional curved surfaces with lengths and widths proportional to their thickness. In this scenario, the occurrence rate observed by a single spacecraft does not represent the total number of discontinuities within a given shell. Since our spacecraft travels within the ecliptic plane and the normal direction of most discontinuities lies within this plane, it is necessary to project the discontinuities onto a circular cross-section. The projected lengths should then be normalized by the circumference of the circle to estimate the total number of discontinuities within the cylindrical shell. The normalization factor is  $d \sin\theta_{n,v} / r$ , where $d$ is the thickness of the discontinuity, $\theta_{n,v}$ is the angle between the normal direction of the discontinuity and the solar wind velocity, and  $r$ is the radial distance from the Sun (the result is shown in the appendix). Accounting for this factor reduces the differences in the normalized occurrence rates observed by different spacecraft. However, we cannot rule out the possibility that some discontinuities may be annihilated as they convect outward with the solar wind. This annihilation process would result in a lower number of discontinuities observed by Juno at larger radial distances. Therefore, under this hypothesis, the annihilation process must play a significant role. (However, if we disregard changes in the thickness and only account for the factor of the circumference of the circle, the normalized discontinuities observed by Juno would be consistent with those observed at 1 AU.)
 
-![](figures/ocr/ocr_normalized_by_r.svg)
+![](figures/ocr/ocr_normalized_by_r)
 
 # Conclusion
 
