@@ -92,7 +92,7 @@ However, since Juno does not provide direct plasma measurements, we will estimat
 
 ## Methods
 
-We employ Liu’s method [@liuMagneticDiscontinuitiesSolar2022] to identify discontinuities in the solar wind. This approach provides better compatibility for discontinuities with small magnetic field changes and demonstrates greater robustness for conditions in the outer heliosphere compared to traditional methods, namely the B-criterion [@burlagaDirectionalDiscontinuitiesInterplanetary1969] and the TS-criterion [@tsurutaniInterplanetaryDiscontinuitiesTemporal1979]. For each sampling time $t$, we define three intervals: the pre-interval $[-1,-1/2]\cdot T+t$, the middle interval $[-1/2,1/2]\cdot T+t$, and the post-interval $[1/2,1]\cdot T+t$, where $T$ represents time lags. The magnetic field timeseries in these three intervals are labeled as ${\mathbf B}_-$, ${\mathbf B}_0$, and ${\mathbf B}_+$, respectively. To identify a discontinuity, the following three conditions must be met:
+We employ Liu’s method [@liuMagneticDiscontinuitiesSolar2022] to identify discontinuities in the solar wind. This approach provides better compatibility for discontinuities with small magnetic field changes and demonstrates greater robustness for conditions in the outer heliosphere compared to traditional methods, namely the B-criterion [@burlagaDirectionalDiscontinuitiesInterplanetary1969] and the TS-criterion [@tsurutaniInterplanetaryDiscontinuitiesTemporal1979]. For each sampling time $t$, we define three intervals: the pre-interval $[-1,-1/2]\cdot τ+t$, the middle interval $[-1/2,1/2]\cdot τ+t$, and the post-interval $[1/2,1]\cdot τ+t$, where $τ$ represents time lags. The magnetic field timeseries in these three intervals are labeled as ${\mathbf B}_-$, ${\mathbf B}_0$, and ${\mathbf B}_+$, respectively. To identify a discontinuity, the following three conditions must be met:
 
 $$
 \begin{aligned}
@@ -102,11 +102,11 @@ $$
 \end{aligned}
 $$
 
-Here, $\sigma$ denotes the standard deviation, ${\mathbf B}_{bg}$ represents the background magnetic field magnitude, and $\Delta {\mathbf B}={\mathbf B}(t+T/2)-{\mathbf B}(t-T/2)$. The first two conditions ensure that the field changes are distinguishable from stochastic fluctuations, while the third condition serves as a supplementary measure to reduce recognition uncertainty.
+Here, $\sigma$ denotes the standard deviation, ${\mathbf B}_{bg}$ represents the background magnetic field magnitude, and $\Delta {\mathbf B}={\mathbf B}(t+τ/2)-{\mathbf B}(t-τ/2)$. The first two conditions ensure that the field changes are distinguishable from stochastic fluctuations, while the third condition serves as a supplementary measure to reduce recognition uncertainty.
 
 Notably, this method shares certain similarities with the Partial Variance of Increments (PVI) approach for identifying coherent structures, as both calculate indices based on standard deviations (with this method focusing on the standard deviation of the magnetic field, and PVI on magnetic field increments). However, this method is better suited for discontinuity identification by comparing data within neighboring time windows rather than across a correlation scale (an unknown quantity that may vary with radial distance and solar wind conditions). As a result, this approach effectively excludes wave-like coherent structures, eliminating the need for manual inspection and bypassing the necessity of grouping continuous clusters of high-PVI points as in PVI analysis.
 
-Because the discontinuities may have different spatial scale at different radial distances from the Sun, we repeat the search procedure with time lags $T = 10, 20, 30, 40, 50, 60$ s, and combine the identified ID events together to establish the event list.
+Because the discontinuities may have different spatial scale at different radial distances from the Sun, we repeat the search procedure with time lags $τ = 10, 20, 30, 40, 50, 60$ s, and combine the identified ID events together to establish the event list.
 Discontinuities with spatial scales larger than $60$ s are not considered in this study, however it could be argued that they are not significant in the outer heliosphere if they follow the trend with decreasing number of IDs with increasing spatial scale. @fig-junoDistribution also indicates that the spatial scale of IDs does not vary significantly with the radial distance from the Sun.
 
 <!-- TODO: -->
