@@ -2,11 +2,20 @@
 title: Overview
 description: Juno Orbits and Sunspot Numbers
 jupyter: python3
+execute: 
+  freeze: auto
 ---
 
 ```{python}
+from IPython.display import clear_output
+from juno import DEFAULT_TIMERANGE
 import matplotlib.pyplot as plt
 from beforerr.matplotlib import unify_axes_fontsize, sync_legend_colors, set_linewidth, hide_legend_lines
+```
+
+```{python}
+timespan = (DEFAULT_TIMERANGE[1] - DEFAULT_TIMERANGE[0]).days
+print(f"Time span: {timespan} days")
 ```
 
 ```{python}
@@ -42,6 +51,7 @@ for dataset, name in zip(datasets, names):
     df = ds_variables.to_pandas()
     df = df.rename(columns={c: f"{name}_{c}" for c in df.columns})
     dfs.append(df)
+clear_output()
 ```
 
 ```{python}
@@ -137,6 +147,8 @@ tvars2plot = []
 for p_config in config.panels:
     tvar2plot = process_panel(p_config)
     tvars2plot.append(tvar2plot)
+
+clear_output()
 ```
 
 ```{python}
@@ -164,5 +176,3 @@ with plt.style.context(['science', 'nature', 'no-latex']):
     unify_axes_fontsize(fontsize='large')
     # savefig(fname)
 ```
-
-![](../figures/juno-hg-loc_sunspot-number.png)

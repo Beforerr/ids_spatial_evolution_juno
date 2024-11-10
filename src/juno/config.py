@@ -11,6 +11,7 @@ from discontinuitypy.config import SpeasyIDsConfig, IDsConfig
 from discontinuitypy.mission import WindConfigBase, ThemisConfigBase, StereoConfigBase
 
 from .juno import get_mag_data
+from ..juno import DEFAULT_TIMERANGE, DEFAULT_TEST_TIMERANGE
 from math import ceil
 
 
@@ -26,8 +27,8 @@ def split_list(lst, n):
 
 DEFAULT_TAU = timedelta(seconds=60)
 DEFAULT_TS = timedelta(seconds=1)
-DEFAULT_TIMERANGE = Field(["2011-08-25", "2016-06-30"], validate_default=True)
-DEFAULT_TEST_TIMERANGE = Field(["2012-01-01", "2012-01-02"], validate_default=True)
+DEFAULT_TIMERANGE_F = Field(DEFAULT_TIMERANGE, validate_default=True)
+DEFAULT_TEST_TIMERANGE_F = Field(DEFAULT_TEST_TIMERANGE, validate_default=True)
 JNO_PLASMA_DF_PATH = datadir() / "03_primary/JNO_STATE_ts_3600s.parquet"
 
 
@@ -35,7 +36,7 @@ class Config(BaseModel):
     model_config = ConfigDict(arbitrary_types_allowed=True, extra="allow")
 
     tau: timedelta = DEFAULT_TAU
-    timerange: list[datetime] = DEFAULT_TIMERANGE
+    timerange: list[datetime] = DEFAULT_TIMERANGE_F
 
     data_dir: Path = datadir() / "05_reporting"
 
