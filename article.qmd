@@ -129,7 +129,7 @@ Previous studies have indicated that the minimum variance direction obtained thr
 - Then the minimum variance analysis is applied to each ID event to obtain the boundary normal (LMN) coordinate and extract IDs' features. -->
 
 ::: {#fig-examples}
-![Examples of IDs from Juno, ARTEMIS, STEREO, and Wind](figures/fig_examples)
+![](figures/fig_examples)
 
 Examples of solar wind discontinuities observed by various spacecraft at different heliocentric distances and times. Panels (a)–(c) display data from Juno at 1 AU (a), 3 AU (b), and 5 AU (c), showing magnetic field components $B_l$ (blue), $B_n$ (red), $B_m$ (green), and the magnetic field magnitude $B_{\text{total}}$ (black). Panels (d)–(f) show magnetic field and ion speed observations from other spacecraft: ARTEMIS on March 27, 2012 (d), STEREO on June 28, 2016 (e), and Wind on August 26, 2011 (f).
 :::
