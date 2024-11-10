@@ -5,13 +5,12 @@ description = "Utilities for working with Juno data"
 authors = [{ name = "Beforerr", email = "zzj956959688@gmail.com" }]
 requires-python = ">= 3.10"
 dependencies = [
-    "speasy",
-    "sunpy",
-    "discontinuitypy",
+    "space_analysis[io]",
+    "discontinuitypy[plot]",
     "polars",
     "pydantic",
+    "fastcore",
     "intake",
-    "xarray",
 ]
 
 [build-system]
@@ -19,7 +18,7 @@ requires = ["setuptools"]
 build-backend = "setuptools.build_meta"
 
 [project.optional-dependencies]
-dev = ["ipykernel", "scienceplots"]
+doc = ["ipykernel", "scienceplots"]
 overview = ["sunpy[net, timeseries]"]
 
 [tool.pixi.project]
@@ -27,13 +26,13 @@ channels = ["conda-forge"]
 platforms = ["osx-arm64"]
 
 [tool.pixi.dependencies]
-netcdf4 = "*"   # for `pyspedas`
+netcdf4 = "*" # for `pyspedas`
 
 [tool.pixi.feature.local.pypi-dependencies]
 juno = { path = ".", editable = true }
 beforerr = { path = "../../src/beforerr_dev", editable = true }
-discontinuitypy = { path = "../discontinuitypy", editable = true, extras = ["plot"] }
+discontinuitypy = { path = "../discontinuitypy", editable = true }
 space_analysis = { path = "../../src/space-analysis.py", editable = true }
 
 [tool.pixi.environments]
-default = ["dev", "overview", "local"]
+default = ["doc", "overview", "local"]
