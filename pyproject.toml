@@ -3,7 +3,7 @@ name = "juno"
 version = "0.2.0"
 description = "Utilities for working with Juno data"
 authors = [{ name = "Beforerr", email = "zzj956959688@gmail.com" }]
-requires-python = ">= 3.10"
+requires-python = ">= 3.10, < 3.13"
 dependencies = [
     "space_analysis[io]",
     "discontinuitypy[plot]",
@@ -30,9 +30,9 @@ netcdf4 = "*" # for `pyspedas`
 
 [tool.pixi.feature.local.pypi-dependencies]
 juno = { path = ".", editable = true }
-beforerr = { path = "../../src/beforerr_dev", editable = true }
 discontinuitypy = { path = "../discontinuitypy", editable = true }
 space_analysis = { path = "../../src/space-analysis.py", editable = true }
+beforerr = { path = "../../src/beforerr_dev", editable = true }
 
 [tool.pixi.environments]
 default = ["doc", "overview", "local"]
