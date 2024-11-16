@@ -4,7 +4,7 @@ import 'files/overleaf.just'
 default:
     just --list
 
-update: update-overleaf clean update-repo publish
+update: update-overleaf publish
 
 ensure-env: install-deps clone-overleaf
     quarto add quarto-journals/agu --no-prompt
@@ -35,7 +35,7 @@ download:
     wget https://raw.githubusercontent.com/Beforerr/finesst_solar_wind_discontinuities/main/figures/orbits/juno_orbit_white.png -O figures/juno_orbit_white.png
 
 publish-poster:
-    Rscript -e 'pagedown::chrome_print("notebooks/manuscripts/.AGU23_poster.rmd")'
+    Rscript -e 'pagedown::chrome_print("presentations/.AGU23_poster.rmd")'
 
 download-data:
     #!/usr/bin/env bash
