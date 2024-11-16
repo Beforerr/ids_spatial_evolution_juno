@@ -9,7 +9,7 @@ code-links:
 
 # Publications
 
-- manuscript please see [here](_manuscript/index.html)
+- manuscript please see [here](article.qmd)
 - AGU poster [here](presentations/AGU23_poster.qmd)
 
 # Introduction

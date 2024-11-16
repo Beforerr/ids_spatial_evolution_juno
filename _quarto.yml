@@ -9,12 +9,12 @@ website:
       - text: "Home"
         href: index.qmd
       - text: "Manuscript"
-        href: _manuscript/index.html
+        href: article.qmd
       - text: "Notes"
         href: notes.qmd
       - sidebar:notebooks
       - text: "Presentations"
-        menu: 
+        menu:
           - href: presentations/grpMeeting_Zijin_2024-09.qmd
             text: Group Meeting 2024 Sep 8
           - href: presentations/AGU23_poster.qmd
@@ -30,10 +30,10 @@ website:
       contents: "notebooks/**"
 
 execute:
-  freeze: auto  # re-render only when source changes
+  freeze: auto # re-render only when source changes
 
 format:
-  html: 
+  html:
     lightbox: auto
     toc: true
     code-fold: true
