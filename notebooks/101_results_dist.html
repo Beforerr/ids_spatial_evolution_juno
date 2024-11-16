@@ -120,6 +120,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
   <li class="nav-item">
+    <a class="nav-link" href="../index.html"> 
+<span class="menu-text">Home</span></a>
+  </li>  
+  <li class="nav-item">
     <a class="nav-link" href="../_manuscript/index.html"> 
 <span class="menu-text">Manuscript</span></a>
   </li>  
@@ -145,12 +149,20 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
  <span class="dropdown-text">Waiting time analysis</span></a>
   </li>  
         <li>
+    <a class="dropdown-item" href="../notebooks/03_orientation.html">
+ <span class="dropdown-text">Orientation analysis</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../notebooks/04_association.html">
+ <span class="dropdown-text">Association analysis</span></a>
+  </li>  
+        <li>
     <a class="dropdown-item" href="../notebooks/10_data.html">
  <span class="dropdown-text">Different time windows</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../notebooks/100_results_Alvenicity.html">
- <span class="dropdown-text">100 Results Alvenicity</span></a>
+    <a class="dropdown-item" href="../notebooks/100_results_Alfvenicity.html">
+ <span class="dropdown-text">Properties related to Alfvénicity</span></a>
   </li>  
         <li>
     <a class="dropdown-item" href="../notebooks/101_results_dist.html">
@@ -242,7 +254,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     </a>
     <ul class="dropdown-menu" aria-labelledby="nav-menu-presentations">    
         <li>
-    <a class="dropdown-item" href="../presentations/grpMeeting_Zijin_2024-09-08.qmd">
+    <a class="dropdown-item" href="../presentations/grpMeeting_Zijin_2024-09.html">
  <span class="dropdown-text">Group Meeting 2024 Sep 8</span></a>
   </li>  
         <li>
@@ -299,14 +311,26 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
+  <a href="../notebooks/03_orientation.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Orientation analysis</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../notebooks/04_association.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Association analysis</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
   <a href="../notebooks/10_data.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Different time windows</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../notebooks/100_results_Alvenicity.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">100 Results Alvenicity</span></a>
+  <a href="../notebooks/100_results_Alfvenicity.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Properties related to Alfvénicity</span></a>
   </div>
 </li>
         <li class="sidebar-item">
@@ -531,37 +555,29 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 └ @ Arrow /Users/zijin/.julia/packages/Arrow/rIDSw/src/eltypes.jl:273</code></pre>
 </div>
 </div>
-<div id="cell-3" class="cell" data-execution_count="3">
+<div id="cell-3" class="cell" data-execution_count="4">
 <details class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>year_map <span class="op">=</span> <span class="op">:</span>time <span class="op">=&gt;</span> nonnumeric <span class="op">∘</span> year <span class="op">=&gt;</span> <span class="st">"Year"</span></span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>month_map <span class="op">=</span> <span class="op">:</span>time <span class="op">=&gt;</span> nonnumeric <span class="op">∘</span> month  <span class="op">=&gt;</span> <span class="st">"Month"</span></span>
-<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>week_map <span class="op">=</span> <span class="op">:</span>time <span class="op">=&gt;</span> nonnumeric <span class="op">∘</span> week <span class="op">=&gt;</span> <span class="st">"Week"</span>;</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
-</div>
-<div id="cell-4" class="cell" data-execution_count="4">
-<details class="code-fold">
-<summary>Code</summary>
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Subset the data</span></span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> wind_df;</span>
-<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>df_s1 <span class="op">=</span> <span class="fu">subset</span>(df, <span class="op">:</span>time <span class="op">=&gt;</span> t <span class="op">-&gt;</span> <span class="fu">year</span>.(t) <span class="op">.==</span> <span class="fl">2013</span>);</span>
-<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>df_s2 <span class="op">=</span> <span class="fu">subset</span>(df_s1, <span class="op">:</span>time <span class="op">=&gt;</span> t <span class="op">-&gt;</span> <span class="fu">month</span>.(t) <span class="op">.&lt;</span> <span class="fl">3</span>);</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Subset the data</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> wind_df;</span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>df_s1 <span class="op">=</span> <span class="fu">subset</span>(df, <span class="op">:</span>time <span class="op">=&gt;</span> t <span class="op">-&gt;</span> <span class="fu">year</span>.(t) <span class="op">.==</span> <span class="fl">2013</span>);</span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>df_s2 <span class="op">=</span> <span class="fu">subset</span>(df_s1, <span class="op">:</span>time <span class="op">=&gt;</span> t <span class="op">-&gt;</span> <span class="fu">month</span>.(t) <span class="op">.&lt;</span> <span class="fl">3</span>);</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
 <details class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">temp_plot</span>(x; kwargs<span class="op">...</span>) <span class="op">=</span> <span class="fu">plot_dist</span>(x; datalimits<span class="op">=</span>datalimits_f, kwargs<span class="op">...</span>)</span>
-<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>plots <span class="op">=</span> <span class="fu">temp_plot</span>.([</span>
-<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">data</span>(df) <span class="op">*</span> <span class="fu">mapping</span>(color<span class="op">=</span>year_map),</span>
-<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">data</span>(df_s1) <span class="op">*</span> <span class="fu">mapping</span>(color<span class="op">=</span>month_map),</span>
-<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a>    <span class="fu">data</span>(df_s2) <span class="op">*</span> <span class="fu">mapping</span>(color<span class="op">=</span>week_map)</span>
-<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a>])</span>
-<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a><span class="fu">display</span>.(plots);</span>
-<span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-11"><a href="#cb6-11" aria-hidden="true" tabindex="-1"></a>fnames <span class="op">=</span> [<span class="st">"wind_distribution_time_year"</span>, <span class="st">"wind_distribution_time_month"</span>, <span class="st">"wind_distribution_time_week"</span>]</span>
-<span id="cb6-12"><a href="#cb6-12" aria-hidden="true" tabindex="-1"></a><span class="fu">easy_save</span>.(fnames, plots);</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">temp_plot</span>(x; kwargs<span class="op">...</span>) <span class="op">=</span> <span class="fu">plot_dist</span>(x; datalimits<span class="op">=</span>datalimits_f, kwargs<span class="op">...</span>)</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>plots <span class="op">=</span> <span class="fu">temp_plot</span>.([</span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">data</span>(df) <span class="op">*</span> <span class="fu">mapping</span>(color<span class="op">=</span>year_map),</span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">data</span>(df_s1) <span class="op">*</span> <span class="fu">mapping</span>(color<span class="op">=</span>month_map),</span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>    <span class="fu">data</span>(df_s2) <span class="op">*</span> <span class="fu">mapping</span>(color<span class="op">=</span>week_map)</span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>])</span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a><span class="fu">display</span>.(plots);</span>
+<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a>fnames <span class="op">=</span> [<span class="st">"wind_distribution_time_year"</span>, <span class="st">"wind_distribution_time_month"</span>, <span class="st">"wind_distribution_time_week"</span>]</span>
+<span id="cb5-12"><a href="#cb5-12" aria-hidden="true" tabindex="-1"></a><span class="fu">easy_save</span>.(fnames, plots);</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-stderr">
 <pre><code>┌ Info: Saved /Users/zijin/projects/ids_spatial_evolution_juno/figures/wind_distribution_time_year.svg
