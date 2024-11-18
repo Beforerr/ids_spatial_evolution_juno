@@ -8,6 +8,40 @@ title: Notes
 
 `updated_events_Wind_tr=20110825-20160630_method=fit_tau=0:01:00_ts=0:00:00.090909.arrow` and `events.Wind.fit.ts_0.09s_tau_60s.arrow`
 
+## Notation
+
+Data Level
+
+-   l0: unprocessed
+
+-   l1: cleaned data, fill null value, add useful columns
+
+-   l2: time-averaged data
+
+### Columns naming conventions
+
+-   `v_{x,y,z}` or `sw_vel_{X,Y,Z}`: solar wind plasma speed in the *ANY* coordinate system, in units of $km/s$
+
+    -   `sw_vel_{r,t,n}`: solar wind plasma speed in the RTN coordinate system, in units of $km/s$
+    -   `sw_vel_gse_{x,y,z}`: solar wind plasma speed in the GSE coordinate system, in units of $km/s$
+    -   `sw_vel_lmn_{x,y,z}`: solar wind plasma speed in the LMN coordinate system, in units of $km/s$
+        -   `v_l` or `sw_vel_l`: abbreviation for `sw_vel_lmn_1`
+        -   `v_mn` or `sw_vel_mn` (deprecated)
+
+-   `radial_distance`: radial distance of the spacecraft, in units of $AU$
+
+-   `sw_elevation`: solar wind elevation angle, in units of $\degree$
+
+-   `sw_azimuth`: solar wind azimuth angle, in units of $\degree$
+
+-   `b_rtn_{x,y,z}` or `b_{r,t,n}`: magnetic field in the RTN coordinate system
+
+-   `b_gse_{x,y,z}`: magnetic field in the GSE coordinate system
+
+-   `model_b_{r,t,n}`: modelled magnetic field in the RTN coordinate system
+
+-   `state` : *1* for *solar wind*, *0* for *non-solar wind*
+
 # Updates
 
 ### 09/23/2024
