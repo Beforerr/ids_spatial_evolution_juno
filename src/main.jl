@@ -13,11 +13,11 @@ using Beforerr
 import Beforerr: easy_save
 using LaTeXStrings
 using Discontinuity
-using Discontinuity.DefaultMapping
 using Unitful
+import Base.round
 
 set_aog_theme!()
-theme = Theme(;colormap = Reverse(:tokyo), figure_padding=2)
+theme = Theme(; colormap=Reverse(:tokyo), figure_padding=2)
 update_theme!(theme)
 
 include("io.jl")
@@ -30,5 +30,8 @@ foreach([:log10, :log2, :log]) do f
     @eval $f(x::Unitful.Quantity) = $f(ustrip(x))
 end
 
-dfplot(layer, args...; axis = (;), kwargs...) = draw(layer * mapping(args...; kwargs...); axis)
-dfplot(df::AbstractDataFrame, args...; axis = (;), kwargs...) = draw(data(df) * mapping(args...; kwargs...); axis)
+# Generalize function to round float like time
+Base.round(x::Number, y::Number; kw...) = y * round(x / y; kw...)
+
+dfplot(layer, args...; axis=(;), kwargs...) = draw(layer * mapping(args...; kwargs...); axis)
+dfplot(df::AbstractDataFrame, args...; axis=(;), kwargs...) = draw(data(df) * mapping(args...; kwargs...); axis)

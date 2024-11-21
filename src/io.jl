@@ -1,88 +1,57 @@
 using Printf
 using Discontinuity
 using Discontinuity: load
-include("trans.jl")
+using Dates
+using Dates: AbstractTime
 data_path = datadir("05_reporting")
 
-function Discontinuity.load(path, name_cols::Pair{Symbol}...)
-    df = load(path)
-    insertcols!(df, name_cols...)
-    return df
+DEFAULT_TAUS = 60:-10:20
+
+post_process!(df) = begin
+    df |>
+    Discontinuity.keep_good_fit! |>
+    Discontinuity.standardize_df! |>
+    Discontinuity.compute_params! |>
+    Discontinuity.unitize! |>
+    Discontinuity.calc_beta! |>
+    assign_accuracy!
 end
 
-function Discontinuity.load(; tau=60, ts=1.00, name="JNO", method="fit", dir=data_path)
-    ts_str = @sprintf "ts_%.2fs" ts
-    df = load(joinpath(dir, "events.$name.$method.$(ts_str)_tau_$(tau)s.arrow"))
-    df.tau .= tau
-    df.ts .= ts
-    return df
-end
+function Discontinuity.load(; tau=60, ts=1, name="JNO", dir=data_path, verbose=false, kw...)
+    ts = !ismissing(ts) ? Second(ts) : ts
+    tau = !ismissing(tau) ? Second(tau) : tau
+    ds = DataSet(; name, ts, tau, kw...)
+    df = load(ds; dir)
 
-function load_tau(tau)
-    df = Discontinuity.load(; tau=tau)
-    df.label .= "$tau s"
-    println("Number of events: ", size(df, 1))
-    return df
-end
-
-WIND_PATH = "updated_events_Wind_tr=20110825-20160630_method=fit_tau=0:01:00_ts=0:00:00.090909.arrow"
-JNO_PATH = "updated_events_JNO_tr=20110825-20160630_method=fit_tau=0:01:00_ts=0:00:01.arrow"
-
-post_process!(df) = df |> calc_rotation_angle! |> Discontinuity.unitize! |> Discontinuity.calc_beta! |> assign_accuracy!
-
-function backwards_comp!(df)
-    @rtransform!(df, 
-        :"B.vec.before" = [:"B.vec.before.l", :"B.vec.before.m", :"B.vec.before.n"],
-        :"B.vec.after" = [:"B.vec.after.l", :"B.vec.after.m", :"B.vec.after.n"],
-    )
-end
-
-# the MVAB method can achieve acceptable accuracy when either |B|/|B| > 0.05 or ω > 60°. @liuFailuresMinimumVariance2023
-function assign_accuracy!(df)
-    @transform!(df, 
-        :accuracy = (:rotation_angle .> 60) .| (:db_over_b .> 0.05)
-    )
-end
-
-function filter_low_accuracy(df)
-    @chain df begin
-        filter(:accuracy => ==(true), _)
+    if name == "JNO"
+        "radial_distance" in names(df) && rename!(df, :radial_distance => :r)
+        df.T = df.T .* u"K"
+    elseif name == "Wind"
+        Discontinuity.calc_T!(df, "T")
     end
+
+    df = df |> post_process!
+    verbose && println("Number of events: ", size(df, 1))
+    insertcols!(df, :tau => tau, :ts => ts)
 end
 
+load_tau(tau) = Discontinuity.load(; tau=tau, verbose=true)
 
-function load_wind(; path=WIND_PATH)
-    df = load(datadir(path), :dataset => "Wind") |> backwards_comp! |> process!
-    rename!(df, ["VX (GSE)", "VY (GSE)", "VZ (GSE)"] .=> ["v_x", "v_y", "v_z"])
-    Discontinuity.unitize!(df, "SW Vth", u"km/s")
-    Discontinuity.calc_T!(df, "SW Vth")
-    return df |> post_process!
-end
-
-function load_jno(; path=JNO_PATH)
-    df = load(datadir(path), :dataset => "Juno") |> process!
-    rename!(df, :radial_distance => :r)
-    Discontinuity.unitize!(df, "T", u"K")
-    return df |> post_process!
-end
-
-function Discontinuity.load(sym::Symbol; kw...)
-    func = sym == :wind ? load_wind : load_jno
-    func(;kw...)
-end
+"""the MVAB method can achieve acceptable accuracy when either |B|/|B| > 0.05 or ω > 60°. @liuFailuresMinimumVariance2023"""
+assign_accuracy!(df) = @transform!(df, :accuracy = (:ω .> 60) .| (:db_over_b .> 0.05))
+filter_low_accuracy(df) = filter(:accuracy => ==(true), df)
 
 """
 # Notes
 
 This will remove events that appear in multiple taus datasets. 
-However, this may not remove all "duplicates" that may have little duration differences, since "t.d_start", :"t.d_end" are determined by the maximum distance, and they may vary across different taus for one "event".
+However, this may not remove all "duplicates" that may have little duration differences, since "t_us", :"t_ds" are determined by the maximum distance, and they may vary across different taus for one "event".
 """
-function load_taus(taus; unique_f=["t.d_start", "t.d_end"])
-    @chain begin
-        vcat(load_tau.(taus)...)
-        sort(:tau)
-        unique(unique_f)
-    end
+function load_taus(; taus=DEFAULT_TAUS, unique_f=["t_us", "t_ds"])
+    df = vcat(load_tau.(taus)...)
+    ismissing(unique_f) || unique!(df, unique_f)
+    df.tau = categorical(df.tau)
+    return sort(df, :tau)
 end
 
 function test_load()
