@@ -58,7 +58,7 @@ The paper is structured as follows. First, we outline the missions, instruments,
 
 # Dataset, models, and methods
 
-The solar wind plasma state, as evidenced by the sunspot number (referenced in panel (c) of @fig-overview), plays a crucial role in understanding the dynamics of discontinuities. During the initial phase of the JUNO mission, the sunspot number reached its peak, indicating a period of heightened solar activity. However, by the end of the mission's cruise phase, there was a significant decline in solar activity. This variation underscores the importance of calibrating the discontinuity properties in relation to solar activity levels to account for temporal fluctuations.
+The solar wind plasma state, as evidenced by the sunspot number (referenced in panel (c) of @fig-overview), plays a crucial role in understanding the dynamics of discontinuities. During the initial phase of the JUNO mission, the sunspot number peaked, indicating a period of heightened solar activity. However, by the end of the mission's cruise phase, there was a significant decline in solar activity. This variation underscores the importance of calibrating the discontinuity properties in relation to solar activity levels to account for temporal fluctuations.
 
 ::: {#fig-overview}
 
@@ -92,7 +92,7 @@ However, since Juno does not provide direct plasma measurements, we will estimat
 
 ## Methods
 
-We employ Liu’s method [@liuMagneticDiscontinuitiesSolar2022] to identify discontinuities in the solar wind. This approach provides better compatibility for discontinuities with small magnetic field changes and demonstrates greater robustness for conditions in the outer heliosphere compared to traditional methods, namely the B-criterion [@burlagaDirectionalDiscontinuitiesInterplanetary1969] and the TS-criterion [@tsurutaniInterplanetaryDiscontinuitiesTemporal1979]. For each sampling time $t$, we define three intervals: the pre-interval $[-1,-1/2]\cdot τ+t$, the middle interval $[-1/2,1/2]\cdot τ+t$, and the post-interval $[1/2,1]\cdot τ+t$, where $τ$ represents time lags. The magnetic field timeseries in these three intervals are labeled as ${\mathbf B}_-$, ${\mathbf B}_0$, and ${\mathbf B}_+$, respectively. To identify a discontinuity, the following three conditions must be met:
+We employ Liu’s method [@liuMagneticDiscontinuitiesSolar2022] to identify discontinuities in the solar wind. This approach provides better compatibility for discontinuities with small magnetic field changes and demonstrates greater robustness for conditions in the outer heliosphere compared to traditional methods, namely the B-criterion [@burlagaDirectionalDiscontinuitiesInterplanetary1969] and the TS-criterion [@tsurutaniInterplanetaryDiscontinuitiesTemporal1979]. For each sampling time $t$, we define three intervals: the pre-interval $[-1,-1/2]\cdot T+t$, the middle interval $[-1/2,1/2]\cdot T+t$, and the post-interval $[1/2,1]\cdot T+t$, where $T$ represents time lags. The magnetic field timeseries in these three intervals are labeled as ${\mathbf B}_-$, ${\mathbf B}_0$, and ${\mathbf B}_+$, respectively. To identify a discontinuity, the following three conditions must be met:
 
 $$
 \begin{aligned}
@@ -102,22 +102,22 @@ $$
 \end{aligned}
 $$
 
-Here, $\sigma$ denotes the standard deviation, ${\mathbf B}_{bg}$ represents the background magnetic field magnitude, and $\Delta {\mathbf B}={\mathbf B}(t+τ/2)-{\mathbf B}(t-τ/2)$. The first two conditions ensure that the field changes are distinguishable from stochastic fluctuations, while the third condition serves as a supplementary measure to reduce recognition uncertainty.
+Here, $\sigma$ denotes the standard deviation, ${\mathbf B}_{bg}$ represents the background magnetic field magnitude, and $\Delta {\mathbf B}={\mathbf B}(t+T/2)-{\mathbf B}(t-T/2)$. The first two conditions ensure that the field changes are distinguishable from stochastic fluctuations, while the third condition serves as a supplementary measure to reduce recognition uncertainty.
 
 Notably, this method shares certain similarities with the Partial Variance of Increments (PVI) approach for identifying coherent structures, as both calculate indices based on standard deviations (with this method focusing on the standard deviation of the magnetic field, and PVI on magnetic field increments). However, this method is better suited for discontinuity identification by comparing data within neighboring time windows rather than across a correlation scale (an unknown quantity that may vary with radial distance and solar wind conditions). As a result, this approach effectively excludes wave-like coherent structures, eliminating the need for manual inspection and bypassing the necessity of grouping continuous clusters of high-PVI points as in PVI analysis.
 
-Because the discontinuities may have different spatial scale at different radial distances from the Sun, we repeat the search procedure with time lags $τ = 10, 20, 30, 40, 50, 60$ s, and combine the identified ID events together to establish the event list.
+Because the discontinuities may have different spatial scale at different radial distances from the Sun, we repeat the search procedure with time lags $T = 10, 20, 30, 40, 50, 60$ s, and combine the identified ID events together to establish the event list.
 Discontinuities with spatial scales larger than $60$ s are not considered in this study, however it could be argued that they are not significant in the outer heliosphere if they follow the trend with decreasing number of IDs with increasing spatial scale. @fig-junoDistribution also indicates that the spatial scale of IDs does not vary significantly with the radial distance from the Sun.
 
 <!-- TODO: -->
 
-More than ? IDs are identified in the solar wind data from Juno, with ? IDs identified in 5 AU. Then for each discontinuity identified, we calculate the distance matrix of the time series sequence (distance between each pair of magnetic field vectors) to determine the leading edge and trailing edge of the discontinuity. After that, we use the minimum or maximum variance analysis (MVA) analysis [@sonnerupMinimumMaximumVariance1998; @sonnerupMagnetopauseStructureAttitude1967] to transform the magnetic field into the boundary normal (LMN) coordinate system. The main (most varying) magnetic field component, $B_l$, is then fitted by a hyperbolic tangent functions to extract the parameters to properly describe the discontinuity @eq-fit. Then we combine the magnetic field data and plasma data to obtain the thickness and the current density of the discontinuity.
+More than ? IDs are identified in the solar wind data from Juno, with ? IDs identified in 5 AU. Then for each discontinuity identified, we calculate the distance matrix of the time series sequence (distance between each pair of magnetic field vectors) to determine the leading edge and trailing edge of the discontinuity. After that, we use the minimum or maximum variance analysis (MVA) analysis [@sonnerupMinimumMaximumVariance1998; @sonnerupMagnetopauseStructureAttitude1967] to transform the magnetic field into the boundary normal (LMN) coordinate system. The main (most varying) magnetic field component, $B_l$, is then fitted by a hyperbolic tangent function to extract the parameters to properly describe the discontinuity @eq-fit. Then we combine the magnetic field data and plasma data to obtain the thickness and the current density of the discontinuity.
 
 $$
-B_l(t) = B_{l0} \tanh\left(\frac{t - t_0}{\Delta T}\right) + c_l
+B_l(t) = B_{l0} \tanh\left(\frac{t - t_0}{\Delta t}\right) + c_l
 $${#eq-fit}
 
-where $B_{l0}$ is the amplitude of the magnetic field change in the maximum variance direction, $t_0$ is the time of discontinuity, $\Delta T$ is the transition time, and $c_l$ is the offset of the magnetic field change (in the case of an ideal discontinuity with perfect rotational symmetry, $c_l$ should theoretically be zero. However, in the context of data processing, incorporating $c_l$ can enhance the fitting accuracy).
+where $B_{l0}$ is the amplitude of the magnetic field change in the maximum variance direction, $t_0$ is the time of discontinuity, $\Delta t$ is the transition time, and $c_l$ is the offset of the magnetic field change (in the case of an ideal discontinuity with perfect rotational symmetry, $c_l$ should theoretically be zero. However, in the context of data processing, incorporating $c_l$ can enhance the fitting accuracy).
 
 Previous studies have indicated that the minimum variance direction obtained through Minimum Variance Analysis (MVA) is frequently unreliable. Improved accuracy can be achieved by either using the cross product of the magnetic field measured at the boundaries as the normal direction [@knetterFourpointDiscontinuityObservations2004] or by enforcing conditions such as $Δ|B|/|B| > 0.05$ or $ω > 60°$ [@liuFailuresMinimumVariance2023]. The former approach requires a small normal component in the magnetic field, while the latter approach limits the dataset to a subset that satisfies these conditions. In our analysis, we applied both methods and observed no significant differences in the results.
 
@@ -137,6 +137,28 @@ Examples of solar wind discontinuities observed by various spacecraft at differe
 # Results
 
 <!-- The basic approach of this proposal is to use solar wind measurements at 1AU (STEREO, ARTEMIS, WIND) to compare with Juno and PSP measurements and distinguish effects of solar wind temporal variations and effects of spatial (with the radial distance from the Sun) variations of discontinuity occurrence rate and characteristics. The example of such comparison for the occurrence rate is shown in @fig-rate, where we plot number of discontinuities measured per day by different spacecraft missions (for the same temporal resolution of magnetic field data and the same criteria of discontinuity determination). The radial distance of Juno for 2011-2016 is shown in @fig-model, and the number of discontinuities measured by Juno per day coincides with the discontinuity number measured by STEREO, WIND, and ARTEMIS, when Juno is around $1$ AU. This number (occurrence rate) decreases with distance (with time after $\sim 2013$), as Juno moves from $1$ AU to $5$ AU. We will use the similar comparison for discontinuity characteristics and occurrence rate derived for PSP and Juno.  -->
+
+## Waiting time
+
+To comprehensively understand the radial evolution of the occurrence rate, particularly the average occurrence rate, it is essential to determine the statistical distributions underlying the observed samples. This enables the derivation of meaningful inferences. In this context, we derived the probability distribution of the waiting time $τ$ (also referred to as the interarrival interval, as defined in @tsurutaniInterplanetaryDiscontinuitiesTemporal1979) at various radial distances.
+
+To model the data, we employ the Weibull distribution due to its flexibility in capturing varying occurrence rates. This choice allows for a more accurate representation and an improved fit compared to the exponential distribution previously used in @tsurutaniInterplanetaryDiscontinuitiesTemporal1979. The probability density function of the Weibull distribution is given as follows:
+
+$$
+f(τ; α, θ) = \frac{α}{θ} \left( \frac{τ}{θ} \right)^{α-1} e^{-(τ/θ)^α}, \quad τ \ge 0
+$$
+
+Here, $α$ and $θ$ represent the shape and scale parameters, respectively. The complementary cumulative distribution function of the Weibull distribution $F(τ; α, θ) = 1 - \mathrm{e}^{-(τ/θ)^α}$ is a stretched exponential function.
+
+::: {#fig-waitingTime}
+![](figures/waiting_time_distribution)
+
+Waiting time distribution, along with the fitted Weibull distribution at different radial distances.
+:::
+
+The observed waiting time distribution, along with the fitted Weibull distribution, is shown in @fig-waitingTime. For $α < 1$, the likelihood of an event occurring decreases with increasing waiting time. This behavior aligns with our expectations for the discontinuity occurrence rate in response to the evolving state of the solar wind. Across the largest range of waiting times, the observed probabilities exceed those predicted by the fitted distribution. This discrepancy may be attributed to data gaps, which artificially extend the observed waiting times between discontinuities.
+
+The mean waiting time $\bar{τ}$ can be determined by integrating the probability density function $\bar{τ} = \int_0^\infty τ f(τ) dτ$. The mean occurrence rate, in turn, is simply the reciprocal of the mean waiting time. Notably, the mean value derived from the fitted Weibull distribution is more reliable, as it mitigates the influence of unusually large waiting times caused by data gaps.
 
 ## Occurrence rate
 
@@ -163,17 +185,17 @@ $$
 J_m = - \frac{1}{μ_0 V_n} \frac{d B_l}{d t},
 $$ {#eq-j}
 
-where $μ_0$ is the vacuum permeability and $V_n$ is the normal component of the proton flow velocity. For fitting method, the derivative of the magnetic field could be estimated as $\max(d B_l / d t) = B_{l0} / \Delta T$. This estimate is more robust than the direct calculation of the derivative of the magnetic field, because the fitting method is less sensitive to the noise in the data and the time resolution of the data (see discussion in the appendix).
+where $μ_0$ is the vacuum permeability and $V_n$ is the normal component of the proton flow velocity. For fitting method, the derivative of the magnetic field could be estimated as $\max(d B_l / d t) = B_{l0} / \Delta t$. This estimate is more robust than the direct calculation of the derivative of the magnetic field, because the fitting method is less sensitive to the noise in the data and the time resolution of the data (see discussion in the appendix).
 
 <!--  The proton flow velocity $v$ is expressed as $v = v_{sw} - v_{s/c} + U$, where $v_{sw}$ is the solar wind velocity, $v_{s/c}$ is the spacecraft velocity, and $U$  denotes the propagation speed of the discontinuities. In our case, the latter two velocities are negligible. -->
 
 The thickness $d$ of a discontinuity is determined by
 
 $$
-d = V_n \Delta T
+d = V_n \Delta t
 $$
 
-where $\Delta T$ is the transition time derived from the fitting method. 
+where $\Delta t$ is the transition time derived from the fitting method. 
 
 To understand the relationship between the discontinuity and the local plasma, we normalize the thickness of the discontinuity by the initial ion length and the current density by the Alfven current density $J_A = e N_p V_A$ (corresponding to the drift between protons and electrons of local Alfén speed $V_A$). Figure @fig-junoDistribution presents the statistical distribution of the (un)normalized thickness and current density of IDs grouped by the radial distance from the Sun collected by Juno. 
 Panel (a,b) shows that the thickness increases with radial distance. However, after normalization, the thickness slightly decreases, with the most probable value around 4-2 $d_i$. With increasing radial distance, larger fraction of IDs have thickness less than 1 $d_i$, becombing sub-proton scale structures.  Panel (c,d) shows that the current density decreases with increasing radial distance. However, after normalization, it slightly increases, with the most probable value around 0.05-0.15 $J_A$. It should be noted that for the normalized thickness and current density, the change is not significant compared to the spread of the distribution.
@@ -232,6 +254,6 @@ Sunspot data from the World Data Center SILSO, Royal Observatory of Belgium, Bru
 
 ## Effect of the time resolution on the discontinuity properties
 
-The transition time $\Delta T$ is determined in one second resolution data for all our missions to reduce the system error. (Note that highest time resolution of the data is not needed for the transition time determination by fitting method).
+The transition time $\Delta t$ is determined in one second resolution data for all our missions to reduce the system error. (Note that highest time resolution of the data is not needed for the transition time determination by fitting method).
 
 ![Effect of the time resolution on the discontinuity properties](figures/ts_effect){#fig-tsEffect}
