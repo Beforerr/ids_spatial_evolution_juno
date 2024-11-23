@@ -151,9 +151,9 @@ $$
 Here, $α$ and $θ$ represent the shape and scale parameters, respectively. The complementary cumulative distribution function of the Weibull distribution $F(τ; α, θ) = 1 - \mathrm{e}^{-(τ/θ)^α}$ is a stretched exponential function.
 
 ::: {#fig-waitingTime}
-![](figures/waiting_time_distribution)
+![](figures/fig_wt_dist.pdf)
 
-Waiting time distribution, along with the fitted Weibull distribution at different radial distances.
+Waiting time probability density functions $p(\tau)$ for Juno at 1 AU in 2011 (top) and 5 AU in 2016 (bottom). Observed data (black) are fitted with Weibull (blue) and exponential (orange) distributions. In 2011, the Weibull distribution is characterized by parameters $\alpha = 0.99, \theta = 30.29$, and a mean waiting time of 30.41 minutes, while the exponential distribution has a mean of 30.42 minutes. In 2016, the Weibull distribution has parameters $\alpha = 0.65, \theta = 110.50$, and a mean of 150.96 minutes, whereas the exponential distribution has a mean of 165.02 minutes. Vertical dashed lines denote the mean waiting times for each fitted distribution.
 :::
 
 The observed waiting time distribution, along with the fitted Weibull distribution, is shown in @fig-waitingTime. For $α < 1$, the likelihood of an event occurring decreases with increasing waiting time. This behavior aligns with our expectations for the discontinuity occurrence rate in response to the evolving state of the solar wind. Across the largest range of waiting times, the observed probabilities exceed those predicted by the fitted distribution. This discrepancy may be attributed to data gaps, which artificially extend the observed waiting times between discontinuities.

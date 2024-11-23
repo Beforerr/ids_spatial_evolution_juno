@@ -1,0 +1,220 @@
+---
+title: Waiting time analysis
+---
+
+[Archived notebook using Python and R](analysis/01_occurence_rate.ipynb)
+
+## Notes
+
+- Occurence rate is related to the waiting time distribution.
+- Group the data by the radial distance for WT analysis is not good as the radial distance is not a monotonic function of time. 
+
+It is hard to remove duplicate events when combining multiple datasets with different τ. So when using the combined dataset, the occurence rate would be overestimated.
+
+
+> An analysiswas carried out to determine the probability distribution governing the time interval between successive discontinuities. The times at which the discontinuities occurred,obtainedfromthe identificationprogram, were used to computethe time difference, $τ = T_j - T_{j-1}$, the so-called interarrival interval. The number of cases were then tabulated corresponding to discreteranges of τ, and a histogramwas prepared.By properly normalizing the numberof casesin each range a probability distribution function giving the relative frequency of occurrencewas obtained. A similar study was previously carried out by Burlaga[1969].
+
+### References
+
+- [Weibull distribution - Distributions.jl](https://juliastats.org/Distributions.jl/stable/univariate/#Distributions.Weibull)
+
+$$
+f(τ; α, θ) = \frac{α}{θ} \left( \frac{τ}{θ} \right)^{α-1} e^{-(τ/θ)^α}, \quad τ \ge 0
+$$
+
+```{julia}
+using DrWatson
+@quickactivate
+include(srcdir("main.jl"))
+
+using CairoMakie
+```
+
+```{julia}
+wind_df = load(; name="Wind", ts=missing);
+jno_df = load();
+```
+
+```{julia}
+subset_jno(df, r) = subset(df, :radial_distance => x -> round_c.(x) .== r)
+subset_time(df, t) = subset(df, :time => x -> x .< t)
+```
+
+```{julia}
+df = wind_df;
+df_s1 = subset(df, :time => t -> year.(t) .== 2013);
+df_s2 = subset(df_s1, :time => t -> month.(t) .< 2);
+
+jno_df_s1 = subset(jno_df, :time => t -> year.(t) .== 2011);
+jno_df_s2 = subset(jno_df, :time => t -> year.(t) .== 2016);
+```
+
+## Waiting time distribution
+
+```{julia}
+using Distributions
+
+function plot_wt_pdf_lim(df; xlims=(1, 1000), ylims=(1e-5, 8e-2), kwargs...)
+    f = plot_wt_pdf(df; kwargs...)
+    xlims!(xlims...)
+    ylims!(ylims...)
+    return f
+end
+
+using Printf
+Base.show(io::IO, f::Float64) = @printf(io, "%.2f", f)
+
+dists = (Weibull, Exponential)
+step = 5
+```
+
+```{julia}
+#| column: page
+#| layout-ncol: 3
+dfs = [jno_df, jno_df_s1, jno_df_s2]
+fgs = plot_wt_pdf_lim.(dfs; dists)
+display.(fgs);
+```
+
+
+```{julia}
+using Beforerr: DistsFit
+
+WaitingTimeDist(df, args...) = DistsFit(waiting_time(df), args...)
+```
+
+```{julia}
+let step = 5
+    limits = (0, 680, 5e-6, 5e-2)
+    f = Figure()
+    new_ax(pos; kw...) = Axis(f[pos...]; yscale=log10, xlabel="τ (minutes)", ylabel="p(τ)", limits, kw...)
+
+    ax1 = new_ax((1, 1); xlabel="")
+    plot!(WaitingTimeDist(jno_df_s1, dists, step))
+    ax2 = new_ax((2, 1);)
+    plot!(WaitingTimeDist(jno_df_s2, dists, step))
+    axislegend(ax1, "Juno, 2011"; loc=:upperright)
+    axislegend(ax2, "Juno, 2016"; loc=:upperright)
+    easy_save("fig_wt_dist")
+end
+```
+
+## Occurence rate
+
+```{julia}
+using Distributions
+
+get_fit_params(x; dist=Weibull, func=mean) = func(fit(dist, x))
+get_wt_fit_params(time; kwargs...) = get_fit_params(waiting_time(time); kwargs...)
+```
+
+```{julia}
+jno_ρ_df = @chain jno_df begin
+    @transform!(
+        :time_bin = (:time - minimum(:time)) ./ time_interval .|> round,
+        :l = :L_k .* (abs ∘ cosd).(:θ_vn),
+        :l_n = :L_k .* (abs ∘ cos ∘ atan).(:Vn_y ./ :Vn_x)
+    )
+end;
+```
+
+```{julia}
+time_interval = Day(160)
+
+jno_ρ_df = @chain jno_df begin
+    @transform(
+        :time_bin = (:time - minimum(:time)) ./ time_interval .|> round,
+        :l = :L_k .* (abs ∘ cosd).(:θ_vn),
+        :l_n = :L_k .* (abs ∘ cos ∘ atan).(:Vn_y ./ :Vn_x)
+    )
+    @transform(
+        :l_ratio = :l ./ :r,
+        :l_n_ratio = :l_n ./ :r
+    )
+    groupby(:time_bin)
+    combine(
+        nrow,
+        :time => get_wt_fit_params => :τ,
+        [:r :l :l_ratio :l_n_ratio] .=> mean
+    )
+    # subset(:nrow => x -> x .> 2000)
+    @transform(
+        :ρ = 1 ./ :τ,
+    )
+    @transform(
+        :ρ_l = :ρ ./ :l_ratio_mean * maximum(:l_ratio_mean),
+    )
+    sort(:r_mean)
+end
+```
+
+```{julia}
+wind_ρ_df = @chain wind_df begin
+    @transform!(
+        :time_bin = (:time - minimum(:time)) ./ time_interval .|> round,
+    )
+    groupby(:time_bin)
+    combine(
+        nrow,
+        :time => get_wt_fit_params => :τ,
+    )
+    @transform!(
+        :ρ = 1 ./ :τ,
+    )
+end
+```
+
+```{julia}
+df = leftjoin(jno_ρ_df, wind_ρ_df, on=:time_bin, makeunique=true)
+df.ρ_ratio = @. df.ρ / df.ρ_1
+
+@transform!(df,
+    :ratio = :ρ_ratio ./ :l_ratio_mean,
+    :ratio_n = :ρ_ratio ./ :l_n_ratio_mean,
+)
+@transform!(
+    df,
+    :ratio = :ratio ./ mean(:ratio),
+    :ratio_n = :ratio_n ./ mean(:ratio_n)
+)
+
+df
+```
+
+```{julia}
+x = :time_bin => "Time"
+legends = ["Juno", "Wind"]
+specs = data(df) * mapping(x, [:ρ_l, :ρ_1] .=> "Normalized Occurence rates") * mapping(color=dims(1) => renamer(legends))
+draw(specs)
+easy_save("ocr/ocr_normalized_by_r")
+```
+
+```{julia}
+x = :r_mean => r_lab
+specs = data(df) * mapping(x, :ρ)
+draw(specs)
+```
+
+```{julia}
+y = [:ratio_n, :ratio]
+specs = data(df) * mapping(x) * mapping(y, color=dims(1) => renamer(string.(y)))
+plt2 = draw(specs)
+```
+
+
+## Compare the exponential and Weibull fits for the waiting time distributions of Wind dataset
+
+```{julia}
+f1 = plot_wt_pdf_lim(wind_df, ylims=(1e-6, 1e-1),)
+f2 = plot_wt_pdf_lim(wind_df, dist=Weibull, ylims=(1e-6, 1e-1))
+display.([f1, f2]);
+```
+
+```{julia}
+df1 = subset_time(jno_df, Date(2011, 9, 30))
+df2 = subset_time(wind_df, Date(2011, 9, 30))
+dfs = [df1, df2]
+fgs = dfs .|> plot_wt_pdf_lim
+display.(fgs);
+```
+

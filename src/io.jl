@@ -9,7 +9,7 @@ DEFAULT_TAUS = 60:-10:20
 
 post_process!(df) = begin
     df |>
-    Discontinuity.keep_good_fit! |>
+    Discontinuity.keep_good_fit |>
     Discontinuity.standardize_df! |>
     Discontinuity.compute_params! |>
     Discontinuity.unitize! |>
