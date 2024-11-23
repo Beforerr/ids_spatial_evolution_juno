@@ -148,7 +148,7 @@ $$
 f(τ; α, θ) = \frac{α}{θ} \left( \frac{τ}{θ} \right)^{α-1} e^{-(τ/θ)^α}, \quad τ \ge 0
 $$
 
-Here, $α$ and $θ$ represent the shape and scale parameters, respectively. The complementary cumulative distribution function of the Weibull distribution $F(τ; α, θ) = 1 - \mathrm{e}^{-(τ/θ)^α}$ is a stretched exponential function.
+Here, $α$ and $θ$ represent the shape and scale parameters, respectively. The complementary cumulative distribution function of the Weibull distribution $F(τ; α, θ) = 1 - \mathrm{e}^{-(τ/θ)^α}$ is a stretched exponential function (The Weibull distribution reduces to the exponential distribution when $α = 1$).
 
 ::: {#fig-waitingTime}
 ![](figures/fig_wt_dist.pdf)
@@ -249,6 +249,10 @@ We have collected 5 years of solar wind discontinuities from JUNO, ARTEMIS and S
 # Acknowledgements
 
 Sunspot data from the World Data Center SILSO, Royal Observatory of Belgium, Brussels. ARTEMIS solar wind time interval data from the OMNI database. ARTEMIS solar wind time interval data from OMNIWEB, link: [omniweb.gsfc.nasa.gov/ftpbrowser/themis_b_sw.txt](https://omniweb.gsfc.nasa.gov/ftpbrowser/themis_b_sw.txt).
+
+# Open Research
+
+Codes and datasets used for the analysis are available in the GitHub repository https://github.com/Beforerr/ids_spatial_evolution_juno.
 
 # Appendix
 
