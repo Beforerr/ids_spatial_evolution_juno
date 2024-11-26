@@ -5,15 +5,20 @@ title: Results (Julia)
 ```{julia}
 using DrWatson
 using Discontinuity
+using AlgebraOfGraphics
+using DataFramesMeta
 @quickactivate
 include("../src/main.jl");
 M = var_mapping()
+
 ```
 
 ```{julia}
-wind_df = load_wind();
-jno_df = load_jno();
+jno_df = load();
+wind_df = load(; name="Wind", ts=missing);
 ```
+
+![](./02_waiting_time.ipynb)
 
 ## Check the discontinuities properties with time and radial distance
 
@@ -41,3 +46,76 @@ let df = jno_df, color = r_map, fnames = ["juno_distribution_r", "juno_sw_paramt
     display.(fs)
 end
 ```
+
+## Effects of time lag on the discontinuity identification
+
+```{julia}
+df = load_taus(; unique_f=missing)
+```
+
+```{julia}
+normalize_by_max(x) = x / maximum(x)
+normalize_by_max(df, x; kw...) = transform(df, x => normalize_by_max; kw...)
+
+function plot_nrow(df, x, dx, color; xlabel=x, normalize=true, plottype=Stairs, kw...)
+    y = Symbol(nrow)
+    df = @chain df begin
+        transform(x => ByRow(v -> round(v, dx)); renamecols=false)
+        groupby([x, color]; sort=true)
+        combine(nrow)
+    end
+
+    # normalize the nrows by the largest value
+    if normalize
+        df = normalize_by_max(groupby(df, [x]), y; renamecols=false)
+        ylabel = "Relative percentage of events"
+    else
+        ylabel = "Number of events"
+    end
+
+    plt = data(df) * mapping(x => xlabel, y => ylabel; color) * visual(plottype)
+    draw(plt; kw...)
+end
+
+plot_nrow(df, :r, 0.5, :tau; xlabel=r_lab)
+easy_save("ocr/juno_tau_r")
+```
+
+## Rotation angle
+
+```{julia}
+layer = data(jno_df) * mapping(color=r_map)
+maps = [M.ω; M.ω_in]
+f = plot_dist(layer, maps)
+```
+
+
+```{julia}
+f = plot_dist(layer * (; col=:accuracy), [:θ_nk => "θ_nk"])
+```
+
+## Bn and Change in dB
+
+```{julia}
+let maps = [M.dB_norm_over_B, M.bn]
+    layer = data(jno_df) * mapping(color=r_map, col=:accuracy)
+    f = plot_dist(layer, maps)
+end
+```
+
+
+```{julia}
+let maps = [M.dB_norm_over_B, M.bn]
+    l = data(wind_df) * (; col=:accuracy)
+    f = plot_dist(l, maps)
+end
+```
+
+
+## Compression ratio
+
+```{julia}
+let maps = [:db_over_b_max=> L"\max(Δ B)/B" , :db_over_b=> L"|Δ B|/B"], datalimits=((0, 0.5),)
+    layer = data(jno_df) * mapping(color=r_map)
+    f = plot_dist(layer, maps; axis=(yscale=identity,), datalimits)
+end
