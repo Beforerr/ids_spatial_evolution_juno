@@ -14,7 +14,7 @@ tex-render:
   touch files/bibexport.bib
   quarto render --profile man --to $OVERLEAF_FMT
   rsync _manuscript/_tex/ overleaf/ -rcL
-  rsync article_files overleaf -a --size-only
+  rsync article_files overleaf -a --size-only || true
 
 [private]
 tex-clean:
