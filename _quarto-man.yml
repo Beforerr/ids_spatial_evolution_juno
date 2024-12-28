@@ -1,6 +1,6 @@
 project:
   type: manuscript
-  render: 
+  render:
     - "article.qmd"
 
 manuscript:
