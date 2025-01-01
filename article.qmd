@@ -179,7 +179,7 @@ The current density $J_m$ supporting the main magnetic field reversal across a d
 $$
 J_m = - \frac{1}{μ_0 V_n} \frac{d B_l}{d t},
 $$ {#eq-j}
-where $μ_0$ is the vacuum permeability and $V_n$ is the normal component of the proton flow velocity. For fitting method, the derivative of the magnetic field could be estimated as $\max(d B_l / d t) = B_{l0} / \Delta t$. This estimate is more robust than the direct calculation of the derivative of the magnetic field, because the fitting method is less sensitive to the noise in the data and the time resolution of the data (see discussion in the Appendix).
+where $\μ_0$ is the vacuum permeability and $V_n$ is the normal component of the proton flow velocity. For fitting method, the derivative of the magnetic field could be estimated as $\max(d B_l / d t) = B_{l0} / \Delta t$. This estimate is more robust than the direct calculation of the derivative of the magnetic field, because the fitting method is less sensitive to the noise in the data and the time resolution of the data (see discussion in the Appendix). Since the normal direction of the current sheet cannot be accurately determined using the MVA method, we also use the more reliable velocity $V_{nm} = \sqrt{V^2 - V_l^2}$ as an upper limit for $V_n$ to estimate $J_m$ and the subsequent $d$. Notably, this adjustment does not significantly affect the results presented here.
 
 <!--  The proton flow velocity $v$ is expressed as $v = v_{sw} - v_{s/c} + U$, where $v_{sw}$ is the solar wind velocity, $v_{s/c}$ is the spacecraft velocity, and $U$  denotes the propagation speed of the discontinuities. In our case, the latter two velocities are negligible. -->
 
