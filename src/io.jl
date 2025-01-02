@@ -48,9 +48,9 @@ This will remove events that appear in multiple taus datasets.
 However, this may not remove all "duplicates" that may have little duration differences, since "t_us", :"t_ds" are determined by the maximum distance, and they may vary across different taus for one "event".
 """
 function load_taus(; taus=DEFAULT_TAUS, unique_f=["t_us", "t_ds"])
-    df = vcat(load_tau.(taus)...)
+    df = vcat(load_tau.(taus)...; cols=:union)
     ismissing(unique_f) || unique!(df, unique_f)
-    df.tau = categorical(df.tau)
+    # df.tau = categorical(df.tau)
     return sort(df, :tau)
 end
 

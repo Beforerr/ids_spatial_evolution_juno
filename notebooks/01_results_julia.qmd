@@ -14,8 +14,15 @@ M = var_mapping()
 ```
 
 ```{julia}
+df = load_taus(; unique_f=missing)
 jno_df = load();
 wind_df = load(; name="Wind", ts=missing);
+```
+
+```{julia}
+udf = Discontinuity.remove_duplicates(df)
+@info nrow(udf)
+@info nrow(subset(udf, :r => x -> x.>=4))
 ```
 
 ![](./02_waiting_time.ipynb)
@@ -50,14 +57,12 @@ end
 ## Effects of time lag on the discontinuity identification
 
 ```{julia}
-df = load_taus(; unique_f=missing)
-```
-
-```{julia}
 normalize_by_max(x) = x / maximum(x)
 normalize_by_max(df, x; kw...) = transform(df, x => normalize_by_max; kw...)
+normalize_by_all(x) = x / sum(x)
+normalize_by_all(df, x; kw...) = transform(df, x => normalize_by_all; kw...)
 
-function plot_nrow(df, x, dx, color; xlabel=x, normalize=true, plottype=Stairs, kw...)
+function plot_nrow(df, x, dx, color; xlabel=x, clabel=color, normalize=normalize_by_max, plottype=Stairs, kw...)
     y = Symbol(nrow)
     df = @chain df begin
         transform(x => ByRow(v -> round(v, dx)); renamecols=false)
@@ -65,20 +70,26 @@ function plot_nrow(df, x, dx, color; xlabel=x, normalize=true, plottype=Stairs, 
         combine(nrow)
     end
 
-    # normalize the nrows by the largest value
-    if normalize
-        df = normalize_by_max(groupby(df, [x]), y; renamecols=false)
+    if normalize isa Function
+        df = normalize(groupby(df, [x]), y; renamecols=false)
         ylabel = "Relative percentage of events"
     else
         ylabel = "Number of events"
     end
 
-    plt = data(df) * mapping(x => xlabel, y => ylabel; color) * visual(plottype)
+    plt = data(df) * mapping(x => xlabel, y => ylabel; color = color => clabel) * visual(plottype)
     draw(plt; kw...)
 end
 
-plot_nrow(df, :r, 0.5, :tau; xlabel=r_lab)
-easy_save("ocr/juno_tau_r")
+let tdf = df
+    plot_nrow(tdf, :r, 0.5, :tau; xlabel=r_lab, clabel="T")
+    easy_save("ocr/juno_tau_r")
+end
+
+let tdf = Discontinuity.remove_duplicates(df)
+    plot_nrow(tdf, :r, 0.5, :tau; normalize = normalize_by_all, xlabel=r_lab, clabel="T")
+    easy_save("ocr/juno_tau_r")
+end
 ```
 
 ## Rotation angle

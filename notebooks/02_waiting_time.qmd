@@ -84,18 +84,30 @@ WaitingTimeDist(df, args...) = DistsFit(waiting_time(df), args...)
 ```
 
 ```{julia}
-let step = 5
+function plot_fig_wt_dist(; step=5, df1=jno_df_s1, df2=jno_df_s2)
     limits = (0, 680, 5e-6, 5e-2)
     f = Figure()
     new_ax(pos; kw...) = Axis(f[pos...]; yscale=log10, xlabel="τ (minutes)", ylabel="p(τ)", limits, kw...)
 
     ax1 = new_ax((1, 1); xlabel="")
-    plot!(WaitingTimeDist(jno_df_s1, dists, step))
+    plot!(WaitingTimeDist(df1, dists, step))
     ax2 = new_ax((2, 1);)
-    plot!(WaitingTimeDist(jno_df_s2, dists, step))
+    plot!(WaitingTimeDist(df2, dists, step))
     axislegend(ax1, "Juno, 2011"; loc=:upperright)
     axislegend(ax2, "Juno, 2016"; loc=:upperright)
-    easy_save("fig_wt_dist")
+    return f
+end
+
+# let 
+#     plot_fig_wt_dist()
+#     easy_save("fig_wt_dist")
+# end
+
+let tdf = Discontinuity.remove_duplicates(df)
+    df1 = subset(tdf, :time => t -> year.(t) .== 2011)
+    df2 = subset(tdf, :time => t -> year.(t) .== 2016)
+    plot_fig_wt_dist(; df1, df2)
+    easy_save("fig_wt_dist_no_duplicates")
 end
 ```
 
