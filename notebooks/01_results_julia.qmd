@@ -16,7 +16,7 @@ M = var_mapping()
 ```{julia}
 df = load_taus(; unique_f=missing)
 jno_df = load();
-wind_df = load(; name="Wind", ts=missing);
+wind_df = load(; name="Wind", ts=nothing);
 ```
 
 ```{julia}
@@ -88,7 +88,8 @@ end
 
 let tdf = Discontinuity.remove_duplicates(df)
     plot_nrow(tdf, :r, 0.5, :tau; normalize = normalize_by_all, xlabel=r_lab, clabel="T")
-    easy_save("ocr/juno_tau_r")
+    ylims!(0, 0.7)
+    easy_save("ocr/juno_T_r")
 end
 ```
 
