@@ -23,3 +23,10 @@ tex-render:
 tex-clean:
     -rm article.{aux,bbl,blg,log,tex}
     -rm trackchanges.sty *.cls
+
+update-agu-format file:
+    #!/usr/bin/env bash
+    sed -i '' '/\\usepackage\[[^]]*\]{natbib}/d; /\\bibliographystyle{plainnat}/d' {{ file }}
+    sed -E -i '' 's/\\citep\[([^]]*)\]\[([^]]*)\]\{([^}]*)\}/\\cite<\1>[\2]{\3}/g' {{ file }}
+    sed -i '' 's/\\citep/\\cite/g' {{ file }}
+    sed -i '' 's/\\citet/\\citeA/g' {{ file }}
