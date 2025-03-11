@@ -4,6 +4,7 @@ Associations = "614afb3a-e278-4863-8805-9959372b9ec2"
 Beforerr = "49aed396-608e-4c3f-b6d6-a749216c9ea7"
 CairoMakie = "13f3f980-e62b-5c42-98c6-ff1f3baf88f0"
 CategoricalArrays = "324d7699-5711-5eae-9e2f-1d82baa6b597"
+ChargedParticles = "e91dad46-2c06-47f2-8668-7ffa57fde2d9"
 DataFrames = "a93c6f00-e57d-5684-b7b6-d8193f3e46c0"
 DataFramesMeta = "1313f7d8-7da2-5740-9ea0-a2ca25f37964"
 Dates = "ade2ca70-3891-5945-98fb-dc099432e06a"
@@ -17,6 +18,3 @@ JLD2 = "033835bb-8acc-5ee8-8aae-3f567f8a3819"
 LaTeXStrings = "b964fa9f-0449-5b57-a5c2-d3ea65f4040f"
 PlasmaFormulary = "d26ff896-aba2-4e70-a0a6-448627456efe"
 Unitful = "1986cc42-f94f-5a68-af5c-568840ba703d"
-
-[sources]
-Beforerr = {url = "https://github.com/Beforerr/beforerr.jl"}

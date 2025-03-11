@@ -1,6 +1,6 @@
 using Printf
 using Discontinuity
-using Discontinuity: load
+using Discontinuity: load, unitize!
 using Dates
 using Dates: AbstractTime
 data_path = datadir("05_reporting")
@@ -18,9 +18,9 @@ post_process!(df) = begin
 end
 
 function Discontinuity.load(; tau=60, ts=1, name="JNO", dir=data_path, verbose=false, kw...)
-    ts = !ismissing(ts) ? Second(ts) : ts
-    tau = !ismissing(tau) ? Second(tau) : tau
-    ds = DataSet(; name, ts, tau, kw...)
+    ts = !isnothing(ts) ? Second(ts) : ts
+    tau = !isnothing(tau) ? Second(tau) : tau
+    ds = Discontinuity.DataSet(; name, ts, tau, kw...)
     df = load(ds; dir)
 
     if name == "JNO"
@@ -28,9 +28,12 @@ function Discontinuity.load(; tau=60, ts=1, name="JNO", dir=data_path, verbose=f
         df.T = df.T .* u"K"
     elseif name == "Wind"
         Discontinuity.calc_T!(df, "T")
+    elseif name == "STEREO"
+        nothing
     end
 
     df = df |> post_process!
+    :"B.mean" in names(df) && unitize!(df, :"B.mean", u"nT")
     verbose && println("Number of events: ", size(df, 1))
     insertcols!(df, :tau => tau, :ts => ts)
 end

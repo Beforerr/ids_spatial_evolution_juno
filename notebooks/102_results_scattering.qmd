@@ -1,0 +1,148 @@
+---
+title: Ion Scattering by Solar Wind Discontinuities
+---
+
+```{julia}
+include("../src/main.jl")
+using Dates
+using Beforerr
+using FHist
+using AlgebraOfGraphics: aog_theme
+
+M = var_mapping()
+```
+
+Loading the data
+
+```{julia}
+name = "Wind"
+df = load(; name);
+```
+
+```{julia}
+# velocity v is normalized to $v0 = l Ω$, where $l$ represents the width of the RD and $Ω = q B/(mpc)$ is the cyclotron frequency.
+using Unitful: ε0, μ0, mp
+q_G = q / sqrt(4π * ε0)
+B_G_factor = sqrt(4π / μ0)
+
+function transform_scattering!(df::AbstractDataFrame)
+    # gyrofrequency
+    @chain df begin
+        @transform!(
+            :θ = acosd.(:bn_over_b),
+            :E_norm = @. (q_G * :L_n_cross * :"B.mean" * B_G_factor / (mp * c^2)) |> NoUnits
+        )
+    end
+end
+
+transform_scattering!(df);
+```
+
+```{julia}
+binedges = (-6:1, 0:10:180, 0:10:180)
+hist3dbin(df) = Hist3D(
+    (log10.(df[!, :E_norm]), df[!, :ω_in], df[!, :θ]); binedges
+)
+
+to_endpoints(binedges) = (first(binedges), last(binedges))
+
+let
+    h3d1 = hist3dbin(subset(df, :accuracy))
+    h3d2 = hist3dbin(subset(df, :accuracy => ByRow(!)))
+    z = zeros(eltype(bincounts(h3d1)))
+    axis = (; aspect=:equal, xlabel="Log10 (He)", ylabel="In-plane rotation angle", zlabel="Azimuthal angle")
+
+    f = Figure(; size=(600, 300), figure_padding=0)
+    ax1 = Axis3(f[1, 1]; axis..., title="Reliable", protrusions=(30, 0, 60, 30))
+    volume!(ax1, to_endpoints.(h3d1.binedges)..., replace(bincounts(h3d1), z => NaN))
+    ax2 = Axis3(f[1, 2]; axis..., title="unreliable", protrusions=0)
+    volume!(ax2, to_endpoints.(h3d2.binedges)..., replace(bincounts(h3d2), z => NaN))
+    f
+end
+
+easy_save("scatter/$(name)_hist3d"; formats=[:png])
+```
+
+![](../figures/scatter/wind_hist3d.png)
+
+
+```{julia}
+# Volume plot type support in AOG
+# https://github.com/MakieOrg/AlgebraOfGraphics.jl/pull/572
+
+θ = :θ => "azimuthal angle"
+Bn = :bn_over_b => abs => L"B_N/B";
+v0 = :v0 => log10 => "Log v0";
+
+layer = data(df) * mapping(layout=:accuracy);
+
+xyz = (:E_norm, M.ω_in, θ)
+datalimits = ((1, 14), (0, 180), (0, 180))
+axis = (type=Axis3, width=400)
+v = histogram(; datalimits, normalization=:pdf)
+plt = data(df) * mapping(xyz...; layout=:accuracy) * v
+fg = draw(plt; axis)
+colorbar!(fg)
+fg
+```
+
+
+```{julia}
+datalimits = (2, 14)
+axis = (; yscale=log10)
+v = histogram(; normalization=:pdf, bins=20, datalimits)
+dfplot(layer * v, v0; axis)
+```
+
+```{julia}
+using FHist
+using LinearAlgebra
+
+function get_data(df; x=:v0, y=:ω_in, z=:θ)
+    x = df[!, x] .|> ustrip .|> log2
+    y = df[!, y]
+    z = df[!, z] .|> abs
+    return x, y, z
+end
+
+function get_hist3d(df)
+    return Hist3D(
+        get_data(df);
+        binedges=(1.5:14.5, 20:10:180, 0:10:90),
+    ) |> normalize
+end
+
+function plot_hist3d(df)
+    h = get_hist3d(df)
+    fig = Figure()
+    ax = Axis3(fig[1, 1]; width=400, xlabel="log2(v0)", ylabel="ω_in", zlabel="θ")
+    plot!(h)
+    fig
+end
+
+using GLMakie
+GLMakie.activate!()
+plot_hist3d(filter_low_accuracy(df))
+```
+
+## Export
+
+```{julia}
+using HDF5
+
+filename = datadir("$(name)_hist3d.h5")
+h = get_hist3d(filter_low_accuracy(df))
+
+function save(filename, h::Hist3D)
+    # delete file if it exists
+    isfile(filename) && rm(filename)
+    h5writehist(filename, "hist", h)
+end
+
+save(filename, h)
+```
+
+```{julia}
+*(size(bincounts(h))...) |> println
+bincenters(h)
+```
