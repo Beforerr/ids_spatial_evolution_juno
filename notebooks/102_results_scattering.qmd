@@ -6,6 +6,7 @@ title: Ion Scattering by Solar Wind Discontinuities
 include("../src/main.jl")
 using Dates
 using Beforerr
+using GLMakie
 using FHist
 using AlgebraOfGraphics: aog_theme
 
@@ -21,7 +22,7 @@ df = load(; name);
 
 ```{julia}
 # velocity v is normalized to $v0 = l Ω$, where $l$ represents the width of the RD and $Ω = q B/(mpc)$ is the cyclotron frequency.
-using Unitful: ε0, μ0, mp
+using Unitful: ε0, μ0, mp, q, c
 q_G = q / sqrt(4π * ε0)
 B_G_factor = sqrt(4π / μ0)
 
@@ -50,13 +51,17 @@ let
     h3d1 = hist3dbin(subset(df, :accuracy))
     h3d2 = hist3dbin(subset(df, :accuracy => ByRow(!)))
     z = zeros(eltype(bincounts(h3d1)))
-    axis = (; aspect=:equal, xlabel="Log10 (He)", ylabel="In-plane rotation angle", zlabel="Azimuthal angle")
+    # axis = (; aspect=:equal, xlabel=L"\log (ṽ_B)", ylabel="In-plane rotation angle", zlabel="Azimuthal angle")
+    axis = (; aspect=:equal, xlabel=L"\log (ṽ_B)", ylabel=L"ω_{in}", zlabel=L"θ")
 
     f = Figure(; size=(600, 300), figure_padding=0)
     ax1 = Axis3(f[1, 1]; axis..., title="Reliable", protrusions=(30, 0, 60, 30))
     volume!(ax1, to_endpoints.(h3d1.binedges)..., replace(bincounts(h3d1), z => NaN))
-    ax2 = Axis3(f[1, 2]; axis..., title="unreliable", protrusions=0)
-    volume!(ax2, to_endpoints.(h3d2.binedges)..., replace(bincounts(h3d2), z => NaN))
+    # volume!(ax1, h3d1)
+    ax2 = Axis3(f[1, 2]; axis..., title="Unreliable", protrusions=0)
+    p = volume!(ax2, to_endpoints.(h3d2.binedges)..., replace(bincounts(h3d2), z => NaN))
+    Colorbar(f[1, 3], p)
+    # volume!(ax2, h3d2)
     f
 end
 
