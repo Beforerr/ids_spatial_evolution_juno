@@ -7,9 +7,10 @@ using DrWatson
 using Discontinuity
 using AlgebraOfGraphics
 using DataFramesMeta
+using Beforerr
 @quickactivate
 include("../src/main.jl");
-M = var_mapping()
+M = var_mapping(; log_str="")
 
 ```
 
@@ -31,7 +32,32 @@ udf = Discontinuity.remove_duplicates(df)
 
 ```{julia}
 maps1 = [M.l_log M.l_norm_log; M.j_log M.j_norm_log]
-maps2 = [M.density_log M.B_log; beta_map M.bm0_log];
+maps2 = [M.density_log M.B_log; M.beta M.bm0_log];
+```
+
+```{julia}
+figure = (; size=Beforerr.figsize(7))
+
+"""
+    Strip trailing zeros from decimal numbers
+"""
+function _round(v;kw...)
+    rounded = string(round(v; digits=1, kw...))
+    # If it contains a decimal point, remove trailing zeros
+    if contains(rounded, ".")
+        # Remove trailing zeros
+        rounded = replace(rounded, r"\.?0+$" => "")
+        # If we removed everything after the decimal point, remove the decimal point too
+        rounded = replace(rounded, r"\.$" => "")
+    end
+    return rounded
+end
+
+axis = (; 
+    xticks = WilkinsonTicks(5),
+    xtickformat = values -> [L"10^{%$(_round(v))}" for v in values],
+    yscale=log10,
+)
 ```
 
 ```{julia}
@@ -39,20 +65,42 @@ temp_plot(layer::Layer) = m -> plot_dist(layer, m; datalimits=datalimits_f)
 temp_plot(df::DataFrame; color=year_map) = temp_plot(data(df) * mapping(color=color))
 
 let df = wind_df, fnames = ["wind_distribution_time", "wind_sw_paramters"]
-    fs = temp_plot(df).([maps1, maps2])
+    spec = data(df) * mapping(color=year_map)
+    fs = map([maps1, maps2]) do m
+        plot_dist(spec, m; 
+            datalimits=datalimits_f,
+            axis,
+            figure
+        )
+    end
     easy_save.(fnames, fs)
     display.(fs)
 end
 ```
 
+![](../figures/wind_distribution_time.png)
+
+![](../figures/wind_sw_paramters.png)
+
 ```{julia}
 # let df = j_events_taus
 let df = jno_df, color = r_map, fnames = ["juno_distribution_r", "juno_sw_paramters"]
-    fs = temp_plot(df; color).([maps1, maps2])
+    spec = data(df) * mapping(; color)
+    fs = map([maps1, maps2]) do m
+        plot_dist(spec, m; 
+            datalimits=datalimits_f,
+            axis,
+            figure
+        )
+    end
+    resize_to_layout!.(fs)
     easy_save.(fnames, fs)
     display.(fs)
 end
 ```
+
+![](../figures/juno_distribution_r.png)
+![](../figures/juno_sw_paramters.png)
 
 ## Effects of time lag on the discontinuity identification
 
@@ -104,6 +152,23 @@ f = plot_dist(layer, maps)
 
 ```{julia}
 f = plot_dist(layer * (; col=:accuracy), [:θ_nk => "θ_nk"])
+```
+
+## Magnetic field magnitude and radial dependency
+
+```{julia}
+rfunc(r) = sqrt(1/r^2 + 1/r^4)
+rfunc(B,r) = B / rfunc(r)
+B_r_scaled= (:"B.mean", :r) => (log10 ∘ rfunc)
+B_m0_scaled= (:"fit.vars.amplitude", :r)  => (log10 ∘ abs ∘ rfunc)
+let df = jno_df, color = r_map, m = [M.B_log M.bm0_log; B_r_scaled B_m0_scaled]
+    spec = data(df) * mapping(; color)
+    f = plot_dist(spec, m; 
+            datalimits=datalimits_f,
+            axis
+        )
+    display(f)
+end
 ```
 
 ## Bn and Change in dB

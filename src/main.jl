@@ -17,7 +17,14 @@ using Unitful
 import Base.round
 
 set_aog_theme!()
-theme = Theme(; colormap=Reverse(:tokyo), figure_padding=2)
+theme = Theme(;
+    colormap=Reverse(:tokyo),
+    figure_padding=2,
+    Axis=(
+        xminorticksvisible=true,
+        yminorticksvisible=true
+    )
+)
 update_theme!(theme)
 
 include("io.jl")
