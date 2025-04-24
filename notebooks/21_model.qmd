@@ -1,0 +1,144 @@
+# MHD Model and Juno solar wind parameters comparison
+
+@wilsonSolarWindProperties2018
+
+```{julia}
+using DrWatson
+using Discontinuity
+using Discontinuity: Alfven_current
+using DataFramesMeta
+using PlasmaFormulary: inertial_length
+
+@quickactivate
+include("../src/main.jl")
+```
+
+```{julia}
+using CSV
+using DataFrames
+
+function HAPIDateTime(t::AbstractString)
+    # Check if the string ends with Z and remove it for parsing
+    t = rstrip(t, ['Z'])
+    # Split into date and time parts if T is present
+    parts = split(t, "T", limit=2)
+    date_part = parts[1]
+    time_part = length(parts) > 1 ? parts[2] : ""
+
+    # Parse date part
+    date = @something(
+        tryparse(Date, date_part),
+        tryparse_doy_date(date_part),
+    )
+
+    # Create DateTime with or without time
+    if isempty(time_part)
+        dt = DateTime(date)
+    else
+        dt = date + Time(time_part)
+    end
+
+    return dt
+end
+
+"""
+Parse a date in Day of Year format (YYYY-DDD)
+"""
+function tryparse_doy_date(date_str::AbstractString)
+    doy_regex = r"^(\d{4})-(\d{3})$"
+
+    if occursin(doy_regex, date_str)
+        m = match(doy_regex, date_str)
+        year = parse(Int, m[1])
+        doy = parse(Int, m[2])
+        return Date(year) + Day(doy - 1)
+    end
+
+    return nothing
+end
+
+"""
+    read_sw_params_csv(file="jgra54158-sup-0001-supinfo.csv")
+
+Reads the solar wind parameters CSV file and returns a DataFrame.
+"""
+function read_sw_params_csv(file=datadir("jgra54158-sup-0001-supinfo.csv"))
+    df = CSV.read(file, DataFrame)
+    df[!, :UTC] = HAPIDateTime.(String.(df[!, :UTC]))
+    return df
+end
+
+jno_sw_params = read_sw_params_csv()
+
+# jno_df = load()
+```
+
+```{julia}
+using FlexiJoins
+using Distances
+using Dates
+using Unitful: μ0
+
+jno_df_with_params = innerjoin(
+    (jno_df, jno_sw_params),
+    by_pred(x -> x.time .. (x.time + Minute(1)), ∋, :UTC);
+)
+
+@chain jno_df_with_params begin
+    @transform! begin
+        :N_PROTONS_CC = :N_PROTONS_CC .* u"cm^-3"
+        :d_star = :d_star .* u"nT/s"
+        :duration = :duration .* u"s"
+        :V_KMPS = :V_KMPS .* u"km/s"
+    end
+    @transform! begin
+        :V_n_cross_sw = @. abs(first(:n_cross) * :V_KMPS)
+        :d_i_sw = inertial_length.(:N_PROTONS_CC, Unitful.q, Unitful.mp)
+        :j_Alfven_sw = Alfven_current.(:b_mag, :N_PROTONS_CC)
+    end
+    @transform! begin
+        :L_n_cross_sw = :V_n_cross_sw .* :duration
+        :j0_k_sw = @. abs(:d_star / :V_n_cross_sw / μ0) |> u"nA/m^2"
+    end
+    @transform! begin
+        :L_n_cross_sw_norm = @. :L_n_cross_sw / :d_i_sw |> NoUnits
+        :j0_k_sw_norm = @. :j0_k_sw / :j_Alfven_sw |> NoUnits
+    end
+end
+```
+
+```{julia}
+using CairoMakie
+using UnitfulLatexify: latexroundunitlabel as lru
+
+let df = jno_df_with_params, xlabel = "Model", ylabel = "Juno"
+    f = Figure()
+    ax = Axis(f[1, 1]; title=lru("V", u"km/s"), ylabel)
+    scatter!(ax, norm.(df[!, :V]), ustrip.(df[!, :V_KMPS]))
+
+    ax2 = f[1, 2] = Axis(f; title=lru("n", u"cm^-3"), xscale=log10, yscale=log10)
+    scatter!(ax2, ustrip.(df[!, :n]), ustrip.(df[!, :N_PROTONS_CC]))
+    ax3 = Axis(f[2, 1]; title=lru("L", u"km"), ylabel, xscale=log10, yscale=log10)
+    scatter!(ax3, ustrip.(df[!, :L_n_cross]), ustrip.(df[!, :L_n_cross_sw]))
+    ax4 = f[2, 2] = Axis(f; title=lru("J", u"nA/m^2"), xscale=log10, yscale=log10)
+    scatter!(ax4, ustrip.(df[!, :j0_k]), ustrip.(df[!, :j0_k_sw]))
+    ax5 = f[3, 1] = Axis(f; title=L"L/d_i", xlabel, ylabel, xscale=log10, yscale=log10)
+    scatter!(ax5, df[!, :L_n_cross_norm], df[!, :L_n_cross_sw_norm])
+    ax6 = f[3, 2] = Axis(f; title=L"J/J_{Alfven}", xlabel, xscale=log10, yscale=log10)
+    scatter!(ax6, df[!, :j0_k_norm], df[!, :j0_k_sw_norm])
+    for ax in (ax,)
+        ablines!(ax, 0, 1, color=:red, linestyle=:dash)
+    end
+
+    lines!(ax2, exp10.(-1:0), exp10.(-1:0), color=:red, linestyle=:dash)
+    lines!(ax3, exp10.([2, 4.5]), exp10.([2, 4.5]), color=:red, linestyle=:dash)
+    lines!(ax4, exp10.(-2:1), exp10.(-2:1), color=:red, linestyle=:dash)
+    lines!(ax5, exp10.(-1:2), exp10.(-1:2), color=:red, linestyle=:dash)
+    lines!(ax6, exp10.(-2:1), exp10.(-2:1), color=:red, linestyle=:dash)
+
+    easy_save("model/juno_sw_comparision")
+end
+```
+
+
+![](../figures/model/juno_sw_comparision.png)

@@ -13,7 +13,18 @@ ensure-env: install-deps clone-overleaf
 
 install-deps:
     pixi install --frozen
-    julia --project -e 'using Pkg; Pkg.update();'
+
+install-julia-deps:
+    #!/usr/bin/env -S julia --threads=auto --project=.
+    using Pkg
+    Pkg.develop([
+        PackageSpec(url="https://github.com/Beforerr/Beforerr.jl"),
+        PackageSpec(url="https://github.com/Beforerr/SPEDAS.jl"),
+        PackageSpec(url="https://github.com/Beforerr/Discontinuity.jl"),
+        PackageSpec(url="https://github.com/JuliaPlasma/PlasmaFormulary.jl"),
+    ])
+    Pkg.instantiate()
+
 
 exec-scripts:
     python scripts/data.py
