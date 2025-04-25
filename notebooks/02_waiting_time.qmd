@@ -27,10 +27,13 @@ using DrWatson
 @quickactivate
 include(srcdir("main.jl"))
 
+using Discontinuity: remove_duplicates
 using CairoMakie
 ```
 
 ```{julia}
+df = load_taus(; unique_f=missing)
+
 wind_df = load(; name="Wind", ts=missing);
 jno_df = load();
 ```
@@ -115,20 +118,38 @@ end
 
 ```{julia}
 using Distributions
+import DataFrames: groupby
 
 get_fit_params(x; dist=Weibull, func=mean) = func(fit(dist, x))
 get_wt_fit_params(time; kwargs...) = get_fit_params(waiting_time(time); kwargs...)
+
+function groupby(df::AbstractDataFrame, dt::Period; col=:time)
+    @chain df begin
+        @transform!(:time_bin = round.(:time, dt),)
+        groupby(:time_bin)
+    end
+end
+
+begin
+    dt = Day(50)
+    tdf = @chain df begin
+        remove_duplicates
+        groupby(dt)
+        combine(
+            nrow,
+            :time => get_wt_fit_params => :τ,
+            [:r] .=> mean
+        )
+        @transform(:ρ = 1 ./ :τ)
+    end
+
+    x = :time_bin => "Time"
+    specs = data(tdf) * mapping(x, :ρ => "Occurence rates")
+    draw(specs)
+end
 ```
 
-```{julia}
-jno_ρ_df = @chain jno_df begin
-    @transform!(
-        :time_bin = (:time - minimum(:time)) ./ time_interval .|> round,
-        :l = :L_k .* (abs ∘ cosd).(:θ_vn),
-        :l_n = :L_k .* (abs ∘ cos ∘ atan).(:Vn_y ./ :Vn_x)
-    )
-end;
-```
+### Normalization by thickness
 
 ```{julia}
 time_interval = Day(160)

@@ -8,6 +8,7 @@ using Discontinuity
 using Discontinuity: Alfven_current
 using DataFramesMeta
 using PlasmaFormulary: inertial_length
+using SpaceDataModel: tryparse_datetime
 
 @quickactivate
 include("../src/main.jl")
@@ -16,46 +17,7 @@ include("../src/main.jl")
 ```{julia}
 using CSV
 using DataFrames
-
-function HAPIDateTime(t::AbstractString)
-    # Check if the string ends with Z and remove it for parsing
-    t = rstrip(t, ['Z'])
-    # Split into date and time parts if T is present
-    parts = split(t, "T", limit=2)
-    date_part = parts[1]
-    time_part = length(parts) > 1 ? parts[2] : ""
-
-    # Parse date part
-    date = @something(
-        tryparse(Date, date_part),
-        tryparse_doy_date(date_part),
-    )
-
-    # Create DateTime with or without time
-    if isempty(time_part)
-        dt = DateTime(date)
-    else
-        dt = date + Time(time_part)
-    end
-
-    return dt
-end
-
-"""
-Parse a date in Day of Year format (YYYY-DDD)
-"""
-function tryparse_doy_date(date_str::AbstractString)
-    doy_regex = r"^(\d{4})-(\d{3})$"
-
-    if occursin(doy_regex, date_str)
-        m = match(doy_regex, date_str)
-        year = parse(Int, m[1])
-        doy = parse(Int, m[2])
-        return Date(year) + Day(doy - 1)
-    end
-
-    return nothing
-end
+using Unitful
 
 """
     read_sw_params_csv(file="jgra54158-sup-0001-supinfo.csv")
@@ -64,11 +26,17 @@ Reads the solar wind parameters CSV file and returns a DataFrame.
 """
 function read_sw_params_csv(file=datadir("jgra54158-sup-0001-supinfo.csv"))
     df = CSV.read(file, DataFrame)
-    df[!, :UTC] = HAPIDateTime.(String.(df[!, :UTC]))
+    @chain df begin
+        @transform! @byrow begin
+            :time = tryparse_datetime(String(:UTC))
+            :N_PROTONS_CC = :N_PROTONS_CC * u"cm^-3"
+            :V_KMPS = :V_KMPS * u"km/s"
+        end
+    end
     return df
 end
 
-jno_sw_params = read_sw_params_csv()
+@b read_sw_params_csv()
 
 # jno_df = load()
 ```
@@ -86,7 +54,7 @@ jno_df_with_params = innerjoin(
 
 @chain jno_df_with_params begin
     @transform! begin
-        :N_PROTONS_CC = :N_PROTONS_CC .* u"cm^-3"
+
         :d_star = :d_star .* u"nT/s"
         :duration = :duration .* u"s"
         :V_KMPS = :V_KMPS .* u"km/s"
