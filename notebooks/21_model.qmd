@@ -3,32 +3,26 @@
 @wilsonSolarWindProperties2018
 
 ```{julia}
-using DrWatson
 using Discontinuity
 using Discontinuity: Alfven_current
-using DataFramesMeta
 using PlasmaFormulary: inertial_length
-using SpaceDataModel: tryparse_datetime
-
 @quickactivate
 include("../src/main.jl")
 ```
 
 ```{julia}
+using DrWatson: datadir
 using CSV
-using DataFrames
+using DataFrames, DataFramesMeta
 using Unitful
+using SpaceDataModel: parse_doy_datetime
 
-"""
-    read_sw_params_csv(file="jgra54158-sup-0001-supinfo.csv")
-
-Reads the solar wind parameters CSV file and returns a DataFrame.
-"""
+"""Reads the solar wind parameters CSV file and returns a DataFrame."""
 function read_sw_params_csv(file=datadir("jgra54158-sup-0001-supinfo.csv"))
     df = CSV.read(file, DataFrame)
     @chain df begin
         @transform! @byrow begin
-            :time = tryparse_datetime(String(:UTC))
+            :time = parse_doy_datetime(:UTC)
             :N_PROTONS_CC = :N_PROTONS_CC * u"cm^-3"
             :V_KMPS = :V_KMPS * u"km/s"
         end
@@ -36,9 +30,7 @@ function read_sw_params_csv(file=datadir("jgra54158-sup-0001-supinfo.csv"))
     return df
 end
 
-@b read_sw_params_csv()
-
-# jno_df = load()
+jno_sw_params = read_sw_params_csv()
 ```
 
 ```{julia}
@@ -54,7 +46,6 @@ jno_df_with_params = innerjoin(
 
 @chain jno_df_with_params begin
     @transform! begin
-
         :d_star = :d_star .* u"nT/s"
         :duration = :duration .* u"s"
         :V_KMPS = :V_KMPS .* u"km/s"
