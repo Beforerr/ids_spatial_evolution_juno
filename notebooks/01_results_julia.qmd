@@ -1,17 +1,23 @@
 ---
 title: Results (Julia)
+engine: julia
 ---
 
 ```{julia}
+using Juno
+using Juno: r_map, datalimits_f
+using CairoMakie: WilkinsonTicks
+using CairoMakie.Makie: resize_to_layout!
 using DrWatson
 using Discontinuity
 using AlgebraOfGraphics
 using DataFramesMeta
 using Beforerr
-@quickactivate
-include("../src/main.jl");
+import Beforerr: easy_save
+using LaTeXStrings
 M = var_mapping(; log_str="")
 
+set_aog_theme!()
 ```
 
 ```{julia}
@@ -84,7 +90,8 @@ end
 
 ```{julia}
 # let df = j_events_taus
-let df = jno_df, color = r_map, fnames = ["juno_distribution_r", "juno_sw_paramters"]
+let color = r_map, fnames = ["juno_distribution_r", "juno_sw_paramters"]
+    df = subset_by_quantiles(udf, [:L_n_cross, :j0_k, :j0_k_norm])
     spec = data(df) * mapping(; color)
     fs = map([maps1, maps2]) do m
         plot_dist(spec, m; 
@@ -94,13 +101,62 @@ let df = jno_df, color = r_map, fnames = ["juno_distribution_r", "juno_sw_paramt
         )
     end
     resize_to_layout!.(fs)
-    easy_save.(fnames, fs)
+    # easy_save.(fnames, fs)
     display.(fs)
 end
 ```
 
 ![](../figures/juno_distribution_r.png)
 ![](../figures/juno_sw_paramters.png)
+
+## Correlation analysis of SWDs observed by 1-AU satellites
+
+Correlation analysis on the current density and solar wind parameters (J-Ne, J-beta, J-|B|, etc.)
+
+
+```{julia}
+using DataStructures: nlargest
+let scols = [:j0_k,:j0_k_norm]
+    @info "Before subsetting" nlargest.(10, eachcol(wind_df[!, scols]))
+    sdf = subset_by_quantiles(wind_df, scols)
+    @info "After subsetting"  nlargest.(10, eachcol(sdf[!, scols]))
+end
+```
+
+```{julia}
+using PairPlots
+
+log_df(df) = log.(df)
+select_cols(df, cols) = df[!, cols]
+
+begin df = wind_df
+    @transform! df :year = year.(:time)
+    j_params = ["j0_k", "j0_k_norm", "j_Alfven", "n.mean", "B.mean", "β"]
+    cols = intersect(j_params, names(df))
+    sdf = subset_by_quantiles(ustrip.(df[!, cols]), Symbol.(cols), lower=0.01, upper=0.99)
+    corr_matrix = cor(Matrix(log_df(sdf)))
+    @info "Correlation Matrix" corr_matrix
+
+    fig = Figure()
+    gs = GridLayout(fig[1,1])
+    f = pairplot(gs[1:6,1:6], log_df(sdf))
+    # dfs = collect(groupby(df[!, [cols; "year"]], :year))
+    # f = pairplot(gs[1:6,2:7], log_df.(select_cols.(dfs, Ref(cols)))..., bottomleft=false, topright=true)
+    easy_save("temp/wind_pairplot")
+end
+```
+
+```julia
+┌ Info: Correlation Matrix
+│   corr_matrix =
+│    6×6 Matrix{Float64}:
+│     1.0         0.878214   0.240162   0.126952   0.267604   0.0864104
+│     0.878214    1.0       -0.253355  -0.247737  -0.160763   0.154384
+│     0.240162   -0.253355   1.0        0.759608   0.867571  -0.138572
+│     0.126952   -0.247737   0.759608   1.0        0.345521   0.233941
+│     0.267604   -0.160763   0.867571   0.345521   1.0       -0.36578
+└     0.0864104   0.154384  -0.138572   0.233941  -0.36578    1.0
+```
 
 ## Effects of time lag on the discontinuity identification
 
