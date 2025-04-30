@@ -1,0 +1,32 @@
+---
+title: Data Processing (Julia)
+---
+
+```{julia}
+using Parquet2
+using DrWatson
+using DataFrames
+using DimensionalData
+
+function get_juno_data(; dir=datadir(), cols=["BX SE", "BY SE", "BZ SE"])
+    ds = Parquet2.Dataset(dir * "/2011.parquet")
+    data = reduce(hcat, Parquet2.load(ds, col) for col in cols)
+    times = Parquet2.load(ds, "time")
+    dims = (Ti(times), Y())
+    return DimArray(data, dims)
+end
+
+b = get_juno_data()
+```
+
+```{julia}
+using Discontinuity
+using Dates
+period = Second(60)
+
+# this is to speed up the detection
+# also Juno data is of low precision
+_float16(x) = convert(Array{Float16,ndims(x)}, x)
+
+detect_variance(_float16(b), t, period, 10, Val(1))
+```
