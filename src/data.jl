@@ -21,7 +21,7 @@ function get_mag_data(file="2011.parquet"; dir="data/03_primary/JNO_MAG_ts_1s", 
     return DimArray(data, dims)
 end
 
-function get_state_data(file="JNO_STATE_ts_3600s.parquet"; dir="./data/03_primary", cols=["BX SE", "BY SE", "BZ SE"])
+function get_state_data(file="JNO_STATE_ts_3600s.parquet"; dir="./data/03_primary")
     path = dir * "/" * file
     v_cols = ("v_x", "v_y", "v_z")
 

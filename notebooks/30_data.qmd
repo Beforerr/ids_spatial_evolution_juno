@@ -13,37 +13,68 @@ b = get_mag_data()
 ```{julia}
 using Discontinuity
 using Dates
+using DataFrames
 period = Second(60)
 
 ds = ids_finder(b, period, V, n)
 
 ds.r = r[Ti(Near(ds.time))]
+
+df = dropmissing(ds)
 ```
 
 Diagnose the missing values
 
 ```{julia}
 using SPEDAS
-
-@kwdef struct JunoEvent{D} <: AbstractEvent
-    data::D
-    start
-    stop
-    metadata = Dict()
-end
+using Discontinuity: mva_transform, tanh_model
 
 JunoEvent(df::DataFrame, i) = Event(df[i, :], df.tstart[i], df.tstop[i])
 JunoEvent(df::DataFrame) = (i = rand(1:size(df, 1)); @info i; Event(df, i))
 
+B_product = Product(b, tview)
 
-df.time[isnan.(df.grad)]
-function plot_candidate(f, event, ts, toffset=Second(0); kwargs...)
-    tmin, tmax = t_us_ds(event)
-    f = tplot(f, ts, tmin - toffset, tmax + toffset; kwargs...)
-    tlines!(f, [tmin, tmax])
+struct FitProduct{F,P} <: Function
+    f::F
+    param::P
+    t_fit::DateTime
+end
+
+function (p::FitProduct)(t0, t1)
+    tspan = DateTime(t0):Millisecond(10):DateTime(t1)
+    xspan = (tspan .- p.t_fit) / Millisecond(1)
+    data = p.f.(xspan, Ref(p.param))
+    return DimVector(data, Ti(tspan))
+end
+
+FitProduct(row) = FitProduct(tanh_model, row.fit_param, row.t_us_ds[1])
+FitProduct(df::DataFrame, i) = FitProduct(df[i, :])
+
+struct MVAProduct <: Function
+    V
+    B
+    B_tspan
+end
+
+(p::MVAProduct)(t0, t1) = mva(p.V(t0, t1), p.B(p.B_tspan...))
+
+function plot_candidate(df::DataFrame, i, toffset=Second(0); kwargs...)
+    row = df[i, :]
+    B_mva = MVAProduct(B_product, B_product, row.t_us_ds)
+    Bl_fit_product = FitProduct(row)
+
+    tmin, tmax = row.tstart, row.tstop
+    f = tplot([B_product, B_mva, Bl_fit_product], tmin - toffset, tmax + toffset; kwargs...)
+    tlines!(f, collect(row.t_us_ds))
     f
 end
-tplot(Product(b, tview), "2011-08-28T06:42:00", "2011-08-28T06:43:00")
+```
+
+```{julia}
+# 740, 1508, 4004, 4805
+for i in [740, 1508, 4805]
+    display(plot_candidate(df, i))
+end
 ```
 
 ```{julia}
