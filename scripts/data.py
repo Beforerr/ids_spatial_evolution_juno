@@ -21,4 +21,9 @@ w_conf = WindConfig(test=True)
 w_conf.get_data()
 w_conf.plasma_data
 print(w_conf)
+
+s_conf = StereoConfig(test=True)
+s_conf.get_data()
+s_conf.plasma_data
+
 # %%

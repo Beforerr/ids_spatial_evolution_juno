@@ -30,6 +30,7 @@ update_theme!(theme)
 
 include("io.jl")
 include("plot.jl")
+include("data.jl")
 
 datalimits_f = x -> quantile(x, [0.02, 0.98])
 

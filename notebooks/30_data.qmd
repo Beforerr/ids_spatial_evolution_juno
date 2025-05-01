@@ -3,20 +3,11 @@ title: Data Processing (Julia)
 ---
 
 ```{julia}
-using Parquet2
-using DrWatson
-using DataFrames
+using Juno.Data
 using DimensionalData
 
-function get_juno_data(; dir=datadir(), cols=["BX SE", "BY SE", "BZ SE"])
-    ds = Parquet2.Dataset(dir * "/2011.parquet")
-    data = reduce(hcat, Parquet2.load(ds, col) for col in cols)
-    times = Parquet2.load(ds, "time")
-    dims = (Ti(times), Y())
-    return DimArray(data, dims)
-end
-
-b = get_juno_data()
+n, V, T, r = get_state_data()
+b = get_mag_data()
 ```
 
 ```{julia}
@@ -24,9 +15,59 @@ using Discontinuity
 using Dates
 period = Second(60)
 
-# this is to speed up the detection
-# also Juno data is of low precision
-_float16(x) = convert(Array{Float16,ndims(x)}, x)
+ds = ids_finder(b, period, V, n)
 
-detect_variance(_float16(b), t, period, 10, Val(1))
+ds.r = r[Ti(Near(ds.time))]
+```
+
+Diagnose the missing values
+
+```{julia}
+using SPEDAS
+
+@kwdef struct JunoEvent{D} <: AbstractEvent
+    data::D
+    start
+    stop
+    metadata = Dict()
+end
+
+JunoEvent(df::DataFrame, i) = Event(df[i, :], df.tstart[i], df.tstop[i])
+JunoEvent(df::DataFrame) = (i = rand(1:size(df, 1)); @info i; Event(df, i))
+
+
+df.time[isnan.(df.grad)]
+function plot_candidate(f, event, ts, toffset=Second(0); kwargs...)
+    tmin, tmax = t_us_ds(event)
+    f = tplot(f, ts, tmin - toffset, tmax + toffset; kwargs...)
+    tlines!(f, [tmin, tmax])
+    f
+end
+tplot(Product(b, tview), "2011-08-28T06:42:00", "2011-08-28T06:43:00")
+```
+
+```{julia}
+using Discontinuity: var_mapping
+
+M = var_mapping(; j=:J_m_max_mva)
+maps1 = [M.l_log M.l_norm_log; M.j_log M.j_norm_log]
+maps2 = [M.density_log M.B_log; M.beta M.bm0_log];
+df
+begin
+    color = r_map
+    fnames = ["juno_distribution_r", "juno_sw_paramters"]
+    # df = subset_by_quantiles(ds, [:L_n_cross, :j0_k, :j0_k_norm])
+    df = dropmissing(ds)
+    spec = data(df) * mapping(; color)
+    fs = map([maps1, maps2]) do m
+        plot_dist(spec, m;
+            datalimits=datalimits_f,
+            axis,
+            figure
+        )
+    end
+    resize_to_layout!.(fs)
+    # easy_save.(fnames, fs)
+    display.(fs)
+end
 ```

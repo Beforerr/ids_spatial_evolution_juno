@@ -38,7 +38,7 @@ Unitful = "1986cc42-f94f-5a68-af5c-568840ba703d"
 UnitfulLatexify = "45397f5d-5981-4c77-b2b3-fc36d6e9b728"
 
 [compat]
-AlgebraOfGraphics = "0.10.4"
+AlgebraOfGraphics = "0.10"
 DimensionalData = "0.29.15"
 FilePathsBase = "0.9.24"
 Parquet2 = "0.2.29"

@@ -6,14 +6,14 @@ import os
 import polars as pl
 from intake.source.utils import reverse_formats
 from datetime import datetime
-from beforerr.project import datadir
+from pathlib import Path
 from datetime import timedelta
 
 
 def preprocess(
     fp,
     every=timedelta(seconds=0.125),
-    dir_path=datadir() / "02_intermediate/JNO_MAG_8hz",
+    dir_path=Path.home() / "data/02_intermediate/JNO_MAG_8hz",
     update=False,
 ):
     fname = fp.split("/")[-1]

@@ -92,6 +92,14 @@ wi_k0_swe_ds = PlasmaDataset(
     dataset="WI_K0_SWE", parameters=["Np", "V_GSE", "THERMAL_SPD"]
 )
 
+sta_l1_mag_rtn = MagVariable(
+    dataset="STA_L1_MAG_RTN",
+    parameter=["BFIELD"],
+    B_cols=["BR", "BT", "BN"],
+    ts=timedelta(seconds=0.125),
+)
+
+# sta_l2_impact_magplasma = PlasmaDataset()
 
 class WindConfig(Config, WindConfigBase, SpeasyIDsConfig):
     provider: str = "archive/local"
@@ -100,7 +108,8 @@ class WindConfig(Config, WindConfigBase, SpeasyIDsConfig):
 
 
 class StereoConfig(Config, StereoConfigBase, SpeasyIDsConfig):
-    pass
+    provider: str = "archive/local"
+    mag_meta: MagVariable = sta_l1_mag_rtn
 
 
 class THEMISConfig(ThemisConfigBase, SpeasyIDsConfig):
