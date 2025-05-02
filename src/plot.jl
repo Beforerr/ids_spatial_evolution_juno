@@ -2,12 +2,13 @@ using AlgebraOfGraphics: density
 
 using Dates
 
-round_c(x) = round(Integer, x)
+nonnumeric_r(x::Number) = string(round(Integer, x))
+nonnumeric_r(x) = x
 
 # %%
 # Define the labels for the plots
 r_lab = L"Radial Distance ($AU$)"
-r_map = :r => nonnumeric ∘ round_c => r_lab
+r_map = :r => nonnumeric_r => r_lab
 tau_map = :tau => nonnumeric => "τ (s)"
 year_map = :time => nonnumeric ∘ year => "Year"
 month_map = :time => nonnumeric ∘ month => "Month"

@@ -12,23 +12,9 @@ include("../src/main.jl")
 
 ```{julia}
 using DrWatson: datadir
-using CSV
 using DataFrames, DataFramesMeta
 using Unitful
-using SpaceDataModel: parse_doy_datetime
-
-"""Reads the solar wind parameters CSV file and returns a DataFrame."""
-function read_sw_params_csv(file=datadir("jgra54158-sup-0001-supinfo.csv"))
-    df = CSV.read(file, DataFrame)
-    @chain df begin
-        @transform! @byrow begin
-            :time = parse_doy_datetime(:UTC)
-            :N_PROTONS_CC = :N_PROTONS_CC * u"cm^-3"
-            :V_KMPS = :V_KMPS * u"km/s"
-        end
-    end
-    return df
-end
+using Juno.Data: read_sw_params_csv
 
 jno_sw_params = read_sw_params_csv()
 ```

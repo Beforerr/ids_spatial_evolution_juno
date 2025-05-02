@@ -7,7 +7,7 @@ using Juno.Data
 using DimensionalData
 
 n, V, T, r = get_state_data()
-b = get_mag_data()
+jno_sw_params = read_sw_params_csv()
 ```
 
 ```{julia}
@@ -16,11 +16,31 @@ using Dates
 using DataFrames
 period = Second(60)
 
-ds = ids_finder(b, period, V, n)
+ds = mapreduce(vcat, 2011:2016) do year
+    b = get_mag_data(year)
+    ids_finder(b, period, V, n)
+end
+```
 
+
+```{julia}
+using FlexiJoins
+using StaticArrays
 ds.r = r[Ti(Near(ds.time))]
+ds.T = T[Ti(Near(ds.time))] * u"K"
 
 df = dropmissing(ds)
+
+df_sw = innerjoin(
+    (ds, jno_sw_params),
+    by_pred(x -> x.time .. (x.time + Minute(1)), ∋, :time);
+)
+@transform! df_sw @byrow begin
+    :n = :N_PROTONS_CC
+    :V = SA[:V_KMPS, 0, 0] * u"km/s"
+    :T = :T_PROTONS_EV * u"eV"
+    :r = "5 (Data)"
+end
 ```
 
 Diagnose the missing values
@@ -37,12 +57,12 @@ B_product = Product(b, tview)
 struct FitProduct{F,P} <: Function
     f::F
     param::P
-    t_fit::DateTime
+    t0::DateTime
 end
 
 function (p::FitProduct)(t0, t1)
     tspan = DateTime(t0):Millisecond(10):DateTime(t1)
-    xspan = (tspan .- p.t_fit) / Millisecond(1)
+    xspan = @. (tspan - p.t0) / Millisecond(1)
     data = p.f.(xspan, Ref(p.param))
     return DimVector(data, Ti(tspan))
 end
@@ -53,10 +73,10 @@ FitProduct(df::DataFrame, i) = FitProduct(df[i, :])
 struct MVAProduct <: Function
     V
     B
-    B_tspan
+    mva_tspan
 end
 
-(p::MVAProduct)(t0, t1) = mva(p.V(t0, t1), p.B(p.B_tspan...))
+(p::MVAProduct)(t0, t1) = mva(p.V(t0, t1), p.B(p.mva_tspan...))
 
 function plot_candidate(df::DataFrame, i, toffset=Second(0); kwargs...)
     row = df[i, :]
@@ -71,26 +91,30 @@ end
 ```
 
 ```{julia}
+indices = eachindex(df.grad)[isnan.(df.grad)]
+```
+
+```{julia}
 # 740, 1508, 4004, 4805
-for i in [740, 1508, 4805]
+# 3094
+for i in [4805]
     display(plot_candidate(df, i))
 end
 ```
 
 ```{julia}
-using Discontinuity: var_mapping
+using Discontinuity: var_mapping, compute_params!
 
-M = var_mapping(; j=:J_m_max_mva)
+M = var_mapping(; log_str="", j=:J_m_max_mva, n=:n, B=:B_mag)
 maps1 = [M.l_log M.l_norm_log; M.j_log M.j_norm_log]
-maps2 = [M.density_log M.B_log; M.beta M.bm0_log];
-df
-begin
+maps2 = [M.density_log M.B_log; M.beta :V_mag];
+let df = vcat(df, df_sw, cols=:intersect)
     color = r_map
     fnames = ["juno_distribution_r", "juno_sw_paramters"]
     # df = subset_by_quantiles(ds, [:L_n_cross, :j0_k, :j0_k_norm])
-    df = dropmissing(ds)
+    df = compute_params!(dropmissing(df))
     spec = data(df) * mapping(; color)
-    fs = map([maps1, maps2]) do m
+    fs = map([maps1]) do m
         plot_dist(spec, m;
             datalimits=datalimits_f,
             axis,
@@ -101,4 +125,5 @@ begin
     # easy_save.(fnames, fs)
     display.(fs)
 end
+easy_save("juno_distribution_r_sw")
 ```

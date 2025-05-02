@@ -1,9 +1,13 @@
 module Data
 using Parquet2
+using CSV
+using Unitful
+using DataFrames, DataFramesMeta
 using DimensionalData
 using DimensionalData: DimArray, Ti, Y, ForwardOrdered, Unordered
+using SpaceDataModel: parse_doy_datetime
 
-export get_mag_data, get_state_data
+export get_mag_data, get_state_data, read_sw_params_csv
 
 data_dir = homedir() * "/data"
 
@@ -12,7 +16,8 @@ nonmissing(x) = convert(_nonmissingtype(x), x)
 
 load(ds, col) = Parquet2.load(ds, col) |> nonmissing
 
-function get_mag_data(file="2011.parquet"; dir="data/03_primary/JNO_MAG_ts_1s", cols=["BX SE", "BY SE", "BZ SE"])
+function get_mag_data(time; dir="data/03_primary/JNO_MAG_ts_1s", cols=["BX SE", "BY SE", "BZ SE"])
+    file = "$time.parquet"
     ds = Parquet2.Dataset(dir * "/" * file)
     data = reduce(hcat, load(ds, col) for col in cols)
     times = load(ds, "time")
@@ -37,5 +42,14 @@ function get_state_data(file="JNO_STATE_ts_3600s.parquet"; dir="./data/03_primar
     return (; n, v, T, r)
 end
 
+"""Reads the solar wind parameters CSV file and returns a DataFrame."""
+function read_sw_params_csv(file="./data/jgra54158-sup-0001-supinfo.csv")
+    @transform! CSV.read(file, DataFrame) @byrow begin
+        :time = parse_doy_datetime(:UTC)
+        # :N_PROTONS_CC = :N_PROTONS_CC * u"cm^-3"
+        # :V_KMPS = :V_KMPS * u"km/s"
+        # :T_PROTONS_EV = :T_PROTONS_EV * u"eV"
+    end
+end
 
 end
