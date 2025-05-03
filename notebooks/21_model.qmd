@@ -4,15 +4,14 @@
 
 ```{julia}
 using Discontinuity
-using Discontinuity: compute_params!, Alfven_current, inertial_length, gradient_current
+using Discontinuity: compute_params!, Alfven_current, inertial_length, gradient_current, uless, plasma_beta
 using Juno: produce_or_load_juno
-using PlasmaFormulary: CurrentDensity, NumberDensity
+using Juno.Data: read_sw_params_csv
 ```
 
 ```{julia}
 using DataFrames, DataFramesMeta
 using Unitful
-using Juno.Data: read_sw_params_csv
 
 jno_df = produce_or_load_juno()
 jno_sw_params = read_sw_params_csv(; add_unit=true)
@@ -35,14 +34,16 @@ jno_df_with_params = innerjoin(
         :V_n_mva_sw = @. abs(first(:n_mva) * :V_KMPS)
         :d_i_sw = inertial_length.(:N_PROTONS_CC, Unitful.q, Unitful.mp)
         :J_A_sw = Alfven_current.(:B_mag, :N_PROTONS_CC)
+        :β_sw = plasma_beta.(:T_PROTONS_EV, :N_PROTONS_CC, :B_mag)
     end
     @transform! @astable begin
         :L_n_cross_sw = :V_n_cross_sw .* :duration
         :L_n_cross_sw_norm = @. :L_n_cross_sw / :d_i_sw |> NoUnits
-        :L_n_mva_sw = :V_n_mva_sw .* :duration
-        :L_n_mva_sw_norm = @. :L_n_mva_sw / :d_i_sw |> NoUnits
         :J_m_max_cross_sw = @. abs(gradient_current(:grad, :V_n_cross_sw))
         :J_m_max_cross_sw_norm = @. :J_m_max_cross_sw / :J_A_sw |> NoUnits
+
+        :L_n_mva_sw = :V_n_mva_sw .* :duration
+        :L_n_mva_sw_norm = @. :L_n_mva_sw / :d_i_sw |> NoUnits
         :J_m_max_mva_sw = @. abs(gradient_current(:grad, :V_n_mva_sw))
         :J_m_max_mva_sw_norm = @. :J_m_max_mva_sw / :J_A_sw |> NoUnits
     end
@@ -51,55 +52,55 @@ end
 
 ```{julia}
 using CairoMakie
+import CairoMakie.Makie.SpecApi as S
 using UnitfulLatexify: latexroundunitlabel as lru
-using CairoMakie.GeometryBasics
 
-p_big = decompose(Point2f, Circle(Point2f(0), 1))
-p_small = decompose(Point2f, Circle(Point2f(0), 0.5))
+uless_plot!(ax, x, y; kw...) = scatter!(ax, uless.(x), uless.(y); kw...)
 
-uless(x) = NoUnits(x)
-uless(x::NumberDensity) = NoUnits(x / u"cm^-3")
-uless(x::CurrentDensity) = NoUnits(x / u"nA/m^2")
-uless(x::Unitful.Length) = NoUnits(x / u"km")
-uless(x::Unitful.Velocity) = NoUnits(x / u"km/s")
-
-let df = jno_df_with_params, xlabel = "Model", ylabel = "Juno", xscale = log10, yscale = log10, plot = (; alpha=0.3)
-    f = Figure(; size=(600, 600))
+let df = jno_df_with_params, xlabel = "Model", ylabel = "Juno", axis = (; xscale=log10, yscale=log10), plot = (; alpha=0.3)
+    f = Figure()
     ax1 = Axis(f[1, 1]; title=lru("V", u"km/s"), ylabel)
-    ax2 = Axis(f[1, 2]; title=lru("n", u"cm^-3"), xscale, yscale)
-    ax3 = Axis(f[2, 1]; title=lru("L", u"km"), ylabel, xscale, yscale)
-    ax4 = Axis(f[2, 2]; title=lru("J", u"nA/m^2"), xscale, yscale)
-    ax5 = Axis(f[3, 1]; title=L"L/d_i", xlabel, ylabel, xscale, yscale)
-    ax6 = Axis(f[3, 2]; title=L"J/J_{Alfven}", xlabel, xscale, yscale)
+    ax2 = Axis(f[1, 2]; title=lru("n", u"cm^-3"), axis...)
 
-    p1, p2 = @with df begin
-        scatter!(ax1, uless.(:V_mag), uless.(:V_KMPS))
-        scatter!(ax2, uless.(:n), uless.(:N_PROTONS_CC))
+    ax_T = Axis(f[2, 1]; title=lru("T", u"eV"), axis...)
+    ax_β = Axis(f[2, 2]; title=lru("β", u""), axis...)
 
-        p1 = scatter!(ax3, uless.(:L_n_cross), uless.(:L_n_cross_sw), label="Cross"; plot...)
-        p2 = scatter!(ax3, uless.(:L_n_mva), uless.(:L_n_mva_sw), label="MVA"; plot...)
+    ax3 = Axis(f[4, 1]; title=lru("L", u"km"), ylabel, axis...)
+    ax4 = Axis(f[4, 2]; title=lru("J", u"nA/m^2"), axis...)
+    ax5 = Axis(f[5, 1]; title=L"L/d_i", xlabel, ylabel, axis...)
+    ax6 = Axis(f[5, 2]; title=L"J/J_{Alfven}", xlabel, axis...)
 
-        scatter!(ax4, uless.(:J_m_max_cross), uless.(:J_m_max_cross_sw), label="Cross"; plot...)
-        scatter!(ax4, uless.(:J_m_max_mva), uless.(:J_m_max_mva_sw), label="MVA"; plot...)
+    @with df begin
+        uless_plot!(ax1, :V_mag, :V_KMPS)
+        uless_plot!(ax2, :n, :N_PROTONS_CC)
 
-        scatter!(ax5, uless.(:L_n_cross_norm), uless.(:L_n_cross_sw_norm); plot...)
-        scatter!(ax5, uless.(:L_n_mva_norm), uless.(:L_n_mva_sw_norm); plot...)
-        scatter!(ax6, uless.(:J_m_max_cross_norm), uless.(:J_m_max_cross_sw_norm); plot...)
-        scatter!(ax6, uless.(:J_m_max_mva_norm), uless.(:J_m_max_mva_sw_norm); plot...)
-        (p1, p2)
+        p1 = uless_plot!(ax3, :L_n_cross, :L_n_cross_sw, label="Cross"; plot...)
+        p2 = uless_plot!(ax3, :L_n_mva, :L_n_mva_sw, label="MVA"; plot...)
+        Legend(f[3, :], [p1, p2], ["Cross", "MVA"])
+
+        uless_plot!(ax_T, :T, :T_PROTONS_EV)
+        uless_plot!(ax_β, :β, :β)
+
+        uless_plot!(ax4, :J_m_max_cross, :J_m_max_cross_sw, label="Cross"; plot...)
+        uless_plot!(ax4, :J_m_max_mva, :J_m_max_mva_sw, label="MVA"; plot...)
+        uless_plot!(ax5, :L_n_cross_norm, :L_n_cross_sw_norm; plot...)
+        uless_plot!(ax5, :L_n_mva_norm, :L_n_mva_sw_norm; plot...)
+        uless_plot!(ax6, :J_m_max_cross_norm, :J_m_max_cross_sw_norm; plot...)
+        uless_plot!(ax6, :J_m_max_mva_norm, :J_m_max_mva_sw_norm; plot...)
     end
 
-    Legend(f[1, 3], [p1, p2], ["Cross", "MVA"])
+    color = :red
+    linestyle = :dash
 
     for ax in (ax1,)
-        ablines!(ax, 0, 1, color=:red, linestyle=:dash)
+        ablines!(ax, 0, 1; color, linestyle)
     end
 
-    lines!(ax2, exp10.(-1:0), exp10.(-1:0), color=:red, linestyle=:dash)
-    lines!(ax3, exp10.([2, 4.5]), exp10.([2, 4.5]), color=:red, linestyle=:dash)
-    lines!(ax4, exp10.(-2:1), exp10.(-2:1), color=:red, linestyle=:dash)
-    lines!(ax5, exp10.(-1:2), exp10.(-1:2), color=:red, linestyle=:dash)
-    lines!(ax6, exp10.(-2:1), exp10.(-2:1), color=:red, linestyle=:dash)
+    lines!(ax2, exp10.(-1:0), exp10.(-1:0); color, linestyle)
+    lines!(ax3, exp10.([2, 4.5]), exp10.([2, 4.5]); color, linestyle)
+    lines!(ax4, exp10.(-2:1), exp10.(-2:1); color, linestyle)
+    lines!(ax5, exp10.(-1:2), exp10.(-1:2); color, linestyle)
+    lines!(ax6, exp10.(-2:1), exp10.(-2:1); color, linestyle)
 
     limits!(ax1, 360, 550, 360, 550)
 
