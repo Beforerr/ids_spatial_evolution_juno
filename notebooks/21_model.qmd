@@ -4,50 +4,47 @@
 
 ```{julia}
 using Discontinuity
-using Discontinuity: Alfven_current
-using PlasmaFormulary: inertial_length
-@quickactivate
-include("../src/main.jl")
+using Discontinuity: compute_params!, Alfven_current, inertial_length, gradient_current
+using Juno: produce_or_load_juno
+using PlasmaFormulary: CurrentDensity, NumberDensity
 ```
 
 ```{julia}
-using DrWatson: datadir
 using DataFrames, DataFramesMeta
 using Unitful
 using Juno.Data: read_sw_params_csv
 
-jno_sw_params = read_sw_params_csv()
+jno_df = produce_or_load_juno()
+jno_sw_params = read_sw_params_csv(; add_unit=true)
 ```
 
 ```{julia}
 using FlexiJoins
-using Distances
 using Dates
 using Unitful: μ0
 
 jno_df_with_params = innerjoin(
     (jno_df, jno_sw_params),
-    by_pred(x -> x.time .. (x.time + Minute(1)), ∋, :UTC);
+    by_pred(x -> x.time .. (x.time + Minute(1)), ∋, :time);
 )
 
 @chain jno_df_with_params begin
-    @transform! begin
-        :d_star = :d_star .* u"nT/s"
-        :duration = :duration .* u"s"
-        :V_KMPS = :V_KMPS .* u"km/s"
-    end
+    compute_params!
     @transform! begin
         :V_n_cross_sw = @. abs(first(:n_cross) * :V_KMPS)
+        :V_n_mva_sw = @. abs(first(:n_mva) * :V_KMPS)
         :d_i_sw = inertial_length.(:N_PROTONS_CC, Unitful.q, Unitful.mp)
-        :j_Alfven_sw = Alfven_current.(:b_mag, :N_PROTONS_CC)
+        :J_A_sw = Alfven_current.(:B_mag, :N_PROTONS_CC)
     end
-    @transform! begin
+    @transform! @astable begin
         :L_n_cross_sw = :V_n_cross_sw .* :duration
-        :j0_k_sw = @. abs(:d_star / :V_n_cross_sw / μ0) |> u"nA/m^2"
-    end
-    @transform! begin
         :L_n_cross_sw_norm = @. :L_n_cross_sw / :d_i_sw |> NoUnits
-        :j0_k_sw_norm = @. :j0_k_sw / :j_Alfven_sw |> NoUnits
+        :L_n_mva_sw = :V_n_mva_sw .* :duration
+        :L_n_mva_sw_norm = @. :L_n_mva_sw / :d_i_sw |> NoUnits
+        :J_m_max_cross_sw = @. abs(gradient_current(:grad, :V_n_cross_sw))
+        :J_m_max_cross_sw_norm = @. :J_m_max_cross_sw / :J_A_sw |> NoUnits
+        :J_m_max_mva_sw = @. abs(gradient_current(:grad, :V_n_mva_sw))
+        :J_m_max_mva_sw_norm = @. :J_m_max_mva_sw / :J_A_sw |> NoUnits
     end
 end
 ```
@@ -55,23 +52,46 @@ end
 ```{julia}
 using CairoMakie
 using UnitfulLatexify: latexroundunitlabel as lru
+using CairoMakie.GeometryBasics
 
-let df = jno_df_with_params, xlabel = "Model", ylabel = "Juno"
-    f = Figure()
-    ax = Axis(f[1, 1]; title=lru("V", u"km/s"), ylabel)
-    scatter!(ax, norm.(df[!, :V]), ustrip.(df[!, :V_KMPS]))
+p_big = decompose(Point2f, Circle(Point2f(0), 1))
+p_small = decompose(Point2f, Circle(Point2f(0), 0.5))
 
-    ax2 = f[1, 2] = Axis(f; title=lru("n", u"cm^-3"), xscale=log10, yscale=log10)
-    scatter!(ax2, ustrip.(df[!, :n]), ustrip.(df[!, :N_PROTONS_CC]))
-    ax3 = Axis(f[2, 1]; title=lru("L", u"km"), ylabel, xscale=log10, yscale=log10)
-    scatter!(ax3, ustrip.(df[!, :L_n_cross]), ustrip.(df[!, :L_n_cross_sw]))
-    ax4 = f[2, 2] = Axis(f; title=lru("J", u"nA/m^2"), xscale=log10, yscale=log10)
-    scatter!(ax4, ustrip.(df[!, :j0_k]), ustrip.(df[!, :j0_k_sw]))
-    ax5 = f[3, 1] = Axis(f; title=L"L/d_i", xlabel, ylabel, xscale=log10, yscale=log10)
-    scatter!(ax5, df[!, :L_n_cross_norm], df[!, :L_n_cross_sw_norm])
-    ax6 = f[3, 2] = Axis(f; title=L"J/J_{Alfven}", xlabel, xscale=log10, yscale=log10)
-    scatter!(ax6, df[!, :j0_k_norm], df[!, :j0_k_sw_norm])
-    for ax in (ax,)
+uless(x) = NoUnits(x)
+uless(x::NumberDensity) = NoUnits(x / u"cm^-3")
+uless(x::CurrentDensity) = NoUnits(x / u"nA/m^2")
+uless(x::Unitful.Length) = NoUnits(x / u"km")
+uless(x::Unitful.Velocity) = NoUnits(x / u"km/s")
+
+let df = jno_df_with_params, xlabel = "Model", ylabel = "Juno", xscale = log10, yscale = log10, plot = (; alpha=0.3)
+    f = Figure(; size=(600, 600))
+    ax1 = Axis(f[1, 1]; title=lru("V", u"km/s"), ylabel)
+    ax2 = Axis(f[1, 2]; title=lru("n", u"cm^-3"), xscale, yscale)
+    ax3 = Axis(f[2, 1]; title=lru("L", u"km"), ylabel, xscale, yscale)
+    ax4 = Axis(f[2, 2]; title=lru("J", u"nA/m^2"), xscale, yscale)
+    ax5 = Axis(f[3, 1]; title=L"L/d_i", xlabel, ylabel, xscale, yscale)
+    ax6 = Axis(f[3, 2]; title=L"J/J_{Alfven}", xlabel, xscale, yscale)
+
+    p1, p2 = @with df begin
+        scatter!(ax1, uless.(:V_mag), uless.(:V_KMPS))
+        scatter!(ax2, uless.(:n), uless.(:N_PROTONS_CC))
+
+        p1 = scatter!(ax3, uless.(:L_n_cross), uless.(:L_n_cross_sw), label="Cross"; plot...)
+        p2 = scatter!(ax3, uless.(:L_n_mva), uless.(:L_n_mva_sw), label="MVA"; plot...)
+
+        scatter!(ax4, uless.(:J_m_max_cross), uless.(:J_m_max_cross_sw), label="Cross"; plot...)
+        scatter!(ax4, uless.(:J_m_max_mva), uless.(:J_m_max_mva_sw), label="MVA"; plot...)
+
+        scatter!(ax5, uless.(:L_n_cross_norm), uless.(:L_n_cross_sw_norm); plot...)
+        scatter!(ax5, uless.(:L_n_mva_norm), uless.(:L_n_mva_sw_norm); plot...)
+        scatter!(ax6, uless.(:J_m_max_cross_norm), uless.(:J_m_max_cross_sw_norm); plot...)
+        scatter!(ax6, uless.(:J_m_max_mva_norm), uless.(:J_m_max_mva_sw_norm); plot...)
+        (p1, p2)
+    end
+
+    Legend(f[1, 3], [p1, p2], ["Cross", "MVA"])
+
+    for ax in (ax1,)
         ablines!(ax, 0, 1, color=:red, linestyle=:dash)
     end
 
@@ -80,6 +100,8 @@ let df = jno_df_with_params, xlabel = "Model", ylabel = "Juno"
     lines!(ax4, exp10.(-2:1), exp10.(-2:1), color=:red, linestyle=:dash)
     lines!(ax5, exp10.(-1:2), exp10.(-1:2), color=:red, linestyle=:dash)
     lines!(ax6, exp10.(-2:1), exp10.(-2:1), color=:red, linestyle=:dash)
+
+    limits!(ax1, 360, 550, 360, 550)
 
     easy_save("model/juno_sw_comparision")
 end

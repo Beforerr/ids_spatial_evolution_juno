@@ -5,6 +5,27 @@ using Dates
 using Dates: AbstractTime
 data_path = datadir("05_reporting")
 
+function produce(d)
+    @unpack year, period = d
+    b = get_mag_data(year)
+    n, V = get_state_data()
+    d["ds"] = ids_finder(b, Second(period), V, n)
+    return d
+end
+
+function produce_or_load_juno()
+    allparams = Dict(
+        "id" => ["Juno"],
+        "period" => [60],
+        "year" => collect(2011:2016),
+    )
+    dicts = produce_or_load.(produce, dict_list(allparams), "data")
+    ds = mapreduce(vcat, dicts) do d
+        d[1]["ds"]
+    end
+    return ds
+end
+
 DEFAULT_TAUS = 60:-10:20
 
 post_process!(df) = begin

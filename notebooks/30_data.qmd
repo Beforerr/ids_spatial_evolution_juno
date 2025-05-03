@@ -3,6 +3,7 @@ title: Data Processing (Julia)
 ---
 
 ```{julia}
+using Juno: produce_or_load_juno
 using Juno.Data
 using DimensionalData
 
@@ -14,19 +15,15 @@ jno_sw_params = read_sw_params_csv()
 using Discontinuity
 using Dates
 using DataFrames
-period = Second(60)
 
-ds = mapreduce(vcat, 2011:2016) do year
-    b = get_mag_data(year)
-    ids_finder(b, period, V, n)
-end
+ds = produce_or_load_juno()
 ```
 
 
 ```{julia}
 using FlexiJoins
 using StaticArrays
-ds.r = r[Ti(Near(ds.time))]
+ds.r = parent(r[Ti(Near(ds.time))])
 ds.T = T[Ti(Near(ds.time))] * u"K"
 
 df = dropmissing(ds)

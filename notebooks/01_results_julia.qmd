@@ -5,16 +5,19 @@ engine: julia
 
 ```{julia}
 using Juno
-using Juno: r_map, datalimits_f
+using Juno: r_map, datalimits_f, produce_or_load_juno
+using CairoMakie
 using CairoMakie: WilkinsonTicks
 using CairoMakie.Makie: resize_to_layout!
 using DrWatson
 using Discontinuity
+using Discontinuity: var_mapping, compute_params!, compute_orientation_params!, filter_low_mva_quality!
 using AlgebraOfGraphics
 using DataFramesMeta
 using Beforerr
 import Beforerr: easy_save
 using LaTeXStrings
+using Unitful
 M = var_mapping(; log_str="")
 
 set_aog_theme!()
@@ -108,6 +111,24 @@ end
 
 ![](../figures/juno_distribution_r.png)
 ![](../figures/juno_sw_paramters.png)
+
+### Orientation
+
+```{julia}
+# ds = produce_or_load_juno()
+let df= dropmissing(ds), color = r_map
+    @chain df begin
+        compute_orientation_params!
+        filter_low_mva_quality!
+    end
+    f = Figure()
+    spec = data(df) * mapping(:B_n_mva_norm, :B_n_cross_norm) * AlgebraOfGraphics.density()
+    draw!(f[1,1],spec)
+    spec2 = data(df) * mapping(:θ_mva_cross) * AlgebraOfGraphics.density()
+    draw!(f[1,2],spec2)
+    f
+end
+```
 
 ## Correlation analysis of SWDs observed by 1-AU satellites
 

@@ -5,6 +5,7 @@ version = "0.1.0"
 
 [deps]
 AlgebraOfGraphics = "cbdf2221-f076-402e-a563-3d30da359d67"
+Arrow = "69666777-d1a9-59fb-9406-91d4454c9d45"
 Associations = "614afb3a-e278-4863-8805-9959372b9ec2"
 Beforerr = "49aed396-608e-4c3f-b6d6-a749216c9ea7"
 CSV = "336ed68f-0bac-5ca0-87d4-7b16caf5d00b"
@@ -40,6 +41,7 @@ UnitfulLatexify = "45397f5d-5981-4c77-b2b3-fc36d6e9b728"
 
 [compat]
 AlgebraOfGraphics = "0.10"
+Arrow = "2.8.0"
 DimensionalData = "0.29.15"
 FilePathsBase = "0.9.24"
 Parquet2 = "0.2.29"
