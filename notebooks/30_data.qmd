@@ -23,8 +23,9 @@ ds = produce_or_load_juno()
 ```{julia}
 using FlexiJoins
 using StaticArrays
-ds.r = parent(r[Ti(Near(ds.time))])
-ds.T = T[Ti(Near(ds.time))] * u"K"
+selector = Ti(Near(ds.time))
+ds.r = parent(r[selector])
+ds.T = parent(T[selector]) * u"K"
 
 df = dropmissing(ds)
 
@@ -51,29 +52,8 @@ JunoEvent(df::DataFrame) = (i = rand(1:size(df, 1)); @info i; Event(df, i))
 
 B_product = Product(b, tview)
 
-struct FitProduct{F,P} <: Function
-    f::F
-    param::P
-    t0::DateTime
-end
-
-function (p::FitProduct)(t0, t1)
-    tspan = DateTime(t0):Millisecond(10):DateTime(t1)
-    xspan = @. (tspan - p.t0) / Millisecond(1)
-    data = p.f.(xspan, Ref(p.param))
-    return DimVector(data, Ti(tspan))
-end
-
 FitProduct(row) = FitProduct(tanh_model, row.fit_param, row.t_us_ds[1])
 FitProduct(df::DataFrame, i) = FitProduct(df[i, :])
-
-struct MVAProduct <: Function
-    V
-    B
-    mva_tspan
-end
-
-(p::MVAProduct)(t0, t1) = mva(p.V(t0, t1), p.B(p.mva_tspan...))
 
 function plot_candidate(df::DataFrame, i, toffset=Second(0); kwargs...)
     row = df[i, :]

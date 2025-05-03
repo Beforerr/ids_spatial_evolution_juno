@@ -4,17 +4,30 @@
 
 ```{julia}
 using Discontinuity
-using Discontinuity: compute_params!, Alfven_current, inertial_length, gradient_current, uless, plasma_beta
+using Discontinuity: compute_params!, Alfven_current, inertial_length, gradient_current, uless, plasma_beta, filter_low_mva_quality!
 using Juno: produce_or_load_juno
-using Juno.Data: read_sw_params_csv
+using Juno.Data: get_mag_data, get_state_data, read_sw_params_csv
+using CairoMakie
+using AlgebraOfGraphics
+import SPEDAS
+set_aog_theme!()
+theme = Theme(; figure_padding=(0, 6, 0, 0),
+    Legend=(padding=(0, 0, 0, 0), margin=(0, 0, 0, 0),)
+)
+update_theme!(theme)
 ```
 
 ```{julia}
-using DataFrames, DataFramesMeta
+using DataFrames, DataFramesMeta, DimensionalData
 using Unitful
 
 jno_df = produce_or_load_juno()
+n, V, T, r = get_state_data()
 jno_sw_params = read_sw_params_csv(; add_unit=true)
+
+selector = Ti(Near(jno_df.time))
+jno_df.r = parent(r[selector])
+jno_df.T = parent(T[selector]) * u"K"
 ```
 
 ```{julia}
@@ -32,7 +45,7 @@ jno_df_with_params = innerjoin(
     @transform! begin
         :V_n_cross_sw = @. abs(first(:n_cross) * :V_KMPS)
         :V_n_mva_sw = @. abs(first(:n_mva) * :V_KMPS)
-        :d_i_sw = inertial_length.(:N_PROTONS_CC, Unitful.q, Unitful.mp)
+        :d_i_sw = inertial_length.(:N_PROTONS_CC)
         :J_A_sw = Alfven_current.(:B_mag, :N_PROTONS_CC)
         :β_sw = plasma_beta.(:T_PROTONS_EV, :N_PROTONS_CC, :B_mag)
     end
@@ -51,42 +64,41 @@ end
 ```
 
 ```{julia}
-using CairoMakie
-import CairoMakie.Makie.SpecApi as S
 using UnitfulLatexify: latexroundunitlabel as lru
+using Beforerr
 
 uless_plot!(ax, x, y; kw...) = scatter!(ax, uless.(x), uless.(y); kw...)
 
-let df = jno_df_with_params, xlabel = "Model", ylabel = "Juno", axis = (; xscale=log10, yscale=log10), plot = (; alpha=0.3)
-    f = Figure()
-    ax1 = Axis(f[1, 1]; title=lru("V", u"km/s"), ylabel)
-    ax2 = Axis(f[1, 2]; title=lru("n", u"cm^-3"), axis...)
+let df = filter_low_mva_quality!(jno_df_with_params), xlabel = "Model", ylabel = "Juno", axis = (; xscale=log10, yscale=log10), plot = (; alpha=0.3)
+    f = Figure(;)
+    wh = (width=120, height=110)
+    ax1 = Axis(f[1, 1]; title=lru("V", u"km/s"), ylabel, wh...)
+    ax2 = Axis(f[1, 2]; title=lru("n", u"cm^-3"), wh..., axis...)
 
-    ax_T = Axis(f[2, 1]; title=lru("T", u"eV"), axis...)
-    ax_β = Axis(f[2, 2]; title=lru("β", u""), axis...)
+    ax_T = Axis(f[1, 3]; title=lru("T", u"eV"), wh..., axis...)
+    ax_β = Axis(f[1, 4]; title=L"β", wh..., axis...)
 
-    ax3 = Axis(f[4, 1]; title=lru("L", u"km"), ylabel, axis...)
-    ax4 = Axis(f[4, 2]; title=lru("J", u"nA/m^2"), axis...)
-    ax5 = Axis(f[5, 1]; title=L"L/d_i", xlabel, ylabel, axis...)
-    ax6 = Axis(f[5, 2]; title=L"J/J_{Alfven}", xlabel, axis...)
+    ax_L = Axis(f[2, 1]; title=lru("L", u"km"), xlabel, ylabel, wh..., axis...)
+    ax_J = Axis(f[2, 2]; title=lru("J", u"nA/m^2"), xlabel, wh..., axis...)
+    ax_Ln = Axis(f[2, 3]; title=L"L/d_i", xlabel, wh..., axis...)
+    ax_Jn = Axis(f[2, 4]; title=L"J/J_A", xlabel, wh..., axis...)
 
     @with df begin
         uless_plot!(ax1, :V_mag, :V_KMPS)
         uless_plot!(ax2, :n, :N_PROTONS_CC)
-
-        p1 = uless_plot!(ax3, :L_n_cross, :L_n_cross_sw, label="Cross"; plot...)
-        p2 = uless_plot!(ax3, :L_n_mva, :L_n_mva_sw, label="MVA"; plot...)
-        Legend(f[3, :], [p1, p2], ["Cross", "MVA"])
-
         uless_plot!(ax_T, :T, :T_PROTONS_EV)
-        uless_plot!(ax_β, :β, :β)
+        uless_plot!(ax_β, :β, :β_sw)
 
-        uless_plot!(ax4, :J_m_max_cross, :J_m_max_cross_sw, label="Cross"; plot...)
-        uless_plot!(ax4, :J_m_max_mva, :J_m_max_mva_sw, label="MVA"; plot...)
-        uless_plot!(ax5, :L_n_cross_norm, :L_n_cross_sw_norm; plot...)
-        uless_plot!(ax5, :L_n_mva_norm, :L_n_mva_sw_norm; plot...)
-        uless_plot!(ax6, :J_m_max_cross_norm, :J_m_max_cross_sw_norm; plot...)
-        uless_plot!(ax6, :J_m_max_mva_norm, :J_m_max_mva_sw_norm; plot...)
+        p1 = uless_plot!(ax_L, :L_n_cross, :L_n_cross_sw, label="Cross"; plot...)
+        p2 = uless_plot!(ax_L, :L_n_mva, :L_n_mva_sw, label="MVA"; plot...)
+        axislegend(ax_L; padding=0, position=(^(:lt)), framevisible=true, framecolor=(^(:gray)))
+
+        uless_plot!(ax_J, :J_m_max_cross, :J_m_max_cross_sw; plot...)
+        uless_plot!(ax_J, :J_m_max_mva, :J_m_max_mva_sw; plot...)
+        uless_plot!(ax_Ln, :L_n_cross_norm, :L_n_cross_sw_norm; plot...)
+        uless_plot!(ax_Ln, :L_n_mva_norm, :L_n_mva_sw_norm; plot...)
+        uless_plot!(ax_Jn, :J_m_max_cross_norm, :J_m_max_cross_sw_norm; plot...)
+        uless_plot!(ax_Jn, :J_m_max_mva_norm, :J_m_max_mva_sw_norm; plot...)
     end
 
     color = :red
@@ -96,16 +108,47 @@ let df = jno_df_with_params, xlabel = "Model", ylabel = "Juno", axis = (; xscale
         ablines!(ax, 0, 1; color, linestyle)
     end
 
-    lines!(ax2, exp10.(-1:0), exp10.(-1:0); color, linestyle)
-    lines!(ax3, exp10.([2, 4.5]), exp10.([2, 4.5]); color, linestyle)
-    lines!(ax4, exp10.(-2:1), exp10.(-2:1); color, linestyle)
-    lines!(ax5, exp10.(-1:2), exp10.(-1:2); color, linestyle)
-    lines!(ax6, exp10.(-2:1), exp10.(-2:1); color, linestyle)
+    lines!(ax2, exp10.([-1.5, 0]), exp10.([-1.5, 0]); color, linestyle)
+    lines!(ax_L, exp10.([2, 5]), exp10.([2, 5]); color, linestyle)
+    lines!(ax_J, exp10.(-2:1), exp10.(-2:1); color, linestyle)
+    lines!(ax_Ln, exp10.([-1, 3]), exp10.([-1, 3]); color, linestyle)
+    lines!(ax_Jn, exp10.([-2, 2]), exp10.([-2, 2]); color, linestyle)
+    lines!(ax_T, exp10.([0.2, 1.5]), exp10.([0.2, 1.5]); color, linestyle)
+    lines!(ax_β, exp10.(-2:2), exp10.(-2:2); color, linestyle)
 
     limits!(ax1, 360, 550, 360, 550)
+    limits!(ax_L, 10^1.9, 10^5, 10^1.9, 10^5)
+    limits!(ax_J, 10^-2.1, 10^1.08, 10^-2.1, 10^1.08)
+    limits!(ax_Ln, 10^-1.1, 10^2.8, 10^-1.1, 10^2.8)
+    limits!(ax_Jn, 10^-2.5, 10^1.4, 10^-2.5, 10^1.4)
 
-    easy_save("model/juno_sw_comparision")
+    SPEDAS.add_labels!()
+    resize_to_layout!(f)
+    easy_save("fig_juno_sw_comparision")
 end
+```
+
+```{julia}
+function query(df, field, f=argmin)
+    inds = f(skipmissing(df[!, field]))
+    df[inds, :]
+end
+
+row = query(jno_df_with_params, :L_n_cross)
+```
+
+
+```{julia}
+using SPEDAS: Product, tview, tplot, tlines!
+using Discontinuity: MVAProduct
+# Juno_B_product = Product(
+#     get_mag_data(2016), tview
+# )
+Juno_B_mva_product = MVAProduct(Juno_B_product, Juno_B_product, row.t_us_ds)
+
+tplot([Juno_B_product, Juno_B_mva_product], row.tstart, row.tstop)
+tlines!([row.t_us_ds...])
+current_figure()
 ```
 
 
