@@ -12,10 +12,36 @@ using Beforerr
 using LaTeXStrings
 using Discontinuity
 using Unitful
+using Dates: DateTime
 import Base.round
 
 export subset_by_quantiles
 export load_taus
+
+const START_TIME = DateTime(2011, 8, 25)
+const END_TIME = DateTime(2016, 6, 30)
+const TIME_RANGE = (START_TIME, END_TIME)
+const TEST_TIME_RANGE = (DateTime(2012, 1, 1), DateTime(2012, 1, 2))
+
+function get_time_range(yr, start=START_TIME, stop=END_TIME)
+    yr == year(start) && return (start, DateTime(yr + 1))
+    yr == year(stop) && return (DateTime(yr), stop)
+    yr < year(start) || yr > year(stop) && @info "Year $yr is outside the $TIME_RANGE"
+    return (DateTime(yr), DateTime(yr + 1))
+end
+
+using DimensionalData
+using DimensionalData: rebuild, setdims, _astuple
+const DD = DimensionalData
+
+function sort_data(A, dim=Ti)
+    time = parent(DD.dims(A, dim))
+    issorted(time) ? A : begin
+        newdata = sortslices(parent(A); dims=dimnum(A, dim))
+        newtime = dim(sort(time))
+        rebuild(A, newdata, setdims(DD.dims(A), newtime))
+    end
+end
 
 set_aog_theme!()
 theme = Theme(;
@@ -31,6 +57,7 @@ update_theme!(theme)
 include("io.jl")
 include("plot.jl")
 include("data.jl")
+include("THEMIS.jl")
 
 datalimits_f = x -> quantile(x, [0.02, 0.98])
 

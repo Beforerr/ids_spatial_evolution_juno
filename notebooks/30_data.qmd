@@ -12,6 +12,15 @@ jno_sw_params = read_sw_params_csv()
 ```
 
 ```{julia}
+using Juno: THEMIS
+using Speasy
+
+da.time
+# @async THEMIS.produce()
+```
+
+
+```{julia}
 using Discontinuity
 using Dates
 using DataFrames
