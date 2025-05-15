@@ -1,36 +1,41 @@
-module THEMIS
-using ..Juno: get_time_range, sort_data
-using Dates: DateTime, Second
-using DrWatson: produce_or_load, dict_list, @unpack
-using Speasy: SpeasyProduct, init_cdaweb
-using Discontinuity: ids_finder
+using Speasy: init_cdaweb, init_archive
 
-__init__() = init_cdaweb()
+init_provider() = (init_cdaweb(); init_archive())
 
-B_GSE = SpeasyProduct("THB_L2_FGM/thb_fgs_gseQ")
-B_FGL_GSE = SpeasyProduct("THB_L2_FGM/thb_fgl_gseQ")
-
-SSE_STATE = SpeasyProduct("THB_L2_MERGED/XYZ_SSE")
-# THB_L1_STATE/thb_pos_sse
-
-function produce(d)
-    START_TIME = DateTime(2011, 9, 9) # There is an np.datetime64('NaT') which makes `Speasy` conversion fail
-    @unpack year, period = d
-    data = B_FGL_GSE(get_time_range(year, START_TIME)...)
-    d["ds"] = ids_finder(sort_data(data), Second(period))
+function general_produce(d::Dict; split=Day(30), kw...)
+    @unpack year, period, B = d
+    timerange = get_time_range(year)
+    d["ds"] = ids_finder(B, timerange..., Second(period); split, kw...)
     return d
 end
 
-function produce()
+function general_produce(id, B; kw...)
     allparams = Dict(
-        "id" => ["THB"],
+        "id" => id,
         "period" => [60],
         "year" => collect(2011:2016),
+        "B" => B,
     )
-    dicts = produce_or_load.(produce, dict_list(allparams), "data")
+    dicts = produce_or_load.(general_produce, dict_list(allparams), "data")
     ds = mapreduce(vcat, dicts) do d
         d[1]["ds"]
     end
     return ds
 end
+
+module THEMIS
+using Speasy: SpeasyProduct, getdimarray
+using SPEDAS: tsort
+
+const B_GSE = SpeasyProduct("THB_L2_FGM/thb_fgs_gseQ")
+const B_FGL_GSE = (args...; kw...) -> tsort(getdimarray("archive/local/THB_L2_FGM/thb_fgl_gse", args...; sanitize=true, kw...))
+const B_FGS_GSE = (args...; kw...) -> tsort(getdimarray("archive/local/THB_L2_FGM/thb_fgs_gse", args...; sanitize=true, kw...))
+
+const SSE_STATE = SpeasyProduct("THB_L2_MERGED/XYZ_SSE")
+# THB_L1_STATE/thb_pos_sse
+end
+
+module Wind
+using Speasy: SpeasyProduct
+const B_RTN = SpeasyProduct("archive/local/WI_H4-RTN_MFI/BRTN")
 end
