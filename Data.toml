@@ -1,0 +1,28 @@
+data_config_version = 0
+uuid = "5c015910-0268-4276-8ea6-ee8b85fe71e1"
+name = "juno"
+plugins = ["store", "defaults", "memorise"]
+
+[config.defaults.storage._]
+checksum = "auto"
+
+[[themis_b_sw]]
+uuid = "b5662511-2181-4e96-88ec-1b9b044a0f41"
+description = "THEMIS-B in solar wind"
+
+[[themis_b_sw.storage]]
+driver = "web"
+checksum = "k12:d6b630d5c1c479434e0e681a78a2c40a"
+url = "https://omniweb.gsfc.nasa.gov/ftpbrowser/themis_b_sw.txt"
+
+[[themis_b_sw.loader]]
+driver = "csv"
+
+[themis_b_sw.loader.args]
+comment = "-"
+skipto = 4
+footerskip = 1
+delim = "    "
+ignorerepeated = true
+stripwhitespace = true
+header = ["start", "end"]

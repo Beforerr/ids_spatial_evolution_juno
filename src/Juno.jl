@@ -43,16 +43,18 @@ function sort_data(A, dim=Ti)
     end
 end
 
-set_aog_theme!()
-theme = Theme(;
-    colormap=Reverse(:tokyo),
-    figure_padding=2,
-    Axis=(
-        xminorticksvisible=true,
-        yminorticksvisible=true
+function setup_theme!()
+    set_aog_theme!()
+    theme = Theme(;
+        colormap=Reverse(:tokyo),
+        figure_padding=2,
+        Axis=(
+            xminorticksvisible=true,
+            yminorticksvisible=true
+        )
     )
-)
-update_theme!(theme)
+    update_theme!(theme)
+end
 
 include("io.jl")
 include("plot.jl")

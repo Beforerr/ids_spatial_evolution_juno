@@ -12,13 +12,34 @@ jno_sw_params = read_sw_params_csv()
 ```
 
 ```{julia}
-using Juno: THEMIS
 using Speasy
-
-da.time
-# @async THEMIS.produce()
+using Juno
+using Juno: THEMIS, Wind, STEREO
+using Juno: general_produce, init_provider
+init_provider()
 ```
 
+```{julia}
+wdf = general_produce("Wind", Wind.B_RTN)
+tdf = general_produce("THB", THEMIS.B_FGL_GSE)
+tdf_sw = mapreduce(vcat, eachrow(thb_sw_tranges)) do row
+    @subset(tdf, :time .> row.start, :time .< row.stop)
+end
+tdf_sw.in_lunar_wake = parent(thb_sse_state[Ti(Near(tdf_sw.time)), Y(1)]) .< 0
+tdf_sw_pure = @subset(tdf_sw, :in_lunar_wake .== false)
+tdf_sw_pure.id .= "THB_SW_PURE"
+df = vcat(wdf, tdf, tdf_sw, tdf_sw_pure; cols=:intersect)
+```
+
+Inspect the data
+
+```{julia}
+using SPEDAS
+
+tplot(
+    Wind.B_RTN, "2015-08-07T14:50:54", "2015-08-07T14:51:30"
+)
+```
 
 ```{julia}
 using Discontinuity

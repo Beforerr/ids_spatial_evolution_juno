@@ -68,4 +68,10 @@ function read_sw_params_csv(file="./data/jgra54158-sup-0001-supinfo.csv"; add_un
     df
 end
 
+function add_state_info!(df, state=get_state_data())
+    selector = Ti(Near(df.time))
+    df.r = parent(state.r[selector])
+    df.T = parent(state.T[selector]) * u"K"
+end
+
 end

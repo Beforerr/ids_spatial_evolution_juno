@@ -9,7 +9,7 @@ title: Waiting time analysis
 - Occurence rate is related to the waiting time distribution.
 - Group the data by the radial distance for WT analysis is not good as the radial distance is not a monotonic function of time. 
 
-It is hard to remove duplicate events when combining multiple datasets with different τ. So when using the combined dataset, the occurence rate would be overestimated.
+It is hard to remove duplicate events *totally* when combining multiple datasets with different τ. So when using the combined dataset, the occurence rate would be overestimated.
 
 
 > An analysiswas carried out to determine the probability distribution governing the time interval between successive discontinuities. The times at which the discontinuities occurred,obtainedfromthe identificationprogram, were used to computethe time difference, $τ = T_j - T_{j-1}$, the so-called interarrival interval. The number of cases were then tabulated corresponding to discreteranges of τ, and a histogramwas prepared.By properly normalizing the numberof casesin each range a probability distribution function giving the relative frequency of occurrencewas obtained. A similar study was previously carried out by Burlaga[1969].
@@ -23,19 +23,54 @@ f(τ; α, θ) = \frac{α}{θ} \left( \frac{τ}{θ} \right)^{α-1} e^{-(τ/θ)^α
 $$
 
 ```{julia}
-using DrWatson
-@quickactivate
-include(srcdir("main.jl"))
-
-using Discontinuity: remove_duplicates
+using Juno
+using Dates
+using Discontinuity
+using Discontinuity: waiting_time, remove_duplicates
+using Discontinuity: plot_wt_pdf, plot_wt_pdf!
 using CairoMakie
+using Beforerr: easy_save
+using AlgebraOfGraphics
+using Distributions, DataFramesMeta
+using Unitful
+using DimensionalData
+
+hidexlabel!(ax) = ax.xlabelvisible = false
+hideylabel!(ax) = ax.ylabelvisible = false
+
+M = (
+    ρ=:ρ => "Occurence Rates (#/day)",
+    ρ_norm=:ρ_norm => "Normalized Occurence Rates",
+    tbin=:time_bin => "Time",
+    r=:r_mean => "Radial Distance (AU)",
+)
+
+Juno.setup_theme!()
 ```
 
-```{julia}
-df = load_taus(; unique_f=missing)
+### Data
 
-wind_df = load(; name="Wind", ts=missing);
-jno_df = load();
+```{julia}
+using Juno: general_produce, init_provider
+using Juno: THEMIS, Wind, STEREO
+using DataFrames, DataFramesMeta
+init_provider()
+wdf = general_produce("Wind", Wind.B_RTN)
+tdf = general_produce("THB", THEMIS.B_FGL_GSE)
+jdf = general_produce("Juno", Juno.Data.get_mag_data)
+sdf = general_produce("STA", STEREO.B_RTN3)
+
+wdf.id .= "Wind"
+tdf.id .= "THEMIS-B"
+jdf.id .= "Juno"
+sdf.id .= "STEREO-A"
+thb_sw_tranges = THEMIS.themis_b_sw()
+# thb_sse_state = THEMIS.SSE_STATE(Juno.TIME_RANGE)
+tdf_sw = mapreduce(vcat, eachrow(thb_sw_tranges)) do row
+    @subset(tdf, :time .> row.start, :time .< row.stop)
+end
+
+Juno.Data.add_state_info!(jdf)
 ```
 
 ```{julia}
@@ -44,19 +79,13 @@ subset_time(df, t) = subset(df, :time => x -> x .< t)
 ```
 
 ```{julia}
-df = wind_df;
-df_s1 = subset(df, :time => t -> year.(t) .== 2013);
-df_s2 = subset(df_s1, :time => t -> month.(t) .< 2);
-
-jno_df_s1 = subset(jno_df, :time => t -> year.(t) .== 2011);
-jno_df_s2 = subset(jno_df, :time => t -> year.(t) .== 2016);
+jno_df_s1 = subset(jdf, :time => t -> year.(t) .== 2011);
+jno_df_s2 = subset(jdf, :time => t -> year.(t) .== 2016);
 ```
 
 ## Waiting time distribution
 
 ```{julia}
-using Distributions
-
 function plot_wt_pdf_lim(df; xlims=(1, 1000), ylims=(1e-5, 8e-2), kwargs...)
     f = plot_wt_pdf(df; kwargs...)
     xlims!(xlims...)
@@ -74,10 +103,54 @@ step = 5
 ```{julia}
 #| column: page
 #| layout-ncol: 3
-dfs = [jno_df, jno_df_s1, jno_df_s2]
-fgs = plot_wt_pdf_lim.(dfs; dists)
-display.(fgs);
+if false
+    dfs = [jno_df, jno_df_s1, jno_df_s2]
+    fgs = plot_wt_pdf_lim.(dfs; dists)
+    display.(fgs)
+end
 ```
+
+### Juno
+
+```{julia}
+_wt(df, tmax=1000) = filter!(<(tmax), waiting_time(df))
+
+let f = Figure()
+    ax1 = plot_wt_pdf!(f[1, 1], _wt(jno_df_s1); dists)
+    ax2 = plot_wt_pdf!(f[2, 1], _wt(jno_df_s2); dists)
+    ax3 = plot_wt_pdf!(f[1, 2], _wt(jno_df_s1, 600); dists)
+    ax4 = plot_wt_pdf!(f[2, 2], _wt(jno_df_s2, 600); dists)
+    axs = (ax1, ax2, ax3, ax4)
+    hideylabel!.(axs)
+    xlims!.(axs, 1, 500)
+    ylims!.(axs, 1e-5, 8e-2)
+    f
+end
+```
+
+
+### Wind and ARTEMIS
+
+```{julia}
+let f = Figure()
+    _wt(df, tmax=1000) = filter!(<(tmax), waiting_time(df))
+    ax1 = plot_wt_pdf!(f[1, 1], _wt(wdf); dists, legend_title="Wind")
+    ax2 = plot_wt_pdf!(f[2, 1], _wt(tdf_sw); dists, legend_title="ARTEMIS")
+    ax3 = plot_wt_pdf!(f[1, 2], _wt(wdf, 200); dists, legend_title="Wind")
+    ax4 = plot_wt_pdf!(f[2, 2], _wt(tdf_sw, 200); dists, legend_title="ARTEMIS")
+
+    axs = (ax1, ax2)
+    axs2 = (ax3, ax4)
+    hidexlabel!.((ax1, ax3))
+    hideylabel!.(axs2)
+    xlims!.(axs, 1, 500)
+    ylims!.(axs, 1e-5, 8e-2)
+    ylims!.(axs2, 1e-5, 8e-2)
+    easy_save("fig_wt_pdf_wind_thb")
+end
+```
+
+![](../figures/fig_wt_pdf_wind_thb.png)
 
 
 ```{julia}
@@ -101,11 +174,6 @@ function plot_fig_wt_dist(; step=5, df1=jno_df_s1, df2=jno_df_s2)
     return f
 end
 
-# let 
-#     plot_fig_wt_dist()
-#     easy_save("fig_wt_dist")
-# end
-
 let tdf = Discontinuity.remove_duplicates(df)
     df1 = subset(tdf, :time => t -> year.(t) .== 2011)
     df2 = subset(tdf, :time => t -> year.(t) .== 2016)
@@ -117,35 +185,67 @@ end
 ## Occurence rate
 
 ```{julia}
-using Distributions
 import DataFrames: groupby
+using PartialFunctions
 
-get_fit_params(x; dist=Weibull, func=mean) = func(fit(dist, x))
-get_wt_fit_params(time; kwargs...) = get_fit_params(waiting_time(time); kwargs...)
+function get_wt_fit_params(time; dist=Weibull, stat=mean, tmax=nothing, δt=1u"minute", kwargs...)
+    Δts = waiting_time(time)
+    isnothing(tmax) || filter!(x -> x < tmax, Δts)
+    stat(fit(dist, Δts; kwargs...)) * δt
+end
 
-function groupby(df::AbstractDataFrame, dt::Period; col=:time)
+function groupby(df::AbstractDataFrame, dt::Period, args...; col=:time)
     @chain df begin
         @transform!(:time_bin = round.(:time, dt),)
-        groupby(:time_bin)
+        @groupby(:time_bin, args...)
     end
 end
 
-begin
-    dt = Day(50)
-    tdf = @chain df begin
-        remove_duplicates
-        groupby(dt)
-        combine(
-            nrow,
-            :time => get_wt_fit_params => :τ,
-            [:r] .=> mean
-        )
-        @transform(:ρ = 1 ./ :τ)
+function get_groupby_occurence_rate(df, dt::Period; tmax=nothing, combine=())
+    @chain df begin
+        groupby(dt, :id)
+        DataFrames.combine(nrow, :time => get_wt_fit_params$(; tmax) => :τ, combine...)
+        @transform(:ρ = NoUnits.(Day(1) ./ :τ))
     end
+end
+```
 
-    x = :time_bin => "Time"
-    specs = data(tdf) * mapping(x, :ρ => "Occurence rates")
-    draw(specs)
+## Figure: Occurence rate for time
+
+```{julia}
+using LsqFit
+using LaTeXStrings
+using Beforerr: figsize
+
+@. model(r, p) = p[1] / r^p[2]
+label_model(p) = LaTeXString(@sprintf("y \\sim %.2f / r^{%.2f}", p[1], p[2]))
+
+begin
+    f = Figure(; size=(600, 300))
+    dt = Day(60)
+    ttdf = get_groupby_occurence_rate(tdf_sw, dt; tmax=120)
+    wtdf = get_groupby_occurence_rate(wdf, dt; tmax=1000)
+    stdf = @chain begin
+        get_groupby_occurence_rate(sdf, dt; tmax=500)
+        @rtransform(:ρ = ifelse(Date(2015, 3) < :time_bin < Date(2015, 8), missing, :ρ))
+    end
+    jtdf = get_groupby_occurence_rate(jdf, dt; tmax=1000, combine=([:r] .=> mean))
+    jtdf.ρ_norm = jtdf.ρ ./ @rsubset(wtdf, :time_bin in jtdf.time_bin).ρ
+
+    tticks = DateTime(2011):Year(1):DateTime(2016)
+    axis = (; yticks=0:20:100, xticks=datetimeticks(tticks, Dates.format.(tticks, "yyyy")))
+    specs = (data(wtdf) + data(stdf) + data(ttdf) + data(jtdf)) * mapping(M.tbin, M.ρ; color=:id => "") * visual(ScatterLines)
+    g1 = draw!(f[1, 1], specs; axis)
+    legend!(f[1, 1], g1; tellheight=false, tellwidth=false, valign=:bottom, halign=:left)
+    ylims!(10, 105)
+
+    g2 = draw!(f[1, 2], data(jtdf) * mapping(M.r, M.ρ_norm))
+    ax2 = g2[1].axis
+    rfit = curve_fit(model, jtdf.r_mean, jtdf.ρ_norm, [1.0, 1.0])
+    lines!(ax2, sort(jtdf.r_mean), model(sort(jtdf.r_mean), rfit.param); color=:gray, linestyle=:dash)
+    text!(ax2, (3, 0.8); text=label_model(rfit.param))
+    ylims!(ax2, 0.15, 1.05)
+    easy_save("fig_occurence_rate")
 end
 ```
 
