@@ -29,7 +29,7 @@ using Discontinuity
 using Discontinuity: waiting_time, remove_duplicates
 using Discontinuity: plot_wt_pdf, plot_wt_pdf!
 using CairoMakie
-using Beforerr: easy_save
+using Beforerr: easy_save, add_labels!
 using AlgebraOfGraphics
 using Distributions, DataFramesMeta
 using Unitful
@@ -245,6 +245,7 @@ begin
     lines!(ax2, sort(jtdf.r_mean), model(sort(jtdf.r_mean), rfit.param); color=:gray, linestyle=:dash)
     text!(ax2, (3, 0.8); text=label_model(rfit.param))
     ylims!(ax2, 0.15, 1.05)
+    add_labels!()
     easy_save("fig_occurence_rate")
 end
 ```
