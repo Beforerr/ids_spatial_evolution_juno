@@ -19,6 +19,12 @@ tex-render:
     rsync _manuscript/_tex/ overleaf/ -rcL
     rsync article_files overleaf -a --size-only || true
 
+unicode-to-latex:
+    # https://pylatexenc.readthedocs.io/en/latest/latexencode/
+    command -v latexencode || uv tool install pylatexenc
+    latexencode --non-ascii-only article.tex > _article.tex
+    mv _article.tex article.tex
+
 [private]
 tex-clean:
     -rm article.{aux,bbl,blg,log,tex}
