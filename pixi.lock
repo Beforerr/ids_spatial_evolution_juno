@@ -660,7 +660,7 @@ packages:
   requires_python: '>=3.6.0'
 - kind: pypi
   name: beforerr
-  version: 2024.11.12
+  version: 2024.11.9.dev2+g91a09b9
   path: ../../src/beforerr_dev
   sha256: 7cec3208b66039f0cfb443db4e6927b3cb6aabd0dfa6893a135bd6f7abf86842
   requires_dist:
@@ -985,7 +985,7 @@ packages:
   requires_python: '>=3.8'
 - kind: pypi
   name: discontinuitypy
-  version: 0.4.0
+  version: 0.4.1.dev5+g0491078.d20250404
   path: ../discontinuitypy
   sha256: c3e8187a47bb612ef8e363436339aecd0544fb1b4d9e6d0f8b8e5bab516558d4
   requires_dist:

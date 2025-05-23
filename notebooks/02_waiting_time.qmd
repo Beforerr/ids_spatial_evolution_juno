@@ -352,3 +352,96 @@ fgs = dfs .|> plot_wt_pdf_lim
 display.(fgs);
 ```
 
+## Old codes
+
+```julia
+subset_jno(df, r) = subset(df, :radial_distance => x -> round_c.(x) .== r)
+subset_time(df, t) = subset(df, :time => x -> x .< t)
+
+bin(x, bin_size) = @. round(x / bin_size) * bin_size
+bin(bin_size) = x -> bin(x, bin_size)
+
+df = wind_df;
+df_s1 = subset(df, :time => t -> year.(t) .== 2013);
+df_s2 = subset(df_s1, :time => t -> month.(t) .< 2);
+
+jno_df_s1 = subset(jno_df, :time => t -> year.(t) .== 2011);
+jno_df_s2 = subset(jno_df, :time => t -> year.(t) .== 2016);
+
+jno_ρ_df = @chain jno_df begin
+    @transform!(
+        :time_bin = (:time - minimum(:time)) ./ time_interval .|> round,
+        :l = :L_k .* (abs ∘ cosd).(:θ_vn),
+        :l_n = :L_k .* (abs ∘ cos ∘ atan).(:Vn_y ./ :Vn_x)
+    )
+end;
+
+time_interval = Day(160)
+
+jno_ρ_df = @chain jno_df begin
+    @transform(
+        :time_bin = (:time - minimum(:time)) ./ time_interval .|> round,
+        :l = :L_k .* (abs ∘ cosd).(:θ_vn),
+        :l_n = :L_k .* (abs ∘ cos ∘ atan).(:Vn_y ./ :Vn_x)
+    )
+    @transform(
+        :l_ratio = :l ./ :r,
+        :l_n_ratio = :l_n ./ :r
+    )
+    groupby(:time_bin)
+    combine(
+        nrow,
+        :time => get_wt_fit_params => :τ,
+        [:r :l :l_ratio :l_n_ratio] .=> mean
+    )
+    # subset(:nrow => x -> x .> 2000)
+    @transform(
+        :ρ = 1 ./ :τ,
+    )
+    @transform(
+        :ρ_l = :ρ ./ :l_ratio_mean * maximum(:l_ratio_mean),
+    )
+    sort(:r_mean)
+end
+
+wind_ρ_df = @chain wind_df begin
+    @transform!(
+        :time_bin = (:time - minimum(:time)) ./ time_interval .|> round,
+    )
+    groupby(:time_bin)
+    combine(
+        nrow,
+        :time => get_wt_fit_params => :τ,
+    )
+    @transform!(
+        :ρ = 1 ./ :τ,
+    )
+end
+
+df = leftjoin(jno_ρ_df, wind_ρ_df, on=:time_bin, makeunique=true)
+df.ρ_ratio = @. df.ρ / df.ρ_1
+
+@transform!(df,
+    :ratio = :ρ_ratio ./ :l_ratio_mean,
+    :ratio_n = :ρ_ratio ./ :l_n_ratio_mean,
+)
+@transform!(
+    df,
+    :ratio = :ratio ./ mean(:ratio),
+    :ratio_n = :ratio_n ./ mean(:ratio_n)
+)
+
+x = :time_bin => "Time"
+legends = ["Juno", "Wind"]
+specs = data(df) * mapping(x, [:ρ_l, :ρ_1] .=> "Normalized Occurence rates") * mapping(color=dims(1) => renamer(legends))
+draw(specs)
+easy_save("ocr/ocr_normalized_by_r")
+
+x = :r_mean => r_lab
+specs = data(df) * mapping(x, :ρ)
+draw(specs)
+
+y = [:ratio_n, :ratio]
+specs = data(df) * mapping(x) * mapping(y, color=dims(1) => renamer(string.(y)))
+plt2 = draw(specs)
+```
