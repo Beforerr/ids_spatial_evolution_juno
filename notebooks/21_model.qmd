@@ -4,7 +4,7 @@
 
 ```{julia}
 using Discontinuity
-using Discontinuity: compute_params!, Alfven_current, inertial_length, gradient_current, uless, plasma_beta, filter_low_mva_quality!
+using Discontinuity: compute_params!, Alfven_current, inertial_length, gradient_current, uless, plasma_beta, filter_low_mva_quality
 using Juno: produce_or_load_juno
 using Juno.Data: get_mag_data, get_state_data, read_sw_params_csv
 using CairoMakie
@@ -69,7 +69,7 @@ using Beforerr
 
 uless_plot!(ax, x, y; kw...) = scatter!(ax, uless.(x), uless.(y); kw...)
 
-let df = filter_low_mva_quality!(jno_df_with_params), xlabel = "Model", ylabel = "Juno", axis = (; xscale=log10, yscale=log10), plot = (; alpha=0.3)
+let df = filter_low_mva_quality(jno_df_with_params), xlabel = "Model", ylabel = "Juno", axis = (; xscale=log10, yscale=log10), plot = (; alpha=0.3)
     f = Figure(;)
     wh = (width=120, height=110)
     ax1 = Axis(f[1, 1]; title=lru("V", u"km/s"), ylabel, wh...)
@@ -101,6 +101,15 @@ let df = filter_low_mva_quality!(jno_df_with_params), xlabel = "Model", ylabel =
         uless_plot!(ax_Jn, :J_m_max_mva_norm, :J_m_max_mva_sw_norm; plot...)
     end
 
+    # Compare L and J from MVA and cross methods
+    ax_L_comp = Axis(f[3, 2]; title=lru("L", u"km"), xlabel="MVA", ylabel="Cross", wh..., axis...)
+    ax_J_comp = Axis(f[3, 3]; title=lru("J", u"nA/m^2"), xlabel="MVA", wh..., axis...)
+
+    @with df begin
+        uless_plot!(ax_L_comp, :L_n_mva_sw, :L_n_cross_sw; plot...)
+        uless_plot!(ax_J_comp, :J_m_max_mva_sw, :J_m_max_cross_sw; plot...)
+    end
+
     color = :red
     linestyle = :dash
 
@@ -115,12 +124,17 @@ let df = filter_low_mva_quality!(jno_df_with_params), xlabel = "Model", ylabel =
     lines!(ax_Jn, exp10.([-2, 2]), exp10.([-2, 2]); color, linestyle)
     lines!(ax_T, exp10.([0.2, 1.5]), exp10.([0.2, 1.5]); color, linestyle)
     lines!(ax_β, exp10.(-2:2), exp10.(-2:2); color, linestyle)
+    lines!(ax_L_comp, exp10.([2, 5]), exp10.([2, 5]); color, linestyle)
+    lines!(ax_J_comp, exp10.([-2, 1]), exp10.([-2, 1]); color, linestyle)
 
     limits!(ax1, 360, 550, 360, 550)
     limits!(ax_L, 10^1.9, 10^5, 10^1.9, 10^5)
     limits!(ax_J, 10^-2.1, 10^1.08, 10^-2.1, 10^1.08)
     limits!(ax_Ln, 10^-1.1, 10^2.8, 10^-1.1, 10^2.8)
     limits!(ax_Jn, 10^-2.5, 10^1.4, 10^-2.5, 10^1.4)
+
+    limits!(ax_L_comp, 10^2.5, 10^5.1, 10^2.5, 10^5.1)
+    limits!(ax_J_comp, 10^-2.1, 10^1.1, 10^-2.1, 10^1.1)
 
     SPEDAS.add_labels!()
     resize_to_layout!(f)
